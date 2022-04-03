@@ -1,0 +1,22 @@
+# Akeyless::CreateClassicKeyOutput
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **classic_key_id** | **String** |  | [optional] |
+| **classic_key_name** | **String** |  | [optional] |
+| **classic_key_type** | **String** |  | [optional] |
+
+## Example
+
+```ruby
+require 'akeyless'
+
+instance = Akeyless::CreateClassicKeyOutput.new(
+  classic_key_id: null,
+  classic_key_name: null,
+  classic_key_type: null
+)
+```
+

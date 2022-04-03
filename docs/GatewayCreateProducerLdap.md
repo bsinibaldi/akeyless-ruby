@@ -1,0 +1,46 @@
+# Akeyless::GatewayCreateProducerLdap
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **bind_dn** | **String** | Bind DN | [optional] |
+| **bind_dn_password** | **String** | Bind DN Password | [optional] |
+| **external_username** | **String** | Fixed user | [optional][default to &#39;false&#39;] |
+| **ldap_ca_cert** | **String** | CA Certificate File Content | [optional] |
+| **ldap_url** | **String** | LDAP Server URL | [optional] |
+| **name** | **String** | Producer name |  |
+| **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
+| **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
+| **target_name** | **String** | Target name | [optional] |
+| **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
+| **token_expiration** | **String** | Token expiration | [optional] |
+| **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
+| **user_attribute** | **String** | User Attribute | [optional] |
+| **user_dn** | **String** | User DN | [optional] |
+| **user_ttl** | **String** | User TTL | [optional][default to &#39;60m&#39;] |
+
+## Example
+
+```ruby
+require 'akeyless'
+
+instance = Akeyless::GatewayCreateProducerLdap.new(
+  bind_dn: null,
+  bind_dn_password: null,
+  external_username: null,
+  ldap_ca_cert: null,
+  ldap_url: null,
+  name: null,
+  producer_encryption_key_name: null,
+  tags: null,
+  target_name: null,
+  token: null,
+  token_expiration: null,
+  uid_token: null,
+  user_attribute: null,
+  user_dn: null,
+  user_ttl: null
+)
+```
+

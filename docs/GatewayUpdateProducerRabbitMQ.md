@@ -1,0 +1,56 @@
+# Akeyless::GatewayUpdateProducerRabbitMQ
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **name** | **String** | Producer name |  |
+| **new_name** | **String** | Producer name | [optional] |
+| **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
+| **rabbitmq_admin_pwd** | **String** | RabbitMQ Admin password | [optional] |
+| **rabbitmq_admin_user** | **String** | RabbitMQ Admin User | [optional] |
+| **rabbitmq_server_uri** | **String** | Server URI | [optional] |
+| **rabbitmq_user_conf_permission** | **String** | User configuration permission | [optional] |
+| **rabbitmq_user_read_permission** | **String** | User read permission | [optional] |
+| **rabbitmq_user_tags** | **String** | User Tags | [optional] |
+| **rabbitmq_user_vhost** | **String** | User Virtual Host | [optional] |
+| **rabbitmq_user_write_permission** | **String** | User write permission | [optional] |
+| **secure_access_enable** | **String** |  | [optional] |
+| **secure_access_url** | **String** |  | [optional] |
+| **secure_access_web_browsing** | **Boolean** |  | [optional] |
+| **secure_access_web_proxy** | **Boolean** |  | [optional] |
+| **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
+| **target_name** | **String** | Target name | [optional] |
+| **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
+| **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
+| **user_ttl** | **String** | User TTL | [optional][default to &#39;60m&#39;] |
+
+## Example
+
+```ruby
+require 'akeyless'
+
+instance = Akeyless::GatewayUpdateProducerRabbitMQ.new(
+  name: null,
+  new_name: null,
+  producer_encryption_key_name: null,
+  rabbitmq_admin_pwd: null,
+  rabbitmq_admin_user: null,
+  rabbitmq_server_uri: null,
+  rabbitmq_user_conf_permission: null,
+  rabbitmq_user_read_permission: null,
+  rabbitmq_user_tags: null,
+  rabbitmq_user_vhost: null,
+  rabbitmq_user_write_permission: null,
+  secure_access_enable: null,
+  secure_access_url: null,
+  secure_access_web_browsing: null,
+  secure_access_web_proxy: null,
+  tags: null,
+  target_name: null,
+  token: null,
+  uid_token: null,
+  user_ttl: null
+)
+```
+

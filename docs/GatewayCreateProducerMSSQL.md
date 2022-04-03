@@ -1,0 +1,54 @@
+# Akeyless::GatewayCreateProducerMSSQL
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **mssql_create_statements** | **String** | MSSQL Creation statements | [optional] |
+| **mssql_dbname** | **String** | MSSQL Name | [optional] |
+| **mssql_host** | **String** | MSSQL Host | [optional][default to &#39;127.0.0.1&#39;] |
+| **mssql_password** | **String** | MSSQL Password | [optional] |
+| **mssql_port** | **String** | MSSQL Port | [optional][default to &#39;1433&#39;] |
+| **mssql_revocation_statements** | **String** | MSSQL Revocation statements | [optional] |
+| **mssql_username** | **String** | MSSQL Username | [optional] |
+| **name** | **String** | Producer name |  |
+| **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
+| **secure_access_bastion_issuer** | **String** |  | [optional] |
+| **secure_access_db_schema** | **String** |  | [optional] |
+| **secure_access_enable** | **String** |  | [optional] |
+| **secure_access_host** | **Array&lt;String&gt;** |  | [optional] |
+| **secure_access_web** | **Boolean** |  | [optional] |
+| **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
+| **target_name** | **String** | Target name | [optional] |
+| **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
+| **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
+| **user_ttl** | **String** | User TTL | [optional][default to &#39;60m&#39;] |
+
+## Example
+
+```ruby
+require 'akeyless'
+
+instance = Akeyless::GatewayCreateProducerMSSQL.new(
+  mssql_create_statements: null,
+  mssql_dbname: null,
+  mssql_host: null,
+  mssql_password: null,
+  mssql_port: null,
+  mssql_revocation_statements: null,
+  mssql_username: null,
+  name: null,
+  producer_encryption_key_name: null,
+  secure_access_bastion_issuer: null,
+  secure_access_db_schema: null,
+  secure_access_enable: null,
+  secure_access_host: null,
+  secure_access_web: null,
+  tags: null,
+  target_name: null,
+  token: null,
+  uid_token: null,
+  user_ttl: null
+)
+```
+
