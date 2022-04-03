@@ -14,7 +14,7 @@ For more information, please visit [http://akeyless.io](http://akeyless.io)
 To install this gem, use:
 
 ```
-gem install akeyess
+gem install akeyless
 ```
 
 ## Getting started
