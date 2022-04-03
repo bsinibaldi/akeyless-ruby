@@ -14,13 +14,13 @@ For more information, please visit [http://akeyless.io](http://akeyless.io)
 To install this gem, use:
 
 ```
-bundler add akeyess
+gem install akeyless
 ```
 
 ## Getting started
 
 ```ruby
-require 'akeyess'
+require 'akeyless'
 
 // default: public API Gateway
 config = Akeyless::Configuration.new
