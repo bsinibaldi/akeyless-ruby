@@ -17,7 +17,7 @@ require "akeyless/version"
 
 Gem::Specification.new do |s|
   s.name        = "akeyless"
-  s.version     = "0.0.2-rc3"
+  s.version     = Akeyless::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["OpenAPI-Generator"]
   s.email       = ["support@akeyless.io"]
