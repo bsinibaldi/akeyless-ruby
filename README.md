@@ -20,7 +20,7 @@ gem install akeyless
 ## Getting started
 
 ```ruby
-require 'akeyess'
+require 'akeyless'
 
 // default: public API Gateway
 config = Akeyless::Configuration.new
