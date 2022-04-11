@@ -179,6 +179,8 @@ docs/GatewayCreateProducerGithub.md
 docs/GatewayCreateProducerGithubOutput.md
 docs/GatewayCreateProducerGke.md
 docs/GatewayCreateProducerGkeOutput.md
+docs/GatewayCreateProducerHanaDb.md
+docs/GatewayCreateProducerHanaDbOutput.md
 docs/GatewayCreateProducerLdap.md
 docs/GatewayCreateProducerLdapOutput.md
 docs/GatewayCreateProducerMSSQL.md
@@ -251,6 +253,8 @@ docs/GatewayUpdateProducerGithub.md
 docs/GatewayUpdateProducerGithubOutput.md
 docs/GatewayUpdateProducerGke.md
 docs/GatewayUpdateProducerGkeOutput.md
+docs/GatewayUpdateProducerHanaDb.md
+docs/GatewayUpdateProducerHanaDbOutput.md
 docs/GatewayUpdateProducerLdap.md
 docs/GatewayUpdateProducerLdapOutput.md
 docs/GatewayUpdateProducerMSSQL.md
@@ -318,6 +322,7 @@ docs/KMIPClientListResponse.md
 docs/KMIPClientUpdateResponse.md
 docs/KMIPConfigPart.md
 docs/KMIPEnvironmentCreateResponse.md
+docs/KMIPServer.md
 docs/KmipClientDeleteRule.md
 docs/KmipClientSetRule.md
 docs/KmipCreateClient.md
@@ -674,6 +679,8 @@ lib/akeyless/models/gateway_create_producer_github.rb
 lib/akeyless/models/gateway_create_producer_github_output.rb
 lib/akeyless/models/gateway_create_producer_gke.rb
 lib/akeyless/models/gateway_create_producer_gke_output.rb
+lib/akeyless/models/gateway_create_producer_hana_db.rb
+lib/akeyless/models/gateway_create_producer_hana_db_output.rb
 lib/akeyless/models/gateway_create_producer_ldap.rb
 lib/akeyless/models/gateway_create_producer_ldap_output.rb
 lib/akeyless/models/gateway_create_producer_mongo.rb
@@ -746,6 +753,8 @@ lib/akeyless/models/gateway_update_producer_github.rb
 lib/akeyless/models/gateway_update_producer_github_output.rb
 lib/akeyless/models/gateway_update_producer_gke.rb
 lib/akeyless/models/gateway_update_producer_gke_output.rb
+lib/akeyless/models/gateway_update_producer_hana_db.rb
+lib/akeyless/models/gateway_update_producer_hana_db_output.rb
 lib/akeyless/models/gateway_update_producer_ldap.rb
 lib/akeyless/models/gateway_update_producer_ldap_output.rb
 lib/akeyless/models/gateway_update_producer_mongo.rb
@@ -827,6 +836,7 @@ lib/akeyless/models/kmip_renew_client_certificate.rb
 lib/akeyless/models/kmip_renew_client_certificate_output.rb
 lib/akeyless/models/kmip_renew_server_certificate.rb
 lib/akeyless/models/kmip_renew_server_certificate_output.rb
+lib/akeyless/models/kmip_server.rb
 lib/akeyless/models/kmip_server_setup.rb
 lib/akeyless/models/kmip_set_server_state.rb
 lib/akeyless/models/kmip_set_server_state_output.rb
@@ -994,4 +1004,9 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
+spec/models/gateway_create_producer_hana_db_output_spec.rb
+spec/models/gateway_create_producer_hana_db_spec.rb
+spec/models/gateway_update_producer_hana_db_output_spec.rb
+spec/models/gateway_update_producer_hana_db_spec.rb
+spec/models/kmip_server_spec.rb
 spec/spec_helper.rb

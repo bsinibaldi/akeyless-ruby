@@ -184,8 +184,6 @@ module Akeyless
 
       if attributes.key?(:'mongodb_custom_data')
         self.mongodb_custom_data = attributes[:'mongodb_custom_data']
-      else
-        self.mongodb_custom_data = '\"\"'
       end
 
       if attributes.key?(:'mongodb_default_auth_db')

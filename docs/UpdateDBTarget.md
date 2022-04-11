@@ -24,6 +24,8 @@
 | **port** | **String** |  | [optional] |
 | **pwd** | **String** |  | [optional] |
 | **snowflake_account** | **String** |  | [optional] |
+| **ssl** | **Boolean** | SSL connection mode | [optional] |
+| **ssl_certificate** | **String** | SSL connection certificate | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
 | **update_version** | **Boolean** | Deprecated | [optional] |
@@ -55,6 +57,8 @@ instance = Akeyless::UpdateDBTarget.new(
   port: null,
   pwd: null,
   snowflake_account: null,
+  ssl: null,
+  ssl_certificate: null,
   token: null,
   uid_token: null,
   update_version: null,

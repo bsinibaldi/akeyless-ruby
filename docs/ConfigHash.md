@@ -14,6 +14,7 @@
 | **leadership** | **String** |  | [optional] |
 | **log_forwarding** | **String** |  | [optional] |
 | **m_queue** | **String** |  | [optional] |
+| **migration_status** | **String** |  | [optional] |
 | **migrations** | **String** |  | [optional] |
 | **producers** | **Object** |  | [optional] |
 | **producers_status** | **String** |  | [optional] |
@@ -37,6 +38,7 @@ instance = Akeyless::ConfigHash.new(
   leadership: null,
   log_forwarding: null,
   m_queue: null,
+  migration_status: null,
   migrations: null,
   producers: null,
   producers_status: null,

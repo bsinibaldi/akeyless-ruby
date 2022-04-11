@@ -185,6 +185,10 @@ module Akeyless
 
     attr_accessor :groups
 
+    attr_accessor :hanadb_creation_statements
+
+    attr_accessor :hanadb_revocation_statements
+
     attr_accessor :host_name
 
     attr_accessor :host_port
@@ -446,6 +450,8 @@ module Akeyless
         :'gke_service_account_key' => :'gke_service_account_key',
         :'gke_service_account_name' => :'gke_service_account_name',
         :'groups' => :'groups',
+        :'hanadb_creation_statements' => :'hanadb_creation_statements',
+        :'hanadb_revocation_statements' => :'hanadb_revocation_statements',
         :'host_name' => :'host_name',
         :'host_port' => :'host_port',
         :'is_fixed_user' => :'is_fixed_user',
@@ -624,6 +630,8 @@ module Akeyless
         :'gke_service_account_key' => :'String',
         :'gke_service_account_name' => :'String',
         :'groups' => :'String',
+        :'hanadb_creation_statements' => :'String',
+        :'hanadb_revocation_statements' => :'String',
         :'host_name' => :'String',
         :'host_port' => :'String',
         :'is_fixed_user' => :'String',
@@ -1073,6 +1081,14 @@ module Akeyless
         self.groups = attributes[:'groups']
       end
 
+      if attributes.key?(:'hanadb_creation_statements')
+        self.hanadb_creation_statements = attributes[:'hanadb_creation_statements']
+      end
+
+      if attributes.key?(:'hanadb_revocation_statements')
+        self.hanadb_revocation_statements = attributes[:'hanadb_revocation_statements']
+      end
+
       if attributes.key?(:'host_name')
         self.host_name = attributes[:'host_name']
       end
@@ -1516,6 +1532,8 @@ module Akeyless
           gke_service_account_key == o.gke_service_account_key &&
           gke_service_account_name == o.gke_service_account_name &&
           groups == o.groups &&
+          hanadb_creation_statements == o.hanadb_creation_statements &&
+          hanadb_revocation_statements == o.hanadb_revocation_statements &&
           host_name == o.host_name &&
           host_port == o.host_port &&
           is_fixed_user == o.is_fixed_user &&
@@ -1610,7 +1628,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [active, admin_name, admin_pwd, admin_rotation_interval_days, artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, artifactory_token_audience, artifactory_token_scope, aws_access_key_id, aws_access_mode, aws_region, aws_role_arns, aws_secret_access_key, aws_session_token, aws_user_console_access, aws_user_groups, aws_user_policies, aws_user_programmatic_access, azure_app_object_id, azure_client_id, azure_client_secret, azure_fixed_user_name_sub_claim_key, azure_fixed_user_only, azure_tenant_id, azure_user_groups_obj_id, azure_user_portal_access, azure_user_programmatic_access, azure_user_roles_template_id, cassandra_creation_statements, chef_organizations, chef_server_access_mode, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, create_sync_url, db_host_name, db_isolation_level, db_max_idle_conns, db_max_open_conns, db_name, db_port, db_pwd, db_server_certificates, db_server_name, db_user_name, dynamic_secret_id, dynamic_secret_key, dynamic_secret_name, dynamic_secret_type, eks_access_key_id, eks_assume_role, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, enable_admin_rotation, externally_provided_user, failure_message, fixed_user_only, gcp_key_algo, gcp_service_account_email, gcp_service_account_key, gcp_token_lifetime, gcp_token_scope, gcp_token_type, github_app_id, github_app_private_key, github_base_url, github_installation_id, github_installation_token_permissions, github_installation_token_repositories, github_installation_token_repositories_ids, github_repository_path, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, groups, host_name, host_port, is_fixed_user, item_targets_assoc, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, k8s_namespace, k8s_service_account, last_admin_rotation, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, ldap_user_attr, ldap_user_dn, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_custom_data, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_roles, mongodb_uri_connection, mongodb_uri_options, mongodb_username, mssql_creation_statements, mssql_revocation_statements, mysql_creation_statements, oracle_creation_statements, password, password_length, password_policy, payload, postgres_creation_statements, postgres_revocation_statements, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, rabbitmq_user_conf_permission, rabbitmq_user_read_permission, rabbitmq_user_tags, rabbitmq_user_vhost, rabbitmq_user_write_permission, redshift_creation_statements, revoke_sync_url, rotate_sync_url, scopes, secure_remote_access_details, session_extension_warn_interval_min, sf_account, sf_user_role, sf_warehouse_name, should_stop, ssl_connection_certificate, ssl_connection_mode, tags, timeout_seconds, use_gw_cloud_identity, user_name, user_principal_name, user_ttl, username_length, username_policy, venafi_allow_subdomains, venafi_allowed_domains, venafi_api_key, venafi_auto_generated_folder, venafi_base_url, venafi_root_first_in_chain, venafi_sign_using_akeyless_pki, venafi_signer_key_name, venafi_store_private_key, venafi_tpp_password, venafi_tpp_username, venafi_use_tpp, venafi_zone, warn_before_user_expiration_min].hash
+      [active, admin_name, admin_pwd, admin_rotation_interval_days, artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, artifactory_token_audience, artifactory_token_scope, aws_access_key_id, aws_access_mode, aws_region, aws_role_arns, aws_secret_access_key, aws_session_token, aws_user_console_access, aws_user_groups, aws_user_policies, aws_user_programmatic_access, azure_app_object_id, azure_client_id, azure_client_secret, azure_fixed_user_name_sub_claim_key, azure_fixed_user_only, azure_tenant_id, azure_user_groups_obj_id, azure_user_portal_access, azure_user_programmatic_access, azure_user_roles_template_id, cassandra_creation_statements, chef_organizations, chef_server_access_mode, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, create_sync_url, db_host_name, db_isolation_level, db_max_idle_conns, db_max_open_conns, db_name, db_port, db_pwd, db_server_certificates, db_server_name, db_user_name, dynamic_secret_id, dynamic_secret_key, dynamic_secret_name, dynamic_secret_type, eks_access_key_id, eks_assume_role, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, enable_admin_rotation, externally_provided_user, failure_message, fixed_user_only, gcp_key_algo, gcp_service_account_email, gcp_service_account_key, gcp_token_lifetime, gcp_token_scope, gcp_token_type, github_app_id, github_app_private_key, github_base_url, github_installation_id, github_installation_token_permissions, github_installation_token_repositories, github_installation_token_repositories_ids, github_repository_path, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, groups, hanadb_creation_statements, hanadb_revocation_statements, host_name, host_port, is_fixed_user, item_targets_assoc, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, k8s_namespace, k8s_service_account, last_admin_rotation, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, ldap_user_attr, ldap_user_dn, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_custom_data, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_roles, mongodb_uri_connection, mongodb_uri_options, mongodb_username, mssql_creation_statements, mssql_revocation_statements, mysql_creation_statements, oracle_creation_statements, password, password_length, password_policy, payload, postgres_creation_statements, postgres_revocation_statements, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, rabbitmq_user_conf_permission, rabbitmq_user_read_permission, rabbitmq_user_tags, rabbitmq_user_vhost, rabbitmq_user_write_permission, redshift_creation_statements, revoke_sync_url, rotate_sync_url, scopes, secure_remote_access_details, session_extension_warn_interval_min, sf_account, sf_user_role, sf_warehouse_name, should_stop, ssl_connection_certificate, ssl_connection_mode, tags, timeout_seconds, use_gw_cloud_identity, user_name, user_principal_name, user_ttl, username_length, username_policy, venafi_allow_subdomains, venafi_allowed_domains, venafi_api_key, venafi_auto_generated_folder, venafi_base_url, venafi_root_first_in_chain, venafi_sign_using_akeyless_pki, venafi_signer_key_name, venafi_store_private_key, venafi_tpp_password, venafi_tpp_username, venafi_use_tpp, venafi_zone, warn_before_user_expiration_min].hash
     end
 
     # Builds the object from hash

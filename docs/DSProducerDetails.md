@@ -88,6 +88,8 @@
 | **gke_service_account_key** | **String** |  | [optional] |
 | **gke_service_account_name** | **String** |  | [optional] |
 | **groups** | **String** |  | [optional] |
+| **hanadb_creation_statements** | **String** |  | [optional] |
+| **hanadb_revocation_statements** | **String** |  | [optional] |
 | **host_name** | **String** |  | [optional] |
 | **host_port** | **String** |  | [optional] |
 | **is_fixed_user** | **String** |  | [optional] |
@@ -262,6 +264,8 @@ instance = Akeyless::DSProducerDetails.new(
   gke_service_account_key: null,
   gke_service_account_name: null,
   groups: null,
+  hanadb_creation_statements: null,
+  hanadb_revocation_statements: null,
   host_name: null,
   host_port: null,
   is_fixed_user: null,

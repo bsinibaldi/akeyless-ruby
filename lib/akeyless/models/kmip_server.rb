@@ -14,27 +14,25 @@ require 'date'
 require 'time'
 
 module Akeyless
-  # listAuthMethods is a command that returns a list of all auth methods in the account.
-  class ListAuthMethods
-    # Next page reference
-    attr_accessor :pagination_token
+  class KMIPServer
+    attr_accessor :active
 
-    # Authentication token (see `/auth` and `/configure`)
-    attr_accessor :token
+    attr_accessor :ca
 
-    # The Auth method types list of the requested method. In case it is empty, all types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2, ldap, aws_iam, oidc, universal_identity, gcp, k8s]
-    attr_accessor :type
+    attr_accessor :certificate
 
-    # The universal identity token, Required only for universal_identity authentication
-    attr_accessor :uid_token
+    attr_accessor :hostname
+
+    attr_accessor :root
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'pagination_token' => :'pagination-token',
-        :'token' => :'token',
-        :'type' => :'type',
-        :'uid_token' => :'uid-token'
+        :'active' => :'active',
+        :'ca' => :'ca',
+        :'certificate' => :'certificate',
+        :'hostname' => :'hostname',
+        :'root' => :'root'
       }
     end
 
@@ -46,10 +44,11 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'pagination_token' => :'String',
-        :'token' => :'String',
-        :'type' => :'Array<String>',
-        :'uid_token' => :'String'
+        :'active' => :'Boolean',
+        :'ca' => :'Array<Integer>',
+        :'certificate' => :'Array<Integer>',
+        :'hostname' => :'String',
+        :'root' => :'String'
       }
     end
 
@@ -63,33 +62,39 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::ListAuthMethods` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::KMIPServer` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::ListAuthMethods`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::KMIPServer`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'pagination_token')
-        self.pagination_token = attributes[:'pagination_token']
+      if attributes.key?(:'active')
+        self.active = attributes[:'active']
       end
 
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
-      end
-
-      if attributes.key?(:'type')
-        if (value = attributes[:'type']).is_a?(Array)
-          self.type = value
+      if attributes.key?(:'ca')
+        if (value = attributes[:'ca']).is_a?(Array)
+          self.ca = value
         end
       end
 
-      if attributes.key?(:'uid_token')
-        self.uid_token = attributes[:'uid_token']
+      if attributes.key?(:'certificate')
+        if (value = attributes[:'certificate']).is_a?(Array)
+          self.certificate = value
+        end
+      end
+
+      if attributes.key?(:'hostname')
+        self.hostname = attributes[:'hostname']
+      end
+
+      if attributes.key?(:'root')
+        self.root = attributes[:'root']
       end
     end
 
@@ -111,10 +116,11 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          pagination_token == o.pagination_token &&
-          token == o.token &&
-          type == o.type &&
-          uid_token == o.uid_token
+          active == o.active &&
+          ca == o.ca &&
+          certificate == o.certificate &&
+          hostname == o.hostname &&
+          root == o.root
     end
 
     # @see the `==` method
@@ -126,7 +132,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pagination_token, token, type, uid_token].hash
+      [active, ca, certificate, hostname, root].hash
     end
 
     # Builds the object from hash

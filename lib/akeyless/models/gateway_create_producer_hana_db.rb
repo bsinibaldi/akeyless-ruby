@@ -14,51 +14,38 @@ require 'date'
 require 'time'
 
 module Akeyless
-  # gatewayCreateProducerMongo is a command that creates either mongodb  producer or mongodb atlas producer
-  class GatewayCreateProducerMongo
-    # MongoDB Atlas private key
-    attr_accessor :mongodb_atlas_api_private_key
+  # gatewayCreateProducerHanaDb is a command that creates hanadb producer
+  class GatewayCreateProducerHanaDb
+    # HanaDb Name
+    attr_accessor :hana_dbname
 
-    # MongoDB Atlas public key
-    attr_accessor :mongodb_atlas_api_public_key
+    # HanaDb Creation statements
+    attr_accessor :hanadb_create_statements
 
-    # MongoDB Atlas project ID
-    attr_accessor :mongodb_atlas_project_id
+    # HanaDb Host
+    attr_accessor :hanadb_host
 
-    # MongoDB custom data
-    attr_accessor :mongodb_custom_data
+    # HanaDb Password
+    attr_accessor :hanadb_password
 
-    # MongoDB server default authentication database
-    attr_accessor :mongodb_default_auth_db
+    # HanaDb Port
+    attr_accessor :hanadb_port
 
-    # MongoDB server host and port
-    attr_accessor :mongodb_host_port
+    # HanaDb Revocation statements
+    attr_accessor :hanadb_revocation_statements
 
-    # MongoDB Name
-    attr_accessor :mongodb_name
-
-    # MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters
-    attr_accessor :mongodb_password
-
-    # MongoDB Roles
-    attr_accessor :mongodb_roles
-
-    # MongoDB server URI
-    attr_accessor :mongodb_server_uri
-
-    # MongoDB server URI options
-    attr_accessor :mongodb_uri_options
-
-    # MongoDB server username
-    attr_accessor :mongodb_username
+    # HanaDb Username
+    attr_accessor :hanadb_username
 
     # Producer name
     attr_accessor :name
 
-    # Encrypt producer with following key
+    # Dynamic producer encryption key
     attr_accessor :producer_encryption_key_name
 
     attr_accessor :secure_access_bastion_issuer
+
+    attr_accessor :secure_access_db_schema
 
     attr_accessor :secure_access_enable
 
@@ -84,21 +71,17 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'mongodb_atlas_api_private_key' => :'mongodb-atlas-api-private-key',
-        :'mongodb_atlas_api_public_key' => :'mongodb-atlas-api-public-key',
-        :'mongodb_atlas_project_id' => :'mongodb-atlas-project-id',
-        :'mongodb_custom_data' => :'mongodb-custom-data',
-        :'mongodb_default_auth_db' => :'mongodb-default-auth-db',
-        :'mongodb_host_port' => :'mongodb-host-port',
-        :'mongodb_name' => :'mongodb-name',
-        :'mongodb_password' => :'mongodb-password',
-        :'mongodb_roles' => :'mongodb-roles',
-        :'mongodb_server_uri' => :'mongodb-server-uri',
-        :'mongodb_uri_options' => :'mongodb-uri-options',
-        :'mongodb_username' => :'mongodb-username',
+        :'hana_dbname' => :'hana-dbname',
+        :'hanadb_create_statements' => :'hanadb-create-statements',
+        :'hanadb_host' => :'hanadb-host',
+        :'hanadb_password' => :'hanadb-password',
+        :'hanadb_port' => :'hanadb-port',
+        :'hanadb_revocation_statements' => :'hanadb-revocation-statements',
+        :'hanadb_username' => :'hanadb-username',
         :'name' => :'name',
         :'producer_encryption_key_name' => :'producer-encryption-key-name',
         :'secure_access_bastion_issuer' => :'secure-access-bastion-issuer',
+        :'secure_access_db_schema' => :'secure-access-db-schema',
         :'secure_access_enable' => :'secure-access-enable',
         :'secure_access_host' => :'secure-access-host',
         :'secure_access_web' => :'secure-access-web',
@@ -118,21 +101,17 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'mongodb_atlas_api_private_key' => :'String',
-        :'mongodb_atlas_api_public_key' => :'String',
-        :'mongodb_atlas_project_id' => :'String',
-        :'mongodb_custom_data' => :'String',
-        :'mongodb_default_auth_db' => :'String',
-        :'mongodb_host_port' => :'String',
-        :'mongodb_name' => :'String',
-        :'mongodb_password' => :'String',
-        :'mongodb_roles' => :'String',
-        :'mongodb_server_uri' => :'String',
-        :'mongodb_uri_options' => :'String',
-        :'mongodb_username' => :'String',
+        :'hana_dbname' => :'String',
+        :'hanadb_create_statements' => :'String',
+        :'hanadb_host' => :'String',
+        :'hanadb_password' => :'String',
+        :'hanadb_port' => :'String',
+        :'hanadb_revocation_statements' => :'String',
+        :'hanadb_username' => :'String',
         :'name' => :'String',
         :'producer_encryption_key_name' => :'String',
         :'secure_access_bastion_issuer' => :'String',
+        :'secure_access_db_schema' => :'String',
         :'secure_access_enable' => :'String',
         :'secure_access_host' => :'Array<String>',
         :'secure_access_web' => :'Boolean',
@@ -154,65 +133,47 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::GatewayCreateProducerMongo` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::GatewayCreateProducerHanaDb` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::GatewayCreateProducerMongo`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::GatewayCreateProducerHanaDb`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'mongodb_atlas_api_private_key')
-        self.mongodb_atlas_api_private_key = attributes[:'mongodb_atlas_api_private_key']
+      if attributes.key?(:'hana_dbname')
+        self.hana_dbname = attributes[:'hana_dbname']
       end
 
-      if attributes.key?(:'mongodb_atlas_api_public_key')
-        self.mongodb_atlas_api_public_key = attributes[:'mongodb_atlas_api_public_key']
+      if attributes.key?(:'hanadb_create_statements')
+        self.hanadb_create_statements = attributes[:'hanadb_create_statements']
       end
 
-      if attributes.key?(:'mongodb_atlas_project_id')
-        self.mongodb_atlas_project_id = attributes[:'mongodb_atlas_project_id']
-      end
-
-      if attributes.key?(:'mongodb_custom_data')
-        self.mongodb_custom_data = attributes[:'mongodb_custom_data']
-      end
-
-      if attributes.key?(:'mongodb_default_auth_db')
-        self.mongodb_default_auth_db = attributes[:'mongodb_default_auth_db']
-      end
-
-      if attributes.key?(:'mongodb_host_port')
-        self.mongodb_host_port = attributes[:'mongodb_host_port']
-      end
-
-      if attributes.key?(:'mongodb_name')
-        self.mongodb_name = attributes[:'mongodb_name']
-      end
-
-      if attributes.key?(:'mongodb_password')
-        self.mongodb_password = attributes[:'mongodb_password']
-      end
-
-      if attributes.key?(:'mongodb_roles')
-        self.mongodb_roles = attributes[:'mongodb_roles']
+      if attributes.key?(:'hanadb_host')
+        self.hanadb_host = attributes[:'hanadb_host']
       else
-        self.mongodb_roles = '[]'
+        self.hanadb_host = '127.0.0.1'
       end
 
-      if attributes.key?(:'mongodb_server_uri')
-        self.mongodb_server_uri = attributes[:'mongodb_server_uri']
+      if attributes.key?(:'hanadb_password')
+        self.hanadb_password = attributes[:'hanadb_password']
       end
 
-      if attributes.key?(:'mongodb_uri_options')
-        self.mongodb_uri_options = attributes[:'mongodb_uri_options']
+      if attributes.key?(:'hanadb_port')
+        self.hanadb_port = attributes[:'hanadb_port']
+      else
+        self.hanadb_port = '443'
       end
 
-      if attributes.key?(:'mongodb_username')
-        self.mongodb_username = attributes[:'mongodb_username']
+      if attributes.key?(:'hanadb_revocation_statements')
+        self.hanadb_revocation_statements = attributes[:'hanadb_revocation_statements']
+      end
+
+      if attributes.key?(:'hanadb_username')
+        self.hanadb_username = attributes[:'hanadb_username']
       end
 
       if attributes.key?(:'name')
@@ -225,6 +186,10 @@ module Akeyless
 
       if attributes.key?(:'secure_access_bastion_issuer')
         self.secure_access_bastion_issuer = attributes[:'secure_access_bastion_issuer']
+      end
+
+      if attributes.key?(:'secure_access_db_schema')
+        self.secure_access_db_schema = attributes[:'secure_access_db_schema']
       end
 
       if attributes.key?(:'secure_access_enable')
@@ -289,21 +254,17 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          mongodb_atlas_api_private_key == o.mongodb_atlas_api_private_key &&
-          mongodb_atlas_api_public_key == o.mongodb_atlas_api_public_key &&
-          mongodb_atlas_project_id == o.mongodb_atlas_project_id &&
-          mongodb_custom_data == o.mongodb_custom_data &&
-          mongodb_default_auth_db == o.mongodb_default_auth_db &&
-          mongodb_host_port == o.mongodb_host_port &&
-          mongodb_name == o.mongodb_name &&
-          mongodb_password == o.mongodb_password &&
-          mongodb_roles == o.mongodb_roles &&
-          mongodb_server_uri == o.mongodb_server_uri &&
-          mongodb_uri_options == o.mongodb_uri_options &&
-          mongodb_username == o.mongodb_username &&
+          hana_dbname == o.hana_dbname &&
+          hanadb_create_statements == o.hanadb_create_statements &&
+          hanadb_host == o.hanadb_host &&
+          hanadb_password == o.hanadb_password &&
+          hanadb_port == o.hanadb_port &&
+          hanadb_revocation_statements == o.hanadb_revocation_statements &&
+          hanadb_username == o.hanadb_username &&
           name == o.name &&
           producer_encryption_key_name == o.producer_encryption_key_name &&
           secure_access_bastion_issuer == o.secure_access_bastion_issuer &&
+          secure_access_db_schema == o.secure_access_db_schema &&
           secure_access_enable == o.secure_access_enable &&
           secure_access_host == o.secure_access_host &&
           secure_access_web == o.secure_access_web &&
@@ -323,7 +284,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_custom_data, mongodb_default_auth_db, mongodb_host_port, mongodb_name, mongodb_password, mongodb_roles, mongodb_server_uri, mongodb_uri_options, mongodb_username, name, producer_encryption_key_name, secure_access_bastion_issuer, secure_access_enable, secure_access_host, secure_access_web, tags, target_name, token, uid_token, user_ttl].hash
+      [hana_dbname, hanadb_create_statements, hanadb_host, hanadb_password, hanadb_port, hanadb_revocation_statements, hanadb_username, name, producer_encryption_key_name, secure_access_bastion_issuer, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_web, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

@@ -66,6 +66,12 @@ module Akeyless
 
     attr_accessor :snowflake_account
 
+    # SSL connection mode
+    attr_accessor :ssl
+
+    # SSL connection certificate
+    attr_accessor :ssl_certificate
+
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
@@ -100,6 +106,8 @@ module Akeyless
         :'port' => :'port',
         :'pwd' => :'pwd',
         :'snowflake_account' => :'snowflake-account',
+        :'ssl' => :'ssl',
+        :'ssl_certificate' => :'ssl-certificate',
         :'token' => :'token',
         :'uid_token' => :'uid-token',
         :'update_version' => :'update-version',
@@ -135,6 +143,8 @@ module Akeyless
         :'port' => :'String',
         :'pwd' => :'String',
         :'snowflake_account' => :'String',
+        :'ssl' => :'Boolean',
+        :'ssl_certificate' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String',
         :'update_version' => :'Boolean',
@@ -243,6 +253,14 @@ module Akeyless
         self.snowflake_account = attributes[:'snowflake_account']
       end
 
+      if attributes.key?(:'ssl')
+        self.ssl = attributes[:'ssl']
+      end
+
+      if attributes.key?(:'ssl_certificate')
+        self.ssl_certificate = attributes[:'ssl_certificate']
+      end
+
       if attributes.key?(:'token')
         self.token = attributes[:'token']
       end
@@ -308,6 +326,8 @@ module Akeyless
           port == o.port &&
           pwd == o.pwd &&
           snowflake_account == o.snowflake_account &&
+          ssl == o.ssl &&
+          ssl_certificate == o.ssl_certificate &&
           token == o.token &&
           uid_token == o.uid_token &&
           update_version == o.update_version &&
@@ -323,7 +343,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [comment, db_name, db_server_certificates, db_server_name, db_type, host, keep_prev_version, key, mongodb_atlas, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_default_auth_db, mongodb_uri_options, name, new_name, oracle_service_name, port, pwd, snowflake_account, token, uid_token, update_version, user_name].hash
+      [comment, db_name, db_server_certificates, db_server_name, db_type, host, keep_prev_version, key, mongodb_atlas, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_default_auth_db, mongodb_uri_options, name, new_name, oracle_service_name, port, pwd, snowflake_account, ssl, ssl_certificate, token, uid_token, update_version, user_name].hash
     end
 
     # Builds the object from hash

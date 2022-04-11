@@ -21,7 +21,7 @@ module Akeyless
     # Access key (relevant only for access-type=access_key)
     attr_accessor :access_key
 
-    # Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp/k8s)
+    # Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/k8s)
     attr_accessor :access_type
 
     # Email (relevant only for access-type=password)

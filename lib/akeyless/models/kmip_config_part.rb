@@ -17,12 +17,20 @@ module Akeyless
   class KMIPConfigPart
     attr_accessor :clients
 
+    # Saves the private key of the cert issuer in encypted form
+    attr_accessor :key_enc
+
+    attr_accessor :server
+
+    # Saved for backward compatibility TODO: remove this after all clients upgrade
     attr_accessor :server_enc
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'clients' => :'clients',
+        :'key_enc' => :'key_enc',
+        :'server' => :'server',
         :'server_enc' => :'server_enc'
       }
     end
@@ -36,6 +44,8 @@ module Akeyless
     def self.openapi_types
       {
         :'clients' => :'Hash<String, KMIPClient>',
+        :'key_enc' => :'Array<Integer>',
+        :'server' => :'KMIPServer',
         :'server_enc' => :'Array<Integer>'
       }
     end
@@ -67,6 +77,16 @@ module Akeyless
         end
       end
 
+      if attributes.key?(:'key_enc')
+        if (value = attributes[:'key_enc']).is_a?(Array)
+          self.key_enc = value
+        end
+      end
+
+      if attributes.key?(:'server')
+        self.server = attributes[:'server']
+      end
+
       if attributes.key?(:'server_enc')
         if (value = attributes[:'server_enc']).is_a?(Array)
           self.server_enc = value
@@ -93,6 +113,8 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           clients == o.clients &&
+          key_enc == o.key_enc &&
+          server == o.server &&
           server_enc == o.server_enc
     end
 
@@ -105,7 +127,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [clients, server_enc].hash
+      [clients, key_enc, server, server_enc].hash
     end
 
     # Builds the object from hash

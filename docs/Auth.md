@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **access_id** | **String** | Access ID | [optional] |
 | **access_key** | **String** | Access key (relevant only for access-type&#x3D;access_key) | [optional] |
-| **access_type** | **String** | Access Type (access_key/password/saml/ldap/k8s/azure_ad/aws_iam/universal_identity/jwt/gcp/k8s) | [optional][default to &#39;access_key&#39;] |
+| **access_type** | **String** | Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/k8s) | [optional][default to &#39;access_key&#39;] |
 | **admin_email** | **String** | Email (relevant only for access-type&#x3D;password) | [optional] |
 | **admin_password** | **String** | Password (relevant only for access-type&#x3D;password) | [optional] |
 | **cloud_id** | **String** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp) | [optional] |

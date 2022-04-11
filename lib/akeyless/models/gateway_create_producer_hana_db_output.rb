@@ -14,27 +14,13 @@ require 'date'
 require 'time'
 
 module Akeyless
-  # listAuthMethods is a command that returns a list of all auth methods in the account.
-  class ListAuthMethods
-    # Next page reference
-    attr_accessor :pagination_token
-
-    # Authentication token (see `/auth` and `/configure`)
-    attr_accessor :token
-
-    # The Auth method types list of the requested method. In case it is empty, all types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2, ldap, aws_iam, oidc, universal_identity, gcp, k8s]
-    attr_accessor :type
-
-    # The universal identity token, Required only for universal_identity authentication
-    attr_accessor :uid_token
+  class GatewayCreateProducerHanaDbOutput
+    attr_accessor :producer_details
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'pagination_token' => :'pagination-token',
-        :'token' => :'token',
-        :'type' => :'type',
-        :'uid_token' => :'uid-token'
+        :'producer_details' => :'producer_details'
       }
     end
 
@@ -46,10 +32,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'pagination_token' => :'String',
-        :'token' => :'String',
-        :'type' => :'Array<String>',
-        :'uid_token' => :'String'
+        :'producer_details' => :'DSProducerDetails'
       }
     end
 
@@ -63,33 +46,19 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::ListAuthMethods` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::GatewayCreateProducerHanaDbOutput` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::ListAuthMethods`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::GatewayCreateProducerHanaDbOutput`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'pagination_token')
-        self.pagination_token = attributes[:'pagination_token']
-      end
-
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
-      end
-
-      if attributes.key?(:'type')
-        if (value = attributes[:'type']).is_a?(Array)
-          self.type = value
-        end
-      end
-
-      if attributes.key?(:'uid_token')
-        self.uid_token = attributes[:'uid_token']
+      if attributes.key?(:'producer_details')
+        self.producer_details = attributes[:'producer_details']
       end
     end
 
@@ -111,10 +80,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          pagination_token == o.pagination_token &&
-          token == o.token &&
-          type == o.type &&
-          uid_token == o.uid_token
+          producer_details == o.producer_details
     end
 
     # @see the `==` method
@@ -126,7 +92,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pagination_token, token, type, uid_token].hash
+      [producer_details].hash
     end
 
     # Builds the object from hash

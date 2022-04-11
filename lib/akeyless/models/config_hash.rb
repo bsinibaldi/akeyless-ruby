@@ -35,6 +35,8 @@ module Akeyless
 
     attr_accessor :m_queue
 
+    attr_accessor :migration_status
+
     attr_accessor :migrations
 
     attr_accessor :producers
@@ -60,6 +62,7 @@ module Akeyless
         :'leadership' => :'leadership',
         :'log_forwarding' => :'log_forwarding',
         :'m_queue' => :'m_queue',
+        :'migration_status' => :'migration_status',
         :'migrations' => :'migrations',
         :'producers' => :'producers',
         :'producers_status' => :'producers_status',
@@ -87,6 +90,7 @@ module Akeyless
         :'leadership' => :'String',
         :'log_forwarding' => :'String',
         :'m_queue' => :'String',
+        :'migration_status' => :'String',
         :'migrations' => :'String',
         :'producers' => :'Object',
         :'producers_status' => :'String',
@@ -157,6 +161,10 @@ module Akeyless
         self.m_queue = attributes[:'m_queue']
       end
 
+      if attributes.key?(:'migration_status')
+        self.migration_status = attributes[:'migration_status']
+      end
+
       if attributes.key?(:'migrations')
         self.migrations = attributes[:'migrations']
       end
@@ -210,6 +218,7 @@ module Akeyless
           leadership == o.leadership &&
           log_forwarding == o.log_forwarding &&
           m_queue == o.m_queue &&
+          migration_status == o.migration_status &&
           migrations == o.migrations &&
           producers == o.producers &&
           producers_status == o.producers_status &&
@@ -227,7 +236,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [admins, cache, customer_fragements, general, k8s_auths, kmip, ldap, leadership, log_forwarding, m_queue, migrations, producers, producers_status, rotators, saml, universal_identity].hash
+      [admins, cache, customer_fragements, general, k8s_auths, kmip, ldap, leadership, log_forwarding, m_queue, migration_status, migrations, producers, producers_status, rotators, saml, universal_identity].hash
     end
 
     # Builds the object from hash

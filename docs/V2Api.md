@@ -74,6 +74,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_create_producer_gcp**](V2Api.md#gateway_create_producer_gcp) | **POST** /gateway-create-producer-gcp |  |
 | [**gateway_create_producer_github**](V2Api.md#gateway_create_producer_github) | **POST** /gateway-create-producer-github |  |
 | [**gateway_create_producer_gke**](V2Api.md#gateway_create_producer_gke) | **POST** /gateway-create-producer-gke |  |
+| [**gateway_create_producer_hana_db**](V2Api.md#gateway_create_producer_hana_db) | **POST** /gateway-create-producer-hanadb |  |
 | [**gateway_create_producer_ldap**](V2Api.md#gateway_create_producer_ldap) | **POST** /gateway-create-producer-ldap |  |
 | [**gateway_create_producer_mongo**](V2Api.md#gateway_create_producer_mongo) | **POST** /gateway-create-producer-mongo |  |
 | [**gateway_create_producer_mssql**](V2Api.md#gateway_create_producer_mssql) | **POST** /gateway-create-producer-mssql |  |
@@ -4549,6 +4550,68 @@ end
 ### Return type
 
 [**GatewayCreateProducerGkeOutput**](GatewayCreateProducerGkeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## gateway_create_producer_hana_db
+
+> <GatewayCreateProducerHanaDbOutput> gateway_create_producer_hana_db(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayCreateProducerHanaDb.new({name: 'name_example'}) # GatewayCreateProducerHanaDb | 
+
+begin
+  
+  result = api_instance.gateway_create_producer_hana_db(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_create_producer_hana_db: #{e}"
+end
+```
+
+#### Using the gateway_create_producer_hana_db_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewayCreateProducerHanaDbOutput>, Integer, Hash)> gateway_create_producer_hana_db_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_create_producer_hana_db_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewayCreateProducerHanaDbOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_create_producer_hana_db_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayCreateProducerHanaDb**](GatewayCreateProducerHanaDb.md) |  |  |
+
+### Return type
+
+[**GatewayCreateProducerHanaDbOutput**](GatewayCreateProducerHanaDbOutput.md)
 
 ### Authorization
 

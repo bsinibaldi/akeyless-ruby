@@ -7,7 +7,7 @@
 | **mongodb_atlas_api_private_key** | **String** | MongoDB Atlas private key | [optional] |
 | **mongodb_atlas_api_public_key** | **String** | MongoDB Atlas public key | [optional] |
 | **mongodb_atlas_project_id** | **String** | MongoDB Atlas project ID | [optional] |
-| **mongodb_custom_data** | **String** | MongoDB custom data | [optional][default to &#39;\&quot;\&quot;&#39;] |
+| **mongodb_custom_data** | **String** | MongoDB custom data | [optional] |
 | **mongodb_default_auth_db** | **String** | MongoDB server default authentication database | [optional] |
 | **mongodb_host_port** | **String** | MongoDB server host and port | [optional] |
 | **mongodb_name** | **String** | MongoDB Name | [optional] |
