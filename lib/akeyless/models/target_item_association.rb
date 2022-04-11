@@ -18,6 +18,8 @@ module Akeyless
   class TargetItemAssociation
     attr_accessor :assoc_id
 
+    attr_accessor :cluster_id
+
     attr_accessor :item_name
 
     attr_accessor :item_type
@@ -26,6 +28,7 @@ module Akeyless
     def self.attribute_map
       {
         :'assoc_id' => :'assoc_id',
+        :'cluster_id' => :'cluster_id',
         :'item_name' => :'item_name',
         :'item_type' => :'item_type'
       }
@@ -40,6 +43,7 @@ module Akeyless
     def self.openapi_types
       {
         :'assoc_id' => :'String',
+        :'cluster_id' => :'Integer',
         :'item_name' => :'String',
         :'item_type' => :'String'
       }
@@ -70,6 +74,10 @@ module Akeyless
         self.assoc_id = attributes[:'assoc_id']
       end
 
+      if attributes.key?(:'cluster_id')
+        self.cluster_id = attributes[:'cluster_id']
+      end
+
       if attributes.key?(:'item_name')
         self.item_name = attributes[:'item_name']
       end
@@ -98,6 +106,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           assoc_id == o.assoc_id &&
+          cluster_id == o.cluster_id &&
           item_name == o.item_name &&
           item_type == o.item_type
     end
@@ -111,7 +120,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [assoc_id, item_name, item_type].hash
+      [assoc_id, cluster_id, item_name, item_type].hash
     end
 
     # Builds the object from hash
