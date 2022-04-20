@@ -46,6 +46,12 @@ module Akeyless
     # Auth Method new name
     attr_accessor :new_name
 
+    # RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve
+    attr_accessor :required_scopes
+
+    # RequiredScopesPrefix is a a prefix to add to all required-scopes when requesting them from the oidc server (for example, azures' Application ID URI)
+    attr_accessor :required_scopes_prefix
+
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
@@ -68,6 +74,8 @@ module Akeyless
         :'jwt_ttl' => :'jwt-ttl',
         :'name' => :'name',
         :'new_name' => :'new-name',
+        :'required_scopes' => :'required-scopes',
+        :'required_scopes_prefix' => :'required-scopes-prefix',
         :'token' => :'token',
         :'uid_token' => :'uid-token',
         :'unique_identifier' => :'unique-identifier'
@@ -92,6 +100,8 @@ module Akeyless
         :'jwt_ttl' => :'Integer',
         :'name' => :'String',
         :'new_name' => :'String',
+        :'required_scopes' => :'Array<String>',
+        :'required_scopes_prefix' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String',
         :'unique_identifier' => :'String'
@@ -167,6 +177,16 @@ module Akeyless
         self.new_name = attributes[:'new_name']
       end
 
+      if attributes.key?(:'required_scopes')
+        if (value = attributes[:'required_scopes']).is_a?(Array)
+          self.required_scopes = value
+        end
+      end
+
+      if attributes.key?(:'required_scopes_prefix')
+        self.required_scopes_prefix = attributes[:'required_scopes_prefix']
+      end
+
       if attributes.key?(:'token')
         self.token = attributes[:'token']
       end
@@ -218,6 +238,8 @@ module Akeyless
           jwt_ttl == o.jwt_ttl &&
           name == o.name &&
           new_name == o.new_name &&
+          required_scopes == o.required_scopes &&
+          required_scopes_prefix == o.required_scopes_prefix &&
           token == o.token &&
           uid_token == o.uid_token &&
           unique_identifier == o.unique_identifier
@@ -232,7 +254,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_expires, allowed_redirect_uri, bound_ips, client_id, client_secret, force_sub_claims, issuer, jwt_ttl, name, new_name, token, uid_token, unique_identifier].hash
+      [access_expires, allowed_redirect_uri, bound_ips, client_id, client_secret, force_sub_claims, issuer, jwt_ttl, name, new_name, required_scopes, required_scopes_prefix, token, uid_token, unique_identifier].hash
     end
 
     # Builds the object from hash

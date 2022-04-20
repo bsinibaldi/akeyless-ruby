@@ -9,6 +9,7 @@
 | **api_key_access_rules** | [**APIKeyAccessRules**](APIKeyAccessRules.md) |  | [optional] |
 | **aws_iam_access_rules** | [**AWSIAMAccessRules**](AWSIAMAccessRules.md) |  | [optional] |
 | **azure_ad_access_rules** | [**AzureADAccessRules**](AzureADAccessRules.md) |  | [optional] |
+| **cert_access_rules** | [**CertAccessRules**](CertAccessRules.md) |  | [optional] |
 | **cidr_whitelist** | **String** |  | [optional] |
 | **email_pass_access_rules** | [**EmailPassAccessRules**](EmailPassAccessRules.md) |  | [optional] |
 | **force_sub_claims** | **Boolean** | if true the role associated with this auth method must include sub claims | [optional] |
@@ -34,6 +35,7 @@ instance = Akeyless::AuthMethodAccessInfo.new(
   api_key_access_rules: null,
   aws_iam_access_rules: null,
   azure_ad_access_rules: null,
+  cert_access_rules: null,
   cidr_whitelist: null,
   email_pass_access_rules: null,
   force_sub_claims: null,

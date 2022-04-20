@@ -25,6 +25,9 @@ module Akeyless
     # Base64-encoded classic key value
     attr_accessor :key_data
 
+    # A list of allowed operations for the key (required for azure targets)
+    attr_accessor :key_operations
+
     # Metadata about the classic key
     attr_accessor :metadata
 
@@ -46,19 +49,24 @@ module Akeyless
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
 
+    # Name of the vault used (required for azure targets)
+    attr_accessor :vault_name
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'alg' => :'alg',
         :'cert_file_data' => :'cert-file-data',
         :'key_data' => :'key-data',
+        :'key_operations' => :'key-operations',
         :'metadata' => :'metadata',
         :'name' => :'name',
         :'protection_key_name' => :'protection-key-name',
         :'tags' => :'tags',
         :'target_name' => :'target-name',
         :'token' => :'token',
-        :'uid_token' => :'uid-token'
+        :'uid_token' => :'uid-token',
+        :'vault_name' => :'vault-name'
       }
     end
 
@@ -73,13 +81,15 @@ module Akeyless
         :'alg' => :'String',
         :'cert_file_data' => :'String',
         :'key_data' => :'String',
+        :'key_operations' => :'Array<String>',
         :'metadata' => :'String',
         :'name' => :'String',
         :'protection_key_name' => :'String',
         :'tags' => :'Array<String>',
         :'target_name' => :'String',
         :'token' => :'String',
-        :'uid_token' => :'String'
+        :'uid_token' => :'String',
+        :'vault_name' => :'String'
       }
     end
 
@@ -116,6 +126,12 @@ module Akeyless
         self.key_data = attributes[:'key_data']
       end
 
+      if attributes.key?(:'key_operations')
+        if (value = attributes[:'key_operations']).is_a?(Array)
+          self.key_operations = value
+        end
+      end
+
       if attributes.key?(:'metadata')
         self.metadata = attributes[:'metadata']
       end
@@ -144,6 +160,10 @@ module Akeyless
 
       if attributes.key?(:'uid_token')
         self.uid_token = attributes[:'uid_token']
+      end
+
+      if attributes.key?(:'vault_name')
+        self.vault_name = attributes[:'vault_name']
       end
     end
 
@@ -178,13 +198,15 @@ module Akeyless
           alg == o.alg &&
           cert_file_data == o.cert_file_data &&
           key_data == o.key_data &&
+          key_operations == o.key_operations &&
           metadata == o.metadata &&
           name == o.name &&
           protection_key_name == o.protection_key_name &&
           tags == o.tags &&
           target_name == o.target_name &&
           token == o.token &&
-          uid_token == o.uid_token
+          uid_token == o.uid_token &&
+          vault_name == o.vault_name
     end
 
     # @see the `==` method
@@ -196,7 +218,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alg, cert_file_data, key_data, metadata, name, protection_key_name, tags, target_name, token, uid_token].hash
+      [alg, cert_file_data, key_data, key_operations, metadata, name, protection_key_name, tags, target_name, token, uid_token, vault_name].hash
     end
 
     # Builds the object from hash

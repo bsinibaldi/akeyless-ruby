@@ -49,6 +49,14 @@ module Akeyless
     # Dynamic producer encryption key
     attr_accessor :producer_encryption_key_name
 
+    attr_accessor :secure_access_bastion_issuer
+
+    attr_accessor :secure_access_enable
+
+    attr_accessor :secure_access_host
+
+    attr_accessor :secure_access_web
+
     # List of the tags attached to this secret
     attr_accessor :tags
 
@@ -78,6 +86,10 @@ module Akeyless
         :'oracle_service_name' => :'oracle-service-name',
         :'oracle_username' => :'oracle-username',
         :'producer_encryption_key_name' => :'producer-encryption-key-name',
+        :'secure_access_bastion_issuer' => :'secure-access-bastion-issuer',
+        :'secure_access_enable' => :'secure-access-enable',
+        :'secure_access_host' => :'secure-access-host',
+        :'secure_access_web' => :'secure-access-web',
         :'tags' => :'tags',
         :'target_name' => :'target-name',
         :'token' => :'token',
@@ -105,6 +117,10 @@ module Akeyless
         :'oracle_service_name' => :'String',
         :'oracle_username' => :'String',
         :'producer_encryption_key_name' => :'String',
+        :'secure_access_bastion_issuer' => :'String',
+        :'secure_access_enable' => :'String',
+        :'secure_access_host' => :'Array<String>',
+        :'secure_access_web' => :'Boolean',
         :'tags' => :'Array<String>',
         :'target_name' => :'String',
         :'token' => :'String',
@@ -182,6 +198,24 @@ module Akeyless
         self.producer_encryption_key_name = attributes[:'producer_encryption_key_name']
       end
 
+      if attributes.key?(:'secure_access_bastion_issuer')
+        self.secure_access_bastion_issuer = attributes[:'secure_access_bastion_issuer']
+      end
+
+      if attributes.key?(:'secure_access_enable')
+        self.secure_access_enable = attributes[:'secure_access_enable']
+      end
+
+      if attributes.key?(:'secure_access_host')
+        if (value = attributes[:'secure_access_host']).is_a?(Array)
+          self.secure_access_host = value
+        end
+      end
+
+      if attributes.key?(:'secure_access_web')
+        self.secure_access_web = attributes[:'secure_access_web']
+      end
+
       if attributes.key?(:'tags')
         if (value = attributes[:'tags']).is_a?(Array)
           self.tags = value
@@ -241,6 +275,10 @@ module Akeyless
           oracle_service_name == o.oracle_service_name &&
           oracle_username == o.oracle_username &&
           producer_encryption_key_name == o.producer_encryption_key_name &&
+          secure_access_bastion_issuer == o.secure_access_bastion_issuer &&
+          secure_access_enable == o.secure_access_enable &&
+          secure_access_host == o.secure_access_host &&
+          secure_access_web == o.secure_access_web &&
           tags == o.tags &&
           target_name == o.target_name &&
           token == o.token &&
@@ -257,7 +295,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [db_server_certificates, db_server_name, name, new_name, oracle_host, oracle_password, oracle_port, oracle_screation_statements, oracle_service_name, oracle_username, producer_encryption_key_name, tags, target_name, token, uid_token, user_ttl].hash
+      [db_server_certificates, db_server_name, name, new_name, oracle_host, oracle_password, oracle_port, oracle_screation_statements, oracle_service_name, oracle_username, producer_encryption_key_name, secure_access_bastion_issuer, secure_access_enable, secure_access_host, secure_access_web, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

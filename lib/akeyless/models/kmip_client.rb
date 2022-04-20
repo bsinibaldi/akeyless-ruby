@@ -17,6 +17,8 @@ module Akeyless
   class KMIPClient
     attr_accessor :certificate_issue_date
 
+    attr_accessor :certificate_ttl_in_seconds
+
     attr_accessor :id
 
     attr_accessor :name
@@ -27,6 +29,7 @@ module Akeyless
     def self.attribute_map
       {
         :'certificate_issue_date' => :'certificate_issue_date',
+        :'certificate_ttl_in_seconds' => :'certificate_ttl_in_seconds',
         :'id' => :'id',
         :'name' => :'name',
         :'rules' => :'rules'
@@ -42,6 +45,7 @@ module Akeyless
     def self.openapi_types
       {
         :'certificate_issue_date' => :'Time',
+        :'certificate_ttl_in_seconds' => :'Integer',
         :'id' => :'String',
         :'name' => :'String',
         :'rules' => :'Array<PathRule>'
@@ -71,6 +75,10 @@ module Akeyless
 
       if attributes.key?(:'certificate_issue_date')
         self.certificate_issue_date = attributes[:'certificate_issue_date']
+      end
+
+      if attributes.key?(:'certificate_ttl_in_seconds')
+        self.certificate_ttl_in_seconds = attributes[:'certificate_ttl_in_seconds']
       end
 
       if attributes.key?(:'id')
@@ -107,6 +115,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           certificate_issue_date == o.certificate_issue_date &&
+          certificate_ttl_in_seconds == o.certificate_ttl_in_seconds &&
           id == o.id &&
           name == o.name &&
           rules == o.rules
@@ -121,7 +130,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [certificate_issue_date, id, name, rules].hash
+      [certificate_issue_date, certificate_ttl_in_seconds, id, name, rules].hash
     end
 
     # Builds the object from hash

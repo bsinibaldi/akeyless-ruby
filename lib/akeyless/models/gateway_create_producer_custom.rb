@@ -15,8 +15,14 @@ require 'time'
 
 module Akeyless
   class GatewayCreateProducerCustom
+    # Define rotation interval in days
+    attr_accessor :admin_rotation_interval_days
+
     # URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create
     attr_accessor :create_sync_url
+
+    # Should admin credentials be rotated
+    attr_accessor :enable_admin_rotation
 
     # Producer name
     attr_accessor :name
@@ -51,7 +57,9 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'admin_rotation_interval_days' => :'admin_rotation_interval_days',
         :'create_sync_url' => :'create-sync-url',
+        :'enable_admin_rotation' => :'enable_admin_rotation',
         :'name' => :'name',
         :'payload' => :'payload',
         :'producer_encryption_key_name' => :'producer-encryption-key-name',
@@ -73,7 +81,9 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'admin_rotation_interval_days' => :'Integer',
         :'create_sync_url' => :'String',
+        :'enable_admin_rotation' => :'Boolean',
         :'name' => :'String',
         :'payload' => :'String',
         :'producer_encryption_key_name' => :'String',
@@ -108,8 +118,18 @@ module Akeyless
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'admin_rotation_interval_days')
+        self.admin_rotation_interval_days = attributes[:'admin_rotation_interval_days']
+      end
+
       if attributes.key?(:'create_sync_url')
         self.create_sync_url = attributes[:'create_sync_url']
+      end
+
+      if attributes.key?(:'enable_admin_rotation')
+        self.enable_admin_rotation = attributes[:'enable_admin_rotation']
+      else
+        self.enable_admin_rotation = false
       end
 
       if attributes.key?(:'name')
@@ -192,7 +212,9 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          admin_rotation_interval_days == o.admin_rotation_interval_days &&
           create_sync_url == o.create_sync_url &&
+          enable_admin_rotation == o.enable_admin_rotation &&
           name == o.name &&
           payload == o.payload &&
           producer_encryption_key_name == o.producer_encryption_key_name &&
@@ -214,7 +236,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [create_sync_url, name, payload, producer_encryption_key_name, revoke_sync_url, rotate_sync_url, tags, timeout_sec, token, uid_token, user_ttl].hash
+      [admin_rotation_interval_days, create_sync_url, enable_admin_rotation, name, payload, producer_encryption_key_name, revoke_sync_url, rotate_sync_url, tags, timeout_sec, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

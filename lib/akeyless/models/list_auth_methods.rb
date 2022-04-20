@@ -16,13 +16,16 @@ require 'time'
 module Akeyless
   # listAuthMethods is a command that returns a list of all auth methods in the account.
   class ListAuthMethods
+    # Filter by auth method name or part of it
+    attr_accessor :filter
+
     # Next page reference
     attr_accessor :pagination_token
 
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
-    # The Auth method types list of the requested method. In case it is empty, all types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2, ldap, aws_iam, oidc, universal_identity, gcp, k8s]
+    # The Auth method types list of the requested method. In case it is empty, all types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2, ldap, aws_iam, oidc, universal_identity, gcp, k8s, cert]
     attr_accessor :type
 
     # The universal identity token, Required only for universal_identity authentication
@@ -31,6 +34,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'filter' => :'filter',
         :'pagination_token' => :'pagination-token',
         :'token' => :'token',
         :'type' => :'type',
@@ -46,6 +50,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'filter' => :'String',
         :'pagination_token' => :'String',
         :'token' => :'String',
         :'type' => :'Array<String>',
@@ -73,6 +78,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'filter')
+        self.filter = attributes[:'filter']
+      end
 
       if attributes.key?(:'pagination_token')
         self.pagination_token = attributes[:'pagination_token']
@@ -111,6 +120,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          filter == o.filter &&
           pagination_token == o.pagination_token &&
           token == o.token &&
           type == o.type &&
@@ -126,7 +136,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pagination_token, token, type, uid_token].hash
+      [filter, pagination_token, token, type, uid_token].hash
     end
 
     # Builds the object from hash

@@ -34,6 +34,12 @@ module Akeyless
     # Issuer URL
     attr_accessor :issuer
 
+    # A list of required scopes to request from the oidc provider, and to check on the token
+    attr_accessor :required_scopes
+
+    # A prefix to add to the required scopes (for example, azures' Application ID URI)
+    attr_accessor :required_scopes_prefix
+
     # A unique identifier to distinguish different users
     attr_accessor :unique_identifier
 
@@ -46,6 +52,8 @@ module Akeyless
         :'client_secret' => :'client_secret',
         :'is_internal' => :'is_internal',
         :'issuer' => :'issuer',
+        :'required_scopes' => :'required_scopes',
+        :'required_scopes_prefix' => :'required_scopes_prefix',
         :'unique_identifier' => :'unique_identifier'
       }
     end
@@ -64,6 +72,8 @@ module Akeyless
         :'client_secret' => :'String',
         :'is_internal' => :'Boolean',
         :'issuer' => :'String',
+        :'required_scopes' => :'Array<String>',
+        :'required_scopes_prefix' => :'String',
         :'unique_identifier' => :'String'
       }
     end
@@ -117,6 +127,16 @@ module Akeyless
         self.issuer = attributes[:'issuer']
       end
 
+      if attributes.key?(:'required_scopes')
+        if (value = attributes[:'required_scopes']).is_a?(Array)
+          self.required_scopes = value
+        end
+      end
+
+      if attributes.key?(:'required_scopes_prefix')
+        self.required_scopes_prefix = attributes[:'required_scopes_prefix']
+      end
+
       if attributes.key?(:'unique_identifier')
         self.unique_identifier = attributes[:'unique_identifier']
       end
@@ -146,6 +166,8 @@ module Akeyless
           client_secret == o.client_secret &&
           is_internal == o.is_internal &&
           issuer == o.issuer &&
+          required_scopes == o.required_scopes &&
+          required_scopes_prefix == o.required_scopes_prefix &&
           unique_identifier == o.unique_identifier
     end
 
@@ -158,7 +180,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allowed_redirect_uris, bound_claims, client_id, client_secret, is_internal, issuer, unique_identifier].hash
+      [allowed_redirect_uris, bound_claims, client_id, client_secret, is_internal, issuer, required_scopes, required_scopes_prefix, unique_identifier].hash
     end
 
     # Builds the object from hash

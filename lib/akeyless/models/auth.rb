@@ -21,7 +21,7 @@ module Akeyless
     # Access key (relevant only for access-type=access_key)
     attr_accessor :access_key
 
-    # Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/k8s)
+    # Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert)
     attr_accessor :access_type
 
     # Email (relevant only for access-type=password)
@@ -29,6 +29,9 @@ module Akeyless
 
     # Password (relevant only for access-type=password)
     attr_accessor :admin_password
+
+    # Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type=cert)
+    attr_accessor :cert_data
 
     # The cloud identity (relevant only for access-type=azure_ad,aws_iam,gcp)
     attr_accessor :cloud_id
@@ -47,6 +50,9 @@ module Akeyless
     # The K8S service account token. (relevant only for access-type=k8s)
     attr_accessor :k8s_service_account_token
 
+    # Private key data encoded in base64. Used if file was not provided.(relevant only for access-type=cert)
+    attr_accessor :key_data
+
     # LDAP password (relevant only for access-type=ldap)
     attr_accessor :ldap_password
 
@@ -64,12 +70,14 @@ module Akeyless
         :'access_type' => :'access-type',
         :'admin_email' => :'admin-email',
         :'admin_password' => :'admin-password',
+        :'cert_data' => :'cert-data',
         :'cloud_id' => :'cloud-id',
         :'debug' => :'debug',
         :'gcp_audience' => :'gcp-audience',
         :'jwt' => :'jwt',
         :'k8s_auth_config_name' => :'k8s-auth-config-name',
         :'k8s_service_account_token' => :'k8s-service-account-token',
+        :'key_data' => :'key-data',
         :'ldap_password' => :'ldap_password',
         :'ldap_username' => :'ldap_username',
         :'uid_token' => :'uid_token'
@@ -89,12 +97,14 @@ module Akeyless
         :'access_type' => :'String',
         :'admin_email' => :'String',
         :'admin_password' => :'String',
+        :'cert_data' => :'String',
         :'cloud_id' => :'String',
         :'debug' => :'Boolean',
         :'gcp_audience' => :'String',
         :'jwt' => :'String',
         :'k8s_auth_config_name' => :'String',
         :'k8s_service_account_token' => :'String',
+        :'key_data' => :'String',
         :'ldap_password' => :'String',
         :'ldap_username' => :'String',
         :'uid_token' => :'String'
@@ -144,6 +154,10 @@ module Akeyless
         self.admin_password = attributes[:'admin_password']
       end
 
+      if attributes.key?(:'cert_data')
+        self.cert_data = attributes[:'cert_data']
+      end
+
       if attributes.key?(:'cloud_id')
         self.cloud_id = attributes[:'cloud_id']
       end
@@ -166,6 +180,10 @@ module Akeyless
 
       if attributes.key?(:'k8s_service_account_token')
         self.k8s_service_account_token = attributes[:'k8s_service_account_token']
+      end
+
+      if attributes.key?(:'key_data')
+        self.key_data = attributes[:'key_data']
       end
 
       if attributes.key?(:'ldap_password')
@@ -204,12 +222,14 @@ module Akeyless
           access_type == o.access_type &&
           admin_email == o.admin_email &&
           admin_password == o.admin_password &&
+          cert_data == o.cert_data &&
           cloud_id == o.cloud_id &&
           debug == o.debug &&
           gcp_audience == o.gcp_audience &&
           jwt == o.jwt &&
           k8s_auth_config_name == o.k8s_auth_config_name &&
           k8s_service_account_token == o.k8s_service_account_token &&
+          key_data == o.key_data &&
           ldap_password == o.ldap_password &&
           ldap_username == o.ldap_username &&
           uid_token == o.uid_token
@@ -224,7 +244,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_id, access_key, access_type, admin_email, admin_password, cloud_id, debug, gcp_audience, jwt, k8s_auth_config_name, k8s_service_account_token, ldap_password, ldap_username, uid_token].hash
+      [access_id, access_key, access_type, admin_email, admin_password, cert_data, cloud_id, debug, gcp_audience, jwt, k8s_auth_config_name, k8s_service_account_token, key_data, ldap_password, ldap_username, uid_token].hash
     end
 
     # Builds the object from hash

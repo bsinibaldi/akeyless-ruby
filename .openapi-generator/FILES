@@ -28,6 +28,7 @@ docs/AzureLogAnalyticsForwardingConfig.md
 docs/AzurePayload.md
 docs/CFConfigPart.md
 docs/CacheConfigPart.md
+docs/CertAccessRules.md
 docs/CertificateIssueInfo.md
 docs/ClassicKeyDetailsInfo.md
 docs/ClassicKeyStatusInfo.md
@@ -47,6 +48,8 @@ docs/CreateAuthMethodAWSIAM.md
 docs/CreateAuthMethodAWSIAMOutput.md
 docs/CreateAuthMethodAzureAD.md
 docs/CreateAuthMethodAzureADOutput.md
+docs/CreateAuthMethodCert.md
+docs/CreateAuthMethodCertOutput.md
 docs/CreateAuthMethodGCP.md
 docs/CreateAuthMethodGCPOutput.md
 docs/CreateAuthMethodHuawei.md
@@ -328,10 +331,13 @@ docs/KmipClientSetRule.md
 docs/KmipCreateClient.md
 docs/KmipCreateClientOutput.md
 docs/KmipDeleteClient.md
+docs/KmipDeleteServer.md
 docs/KmipDescribeClient.md
 docs/KmipDescribeServer.md
 docs/KmipDescribeServerOutput.md
 docs/KmipListClients.md
+docs/KmipMoveServer.md
+docs/KmipMoveServerOutput.md
 docs/KmipRenewClientCertificate.md
 docs/KmipRenewClientCertificateOutput.md
 docs/KmipRenewServerCertificate.md
@@ -438,6 +444,8 @@ docs/UpdateAssoc.md
 docs/UpdateAuthMethod.md
 docs/UpdateAuthMethodAWSIAM.md
 docs/UpdateAuthMethodAzureAD.md
+docs/UpdateAuthMethodCert.md
+docs/UpdateAuthMethodCertOutput.md
 docs/UpdateAuthMethodGCP.md
 docs/UpdateAuthMethodK8S.md
 docs/UpdateAuthMethodK8SOutput.md
@@ -528,6 +536,7 @@ lib/akeyless/models/azure_key_vault_migration.rb
 lib/akeyless/models/azure_log_analytics_forwarding_config.rb
 lib/akeyless/models/azure_payload.rb
 lib/akeyless/models/cache_config_part.rb
+lib/akeyless/models/cert_access_rules.rb
 lib/akeyless/models/certificate_issue_info.rb
 lib/akeyless/models/cf_config_part.rb
 lib/akeyless/models/classic_key_details_info.rb
@@ -546,6 +555,8 @@ lib/akeyless/models/create_auth_method_awsiam.rb
 lib/akeyless/models/create_auth_method_awsiam_output.rb
 lib/akeyless/models/create_auth_method_azure_ad.rb
 lib/akeyless/models/create_auth_method_azure_ad_output.rb
+lib/akeyless/models/create_auth_method_cert.rb
+lib/akeyless/models/create_auth_method_cert_output.rb
 lib/akeyless/models/create_auth_method_gcp.rb
 lib/akeyless/models/create_auth_method_gcp_output.rb
 lib/akeyless/models/create_auth_method_huawei.rb
@@ -827,11 +838,14 @@ lib/akeyless/models/kmip_config_part.rb
 lib/akeyless/models/kmip_create_client.rb
 lib/akeyless/models/kmip_create_client_output.rb
 lib/akeyless/models/kmip_delete_client.rb
+lib/akeyless/models/kmip_delete_server.rb
 lib/akeyless/models/kmip_describe_client.rb
 lib/akeyless/models/kmip_describe_server.rb
 lib/akeyless/models/kmip_describe_server_output.rb
 lib/akeyless/models/kmip_environment_create_response.rb
 lib/akeyless/models/kmip_list_clients.rb
+lib/akeyless/models/kmip_move_server.rb
+lib/akeyless/models/kmip_move_server_output.rb
 lib/akeyless/models/kmip_renew_client_certificate.rb
 lib/akeyless/models/kmip_renew_client_certificate_output.rb
 lib/akeyless/models/kmip_renew_server_certificate.rb
@@ -937,6 +951,8 @@ lib/akeyless/models/update_assoc.rb
 lib/akeyless/models/update_auth_method.rb
 lib/akeyless/models/update_auth_method_awsiam.rb
 lib/akeyless/models/update_auth_method_azure_ad.rb
+lib/akeyless/models/update_auth_method_cert.rb
+lib/akeyless/models/update_auth_method_cert_output.rb
 lib/akeyless/models/update_auth_method_gcp.rb
 lib/akeyless/models/update_auth_method_k8_s.rb
 lib/akeyless/models/update_auth_method_k8_s_output.rb
@@ -1004,4 +1020,12 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
+spec/models/cert_access_rules_spec.rb
+spec/models/create_auth_method_cert_output_spec.rb
+spec/models/create_auth_method_cert_spec.rb
+spec/models/kmip_delete_server_spec.rb
+spec/models/kmip_move_server_output_spec.rb
+spec/models/kmip_move_server_spec.rb
+spec/models/update_auth_method_cert_output_spec.rb
+spec/models/update_auth_method_cert_spec.rb
 spec/spec_helper.rb

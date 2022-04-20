@@ -21,15 +21,12 @@ module Akeyless
 
     attr_accessor :queue_url
 
-    attr_accessor :use_new_queue
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'mq_type' => :'mq_type',
         :'queue_name' => :'queue_name',
-        :'queue_url' => :'queue_url',
-        :'use_new_queue' => :'use_new_queue'
+        :'queue_url' => :'queue_url'
       }
     end
 
@@ -43,8 +40,7 @@ module Akeyless
       {
         :'mq_type' => :'String',
         :'queue_name' => :'String',
-        :'queue_url' => :'String',
-        :'use_new_queue' => :'Boolean'
+        :'queue_url' => :'String'
       }
     end
 
@@ -80,10 +76,6 @@ module Akeyless
       if attributes.key?(:'queue_url')
         self.queue_url = attributes[:'queue_url']
       end
-
-      if attributes.key?(:'use_new_queue')
-        self.use_new_queue = attributes[:'use_new_queue']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -106,8 +98,7 @@ module Akeyless
       self.class == o.class &&
           mq_type == o.mq_type &&
           queue_name == o.queue_name &&
-          queue_url == o.queue_url &&
-          use_new_queue == o.use_new_queue
+          queue_url == o.queue_url
     end
 
     # @see the `==` method
@@ -119,7 +110,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [mq_type, queue_name, queue_url, use_new_queue].hash
+      [mq_type, queue_name, queue_url].hash
     end
 
     # Builds the object from hash

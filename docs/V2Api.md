@@ -13,6 +13,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_auth_method**](V2Api.md#create_auth_method) | **POST** /create-auth-method |  |
 | [**create_auth_method_awsiam**](V2Api.md#create_auth_method_awsiam) | **POST** /create-auth-method-aws-iam |  |
 | [**create_auth_method_azure_ad**](V2Api.md#create_auth_method_azure_ad) | **POST** /create-auth-method-azure-ad |  |
+| [**create_auth_method_cert**](V2Api.md#create_auth_method_cert) | **POST** /create-auth-method-cert |  |
 | [**create_auth_method_gcp**](V2Api.md#create_auth_method_gcp) | **POST** /create-auth-method-gcp |  |
 | [**create_auth_method_huawei**](V2Api.md#create_auth_method_huawei) | **POST** /create-auth-method-huawei |  |
 | [**create_auth_method_k8_s**](V2Api.md#create_auth_method_k8_s) | **POST** /create-auth-method-k8s |  |
@@ -143,9 +144,11 @@ All URIs are relative to *https://api.akeyless.io*
 | [**kmip_client_set_rule**](V2Api.md#kmip_client_set_rule) | **POST** /kmip-client-set-rule |  |
 | [**kmip_create_client**](V2Api.md#kmip_create_client) | **POST** /kmip-create-client |  |
 | [**kmip_delete_client**](V2Api.md#kmip_delete_client) | **POST** /kmip-delete-client |  |
+| [**kmip_delete_server**](V2Api.md#kmip_delete_server) | **DELETE** /kmip-delete-environment |  |
 | [**kmip_describe_client**](V2Api.md#kmip_describe_client) | **POST** /kmip-get-client |  |
 | [**kmip_describe_server**](V2Api.md#kmip_describe_server) | **POST** /kmip-get-environment |  |
 | [**kmip_list_clients**](V2Api.md#kmip_list_clients) | **POST** /kmip-list-clients |  |
+| [**kmip_move_server**](V2Api.md#kmip_move_server) | **POST** /kmip-move-environment |  |
 | [**kmip_renew_client_certificate**](V2Api.md#kmip_renew_client_certificate) | **POST** /kmip-renew-client |  |
 | [**kmip_renew_server_certificate**](V2Api.md#kmip_renew_server_certificate) | **POST** /kmip-renew-environment |  |
 | [**kmip_server_setup**](V2Api.md#kmip_server_setup) | **POST** /kmip-create-environment |  |
@@ -178,6 +181,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_auth_method**](V2Api.md#update_auth_method) | **POST** /update-auth-method |  |
 | [**update_auth_method_awsiam**](V2Api.md#update_auth_method_awsiam) | **POST** /update-auth-method-aws-iam |  |
 | [**update_auth_method_azure_ad**](V2Api.md#update_auth_method_azure_ad) | **POST** /update-auth-method-azure-ad |  |
+| [**update_auth_method_cert**](V2Api.md#update_auth_method_cert) | **POST** /update-auth-method-cert |  |
 | [**update_auth_method_gcp**](V2Api.md#update_auth_method_gcp) | **POST** /update-auth-method-gcp |  |
 | [**update_auth_method_k8_s**](V2Api.md#update_auth_method_k8_s) | **POST** /update-auth-method-k8s |  |
 | [**update_auth_method_ldap**](V2Api.md#update_auth_method_ldap) | **POST** /update-auth-method-ldap |  |
@@ -766,6 +770,68 @@ end
 ### Return type
 
 [**CreateAuthMethodAzureADOutput**](CreateAuthMethodAzureADOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_auth_method_cert
+
+> <CreateAuthMethodCertOutput> create_auth_method_cert(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateAuthMethodCert.new({name: 'name_example', unique_identifier: 'unique_identifier_example'}) # CreateAuthMethodCert | 
+
+begin
+  
+  result = api_instance.create_auth_method_cert(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_auth_method_cert: #{e}"
+end
+```
+
+#### Using the create_auth_method_cert_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateAuthMethodCertOutput>, Integer, Hash)> create_auth_method_cert_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_auth_method_cert_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateAuthMethodCertOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_auth_method_cert_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateAuthMethodCert**](CreateAuthMethodCert.md) |  |  |
+
+### Return type
+
+[**CreateAuthMethodCertOutput**](CreateAuthMethodCertOutput.md)
 
 ### Authorization
 
@@ -8844,6 +8910,70 @@ No authorization required
 - **Accept**: application/json
 
 
+## kmip_delete_server
+
+> Object kmip_delete_server(opts)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+opts = {
+  body: Akeyless::KmipDeleteServer.new # KmipDeleteServer | 
+}
+
+begin
+  
+  result = api_instance.kmip_delete_server(opts)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->kmip_delete_server: #{e}"
+end
+```
+
+#### Using the kmip_delete_server_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> kmip_delete_server_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.kmip_delete_server_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->kmip_delete_server_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**KmipDeleteServer**](KmipDeleteServer.md) |  | [optional] |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## kmip_describe_client
 
 > <KMIPClientGetResponse> kmip_describe_client(opts)
@@ -9025,6 +9155,70 @@ end
 ### Return type
 
 [**KMIPClientListResponse**](KMIPClientListResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## kmip_move_server
+
+> <KmipMoveServerOutput> kmip_move_server(opts)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+opts = {
+  body: Akeyless::KmipMoveServer.new # KmipMoveServer | 
+}
+
+begin
+  
+  result = api_instance.kmip_move_server(opts)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->kmip_move_server: #{e}"
+end
+```
+
+#### Using the kmip_move_server_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<KmipMoveServerOutput>, Integer, Hash)> kmip_move_server_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.kmip_move_server_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <KmipMoveServerOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->kmip_move_server_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**KmipMoveServer**](KmipMoveServer.md) |  | [optional] |
+
+### Return type
+
+[**KmipMoveServerOutput**](KmipMoveServerOutput.md)
 
 ### Authorization
 
@@ -11016,6 +11210,68 @@ end
 ### Return type
 
 **Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_auth_method_cert
+
+> <UpdateAuthMethodCertOutput> update_auth_method_cert(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateAuthMethodCert.new({name: 'name_example', unique_identifier: 'unique_identifier_example'}) # UpdateAuthMethodCert | 
+
+begin
+  
+  result = api_instance.update_auth_method_cert(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_auth_method_cert: #{e}"
+end
+```
+
+#### Using the update_auth_method_cert_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpdateAuthMethodCertOutput>, Integer, Hash)> update_auth_method_cert_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_auth_method_cert_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpdateAuthMethodCertOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_auth_method_cert_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateAuthMethodCert**](UpdateAuthMethodCert.md) |  |  |
+
+### Return type
+
+[**UpdateAuthMethodCertOutput**](UpdateAuthMethodCertOutput.md)
 
 ### Authorization
 

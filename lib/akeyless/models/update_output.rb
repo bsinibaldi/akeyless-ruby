@@ -15,6 +15,8 @@ require 'time'
 
 module Akeyless
   class UpdateOutput
+    attr_accessor :changelog
+
     attr_accessor :latest
 
     attr_accessor :updated
@@ -22,6 +24,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'changelog' => :'changelog',
         :'latest' => :'latest',
         :'updated' => :'updated'
       }
@@ -35,6 +38,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'changelog' => :'String',
         :'latest' => :'String',
         :'updated' => :'Boolean'
       }
@@ -60,6 +64,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'changelog')
+        self.changelog = attributes[:'changelog']
+      end
 
       if attributes.key?(:'latest')
         self.latest = attributes[:'latest']
@@ -88,6 +96,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          changelog == o.changelog &&
           latest == o.latest &&
           updated == o.updated
     end
@@ -101,7 +110,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [latest, updated].hash
+      [changelog, latest, updated].hash
     end
 
     # Builds the object from hash

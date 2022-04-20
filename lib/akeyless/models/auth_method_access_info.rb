@@ -26,6 +26,8 @@ module Akeyless
 
     attr_accessor :azure_ad_access_rules
 
+    attr_accessor :cert_access_rules
+
     attr_accessor :cidr_whitelist
 
     attr_accessor :email_pass_access_rules
@@ -61,6 +63,7 @@ module Akeyless
         :'api_key_access_rules' => :'api_key_access_rules',
         :'aws_iam_access_rules' => :'aws_iam_access_rules',
         :'azure_ad_access_rules' => :'azure_ad_access_rules',
+        :'cert_access_rules' => :'cert_access_rules',
         :'cidr_whitelist' => :'cidr_whitelist',
         :'email_pass_access_rules' => :'email_pass_access_rules',
         :'force_sub_claims' => :'force_sub_claims',
@@ -90,6 +93,7 @@ module Akeyless
         :'api_key_access_rules' => :'APIKeyAccessRules',
         :'aws_iam_access_rules' => :'AWSIAMAccessRules',
         :'azure_ad_access_rules' => :'AzureADAccessRules',
+        :'cert_access_rules' => :'CertAccessRules',
         :'cidr_whitelist' => :'String',
         :'email_pass_access_rules' => :'EmailPassAccessRules',
         :'force_sub_claims' => :'Boolean',
@@ -145,6 +149,10 @@ module Akeyless
 
       if attributes.key?(:'azure_ad_access_rules')
         self.azure_ad_access_rules = attributes[:'azure_ad_access_rules']
+      end
+
+      if attributes.key?(:'cert_access_rules')
+        self.cert_access_rules = attributes[:'cert_access_rules']
       end
 
       if attributes.key?(:'cidr_whitelist')
@@ -223,6 +231,7 @@ module Akeyless
           api_key_access_rules == o.api_key_access_rules &&
           aws_iam_access_rules == o.aws_iam_access_rules &&
           azure_ad_access_rules == o.azure_ad_access_rules &&
+          cert_access_rules == o.cert_access_rules &&
           cidr_whitelist == o.cidr_whitelist &&
           email_pass_access_rules == o.email_pass_access_rules &&
           force_sub_claims == o.force_sub_claims &&
@@ -247,7 +256,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_expires, access_id_alias, api_key_access_rules, aws_iam_access_rules, azure_ad_access_rules, cidr_whitelist, email_pass_access_rules, force_sub_claims, gcp_access_rules, huawei_access_rules, jwt_ttl, k8s_access_rules, ldap_access_rules, oauth2_access_rules, oidc_access_rules, rules_type, saml_access_rules, universal_identity_access_rules].hash
+      [access_expires, access_id_alias, api_key_access_rules, aws_iam_access_rules, azure_ad_access_rules, cert_access_rules, cidr_whitelist, email_pass_access_rules, force_sub_claims, gcp_access_rules, huawei_access_rules, jwt_ttl, k8s_access_rules, ldap_access_rules, oauth2_access_rules, oidc_access_rules, rules_type, saml_access_rules, universal_identity_access_rules].hash
     end
 
     # Builds the object from hash

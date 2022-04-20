@@ -15,6 +15,10 @@
 | **oracle_service_name** | **String** | Oracle DB Name | [optional] |
 | **oracle_username** | **String** | Oracle Username | [optional] |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
+| **secure_access_bastion_issuer** | **String** |  | [optional] |
+| **secure_access_enable** | **String** |  | [optional] |
+| **secure_access_host** | **Array&lt;String&gt;** |  | [optional] |
+| **secure_access_web** | **Boolean** |  | [optional] |
 | **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
 | **target_name** | **String** | Target name | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
@@ -38,6 +42,10 @@ instance = Akeyless::GatewayUpdateProducerOracleDb.new(
   oracle_service_name: null,
   oracle_username: null,
   producer_encryption_key_name: null,
+  secure_access_bastion_issuer: null,
+  secure_access_enable: null,
+  secure_access_host: null,
+  secure_access_web: null,
   tags: null,
   target_name: null,
   token: null,

@@ -40,6 +40,9 @@ module Akeyless
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
 
+    # A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \"sub claim\" that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization.
+    attr_accessor :unique_identifier
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -50,7 +53,8 @@ module Akeyless
         :'name' => :'name',
         :'public_key_data' => :'public-key-data',
         :'token' => :'token',
-        :'uid_token' => :'uid-token'
+        :'uid_token' => :'uid-token',
+        :'unique_identifier' => :'unique-identifier'
       }
     end
 
@@ -69,7 +73,8 @@ module Akeyless
         :'name' => :'String',
         :'public_key_data' => :'String',
         :'token' => :'String',
-        :'uid_token' => :'String'
+        :'uid_token' => :'String',
+        :'unique_identifier' => :'String'
       }
     end
 
@@ -131,6 +136,10 @@ module Akeyless
       if attributes.key?(:'uid_token')
         self.uid_token = attributes[:'uid_token']
       end
+
+      if attributes.key?(:'unique_identifier')
+        self.unique_identifier = attributes[:'unique_identifier']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -163,7 +172,8 @@ module Akeyless
           name == o.name &&
           public_key_data == o.public_key_data &&
           token == o.token &&
-          uid_token == o.uid_token
+          uid_token == o.uid_token &&
+          unique_identifier == o.unique_identifier
     end
 
     # @see the `==` method
@@ -175,7 +185,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_expires, bound_ips, force_sub_claims, jwt_ttl, name, public_key_data, token, uid_token].hash
+      [access_expires, bound_ips, force_sub_claims, jwt_ttl, name, public_key_data, token, uid_token, unique_identifier].hash
     end
 
     # Builds the object from hash
