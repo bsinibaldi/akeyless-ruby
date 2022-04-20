@@ -1020,12 +1020,4 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/cert_access_rules_spec.rb
-spec/models/create_auth_method_cert_output_spec.rb
-spec/models/create_auth_method_cert_spec.rb
-spec/models/kmip_delete_server_spec.rb
-spec/models/kmip_move_server_output_spec.rb
-spec/models/kmip_move_server_spec.rb
-spec/models/update_auth_method_cert_output_spec.rb
-spec/models/update_auth_method_cert_spec.rb
 spec/spec_helper.rb
