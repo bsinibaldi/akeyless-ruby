@@ -14,7 +14,7 @@
 | **bound_user_id** | **Array&lt;String&gt;** | A list of full user ids that the access is restricted to | [optional] |
 | **bound_user_name** | **Array&lt;String&gt;** | A list of full user-name that the access is restricted to | [optional] |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
-| **jwt_ttl** | **Integer** | Jwt TTL | [optional][default to 0] |
+| **jwt_ttl** | **Integer** | Jwt TTL | [optional] |
 | **name** | **String** | Auth Method name |  |
 | **sts_url** | **String** | sts URL | [optional][default to &#39;https://sts.amazonaws.com&#39;] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |

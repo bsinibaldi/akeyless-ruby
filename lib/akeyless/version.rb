@@ -11,5 +11,5 @@ OpenAPI Generator version: 6.0.0-SNAPSHOT
 =end
 
 module Akeyless
-  VERSION = '2.16.4'
+  VERSION = '2.16.5'
 end

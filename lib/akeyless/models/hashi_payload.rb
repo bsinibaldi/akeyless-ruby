@@ -15,6 +15,8 @@ require 'time'
 
 module Akeyless
   class HashiPayload
+    attr_accessor :import_as_json
+
     attr_accessor :namespaces
 
     attr_accessor :token
@@ -24,6 +26,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'import_as_json' => :'import_as_json',
         :'namespaces' => :'namespaces',
         :'token' => :'token',
         :'url' => :'url'
@@ -38,6 +41,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'import_as_json' => :'Boolean',
         :'namespaces' => :'Array<String>',
         :'token' => :'String',
         :'url' => :'String'
@@ -64,6 +68,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'import_as_json')
+        self.import_as_json = attributes[:'import_as_json']
+      end
 
       if attributes.key?(:'namespaces')
         if (value = attributes[:'namespaces']).is_a?(Array)
@@ -98,6 +106,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          import_as_json == o.import_as_json &&
           namespaces == o.namespaces &&
           token == o.token &&
           url == o.url
@@ -112,7 +121,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [namespaces, token, url].hash
+      [import_as_json, namespaces, token, url].hash
     end
 
     # Builds the object from hash

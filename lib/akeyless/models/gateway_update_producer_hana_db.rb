@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module Akeyless
-  # gatewayUpdateProducerHanaDb is a command that updates mssql producer
+  # gatewayUpdateProducerHanaDb is a command that updates hanadb producer
   class GatewayUpdateProducerHanaDb
     # HanaDb Name
     attr_accessor :hana_dbname

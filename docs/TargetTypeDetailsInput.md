@@ -14,12 +14,16 @@
 | **azure_client_id** | **String** |  | [optional] |
 | **azure_client_secret** | **String** |  | [optional] |
 | **azure_tenant_id** | **String** |  | [optional] |
+| **ca_cert_data** | **Array&lt;Integer&gt;** | CACertData is the rsa 4096 certificate data in PEM format | [optional] |
+| **ca_cert_name** | **String** | CACertName is the name of the certificate in SalesForce tenant | [optional] |
 | **chef_server_host_name** | **String** |  | [optional] |
 | **chef_server_key** | **String** |  | [optional] |
 | **chef_server_port** | **String** |  | [optional] |
 | **chef_server_url** | **String** |  | [optional] |
 | **chef_server_username** | **String** |  | [optional] |
 | **chef_skip_ssl** | **Boolean** |  | [optional] |
+| **client_id** | **String** |  | [optional] |
+| **client_secret** | **String** |  | [optional] |
 | **db_host_name** | **String** |  | [optional] |
 | **db_name** | **String** |  | [optional] |
 | **db_port** | **String** |  | [optional] |
@@ -72,9 +76,11 @@
 | **rabbitmq_server_password** | **String** |  | [optional] |
 | **rabbitmq_server_uri** | **String** |  | [optional] |
 | **rabbitmq_server_user** | **String** |  | [optional] |
+| **security_token** | **String** |  | [optional] |
 | **sf_account** | **String** |  | [optional] |
 | **ssl_connection_certificate** | **String** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] |
 | **ssl_connection_mode** | **Boolean** | (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB | [optional] |
+| **tenant_url** | **String** |  | [optional] |
 | **url** | **String** |  | [optional] |
 | **use_gw_cloud_identity** | **Boolean** |  | [optional] |
 | **user_name** | **String** |  | [optional] |
@@ -102,12 +108,16 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   azure_client_id: null,
   azure_client_secret: null,
   azure_tenant_id: null,
+  ca_cert_data: null,
+  ca_cert_name: null,
   chef_server_host_name: null,
   chef_server_key: null,
   chef_server_port: null,
   chef_server_url: null,
   chef_server_username: null,
   chef_skip_ssl: null,
+  client_id: null,
+  client_secret: null,
   db_host_name: null,
   db_name: null,
   db_port: null,
@@ -160,9 +170,11 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   rabbitmq_server_password: null,
   rabbitmq_server_uri: null,
   rabbitmq_server_user: null,
+  security_token: null,
   sf_account: null,
   ssl_connection_certificate: null,
   ssl_connection_mode: null,
+  tenant_url: null,
   url: null,
   use_gw_cloud_identity: null,
   user_name: null,

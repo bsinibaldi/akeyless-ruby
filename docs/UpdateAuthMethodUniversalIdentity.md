@@ -9,7 +9,7 @@
 | **deny_inheritance** | **Boolean** | Deny from root to create children | [optional] |
 | **deny_rotate** | **Boolean** | Deny from the token to rotate | [optional] |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
-| **jwt_ttl** | **Integer** | Jwt TTL | [optional][default to 0] |
+| **jwt_ttl** | **Integer** | Jwt TTL | [optional] |
 | **name** | **String** | Auth Method name |  |
 | **new_name** | **String** | Auth Method new name | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |

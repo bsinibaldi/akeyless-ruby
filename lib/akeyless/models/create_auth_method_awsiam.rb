@@ -189,8 +189,6 @@ module Akeyless
 
       if attributes.key?(:'jwt_ttl')
         self.jwt_ttl = attributes[:'jwt_ttl']
-      else
-        self.jwt_ttl = 0
       end
 
       if attributes.key?(:'name')

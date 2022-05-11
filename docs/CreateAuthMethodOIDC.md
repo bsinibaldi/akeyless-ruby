@@ -11,7 +11,7 @@
 | **client_secret** | **String** | Client Secret | [optional] |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
 | **issuer** | **String** | Issuer URL | [optional] |
-| **jwt_ttl** | **Integer** | Jwt TTL | [optional][default to 0] |
+| **jwt_ttl** | **Integer** | Jwt TTL | [optional] |
 | **name** | **String** | Auth Method name |  |
 | **required_scopes** | **Array&lt;String&gt;** | RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve | [optional] |
 | **required_scopes_prefix** | **String** | RequiredScopesPrefix is a a prefix to add to all required-scopes when requesting them from the oidc server (for example, azures&#39; Application ID URI) | [optional] |

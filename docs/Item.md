@@ -13,6 +13,7 @@
 | **deletion_date** | **Time** |  | [optional] |
 | **display_id** | **String** |  | [optional] |
 | **is_enabled** | **Boolean** |  | [optional] |
+| **item_accessibility** | **Integer** |  | [optional] |
 | **item_general_info** | [**ItemGeneralInfo**](ItemGeneralInfo.md) |  | [optional] |
 | **item_id** | **Integer** |  | [optional] |
 | **item_metadata** | **String** |  | [optional] |
@@ -47,6 +48,7 @@ instance = Akeyless::Item.new(
   deletion_date: null,
   display_id: null,
   is_enabled: null,
+  item_accessibility: null,
   item_general_info: null,
   item_id: null,
   item_metadata: null,

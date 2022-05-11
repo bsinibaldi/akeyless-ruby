@@ -18,6 +18,8 @@ module Akeyless
     # Secret name
     attr_accessor :names
 
+    attr_accessor :pretty_print
+
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
@@ -31,6 +33,7 @@ module Akeyless
     def self.attribute_map
       {
         :'names' => :'names',
+        :'pretty_print' => :'pretty-print',
         :'token' => :'token',
         :'uid_token' => :'uid-token',
         :'version' => :'version'
@@ -46,6 +49,7 @@ module Akeyless
     def self.openapi_types
       {
         :'names' => :'Array<String>',
+        :'pretty_print' => :'Boolean',
         :'token' => :'String',
         :'uid_token' => :'String',
         :'version' => :'Integer'
@@ -77,6 +81,10 @@ module Akeyless
         if (value = attributes[:'names']).is_a?(Array)
           self.names = value
         end
+      end
+
+      if attributes.key?(:'pretty_print')
+        self.pretty_print = attributes[:'pretty_print']
       end
 
       if attributes.key?(:'token')
@@ -116,6 +124,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           names == o.names &&
+          pretty_print == o.pretty_print &&
           token == o.token &&
           uid_token == o.uid_token &&
           version == o.version
@@ -130,7 +139,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [names, token, uid_token, version].hash
+      [names, pretty_print, token, uid_token, version].hash
     end
 
     # Builds the object from hash

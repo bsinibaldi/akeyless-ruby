@@ -2259,6 +2259,70 @@ module Akeyless
       return data, status_code, headers
     end
 
+    # @param body [CreateSalesforceTarget] 
+    # @param [Hash] opts the optional parameters
+    # @return [CreateSalesforceTargetOutput]
+    def create_salesforce_target(body, opts = {})
+      data, _status_code, _headers = create_salesforce_target_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [CreateSalesforceTarget] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CreateSalesforceTargetOutput, Integer, Hash)>] CreateSalesforceTargetOutput data, response status code and response headers
+    def create_salesforce_target_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.create_salesforce_target ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.create_salesforce_target"
+      end
+      # resource path
+      local_var_path = '/create-salesforce-target'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CreateSalesforceTargetOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.create_salesforce_target",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#create_salesforce_target\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # @param body [CreateSecret] 
     # @param [Hash] opts the optional parameters
     # @return [CreateSecretOutput]
@@ -3859,6 +3923,70 @@ module Akeyless
       return data, status_code, headers
     end
 
+    # @param body [GatewayCreateMigration] 
+    # @param [Hash] opts the optional parameters
+    # @return [GatewayMigrationCreateOutput]
+    def gateway_create_migration(body, opts = {})
+      data, _status_code, _headers = gateway_create_migration_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [GatewayCreateMigration] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GatewayMigrationCreateOutput, Integer, Hash)>] GatewayMigrationCreateOutput data, response status code and response headers
+    def gateway_create_migration_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.gateway_create_migration ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.gateway_create_migration"
+      end
+      # resource path
+      local_var_path = '/gateway-create-migration'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GatewayMigrationCreateOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.gateway_create_migration",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#gateway_create_migration\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # @param body [GatewayCreateProducerArtifactory] 
     # @param [Hash] opts the optional parameters
     # @return [GatewayCreateProducerArtifactoryOutput]
@@ -5455,6 +5583,70 @@ module Akeyless
       return data, status_code, headers
     end
 
+    # @param body [GatewayDeleteMigration] 
+    # @param [Hash] opts the optional parameters
+    # @return [GatewayMigrationDeleteOutput]
+    def gateway_delete_migration(body, opts = {})
+      data, _status_code, _headers = gateway_delete_migration_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [GatewayDeleteMigration] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GatewayMigrationDeleteOutput, Integer, Hash)>] GatewayMigrationDeleteOutput data, response status code and response headers
+    def gateway_delete_migration_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.gateway_delete_migration ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.gateway_delete_migration"
+      end
+      # resource path
+      local_var_path = '/gateway-delete-migration'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GatewayMigrationDeleteOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.gateway_delete_migration",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#gateway_delete_migration\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # @param body [GatewayDeleteProducer] 
     # @param [Hash] opts the optional parameters
     # @return [GatewayDeleteProducerOutput]
@@ -5643,6 +5835,70 @@ module Akeyless
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: V2Api#gateway_get_k8_s_auth_config\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param body [GatewayGetMigration] 
+    # @param [Hash] opts the optional parameters
+    # @return [GatewayMigrationGetOutput]
+    def gateway_get_migration(body, opts = {})
+      data, _status_code, _headers = gateway_get_migration_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [GatewayGetMigration] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GatewayMigrationGetOutput, Integer, Hash)>] GatewayMigrationGetOutput data, response status code and response headers
+    def gateway_get_migration_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.gateway_get_migration ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.gateway_get_migration"
+      end
+      # resource path
+      local_var_path = '/gateway-get-migration'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GatewayMigrationGetOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.gateway_get_migration",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#gateway_get_migration\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6351,6 +6607,70 @@ module Akeyless
       return data, status_code, headers
     end
 
+    # @param body [GatewayUpdateMigration] 
+    # @param [Hash] opts the optional parameters
+    # @return [GatewayMigrationUpdateOutput]
+    def gateway_update_migration(body, opts = {})
+      data, _status_code, _headers = gateway_update_migration_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [GatewayUpdateMigration] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GatewayMigrationUpdateOutput, Integer, Hash)>] GatewayMigrationUpdateOutput data, response status code and response headers
+    def gateway_update_migration_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.gateway_update_migration ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.gateway_update_migration"
+      end
+      # resource path
+      local_var_path = '/gateway-update-migration'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GatewayMigrationUpdateOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.gateway_update_migration",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#gateway_update_migration\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # @param body [GatewayUpdateProducerArtifactory] 
     # @param [Hash] opts the optional parameters
     # @return [GatewayUpdateProducerArtifactoryOutput]
@@ -7047,6 +7367,70 @@ module Akeyless
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: V2Api#gateway_update_producer_gke\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param body [GatewayUpdateProducerHanaDb] 
+    # @param [Hash] opts the optional parameters
+    # @return [GatewayUpdateProducerHanaDbOutput]
+    def gateway_update_producer_hana_db(body, opts = {})
+      data, _status_code, _headers = gateway_update_producer_hana_db_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [GatewayUpdateProducerHanaDb] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GatewayUpdateProducerHanaDbOutput, Integer, Hash)>] GatewayUpdateProducerHanaDbOutput data, response status code and response headers
+    def gateway_update_producer_hana_db_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.gateway_update_producer_hana_db ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.gateway_update_producer_hana_db"
+      end
+      # resource path
+      local_var_path = '/gateway-update-producer-hana'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GatewayUpdateProducerHanaDbOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.gateway_update_producer_hana_db",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#gateway_update_producer_hana_db\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -12974,6 +13358,70 @@ module Akeyless
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: V2Api#update_rotation_settings\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param body [UpdateSalesforceTarget] 
+    # @param [Hash] opts the optional parameters
+    # @return [UpdateSalesforceTargetOutput]
+    def update_salesforce_target(body, opts = {})
+      data, _status_code, _headers = update_salesforce_target_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [UpdateSalesforceTarget] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(UpdateSalesforceTargetOutput, Integer, Hash)>] UpdateSalesforceTargetOutput data, response status code and response headers
+    def update_salesforce_target_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.update_salesforce_target ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.update_salesforce_target"
+      end
+      # resource path
+      local_var_path = '/update-salesforce-target'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'UpdateSalesforceTargetOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.update_salesforce_target",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#update_salesforce_target\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

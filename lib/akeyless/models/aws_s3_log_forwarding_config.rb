@@ -21,6 +21,8 @@ module Akeyless
 
     attr_accessor :aws_region
 
+    attr_accessor :aws_use_gateway_cloud_identity
+
     attr_accessor :bucket_name
 
     attr_accessor :log_folder
@@ -31,6 +33,7 @@ module Akeyless
         :'aws_access_id' => :'aws_access_id',
         :'aws_access_key' => :'aws_access_key',
         :'aws_region' => :'aws_region',
+        :'aws_use_gateway_cloud_identity' => :'aws_use_gateway_cloud_identity',
         :'bucket_name' => :'bucket_name',
         :'log_folder' => :'log_folder'
       }
@@ -47,6 +50,7 @@ module Akeyless
         :'aws_access_id' => :'String',
         :'aws_access_key' => :'String',
         :'aws_region' => :'String',
+        :'aws_use_gateway_cloud_identity' => :'Boolean',
         :'bucket_name' => :'String',
         :'log_folder' => :'String'
       }
@@ -85,6 +89,10 @@ module Akeyless
         self.aws_region = attributes[:'aws_region']
       end
 
+      if attributes.key?(:'aws_use_gateway_cloud_identity')
+        self.aws_use_gateway_cloud_identity = attributes[:'aws_use_gateway_cloud_identity']
+      end
+
       if attributes.key?(:'bucket_name')
         self.bucket_name = attributes[:'bucket_name']
       end
@@ -115,6 +123,7 @@ module Akeyless
           aws_access_id == o.aws_access_id &&
           aws_access_key == o.aws_access_key &&
           aws_region == o.aws_region &&
+          aws_use_gateway_cloud_identity == o.aws_use_gateway_cloud_identity &&
           bucket_name == o.bucket_name &&
           log_folder == o.log_folder
     end
@@ -128,7 +137,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [aws_access_id, aws_access_key, aws_region, bucket_name, log_folder].hash
+      [aws_access_id, aws_access_key, aws_region, aws_use_gateway_cloud_identity, bucket_name, log_folder].hash
     end
 
     # Builds the object from hash

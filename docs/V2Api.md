@@ -39,6 +39,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_rabbit_mq_target**](V2Api.md#create_rabbit_mq_target) | **POST** /create-rabbitmq-target |  |
 | [**create_role**](V2Api.md#create_role) | **POST** /create-role |  |
 | [**create_rotated_secret**](V2Api.md#create_rotated_secret) | **POST** /create-rotated-secret |  |
+| [**create_salesforce_target**](V2Api.md#create_salesforce_target) | **POST** /create-salesforce-target |  |
 | [**create_secret**](V2Api.md#create_secret) | **POST** /create-secret |  |
 | [**create_ssh_cert_issuer**](V2Api.md#create_ssh_cert_issuer) | **POST** /create-ssh-cert-issuer |  |
 | [**create_ssh_target**](V2Api.md#create_ssh_target) | **POST** /create-ssh-target |  |
@@ -64,6 +65,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**encrypt_pkcs1**](V2Api.md#encrypt_pkcs1) | **POST** /encrypt-pkcs1 |  |
 | [**encrypt_with_classic_key**](V2Api.md#encrypt_with_classic_key) | **POST** /encrypt-with-classic-key |  |
 | [**gateway_create_k8_s_auth_config**](V2Api.md#gateway_create_k8_s_auth_config) | **POST** /gateway-create-k8s-auth-config |  |
+| [**gateway_create_migration**](V2Api.md#gateway_create_migration) | **POST** /gateway-create-migration |  |
 | [**gateway_create_producer_artifactory**](V2Api.md#gateway_create_producer_artifactory) | **POST** /gateway-create-producer-artifactory |  |
 | [**gateway_create_producer_aws**](V2Api.md#gateway_create_producer_aws) | **POST** /gateway-create-producer-aws |  |
 | [**gateway_create_producer_azure**](V2Api.md#gateway_create_producer_azure) | **POST** /gateway-create-producer-azure |  |
@@ -89,9 +91,11 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_create_producer_snowflake**](V2Api.md#gateway_create_producer_snowflake) | **POST** /gateway-create-producer-snowflake |  |
 | [**gateway_delete_allowed_management_access**](V2Api.md#gateway_delete_allowed_management_access) | **POST** /gateway-delete-allowed-management-access |  |
 | [**gateway_delete_k8_s_auth_config**](V2Api.md#gateway_delete_k8_s_auth_config) | **POST** /gateway-delete-k8s-auth-config |  |
+| [**gateway_delete_migration**](V2Api.md#gateway_delete_migration) | **POST** /gateway-delete-migration |  |
 | [**gateway_delete_producer**](V2Api.md#gateway_delete_producer) | **POST** /gateway-delete-producer |  |
 | [**gateway_get_config**](V2Api.md#gateway_get_config) | **POST** /gateway-get-config |  |
 | [**gateway_get_k8_s_auth_config**](V2Api.md#gateway_get_k8_s_auth_config) | **POST** /gateway-get-k8s-auth-config |  |
+| [**gateway_get_migration**](V2Api.md#gateway_get_migration) | **POST** /gateway-get-migration |  |
 | [**gateway_get_producer**](V2Api.md#gateway_get_producer) | **POST** /gateway-get-producer |  |
 | [**gateway_get_tmp_users**](V2Api.md#gateway_get_tmp_users) | **POST** /gateway-get-producer-tmp-creds |  |
 | [**gateway_list_allowed_management_access**](V2Api.md#gateway_list_allowed_management_access) | **POST** /gateway-list-allowed-management-access |  |
@@ -103,6 +107,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_sync_migration**](V2Api.md#gateway_sync_migration) | **POST** /gateway-sync-migration |  |
 | [**gateway_update_item**](V2Api.md#gateway_update_item) | **POST** /gateway-update-item |  |
 | [**gateway_update_k8_s_auth_config**](V2Api.md#gateway_update_k8_s_auth_config) | **POST** /gateway-update-k8s-auth-config |  |
+| [**gateway_update_migration**](V2Api.md#gateway_update_migration) | **POST** /gateway-update-migration |  |
 | [**gateway_update_producer_artifactory**](V2Api.md#gateway_update_producer_artifactory) | **POST** /gateway-update-producer-artifactory |  |
 | [**gateway_update_producer_aws**](V2Api.md#gateway_update_producer_aws) | **POST** /gateway-update-producer-aws |  |
 | [**gateway_update_producer_azure**](V2Api.md#gateway_update_producer_azure) | **POST** /gateway-update-producer-azure |  |
@@ -114,6 +119,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_update_producer_gcp**](V2Api.md#gateway_update_producer_gcp) | **POST** /gateway-update-producer-gcp |  |
 | [**gateway_update_producer_github**](V2Api.md#gateway_update_producer_github) | **POST** /gateway-update-producer-github |  |
 | [**gateway_update_producer_gke**](V2Api.md#gateway_update_producer_gke) | **POST** /gateway-update-producer-gke |  |
+| [**gateway_update_producer_hana_db**](V2Api.md#gateway_update_producer_hana_db) | **POST** /gateway-update-producer-hana |  |
 | [**gateway_update_producer_ldap**](V2Api.md#gateway_update_producer_ldap) | **POST** /gateway-update-producer-ldap |  |
 | [**gateway_update_producer_mongo**](V2Api.md#gateway_update_producer_mongo) | **POST** /gateway-update-producer-mongo |  |
 | [**gateway_update_producer_mssql**](V2Api.md#gateway_update_producer_mssql) | **POST** /gateway-update-producer-mssql |  |
@@ -208,6 +214,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_role**](V2Api.md#update_role) | **POST** /update-role |  |
 | [**update_rotated_secret**](V2Api.md#update_rotated_secret) | **POST** /update-rotated-secret |  |
 | [**update_rotation_settings**](V2Api.md#update_rotation_settings) | **POST** /update-rotation-settingsrotate-key |  |
+| [**update_salesforce_target**](V2Api.md#update_salesforce_target) | **POST** /update-salesforce-target |  |
 | [**update_secret_val**](V2Api.md#update_secret_val) | **POST** /update-secret-val |  |
 | [**update_ssh_cert_issuer**](V2Api.md#update_ssh_cert_issuer) | **POST** /update-ssh-cert-issuer |  |
 | [**update_ssh_target**](V2Api.md#update_ssh_target) | **POST** /update-ssh-target |  |
@@ -2393,6 +2400,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## create_salesforce_target
+
+> <CreateSalesforceTargetOutput> create_salesforce_target(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateSalesforceTarget.new({client_id: 'client_id_example', client_secret: 'client_secret_example', email: 'email_example', name: 'name_example', password: 'password_example', security_token: 'security_token_example', tenant_url: 'tenant_url_example'}) # CreateSalesforceTarget | 
+
+begin
+  
+  result = api_instance.create_salesforce_target(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_salesforce_target: #{e}"
+end
+```
+
+#### Using the create_salesforce_target_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateSalesforceTargetOutput>, Integer, Hash)> create_salesforce_target_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_salesforce_target_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateSalesforceTargetOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_salesforce_target_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateSalesforceTarget**](CreateSalesforceTarget.md) |  |  |
+
+### Return type
+
+[**CreateSalesforceTargetOutput**](CreateSalesforceTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_secret
 
 > <CreateSecretOutput> create_secret(body)
@@ -3932,6 +4001,68 @@ end
 ### Return type
 
 [**GatewayCreateK8SAuthConfigOutput**](GatewayCreateK8SAuthConfigOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## gateway_create_migration
+
+> <GatewayMigrationCreateOutput> gateway_create_migration(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayCreateMigration.new({name: 'name_example'}) # GatewayCreateMigration | 
+
+begin
+  
+  result = api_instance.gateway_create_migration(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_create_migration: #{e}"
+end
+```
+
+#### Using the gateway_create_migration_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewayMigrationCreateOutput>, Integer, Hash)> gateway_create_migration_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_create_migration_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewayMigrationCreateOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_create_migration_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayCreateMigration**](GatewayCreateMigration.md) |  |  |
+
+### Return type
+
+[**GatewayMigrationCreateOutput**](GatewayMigrationCreateOutput.md)
 
 ### Authorization
 
@@ -5495,6 +5626,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## gateway_delete_migration
+
+> <GatewayMigrationDeleteOutput> gateway_delete_migration(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayDeleteMigration.new({id: 'id_example'}) # GatewayDeleteMigration | 
+
+begin
+  
+  result = api_instance.gateway_delete_migration(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_delete_migration: #{e}"
+end
+```
+
+#### Using the gateway_delete_migration_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewayMigrationDeleteOutput>, Integer, Hash)> gateway_delete_migration_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_delete_migration_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewayMigrationDeleteOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_delete_migration_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayDeleteMigration**](GatewayDeleteMigration.md) |  |  |
+
+### Return type
+
+[**GatewayMigrationDeleteOutput**](GatewayMigrationDeleteOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## gateway_delete_producer
 
 > <GatewayDeleteProducerOutput> gateway_delete_producer(body)
@@ -5670,6 +5863,68 @@ end
 ### Return type
 
 [**GatewayGetK8SAuthConfigOutput**](GatewayGetK8SAuthConfigOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## gateway_get_migration
+
+> <GatewayMigrationGetOutput> gateway_get_migration(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayGetMigration.new # GatewayGetMigration | 
+
+begin
+  
+  result = api_instance.gateway_get_migration(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_get_migration: #{e}"
+end
+```
+
+#### Using the gateway_get_migration_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewayMigrationGetOutput>, Integer, Hash)> gateway_get_migration_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_get_migration_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewayMigrationGetOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_get_migration_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayGetMigration**](GatewayGetMigration.md) |  |  |
+
+### Return type
+
+[**GatewayMigrationGetOutput**](GatewayMigrationGetOutput.md)
 
 ### Authorization
 
@@ -6362,6 +6617,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## gateway_update_migration
+
+> <GatewayMigrationUpdateOutput> gateway_update_migration(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayUpdateMigration.new({name: 'name_example'}) # GatewayUpdateMigration | 
+
+begin
+  
+  result = api_instance.gateway_update_migration(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_update_migration: #{e}"
+end
+```
+
+#### Using the gateway_update_migration_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewayMigrationUpdateOutput>, Integer, Hash)> gateway_update_migration_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_update_migration_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewayMigrationUpdateOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_update_migration_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayUpdateMigration**](GatewayUpdateMigration.md) |  |  |
+
+### Return type
+
+[**GatewayMigrationUpdateOutput**](GatewayMigrationUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## gateway_update_producer_artifactory
 
 > <GatewayUpdateProducerArtifactoryOutput> gateway_update_producer_artifactory(body)
@@ -7035,6 +7352,68 @@ end
 ### Return type
 
 [**GatewayUpdateProducerGkeOutput**](GatewayUpdateProducerGkeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## gateway_update_producer_hana_db
+
+> <GatewayUpdateProducerHanaDbOutput> gateway_update_producer_hana_db(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayUpdateProducerHanaDb.new({name: 'name_example'}) # GatewayUpdateProducerHanaDb | 
+
+begin
+  
+  result = api_instance.gateway_update_producer_hana_db(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_update_producer_hana_db: #{e}"
+end
+```
+
+#### Using the gateway_update_producer_hana_db_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewayUpdateProducerHanaDbOutput>, Integer, Hash)> gateway_update_producer_hana_db_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_update_producer_hana_db_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewayUpdateProducerHanaDbOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_update_producer_hana_db_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayUpdateProducerHanaDb**](GatewayUpdateProducerHanaDb.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateProducerHanaDbOutput**](GatewayUpdateProducerHanaDbOutput.md)
 
 ### Authorization
 
@@ -12889,6 +13268,68 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## update_salesforce_target
+
+> <UpdateSalesforceTargetOutput> update_salesforce_target(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateSalesforceTarget.new({client_id: 'client_id_example', client_secret: 'client_secret_example', email: 'email_example', name: 'name_example', password: 'password_example', security_token: 'security_token_example', tenant_url: 'tenant_url_example'}) # UpdateSalesforceTarget | 
+
+begin
+  
+  result = api_instance.update_salesforce_target(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_salesforce_target: #{e}"
+end
+```
+
+#### Using the update_salesforce_target_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpdateSalesforceTargetOutput>, Integer, Hash)> update_salesforce_target_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_salesforce_target_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpdateSalesforceTargetOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_salesforce_target_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateSalesforceTarget**](UpdateSalesforceTarget.md) |  |  |
+
+### Return type
+
+[**UpdateSalesforceTargetOutput**](UpdateSalesforceTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

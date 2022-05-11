@@ -10,7 +10,7 @@
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
 | **idp_metadata_url** | **String** | IDP metadata url | [optional] |
 | **idp_metadata_xml_data** | **String** | IDP metadata xml data | [optional] |
-| **jwt_ttl** | **Integer** | Jwt TTL | [optional][default to 0] |
+| **jwt_ttl** | **Integer** | Jwt TTL | [optional] |
 | **name** | **String** | Auth Method name |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |

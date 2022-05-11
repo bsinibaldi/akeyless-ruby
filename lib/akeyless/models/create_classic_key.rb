@@ -28,20 +28,38 @@ module Akeyless
     # A list of allowed operations for the key (required for azure targets)
     attr_accessor :key_operations
 
+    # Keyring name of the GCP KMS (required for gcp targets)
+    attr_accessor :keyring_name
+
+    # Algorithm of the key in GCP KMS (required for gcp targets)
+    attr_accessor :kms_algorithm
+
+    # Location id of the GCP KMS (required for gcp targets)
+    attr_accessor :location_id
+
     # Metadata about the classic key
     attr_accessor :metadata
 
     # ClassicKey name
     attr_accessor :name
 
+    # Project id of the GCP KMS (required for gcp targets)
+    attr_accessor :project_id
+
     # The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
     attr_accessor :protection_key_name
+
+    # Purpose of the key in GCP KMS (required for gcp targets)
+    attr_accessor :purpose
 
     # List of the tags attached to this classic key
     attr_accessor :tags
 
     # Target name
     attr_accessor :target_name
+
+    # The tenant secret type [Data/SearchIndex/Analytics] (required for salesforce targets)
+    attr_accessor :tenant_secret_type
 
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
@@ -59,11 +77,17 @@ module Akeyless
         :'cert_file_data' => :'cert-file-data',
         :'key_data' => :'key-data',
         :'key_operations' => :'key-operations',
+        :'keyring_name' => :'keyring-name',
+        :'kms_algorithm' => :'kms-algorithm',
+        :'location_id' => :'location-id',
         :'metadata' => :'metadata',
         :'name' => :'name',
+        :'project_id' => :'project-id',
         :'protection_key_name' => :'protection-key-name',
+        :'purpose' => :'purpose',
         :'tags' => :'tags',
         :'target_name' => :'target-name',
+        :'tenant_secret_type' => :'tenant-secret-type',
         :'token' => :'token',
         :'uid_token' => :'uid-token',
         :'vault_name' => :'vault-name'
@@ -82,11 +106,17 @@ module Akeyless
         :'cert_file_data' => :'String',
         :'key_data' => :'String',
         :'key_operations' => :'Array<String>',
+        :'keyring_name' => :'String',
+        :'kms_algorithm' => :'String',
+        :'location_id' => :'String',
         :'metadata' => :'String',
         :'name' => :'String',
+        :'project_id' => :'String',
         :'protection_key_name' => :'String',
+        :'purpose' => :'String',
         :'tags' => :'Array<String>',
         :'target_name' => :'String',
+        :'tenant_secret_type' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String',
         :'vault_name' => :'String'
@@ -132,6 +162,18 @@ module Akeyless
         end
       end
 
+      if attributes.key?(:'keyring_name')
+        self.keyring_name = attributes[:'keyring_name']
+      end
+
+      if attributes.key?(:'kms_algorithm')
+        self.kms_algorithm = attributes[:'kms_algorithm']
+      end
+
+      if attributes.key?(:'location_id')
+        self.location_id = attributes[:'location_id']
+      end
+
       if attributes.key?(:'metadata')
         self.metadata = attributes[:'metadata']
       end
@@ -140,8 +182,16 @@ module Akeyless
         self.name = attributes[:'name']
       end
 
+      if attributes.key?(:'project_id')
+        self.project_id = attributes[:'project_id']
+      end
+
       if attributes.key?(:'protection_key_name')
         self.protection_key_name = attributes[:'protection_key_name']
+      end
+
+      if attributes.key?(:'purpose')
+        self.purpose = attributes[:'purpose']
       end
 
       if attributes.key?(:'tags')
@@ -152,6 +202,10 @@ module Akeyless
 
       if attributes.key?(:'target_name')
         self.target_name = attributes[:'target_name']
+      end
+
+      if attributes.key?(:'tenant_secret_type')
+        self.tenant_secret_type = attributes[:'tenant_secret_type']
       end
 
       if attributes.key?(:'token')
@@ -199,11 +253,17 @@ module Akeyless
           cert_file_data == o.cert_file_data &&
           key_data == o.key_data &&
           key_operations == o.key_operations &&
+          keyring_name == o.keyring_name &&
+          kms_algorithm == o.kms_algorithm &&
+          location_id == o.location_id &&
           metadata == o.metadata &&
           name == o.name &&
+          project_id == o.project_id &&
           protection_key_name == o.protection_key_name &&
+          purpose == o.purpose &&
           tags == o.tags &&
           target_name == o.target_name &&
+          tenant_secret_type == o.tenant_secret_type &&
           token == o.token &&
           uid_token == o.uid_token &&
           vault_name == o.vault_name
@@ -218,7 +278,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alg, cert_file_data, key_data, key_operations, metadata, name, protection_key_name, tags, target_name, token, uid_token, vault_name].hash
+      [alg, cert_file_data, key_data, key_operations, keyring_name, kms_algorithm, location_id, metadata, name, project_id, protection_key_name, purpose, tags, target_name, tenant_secret_type, token, uid_token, vault_name].hash
     end
 
     # Builds the object from hash

@@ -27,6 +27,9 @@ module Akeyless
     # Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation
     attr_accessor :auto_rotate
 
+    # Region (used in aws)
+    attr_accessor :aws_region
+
     attr_accessor :custom_payload
 
     # The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
@@ -53,6 +56,45 @@ module Akeyless
 
     # Rotator Type
     attr_accessor :rotator_type
+
+    # Secure Access Allow Providing External User (used in ssh)
+    attr_accessor :secure_access_allow_external_user
+
+    # Secure Access Account Id (used in aws)
+    attr_accessor :secure_access_aws_account_id
+
+    # Secure Access Aws Native Cli (used in aws)
+    attr_accessor :secure_access_aws_native_cli
+
+    # Secure Access Bastion Issuer
+    attr_accessor :secure_access_bastion_issuer
+
+    # Secure Access DB Name (used in data bases)
+    attr_accessor :secure_access_db_name
+
+    # Secure Access Schema (used in mssql, postgresql)
+    attr_accessor :secure_access_db_schema
+
+    # Secure Access Enabled
+    attr_accessor :secure_access_enable
+
+    # Secure Access Host
+    attr_accessor :secure_access_host
+
+    # Secure Access Domain (used in ssh)
+    attr_accessor :secure_access_rdp_domain
+
+    # Secure Access Override User (used in ssh)
+    attr_accessor :secure_access_rdp_user
+
+    # Secure Access Web
+    attr_accessor :secure_access_web
+
+    # Secure Access Isolated (used in aws, azure)
+    attr_accessor :secure_access_web_browsing
+
+    # Secure Access Web Proxy (used in aws, azure)
+    attr_accessor :secure_access_web_proxy
 
     # Deprecated: use RotatedPassword
     attr_accessor :ssh_password
@@ -86,6 +128,7 @@ module Akeyless
         :'application_id' => :'application-id',
         :'authentication_credentials' => :'authentication-credentials',
         :'auto_rotate' => :'auto-rotate',
+        :'aws_region' => :'aws-region',
         :'custom_payload' => :'custom-payload',
         :'key' => :'key',
         :'metadata' => :'metadata',
@@ -97,6 +140,19 @@ module Akeyless
         :'rotator_creds_type' => :'rotator-creds-type',
         :'rotator_custom_cmd' => :'rotator-custom-cmd',
         :'rotator_type' => :'rotator-type',
+        :'secure_access_allow_external_user' => :'secure-access-allow-external-user',
+        :'secure_access_aws_account_id' => :'secure-access-aws-account-id',
+        :'secure_access_aws_native_cli' => :'secure-access-aws-native-cli',
+        :'secure_access_bastion_issuer' => :'secure-access-bastion-issuer',
+        :'secure_access_db_name' => :'secure-access-db-name',
+        :'secure_access_db_schema' => :'secure-access-db-schema',
+        :'secure_access_enable' => :'secure-access-enable',
+        :'secure_access_host' => :'secure-access-host',
+        :'secure_access_rdp_domain' => :'secure-access-rdp-domain',
+        :'secure_access_rdp_user' => :'secure-access-rdp-user',
+        :'secure_access_web' => :'secure-access-web',
+        :'secure_access_web_browsing' => :'secure-access-web-browsing',
+        :'secure_access_web_proxy' => :'secure-access-web-proxy',
         :'ssh_password' => :'ssh-password',
         :'ssh_username' => :'ssh-username',
         :'tags' => :'tags',
@@ -121,6 +177,7 @@ module Akeyless
         :'application_id' => :'String',
         :'authentication_credentials' => :'String',
         :'auto_rotate' => :'String',
+        :'aws_region' => :'String',
         :'custom_payload' => :'String',
         :'key' => :'String',
         :'metadata' => :'String',
@@ -132,6 +189,19 @@ module Akeyless
         :'rotator_creds_type' => :'String',
         :'rotator_custom_cmd' => :'String',
         :'rotator_type' => :'String',
+        :'secure_access_allow_external_user' => :'Boolean',
+        :'secure_access_aws_account_id' => :'String',
+        :'secure_access_aws_native_cli' => :'Boolean',
+        :'secure_access_bastion_issuer' => :'String',
+        :'secure_access_db_name' => :'String',
+        :'secure_access_db_schema' => :'String',
+        :'secure_access_enable' => :'String',
+        :'secure_access_host' => :'Array<String>',
+        :'secure_access_rdp_domain' => :'String',
+        :'secure_access_rdp_user' => :'String',
+        :'secure_access_web' => :'Boolean',
+        :'secure_access_web_browsing' => :'Boolean',
+        :'secure_access_web_proxy' => :'Boolean',
         :'ssh_password' => :'String',
         :'ssh_username' => :'String',
         :'tags' => :'Array<String>',
@@ -184,6 +254,12 @@ module Akeyless
         self.auto_rotate = attributes[:'auto_rotate']
       end
 
+      if attributes.key?(:'aws_region')
+        self.aws_region = attributes[:'aws_region']
+      else
+        self.aws_region = 'us-east-2'
+      end
+
       if attributes.key?(:'custom_payload')
         self.custom_payload = attributes[:'custom_payload']
       end
@@ -226,6 +302,68 @@ module Akeyless
 
       if attributes.key?(:'rotator_type')
         self.rotator_type = attributes[:'rotator_type']
+      end
+
+      if attributes.key?(:'secure_access_allow_external_user')
+        self.secure_access_allow_external_user = attributes[:'secure_access_allow_external_user']
+      else
+        self.secure_access_allow_external_user = false
+      end
+
+      if attributes.key?(:'secure_access_aws_account_id')
+        self.secure_access_aws_account_id = attributes[:'secure_access_aws_account_id']
+      end
+
+      if attributes.key?(:'secure_access_aws_native_cli')
+        self.secure_access_aws_native_cli = attributes[:'secure_access_aws_native_cli']
+      end
+
+      if attributes.key?(:'secure_access_bastion_issuer')
+        self.secure_access_bastion_issuer = attributes[:'secure_access_bastion_issuer']
+      end
+
+      if attributes.key?(:'secure_access_db_name')
+        self.secure_access_db_name = attributes[:'secure_access_db_name']
+      end
+
+      if attributes.key?(:'secure_access_db_schema')
+        self.secure_access_db_schema = attributes[:'secure_access_db_schema']
+      end
+
+      if attributes.key?(:'secure_access_enable')
+        self.secure_access_enable = attributes[:'secure_access_enable']
+      end
+
+      if attributes.key?(:'secure_access_host')
+        if (value = attributes[:'secure_access_host']).is_a?(Array)
+          self.secure_access_host = value
+        end
+      end
+
+      if attributes.key?(:'secure_access_rdp_domain')
+        self.secure_access_rdp_domain = attributes[:'secure_access_rdp_domain']
+      end
+
+      if attributes.key?(:'secure_access_rdp_user')
+        self.secure_access_rdp_user = attributes[:'secure_access_rdp_user']
+      end
+
+      if attributes.key?(:'secure_access_web')
+        self.secure_access_web = attributes[:'secure_access_web']
+      else
+        self.secure_access_web = false
+      end
+
+      if attributes.key?(:'secure_access_web_browsing')
+        self.secure_access_web_browsing = attributes[:'secure_access_web_browsing']
+      else
+        self.secure_access_web_browsing = false
+      end
+
+      if attributes.key?(:'secure_access_web_proxy')
+        self.secure_access_web_proxy = attributes[:'secure_access_web_proxy']
+      else
+        self.secure_access_web_proxy = false
       end
 
       if attributes.key?(:'ssh_password')
@@ -301,6 +439,7 @@ module Akeyless
           application_id == o.application_id &&
           authentication_credentials == o.authentication_credentials &&
           auto_rotate == o.auto_rotate &&
+          aws_region == o.aws_region &&
           custom_payload == o.custom_payload &&
           key == o.key &&
           metadata == o.metadata &&
@@ -312,6 +451,19 @@ module Akeyless
           rotator_creds_type == o.rotator_creds_type &&
           rotator_custom_cmd == o.rotator_custom_cmd &&
           rotator_type == o.rotator_type &&
+          secure_access_allow_external_user == o.secure_access_allow_external_user &&
+          secure_access_aws_account_id == o.secure_access_aws_account_id &&
+          secure_access_aws_native_cli == o.secure_access_aws_native_cli &&
+          secure_access_bastion_issuer == o.secure_access_bastion_issuer &&
+          secure_access_db_name == o.secure_access_db_name &&
+          secure_access_db_schema == o.secure_access_db_schema &&
+          secure_access_enable == o.secure_access_enable &&
+          secure_access_host == o.secure_access_host &&
+          secure_access_rdp_domain == o.secure_access_rdp_domain &&
+          secure_access_rdp_user == o.secure_access_rdp_user &&
+          secure_access_web == o.secure_access_web &&
+          secure_access_web_browsing == o.secure_access_web_browsing &&
+          secure_access_web_proxy == o.secure_access_web_proxy &&
           ssh_password == o.ssh_password &&
           ssh_username == o.ssh_username &&
           tags == o.tags &&
@@ -331,7 +483,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [api_id, api_key, application_id, authentication_credentials, auto_rotate, custom_payload, key, metadata, name, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, rotator_custom_cmd, rotator_type, ssh_password, ssh_username, tags, target_name, token, uid_token, user_attribute, user_dn].hash
+      [api_id, api_key, application_id, authentication_credentials, auto_rotate, aws_region, custom_payload, key, metadata, name, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, rotator_custom_cmd, rotator_type, secure_access_allow_external_user, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, ssh_password, ssh_username, tags, target_name, token, uid_token, user_attribute, user_dn].hash
     end
 
     # Builds the object from hash

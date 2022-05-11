@@ -11,7 +11,7 @@
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
 | **issuer** | **String** | Issuer URL | [optional] |
 | **jwks_uri** | **String** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. |  |
-| **jwt_ttl** | **Integer** | Jwt TTL | [optional][default to 0] |
+| **jwt_ttl** | **Integer** | Jwt TTL | [optional] |
 | **name** | **String** | Auth Method name |  |
 | **new_name** | **String** | Auth Method new name | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |

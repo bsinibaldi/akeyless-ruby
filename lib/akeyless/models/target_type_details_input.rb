@@ -35,6 +35,12 @@ module Akeyless
 
     attr_accessor :azure_tenant_id
 
+    # CACertData is the rsa 4096 certificate data in PEM format
+    attr_accessor :ca_cert_data
+
+    # CACertName is the name of the certificate in SalesForce tenant
+    attr_accessor :ca_cert_name
+
     attr_accessor :chef_server_host_name
 
     attr_accessor :chef_server_key
@@ -46,6 +52,10 @@ module Akeyless
     attr_accessor :chef_server_username
 
     attr_accessor :chef_skip_ssl
+
+    attr_accessor :client_id
+
+    attr_accessor :client_secret
 
     attr_accessor :db_host_name
 
@@ -156,6 +166,8 @@ module Akeyless
 
     attr_accessor :rabbitmq_server_user
 
+    attr_accessor :security_token
+
     attr_accessor :sf_account
 
     # (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field
@@ -163,6 +175,8 @@ module Akeyless
 
     # (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB
     attr_accessor :ssl_connection_mode
+
+    attr_accessor :tenant_url
 
     attr_accessor :url
 
@@ -197,12 +211,16 @@ module Akeyless
         :'azure_client_id' => :'azure_client_id',
         :'azure_client_secret' => :'azure_client_secret',
         :'azure_tenant_id' => :'azure_tenant_id',
+        :'ca_cert_data' => :'ca_cert_data',
+        :'ca_cert_name' => :'ca_cert_name',
         :'chef_server_host_name' => :'chef_server_host_name',
         :'chef_server_key' => :'chef_server_key',
         :'chef_server_port' => :'chef_server_port',
         :'chef_server_url' => :'chef_server_url',
         :'chef_server_username' => :'chef_server_username',
         :'chef_skip_ssl' => :'chef_skip_ssl',
+        :'client_id' => :'client_id',
+        :'client_secret' => :'client_secret',
         :'db_host_name' => :'db_host_name',
         :'db_name' => :'db_name',
         :'db_port' => :'db_port',
@@ -255,9 +273,11 @@ module Akeyless
         :'rabbitmq_server_password' => :'rabbitmq_server_password',
         :'rabbitmq_server_uri' => :'rabbitmq_server_uri',
         :'rabbitmq_server_user' => :'rabbitmq_server_user',
+        :'security_token' => :'security_token',
         :'sf_account' => :'sf_account',
         :'ssl_connection_certificate' => :'ssl_connection_certificate',
         :'ssl_connection_mode' => :'ssl_connection_mode',
+        :'tenant_url' => :'tenant_url',
         :'url' => :'url',
         :'use_gw_cloud_identity' => :'use_gw_cloud_identity',
         :'user_name' => :'user_name',
@@ -289,12 +309,16 @@ module Akeyless
         :'azure_client_id' => :'String',
         :'azure_client_secret' => :'String',
         :'azure_tenant_id' => :'String',
+        :'ca_cert_data' => :'Array<Integer>',
+        :'ca_cert_name' => :'String',
         :'chef_server_host_name' => :'String',
         :'chef_server_key' => :'String',
         :'chef_server_port' => :'String',
         :'chef_server_url' => :'String',
         :'chef_server_username' => :'String',
         :'chef_skip_ssl' => :'Boolean',
+        :'client_id' => :'String',
+        :'client_secret' => :'String',
         :'db_host_name' => :'String',
         :'db_name' => :'String',
         :'db_port' => :'String',
@@ -347,9 +371,11 @@ module Akeyless
         :'rabbitmq_server_password' => :'String',
         :'rabbitmq_server_uri' => :'String',
         :'rabbitmq_server_user' => :'String',
+        :'security_token' => :'String',
         :'sf_account' => :'String',
         :'ssl_connection_certificate' => :'String',
         :'ssl_connection_mode' => :'Boolean',
+        :'tenant_url' => :'String',
         :'url' => :'String',
         :'use_gw_cloud_identity' => :'Boolean',
         :'user_name' => :'String',
@@ -424,6 +450,16 @@ module Akeyless
         self.azure_tenant_id = attributes[:'azure_tenant_id']
       end
 
+      if attributes.key?(:'ca_cert_data')
+        if (value = attributes[:'ca_cert_data']).is_a?(Array)
+          self.ca_cert_data = value
+        end
+      end
+
+      if attributes.key?(:'ca_cert_name')
+        self.ca_cert_name = attributes[:'ca_cert_name']
+      end
+
       if attributes.key?(:'chef_server_host_name')
         self.chef_server_host_name = attributes[:'chef_server_host_name']
       end
@@ -446,6 +482,14 @@ module Akeyless
 
       if attributes.key?(:'chef_skip_ssl')
         self.chef_skip_ssl = attributes[:'chef_skip_ssl']
+      end
+
+      if attributes.key?(:'client_id')
+        self.client_id = attributes[:'client_id']
+      end
+
+      if attributes.key?(:'client_secret')
+        self.client_secret = attributes[:'client_secret']
       end
 
       if attributes.key?(:'db_host_name')
@@ -656,6 +700,10 @@ module Akeyless
         self.rabbitmq_server_user = attributes[:'rabbitmq_server_user']
       end
 
+      if attributes.key?(:'security_token')
+        self.security_token = attributes[:'security_token']
+      end
+
       if attributes.key?(:'sf_account')
         self.sf_account = attributes[:'sf_account']
       end
@@ -666,6 +714,10 @@ module Akeyless
 
       if attributes.key?(:'ssl_connection_mode')
         self.ssl_connection_mode = attributes[:'ssl_connection_mode']
+      end
+
+      if attributes.key?(:'tenant_url')
+        self.tenant_url = attributes[:'tenant_url']
       end
 
       if attributes.key?(:'url')
@@ -737,12 +789,16 @@ module Akeyless
           azure_client_id == o.azure_client_id &&
           azure_client_secret == o.azure_client_secret &&
           azure_tenant_id == o.azure_tenant_id &&
+          ca_cert_data == o.ca_cert_data &&
+          ca_cert_name == o.ca_cert_name &&
           chef_server_host_name == o.chef_server_host_name &&
           chef_server_key == o.chef_server_key &&
           chef_server_port == o.chef_server_port &&
           chef_server_url == o.chef_server_url &&
           chef_server_username == o.chef_server_username &&
           chef_skip_ssl == o.chef_skip_ssl &&
+          client_id == o.client_id &&
+          client_secret == o.client_secret &&
           db_host_name == o.db_host_name &&
           db_name == o.db_name &&
           db_port == o.db_port &&
@@ -795,9 +851,11 @@ module Akeyless
           rabbitmq_server_password == o.rabbitmq_server_password &&
           rabbitmq_server_uri == o.rabbitmq_server_uri &&
           rabbitmq_server_user == o.rabbitmq_server_user &&
+          security_token == o.security_token &&
           sf_account == o.sf_account &&
           ssl_connection_certificate == o.ssl_connection_certificate &&
           ssl_connection_mode == o.ssl_connection_mode &&
+          tenant_url == o.tenant_url &&
           url == o.url &&
           use_gw_cloud_identity == o.use_gw_cloud_identity &&
           user_name == o.user_name &&
@@ -819,7 +877,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, aws_access_key_id, aws_region, aws_secret_access_key, aws_session_token, azure_client_id, azure_client_secret, azure_tenant_id, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, db_host_name, db_name, db_port, db_pwd, db_server_certificates, db_server_name, db_user_name, eks_access_key_id, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, gcp_service_account_email, gcp_service_account_key, github_app_id, github_app_private_key, github_base_url, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, host, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_uri_connection, mongodb_uri_options, mongodb_username, password, payload, port, private_key, private_key_password, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, sf_account, ssl_connection_certificate, ssl_connection_mode, url, use_gw_cloud_identity, user_name, username, venafi_api_key, venafi_base_url, venafi_tpp_password, venafi_tpp_username, venafi_use_tpp, venafi_zone].hash
+      [artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, aws_access_key_id, aws_region, aws_secret_access_key, aws_session_token, azure_client_id, azure_client_secret, azure_tenant_id, ca_cert_data, ca_cert_name, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, client_id, client_secret, db_host_name, db_name, db_port, db_pwd, db_server_certificates, db_server_name, db_user_name, eks_access_key_id, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, gcp_service_account_email, gcp_service_account_key, github_app_id, github_app_private_key, github_base_url, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, host, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_uri_connection, mongodb_uri_options, mongodb_username, password, payload, port, private_key, private_key_password, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, security_token, sf_account, ssl_connection_certificate, ssl_connection_mode, tenant_url, url, use_gw_cloud_identity, user_name, username, venafi_api_key, venafi_base_url, venafi_tpp_password, venafi_tpp_username, venafi_use_tpp, venafi_zone].hash
     end
 
     # Builds the object from hash
