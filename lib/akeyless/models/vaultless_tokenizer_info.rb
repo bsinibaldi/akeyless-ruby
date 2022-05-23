@@ -14,30 +14,29 @@ require 'date'
 require 'time'
 
 module Akeyless
-  # DynamicSecretProducerInfo The dynamic secret producer info This parameter relevant and required only in case of create update dynamic secret.
-  class DynamicSecretProducerInfo
-    attr_accessor :failure_message
+  class VaultlessTokenizerInfo
+    attr_accessor :email_tokenizer_info
 
-    attr_accessor :gw_cluster_id
+    attr_accessor :key_name
 
-    attr_accessor :producer_last_keep_alive
+    attr_accessor :regexp_tokenizer_info
 
-    attr_accessor :producer_metadata
+    attr_accessor :template_type
 
-    # RotationStatus defines types of rotation Status
-    attr_accessor :producer_status
+    # Tweak used in the case of internal tweak type
+    attr_accessor :tweak
 
-    attr_accessor :producer_type
+    attr_accessor :tweak_type
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'failure_message' => :'failure_message',
-        :'gw_cluster_id' => :'gw_cluster_id',
-        :'producer_last_keep_alive' => :'producer_last_keep_alive',
-        :'producer_metadata' => :'producer_metadata',
-        :'producer_status' => :'producer_status',
-        :'producer_type' => :'producer_type'
+        :'email_tokenizer_info' => :'email_tokenizer_info',
+        :'key_name' => :'key_name',
+        :'regexp_tokenizer_info' => :'regexp_tokenizer_info',
+        :'template_type' => :'template_type',
+        :'tweak' => :'tweak',
+        :'tweak_type' => :'tweak_type'
       }
     end
 
@@ -49,12 +48,12 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'failure_message' => :'String',
-        :'gw_cluster_id' => :'Integer',
-        :'producer_last_keep_alive' => :'String',
-        :'producer_metadata' => :'String',
-        :'producer_status' => :'String',
-        :'producer_type' => :'String'
+        :'email_tokenizer_info' => :'EmailTokenizerInfo',
+        :'key_name' => :'String',
+        :'regexp_tokenizer_info' => :'RegexpTokenizerInfo',
+        :'template_type' => :'String',
+        :'tweak' => :'Array<Integer>',
+        :'tweak_type' => :'String'
       }
     end
 
@@ -68,39 +67,41 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::DynamicSecretProducerInfo` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::VaultlessTokenizerInfo` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::DynamicSecretProducerInfo`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::VaultlessTokenizerInfo`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'failure_message')
-        self.failure_message = attributes[:'failure_message']
+      if attributes.key?(:'email_tokenizer_info')
+        self.email_tokenizer_info = attributes[:'email_tokenizer_info']
       end
 
-      if attributes.key?(:'gw_cluster_id')
-        self.gw_cluster_id = attributes[:'gw_cluster_id']
+      if attributes.key?(:'key_name')
+        self.key_name = attributes[:'key_name']
       end
 
-      if attributes.key?(:'producer_last_keep_alive')
-        self.producer_last_keep_alive = attributes[:'producer_last_keep_alive']
+      if attributes.key?(:'regexp_tokenizer_info')
+        self.regexp_tokenizer_info = attributes[:'regexp_tokenizer_info']
       end
 
-      if attributes.key?(:'producer_metadata')
-        self.producer_metadata = attributes[:'producer_metadata']
+      if attributes.key?(:'template_type')
+        self.template_type = attributes[:'template_type']
       end
 
-      if attributes.key?(:'producer_status')
-        self.producer_status = attributes[:'producer_status']
+      if attributes.key?(:'tweak')
+        if (value = attributes[:'tweak']).is_a?(Array)
+          self.tweak = value
+        end
       end
 
-      if attributes.key?(:'producer_type')
-        self.producer_type = attributes[:'producer_type']
+      if attributes.key?(:'tweak_type')
+        self.tweak_type = attributes[:'tweak_type']
       end
     end
 
@@ -122,12 +123,12 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          failure_message == o.failure_message &&
-          gw_cluster_id == o.gw_cluster_id &&
-          producer_last_keep_alive == o.producer_last_keep_alive &&
-          producer_metadata == o.producer_metadata &&
-          producer_status == o.producer_status &&
-          producer_type == o.producer_type
+          email_tokenizer_info == o.email_tokenizer_info &&
+          key_name == o.key_name &&
+          regexp_tokenizer_info == o.regexp_tokenizer_info &&
+          template_type == o.template_type &&
+          tweak == o.tweak &&
+          tweak_type == o.tweak_type
     end
 
     # @see the `==` method
@@ -139,7 +140,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [failure_message, gw_cluster_id, producer_last_keep_alive, producer_metadata, producer_status, producer_type].hash
+      [email_tokenizer_info, key_name, regexp_tokenizer_info, template_type, tweak, tweak_type].hash
     end
 
     # Builds the object from hash

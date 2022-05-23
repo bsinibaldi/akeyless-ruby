@@ -17,6 +17,8 @@ module Akeyless
   class Producer
     attr_accessor :active
 
+    attr_accessor :failure_message
+
     attr_accessor :id
 
     attr_accessor :init
@@ -29,6 +31,7 @@ module Akeyless
     def self.attribute_map
       {
         :'active' => :'active',
+        :'failure_message' => :'failure_message',
         :'id' => :'id',
         :'init' => :'init',
         :'name' => :'name',
@@ -45,6 +48,7 @@ module Akeyless
     def self.openapi_types
       {
         :'active' => :'Boolean',
+        :'failure_message' => :'String',
         :'id' => :'Integer',
         :'init' => :'Boolean',
         :'name' => :'String',
@@ -75,6 +79,10 @@ module Akeyless
 
       if attributes.key?(:'active')
         self.active = attributes[:'active']
+      end
+
+      if attributes.key?(:'failure_message')
+        self.failure_message = attributes[:'failure_message']
       end
 
       if attributes.key?(:'id')
@@ -113,6 +121,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           active == o.active &&
+          failure_message == o.failure_message &&
           id == o.id &&
           init == o.init &&
           name == o.name &&
@@ -128,7 +137,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [active, id, init, name, type].hash
+      [active, failure_message, id, init, name, type].hash
     end
 
     # Builds the object from hash

@@ -14,30 +14,31 @@ require 'date'
 require 'time'
 
 module Akeyless
-  # DynamicSecretProducerInfo The dynamic secret producer info This parameter relevant and required only in case of create update dynamic secret.
-  class DynamicSecretProducerInfo
-    attr_accessor :failure_message
+  # detokenize is a command that decrypts text with a tokenizer
+  class Detokenize
+    # Data to be decrypted
+    attr_accessor :ciphertext
 
-    attr_accessor :gw_cluster_id
+    # Authentication token (see `/auth` and `/configure`)
+    attr_accessor :token
 
-    attr_accessor :producer_last_keep_alive
+    # The name of the tokenizer to use in the decryption process
+    attr_accessor :tokenizer_name
 
-    attr_accessor :producer_metadata
+    # Base64 encoded tweak for vaultless encryption
+    attr_accessor :tweak
 
-    # RotationStatus defines types of rotation Status
-    attr_accessor :producer_status
-
-    attr_accessor :producer_type
+    # The universal identity token, Required only for universal_identity authentication
+    attr_accessor :uid_token
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'failure_message' => :'failure_message',
-        :'gw_cluster_id' => :'gw_cluster_id',
-        :'producer_last_keep_alive' => :'producer_last_keep_alive',
-        :'producer_metadata' => :'producer_metadata',
-        :'producer_status' => :'producer_status',
-        :'producer_type' => :'producer_type'
+        :'ciphertext' => :'ciphertext',
+        :'token' => :'token',
+        :'tokenizer_name' => :'tokenizer-name',
+        :'tweak' => :'tweak',
+        :'uid_token' => :'uid-token'
       }
     end
 
@@ -49,12 +50,11 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'failure_message' => :'String',
-        :'gw_cluster_id' => :'Integer',
-        :'producer_last_keep_alive' => :'String',
-        :'producer_metadata' => :'String',
-        :'producer_status' => :'String',
-        :'producer_type' => :'String'
+        :'ciphertext' => :'String',
+        :'token' => :'String',
+        :'tokenizer_name' => :'String',
+        :'tweak' => :'String',
+        :'uid_token' => :'String'
       }
     end
 
@@ -68,39 +68,35 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::DynamicSecretProducerInfo` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::Detokenize` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::DynamicSecretProducerInfo`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::Detokenize`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'failure_message')
-        self.failure_message = attributes[:'failure_message']
+      if attributes.key?(:'ciphertext')
+        self.ciphertext = attributes[:'ciphertext']
       end
 
-      if attributes.key?(:'gw_cluster_id')
-        self.gw_cluster_id = attributes[:'gw_cluster_id']
+      if attributes.key?(:'token')
+        self.token = attributes[:'token']
       end
 
-      if attributes.key?(:'producer_last_keep_alive')
-        self.producer_last_keep_alive = attributes[:'producer_last_keep_alive']
+      if attributes.key?(:'tokenizer_name')
+        self.tokenizer_name = attributes[:'tokenizer_name']
       end
 
-      if attributes.key?(:'producer_metadata')
-        self.producer_metadata = attributes[:'producer_metadata']
+      if attributes.key?(:'tweak')
+        self.tweak = attributes[:'tweak']
       end
 
-      if attributes.key?(:'producer_status')
-        self.producer_status = attributes[:'producer_status']
-      end
-
-      if attributes.key?(:'producer_type')
-        self.producer_type = attributes[:'producer_type']
+      if attributes.key?(:'uid_token')
+        self.uid_token = attributes[:'uid_token']
       end
     end
 
@@ -108,12 +104,22 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @ciphertext.nil?
+        invalid_properties.push('invalid value for "ciphertext", ciphertext cannot be nil.')
+      end
+
+      if @tokenizer_name.nil?
+        invalid_properties.push('invalid value for "tokenizer_name", tokenizer_name cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @ciphertext.nil?
+      return false if @tokenizer_name.nil?
       true
     end
 
@@ -122,12 +128,11 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          failure_message == o.failure_message &&
-          gw_cluster_id == o.gw_cluster_id &&
-          producer_last_keep_alive == o.producer_last_keep_alive &&
-          producer_metadata == o.producer_metadata &&
-          producer_status == o.producer_status &&
-          producer_type == o.producer_type
+          ciphertext == o.ciphertext &&
+          token == o.token &&
+          tokenizer_name == o.tokenizer_name &&
+          tweak == o.tweak &&
+          uid_token == o.uid_token
     end
 
     # @see the `==` method
@@ -139,7 +144,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [failure_message, gw_cluster_id, producer_last_keep_alive, producer_metadata, producer_status, producer_type].hash
+      [ciphertext, token, tokenizer_name, tweak, uid_token].hash
     end
 
     # Builds the object from hash

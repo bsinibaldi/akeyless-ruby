@@ -43,6 +43,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_secret**](V2Api.md#create_secret) | **POST** /create-secret |  |
 | [**create_ssh_cert_issuer**](V2Api.md#create_ssh_cert_issuer) | **POST** /create-ssh-cert-issuer |  |
 | [**create_ssh_target**](V2Api.md#create_ssh_target) | **POST** /create-ssh-target |  |
+| [**create_tokenizer**](V2Api.md#create_tokenizer) | **POST** /create-tokenizer |  |
 | [**create_web_target**](V2Api.md#create_web_target) | **POST** /create-web-target |  |
 | [**createldap_target**](V2Api.md#createldap_target) | **POST** /create-ldap-target |  |
 | [**decrypt**](V2Api.md#decrypt) | **POST** /decrypt |  |
@@ -61,6 +62,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**delete_targets**](V2Api.md#delete_targets) | **POST** /delete-targets |  |
 | [**describe_item**](V2Api.md#describe_item) | **POST** /describe-item |  |
 | [**describe_permissions**](V2Api.md#describe_permissions) | **POST** /describe-permissions |  |
+| [**detokenize**](V2Api.md#detokenize) | **POST** /detokenize |  |
 | [**encrypt**](V2Api.md#encrypt) | **POST** /encrypt |  |
 | [**encrypt_pkcs1**](V2Api.md#encrypt_pkcs1) | **POST** /encrypt-pkcs1 |  |
 | [**encrypt_with_classic_key**](V2Api.md#encrypt_with_classic_key) | **POST** /encrypt-with-classic-key |  |
@@ -170,12 +172,14 @@ All URIs are relative to *https://api.akeyless.io*
 | [**revoke_creds**](V2Api.md#revoke_creds) | **POST** /revoke-creds |  |
 | [**rollback_secret**](V2Api.md#rollback_secret) | **POST** /rollback-secret |  |
 | [**rotate_key**](V2Api.md#rotate_key) | **POST** /rotate-key |  |
+| [**rotate_secret**](V2Api.md#rotate_secret) | **POST** /gateway-rotate-secret |  |
 | [**set_item_state**](V2Api.md#set_item_state) | **POST** /set-item-state |  |
 | [**set_role_rule**](V2Api.md#set_role_rule) | **POST** /set-role-rule |  |
 | [**sign_jwt_with_classic_key**](V2Api.md#sign_jwt_with_classic_key) | **POST** /sign-jwt-with-classic-key |  |
 | [**sign_pkcs1**](V2Api.md#sign_pkcs1) | **POST** /sign-pkcs1 |  |
 | [**sign_pki_cert_with_classic_key**](V2Api.md#sign_pki_cert_with_classic_key) | **POST** /sign-pki-cert-with-classic-key |  |
 | [**static_creds_auth**](V2Api.md#static_creds_auth) | **POST** /static-creds-auth |  |
+| [**tokenize**](V2Api.md#tokenize) | **POST** /tokenize |  |
 | [**uid_create_child_token**](V2Api.md#uid_create_child_token) | **POST** /uid-create-child-token |  |
 | [**uid_generate_token**](V2Api.md#uid_generate_token) | **POST** /uid-generate-token |  |
 | [**uid_list_children**](V2Api.md#uid_list_children) | **POST** /uid-list-children |  |
@@ -221,6 +225,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_ssh_target_details**](V2Api.md#update_ssh_target_details) | **POST** /update-ssh-target-details |  |
 | [**update_target**](V2Api.md#update_target) | **POST** /update-target |  |
 | [**update_target_details**](V2Api.md#update_target_details) | **POST** /update-target-details |  |
+| [**update_tokenizer**](V2Api.md#update_tokenizer) | **POST** /update-tokenizer |  |
 | [**update_web_target**](V2Api.md#update_web_target) | **POST** /update-web-target |  |
 | [**update_web_target_details**](V2Api.md#update_web_target_details) | **POST** /update-web-target-details |  |
 | [**upload_rsa**](V2Api.md#upload_rsa) | **POST** /upload-rsa |  |
@@ -2648,6 +2653,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## create_tokenizer
+
+> <CreateTokenizerOutput> create_tokenizer(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateTokenizer.new({name: 'name_example', template_type: 'template_type_example', tokenizer_type: 'tokenizer_type_example'}) # CreateTokenizer | 
+
+begin
+  
+  result = api_instance.create_tokenizer(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_tokenizer: #{e}"
+end
+```
+
+#### Using the create_tokenizer_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateTokenizerOutput>, Integer, Hash)> create_tokenizer_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_tokenizer_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateTokenizerOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_tokenizer_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateTokenizer**](CreateTokenizer.md) |  |  |
+
+### Return type
+
+[**CreateTokenizerOutput**](CreateTokenizerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_web_target
 
 > <CreateWebTargetOutput> create_web_target(body)
@@ -3753,6 +3820,68 @@ end
 ### Return type
 
 [**DescribePermissionsOutput**](DescribePermissionsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## detokenize
+
+> <DetokenizeOutput> detokenize(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::Detokenize.new({ciphertext: 'ciphertext_example', tokenizer_name: 'tokenizer_name_example'}) # Detokenize | 
+
+begin
+  
+  result = api_instance.detokenize(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->detokenize: #{e}"
+end
+```
+
+#### Using the detokenize_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DetokenizeOutput>, Integer, Hash)> detokenize_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.detokenize_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DetokenizeOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->detokenize_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**Detokenize**](Detokenize.md) |  |  |
+
+### Return type
+
+[**DetokenizeOutput**](DetokenizeOutput.md)
 
 ### Authorization
 
@@ -10546,6 +10675,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## rotate_secret
+
+> <RotatedSecretOutput> rotate_secret(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::RotateSecret.new({name: 'name_example'}) # RotateSecret | 
+
+begin
+  
+  result = api_instance.rotate_secret(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->rotate_secret: #{e}"
+end
+```
+
+#### Using the rotate_secret_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RotatedSecretOutput>, Integer, Hash)> rotate_secret_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.rotate_secret_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RotatedSecretOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->rotate_secret_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**RotateSecret**](RotateSecret.md) |  |  |
+
+### Return type
+
+[**RotatedSecretOutput**](RotatedSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## set_item_state
 
 > Object set_item_state(body)
@@ -10907,6 +11098,68 @@ end
 ### Return type
 
 [**StaticCredsAuthOutput**](StaticCredsAuthOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## tokenize
+
+> <TokenizeOutput> tokenize(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::Tokenize.new({plaintext: 'plaintext_example', tokenizer_name: 'tokenizer_name_example'}) # Tokenize | 
+
+begin
+  
+  result = api_instance.tokenize(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->tokenize: #{e}"
+end
+```
+
+#### Using the tokenize_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TokenizeOutput>, Integer, Hash)> tokenize_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.tokenize_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TokenizeOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->tokenize_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**Tokenize**](Tokenize.md) |  |  |
+
+### Return type
+
+[**TokenizeOutput**](TokenizeOutput.md)
 
 ### Authorization
 
@@ -13694,6 +13947,68 @@ end
 ### Return type
 
 [**UpdateTargetOutput**](UpdateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_tokenizer
+
+> <UpdateTokenizerOutput> update_tokenizer(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateTokenizer.new({name: 'name_example', template_type: 'template_type_example', tokenizer_type: 'tokenizer_type_example'}) # UpdateTokenizer | 
+
+begin
+  
+  result = api_instance.update_tokenizer(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_tokenizer: #{e}"
+end
+```
+
+#### Using the update_tokenizer_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpdateTokenizerOutput>, Integer, Hash)> update_tokenizer_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_tokenizer_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpdateTokenizerOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_tokenizer_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateTokenizer**](UpdateTokenizer.md) |  |  |
+
+### Return type
+
+[**UpdateTokenizerOutput**](UpdateTokenizerOutput.md)
 
 ### Authorization
 

@@ -14,7 +14,6 @@
 | **logz_io_config** | [**LogzIoLogForwardingConfig**](LogzIoLogForwardingConfig.md) |  | [optional] |
 | **pull_interval_sec** | **String** |  | [optional] |
 | **splunk_config** | [**SplunkLogForwardingConfig**](SplunkLogForwardingConfig.md) |  | [optional] |
-| **std_out** | **Boolean** |  | [optional] |
 | **syslog_config** | [**SyslogLogForwardingConfig**](SyslogLogForwardingConfig.md) |  | [optional] |
 | **target_log_type** | **String** |  | [optional] |
 
@@ -34,7 +33,6 @@ instance = Akeyless::LogForwardingConfigPart.new(
   logz_io_config: null,
   pull_interval_sec: null,
   splunk_config: null,
-  std_out: null,
   syslog_config: null,
   target_log_type: null
 )

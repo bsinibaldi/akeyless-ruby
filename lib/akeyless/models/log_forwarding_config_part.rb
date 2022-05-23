@@ -35,8 +35,6 @@ module Akeyless
 
     attr_accessor :splunk_config
 
-    attr_accessor :std_out
-
     attr_accessor :syslog_config
 
     attr_accessor :target_log_type
@@ -54,7 +52,6 @@ module Akeyless
         :'logz_io_config' => :'logz_io_config',
         :'pull_interval_sec' => :'pull_interval_sec',
         :'splunk_config' => :'splunk_config',
-        :'std_out' => :'std_out',
         :'syslog_config' => :'syslog_config',
         :'target_log_type' => :'target_log_type'
       }
@@ -78,7 +75,6 @@ module Akeyless
         :'logz_io_config' => :'LogzIoLogForwardingConfig',
         :'pull_interval_sec' => :'String',
         :'splunk_config' => :'SplunkLogForwardingConfig',
-        :'std_out' => :'Boolean',
         :'syslog_config' => :'SyslogLogForwardingConfig',
         :'target_log_type' => :'String'
       }
@@ -145,10 +141,6 @@ module Akeyless
         self.splunk_config = attributes[:'splunk_config']
       end
 
-      if attributes.key?(:'std_out')
-        self.std_out = attributes[:'std_out']
-      end
-
       if attributes.key?(:'syslog_config')
         self.syslog_config = attributes[:'syslog_config']
       end
@@ -186,7 +178,6 @@ module Akeyless
           logz_io_config == o.logz_io_config &&
           pull_interval_sec == o.pull_interval_sec &&
           splunk_config == o.splunk_config &&
-          std_out == o.std_out &&
           syslog_config == o.syslog_config &&
           target_log_type == o.target_log_type
     end
@@ -200,7 +191,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [aws_s3_config, azure_analytics_config, datadog_config, elasticsearch_config, logan_enable, logan_url, logstash_config, logz_io_config, pull_interval_sec, splunk_config, std_out, syslog_config, target_log_type].hash
+      [aws_s3_config, azure_analytics_config, datadog_config, elasticsearch_config, logan_enable, logan_url, logstash_config, logz_io_config, pull_interval_sec, splunk_config, syslog_config, target_log_type].hash
     end
 
     # Builds the object from hash

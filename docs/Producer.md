@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **active** | **Boolean** |  | [optional] |
+| **failure_message** | **String** |  | [optional] |
 | **id** | **Integer** |  | [optional] |
 | **init** | **Boolean** |  | [optional] |
 | **name** | **String** |  | [optional] |
@@ -17,6 +18,7 @@ require 'akeyless'
 
 instance = Akeyless::Producer.new(
   active: null,
+  failure_message: null,
   id: null,
   init: null,
   name: null,

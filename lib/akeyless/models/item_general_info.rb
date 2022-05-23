@@ -19,6 +19,8 @@ module Akeyless
 
     attr_accessor :classic_key_details
 
+    attr_accessor :display_metadata
+
     attr_accessor :dynamic_secret_producer_details
 
     attr_accessor :password_policy
@@ -29,16 +31,20 @@ module Akeyless
 
     attr_accessor :static_secret_info
 
+    attr_accessor :tokenizer_info
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'cert_issue_details' => :'cert_issue_details',
         :'classic_key_details' => :'classic_key_details',
+        :'display_metadata' => :'display_metadata',
         :'dynamic_secret_producer_details' => :'dynamic_secret_producer_details',
         :'password_policy' => :'password_policy',
         :'rotated_secret_details' => :'rotated_secret_details',
         :'secure_remote_access_details' => :'secure_remote_access_details',
-        :'static_secret_info' => :'static_secret_info'
+        :'static_secret_info' => :'static_secret_info',
+        :'tokenizer_info' => :'tokenizer_info'
       }
     end
 
@@ -52,11 +58,13 @@ module Akeyless
       {
         :'cert_issue_details' => :'CertificateIssueInfo',
         :'classic_key_details' => :'ClassicKeyDetailsInfo',
+        :'display_metadata' => :'String',
         :'dynamic_secret_producer_details' => :'DynamicSecretProducerInfo',
         :'password_policy' => :'PasswordPolicyInfo',
         :'rotated_secret_details' => :'RotatedSecretDetailsInfo',
         :'secure_remote_access_details' => :'SecureRemoteAccess',
-        :'static_secret_info' => :'StaticSecretDetailsInfo'
+        :'static_secret_info' => :'StaticSecretDetailsInfo',
+        :'tokenizer_info' => :'TokenizerInfo'
       }
     end
 
@@ -89,6 +97,10 @@ module Akeyless
         self.classic_key_details = attributes[:'classic_key_details']
       end
 
+      if attributes.key?(:'display_metadata')
+        self.display_metadata = attributes[:'display_metadata']
+      end
+
       if attributes.key?(:'dynamic_secret_producer_details')
         self.dynamic_secret_producer_details = attributes[:'dynamic_secret_producer_details']
       end
@@ -107,6 +119,10 @@ module Akeyless
 
       if attributes.key?(:'static_secret_info')
         self.static_secret_info = attributes[:'static_secret_info']
+      end
+
+      if attributes.key?(:'tokenizer_info')
+        self.tokenizer_info = attributes[:'tokenizer_info']
       end
     end
 
@@ -130,11 +146,13 @@ module Akeyless
       self.class == o.class &&
           cert_issue_details == o.cert_issue_details &&
           classic_key_details == o.classic_key_details &&
+          display_metadata == o.display_metadata &&
           dynamic_secret_producer_details == o.dynamic_secret_producer_details &&
           password_policy == o.password_policy &&
           rotated_secret_details == o.rotated_secret_details &&
           secure_remote_access_details == o.secure_remote_access_details &&
-          static_secret_info == o.static_secret_info
+          static_secret_info == o.static_secret_info &&
+          tokenizer_info == o.tokenizer_info
     end
 
     # @see the `==` method
@@ -146,7 +164,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cert_issue_details, classic_key_details, dynamic_secret_producer_details, password_policy, rotated_secret_details, secure_remote_access_details, static_secret_info].hash
+      [cert_issue_details, classic_key_details, display_metadata, dynamic_secret_producer_details, password_policy, rotated_secret_details, secure_remote_access_details, static_secret_info, tokenizer_info].hash
     end
 
     # Builds the object from hash

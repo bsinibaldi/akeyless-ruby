@@ -24,6 +24,9 @@ module Akeyless
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
+    # The target types list . In case it is empty, all types of targets will be returned. options: [hanadb cassandra aws ssh gke eks mysql mongodb snowflake mssql redshift artifactory azure rabbitmq k8s venafi gcp oracle dockerhub ldap github chef web salesforce postgres]
+    attr_accessor :type
+
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
 
@@ -33,6 +36,7 @@ module Akeyless
         :'filter' => :'filter',
         :'pagination_token' => :'pagination-token',
         :'token' => :'token',
+        :'type' => :'type',
         :'uid_token' => :'uid-token'
       }
     end
@@ -48,6 +52,7 @@ module Akeyless
         :'filter' => :'String',
         :'pagination_token' => :'String',
         :'token' => :'String',
+        :'type' => :'Array<String>',
         :'uid_token' => :'String'
       }
     end
@@ -85,6 +90,12 @@ module Akeyless
         self.token = attributes[:'token']
       end
 
+      if attributes.key?(:'type')
+        if (value = attributes[:'type']).is_a?(Array)
+          self.type = value
+        end
+      end
+
       if attributes.key?(:'uid_token')
         self.uid_token = attributes[:'uid_token']
       end
@@ -111,6 +122,7 @@ module Akeyless
           filter == o.filter &&
           pagination_token == o.pagination_token &&
           token == o.token &&
+          type == o.type &&
           uid_token == o.uid_token
     end
 
@@ -123,7 +135,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [filter, pagination_token, token, uid_token].hash
+      [filter, pagination_token, token, type, uid_token].hash
     end
 
     # Builds the object from hash

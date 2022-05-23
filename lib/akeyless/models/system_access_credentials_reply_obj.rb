@@ -24,6 +24,9 @@ module Akeyless
     # Temporary credentials for accessing the KFMs instances
     attr_accessor :kfm_creds
 
+    # Credentials tmp token
+    attr_accessor :token
+
     # Temporary credentials for accessing the UAM service
     attr_accessor :uam_creds
 
@@ -33,6 +36,7 @@ module Akeyless
         :'auth_creds' => :'auth_creds',
         :'expiry' => :'expiry',
         :'kfm_creds' => :'kfm_creds',
+        :'token' => :'token',
         :'uam_creds' => :'uam_creds'
       }
     end
@@ -48,6 +52,7 @@ module Akeyless
         :'auth_creds' => :'String',
         :'expiry' => :'Integer',
         :'kfm_creds' => :'String',
+        :'token' => :'String',
         :'uam_creds' => :'String'
       }
     end
@@ -85,6 +90,10 @@ module Akeyless
         self.kfm_creds = attributes[:'kfm_creds']
       end
 
+      if attributes.key?(:'token')
+        self.token = attributes[:'token']
+      end
+
       if attributes.key?(:'uam_creds')
         self.uam_creds = attributes[:'uam_creds']
       end
@@ -111,6 +120,7 @@ module Akeyless
           auth_creds == o.auth_creds &&
           expiry == o.expiry &&
           kfm_creds == o.kfm_creds &&
+          token == o.token &&
           uam_creds == o.uam_creds
     end
 
@@ -123,7 +133,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auth_creds, expiry, kfm_creds, uam_creds].hash
+      [auth_creds, expiry, kfm_creds, token, uam_creds].hash
     end
 
     # Builds the object from hash
