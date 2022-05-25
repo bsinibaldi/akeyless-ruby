@@ -16,6 +16,7 @@
 | **rabbitmq_user_write_permission** | **String** | User write permission | [optional] |
 | **secure_access_enable** | **String** |  | [optional] |
 | **secure_access_url** | **String** |  | [optional] |
+| **secure_access_web** | **Boolean** | Secure Access Web Category | [optional][default to true] |
 | **secure_access_web_browsing** | **Boolean** |  | [optional] |
 | **secure_access_web_proxy** | **Boolean** |  | [optional] |
 | **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
@@ -42,6 +43,7 @@ instance = Akeyless::GatewayCreateProducerRabbitMQ.new(
   rabbitmq_user_write_permission: null,
   secure_access_enable: null,
   secure_access_url: null,
+  secure_access_web: null,
   secure_access_web_browsing: null,
   secure_access_web_proxy: null,
   tags: null,

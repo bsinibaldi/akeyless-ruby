@@ -14,30 +14,13 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class DeleteRoleRule
-    # The path the rule refers to
-    attr_accessor :path
-
-    # The role name to be updated
-    attr_accessor :role_name
-
-    # item-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule or sra-reports-rule
-    attr_accessor :rule_type
-
-    # Authentication token (see `/auth` and `/configure`)
-    attr_accessor :token
-
-    # The universal identity token, Required only for universal_identity authentication
-    attr_accessor :uid_token
+  class UpdateLdapTargetOutput
+    attr_accessor :target_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'path' => :'path',
-        :'role_name' => :'role-name',
-        :'rule_type' => :'rule-type',
-        :'token' => :'token',
-        :'uid_token' => :'uid-token'
+        :'target_id' => :'target_id'
       }
     end
 
@@ -49,11 +32,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'path' => :'String',
-        :'role_name' => :'String',
-        :'rule_type' => :'String',
-        :'token' => :'String',
-        :'uid_token' => :'String'
+        :'target_id' => :'Integer'
       }
     end
 
@@ -67,37 +46,19 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::DeleteRoleRule` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::UpdateLdapTargetOutput` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::DeleteRoleRule`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::UpdateLdapTargetOutput`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'path')
-        self.path = attributes[:'path']
-      end
-
-      if attributes.key?(:'role_name')
-        self.role_name = attributes[:'role_name']
-      end
-
-      if attributes.key?(:'rule_type')
-        self.rule_type = attributes[:'rule_type']
-      else
-        self.rule_type = 'item-rule'
-      end
-
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
-      end
-
-      if attributes.key?(:'uid_token')
-        self.uid_token = attributes[:'uid_token']
+      if attributes.key?(:'target_id')
+        self.target_id = attributes[:'target_id']
       end
     end
 
@@ -105,22 +66,12 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @path.nil?
-        invalid_properties.push('invalid value for "path", path cannot be nil.')
-      end
-
-      if @role_name.nil?
-        invalid_properties.push('invalid value for "role_name", role_name cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @path.nil?
-      return false if @role_name.nil?
       true
     end
 
@@ -129,11 +80,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          path == o.path &&
-          role_name == o.role_name &&
-          rule_type == o.rule_type &&
-          token == o.token &&
-          uid_token == o.uid_token
+          target_id == o.target_id
     end
 
     # @see the `==` method
@@ -145,7 +92,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [path, role_name, rule_type, token, uid_token].hash
+      [target_id].hash
     end
 
     # Builds the object from hash

@@ -109,6 +109,9 @@ module Akeyless
     # Deprecated: use RotatedUser
     attr_accessor :ssh_username
 
+    # The name of the storage account key to rotate [key1/key2/kerb1/kerb2]
+    attr_accessor :storage_account_key_name
+
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
@@ -152,6 +155,7 @@ module Akeyless
         :'secure_access_web_proxy' => :'secure-access-web-proxy',
         :'ssh_password' => :'ssh-password',
         :'ssh_username' => :'ssh-username',
+        :'storage_account_key_name' => :'storage-account-key-name',
         :'token' => :'token',
         :'uid_token' => :'uid-token'
       }
@@ -199,6 +203,7 @@ module Akeyless
         :'secure_access_web_proxy' => :'Boolean',
         :'ssh_password' => :'String',
         :'ssh_username' => :'String',
+        :'storage_account_key_name' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String'
       }
@@ -379,6 +384,10 @@ module Akeyless
         self.ssh_username = attributes[:'ssh_username']
       end
 
+      if attributes.key?(:'storage_account_key_name')
+        self.storage_account_key_name = attributes[:'storage_account_key_name']
+      end
+
       if attributes.key?(:'token')
         self.token = attributes[:'token']
       end
@@ -445,6 +454,7 @@ module Akeyless
           secure_access_web_proxy == o.secure_access_web_proxy &&
           ssh_password == o.ssh_password &&
           ssh_username == o.ssh_username &&
+          storage_account_key_name == o.storage_account_key_name &&
           token == o.token &&
           uid_token == o.uid_token
     end
@@ -458,7 +468,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_tag, api_id, api_key, auto_rotate, aws_region, custom_payload, keep_prev_version, key, name, new_metadata, new_name, new_version, rm_tag, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, rotator_custom_cmd, secure_access_allow_external_user, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, ssh_password, ssh_username, token, uid_token].hash
+      [add_tag, api_id, api_key, auto_rotate, aws_region, custom_payload, keep_prev_version, key, name, new_metadata, new_name, new_version, rm_tag, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, rotator_custom_cmd, secure_access_allow_external_user, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, ssh_password, ssh_username, storage_account_key_name, token, uid_token].hash
     end
 
     # Builds the object from hash

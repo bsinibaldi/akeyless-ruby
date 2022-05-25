@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **filter** | **String** | Filter by item name or part of it | [optional] |
+| **minimal_view** | **Boolean** |  | [optional] |
 | **pagination_token** | **String** | Next page reference | [optional] |
 | **path** | **String** | Path to folder | [optional] |
 | **tag** | **String** | Filter by item tag | [optional] |
@@ -19,6 +20,7 @@ require 'akeyless'
 
 instance = Akeyless::ListItems.new(
   filter: null,
+  minimal_view: null,
   pagination_token: null,
   path: null,
   tag: null,

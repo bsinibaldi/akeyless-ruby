@@ -18,6 +18,8 @@ module Akeyless
     # Filter by item name or part of it
     attr_accessor :filter
 
+    attr_accessor :minimal_view
+
     # Next page reference
     attr_accessor :pagination_token
 
@@ -40,6 +42,7 @@ module Akeyless
     def self.attribute_map
       {
         :'filter' => :'filter',
+        :'minimal_view' => :'minimal-view',
         :'pagination_token' => :'pagination-token',
         :'path' => :'path',
         :'tag' => :'tag',
@@ -58,6 +61,7 @@ module Akeyless
     def self.openapi_types
       {
         :'filter' => :'String',
+        :'minimal_view' => :'Boolean',
         :'pagination_token' => :'String',
         :'path' => :'String',
         :'tag' => :'String',
@@ -90,6 +94,10 @@ module Akeyless
 
       if attributes.key?(:'filter')
         self.filter = attributes[:'filter']
+      end
+
+      if attributes.key?(:'minimal_view')
+        self.minimal_view = attributes[:'minimal_view']
       end
 
       if attributes.key?(:'pagination_token')
@@ -138,6 +146,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           filter == o.filter &&
+          minimal_view == o.minimal_view &&
           pagination_token == o.pagination_token &&
           path == o.path &&
           tag == o.tag &&
@@ -155,7 +164,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [filter, pagination_token, path, tag, token, type, uid_token].hash
+      [filter, minimal_view, pagination_token, path, tag, token, type, uid_token].hash
     end
 
     # Builds the object from hash

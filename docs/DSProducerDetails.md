@@ -28,6 +28,9 @@
 | **azure_client_secret** | **String** |  | [optional] |
 | **azure_fixed_user_name_sub_claim_key** | **String** |  | [optional] |
 | **azure_fixed_user_only** | **Boolean** |  | [optional] |
+| **azure_resource_group_name** | **String** |  | [optional] |
+| **azure_resource_name** | **String** |  | [optional] |
+| **azure_subscription_id** | **String** |  | [optional] |
 | **azure_tenant_id** | **String** |  | [optional] |
 | **azure_user_groups_obj_id** | **String** |  | [optional] |
 | **azure_user_portal_access** | **Boolean** |  | [optional] |
@@ -204,6 +207,9 @@ instance = Akeyless::DSProducerDetails.new(
   azure_client_secret: null,
   azure_fixed_user_name_sub_claim_key: null,
   azure_fixed_user_only: null,
+  azure_resource_group_name: null,
+  azure_resource_name: null,
+  azure_subscription_id: null,
   azure_tenant_id: null,
   azure_user_groups_obj_id: null,
   azure_user_portal_access: null,

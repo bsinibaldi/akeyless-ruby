@@ -13,6 +13,9 @@
 | **aws_session_token** | **String** |  | [optional] |
 | **azure_client_id** | **String** |  | [optional] |
 | **azure_client_secret** | **String** |  | [optional] |
+| **azure_resource_group_name** | **String** |  | [optional] |
+| **azure_resource_name** | **String** |  | [optional] |
+| **azure_subscription_id** | **String** |  | [optional] |
 | **azure_tenant_id** | **String** |  | [optional] |
 | **ca_cert_data** | **Array&lt;Integer&gt;** | CACertData is the rsa 4096 certificate data in PEM format | [optional] |
 | **ca_cert_name** | **String** | CACertName is the name of the certificate in SalesForce tenant | [optional] |
@@ -107,6 +110,9 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   aws_session_token: null,
   azure_client_id: null,
   azure_client_secret: null,
+  azure_resource_group_name: null,
+  azure_resource_name: null,
+  azure_subscription_id: null,
   azure_tenant_id: null,
   ca_cert_data: null,
   ca_cert_name: null,

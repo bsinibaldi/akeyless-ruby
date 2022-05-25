@@ -53,6 +53,9 @@ module Akeyless
 
     attr_accessor :secure_access_url
 
+    # Secure Access Web Category
+    attr_accessor :secure_access_web
+
     attr_accessor :secure_access_web_browsing
 
     attr_accessor :secure_access_web_proxy
@@ -88,6 +91,7 @@ module Akeyless
         :'rabbitmq_user_write_permission' => :'rabbitmq-user-write-permission',
         :'secure_access_enable' => :'secure-access-enable',
         :'secure_access_url' => :'secure-access-url',
+        :'secure_access_web' => :'secure-access-web',
         :'secure_access_web_browsing' => :'secure-access-web-browsing',
         :'secure_access_web_proxy' => :'secure-access-web-proxy',
         :'tags' => :'tags',
@@ -119,6 +123,7 @@ module Akeyless
         :'rabbitmq_user_write_permission' => :'String',
         :'secure_access_enable' => :'String',
         :'secure_access_url' => :'String',
+        :'secure_access_web' => :'Boolean',
         :'secure_access_web_browsing' => :'Boolean',
         :'secure_access_web_proxy' => :'Boolean',
         :'tags' => :'Array<String>',
@@ -202,6 +207,12 @@ module Akeyless
         self.secure_access_url = attributes[:'secure_access_url']
       end
 
+      if attributes.key?(:'secure_access_web')
+        self.secure_access_web = attributes[:'secure_access_web']
+      else
+        self.secure_access_web = true
+      end
+
       if attributes.key?(:'secure_access_web_browsing')
         self.secure_access_web_browsing = attributes[:'secure_access_web_browsing']
       end
@@ -271,6 +282,7 @@ module Akeyless
           rabbitmq_user_write_permission == o.rabbitmq_user_write_permission &&
           secure_access_enable == o.secure_access_enable &&
           secure_access_url == o.secure_access_url &&
+          secure_access_web == o.secure_access_web &&
           secure_access_web_browsing == o.secure_access_web_browsing &&
           secure_access_web_proxy == o.secure_access_web_proxy &&
           tags == o.tags &&
@@ -289,7 +301,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, new_name, producer_encryption_key_name, rabbitmq_admin_pwd, rabbitmq_admin_user, rabbitmq_server_uri, rabbitmq_user_conf_permission, rabbitmq_user_read_permission, rabbitmq_user_tags, rabbitmq_user_vhost, rabbitmq_user_write_permission, secure_access_enable, secure_access_url, secure_access_web_browsing, secure_access_web_proxy, tags, target_name, token, uid_token, user_ttl].hash
+      [name, new_name, producer_encryption_key_name, rabbitmq_admin_pwd, rabbitmq_admin_user, rabbitmq_server_uri, rabbitmq_user_conf_permission, rabbitmq_user_read_permission, rabbitmq_user_tags, rabbitmq_user_vhost, rabbitmq_user_write_permission, secure_access_enable, secure_access_url, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

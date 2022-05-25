@@ -14,6 +14,7 @@
 | **redshift_username** | **String** | Redshift Username | [optional] |
 | **secure_access_enable** | **String** |  | [optional] |
 | **secure_access_host** | **Array&lt;String&gt;** |  | [optional] |
+| **ssl** | **Boolean** | SSL connection mode | [optional] |
 | **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
 | **target_name** | **String** | Target name | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
@@ -36,6 +37,7 @@ instance = Akeyless::GatewayCreateProducerRedshift.new(
   redshift_username: null,
   secure_access_enable: null,
   secure_access_host: null,
+  ssl: null,
   tags: null,
   target_name: null,
   token: null,

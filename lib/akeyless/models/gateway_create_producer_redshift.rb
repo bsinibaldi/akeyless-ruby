@@ -44,6 +44,9 @@ module Akeyless
 
     attr_accessor :secure_access_host
 
+    # SSL connection mode
+    attr_accessor :ssl
+
     # List of the tags attached to this secret
     attr_accessor :tags
 
@@ -72,6 +75,7 @@ module Akeyless
         :'redshift_username' => :'redshift-username',
         :'secure_access_enable' => :'secure-access-enable',
         :'secure_access_host' => :'secure-access-host',
+        :'ssl' => :'ssl',
         :'tags' => :'tags',
         :'target_name' => :'target-name',
         :'token' => :'token',
@@ -98,6 +102,7 @@ module Akeyless
         :'redshift_username' => :'String',
         :'secure_access_enable' => :'String',
         :'secure_access_host' => :'Array<String>',
+        :'ssl' => :'Boolean',
         :'tags' => :'Array<String>',
         :'target_name' => :'String',
         :'token' => :'String',
@@ -173,6 +178,10 @@ module Akeyless
         end
       end
 
+      if attributes.key?(:'ssl')
+        self.ssl = attributes[:'ssl']
+      end
+
       if attributes.key?(:'tags')
         if (value = attributes[:'tags']).is_a?(Array)
           self.tags = value
@@ -231,6 +240,7 @@ module Akeyless
           redshift_username == o.redshift_username &&
           secure_access_enable == o.secure_access_enable &&
           secure_access_host == o.secure_access_host &&
+          ssl == o.ssl &&
           tags == o.tags &&
           target_name == o.target_name &&
           token == o.token &&
@@ -247,7 +257,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [creation_statements, name, producer_encryption_key, redshift_db_name, redshift_host, redshift_password, redshift_port, redshift_username, secure_access_enable, secure_access_host, tags, target_name, token, uid_token, user_ttl].hash
+      [creation_statements, name, producer_encryption_key, redshift_db_name, redshift_host, redshift_password, redshift_port, redshift_username, secure_access_enable, secure_access_host, ssl, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

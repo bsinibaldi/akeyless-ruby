@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **attributes** | **Hash&lt;String, Object&gt;** | this is not \&quot;omitempty\&quot; since an empty value causes no update while an empty map will clear the attributes | [optional] |
 | **client_permissions** | **Array&lt;String&gt;** |  | [optional] |
 | **comment** | **String** |  | [optional] |
 | **last_version** | **Integer** |  | [optional] |
@@ -21,6 +22,7 @@
 require 'akeyless'
 
 instance = Akeyless::Target.new(
+  attributes: null,
   client_permissions: null,
   comment: null,
   last_version: null,

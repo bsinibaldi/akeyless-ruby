@@ -14,18 +14,32 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class DeleteRoleRule
-    # The path the rule refers to
-    attr_accessor :path
+  class UpdateLdapTargetDetails
+    attr_accessor :bind_dn
 
-    # The role name to be updated
-    attr_accessor :role_name
+    attr_accessor :bind_dn_password
 
-    # item-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule or sra-reports-rule
-    attr_accessor :rule_type
+    attr_accessor :keep_prev_version
+
+    attr_accessor :key
+
+    attr_accessor :ldap_ca_cert
+
+    attr_accessor :ldap_url
+
+    # Target name
+    attr_accessor :name
+
+    # Deprecated
+    attr_accessor :new_version
+
+    # The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
+    attr_accessor :protection_key
 
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
+
+    attr_accessor :token_expiration
 
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
@@ -33,10 +47,17 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'path' => :'path',
-        :'role_name' => :'role-name',
-        :'rule_type' => :'rule-type',
+        :'bind_dn' => :'bind-dn',
+        :'bind_dn_password' => :'bind-dn-password',
+        :'keep_prev_version' => :'keep-prev-version',
+        :'key' => :'key',
+        :'ldap_ca_cert' => :'ldap-ca-cert',
+        :'ldap_url' => :'ldap-url',
+        :'name' => :'name',
+        :'new_version' => :'new-version',
+        :'protection_key' => :'protection_key',
         :'token' => :'token',
+        :'token_expiration' => :'token-expiration',
         :'uid_token' => :'uid-token'
       }
     end
@@ -49,10 +70,17 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'path' => :'String',
-        :'role_name' => :'String',
-        :'rule_type' => :'String',
+        :'bind_dn' => :'String',
+        :'bind_dn_password' => :'String',
+        :'keep_prev_version' => :'String',
+        :'key' => :'String',
+        :'ldap_ca_cert' => :'String',
+        :'ldap_url' => :'String',
+        :'name' => :'String',
+        :'new_version' => :'Boolean',
+        :'protection_key' => :'String',
         :'token' => :'String',
+        :'token_expiration' => :'String',
         :'uid_token' => :'String'
       }
     end
@@ -67,33 +95,59 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::DeleteRoleRule` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::UpdateLdapTargetDetails` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::DeleteRoleRule`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::UpdateLdapTargetDetails`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'path')
-        self.path = attributes[:'path']
+      if attributes.key?(:'bind_dn')
+        self.bind_dn = attributes[:'bind_dn']
       end
 
-      if attributes.key?(:'role_name')
-        self.role_name = attributes[:'role_name']
+      if attributes.key?(:'bind_dn_password')
+        self.bind_dn_password = attributes[:'bind_dn_password']
       end
 
-      if attributes.key?(:'rule_type')
-        self.rule_type = attributes[:'rule_type']
-      else
-        self.rule_type = 'item-rule'
+      if attributes.key?(:'keep_prev_version')
+        self.keep_prev_version = attributes[:'keep_prev_version']
+      end
+
+      if attributes.key?(:'key')
+        self.key = attributes[:'key']
+      end
+
+      if attributes.key?(:'ldap_ca_cert')
+        self.ldap_ca_cert = attributes[:'ldap_ca_cert']
+      end
+
+      if attributes.key?(:'ldap_url')
+        self.ldap_url = attributes[:'ldap_url']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'new_version')
+        self.new_version = attributes[:'new_version']
+      end
+
+      if attributes.key?(:'protection_key')
+        self.protection_key = attributes[:'protection_key']
       end
 
       if attributes.key?(:'token')
         self.token = attributes[:'token']
+      end
+
+      if attributes.key?(:'token_expiration')
+        self.token_expiration = attributes[:'token_expiration']
       end
 
       if attributes.key?(:'uid_token')
@@ -105,12 +159,8 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @path.nil?
-        invalid_properties.push('invalid value for "path", path cannot be nil.')
-      end
-
-      if @role_name.nil?
-        invalid_properties.push('invalid value for "role_name", role_name cannot be nil.')
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
       invalid_properties
@@ -119,8 +169,7 @@ module Akeyless
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @path.nil?
-      return false if @role_name.nil?
+      return false if @name.nil?
       true
     end
 
@@ -129,10 +178,17 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          path == o.path &&
-          role_name == o.role_name &&
-          rule_type == o.rule_type &&
+          bind_dn == o.bind_dn &&
+          bind_dn_password == o.bind_dn_password &&
+          keep_prev_version == o.keep_prev_version &&
+          key == o.key &&
+          ldap_ca_cert == o.ldap_ca_cert &&
+          ldap_url == o.ldap_url &&
+          name == o.name &&
+          new_version == o.new_version &&
+          protection_key == o.protection_key &&
           token == o.token &&
+          token_expiration == o.token_expiration &&
           uid_token == o.uid_token
     end
 
@@ -145,7 +201,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [path, role_name, rule_type, token, uid_token].hash
+      [bind_dn, bind_dn_password, keep_prev_version, key, ldap_ca_cert, ldap_url, name, new_version, protection_key, token, token_expiration, uid_token].hash
     end
 
     # Builds the object from hash

@@ -33,6 +33,15 @@ module Akeyless
     # New target name
     attr_accessor :new_name
 
+    # The Resource Group name in your Azure subscription
+    attr_accessor :resource_group_name
+
+    # The name of the relevant Resource
+    attr_accessor :resource_name
+
+    # Azure Subscription Id
+    attr_accessor :subscription_id
+
     attr_accessor :tenant_id
 
     # Authentication token (see `/auth` and `/configure`)
@@ -56,6 +65,9 @@ module Akeyless
         :'key' => :'key',
         :'name' => :'name',
         :'new_name' => :'new-name',
+        :'resource_group_name' => :'resource-group-name',
+        :'resource_name' => :'resource-name',
+        :'subscription_id' => :'subscription-id',
         :'tenant_id' => :'tenant-id',
         :'token' => :'token',
         :'uid_token' => :'uid-token',
@@ -79,6 +91,9 @@ module Akeyless
         :'key' => :'String',
         :'name' => :'String',
         :'new_name' => :'String',
+        :'resource_group_name' => :'String',
+        :'resource_name' => :'String',
+        :'subscription_id' => :'String',
         :'tenant_id' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String',
@@ -136,6 +151,18 @@ module Akeyless
         self.new_name = attributes[:'new_name']
       end
 
+      if attributes.key?(:'resource_group_name')
+        self.resource_group_name = attributes[:'resource_group_name']
+      end
+
+      if attributes.key?(:'resource_name')
+        self.resource_name = attributes[:'resource_name']
+      end
+
+      if attributes.key?(:'subscription_id')
+        self.subscription_id = attributes[:'subscription_id']
+      end
+
       if attributes.key?(:'tenant_id')
         self.tenant_id = attributes[:'tenant_id']
       end
@@ -187,6 +214,9 @@ module Akeyless
           key == o.key &&
           name == o.name &&
           new_name == o.new_name &&
+          resource_group_name == o.resource_group_name &&
+          resource_name == o.resource_name &&
+          subscription_id == o.subscription_id &&
           tenant_id == o.tenant_id &&
           token == o.token &&
           uid_token == o.uid_token &&
@@ -203,7 +233,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [client_id, client_secret, comment, keep_prev_version, key, name, new_name, tenant_id, token, uid_token, update_version, use_gw_cloud_identity].hash
+      [client_id, client_secret, comment, keep_prev_version, key, name, new_name, resource_group_name, resource_name, subscription_id, tenant_id, token, uid_token, update_version, use_gw_cloud_identity].hash
     end
 
     # Builds the object from hash

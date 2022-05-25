@@ -38,6 +38,7 @@
 | **secure_access_web_proxy** | **Boolean** | Secure Access Web Proxy (used in aws, azure) | [optional][default to false] |
 | **ssh_password** | **String** | Deprecated: use RotatedPassword | [optional] |
 | **ssh_username** | **String** | Deprecated: use RotatedUser | [optional] |
+| **storage_account_key_name** | **String** | The name of the storage account key to rotate [key1/key2/kerb1/kerb2] | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
 
@@ -81,6 +82,7 @@ instance = Akeyless::UpdateRotatedSecret.new(
   secure_access_web_proxy: null,
   ssh_password: null,
   ssh_username: null,
+  storage_account_key_name: null,
   token: null,
   uid_token: null
 )

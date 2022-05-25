@@ -71,7 +71,7 @@ module Akeyless
         :'bound_extensions' => :'Array<String>',
         :'bound_organizational_units' => :'Array<String>',
         :'bound_uri_sans' => :'Array<String>',
-        :'certificate' => :'Array<Integer>',
+        :'certificate' => :'String',
         :'revoked_cert_ids' => :'Array<String>',
         :'unique_identifier' => :'String'
       }
@@ -135,9 +135,7 @@ module Akeyless
       end
 
       if attributes.key?(:'certificate')
-        if (value = attributes[:'certificate']).is_a?(Array)
-          self.certificate = value
-        end
+        self.certificate = attributes[:'certificate']
       end
 
       if attributes.key?(:'revoked_cert_ids')

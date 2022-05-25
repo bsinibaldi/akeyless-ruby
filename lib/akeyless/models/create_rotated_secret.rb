@@ -102,6 +102,9 @@ module Akeyless
     # Deprecated: use RotatedUser
     attr_accessor :ssh_username
 
+    # The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account)
+    attr_accessor :storage_account_key_name
+
     # List of the tags attached to this secret
     attr_accessor :tags
 
@@ -155,6 +158,7 @@ module Akeyless
         :'secure_access_web_proxy' => :'secure-access-web-proxy',
         :'ssh_password' => :'ssh-password',
         :'ssh_username' => :'ssh-username',
+        :'storage_account_key_name' => :'storage-account-key-name',
         :'tags' => :'tags',
         :'target_name' => :'target-name',
         :'token' => :'token',
@@ -204,6 +208,7 @@ module Akeyless
         :'secure_access_web_proxy' => :'Boolean',
         :'ssh_password' => :'String',
         :'ssh_username' => :'String',
+        :'storage_account_key_name' => :'String',
         :'tags' => :'Array<String>',
         :'target_name' => :'String',
         :'token' => :'String',
@@ -374,6 +379,10 @@ module Akeyless
         self.ssh_username = attributes[:'ssh_username']
       end
 
+      if attributes.key?(:'storage_account_key_name')
+        self.storage_account_key_name = attributes[:'storage_account_key_name']
+      end
+
       if attributes.key?(:'tags')
         if (value = attributes[:'tags']).is_a?(Array)
           self.tags = value
@@ -466,6 +475,7 @@ module Akeyless
           secure_access_web_proxy == o.secure_access_web_proxy &&
           ssh_password == o.ssh_password &&
           ssh_username == o.ssh_username &&
+          storage_account_key_name == o.storage_account_key_name &&
           tags == o.tags &&
           target_name == o.target_name &&
           token == o.token &&
@@ -483,7 +493,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [api_id, api_key, application_id, authentication_credentials, auto_rotate, aws_region, custom_payload, key, metadata, name, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, rotator_custom_cmd, rotator_type, secure_access_allow_external_user, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, ssh_password, ssh_username, tags, target_name, token, uid_token, user_attribute, user_dn].hash
+      [api_id, api_key, application_id, authentication_credentials, auto_rotate, aws_region, custom_payload, key, metadata, name, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, rotator_custom_cmd, rotator_type, secure_access_allow_external_user, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, ssh_password, ssh_username, storage_account_key_name, tags, target_name, token, uid_token, user_attribute, user_dn].hash
     end
 
     # Builds the object from hash

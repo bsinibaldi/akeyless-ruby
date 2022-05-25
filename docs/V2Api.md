@@ -210,6 +210,8 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_github_target**](V2Api.md#update_github_target) | **POST** /update-github-target |  |
 | [**update_gke_target**](V2Api.md#update_gke_target) | **POST** /update-gke-target |  |
 | [**update_item**](V2Api.md#update_item) | **POST** /update-item |  |
+| [**update_ldap_target**](V2Api.md#update_ldap_target) | **POST** /update-ldap-target |  |
+| [**update_ldap_target_details**](V2Api.md#update_ldap_target_details) | **POST** /update-ldap-target-details |  |
 | [**update_native_k8_s_target**](V2Api.md#update_native_k8_s_target) | **POST** /update-k8s-target |  |
 | [**update_pki_cert_issuer**](V2Api.md#update_pki_cert_issuer) | **POST** /update-pki-cert-issuer |  |
 | [**update_rabbit_mq_target**](V2Api.md#update_rabbit_mq_target) | **POST** /update-rabbitmq-target |  |
@@ -13020,6 +13022,130 @@ end
 ### Return type
 
 [**UpdateItemOutput**](UpdateItemOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_ldap_target
+
+> <UpdateLdapTargetOutput> update_ldap_target(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateLdapTarget.new({name: 'name_example'}) # UpdateLdapTarget | 
+
+begin
+  
+  result = api_instance.update_ldap_target(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_ldap_target: #{e}"
+end
+```
+
+#### Using the update_ldap_target_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpdateLdapTargetOutput>, Integer, Hash)> update_ldap_target_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_ldap_target_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpdateLdapTargetOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_ldap_target_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateLdapTarget**](UpdateLdapTarget.md) |  |  |
+
+### Return type
+
+[**UpdateLdapTargetOutput**](UpdateLdapTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_ldap_target_details
+
+> <UpdateTargetOutput> update_ldap_target_details(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateLdapTargetDetails.new({name: 'name_example'}) # UpdateLdapTargetDetails | 
+
+begin
+  
+  result = api_instance.update_ldap_target_details(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_ldap_target_details: #{e}"
+end
+```
+
+#### Using the update_ldap_target_details_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpdateTargetOutput>, Integer, Hash)> update_ldap_target_details_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_ldap_target_details_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpdateTargetOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_ldap_target_details_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateLdapTargetDetails**](UpdateLdapTargetDetails.md) |  |  |
+
+### Return type
+
+[**UpdateTargetOutput**](UpdateTargetOutput.md)
 
 ### Authorization
 

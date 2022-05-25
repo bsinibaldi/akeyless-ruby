@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **raw** | **String** |  | [optional] |
-| **ssh** | **Array&lt;Integer&gt;** |  | [optional] |
+| **ssh** | **String** |  | [optional] |
 
 ## Example
 

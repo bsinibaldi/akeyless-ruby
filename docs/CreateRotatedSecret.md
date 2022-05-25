@@ -36,6 +36,7 @@
 | **secure_access_web_proxy** | **Boolean** | Secure Access Web Proxy (used in aws, azure) | [optional][default to false] |
 | **ssh_password** | **String** | Deprecated: use RotatedPassword | [optional] |
 | **ssh_username** | **String** | Deprecated: use RotatedUser | [optional] |
+| **storage_account_key_name** | **String** | The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account) | [optional] |
 | **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
 | **target_name** | **String** | Target name |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
@@ -81,6 +82,7 @@ instance = Akeyless::CreateRotatedSecret.new(
   secure_access_web_proxy: null,
   ssh_password: null,
   ssh_username: null,
+  storage_account_key_name: null,
   tags: null,
   target_name: null,
   token: null,

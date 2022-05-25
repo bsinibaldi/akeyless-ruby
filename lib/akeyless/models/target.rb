@@ -15,6 +15,9 @@ require 'time'
 
 module Akeyless
   class Target
+    # this is not \"omitempty\" since an empty value causes no update while an empty map will clear the attributes
+    attr_accessor :attributes
+
     attr_accessor :client_permissions
 
     attr_accessor :comment
@@ -38,6 +41,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'attributes' => :'attributes',
         :'client_permissions' => :'client_permissions',
         :'comment' => :'comment',
         :'last_version' => :'last_version',
@@ -59,6 +63,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'attributes' => :'Hash<String, Object>',
         :'client_permissions' => :'Array<String>',
         :'comment' => :'String',
         :'last_version' => :'Integer',
@@ -92,6 +97,12 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'attributes')
+        if (value = attributes[:'attributes']).is_a?(Hash)
+          self.attributes = value
+        end
+      end
 
       if attributes.key?(:'client_permissions')
         if (value = attributes[:'client_permissions']).is_a?(Array)
@@ -158,6 +169,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          attributes == o.attributes &&
           client_permissions == o.client_permissions &&
           comment == o.comment &&
           last_version == o.last_version &&
@@ -179,7 +191,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [client_permissions, comment, last_version, protection_key_name, target_id, target_items_assoc, target_name, target_type, target_versions, with_customer_fragment].hash
+      [attributes, client_permissions, comment, last_version, protection_key_name, target_id, target_items_assoc, target_name, target_type, target_versions, with_customer_fragment].hash
     end
 
     # Builds the object from hash

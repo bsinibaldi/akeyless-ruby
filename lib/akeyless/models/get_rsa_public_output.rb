@@ -36,7 +36,7 @@ module Akeyless
     def self.openapi_types
       {
         :'raw' => :'String',
-        :'ssh' => :'Array<Integer>'
+        :'ssh' => :'String'
       }
     end
 
@@ -66,9 +66,7 @@ module Akeyless
       end
 
       if attributes.key?(:'ssh')
-        if (value = attributes[:'ssh']).is_a?(Array)
-          self.ssh = value
-        end
+        self.ssh = attributes[:'ssh']
       end
     end
 
