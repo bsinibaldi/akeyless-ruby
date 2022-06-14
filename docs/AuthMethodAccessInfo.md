@@ -14,6 +14,7 @@
 | **email_pass_access_rules** | [**EmailPassAccessRules**](EmailPassAccessRules.md) |  | [optional] |
 | **force_sub_claims** | **Boolean** | if true the role associated with this auth method must include sub claims | [optional] |
 | **gcp_access_rules** | [**GCPAccessRules**](GCPAccessRules.md) |  | [optional] |
+| **gw_cidr_whitelist** | **String** |  | [optional] |
 | **huawei_access_rules** | [**HuaweiAccessRules**](HuaweiAccessRules.md) |  | [optional] |
 | **jwt_ttl** | **Integer** |  | [optional] |
 | **k8s_access_rules** | [**KubernetesAccessRules**](KubernetesAccessRules.md) |  | [optional] |
@@ -40,6 +41,7 @@ instance = Akeyless::AuthMethodAccessInfo.new(
   email_pass_access_rules: null,
   force_sub_claims: null,
   gcp_access_rules: null,
+  gw_cidr_whitelist: null,
   huawei_access_rules: null,
   jwt_ttl: null,
   k8s_access_rules: null,

@@ -7,6 +7,7 @@
 | **add_tag** | **Array&lt;String&gt;** | List of the new tags that will be attached to this item | [optional] |
 | **alphabet** | **String** | Alphabet to use in regexp vaultless tokenization | [optional] |
 | **decryption_template** | **String** | The Decryption output template to use in regexp vaultless tokenization | [optional] |
+| **delete_protection** | **String** |  | [optional] |
 | **encryption_key_name** | **String** | AES key name to use in vaultless tokenization | [optional] |
 | **encryption_template** | **String** | The Encryption output template to use in regexp vaultless tokenization | [optional] |
 | **name** | **String** | Current item name |  |
@@ -29,6 +30,7 @@ instance = Akeyless::UpdateTokenizer.new(
   add_tag: null,
   alphabet: null,
   decryption_template: null,
+  delete_protection: null,
   encryption_key_name: null,
   encryption_template: null,
   name: null,

@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **customer_frg_id** | **String** | The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment) | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **_in** | **String** | PKCS#12 input file (private key and certificate only) |  |
 | **metadata** | **String** | A metadata about the key | [optional] |
 | **name** | **String** | Name of key to be created |  |
@@ -21,6 +22,7 @@ require 'akeyless'
 
 instance = Akeyless::UploadPKCS12.new(
   customer_frg_id: null,
+  delete_protection: null,
   _in: null,
   metadata: null,
   name: null,

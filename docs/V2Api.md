@@ -97,6 +97,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_delete_producer**](V2Api.md#gateway_delete_producer) | **POST** /gateway-delete-producer |  |
 | [**gateway_get_config**](V2Api.md#gateway_get_config) | **POST** /gateway-get-config |  |
 | [**gateway_get_k8_s_auth_config**](V2Api.md#gateway_get_k8_s_auth_config) | **POST** /gateway-get-k8s-auth-config |  |
+| [**gateway_get_ldap_auth_config**](V2Api.md#gateway_get_ldap_auth_config) | **POST** /gateway-get-ldap-auth-config |  |
 | [**gateway_get_migration**](V2Api.md#gateway_get_migration) | **POST** /gateway-get-migration |  |
 | [**gateway_get_producer**](V2Api.md#gateway_get_producer) | **POST** /gateway-get-producer |  |
 | [**gateway_get_tmp_users**](V2Api.md#gateway_get_tmp_users) | **POST** /gateway-get-producer-tmp-creds |  |
@@ -109,6 +110,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_sync_migration**](V2Api.md#gateway_sync_migration) | **POST** /gateway-sync-migration |  |
 | [**gateway_update_item**](V2Api.md#gateway_update_item) | **POST** /gateway-update-item |  |
 | [**gateway_update_k8_s_auth_config**](V2Api.md#gateway_update_k8_s_auth_config) | **POST** /gateway-update-k8s-auth-config |  |
+| [**gateway_update_ldap_auth_config**](V2Api.md#gateway_update_ldap_auth_config) | **POST** /gateway-update-ldap-auth-config |  |
 | [**gateway_update_migration**](V2Api.md#gateway_update_migration) | **POST** /gateway-update-migration |  |
 | [**gateway_update_producer_artifactory**](V2Api.md#gateway_update_producer_artifactory) | **POST** /gateway-update-producer-artifactory |  |
 | [**gateway_update_producer_aws**](V2Api.md#gateway_update_producer_aws) | **POST** /gateway-update-producer-aws |  |
@@ -6005,6 +6007,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## gateway_get_ldap_auth_config
+
+> <GatewayGetLdapAuthConfigOutput> gateway_get_ldap_auth_config(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayGetLdapAuthConfig.new # GatewayGetLdapAuthConfig | 
+
+begin
+  
+  result = api_instance.gateway_get_ldap_auth_config(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_get_ldap_auth_config: #{e}"
+end
+```
+
+#### Using the gateway_get_ldap_auth_config_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewayGetLdapAuthConfigOutput>, Integer, Hash)> gateway_get_ldap_auth_config_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_get_ldap_auth_config_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewayGetLdapAuthConfigOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_get_ldap_auth_config_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayGetLdapAuthConfig**](GatewayGetLdapAuthConfig.md) |  |  |
+
+### Return type
+
+[**GatewayGetLdapAuthConfigOutput**](GatewayGetLdapAuthConfigOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## gateway_get_migration
 
 > <GatewayMigrationGetOutput> gateway_get_migration(body)
@@ -6737,6 +6801,68 @@ end
 ### Return type
 
 [**GatewayUpdateK8SAuthConfigOutput**](GatewayUpdateK8SAuthConfigOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## gateway_update_ldap_auth_config
+
+> <GatewayUpdateLdapAuthConfigOutput> gateway_update_ldap_auth_config(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayUpdateLdapAuthConfig.new # GatewayUpdateLdapAuthConfig | 
+
+begin
+  
+  result = api_instance.gateway_update_ldap_auth_config(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_update_ldap_auth_config: #{e}"
+end
+```
+
+#### Using the gateway_update_ldap_auth_config_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewayUpdateLdapAuthConfigOutput>, Integer, Hash)> gateway_update_ldap_auth_config_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_update_ldap_auth_config_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewayUpdateLdapAuthConfigOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_update_ldap_auth_config_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayUpdateLdapAuthConfig**](GatewayUpdateLdapAuthConfig.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateLdapAuthConfigOutput**](GatewayUpdateLdapAuthConfigOutput.md)
 
 ### Authorization
 

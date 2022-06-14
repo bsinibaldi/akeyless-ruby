@@ -11,6 +11,7 @@
 | **auto_rotate** | **String** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] |
 | **aws_region** | **String** | Region (used in aws) | [optional][default to &#39;us-east-2&#39;] |
 | **custom_payload** | **String** |  | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **metadata** | **String** | Metadata about the secret | [optional] |
 | **name** | **String** | Secret name |  |
@@ -57,6 +58,7 @@ instance = Akeyless::CreateRotatedSecret.new(
   auto_rotate: null,
   aws_region: null,
   custom_payload: null,
+  delete_protection: null,
   key: null,
   metadata: null,
   name: null,

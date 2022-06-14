@@ -17,6 +17,7 @@
 | **bound_sub_id** | **Array&lt;String&gt;** | A list of subscription ids that the access is restricted to | [optional] |
 | **bound_tenant_id** | **String** | The Azure tenant id that the access is restricted to |  |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
+| **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
 | **issuer** | **String** | Issuer URL | [optional][default to &#39;https://sts.windows.net/---bound_tenant_id---&#39;] |
 | **jwks_uri** | **String** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [optional][default to &#39;https://login.microsoftonline.com/common/discovery/keys&#39;] |
 | **jwt_ttl** | **Integer** | Jwt TTL | [optional] |
@@ -44,6 +45,7 @@ instance = Akeyless::UpdateAuthMethodAzureAD.new(
   bound_sub_id: null,
   bound_tenant_id: null,
   force_sub_claims: null,
+  gw_bound_ips: null,
   issuer: null,
   jwks_uri: null,
   jwt_ttl: null,

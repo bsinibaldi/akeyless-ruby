@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **metadata** | **String** | Metadata about the secret | [optional] |
 | **multiline_value** | **Boolean** | The provided value is a multiline value (separated by &#39;\\n&#39;) | [optional] |
 | **name** | **String** | Secret name |  |
@@ -27,6 +28,7 @@
 require 'akeyless'
 
 instance = Akeyless::CreateSecret.new(
+  delete_protection: null,
   metadata: null,
   multiline_value: null,
   name: null,

@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **alphabet** | **String** | Alphabet to use in regexp vaultless tokenization | [optional] |
 | **decryption_template** | **String** | The Decryption output template to use in regexp vaultless tokenization | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **encryption_key_name** | **String** | AES key name to use in vaultless tokenization | [optional] |
 | **encryption_template** | **String** | The Encryption output template to use in regexp vaultless tokenization | [optional] |
 | **metadata** | **String** | A metadata about the tokenizer | [optional] |
@@ -26,6 +27,7 @@ require 'akeyless'
 instance = Akeyless::CreateTokenizer.new(
   alphabet: null,
   decryption_template: null,
+  delete_protection: null,
   encryption_key_name: null,
   encryption_template: null,
   metadata: null,

@@ -8,6 +8,7 @@
 | **allowed_redirect_uri** | **Array&lt;String&gt;** | Allowed redirect URIs after the authentication | [optional] |
 | **bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the IPs that the access is restricted to | [optional] |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
+| **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
 | **idp_metadata_url** | **String** | IDP metadata url | [optional] |
 | **idp_metadata_xml_data** | **String** | IDP metadata xml data | [optional] |
 | **jwt_ttl** | **Integer** | Jwt TTL | [optional] |
@@ -26,6 +27,7 @@ instance = Akeyless::CreateAuthMethodSAML.new(
   allowed_redirect_uri: null,
   bound_ips: null,
   force_sub_claims: null,
+  gw_bound_ips: null,
   idp_metadata_url: null,
   idp_metadata_xml_data: null,
   jwt_ttl: null,

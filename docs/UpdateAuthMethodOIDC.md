@@ -10,6 +10,7 @@
 | **client_id** | **String** | Client ID | [optional] |
 | **client_secret** | **String** | Client Secret | [optional] |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
+| **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
 | **issuer** | **String** | Issuer URL | [optional] |
 | **jwt_ttl** | **Integer** | Jwt TTL | [optional] |
 | **name** | **String** | Auth Method name |  |
@@ -32,6 +33,7 @@ instance = Akeyless::UpdateAuthMethodOIDC.new(
   client_id: null,
   client_secret: null,
   force_sub_claims: null,
+  gw_bound_ips: null,
   issuer: null,
   jwt_ttl: null,
   name: null,

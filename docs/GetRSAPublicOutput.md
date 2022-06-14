@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **pem** | **String** |  | [optional] |
 | **raw** | **String** |  | [optional] |
 | **ssh** | **String** |  | [optional] |
 
@@ -13,6 +14,7 @@
 require 'akeyless'
 
 instance = Akeyless::GetRSAPublicOutput.new(
+  pem: null,
   raw: null,
   ssh: null
 )

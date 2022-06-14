@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **allowed_users** | **String** | Users allowed to fetch the certificate, e.g root,ubuntu |  |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **extensions** | **Hash&lt;String, String&gt;** | Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot; | [optional] |
 | **metadata** | **String** | A metadata about the issuer | [optional] |
 | **name** | **String** | SSH certificate issuer name |  |
@@ -28,6 +29,7 @@ require 'akeyless'
 
 instance = Akeyless::CreateSSHCertIssuer.new(
   allowed_users: null,
+  delete_protection: null,
   extensions: null,
   metadata: null,
   name: null,

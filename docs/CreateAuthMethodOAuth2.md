@@ -9,6 +9,7 @@
 | **bound_client_ids** | **Array&lt;String&gt;** | The clients ids that the access is restricted to | [optional] |
 | **bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the IPs that the access is restricted to | [optional] |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
+| **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
 | **issuer** | **String** | Issuer URL | [optional] |
 | **jwks_uri** | **String** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. |  |
 | **jwt_ttl** | **Integer** | Jwt TTL | [optional] |
@@ -28,6 +29,7 @@ instance = Akeyless::CreateAuthMethodOAuth2.new(
   bound_client_ids: null,
   bound_ips: null,
   force_sub_claims: null,
+  gw_bound_ips: null,
   issuer: null,
   jwks_uri: null,
   jwt_ttl: null,

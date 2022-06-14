@@ -56,6 +56,7 @@
 | **db_server_certificates** | **String** | (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set. | [optional] |
 | **db_server_name** | **String** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] |
 | **db_user_name** | **String** |  | [optional] |
+| **delete_protection** | **Boolean** |  | [optional] |
 | **dynamic_secret_id** | **Integer** |  | [optional] |
 | **dynamic_secret_key** | **String** |  | [optional] |
 | **dynamic_secret_name** | **String** |  | [optional] |
@@ -111,6 +112,7 @@
 | **ldap_url** | **String** |  | [optional] |
 | **ldap_user_attr** | **String** |  | [optional] |
 | **ldap_user_dn** | **String** |  | [optional] |
+| **metadata** | **String** |  | [optional] |
 | **mongodb_atlas_api_private_key** | **String** |  | [optional] |
 | **mongodb_atlas_api_public_key** | **String** |  | [optional] |
 | **mongodb_atlas_project_id** | **String** | mongodb atlas fields | [optional] |
@@ -235,6 +237,7 @@ instance = Akeyless::DSProducerDetails.new(
   db_server_certificates: null,
   db_server_name: null,
   db_user_name: null,
+  delete_protection: null,
   dynamic_secret_id: null,
   dynamic_secret_key: null,
   dynamic_secret_name: null,
@@ -290,6 +293,7 @@ instance = Akeyless::DSProducerDetails.new(
   ldap_url: null,
   ldap_user_attr: null,
   ldap_user_dn: null,
+  metadata: null,
   mongodb_atlas_api_private_key: null,
   mongodb_atlas_api_public_key: null,
   mongodb_atlas_project_id: null,

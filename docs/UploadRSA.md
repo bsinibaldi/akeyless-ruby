@@ -7,6 +7,7 @@
 | **alg** | **String** | Key type. options: [RSA1024, RSA2048, RSA3072, RSA4096] |  |
 | **cert_file_data** | **String** | Certificate in a PEM format. | [optional] |
 | **customer_frg_id** | **String** | The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment) | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **metadata** | **String** | A metadata about the key | [optional] |
 | **name** | **String** | Name of key to be created |  |
 | **rsa_file_data** | **String** | RSA private key data, base64 encoded | [optional] |
@@ -24,6 +25,7 @@ instance = Akeyless::UploadRSA.new(
   alg: null,
   cert_file_data: null,
   customer_frg_id: null,
+  delete_protection: null,
   metadata: null,
   name: null,
   rsa_file_data: null,

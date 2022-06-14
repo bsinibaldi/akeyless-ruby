@@ -11,6 +11,7 @@
 | **client_flag** | **Boolean** | If set, certificates will be flagged for client auth use | [optional] |
 | **code_signing_flag** | **Boolean** | If set, certificates will be flagged for code signing use | [optional] |
 | **country** | **String** | A comma-separated list of the country that will be set in the issued certificate | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **key_usage** | **String** | key-usage | [optional][default to &#39;DigitalSignature,KeyAgreement,KeyEncipherment&#39;] |
 | **locality** | **String** | A comma-separated list of the locality that will be set in the issued certificate | [optional] |
 | **metadata** | **String** | A metadata about the issuer | [optional] |
@@ -42,6 +43,7 @@ instance = Akeyless::CreatePKICertIssuer.new(
   client_flag: null,
   code_signing_flag: null,
   country: null,
+  delete_protection: null,
   key_usage: null,
   locality: null,
   metadata: null,

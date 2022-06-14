@@ -13,6 +13,7 @@
 | **bound_service_accounts** | **Array&lt;String&gt;** | List of service accounts the service account must be part of in order to be authenticated. | [optional] |
 | **bound_zones** | **Array&lt;String&gt;** | &#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone. | [optional] |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
+| **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
 | **jwt_ttl** | **Integer** | Jwt TTL | [optional] |
 | **name** | **String** | Auth Method name |  |
 | **new_name** | **String** | Auth Method new name | [optional] |
@@ -36,6 +37,7 @@ instance = Akeyless::UpdateAuthMethodGCP.new(
   bound_service_accounts: null,
   bound_zones: null,
   force_sub_claims: null,
+  gw_bound_ips: null,
   jwt_ttl: null,
   name: null,
   new_name: null,

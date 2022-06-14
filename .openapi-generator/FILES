@@ -162,6 +162,8 @@ docs/EncryptWithClassicKey.md
 docs/EncryptWithClassicKeyOutput.md
 docs/ExternalKMSKeyId.md
 docs/GCPAccessRules.md
+docs/GCPPayload.md
+docs/GCPSecretsMigration.md
 docs/GatewayAddAllowedManagementAccess.md
 docs/GatewayCreateK8SAuthConfig.md
 docs/GatewayCreateK8SAuthConfigOutput.md
@@ -223,6 +225,8 @@ docs/GatewayDeleteProducerOutput.md
 docs/GatewayGetConfig.md
 docs/GatewayGetK8SAuthConfig.md
 docs/GatewayGetK8SAuthConfigOutput.md
+docs/GatewayGetLdapAuthConfig.md
+docs/GatewayGetLdapAuthConfigOutput.md
 docs/GatewayGetMigration.md
 docs/GatewayGetProducer.md
 docs/GatewayGetTmpUsers.md
@@ -246,6 +250,8 @@ docs/GatewayUpdateItem.md
 docs/GatewayUpdateItemOutput.md
 docs/GatewayUpdateK8SAuthConfig.md
 docs/GatewayUpdateK8SAuthConfigOutput.md
+docs/GatewayUpdateLdapAuthConfig.md
+docs/GatewayUpdateLdapAuthConfigOutput.md
 docs/GatewayUpdateMigration.md
 docs/GatewayUpdateProducerArtifactory.md
 docs/GatewayUpdateProducerArtifactoryOutput.md
@@ -760,6 +766,8 @@ lib/akeyless/models/gateway_delete_producer_output.rb
 lib/akeyless/models/gateway_get_config.rb
 lib/akeyless/models/gateway_get_k8_s_auth_config.rb
 lib/akeyless/models/gateway_get_k8_s_auth_config_output.rb
+lib/akeyless/models/gateway_get_ldap_auth_config.rb
+lib/akeyless/models/gateway_get_ldap_auth_config_output.rb
 lib/akeyless/models/gateway_get_migration.rb
 lib/akeyless/models/gateway_get_producer.rb
 lib/akeyless/models/gateway_get_tmp_users.rb
@@ -783,6 +791,8 @@ lib/akeyless/models/gateway_update_item.rb
 lib/akeyless/models/gateway_update_item_output.rb
 lib/akeyless/models/gateway_update_k8_s_auth_config.rb
 lib/akeyless/models/gateway_update_k8_s_auth_config_output.rb
+lib/akeyless/models/gateway_update_ldap_auth_config.rb
+lib/akeyless/models/gateway_update_ldap_auth_config_output.rb
 lib/akeyless/models/gateway_update_migration.rb
 lib/akeyless/models/gateway_update_producer_artifactory.rb
 lib/akeyless/models/gateway_update_producer_artifactory_output.rb
@@ -834,6 +844,8 @@ lib/akeyless/models/gateway_update_producer_snowflake.rb
 lib/akeyless/models/gateway_update_producer_snowflake_output.rb
 lib/akeyless/models/gateway_update_tmp_users.rb
 lib/akeyless/models/gcp_access_rules.rb
+lib/akeyless/models/gcp_payload.rb
+lib/akeyless/models/gcp_secrets_migration.rb
 lib/akeyless/models/gen_customer_fragment.rb
 lib/akeyless/models/general_config_part.rb
 lib/akeyless/models/get_account_settings.rb
@@ -1078,7 +1090,10 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/update_ldap_target_details_spec.rb
-spec/models/update_ldap_target_output_spec.rb
-spec/models/update_ldap_target_spec.rb
+spec/models/gateway_get_ldap_auth_config_output_spec.rb
+spec/models/gateway_get_ldap_auth_config_spec.rb
+spec/models/gateway_update_ldap_auth_config_output_spec.rb
+spec/models/gateway_update_ldap_auth_config_spec.rb
+spec/models/gcp_payload_spec.rb
+spec/models/gcp_secrets_migration_spec.rb
 spec/spec_helper.rb

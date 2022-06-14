@@ -10,6 +10,7 @@
 | **certificates** | **String** |  | [optional] |
 | **client_permissions** | **Array&lt;String&gt;** |  | [optional] |
 | **customer_fragment_id** | **String** |  | [optional] |
+| **delete_protection** | **Boolean** |  | [optional] |
 | **deletion_date** | **Time** |  | [optional] |
 | **display_id** | **String** |  | [optional] |
 | **is_enabled** | **Boolean** |  | [optional] |
@@ -45,6 +46,7 @@ instance = Akeyless::Item.new(
   certificates: null,
   client_permissions: null,
   customer_fragment_id: null,
+  delete_protection: null,
   deletion_date: null,
   display_id: null,
   is_enabled: null,
