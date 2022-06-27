@@ -13,6 +13,7 @@
 | **aws_user_groups** | **String** | AWS User groups | [optional] |
 | **aws_user_policies** | **String** | AWS User policies | [optional] |
 | **aws_user_programmatic_access** | **Boolean** | AWS User programmatic access | [optional][default to true] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **enable_admin_rotation** | **Boolean** | Automatic admin credentials rotation | [optional][default to false] |
 | **name** | **String** | Producer name |  |
 | **new_name** | **String** | Producer name | [optional] |
@@ -46,6 +47,7 @@ instance = Akeyless::GatewayUpdateProducerAws.new(
   aws_user_groups: null,
   aws_user_policies: null,
   aws_user_programmatic_access: null,
+  delete_protection: null,
   enable_admin_rotation: null,
   name: null,
   new_name: null,

@@ -16,6 +16,9 @@ require 'time'
 module Akeyless
   # gatewayCreateProducerNativeK8S is a command that creates k8s producer
   class GatewayCreateProducerNativeK8S
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # K8S cluster CA certificate
     attr_accessor :k8s_cluster_ca_cert
 
@@ -71,6 +74,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'delete_protection' => :'delete_protection',
         :'k8s_cluster_ca_cert' => :'k8s-cluster-ca-cert',
         :'k8s_cluster_endpoint' => :'k8s-cluster-endpoint',
         :'k8s_cluster_token' => :'k8s-cluster-token',
@@ -102,6 +106,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'delete_protection' => :'String',
         :'k8s_cluster_ca_cert' => :'String',
         :'k8s_cluster_endpoint' => :'String',
         :'k8s_cluster_token' => :'String',
@@ -145,6 +150,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
+      end
 
       if attributes.key?(:'k8s_cluster_ca_cert')
         self.k8s_cluster_ca_cert = attributes[:'k8s_cluster_ca_cert']
@@ -254,6 +263,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          delete_protection == o.delete_protection &&
           k8s_cluster_ca_cert == o.k8s_cluster_ca_cert &&
           k8s_cluster_endpoint == o.k8s_cluster_endpoint &&
           k8s_cluster_token == o.k8s_cluster_token &&
@@ -285,7 +295,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [k8s_cluster_ca_cert, k8s_cluster_endpoint, k8s_cluster_token, k8s_namespace, k8s_service_account, name, producer_encryption_key_name, secure_access_allow_port_forwading, secure_access_bastion_issuer, secure_access_cluster_endpoint, secure_access_dashboard_url, secure_access_enable, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, tags, target_name, token, uid_token, user_ttl].hash
+      [delete_protection, k8s_cluster_ca_cert, k8s_cluster_endpoint, k8s_cluster_token, k8s_namespace, k8s_service_account, name, producer_encryption_key_name, secure_access_allow_port_forwading, secure_access_bastion_issuer, secure_access_cluster_endpoint, secure_access_dashboard_url, secure_access_enable, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

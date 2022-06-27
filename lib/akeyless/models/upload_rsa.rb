@@ -33,6 +33,9 @@ module Akeyless
     # Name of key to be created
     attr_accessor :name
 
+    # When the overwrite flag is set, this command will only update an existing key. [true, false]
+    attr_accessor :overwrite
+
     # RSA private key data, base64 encoded
     attr_accessor :rsa_file_data
 
@@ -57,6 +60,7 @@ module Akeyless
         :'delete_protection' => :'delete_protection',
         :'metadata' => :'metadata',
         :'name' => :'name',
+        :'overwrite' => :'overwrite',
         :'rsa_file_data' => :'rsa-file-data',
         :'split_level' => :'split-level',
         :'tag' => :'tag',
@@ -79,6 +83,7 @@ module Akeyless
         :'delete_protection' => :'String',
         :'metadata' => :'String',
         :'name' => :'String',
+        :'overwrite' => :'String',
         :'rsa_file_data' => :'String',
         :'split_level' => :'Integer',
         :'tag' => :'Array<String>',
@@ -130,6 +135,10 @@ module Akeyless
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'overwrite')
+        self.overwrite = attributes[:'overwrite']
       end
 
       if attributes.key?(:'rsa_file_data')
@@ -191,6 +200,7 @@ module Akeyless
           delete_protection == o.delete_protection &&
           metadata == o.metadata &&
           name == o.name &&
+          overwrite == o.overwrite &&
           rsa_file_data == o.rsa_file_data &&
           split_level == o.split_level &&
           tag == o.tag &&
@@ -207,7 +217,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alg, cert_file_data, customer_frg_id, delete_protection, metadata, name, rsa_file_data, split_level, tag, token, uid_token].hash
+      [alg, cert_file_data, customer_frg_id, delete_protection, metadata, name, overwrite, rsa_file_data, split_level, tag, token, uid_token].hash
     end
 
     # Builds the object from hash

@@ -16,6 +16,9 @@ require 'time'
 module Akeyless
   # gatewayCreateProducerGcp is a command that creates a GCP producer
   class GatewayCreateProducerGcp
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     attr_accessor :gcp_cred_type
 
     # Base64-encoded service account private key text
@@ -54,6 +57,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'delete_protection' => :'delete_protection',
         :'gcp_cred_type' => :'gcp-cred-type',
         :'gcp_key' => :'gcp-key',
         :'gcp_key_algo' => :'gcp-key-algo',
@@ -77,6 +81,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'delete_protection' => :'String',
         :'gcp_cred_type' => :'String',
         :'gcp_key' => :'String',
         :'gcp_key_algo' => :'String',
@@ -112,6 +117,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
+      end
 
       if attributes.key?(:'gcp_cred_type')
         self.gcp_cred_type = attributes[:'gcp_cred_type']
@@ -189,6 +198,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          delete_protection == o.delete_protection &&
           gcp_cred_type == o.gcp_cred_type &&
           gcp_key == o.gcp_key &&
           gcp_key_algo == o.gcp_key_algo &&
@@ -212,7 +222,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [gcp_cred_type, gcp_key, gcp_key_algo, gcp_sa_email, gcp_token_scopes, name, producer_encryption_key_name, tags, target_name, token, uid_token, user_ttl].hash
+      [delete_protection, gcp_cred_type, gcp_key, gcp_key_algo, gcp_sa_email, gcp_token_scopes, name, producer_encryption_key_name, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

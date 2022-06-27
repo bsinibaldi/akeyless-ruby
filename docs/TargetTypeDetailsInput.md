@@ -7,6 +7,7 @@
 | **artifactory_admin_apikey** | **String** |  | [optional] |
 | **artifactory_admin_username** | **String** |  | [optional] |
 | **artifactory_base_url** | **String** |  | [optional] |
+| **auth_flow** | **String** |  | [optional] |
 | **aws_access_key_id** | **String** |  | [optional] |
 | **aws_region** | **String** |  | [optional] |
 | **aws_secret_access_key** | **String** |  | [optional] |
@@ -104,6 +105,7 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   artifactory_admin_apikey: null,
   artifactory_admin_username: null,
   artifactory_base_url: null,
+  auth_flow: null,
   aws_access_key_id: null,
   aws_region: null,
   aws_secret_access_key: null,

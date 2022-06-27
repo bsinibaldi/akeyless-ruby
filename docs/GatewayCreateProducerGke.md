@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **gke_account_key** | **String** | GKE Service Account key file path | [optional] |
 | **gke_cluster_cert** | **String** | GKE cluster CA certificate | [optional] |
 | **gke_cluster_endpoint** | **String** | GKE cluster URL endpoint | [optional] |
@@ -28,6 +29,7 @@
 require 'akeyless'
 
 instance = Akeyless::GatewayCreateProducerGke.new(
+  delete_protection: null,
   gke_account_key: null,
   gke_cluster_cert: null,
   gke_cluster_endpoint: null,

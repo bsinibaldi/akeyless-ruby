@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **dockerhub_password** | **String** | DockerhubPassword is either the user&#39;s password access token to manage the repository | [optional] |
 | **dockerhub_token_scopes** | **String** | Access token scopes list (comma seperated) to give the dynamic secret valid options are in \&quot;repo:admin\&quot;, \&quot;repo:write\&quot;, \&quot;repo:read\&quot;, \&quot;repo:public_read\&quot; | [optional] |
 | **dockerhub_username** | **String** | DockerhubUsername is the name of the user in dockerhub | [optional] |
@@ -21,6 +22,7 @@
 require 'akeyless'
 
 instance = Akeyless::GatewayCreateProducerDockerhub.new(
+  delete_protection: null,
   dockerhub_password: null,
   dockerhub_token_scopes: null,
   dockerhub_username: null,

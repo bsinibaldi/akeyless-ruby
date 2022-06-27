@@ -28,6 +28,9 @@ module Akeyless
     # Azure Tenant ID
     attr_accessor :azure_tenant_id
 
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # FixedUserClaimKeyname
     attr_accessor :fixed_user_claim_keyname
 
@@ -88,6 +91,7 @@ module Akeyless
         :'azure_client_id' => :'azure-client-id',
         :'azure_client_secret' => :'azure-client-secret',
         :'azure_tenant_id' => :'azure-tenant-id',
+        :'delete_protection' => :'delete_protection',
         :'fixed_user_claim_keyname' => :'fixed-user-claim-keyname',
         :'fixed_user_only' => :'fixed-user-only',
         :'name' => :'name',
@@ -122,6 +126,7 @@ module Akeyless
         :'azure_client_id' => :'String',
         :'azure_client_secret' => :'String',
         :'azure_tenant_id' => :'String',
+        :'delete_protection' => :'String',
         :'fixed_user_claim_keyname' => :'String',
         :'fixed_user_only' => :'Boolean',
         :'name' => :'String',
@@ -179,6 +184,10 @@ module Akeyless
 
       if attributes.key?(:'azure_tenant_id')
         self.azure_tenant_id = attributes[:'azure_tenant_id']
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'fixed_user_claim_keyname')
@@ -297,6 +306,7 @@ module Akeyless
           azure_client_id == o.azure_client_id &&
           azure_client_secret == o.azure_client_secret &&
           azure_tenant_id == o.azure_tenant_id &&
+          delete_protection == o.delete_protection &&
           fixed_user_claim_keyname == o.fixed_user_claim_keyname &&
           fixed_user_only == o.fixed_user_only &&
           name == o.name &&
@@ -327,7 +337,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [app_obj_id, azure_client_id, azure_client_secret, azure_tenant_id, fixed_user_claim_keyname, fixed_user_only, name, new_name, producer_encryption_key_name, secure_access_enable, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, tags, target_name, token, uid_token, user_group_obj_id, user_portal_access, user_principal_name, user_programmatic_access, user_role_template_id, user_ttl].hash
+      [app_obj_id, azure_client_id, azure_client_secret, azure_tenant_id, delete_protection, fixed_user_claim_keyname, fixed_user_only, name, new_name, producer_encryption_key_name, secure_access_enable, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, tags, target_name, token, uid_token, user_group_obj_id, user_portal_access, user_principal_name, user_programmatic_access, user_role_template_id, user_ttl].hash
     end
 
     # Builds the object from hash

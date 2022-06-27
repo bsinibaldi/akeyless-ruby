@@ -28,6 +28,9 @@ module Akeyless
     # Auto generated folder
     attr_accessor :auto_generated_folder
 
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # Automatic admin credentials rotation
     attr_accessor :enable_admin_rotation
 
@@ -89,6 +92,7 @@ module Akeyless
         :'allow_subdomains' => :'allow-subdomains',
         :'allowed_domains' => :'allowed-domains',
         :'auto_generated_folder' => :'auto-generated-folder',
+        :'delete_protection' => :'delete_protection',
         :'enable_admin_rotation' => :'enable-admin-rotation',
         :'name' => :'name',
         :'producer_encryption_key_name' => :'producer-encryption-key-name',
@@ -122,6 +126,7 @@ module Akeyless
         :'allow_subdomains' => :'Boolean',
         :'allowed_domains' => :'Array<String>',
         :'auto_generated_folder' => :'String',
+        :'delete_protection' => :'String',
         :'enable_admin_rotation' => :'Boolean',
         :'name' => :'String',
         :'producer_encryption_key_name' => :'String',
@@ -182,6 +187,10 @@ module Akeyless
 
       if attributes.key?(:'auto_generated_folder')
         self.auto_generated_folder = attributes[:'auto_generated_folder']
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'enable_admin_rotation')
@@ -288,6 +297,7 @@ module Akeyless
           allow_subdomains == o.allow_subdomains &&
           allowed_domains == o.allowed_domains &&
           auto_generated_folder == o.auto_generated_folder &&
+          delete_protection == o.delete_protection &&
           enable_admin_rotation == o.enable_admin_rotation &&
           name == o.name &&
           producer_encryption_key_name == o.producer_encryption_key_name &&
@@ -317,7 +327,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [admin_rotation_interval_days, allow_subdomains, allowed_domains, auto_generated_folder, enable_admin_rotation, name, producer_encryption_key_name, root_first_in_chain, sign_using_akeyless_pki, signer_key_name, store_private_key, tags, target_name, token, uid_token, user_ttl, venafi_api_key, venafi_baseurl, venafi_password, venafi_use_tpp, venafi_username, venafi_zone].hash
+      [admin_rotation_interval_days, allow_subdomains, allowed_domains, auto_generated_folder, delete_protection, enable_admin_rotation, name, producer_encryption_key_name, root_first_in_chain, sign_using_akeyless_pki, signer_key_name, store_private_key, tags, target_name, token, uid_token, user_ttl, venafi_api_key, venafi_baseurl, venafi_password, venafi_use_tpp, venafi_username, venafi_zone].hash
     end
 
     # Builds the object from hash

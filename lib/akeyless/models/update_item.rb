@@ -18,6 +18,9 @@ module Akeyless
     # List of the new tags that will be attached to this item
     attr_accessor :add_tag
 
+    # PEM Certificate in a Base64 format. Used for updating RSA keys' certificates.
+    attr_accessor :cert_file_data
+
     attr_accessor :delete_protection
 
     # Current item name
@@ -90,6 +93,7 @@ module Akeyless
     def self.attribute_map
       {
         :'add_tag' => :'add-tag',
+        :'cert_file_data' => :'cert-file-data',
         :'delete_protection' => :'delete_protection',
         :'name' => :'name',
         :'new_metadata' => :'new-metadata',
@@ -133,6 +137,7 @@ module Akeyless
     def self.openapi_types
       {
         :'add_tag' => :'Array<String>',
+        :'cert_file_data' => :'String',
         :'delete_protection' => :'String',
         :'name' => :'String',
         :'new_metadata' => :'String',
@@ -192,6 +197,10 @@ module Akeyless
         if (value = attributes[:'add_tag']).is_a?(Array)
           self.add_tag = value
         end
+      end
+
+      if attributes.key?(:'cert_file_data')
+        self.cert_file_data = attributes[:'cert_file_data']
       end
 
       if attributes.key?(:'delete_protection')
@@ -353,6 +362,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           add_tag == o.add_tag &&
+          cert_file_data == o.cert_file_data &&
           delete_protection == o.delete_protection &&
           name == o.name &&
           new_metadata == o.new_metadata &&
@@ -395,7 +405,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_tag, delete_protection, name, new_metadata, new_name, rm_tag, secure_access_add_host, secure_access_allow_external_user, secure_access_allow_port_forwading, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_aws_region, secure_access_bastion_api, secure_access_bastion_issuer, secure_access_bastion_ssh, secure_access_cluster_endpoint, secure_access_dashboard_url, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_rm_host, secure_access_ssh_creds, secure_access_ssh_creds_user, secure_access_url, secure_access_use_internal_bastion, secure_access_web_browsing, secure_access_web_proxy, token, uid_token].hash
+      [add_tag, cert_file_data, delete_protection, name, new_metadata, new_name, rm_tag, secure_access_add_host, secure_access_allow_external_user, secure_access_allow_port_forwading, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_aws_region, secure_access_bastion_api, secure_access_bastion_issuer, secure_access_bastion_ssh, secure_access_cluster_endpoint, secure_access_dashboard_url, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_rm_host, secure_access_ssh_creds, secure_access_ssh_creds_user, secure_access_url, secure_access_use_internal_bastion, secure_access_web_browsing, secure_access_web_proxy, token, uid_token].hash
     end
 
     # Builds the object from hash

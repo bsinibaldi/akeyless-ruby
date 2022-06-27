@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **creation_statements** | **String** | Redshift Creation statements | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **name** | **String** | Producer name |  |
 | **new_name** | **String** | Producer name | [optional] |
 | **producer_encryption_key** | **String** | Dynamic producer encryption key | [optional] |
@@ -29,6 +30,7 @@ require 'akeyless'
 
 instance = Akeyless::GatewayUpdateProducerRedshift.new(
   creation_statements: null,
+  delete_protection: null,
   name: null,
   new_name: null,
   producer_encryption_key: null,

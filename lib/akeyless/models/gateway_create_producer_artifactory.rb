@@ -31,6 +31,9 @@ module Akeyless
     # Base URL
     attr_accessor :base_url
 
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # Producer name
     attr_accessor :name
 
@@ -60,6 +63,7 @@ module Akeyless
         :'artifactory_token_audience' => :'artifactory-token-audience',
         :'artifactory_token_scope' => :'artifactory-token-scope',
         :'base_url' => :'base-url',
+        :'delete_protection' => :'delete_protection',
         :'name' => :'name',
         :'producer_encryption_key_name' => :'producer-encryption-key-name',
         :'tags' => :'tags',
@@ -83,6 +87,7 @@ module Akeyless
         :'artifactory_token_audience' => :'String',
         :'artifactory_token_scope' => :'String',
         :'base_url' => :'String',
+        :'delete_protection' => :'String',
         :'name' => :'String',
         :'producer_encryption_key_name' => :'String',
         :'tags' => :'Array<String>',
@@ -132,6 +137,10 @@ module Akeyless
 
       if attributes.key?(:'base_url')
         self.base_url = attributes[:'base_url']
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'name')
@@ -205,6 +214,7 @@ module Akeyless
           artifactory_token_audience == o.artifactory_token_audience &&
           artifactory_token_scope == o.artifactory_token_scope &&
           base_url == o.base_url &&
+          delete_protection == o.delete_protection &&
           name == o.name &&
           producer_encryption_key_name == o.producer_encryption_key_name &&
           tags == o.tags &&
@@ -223,7 +233,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [artifactory_admin_name, artifactory_admin_pwd, artifactory_token_audience, artifactory_token_scope, base_url, name, producer_encryption_key_name, tags, target_name, token, uid_token, user_ttl].hash
+      [artifactory_admin_name, artifactory_admin_pwd, artifactory_token_audience, artifactory_token_scope, base_url, delete_protection, name, producer_encryption_key_name, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

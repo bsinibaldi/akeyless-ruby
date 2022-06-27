@@ -16,67 +16,67 @@ require 'time'
 module Akeyless
   # gatewayCreateMigration is a command that create migration
   class GatewayCreateMigration
-    # AWS Secret Access Key
+    # AWS Secret Access Key (relevant only for AWS migration)
     attr_accessor :aws_key
 
-    # AWS Access Key ID
+    # AWS Access Key ID with sufficient permissions to get all secrets, e.g. 'arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/*]' (relevant only for AWS migration)
     attr_accessor :aws_key_id
 
-    # AWS region
+    # AWS region of the required Secrets Manager (relevant only for AWS migration)
     attr_accessor :aws_region
 
-    # Azure KV Access client ID
+    # Azure Key Vault Access client ID, should be Azure AD App with a service principal (relevant only for Azure Key Vault migration)
     attr_accessor :azure_client_id
 
-    # Azure Key Vault Name
+    # Azure Key Vault Name (relevant only for Azure Key Vault migration)
     attr_accessor :azure_kv_name
 
-    # Azure KV secret
+    # Azure Key Vault secret (relevant only for Azure Key Vault migration)
     attr_accessor :azure_secret
 
-    # Azure KV Access tenant ID
+    # Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration)
     attr_accessor :azure_tenant_id
 
-    # Base64-encoded service account private key text
+    # Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. 'roles/secretmanager.secretAccessor' (relevant only for GCP migration)
     attr_accessor :gcp_key
 
-    # Import secret key as json value or independent secrets
+    # Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration)
     attr_accessor :hashi_json
 
-    # Hashi namespaces
+    # HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration)
     attr_accessor :hashi_ns
 
-    # Hashi token
+    # HashiCorp Vault access token with sufficient permissions to preform list & read operations on secrets objects (relevant only for HasiCorp Vault migration)
     attr_accessor :hashi_token
 
-    # Hashi url
+    # HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration)
     attr_accessor :hashi_url
 
-    # For Certificate Authentication method K8s Cluster CA certificate
+    # For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method)
     attr_accessor :k8s_ca_certificate
 
-    # K8s Client certificate
+    # K8s Client certificate with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Certificate Authentication method)
     attr_accessor :k8s_client_certificate
 
-    # K8s Client key
+    # K8s Client key (relevant only for K8s migration with Certificate Authentication method)
     attr_accessor :k8s_client_key
 
-    # K8s Namespace
+    # K8s Namespace, Use this field to import secrets from a particular namespace only. By default, the secrets are imported from all namespaces (relevant only for K8s migration)
     attr_accessor :k8s_namespace
 
-    # K8s client password
+    # K8s Client password (relevant only for K8s migration with Password Authentication method)
     attr_accessor :k8s_password
 
-    # K8s Skip Control Plane Secrets
+    # K8s Skip Control Plane Secrets, This option allows to avoid importing secrets from system namespaces (relevant only for K8s migration)
     attr_accessor :k8s_skip_system
 
-    # For Token Authentication method K8s Bearer Token
+    # For Token Authentication method K8s Bearer Token with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Token Authentication method)
     attr_accessor :k8s_token
 
-    # K8s Endpoint URL
+    # K8s API Server URL, e.g. https://k8s-api.mycompany.com:6443 (relevant only for K8s migration)
     attr_accessor :k8s_url
 
-    # For Password Authentication method K8s client username
+    # For Password Authentication method K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method)
     attr_accessor :k8s_username
 
     # Migration name
@@ -91,7 +91,7 @@ module Akeyless
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
-    # Migration type, can be: hashi/aws/gcp/k8s/azure_kv
+    # Migration type (hashi/aws/gcp/k8s/azure_kv)
     attr_accessor :type
 
     # The universal identity token, Required only for universal_identity authentication

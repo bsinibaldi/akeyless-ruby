@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
 | **rabbitmq_admin_pwd** | **String** | RabbitMQ Admin password | [optional] |
@@ -31,6 +32,7 @@
 require 'akeyless'
 
 instance = Akeyless::GatewayCreateProducerRabbitMQ.new(
+  delete_protection: null,
   name: null,
   producer_encryption_key_name: null,
   rabbitmq_admin_pwd: null,

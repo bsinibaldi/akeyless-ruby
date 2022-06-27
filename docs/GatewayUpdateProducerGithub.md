@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **github_app_id** | **Integer** | Github app id | [optional] |
 | **github_app_private_key** | **String** | App private key | [optional] |
 | **github_base_url** | **String** | Base URL | [optional] |
@@ -23,6 +24,7 @@
 require 'akeyless'
 
 instance = Akeyless::GatewayUpdateProducerGithub.new(
+  delete_protection: null,
   github_app_id: null,
   github_app_private_key: null,
   github_base_url: null,

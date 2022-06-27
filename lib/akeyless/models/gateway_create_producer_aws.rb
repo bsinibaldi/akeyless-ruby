@@ -42,6 +42,9 @@ module Akeyless
     # AWS User programmatic access
     attr_accessor :aws_user_programmatic_access
 
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # Automatic admin credentials rotation
     attr_accessor :enable_admin_rotation
 
@@ -95,6 +98,7 @@ module Akeyless
         :'aws_user_groups' => :'aws-user-groups',
         :'aws_user_policies' => :'aws-user-policies',
         :'aws_user_programmatic_access' => :'aws-user-programmatic-access',
+        :'delete_protection' => :'delete_protection',
         :'enable_admin_rotation' => :'enable-admin-rotation',
         :'name' => :'name',
         :'producer_encryption_key_name' => :'producer-encryption-key-name',
@@ -131,6 +135,7 @@ module Akeyless
         :'aws_user_groups' => :'String',
         :'aws_user_policies' => :'String',
         :'aws_user_programmatic_access' => :'Boolean',
+        :'delete_protection' => :'String',
         :'enable_admin_rotation' => :'Boolean',
         :'name' => :'String',
         :'producer_encryption_key_name' => :'String',
@@ -211,6 +216,10 @@ module Akeyless
         self.aws_user_programmatic_access = attributes[:'aws_user_programmatic_access']
       else
         self.aws_user_programmatic_access = true
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'enable_admin_rotation')
@@ -318,6 +327,7 @@ module Akeyless
           aws_user_groups == o.aws_user_groups &&
           aws_user_policies == o.aws_user_policies &&
           aws_user_programmatic_access == o.aws_user_programmatic_access &&
+          delete_protection == o.delete_protection &&
           enable_admin_rotation == o.enable_admin_rotation &&
           name == o.name &&
           producer_encryption_key_name == o.producer_encryption_key_name &&
@@ -345,7 +355,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_mode, admin_rotation_interval_days, aws_access_key_id, aws_access_secret_key, aws_role_arns, aws_user_console_access, aws_user_groups, aws_user_policies, aws_user_programmatic_access, enable_admin_rotation, name, producer_encryption_key_name, region, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_enable, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, tags, target_name, token, uid_token, user_ttl].hash
+      [access_mode, admin_rotation_interval_days, aws_access_key_id, aws_access_secret_key, aws_role_arns, aws_user_console_access, aws_user_groups, aws_user_policies, aws_user_programmatic_access, delete_protection, enable_admin_rotation, name, producer_encryption_key_name, region, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_enable, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **allow_user_extend_session** | **Integer** | AllowUserExtendSession | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **fixed_user_only** | **String** | Fixed user | [optional][default to &#39;false&#39;] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
@@ -32,6 +33,7 @@ require 'akeyless'
 
 instance = Akeyless::GatewayCreateProducerRdp.new(
   allow_user_extend_session: null,
+  delete_protection: null,
   fixed_user_only: null,
   name: null,
   producer_encryption_key_name: null,

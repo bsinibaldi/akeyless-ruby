@@ -22,6 +22,9 @@ module Akeyless
     # Bind DN Password
     attr_accessor :bind_dn_password
 
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # Fixed user
     attr_accessor :external_username
 
@@ -66,6 +69,7 @@ module Akeyless
       {
         :'bind_dn' => :'bind-dn',
         :'bind_dn_password' => :'bind-dn-password',
+        :'delete_protection' => :'delete_protection',
         :'external_username' => :'external-username',
         :'ldap_ca_cert' => :'ldap-ca-cert',
         :'ldap_url' => :'ldap-url',
@@ -92,6 +96,7 @@ module Akeyless
       {
         :'bind_dn' => :'String',
         :'bind_dn_password' => :'String',
+        :'delete_protection' => :'String',
         :'external_username' => :'String',
         :'ldap_ca_cert' => :'String',
         :'ldap_url' => :'String',
@@ -135,6 +140,10 @@ module Akeyless
 
       if attributes.key?(:'bind_dn_password')
         self.bind_dn_password = attributes[:'bind_dn_password']
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'external_username')
@@ -221,6 +230,7 @@ module Akeyless
       self.class == o.class &&
           bind_dn == o.bind_dn &&
           bind_dn_password == o.bind_dn_password &&
+          delete_protection == o.delete_protection &&
           external_username == o.external_username &&
           ldap_ca_cert == o.ldap_ca_cert &&
           ldap_url == o.ldap_url &&
@@ -245,7 +255,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [bind_dn, bind_dn_password, external_username, ldap_ca_cert, ldap_url, name, producer_encryption_key_name, tags, target_name, token, token_expiration, uid_token, user_attribute, user_dn, user_ttl].hash
+      [bind_dn, bind_dn_password, delete_protection, external_username, ldap_ca_cert, ldap_url, name, producer_encryption_key_name, tags, target_name, token, token_expiration, uid_token, user_attribute, user_dn, user_ttl].hash
     end
 
     # Builds the object from hash

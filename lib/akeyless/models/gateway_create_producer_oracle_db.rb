@@ -22,6 +22,9 @@ module Akeyless
     # (Optional) Server name for certificate verification
     attr_accessor :db_server_name
 
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # Producer name
     attr_accessor :name
 
@@ -74,6 +77,7 @@ module Akeyless
       {
         :'db_server_certificates' => :'db-server-certificates',
         :'db_server_name' => :'db-server-name',
+        :'delete_protection' => :'delete_protection',
         :'name' => :'name',
         :'oracle_host' => :'oracle-host',
         :'oracle_password' => :'oracle-password',
@@ -104,6 +108,7 @@ module Akeyless
       {
         :'db_server_certificates' => :'String',
         :'db_server_name' => :'String',
+        :'delete_protection' => :'String',
         :'name' => :'String',
         :'oracle_host' => :'String',
         :'oracle_password' => :'String',
@@ -151,6 +156,10 @@ module Akeyless
 
       if attributes.key?(:'db_server_name')
         self.db_server_name = attributes[:'db_server_name']
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'name')
@@ -257,6 +266,7 @@ module Akeyless
       self.class == o.class &&
           db_server_certificates == o.db_server_certificates &&
           db_server_name == o.db_server_name &&
+          delete_protection == o.delete_protection &&
           name == o.name &&
           oracle_host == o.oracle_host &&
           oracle_password == o.oracle_password &&
@@ -285,7 +295,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [db_server_certificates, db_server_name, name, oracle_host, oracle_password, oracle_port, oracle_screation_statements, oracle_service_name, oracle_username, producer_encryption_key_name, secure_access_bastion_issuer, secure_access_enable, secure_access_host, secure_access_web, tags, target_name, token, uid_token, user_ttl].hash
+      [db_server_certificates, db_server_name, delete_protection, name, oracle_host, oracle_password, oracle_port, oracle_screation_statements, oracle_service_name, oracle_username, producer_encryption_key_name, secure_access_bastion_issuer, secure_access_enable, secure_access_host, secure_access_web, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

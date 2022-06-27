@@ -28,6 +28,9 @@ module Akeyless
     # Database name
     attr_accessor :db_name
 
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # Producer name
     attr_accessor :name
 
@@ -59,6 +62,7 @@ module Akeyless
         :'account_password' => :'account-password',
         :'account_username' => :'account-username',
         :'db_name' => :'db-name',
+        :'delete_protection' => :'delete_protection',
         :'name' => :'name',
         :'role' => :'role',
         :'tags' => :'tags',
@@ -82,6 +86,7 @@ module Akeyless
         :'account_password' => :'String',
         :'account_username' => :'String',
         :'db_name' => :'String',
+        :'delete_protection' => :'String',
         :'name' => :'String',
         :'role' => :'String',
         :'tags' => :'Array<String>',
@@ -128,6 +133,10 @@ module Akeyless
 
       if attributes.key?(:'db_name')
         self.db_name = attributes[:'db_name']
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'name')
@@ -194,6 +203,7 @@ module Akeyless
           account_password == o.account_password &&
           account_username == o.account_username &&
           db_name == o.db_name &&
+          delete_protection == o.delete_protection &&
           name == o.name &&
           role == o.role &&
           tags == o.tags &&
@@ -213,7 +223,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account, account_password, account_username, db_name, name, role, tags, target_name, token, uid_token, user_ttl, warehouse].hash
+      [account, account_password, account_username, db_name, delete_protection, name, role, tags, target_name, token, uid_token, user_ttl, warehouse].hash
     end
 
     # Builds the object from hash

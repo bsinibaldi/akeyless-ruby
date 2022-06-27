@@ -16,6 +16,9 @@ require 'time'
 module Akeyless
   # gatewayCreateProducerMongo is a command that creates either mongodb  producer or mongodb atlas producer
   class GatewayCreateProducerMongo
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # MongoDB Atlas private key
     attr_accessor :mongodb_atlas_api_private_key
 
@@ -84,6 +87,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'delete_protection' => :'delete_protection',
         :'mongodb_atlas_api_private_key' => :'mongodb-atlas-api-private-key',
         :'mongodb_atlas_api_public_key' => :'mongodb-atlas-api-public-key',
         :'mongodb_atlas_project_id' => :'mongodb-atlas-project-id',
@@ -118,6 +122,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'delete_protection' => :'String',
         :'mongodb_atlas_api_private_key' => :'String',
         :'mongodb_atlas_api_public_key' => :'String',
         :'mongodb_atlas_project_id' => :'String',
@@ -164,6 +169,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
+      end
 
       if attributes.key?(:'mongodb_atlas_api_private_key')
         self.mongodb_atlas_api_private_key = attributes[:'mongodb_atlas_api_private_key']
@@ -289,6 +298,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          delete_protection == o.delete_protection &&
           mongodb_atlas_api_private_key == o.mongodb_atlas_api_private_key &&
           mongodb_atlas_api_public_key == o.mongodb_atlas_api_public_key &&
           mongodb_atlas_project_id == o.mongodb_atlas_project_id &&
@@ -323,7 +333,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_custom_data, mongodb_default_auth_db, mongodb_host_port, mongodb_name, mongodb_password, mongodb_roles, mongodb_server_uri, mongodb_uri_options, mongodb_username, name, producer_encryption_key_name, secure_access_bastion_issuer, secure_access_enable, secure_access_host, secure_access_web, tags, target_name, token, uid_token, user_ttl].hash
+      [delete_protection, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_custom_data, mongodb_default_auth_db, mongodb_host_port, mongodb_name, mongodb_password, mongodb_roles, mongodb_server_uri, mongodb_uri_options, mongodb_username, name, producer_encryption_key_name, secure_access_bastion_issuer, secure_access_enable, secure_access_host, secure_access_web, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

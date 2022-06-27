@@ -19,6 +19,9 @@ module Akeyless
     # AllowUserExtendSession
     attr_accessor :allow_user_extend_session
 
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # Fixed user
     attr_accessor :fixed_user_only
 
@@ -78,6 +81,7 @@ module Akeyless
     def self.attribute_map
       {
         :'allow_user_extend_session' => :'allow-user-extend-session',
+        :'delete_protection' => :'delete_protection',
         :'fixed_user_only' => :'fixed-user-only',
         :'name' => :'name',
         :'new_name' => :'new-name',
@@ -110,6 +114,7 @@ module Akeyless
     def self.openapi_types
       {
         :'allow_user_extend_session' => :'Integer',
+        :'delete_protection' => :'String',
         :'fixed_user_only' => :'String',
         :'name' => :'String',
         :'new_name' => :'String',
@@ -156,6 +161,10 @@ module Akeyless
 
       if attributes.key?(:'allow_user_extend_session')
         self.allow_user_extend_session = attributes[:'allow_user_extend_session']
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'fixed_user_only')
@@ -273,6 +282,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           allow_user_extend_session == o.allow_user_extend_session &&
+          delete_protection == o.delete_protection &&
           fixed_user_only == o.fixed_user_only &&
           name == o.name &&
           new_name == o.new_name &&
@@ -304,7 +314,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allow_user_extend_session, fixed_user_only, name, new_name, producer_encryption_key_name, rdp_admin_name, rdp_admin_pwd, rdp_host_name, rdp_host_port, rdp_user_groups, secure_access_allow_external_user, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, tags, target_name, token, uid_token, user_ttl, warn_user_before_expiration].hash
+      [allow_user_extend_session, delete_protection, fixed_user_only, name, new_name, producer_encryption_key_name, rdp_admin_name, rdp_admin_pwd, rdp_host_name, rdp_host_port, rdp_user_groups, secure_access_allow_external_user, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, tags, target_name, token, uid_token, user_ttl, warn_user_before_expiration].hash
     end
 
     # Builds the object from hash

@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **creation_statements** | **String** | PostgreSQL Creation statements | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **name** | **String** | Producer name |  |
 | **postgresql_db_name** | **String** | PostgreSQL DB Name | [optional] |
 | **postgresql_host** | **String** | PostgreSQL Host | [optional][default to &#39;127.0.0.1&#39;] |
@@ -32,6 +33,7 @@ require 'akeyless'
 
 instance = Akeyless::GatewayCreateProducerPostgreSQL.new(
   creation_statements: null,
+  delete_protection: null,
   name: null,
   postgresql_db_name: null,
   postgresql_host: null,

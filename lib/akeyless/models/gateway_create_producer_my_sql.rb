@@ -22,6 +22,9 @@ module Akeyless
     # (Optional) Server name for certificate verification
     attr_accessor :db_server_name
 
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # MySQL DB Name
     attr_accessor :mysql_dbname
 
@@ -80,6 +83,7 @@ module Akeyless
       {
         :'db_server_certificates' => :'db-server-certificates',
         :'db_server_name' => :'db-server-name',
+        :'delete_protection' => :'delete_protection',
         :'mysql_dbname' => :'mysql-dbname',
         :'mysql_host' => :'mysql-host',
         :'mysql_password' => :'mysql-password',
@@ -112,6 +116,7 @@ module Akeyless
       {
         :'db_server_certificates' => :'String',
         :'db_server_name' => :'String',
+        :'delete_protection' => :'String',
         :'mysql_dbname' => :'String',
         :'mysql_host' => :'String',
         :'mysql_password' => :'String',
@@ -161,6 +166,10 @@ module Akeyless
 
       if attributes.key?(:'db_server_name')
         self.db_server_name = attributes[:'db_server_name']
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'mysql_dbname')
@@ -275,6 +284,7 @@ module Akeyless
       self.class == o.class &&
           db_server_certificates == o.db_server_certificates &&
           db_server_name == o.db_server_name &&
+          delete_protection == o.delete_protection &&
           mysql_dbname == o.mysql_dbname &&
           mysql_host == o.mysql_host &&
           mysql_password == o.mysql_password &&
@@ -305,7 +315,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [db_server_certificates, db_server_name, mysql_dbname, mysql_host, mysql_password, mysql_port, mysql_screation_statements, mysql_username, name, producer_encryption_key_name, secure_access_bastion_issuer, secure_access_enable, secure_access_host, secure_access_web, ssl, ssl_certificate, tags, target_name, token, uid_token, user_ttl].hash
+      [db_server_certificates, db_server_name, delete_protection, mysql_dbname, mysql_host, mysql_password, mysql_port, mysql_screation_statements, mysql_username, name, producer_encryption_key_name, secure_access_bastion_issuer, secure_access_enable, secure_access_host, secure_access_web, ssl, ssl_certificate, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

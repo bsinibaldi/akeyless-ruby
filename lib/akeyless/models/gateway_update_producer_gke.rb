@@ -16,6 +16,9 @@ require 'time'
 module Akeyless
   # gatewayUpdateProducerGke is a command that updates gke producer
   class GatewayUpdateProducerGke
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # GKE Service Account key file path
     attr_accessor :gke_account_key
 
@@ -68,6 +71,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'delete_protection' => :'delete_protection',
         :'gke_account_key' => :'gke-account-key',
         :'gke_cluster_cert' => :'gke-cluster-cert',
         :'gke_cluster_endpoint' => :'gke-cluster-endpoint',
@@ -97,6 +101,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'delete_protection' => :'String',
         :'gke_account_key' => :'String',
         :'gke_cluster_cert' => :'String',
         :'gke_cluster_endpoint' => :'String',
@@ -138,6 +143,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
+      end
 
       if attributes.key?(:'gke_account_key')
         self.gke_account_key = attributes[:'gke_account_key']
@@ -239,6 +248,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          delete_protection == o.delete_protection &&
           gke_account_key == o.gke_account_key &&
           gke_cluster_cert == o.gke_cluster_cert &&
           gke_cluster_endpoint == o.gke_cluster_endpoint &&
@@ -268,7 +278,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [gke_account_key, gke_cluster_cert, gke_cluster_endpoint, gke_cluster_name, gke_service_account_email, name, new_name, producer_encryption_key_name, secure_access_allow_port_forwading, secure_access_bastion_issuer, secure_access_cluster_endpoint, secure_access_enable, secure_access_web, tags, target_name, token, uid_token, user_ttl].hash
+      [delete_protection, gke_account_key, gke_cluster_cert, gke_cluster_endpoint, gke_cluster_name, gke_service_account_email, name, new_name, producer_encryption_key_name, secure_access_allow_port_forwading, secure_access_bastion_issuer, secure_access_cluster_endpoint, secure_access_enable, secure_access_web, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

@@ -66,6 +66,8 @@ module Akeyless
 
     attr_accessor :protection_key_name
 
+    attr_accessor :protection_key_type
+
     attr_accessor :public_value
 
     attr_accessor :rotation_interval
@@ -102,6 +104,7 @@ module Akeyless
         :'last_version' => :'last_version',
         :'next_rotation_date' => :'next_rotation_date',
         :'protection_key_name' => :'protection_key_name',
+        :'protection_key_type' => :'protection_key_type',
         :'public_value' => :'public_value',
         :'rotation_interval' => :'rotation_interval',
         :'target_versions' => :'target_versions',
@@ -142,6 +145,7 @@ module Akeyless
         :'last_version' => :'Integer',
         :'next_rotation_date' => :'Time',
         :'protection_key_name' => :'String',
+        :'protection_key_type' => :'String',
         :'public_value' => :'String',
         :'rotation_interval' => :'Integer',
         :'target_versions' => :'Array<TargetItemVersion>',
@@ -278,6 +282,10 @@ module Akeyless
         self.protection_key_name = attributes[:'protection_key_name']
       end
 
+      if attributes.key?(:'protection_key_type')
+        self.protection_key_type = attributes[:'protection_key_type']
+      end
+
       if attributes.key?(:'public_value')
         self.public_value = attributes[:'public_value']
       end
@@ -340,6 +348,7 @@ module Akeyless
           last_version == o.last_version &&
           next_rotation_date == o.next_rotation_date &&
           protection_key_name == o.protection_key_name &&
+          protection_key_type == o.protection_key_type &&
           public_value == o.public_value &&
           rotation_interval == o.rotation_interval &&
           target_versions == o.target_versions &&
@@ -355,7 +364,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_rotate, cert_issuer_signer_key_name, certificate_issue_details, certificates, client_permissions, customer_fragment_id, delete_protection, deletion_date, display_id, is_enabled, item_accessibility, item_general_info, item_id, item_metadata, item_name, item_size, item_state, item_sub_type, item_tags, item_targets_assoc, item_type, item_versions, last_version, next_rotation_date, protection_key_name, public_value, rotation_interval, target_versions, with_customer_fragment].hash
+      [auto_rotate, cert_issuer_signer_key_name, certificate_issue_details, certificates, client_permissions, customer_fragment_id, delete_protection, deletion_date, display_id, is_enabled, item_accessibility, item_general_info, item_id, item_metadata, item_name, item_size, item_state, item_sub_type, item_tags, item_targets_assoc, item_type, item_versions, last_version, next_rotation_date, protection_key_name, protection_key_type, public_value, rotation_interval, target_versions, with_customer_fragment].hash
     end
 
     # Builds the object from hash

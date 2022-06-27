@@ -106,6 +106,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_list_producers**](V2Api.md#gateway_list_producers) | **POST** /gateway-list-producers |  |
 | [**gateway_revoke_tmp_users**](V2Api.md#gateway_revoke_tmp_users) | **POST** /gateway-revoke-producer-tmp-creds |  |
 | [**gateway_start_producer**](V2Api.md#gateway_start_producer) | **POST** /gateway-start-producer |  |
+| [**gateway_status_migration**](V2Api.md#gateway_status_migration) | **POST** /gateway-migration-status |  |
 | [**gateway_stop_producer**](V2Api.md#gateway_stop_producer) | **POST** /gateway-stop-producer |  |
 | [**gateway_sync_migration**](V2Api.md#gateway_sync_migration) | **POST** /gateway-sync-migration |  |
 | [**gateway_update_item**](V2Api.md#gateway_update_item) | **POST** /gateway-update-item |  |
@@ -6564,6 +6565,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## gateway_status_migration
+
+> <MigrationStatusReplyObj> gateway_status_migration(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayStatusMigration.new # GatewayStatusMigration | 
+
+begin
+  
+  result = api_instance.gateway_status_migration(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_status_migration: #{e}"
+end
+```
+
+#### Using the gateway_status_migration_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<MigrationStatusReplyObj>, Integer, Hash)> gateway_status_migration_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_status_migration_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <MigrationStatusReplyObj>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_status_migration_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayStatusMigration**](GatewayStatusMigration.md) |  |  |
+
+### Return type
+
+[**MigrationStatusReplyObj**](MigrationStatusReplyObj.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## gateway_stop_producer
 
 > <GatewayStopProducerOutput> gateway_stop_producer(body)
@@ -6887,7 +6950,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::GatewayUpdateMigration.new({name: 'name_example'}) # GatewayUpdateMigration | 
+body = Akeyless::GatewayUpdateMigration.new # GatewayUpdateMigration | 
 
 begin
   

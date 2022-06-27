@@ -8,6 +8,7 @@
 | **account_password** | **String** | Database Password | [optional] |
 | **account_username** | **String** | Database Username | [optional] |
 | **db_name** | **String** | Database name | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **name** | **String** | Producer name |  |
 | **new_name** | **String** | Producer name | [optional] |
 | **role** | **String** | User role | [optional] |
@@ -28,6 +29,7 @@ instance = Akeyless::GatewayUpdateProducerSnowflake.new(
   account_password: null,
   account_username: null,
   db_name: null,
+  delete_protection: null,
   name: null,
   new_name: null,
   role: null,

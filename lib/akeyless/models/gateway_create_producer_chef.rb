@@ -28,6 +28,9 @@ module Akeyless
     # Server username
     attr_accessor :chef_server_username
 
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # Producer name
     attr_accessor :name
 
@@ -59,6 +62,7 @@ module Akeyless
         :'chef_server_key' => :'chef-server-key',
         :'chef_server_url' => :'chef-server-url',
         :'chef_server_username' => :'chef-server-username',
+        :'delete_protection' => :'delete_protection',
         :'name' => :'name',
         :'producer_encryption_key_name' => :'producer-encryption-key-name',
         :'skip_ssl' => :'skip-ssl',
@@ -82,6 +86,7 @@ module Akeyless
         :'chef_server_key' => :'String',
         :'chef_server_url' => :'String',
         :'chef_server_username' => :'String',
+        :'delete_protection' => :'String',
         :'name' => :'String',
         :'producer_encryption_key_name' => :'String',
         :'skip_ssl' => :'Boolean',
@@ -128,6 +133,10 @@ module Akeyless
 
       if attributes.key?(:'chef_server_username')
         self.chef_server_username = attributes[:'chef_server_username']
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'name')
@@ -196,6 +205,7 @@ module Akeyless
           chef_server_key == o.chef_server_key &&
           chef_server_url == o.chef_server_url &&
           chef_server_username == o.chef_server_username &&
+          delete_protection == o.delete_protection &&
           name == o.name &&
           producer_encryption_key_name == o.producer_encryption_key_name &&
           skip_ssl == o.skip_ssl &&
@@ -215,7 +225,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [chef_orgs, chef_server_key, chef_server_url, chef_server_username, name, producer_encryption_key_name, skip_ssl, tags, target_name, token, uid_token, user_ttl].hash
+      [chef_orgs, chef_server_key, chef_server_url, chef_server_username, delete_protection, name, producer_encryption_key_name, skip_ssl, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

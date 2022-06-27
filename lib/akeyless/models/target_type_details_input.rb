@@ -21,6 +21,8 @@ module Akeyless
 
     attr_accessor :artifactory_base_url
 
+    attr_accessor :auth_flow
+
     attr_accessor :aws_access_key_id
 
     attr_accessor :aws_region
@@ -210,6 +212,7 @@ module Akeyless
         :'artifactory_admin_apikey' => :'artifactory_admin_apikey',
         :'artifactory_admin_username' => :'artifactory_admin_username',
         :'artifactory_base_url' => :'artifactory_base_url',
+        :'auth_flow' => :'auth_flow',
         :'aws_access_key_id' => :'aws_access_key_id',
         :'aws_region' => :'aws_region',
         :'aws_secret_access_key' => :'aws_secret_access_key',
@@ -311,6 +314,7 @@ module Akeyless
         :'artifactory_admin_apikey' => :'String',
         :'artifactory_admin_username' => :'String',
         :'artifactory_base_url' => :'String',
+        :'auth_flow' => :'String',
         :'aws_access_key_id' => :'String',
         :'aws_region' => :'String',
         :'aws_secret_access_key' => :'String',
@@ -432,6 +436,10 @@ module Akeyless
 
       if attributes.key?(:'artifactory_base_url')
         self.artifactory_base_url = attributes[:'artifactory_base_url']
+      end
+
+      if attributes.key?(:'auth_flow')
+        self.auth_flow = attributes[:'auth_flow']
       end
 
       if attributes.key?(:'aws_access_key_id')
@@ -806,6 +814,7 @@ module Akeyless
           artifactory_admin_apikey == o.artifactory_admin_apikey &&
           artifactory_admin_username == o.artifactory_admin_username &&
           artifactory_base_url == o.artifactory_base_url &&
+          auth_flow == o.auth_flow &&
           aws_access_key_id == o.aws_access_key_id &&
           aws_region == o.aws_region &&
           aws_secret_access_key == o.aws_secret_access_key &&
@@ -904,7 +913,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, aws_access_key_id, aws_region, aws_secret_access_key, aws_session_token, azure_client_id, azure_client_secret, azure_resource_group_name, azure_resource_name, azure_subscription_id, azure_tenant_id, ca_cert_data, ca_cert_name, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, client_id, client_secret, db_host_name, db_name, db_port, db_pwd, db_server_certificates, db_server_name, db_user_name, eks_access_key_id, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, gcp_service_account_email, gcp_service_account_key, github_app_id, github_app_private_key, github_base_url, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, host, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_uri_connection, mongodb_uri_options, mongodb_username, password, payload, port, private_key, private_key_password, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, security_token, sf_account, ssl_connection_certificate, ssl_connection_mode, tenant_url, url, use_gw_cloud_identity, user_name, username, venafi_api_key, venafi_base_url, venafi_tpp_password, venafi_tpp_username, venafi_use_tpp, venafi_zone].hash
+      [artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, auth_flow, aws_access_key_id, aws_region, aws_secret_access_key, aws_session_token, azure_client_id, azure_client_secret, azure_resource_group_name, azure_resource_name, azure_subscription_id, azure_tenant_id, ca_cert_data, ca_cert_name, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, client_id, client_secret, db_host_name, db_name, db_port, db_pwd, db_server_certificates, db_server_name, db_user_name, eks_access_key_id, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, gcp_service_account_email, gcp_service_account_key, github_app_id, github_app_private_key, github_base_url, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, host, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_uri_connection, mongodb_uri_options, mongodb_username, password, payload, port, private_key, private_key_password, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, security_token, sf_account, ssl_connection_certificate, ssl_connection_mode, tenant_url, url, use_gw_cloud_identity, user_name, username, venafi_api_key, venafi_base_url, venafi_tpp_password, venafi_tpp_username, venafi_use_tpp, venafi_zone].hash
     end
 
     # Builds the object from hash

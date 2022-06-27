@@ -16,6 +16,9 @@ require 'time'
 module Akeyless
   # gatewayCreateProducerDockerhub is a command that creates a DOCKERHUB producer
   class GatewayCreateProducerDockerhub
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # DockerhubPassword is either the user's password access token to manage the repository
     attr_accessor :dockerhub_password
 
@@ -49,6 +52,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'delete_protection' => :'delete_protection',
         :'dockerhub_password' => :'dockerhub-password',
         :'dockerhub_token_scopes' => :'dockerhub-token-scopes',
         :'dockerhub_username' => :'dockerhub-username',
@@ -70,6 +74,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'delete_protection' => :'String',
         :'dockerhub_password' => :'String',
         :'dockerhub_token_scopes' => :'String',
         :'dockerhub_username' => :'String',
@@ -103,6 +108,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
+      end
 
       if attributes.key?(:'dockerhub_password')
         self.dockerhub_password = attributes[:'dockerhub_password']
@@ -172,6 +181,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          delete_protection == o.delete_protection &&
           dockerhub_password == o.dockerhub_password &&
           dockerhub_token_scopes == o.dockerhub_token_scopes &&
           dockerhub_username == o.dockerhub_username &&
@@ -193,7 +203,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [dockerhub_password, dockerhub_token_scopes, dockerhub_username, name, producer_encryption_key_name, tags, target_name, token, uid_token, user_ttl].hash
+      [delete_protection, dockerhub_password, dockerhub_token_scopes, dockerhub_username, name, producer_encryption_key_name, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

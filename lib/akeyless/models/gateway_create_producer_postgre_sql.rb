@@ -19,6 +19,9 @@ module Akeyless
     # PostgreSQL Creation statements
     attr_accessor :creation_statements
 
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # Producer name
     attr_accessor :name
 
@@ -75,6 +78,7 @@ module Akeyless
     def self.attribute_map
       {
         :'creation_statements' => :'creation-statements',
+        :'delete_protection' => :'delete_protection',
         :'name' => :'name',
         :'postgresql_db_name' => :'postgresql-db-name',
         :'postgresql_host' => :'postgresql-host',
@@ -106,6 +110,7 @@ module Akeyless
     def self.openapi_types
       {
         :'creation_statements' => :'String',
+        :'delete_protection' => :'String',
         :'name' => :'String',
         :'postgresql_db_name' => :'String',
         :'postgresql_host' => :'String',
@@ -151,6 +156,10 @@ module Akeyless
 
       if attributes.key?(:'creation_statements')
         self.creation_statements = attributes[:'creation_statements']
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'name')
@@ -264,6 +273,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           creation_statements == o.creation_statements &&
+          delete_protection == o.delete_protection &&
           name == o.name &&
           postgresql_db_name == o.postgresql_db_name &&
           postgresql_host == o.postgresql_host &&
@@ -294,7 +304,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [creation_statements, name, postgresql_db_name, postgresql_host, postgresql_password, postgresql_port, postgresql_username, producer_encryption_key, revocation_statement, secure_access_bastion_issuer, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_web, ssl, tags, target_name, token, uid_token, user_ttl].hash
+      [creation_statements, delete_protection, name, postgresql_db_name, postgresql_host, postgresql_password, postgresql_port, postgresql_username, producer_encryption_key, revocation_statement, secure_access_bastion_issuer, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_web, ssl, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

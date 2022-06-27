@@ -13,6 +13,7 @@
 | **aws_user_groups** | **String** | AWS User groups | [optional] |
 | **aws_user_policies** | **String** | AWS User policies | [optional] |
 | **aws_user_programmatic_access** | **Boolean** | AWS User programmatic access | [optional][default to true] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **enable_admin_rotation** | **Boolean** | Automatic admin credentials rotation | [optional][default to false] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
@@ -45,6 +46,7 @@ instance = Akeyless::GatewayCreateProducerAws.new(
   aws_user_groups: null,
   aws_user_policies: null,
   aws_user_programmatic_access: null,
+  delete_protection: null,
   enable_admin_rotation: null,
   name: null,
   producer_encryption_key_name: null,

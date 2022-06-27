@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **mongodb_atlas_api_private_key** | **String** | MongoDB Atlas private key | [optional] |
 | **mongodb_atlas_api_public_key** | **String** | MongoDB Atlas public key | [optional] |
 | **mongodb_atlas_project_id** | **String** | MongoDB Atlas project ID | [optional] |
@@ -34,6 +35,7 @@
 require 'akeyless'
 
 instance = Akeyless::GatewayCreateProducerMongo.new(
+  delete_protection: null,
   mongodb_atlas_api_private_key: null,
   mongodb_atlas_api_public_key: null,
   mongodb_atlas_project_id: null,

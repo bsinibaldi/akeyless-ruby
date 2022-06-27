@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **cert_issue_details** | [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] |
 | **classic_key_details** | [**ClassicKeyDetailsInfo**](ClassicKeyDetailsInfo.md) |  | [optional] |
+| **cluster_gw_url** | **String** |  | [optional] |
 | **display_metadata** | **String** |  | [optional] |
 | **dynamic_secret_producer_details** | [**DynamicSecretProducerInfo**](DynamicSecretProducerInfo.md) |  | [optional] |
 | **password_policy** | [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] |
@@ -22,6 +23,7 @@ require 'akeyless'
 instance = Akeyless::ItemGeneralInfo.new(
   cert_issue_details: null,
   classic_key_details: null,
+  cluster_gw_url: null,
   display_metadata: null,
   dynamic_secret_producer_details: null,
   password_policy: null,

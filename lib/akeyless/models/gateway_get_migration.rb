@@ -16,6 +16,7 @@ require 'time'
 module Akeyless
   # gatewayGetMigration is a command that get migration
   class GatewayGetMigration
+    # Migration name to display
     attr_accessor :name
 
     # Authentication token (see `/auth` and `/configure`)

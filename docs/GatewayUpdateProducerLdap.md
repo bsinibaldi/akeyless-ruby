@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **bind_dn** | **String** | Bind DN | [optional] |
 | **bind_dn_password** | **String** | Bind DN Password | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **external_username** | **String** | Fixed user | [optional][default to &#39;false&#39;] |
 | **ldap_ca_cert** | **String** | CA Certificate File Content | [optional] |
 | **ldap_url** | **String** | LDAP Server URL | [optional] |
@@ -29,6 +30,7 @@ require 'akeyless'
 instance = Akeyless::GatewayUpdateProducerLdap.new(
   bind_dn: null,
   bind_dn_password: null,
+  delete_protection: null,
   external_username: null,
   ldap_ca_cert: null,
   ldap_url: null,

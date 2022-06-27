@@ -8,6 +8,7 @@
 | **allow_subdomains** | **Boolean** | Allow subdomains | [optional] |
 | **allowed_domains** | **Array&lt;String&gt;** | Allowed domains | [optional] |
 | **auto_generated_folder** | **String** | Auto generated folder | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **enable_admin_rotation** | **Boolean** | Automatic admin credentials rotation | [optional][default to false] |
 | **name** | **String** | Producer name |  |
 | **new_name** | **String** | Producer name | [optional] |
@@ -38,6 +39,7 @@ instance = Akeyless::GatewayUpdateProducerCertificateAutomation.new(
   allow_subdomains: null,
   allowed_domains: null,
   auto_generated_folder: null,
+  delete_protection: null,
   enable_admin_rotation: null,
   name: null,
   new_name: null,

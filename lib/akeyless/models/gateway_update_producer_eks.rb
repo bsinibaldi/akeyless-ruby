@@ -16,6 +16,9 @@ require 'time'
 module Akeyless
   # gatewayUpdateProducerEks is a command that updates eks producer
   class GatewayUpdateProducerEks
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # Access Key ID
     attr_accessor :eks_access_key_id
 
@@ -74,6 +77,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'delete_protection' => :'delete_protection',
         :'eks_access_key_id' => :'eks-access-key-id',
         :'eks_assume_role' => :'eks-assume-role',
         :'eks_cluster_ca_cert' => :'eks-cluster-ca-cert',
@@ -105,6 +109,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'delete_protection' => :'String',
         :'eks_access_key_id' => :'String',
         :'eks_assume_role' => :'String',
         :'eks_cluster_ca_cert' => :'String',
@@ -148,6 +153,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
+      end
 
       if attributes.key?(:'eks_access_key_id')
         self.eks_access_key_id = attributes[:'eks_access_key_id']
@@ -259,6 +268,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          delete_protection == o.delete_protection &&
           eks_access_key_id == o.eks_access_key_id &&
           eks_assume_role == o.eks_assume_role &&
           eks_cluster_ca_cert == o.eks_cluster_ca_cert &&
@@ -290,7 +300,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [eks_access_key_id, eks_assume_role, eks_cluster_ca_cert, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, name, new_name, producer_encryption_key_name, secure_access_allow_port_forwading, secure_access_bastion_issuer, secure_access_cluster_endpoint, secure_access_enable, secure_access_web, tags, target_name, token, uid_token, user_ttl].hash
+      [delete_protection, eks_access_key_id, eks_assume_role, eks_cluster_ca_cert, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, name, new_name, producer_encryption_key_name, secure_access_allow_port_forwading, secure_access_bastion_issuer, secure_access_cluster_endpoint, secure_access_enable, secure_access_web, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

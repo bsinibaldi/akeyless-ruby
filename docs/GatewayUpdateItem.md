@@ -9,6 +9,7 @@
 | **api_key** | **String** |  | [optional] |
 | **auto_rotate** | **String** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] |
 | **custom_payload** | **String** |  | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **keep_prev_version** | **String** |  | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **name** | **String** | Item name |  |
@@ -36,6 +37,7 @@ instance = Akeyless::GatewayUpdateItem.new(
   api_key: null,
   auto_rotate: null,
   custom_payload: null,
+  delete_protection: null,
   keep_prev_version: null,
   key: null,
   name: null,

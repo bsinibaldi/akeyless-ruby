@@ -16,6 +16,9 @@ require 'time'
 module Akeyless
   # gatewayUpdateProducerGithub is a command that updates github producer
   class GatewayUpdateProducerGithub
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # Github app id
     attr_accessor :github_app_id
 
@@ -55,6 +58,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'delete_protection' => :'delete_protection',
         :'github_app_id' => :'github-app-id',
         :'github_app_private_key' => :'github-app-private-key',
         :'github_base_url' => :'github-base-url',
@@ -78,6 +82,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'delete_protection' => :'String',
         :'github_app_id' => :'Integer',
         :'github_app_private_key' => :'String',
         :'github_base_url' => :'String',
@@ -113,6 +118,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
+      end
 
       if attributes.key?(:'github_app_id')
         self.github_app_id = attributes[:'github_app_id']
@@ -190,6 +199,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          delete_protection == o.delete_protection &&
           github_app_id == o.github_app_id &&
           github_app_private_key == o.github_app_private_key &&
           github_base_url == o.github_base_url &&
@@ -213,7 +223,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [github_app_id, github_app_private_key, github_base_url, installation_id, installation_repository, name, new_name, target_name, token, token_permissions, token_repositories, uid_token].hash
+      [delete_protection, github_app_id, github_app_private_key, github_base_url, installation_id, installation_repository, name, new_name, target_name, token, token_permissions, token_repositories, uid_token].hash
     end
 
     # Builds the object from hash

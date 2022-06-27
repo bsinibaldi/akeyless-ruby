@@ -28,6 +28,9 @@ module Akeyless
 
     attr_accessor :custom_payload
 
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     attr_accessor :keep_prev_version
 
     # The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
@@ -78,6 +81,7 @@ module Akeyless
         :'api_key' => :'api-key',
         :'auto_rotate' => :'auto-rotate',
         :'custom_payload' => :'custom-payload',
+        :'delete_protection' => :'delete_protection',
         :'keep_prev_version' => :'keep-prev-version',
         :'key' => :'key',
         :'name' => :'name',
@@ -109,6 +113,7 @@ module Akeyless
         :'api_key' => :'String',
         :'auto_rotate' => :'String',
         :'custom_payload' => :'String',
+        :'delete_protection' => :'String',
         :'keep_prev_version' => :'String',
         :'key' => :'String',
         :'name' => :'String',
@@ -168,6 +173,10 @@ module Akeyless
 
       if attributes.key?(:'custom_payload')
         self.custom_payload = attributes[:'custom_payload']
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'keep_prev_version')
@@ -270,6 +279,7 @@ module Akeyless
           api_key == o.api_key &&
           auto_rotate == o.auto_rotate &&
           custom_payload == o.custom_payload &&
+          delete_protection == o.delete_protection &&
           keep_prev_version == o.keep_prev_version &&
           key == o.key &&
           name == o.name &&
@@ -296,7 +306,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_tag, api_id, api_key, auto_rotate, custom_payload, keep_prev_version, key, name, new_metadata, new_name, new_version, rm_tag, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, token, type, uid_token].hash
+      [add_tag, api_id, api_key, auto_rotate, custom_payload, delete_protection, keep_prev_version, key, name, new_metadata, new_name, new_version, rm_tag, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, token, type, uid_token].hash
     end
 
     # Builds the object from hash

@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **db_server_certificates** | **String** | (Optional) DB server certificates | [optional] |
 | **db_server_name** | **String** | (Optional) Server name for certificate verification | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **name** | **String** | Producer name |  |
 | **oracle_host** | **String** | Oracle Host | [optional][default to &#39;127.0.0.1&#39;] |
 | **oracle_password** | **String** | Oracle Password | [optional] |
@@ -32,6 +33,7 @@ require 'akeyless'
 instance = Akeyless::GatewayCreateProducerOracleDb.new(
   db_server_certificates: null,
   db_server_name: null,
+  delete_protection: null,
   name: null,
   oracle_host: null,
   oracle_password: null,

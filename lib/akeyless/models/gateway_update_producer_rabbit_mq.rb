@@ -16,6 +16,9 @@ require 'time'
 module Akeyless
   # gatewayUpdateProducerRabbitMQ is a command that updates rabbitmq producer
   class GatewayUpdateProducerRabbitMQ
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # Producer name
     attr_accessor :name
 
@@ -78,6 +81,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'delete_protection' => :'delete_protection',
         :'name' => :'name',
         :'new_name' => :'new-name',
         :'producer_encryption_key_name' => :'producer-encryption-key-name',
@@ -110,6 +114,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'delete_protection' => :'String',
         :'name' => :'String',
         :'new_name' => :'String',
         :'producer_encryption_key_name' => :'String',
@@ -154,6 +159,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
+      end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
@@ -269,6 +278,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          delete_protection == o.delete_protection &&
           name == o.name &&
           new_name == o.new_name &&
           producer_encryption_key_name == o.producer_encryption_key_name &&
@@ -301,7 +311,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, new_name, producer_encryption_key_name, rabbitmq_admin_pwd, rabbitmq_admin_user, rabbitmq_server_uri, rabbitmq_user_conf_permission, rabbitmq_user_read_permission, rabbitmq_user_tags, rabbitmq_user_vhost, rabbitmq_user_write_permission, secure_access_enable, secure_access_url, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, tags, target_name, token, uid_token, user_ttl].hash
+      [delete_protection, name, new_name, producer_encryption_key_name, rabbitmq_admin_pwd, rabbitmq_admin_user, rabbitmq_server_uri, rabbitmq_user_conf_permission, rabbitmq_user_read_permission, rabbitmq_user_tags, rabbitmq_user_vhost, rabbitmq_user_write_permission, secure_access_enable, secure_access_url, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

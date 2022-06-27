@@ -25,11 +25,17 @@ module Akeyless
     # The common name to be included in the PKI certificate
     attr_accessor :common_name
 
+    # A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: 'clientauth', 'serverauth'.
+    attr_accessor :extended_key_usage
+
     # PKI key file contents. If this option is used, the certificate will be printed to stdout
     attr_accessor :key_data_base64
 
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
+
+    # Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL)
+    attr_accessor :ttl
 
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
@@ -43,8 +49,10 @@ module Akeyless
         :'alt_names' => :'alt-names',
         :'cert_issuer_name' => :'cert-issuer-name',
         :'common_name' => :'common-name',
+        :'extended_key_usage' => :'extended-key-usage',
         :'key_data_base64' => :'key-data-base64',
         :'token' => :'token',
+        :'ttl' => :'ttl',
         :'uid_token' => :'uid-token',
         :'uri_sans' => :'uri-sans'
       }
@@ -61,8 +69,10 @@ module Akeyless
         :'alt_names' => :'String',
         :'cert_issuer_name' => :'String',
         :'common_name' => :'String',
+        :'extended_key_usage' => :'String',
         :'key_data_base64' => :'String',
         :'token' => :'String',
+        :'ttl' => :'Integer',
         :'uid_token' => :'String',
         :'uri_sans' => :'String'
       }
@@ -101,12 +111,20 @@ module Akeyless
         self.common_name = attributes[:'common_name']
       end
 
+      if attributes.key?(:'extended_key_usage')
+        self.extended_key_usage = attributes[:'extended_key_usage']
+      end
+
       if attributes.key?(:'key_data_base64')
         self.key_data_base64 = attributes[:'key_data_base64']
       end
 
       if attributes.key?(:'token')
         self.token = attributes[:'token']
+      end
+
+      if attributes.key?(:'ttl')
+        self.ttl = attributes[:'ttl']
       end
 
       if attributes.key?(:'uid_token')
@@ -144,8 +162,10 @@ module Akeyless
           alt_names == o.alt_names &&
           cert_issuer_name == o.cert_issuer_name &&
           common_name == o.common_name &&
+          extended_key_usage == o.extended_key_usage &&
           key_data_base64 == o.key_data_base64 &&
           token == o.token &&
+          ttl == o.ttl &&
           uid_token == o.uid_token &&
           uri_sans == o.uri_sans
     end
@@ -159,7 +179,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alt_names, cert_issuer_name, common_name, key_data_base64, token, uid_token, uri_sans].hash
+      [alt_names, cert_issuer_name, common_name, extended_key_usage, key_data_base64, token, ttl, uid_token, uri_sans].hash
     end
 
     # Builds the object from hash

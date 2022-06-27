@@ -33,11 +33,17 @@ module Akeyless
     # Azure Active Directory ObjectId (relevant only for access-type=azure_ad)
     attr_accessor :azure_ad_object_id
 
+    # Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type=cert in Curl Context)
+    attr_accessor :cert_data
+
     # GCP JWT audience
     attr_accessor :gcp_audience
 
     # The K8S Auth config name (relevant only for access-type=k8s)
     attr_accessor :k8s_auth_config_name
+
+    # Private key data encoded in base64. Used if file was not provided.(relevant only for access-type=cert in Curl Context)
+    attr_accessor :key_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -48,8 +54,10 @@ module Akeyless
         :'admin_email' => :'admin-email',
         :'admin_password' => :'admin-password',
         :'azure_ad_object_id' => :'azure_ad_object_id',
+        :'cert_data' => :'cert-data',
         :'gcp_audience' => :'gcp-audience',
-        :'k8s_auth_config_name' => :'k8s-auth-config-name'
+        :'k8s_auth_config_name' => :'k8s-auth-config-name',
+        :'key_data' => :'key-data'
       }
     end
 
@@ -67,8 +75,10 @@ module Akeyless
         :'admin_email' => :'String',
         :'admin_password' => :'String',
         :'azure_ad_object_id' => :'String',
+        :'cert_data' => :'String',
         :'gcp_audience' => :'String',
-        :'k8s_auth_config_name' => :'String'
+        :'k8s_auth_config_name' => :'String',
+        :'key_data' => :'String'
       }
     end
 
@@ -119,12 +129,20 @@ module Akeyless
         self.azure_ad_object_id = attributes[:'azure_ad_object_id']
       end
 
+      if attributes.key?(:'cert_data')
+        self.cert_data = attributes[:'cert_data']
+      end
+
       if attributes.key?(:'gcp_audience')
         self.gcp_audience = attributes[:'gcp_audience']
       end
 
       if attributes.key?(:'k8s_auth_config_name')
         self.k8s_auth_config_name = attributes[:'k8s_auth_config_name']
+      end
+
+      if attributes.key?(:'key_data')
+        self.key_data = attributes[:'key_data']
       end
     end
 
@@ -152,8 +170,10 @@ module Akeyless
           admin_email == o.admin_email &&
           admin_password == o.admin_password &&
           azure_ad_object_id == o.azure_ad_object_id &&
+          cert_data == o.cert_data &&
           gcp_audience == o.gcp_audience &&
-          k8s_auth_config_name == o.k8s_auth_config_name
+          k8s_auth_config_name == o.k8s_auth_config_name &&
+          key_data == o.key_data
     end
 
     # @see the `==` method
@@ -165,7 +185,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_id, access_key, access_type, admin_email, admin_password, azure_ad_object_id, gcp_audience, k8s_auth_config_name].hash
+      [access_id, access_key, access_type, admin_email, admin_password, azure_ad_object_id, cert_data, gcp_audience, k8s_auth_config_name, key_data].hash
     end
 
     # Builds the object from hash

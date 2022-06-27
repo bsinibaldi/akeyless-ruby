@@ -21,11 +21,17 @@ module Akeyless
     # The username to sign in the SSH certificate
     attr_accessor :cert_username
 
+    # Set this option to output legacy ('ssh-rsa-cert-v01@openssh.com') signing algorithm name in the certificate.
+    attr_accessor :legacy_signing_alg_name
+
     # SSH public key file contents. If this option is used, the certificate will be printed to stdout
     attr_accessor :public_key_data
 
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
+
+    # Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL)
+    attr_accessor :ttl
 
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
@@ -35,8 +41,10 @@ module Akeyless
       {
         :'cert_issuer_name' => :'cert-issuer-name',
         :'cert_username' => :'cert-username',
+        :'legacy_signing_alg_name' => :'legacy-signing-alg-name',
         :'public_key_data' => :'public-key-data',
         :'token' => :'token',
+        :'ttl' => :'ttl',
         :'uid_token' => :'uid-token'
       }
     end
@@ -51,8 +59,10 @@ module Akeyless
       {
         :'cert_issuer_name' => :'String',
         :'cert_username' => :'String',
+        :'legacy_signing_alg_name' => :'Boolean',
         :'public_key_data' => :'String',
         :'token' => :'String',
+        :'ttl' => :'Integer',
         :'uid_token' => :'String'
       }
     end
@@ -86,12 +96,20 @@ module Akeyless
         self.cert_username = attributes[:'cert_username']
       end
 
+      if attributes.key?(:'legacy_signing_alg_name')
+        self.legacy_signing_alg_name = attributes[:'legacy_signing_alg_name']
+      end
+
       if attributes.key?(:'public_key_data')
         self.public_key_data = attributes[:'public_key_data']
       end
 
       if attributes.key?(:'token')
         self.token = attributes[:'token']
+      end
+
+      if attributes.key?(:'ttl')
+        self.ttl = attributes[:'ttl']
       end
 
       if attributes.key?(:'uid_token')
@@ -129,8 +147,10 @@ module Akeyless
       self.class == o.class &&
           cert_issuer_name == o.cert_issuer_name &&
           cert_username == o.cert_username &&
+          legacy_signing_alg_name == o.legacy_signing_alg_name &&
           public_key_data == o.public_key_data &&
           token == o.token &&
+          ttl == o.ttl &&
           uid_token == o.uid_token
     end
 
@@ -143,7 +163,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cert_issuer_name, cert_username, public_key_data, token, uid_token].hash
+      [cert_issuer_name, cert_username, legacy_signing_alg_name, public_key_data, token, ttl, uid_token].hash
     end
 
     # Builds the object from hash

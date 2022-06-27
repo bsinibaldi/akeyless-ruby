@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **creation_statements** | **String** | PostgreSQL Creation statements | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **name** | **String** | Producer name |  |
 | **new_name** | **String** | Producer name | [optional] |
 | **postgresql_db_name** | **String** | PostgreSQL DB Name | [optional] |
@@ -33,6 +34,7 @@ require 'akeyless'
 
 instance = Akeyless::GatewayUpdateProducerPostgreSQL.new(
   creation_statements: null,
+  delete_protection: null,
   name: null,
   new_name: null,
   postgresql_db_name: null,

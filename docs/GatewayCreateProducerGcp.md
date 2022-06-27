@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **gcp_cred_type** | **String** |  | [optional] |
 | **gcp_key** | **String** | Base64-encoded service account private key text | [optional] |
 | **gcp_key_algo** | **String** | Service account key algorithm, e.g. KEY_ALG_RSA_1024 | [optional] |
@@ -23,6 +24,7 @@
 require 'akeyless'
 
 instance = Akeyless::GatewayCreateProducerGcp.new(
+  delete_protection: null,
   gcp_cred_type: null,
   gcp_key: null,
   gcp_key_algo: null,

@@ -31,6 +31,9 @@ module Akeyless
     # Cassandra superuser username
     attr_accessor :cassandra_username
 
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # Producer name
     attr_accessor :name
 
@@ -63,6 +66,7 @@ module Akeyless
         :'cassandra_password' => :'cassandra-password',
         :'cassandra_port' => :'cassandra-port',
         :'cassandra_username' => :'cassandra-username',
+        :'delete_protection' => :'delete_protection',
         :'name' => :'name',
         :'new_name' => :'new-name',
         :'producer_encryption_key_name' => :'producer-encryption-key-name',
@@ -87,6 +91,7 @@ module Akeyless
         :'cassandra_password' => :'String',
         :'cassandra_port' => :'String',
         :'cassandra_username' => :'String',
+        :'delete_protection' => :'String',
         :'name' => :'String',
         :'new_name' => :'String',
         :'producer_encryption_key_name' => :'String',
@@ -139,6 +144,10 @@ module Akeyless
 
       if attributes.key?(:'cassandra_username')
         self.cassandra_username = attributes[:'cassandra_username']
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'name')
@@ -206,6 +215,7 @@ module Akeyless
           cassandra_password == o.cassandra_password &&
           cassandra_port == o.cassandra_port &&
           cassandra_username == o.cassandra_username &&
+          delete_protection == o.delete_protection &&
           name == o.name &&
           new_name == o.new_name &&
           producer_encryption_key_name == o.producer_encryption_key_name &&
@@ -225,7 +235,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cassandra_creation_statements, cassandra_hosts, cassandra_password, cassandra_port, cassandra_username, name, new_name, producer_encryption_key_name, tags, target_name, token, uid_token, user_ttl].hash
+      [cassandra_creation_statements, cassandra_hosts, cassandra_password, cassandra_port, cassandra_username, delete_protection, name, new_name, producer_encryption_key_name, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

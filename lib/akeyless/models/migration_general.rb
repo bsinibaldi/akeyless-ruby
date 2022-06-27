@@ -19,6 +19,8 @@ module Akeyless
 
     attr_accessor :name
 
+    attr_accessor :new_name
+
     attr_accessor :prefix
 
     attr_accessor :protection_key
@@ -28,6 +30,7 @@ module Akeyless
       {
         :'id' => :'id',
         :'name' => :'name',
+        :'new_name' => :'new_name',
         :'prefix' => :'prefix',
         :'protection_key' => :'protection_key'
       }
@@ -43,6 +46,7 @@ module Akeyless
       {
         :'id' => :'String',
         :'name' => :'String',
+        :'new_name' => :'String',
         :'prefix' => :'String',
         :'protection_key' => :'String'
       }
@@ -77,6 +81,10 @@ module Akeyless
         self.name = attributes[:'name']
       end
 
+      if attributes.key?(:'new_name')
+        self.new_name = attributes[:'new_name']
+      end
+
       if attributes.key?(:'prefix')
         self.prefix = attributes[:'prefix']
       end
@@ -106,6 +114,7 @@ module Akeyless
       self.class == o.class &&
           id == o.id &&
           name == o.name &&
+          new_name == o.new_name &&
           prefix == o.prefix &&
           protection_key == o.protection_key
     end
@@ -119,7 +128,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, prefix, protection_key].hash
+      [id, name, new_name, prefix, protection_key].hash
     end
 
     # Builds the object from hash

@@ -21,6 +21,9 @@ module Akeyless
     # URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create
     attr_accessor :create_sync_url
 
+    # Protection from accidental deletion of this item
+    attr_accessor :delete_protection
+
     # Should admin credentials be rotated
     attr_accessor :enable_admin_rotation
 
@@ -62,6 +65,7 @@ module Akeyless
       {
         :'admin_rotation_interval_days' => :'admin_rotation_interval_days',
         :'create_sync_url' => :'create-sync-url',
+        :'delete_protection' => :'delete_protection',
         :'enable_admin_rotation' => :'enable_admin_rotation',
         :'name' => :'name',
         :'new_name' => :'new-name',
@@ -87,6 +91,7 @@ module Akeyless
       {
         :'admin_rotation_interval_days' => :'Integer',
         :'create_sync_url' => :'String',
+        :'delete_protection' => :'String',
         :'enable_admin_rotation' => :'Boolean',
         :'name' => :'String',
         :'new_name' => :'String',
@@ -129,6 +134,10 @@ module Akeyless
 
       if attributes.key?(:'create_sync_url')
         self.create_sync_url = attributes[:'create_sync_url']
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'enable_admin_rotation')
@@ -223,6 +232,7 @@ module Akeyless
       self.class == o.class &&
           admin_rotation_interval_days == o.admin_rotation_interval_days &&
           create_sync_url == o.create_sync_url &&
+          delete_protection == o.delete_protection &&
           enable_admin_rotation == o.enable_admin_rotation &&
           name == o.name &&
           new_name == o.new_name &&
@@ -246,7 +256,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [admin_rotation_interval_days, create_sync_url, enable_admin_rotation, name, new_name, payload, producer_encryption_key_name, revoke_sync_url, rotate_sync_url, tags, timeout_sec, token, uid_token, user_ttl].hash
+      [admin_rotation_interval_days, create_sync_url, delete_protection, enable_admin_rotation, name, new_name, payload, producer_encryption_key_name, revoke_sync_url, rotate_sync_url, tags, timeout_sec, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

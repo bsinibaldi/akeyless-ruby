@@ -10,6 +10,7 @@
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **metadata** | **String** | A metadata about the key | [optional] |
 | **name** | **String** | Name of key to be created |  |
+| **overwrite** | **String** | When the overwrite flag is set, this command will only update an existing key. [true, false] | [optional] |
 | **rsa_file_data** | **String** | RSA private key data, base64 encoded | [optional] |
 | **split_level** | **Integer** | The number of fragments that the item will be split into | [optional][default to 2] |
 | **tag** | **Array&lt;String&gt;** | List of the tags attached to this key | [optional] |
@@ -28,6 +29,7 @@ instance = Akeyless::UploadRSA.new(
   delete_protection: null,
   metadata: null,
   name: null,
+  overwrite: null,
   rsa_file_data: null,
   split_level: null,
   tag: null,

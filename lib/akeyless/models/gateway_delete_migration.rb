@@ -16,7 +16,7 @@ require 'time'
 module Akeyless
   # gatewayDeleteMigration is a command that delete migration
   class GatewayDeleteMigration
-    # Migration name
+    # Migration ID
     attr_accessor :id
 
     # Authentication token (see `/auth` and `/configure`)
