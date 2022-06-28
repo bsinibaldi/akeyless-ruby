@@ -20,10 +20,10 @@ module Akeyless
     attr_accessor :alphabet
 
     # Transformation to perform on the decrypted data
-    attr_accessor :decryption_template
+    attr_accessor :decoding_template
 
     # Transformation to perform on the encrypted data, if the required output template doesn't match the input string The output Should still be valid for the Pattern, otherwise the secret would be able to be decrypted.
-    attr_accessor :encryption_template
+    attr_accessor :encoding_template
 
     # Regexp pattern to extract and deposit the text/encdata
     attr_accessor :pattern
@@ -32,8 +32,8 @@ module Akeyless
     def self.attribute_map
       {
         :'alphabet' => :'alphabet',
-        :'decryption_template' => :'decryption_template',
-        :'encryption_template' => :'encryption_template',
+        :'decoding_template' => :'decoding_template',
+        :'encoding_template' => :'encoding_template',
         :'pattern' => :'pattern'
       }
     end
@@ -47,8 +47,8 @@ module Akeyless
     def self.openapi_types
       {
         :'alphabet' => :'String',
-        :'decryption_template' => :'String',
-        :'encryption_template' => :'String',
+        :'decoding_template' => :'String',
+        :'encoding_template' => :'String',
         :'pattern' => :'String'
       }
     end
@@ -78,12 +78,12 @@ module Akeyless
         self.alphabet = attributes[:'alphabet']
       end
 
-      if attributes.key?(:'decryption_template')
-        self.decryption_template = attributes[:'decryption_template']
+      if attributes.key?(:'decoding_template')
+        self.decoding_template = attributes[:'decoding_template']
       end
 
-      if attributes.key?(:'encryption_template')
-        self.encryption_template = attributes[:'encryption_template']
+      if attributes.key?(:'encoding_template')
+        self.encoding_template = attributes[:'encoding_template']
       end
 
       if attributes.key?(:'pattern')
@@ -110,8 +110,8 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           alphabet == o.alphabet &&
-          decryption_template == o.decryption_template &&
-          encryption_template == o.encryption_template &&
+          decoding_template == o.decoding_template &&
+          encoding_template == o.encoding_template &&
           pattern == o.pattern
     end
 
@@ -124,7 +124,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alphabet, decryption_template, encryption_template, pattern].hash
+      [alphabet, decoding_template, encoding_template, pattern].hash
     end
 
     # Builds the object from hash

@@ -6,10 +6,10 @@
 | ---- | ---- | ----------- | ----- |
 | **add_tag** | **Array&lt;String&gt;** | List of the new tags that will be attached to this item | [optional] |
 | **alphabet** | **String** | Alphabet to use in regexp vaultless tokenization | [optional] |
-| **decryption_template** | **String** | The Decryption output template to use in regexp vaultless tokenization | [optional] |
+| **decoding_template** | **String** | The Decoding output template to use in regexp vaultless tokenization | [optional] |
 | **delete_protection** | **String** |  | [optional] |
+| **encoding_template** | **String** | The Encoding output template to use in regexp vaultless tokenization | [optional] |
 | **encryption_key_name** | **String** | AES key name to use in vaultless tokenization | [optional] |
-| **encryption_template** | **String** | The Encryption output template to use in regexp vaultless tokenization | [optional] |
 | **name** | **String** | Current item name |  |
 | **new_metadata** | **String** | New item metadata | [optional][default to &#39;default_metadata&#39;] |
 | **new_name** | **String** | New item name | [optional] |
@@ -29,10 +29,10 @@ require 'akeyless'
 instance = Akeyless::UpdateTokenizer.new(
   add_tag: null,
   alphabet: null,
-  decryption_template: null,
+  decoding_template: null,
   delete_protection: null,
+  encoding_template: null,
   encryption_key_name: null,
-  encryption_template: null,
   name: null,
   new_metadata: null,
   new_name: null,

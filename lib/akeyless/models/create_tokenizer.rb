@@ -19,17 +19,17 @@ module Akeyless
     # Alphabet to use in regexp vaultless tokenization
     attr_accessor :alphabet
 
-    # The Decryption output template to use in regexp vaultless tokenization
-    attr_accessor :decryption_template
+    # The Decoding output template to use in regexp vaultless tokenization
+    attr_accessor :decoding_template
 
     # Protection from accidental deletion of this item
     attr_accessor :delete_protection
 
+    # The Encoding output template to use in regexp vaultless tokenization
+    attr_accessor :encoding_template
+
     # AES key name to use in vaultless tokenization
     attr_accessor :encryption_key_name
-
-    # The Encryption output template to use in regexp vaultless tokenization
-    attr_accessor :encryption_template
 
     # A metadata about the tokenizer
     attr_accessor :metadata
@@ -62,10 +62,10 @@ module Akeyless
     def self.attribute_map
       {
         :'alphabet' => :'alphabet',
-        :'decryption_template' => :'decryption-template',
+        :'decoding_template' => :'decoding-template',
         :'delete_protection' => :'delete_protection',
+        :'encoding_template' => :'encoding-template',
         :'encryption_key_name' => :'encryption-key-name',
-        :'encryption_template' => :'encryption-template',
         :'metadata' => :'metadata',
         :'name' => :'name',
         :'pattern' => :'pattern',
@@ -87,10 +87,10 @@ module Akeyless
     def self.openapi_types
       {
         :'alphabet' => :'String',
-        :'decryption_template' => :'String',
+        :'decoding_template' => :'String',
         :'delete_protection' => :'String',
+        :'encoding_template' => :'String',
         :'encryption_key_name' => :'String',
-        :'encryption_template' => :'String',
         :'metadata' => :'String',
         :'name' => :'String',
         :'pattern' => :'String',
@@ -128,20 +128,20 @@ module Akeyless
         self.alphabet = attributes[:'alphabet']
       end
 
-      if attributes.key?(:'decryption_template')
-        self.decryption_template = attributes[:'decryption_template']
+      if attributes.key?(:'decoding_template')
+        self.decoding_template = attributes[:'decoding_template']
       end
 
       if attributes.key?(:'delete_protection')
         self.delete_protection = attributes[:'delete_protection']
       end
 
-      if attributes.key?(:'encryption_key_name')
-        self.encryption_key_name = attributes[:'encryption_key_name']
+      if attributes.key?(:'encoding_template')
+        self.encoding_template = attributes[:'encoding_template']
       end
 
-      if attributes.key?(:'encryption_template')
-        self.encryption_template = attributes[:'encryption_template']
+      if attributes.key?(:'encryption_key_name')
+        self.encryption_key_name = attributes[:'encryption_key_name']
       end
 
       if attributes.key?(:'metadata')
@@ -217,10 +217,10 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           alphabet == o.alphabet &&
-          decryption_template == o.decryption_template &&
+          decoding_template == o.decoding_template &&
           delete_protection == o.delete_protection &&
+          encoding_template == o.encoding_template &&
           encryption_key_name == o.encryption_key_name &&
-          encryption_template == o.encryption_template &&
           metadata == o.metadata &&
           name == o.name &&
           pattern == o.pattern &&
@@ -241,7 +241,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alphabet, decryption_template, delete_protection, encryption_key_name, encryption_template, metadata, name, pattern, tag, template_type, token, tokenizer_type, tweak_type, uid_token].hash
+      [alphabet, decoding_template, delete_protection, encoding_template, encryption_key_name, metadata, name, pattern, tag, template_type, token, tokenizer_type, tweak_type, uid_token].hash
     end
 
     # Builds the object from hash
