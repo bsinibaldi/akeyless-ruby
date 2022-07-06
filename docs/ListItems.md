@@ -5,9 +5,11 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **filter** | **String** | Filter by item name or part of it | [optional] |
+| **item_accessibility** | **String** | for personal password manager | [optional] |
 | **minimal_view** | **Boolean** |  | [optional] |
 | **pagination_token** | **String** | Next page reference | [optional] |
 | **path** | **String** | Path to folder | [optional] |
+| **sub_types** | **Array&lt;String&gt;** |  | [optional] |
 | **tag** | **String** | Filter by item tag | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **type** | **Array&lt;String&gt;** | The item types list of the requested items. In case it is empty, all types of items will be returned. options: [key, static-secret, dynamic-secret] | [optional] |
@@ -20,9 +22,11 @@ require 'akeyless'
 
 instance = Akeyless::ListItems.new(
   filter: null,
+  item_accessibility: null,
   minimal_view: null,
   pagination_token: null,
   path: null,
+  sub_types: null,
   tag: null,
   token: null,
   type: null,
