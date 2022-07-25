@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **accessibility** | **String** | for personal password manager | [optional] |
 | **filter** | **String** | Filter by item name or part of it | [optional] |
-| **item_accessibility** | **String** | for personal password manager | [optional] |
 | **minimal_view** | **Boolean** |  | [optional] |
 | **pagination_token** | **String** | Next page reference | [optional] |
 | **path** | **String** | Path to folder | [optional] |
@@ -21,8 +21,8 @@
 require 'akeyless'
 
 instance = Akeyless::ListItems.new(
+  accessibility: null,
   filter: null,
-  item_accessibility: null,
   minimal_view: null,
   pagination_token: null,
   path: null,

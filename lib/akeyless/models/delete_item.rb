@@ -15,14 +15,14 @@ require 'time'
 
 module Akeyless
   class DeleteItem
+    # for personal password manager
+    attr_accessor :accessibility
+
     # When delete-in-days=-1, must be set
     attr_accessor :delete_immediately
 
     # The number of days to wait before deleting the item (relevant for keys only)
     attr_accessor :delete_in_days
-
-    # for personal password manager
-    attr_accessor :item_accessibility
 
     # Item name
     attr_accessor :name
@@ -39,9 +39,9 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'accessibility' => :'accessibility',
         :'delete_immediately' => :'delete-immediately',
         :'delete_in_days' => :'delete-in-days',
-        :'item_accessibility' => :'item-accessibility',
         :'name' => :'name',
         :'token' => :'token',
         :'uid_token' => :'uid-token',
@@ -57,9 +57,9 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'accessibility' => :'String',
         :'delete_immediately' => :'Boolean',
         :'delete_in_days' => :'Integer',
-        :'item_accessibility' => :'String',
         :'name' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String',
@@ -88,6 +88,10 @@ module Akeyless
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'accessibility')
+        self.accessibility = attributes[:'accessibility']
+      end
+
       if attributes.key?(:'delete_immediately')
         self.delete_immediately = attributes[:'delete_immediately']
       else
@@ -98,10 +102,6 @@ module Akeyless
         self.delete_in_days = attributes[:'delete_in_days']
       else
         self.delete_in_days = 7
-      end
-
-      if attributes.key?(:'item_accessibility')
-        self.item_accessibility = attributes[:'item_accessibility']
       end
 
       if attributes.key?(:'name')
@@ -146,9 +146,9 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          accessibility == o.accessibility &&
           delete_immediately == o.delete_immediately &&
           delete_in_days == o.delete_in_days &&
-          item_accessibility == o.item_accessibility &&
           name == o.name &&
           token == o.token &&
           uid_token == o.uid_token &&
@@ -164,7 +164,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [delete_immediately, delete_in_days, item_accessibility, name, token, uid_token, version].hash
+      [accessibility, delete_immediately, delete_in_days, name, token, uid_token, version].hash
     end
 
     # Builds the object from hash

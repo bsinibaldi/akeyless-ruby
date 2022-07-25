@@ -52,6 +52,7 @@
 | **gke_service_account_key** | **String** |  | [optional] |
 | **gke_service_account_name** | **String** |  | [optional] |
 | **host** | **String** |  | [optional] |
+| **implementation_type** | **String** |  | [optional] |
 | **k8s_bearer_token** | **String** |  | [optional] |
 | **k8s_cluster_ca_certificate** | **String** |  | [optional] |
 | **k8s_cluster_endpoint** | **String** |  | [optional] |
@@ -150,6 +151,7 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   gke_service_account_key: null,
   gke_service_account_name: null,
   host: null,
+  implementation_type: null,
   k8s_bearer_token: null,
   k8s_cluster_ca_certificate: null,
   k8s_cluster_endpoint: null,

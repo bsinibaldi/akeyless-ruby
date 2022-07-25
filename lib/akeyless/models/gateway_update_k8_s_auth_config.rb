@@ -152,6 +152,8 @@ module Akeyless
 
       if attributes.key?(:'token_exp')
         self.token_exp = attributes[:'token_exp']
+      else
+        self.token_exp = 300
       end
 
       if attributes.key?(:'token_reviewer_jwt')

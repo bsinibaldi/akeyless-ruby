@@ -8,6 +8,7 @@
 | **address** | [**CustomerFullAddress**](CustomerFullAddress.md) |  | [optional] |
 | **company_name** | **String** |  | [optional] |
 | **email** | **String** |  | [optional] |
+| **general_settings** | [**AccountGeneralSettings**](AccountGeneralSettings.md) |  | [optional] |
 | **object_version_settings** | [**AccountObjectVersionSettingsOutput**](AccountObjectVersionSettingsOutput.md) |  | [optional] |
 | **phone** | **String** |  | [optional] |
 | **secret_management** | [**SmInfo**](SmInfo.md) |  | [optional] |
@@ -24,6 +25,7 @@ instance = Akeyless::GetAccountSettingsCommandOutput.new(
   address: null,
   company_name: null,
   email: null,
+  general_settings: null,
   object_version_settings: null,
   phone: null,
   secret_management: null,

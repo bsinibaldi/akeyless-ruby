@@ -15,11 +15,11 @@ require 'time'
 
 module Akeyless
   class ListItems
+    # for personal password manager
+    attr_accessor :accessibility
+
     # Filter by item name or part of it
     attr_accessor :filter
-
-    # for personal password manager
-    attr_accessor :item_accessibility
 
     attr_accessor :minimal_view
 
@@ -46,8 +46,8 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'accessibility' => :'accessibility',
         :'filter' => :'filter',
-        :'item_accessibility' => :'item-accessibility',
         :'minimal_view' => :'minimal-view',
         :'pagination_token' => :'pagination-token',
         :'path' => :'path',
@@ -67,8 +67,8 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'accessibility' => :'String',
         :'filter' => :'String',
-        :'item_accessibility' => :'String',
         :'minimal_view' => :'Boolean',
         :'pagination_token' => :'String',
         :'path' => :'String',
@@ -101,12 +101,12 @@ module Akeyless
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'filter')
-        self.filter = attributes[:'filter']
+      if attributes.key?(:'accessibility')
+        self.accessibility = attributes[:'accessibility']
       end
 
-      if attributes.key?(:'item_accessibility')
-        self.item_accessibility = attributes[:'item_accessibility']
+      if attributes.key?(:'filter')
+        self.filter = attributes[:'filter']
       end
 
       if attributes.key?(:'minimal_view')
@@ -164,8 +164,8 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          accessibility == o.accessibility &&
           filter == o.filter &&
-          item_accessibility == o.item_accessibility &&
           minimal_view == o.minimal_view &&
           pagination_token == o.pagination_token &&
           path == o.path &&
@@ -185,7 +185,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [filter, item_accessibility, minimal_view, pagination_token, path, sub_types, tag, token, type, uid_token].hash
+      [accessibility, filter, minimal_view, pagination_token, path, sub_types, tag, token, type, uid_token].hash
     end
 
     # Builds the object from hash

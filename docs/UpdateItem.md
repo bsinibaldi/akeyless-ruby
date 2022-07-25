@@ -4,10 +4,10 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **accessibility** | **String** | for personal password manager | [optional] |
 | **add_tag** | **Array&lt;String&gt;** | List of the new tags that will be attached to this item | [optional] |
 | **cert_file_data** | **String** | PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates. | [optional] |
 | **delete_protection** | **String** |  | [optional] |
-| **item_accessibility** | **String** | for personal password manager | [optional] |
 | **name** | **String** | Current item name |  |
 | **new_metadata** | **String** | New item metadata | [optional][default to &#39;default_metadata&#39;] |
 | **new_name** | **String** | New item name | [optional] |
@@ -45,10 +45,10 @@
 require 'akeyless'
 
 instance = Akeyless::UpdateItem.new(
+  accessibility: null,
   add_tag: null,
   cert_file_data: null,
   delete_protection: null,
-  item_accessibility: null,
   name: null,
   new_metadata: null,
   new_name: null,

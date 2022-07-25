@@ -14,70 +14,14 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class UpdateAccountSettings
-    # Address
-    attr_accessor :address
-
-    # City
-    attr_accessor :city
-
-    # Company name
-    attr_accessor :company_name
-
-    # Country
-    attr_accessor :country
-
-    # Should create version by default
-    attr_accessor :default_versioning
-
-    # Enable classic key protection [\"true\"/\"false\"]
-    attr_accessor :dp_enable_classic_key_protection
-
-    # VersionSettingsObjectType defines object types for account version settings
-    attr_accessor :item_type
-
-    # Default ttl
-    attr_accessor :jwt_ttl_default
-
-    # Maximum ttl
-    attr_accessor :jwt_ttl_max
-
-    # Minimum ttl
-    attr_accessor :jwt_ttl_min
-
-    # Max versions
-    attr_accessor :max_versions
-
-    # Phone number
-    attr_accessor :phone
-
-    # Postal code
-    attr_accessor :postal_code
-
-    # Authentication token (see `/auth` and `/configure`)
-    attr_accessor :token
-
-    # The universal identity token, Required only for universal_identity authentication
-    attr_accessor :uid_token
+  # AccountGeneralSettings describes general settings for an account
+  class AccountGeneralSettings
+    attr_accessor :data_protection_section
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'address' => :'address',
-        :'city' => :'city',
-        :'company_name' => :'company-name',
-        :'country' => :'country',
-        :'default_versioning' => :'default-versioning',
-        :'dp_enable_classic_key_protection' => :'dp-enable-classic-key-protection',
-        :'item_type' => :'item-type',
-        :'jwt_ttl_default' => :'jwt-ttl-default',
-        :'jwt_ttl_max' => :'jwt-ttl-max',
-        :'jwt_ttl_min' => :'jwt-ttl-min',
-        :'max_versions' => :'max-versions',
-        :'phone' => :'phone',
-        :'postal_code' => :'postal-code',
-        :'token' => :'token',
-        :'uid_token' => :'uid-token'
+        :'data_protection_section' => :'data_protection_section'
       }
     end
 
@@ -89,21 +33,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'address' => :'String',
-        :'city' => :'String',
-        :'company_name' => :'String',
-        :'country' => :'String',
-        :'default_versioning' => :'String',
-        :'dp_enable_classic_key_protection' => :'String',
-        :'item_type' => :'String',
-        :'jwt_ttl_default' => :'Integer',
-        :'jwt_ttl_max' => :'Integer',
-        :'jwt_ttl_min' => :'Integer',
-        :'max_versions' => :'String',
-        :'phone' => :'String',
-        :'postal_code' => :'String',
-        :'token' => :'String',
-        :'uid_token' => :'String'
+        :'data_protection_section' => :'DataProtectionSection'
       }
     end
 
@@ -117,75 +47,19 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::UpdateAccountSettings` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::AccountGeneralSettings` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::UpdateAccountSettings`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::AccountGeneralSettings`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'address')
-        self.address = attributes[:'address']
-      end
-
-      if attributes.key?(:'city')
-        self.city = attributes[:'city']
-      end
-
-      if attributes.key?(:'company_name')
-        self.company_name = attributes[:'company_name']
-      end
-
-      if attributes.key?(:'country')
-        self.country = attributes[:'country']
-      end
-
-      if attributes.key?(:'default_versioning')
-        self.default_versioning = attributes[:'default_versioning']
-      end
-
-      if attributes.key?(:'dp_enable_classic_key_protection')
-        self.dp_enable_classic_key_protection = attributes[:'dp_enable_classic_key_protection']
-      end
-
-      if attributes.key?(:'item_type')
-        self.item_type = attributes[:'item_type']
-      end
-
-      if attributes.key?(:'jwt_ttl_default')
-        self.jwt_ttl_default = attributes[:'jwt_ttl_default']
-      end
-
-      if attributes.key?(:'jwt_ttl_max')
-        self.jwt_ttl_max = attributes[:'jwt_ttl_max']
-      end
-
-      if attributes.key?(:'jwt_ttl_min')
-        self.jwt_ttl_min = attributes[:'jwt_ttl_min']
-      end
-
-      if attributes.key?(:'max_versions')
-        self.max_versions = attributes[:'max_versions']
-      end
-
-      if attributes.key?(:'phone')
-        self.phone = attributes[:'phone']
-      end
-
-      if attributes.key?(:'postal_code')
-        self.postal_code = attributes[:'postal_code']
-      end
-
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
-      end
-
-      if attributes.key?(:'uid_token')
-        self.uid_token = attributes[:'uid_token']
+      if attributes.key?(:'data_protection_section')
+        self.data_protection_section = attributes[:'data_protection_section']
       end
     end
 
@@ -207,21 +81,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          address == o.address &&
-          city == o.city &&
-          company_name == o.company_name &&
-          country == o.country &&
-          default_versioning == o.default_versioning &&
-          dp_enable_classic_key_protection == o.dp_enable_classic_key_protection &&
-          item_type == o.item_type &&
-          jwt_ttl_default == o.jwt_ttl_default &&
-          jwt_ttl_max == o.jwt_ttl_max &&
-          jwt_ttl_min == o.jwt_ttl_min &&
-          max_versions == o.max_versions &&
-          phone == o.phone &&
-          postal_code == o.postal_code &&
-          token == o.token &&
-          uid_token == o.uid_token
+          data_protection_section == o.data_protection_section
     end
 
     # @see the `==` method
@@ -233,7 +93,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address, city, company_name, country, default_versioning, dp_enable_classic_key_protection, item_type, jwt_ttl_default, jwt_ttl_max, jwt_ttl_min, max_versions, phone, postal_code, token, uid_token].hash
+      [data_protection_section].hash
     end
 
     # Builds the object from hash

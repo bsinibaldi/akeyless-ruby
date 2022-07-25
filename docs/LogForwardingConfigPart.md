@@ -8,6 +8,7 @@
 | **azure_analytics_config** | [**AzureLogAnalyticsForwardingConfig**](AzureLogAnalyticsForwardingConfig.md) |  | [optional] |
 | **datadog_config** | [**DatadogForwardingConfig**](DatadogForwardingConfig.md) |  | [optional] |
 | **elasticsearch_config** | [**ElasticsearchLogForwardingConfig**](ElasticsearchLogForwardingConfig.md) |  | [optional] |
+| **json_output** | **Boolean** |  | [optional] |
 | **logan_enable** | **Boolean** |  | [optional] |
 | **logan_url** | **String** |  | [optional] |
 | **logstash_config** | [**LogstashLogForwardingConfig**](LogstashLogForwardingConfig.md) |  | [optional] |
@@ -27,6 +28,7 @@ instance = Akeyless::LogForwardingConfigPart.new(
   azure_analytics_config: null,
   datadog_config: null,
   elasticsearch_config: null,
+  json_output: null,
   logan_enable: null,
   logan_url: null,
   logstash_config: null,

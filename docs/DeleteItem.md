@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **accessibility** | **String** | for personal password manager | [optional] |
 | **delete_immediately** | **Boolean** | When delete-in-days&#x3D;-1, must be set | [optional][default to false] |
 | **delete_in_days** | **Integer** | The number of days to wait before deleting the item (relevant for keys only) | [optional][default to 7] |
-| **item_accessibility** | **String** | for personal password manager | [optional] |
 | **name** | **String** | Item name |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
@@ -18,9 +18,9 @@
 require 'akeyless'
 
 instance = Akeyless::DeleteItem.new(
+  accessibility: null,
   delete_immediately: null,
   delete_in_days: null,
-  item_accessibility: null,
   name: null,
   token: null,
   uid_token: null,

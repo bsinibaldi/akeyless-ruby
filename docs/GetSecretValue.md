@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **item_accessibility** | **String** | for personal password manager | [optional] |
+| **accessibility** | **String** | for personal password manager | [optional] |
 | **names** | **Array&lt;String&gt;** | Secret name |  |
 | **pretty_print** | **Boolean** |  | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
@@ -17,7 +17,7 @@
 require 'akeyless'
 
 instance = Akeyless::GetSecretValue.new(
-  item_accessibility: null,
+  accessibility: null,
   names: null,
   pretty_print: null,
   token: null,

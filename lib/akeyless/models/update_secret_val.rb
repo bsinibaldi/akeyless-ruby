@@ -15,11 +15,8 @@ require 'time'
 
 module Akeyless
   class UpdateSecretVal
-    # For Password Management use, additional fields
-    attr_accessor :custom_fields
-
     # for personal password manager
-    attr_accessor :item_accessibility
+    attr_accessor :accessibility
 
     attr_accessor :keep_prev_version
 
@@ -35,36 +32,43 @@ module Akeyless
     # Deprecated
     attr_accessor :new_version
 
+    # For Password Management use, additional fields
+    attr_accessor :password_manager_custom_field
+
+    # For Password Management use, reflect the website context
+    attr_accessor :password_manager_inject_url
+
+    # For Password Management use, additional fields
+    attr_accessor :password_manager_password
+
+    # For Password Management use
+    attr_accessor :password_manager_username
+
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
 
-    # For Password Management use
-    attr_accessor :username
-
     # The new secret value
     attr_accessor :value
-
-    # For Password Management use, reflect the website context
-    attr_accessor :website
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'custom_fields' => :'custom-fields',
-        :'item_accessibility' => :'item-accessibility',
+        :'accessibility' => :'accessibility',
         :'keep_prev_version' => :'keep-prev-version',
         :'key' => :'key',
         :'multiline' => :'multiline',
         :'name' => :'name',
         :'new_version' => :'new-version',
+        :'password_manager_custom_field' => :'password-manager-custom-field',
+        :'password_manager_inject_url' => :'password-manager-inject-url',
+        :'password_manager_password' => :'password-manager-password',
+        :'password_manager_username' => :'password-manager-username',
         :'token' => :'token',
         :'uid_token' => :'uid-token',
-        :'username' => :'username',
-        :'value' => :'value',
-        :'website' => :'website'
+        :'value' => :'value'
       }
     end
 
@@ -76,18 +80,19 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'custom_fields' => :'Hash<String, String>',
-        :'item_accessibility' => :'String',
+        :'accessibility' => :'String',
         :'keep_prev_version' => :'String',
         :'key' => :'String',
         :'multiline' => :'Boolean',
         :'name' => :'String',
         :'new_version' => :'Boolean',
+        :'password_manager_custom_field' => :'Hash<String, String>',
+        :'password_manager_inject_url' => :'String',
+        :'password_manager_password' => :'String',
+        :'password_manager_username' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String',
-        :'username' => :'String',
-        :'value' => :'String',
-        :'website' => :'String'
+        :'value' => :'String'
       }
     end
 
@@ -112,14 +117,8 @@ module Akeyless
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'custom_fields')
-        if (value = attributes[:'custom_fields']).is_a?(Hash)
-          self.custom_fields = value
-        end
-      end
-
-      if attributes.key?(:'item_accessibility')
-        self.item_accessibility = attributes[:'item_accessibility']
+      if attributes.key?(:'accessibility')
+        self.accessibility = attributes[:'accessibility']
       end
 
       if attributes.key?(:'keep_prev_version')
@@ -142,6 +141,24 @@ module Akeyless
         self.new_version = attributes[:'new_version']
       end
 
+      if attributes.key?(:'password_manager_custom_field')
+        if (value = attributes[:'password_manager_custom_field']).is_a?(Hash)
+          self.password_manager_custom_field = value
+        end
+      end
+
+      if attributes.key?(:'password_manager_inject_url')
+        self.password_manager_inject_url = attributes[:'password_manager_inject_url']
+      end
+
+      if attributes.key?(:'password_manager_password')
+        self.password_manager_password = attributes[:'password_manager_password']
+      end
+
+      if attributes.key?(:'password_manager_username')
+        self.password_manager_username = attributes[:'password_manager_username']
+      end
+
       if attributes.key?(:'token')
         self.token = attributes[:'token']
       end
@@ -150,16 +167,8 @@ module Akeyless
         self.uid_token = attributes[:'uid_token']
       end
 
-      if attributes.key?(:'username')
-        self.username = attributes[:'username']
-      end
-
       if attributes.key?(:'value')
         self.value = attributes[:'value']
-      end
-
-      if attributes.key?(:'website')
-        self.website = attributes[:'website']
       end
     end
 
@@ -191,18 +200,19 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          custom_fields == o.custom_fields &&
-          item_accessibility == o.item_accessibility &&
+          accessibility == o.accessibility &&
           keep_prev_version == o.keep_prev_version &&
           key == o.key &&
           multiline == o.multiline &&
           name == o.name &&
           new_version == o.new_version &&
+          password_manager_custom_field == o.password_manager_custom_field &&
+          password_manager_inject_url == o.password_manager_inject_url &&
+          password_manager_password == o.password_manager_password &&
+          password_manager_username == o.password_manager_username &&
           token == o.token &&
           uid_token == o.uid_token &&
-          username == o.username &&
-          value == o.value &&
-          website == o.website
+          value == o.value
     end
 
     # @see the `==` method
@@ -214,7 +224,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [custom_fields, item_accessibility, keep_prev_version, key, multiline, name, new_version, token, uid_token, username, value, website].hash
+      [accessibility, keep_prev_version, key, multiline, name, new_version, password_manager_custom_field, password_manager_inject_url, password_manager_password, password_manager_username, token, uid_token, value].hash
     end
 
     # Builds the object from hash

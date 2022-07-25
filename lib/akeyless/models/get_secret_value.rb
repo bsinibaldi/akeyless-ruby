@@ -16,7 +16,7 @@ require 'time'
 module Akeyless
   class GetSecretValue
     # for personal password manager
-    attr_accessor :item_accessibility
+    attr_accessor :accessibility
 
     # Secret name
     attr_accessor :names
@@ -35,7 +35,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'item_accessibility' => :'item-accessibility',
+        :'accessibility' => :'accessibility',
         :'names' => :'names',
         :'pretty_print' => :'pretty-print',
         :'token' => :'token',
@@ -52,7 +52,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'item_accessibility' => :'String',
+        :'accessibility' => :'String',
         :'names' => :'Array<String>',
         :'pretty_print' => :'Boolean',
         :'token' => :'String',
@@ -82,8 +82,8 @@ module Akeyless
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'item_accessibility')
-        self.item_accessibility = attributes[:'item_accessibility']
+      if attributes.key?(:'accessibility')
+        self.accessibility = attributes[:'accessibility']
       end
 
       if attributes.key?(:'names')
@@ -132,7 +132,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          item_accessibility == o.item_accessibility &&
+          accessibility == o.accessibility &&
           names == o.names &&
           pretty_print == o.pretty_print &&
           token == o.token &&
@@ -149,7 +149,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [item_accessibility, names, pretty_print, token, uid_token, version].hash
+      [accessibility, names, pretty_print, token, uid_token, version].hash
     end
 
     # Builds the object from hash

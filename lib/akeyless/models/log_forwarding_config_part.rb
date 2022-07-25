@@ -23,6 +23,8 @@ module Akeyless
 
     attr_accessor :elasticsearch_config
 
+    attr_accessor :json_output
+
     attr_accessor :logan_enable
 
     attr_accessor :logan_url
@@ -46,6 +48,7 @@ module Akeyless
         :'azure_analytics_config' => :'azure_analytics_config',
         :'datadog_config' => :'datadog_config',
         :'elasticsearch_config' => :'elasticsearch_config',
+        :'json_output' => :'json_output',
         :'logan_enable' => :'logan_enable',
         :'logan_url' => :'logan_url',
         :'logstash_config' => :'logstash_config',
@@ -69,6 +72,7 @@ module Akeyless
         :'azure_analytics_config' => :'AzureLogAnalyticsForwardingConfig',
         :'datadog_config' => :'DatadogForwardingConfig',
         :'elasticsearch_config' => :'ElasticsearchLogForwardingConfig',
+        :'json_output' => :'Boolean',
         :'logan_enable' => :'Boolean',
         :'logan_url' => :'String',
         :'logstash_config' => :'LogstashLogForwardingConfig',
@@ -115,6 +119,10 @@ module Akeyless
 
       if attributes.key?(:'elasticsearch_config')
         self.elasticsearch_config = attributes[:'elasticsearch_config']
+      end
+
+      if attributes.key?(:'json_output')
+        self.json_output = attributes[:'json_output']
       end
 
       if attributes.key?(:'logan_enable')
@@ -172,6 +180,7 @@ module Akeyless
           azure_analytics_config == o.azure_analytics_config &&
           datadog_config == o.datadog_config &&
           elasticsearch_config == o.elasticsearch_config &&
+          json_output == o.json_output &&
           logan_enable == o.logan_enable &&
           logan_url == o.logan_url &&
           logstash_config == o.logstash_config &&
@@ -191,7 +200,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [aws_s3_config, azure_analytics_config, datadog_config, elasticsearch_config, logan_enable, logan_url, logstash_config, logz_io_config, pull_interval_sec, splunk_config, syslog_config, target_log_type].hash
+      [aws_s3_config, azure_analytics_config, datadog_config, elasticsearch_config, json_output, logan_enable, logan_url, logstash_config, logz_io_config, pull_interval_sec, splunk_config, syslog_config, target_log_type].hash
     end
 
     # Builds the object from hash

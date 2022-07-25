@@ -15,14 +15,11 @@ require 'time'
 
 module Akeyless
   class CreateSecret
-    # For Password Management use, additional fields
-    attr_accessor :custom_fields
+    # for personal password manager
+    attr_accessor :accessibility
 
     # Protection from accidental deletion of this item
     attr_accessor :delete_protection
-
-    # for personal password manager
-    attr_accessor :item_accessibility
 
     # Metadata about the secret
     attr_accessor :metadata
@@ -33,8 +30,17 @@ module Akeyless
     # Secret name
     attr_accessor :name
 
-    # For PasswordPolicy use
-    attr_accessor :password_length
+    # For Password Management use, additional fields
+    attr_accessor :password_manager_custom_field
+
+    # For Password Management use, reflect the website context
+    attr_accessor :password_manager_inject_url
+
+    # For Password Management use, additional fields
+    attr_accessor :password_manager_password
+
+    # For Password Management use
+    attr_accessor :password_manager_username
 
     # The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
     attr_accessor :protection_key
@@ -67,37 +73,21 @@ module Akeyless
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
 
-    # For PasswordPolicy use
-    attr_accessor :use_lower_letters
-
-    # For PasswordPolicy use
-    attr_accessor :use_numbers
-
-    # For PasswordPolicy use
-    attr_accessor :use_special_characters
-
-    # For PasswordPolicy use
-    attr_accessor :use_capital_letters
-
-    # For Password Management use
-    attr_accessor :username
-
     # The secret value
     attr_accessor :value
-
-    # For Password Management use, reflect the website context
-    attr_accessor :website
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'custom_fields' => :'custom-fields',
+        :'accessibility' => :'accessibility',
         :'delete_protection' => :'delete_protection',
-        :'item_accessibility' => :'item-accessibility',
         :'metadata' => :'metadata',
         :'multiline_value' => :'multiline_value',
         :'name' => :'name',
-        :'password_length' => :'password-length',
+        :'password_manager_custom_field' => :'password-manager-custom-field',
+        :'password_manager_inject_url' => :'password-manager-inject-url',
+        :'password_manager_password' => :'password-manager-password',
+        :'password_manager_username' => :'password-manager-username',
         :'protection_key' => :'protection_key',
         :'secure_access_bastion_issuer' => :'secure-access-bastion-issuer',
         :'secure_access_enable' => :'secure-access-enable',
@@ -111,13 +101,7 @@ module Akeyless
         :'token' => :'token',
         :'type' => :'type',
         :'uid_token' => :'uid-token',
-        :'use_lower_letters' => :'use-lower-letters',
-        :'use_numbers' => :'use-numbers',
-        :'use_special_characters' => :'use-special-characters',
-        :'use_capital_letters' => :'use_capital-letters',
-        :'username' => :'username',
-        :'value' => :'value',
-        :'website' => :'website'
+        :'value' => :'value'
       }
     end
 
@@ -129,13 +113,15 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'custom_fields' => :'Hash<String, String>',
+        :'accessibility' => :'String',
         :'delete_protection' => :'String',
-        :'item_accessibility' => :'String',
         :'metadata' => :'String',
         :'multiline_value' => :'Boolean',
         :'name' => :'String',
-        :'password_length' => :'Integer',
+        :'password_manager_custom_field' => :'Hash<String, String>',
+        :'password_manager_inject_url' => :'String',
+        :'password_manager_password' => :'String',
+        :'password_manager_username' => :'String',
         :'protection_key' => :'String',
         :'secure_access_bastion_issuer' => :'String',
         :'secure_access_enable' => :'String',
@@ -149,13 +135,7 @@ module Akeyless
         :'token' => :'String',
         :'type' => :'String',
         :'uid_token' => :'String',
-        :'use_lower_letters' => :'String',
-        :'use_numbers' => :'String',
-        :'use_special_characters' => :'String',
-        :'use_capital_letters' => :'String',
-        :'username' => :'String',
-        :'value' => :'String',
-        :'website' => :'String'
+        :'value' => :'String'
       }
     end
 
@@ -180,18 +160,12 @@ module Akeyless
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'custom_fields')
-        if (value = attributes[:'custom_fields']).is_a?(Hash)
-          self.custom_fields = value
-        end
+      if attributes.key?(:'accessibility')
+        self.accessibility = attributes[:'accessibility']
       end
 
       if attributes.key?(:'delete_protection')
         self.delete_protection = attributes[:'delete_protection']
-      end
-
-      if attributes.key?(:'item_accessibility')
-        self.item_accessibility = attributes[:'item_accessibility']
       end
 
       if attributes.key?(:'metadata')
@@ -206,8 +180,22 @@ module Akeyless
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'password_length')
-        self.password_length = attributes[:'password_length']
+      if attributes.key?(:'password_manager_custom_field')
+        if (value = attributes[:'password_manager_custom_field']).is_a?(Hash)
+          self.password_manager_custom_field = value
+        end
+      end
+
+      if attributes.key?(:'password_manager_inject_url')
+        self.password_manager_inject_url = attributes[:'password_manager_inject_url']
+      end
+
+      if attributes.key?(:'password_manager_password')
+        self.password_manager_password = attributes[:'password_manager_password']
+      end
+
+      if attributes.key?(:'password_manager_username')
+        self.password_manager_username = attributes[:'password_manager_username']
       end
 
       if attributes.key?(:'protection_key')
@@ -266,32 +254,8 @@ module Akeyless
         self.uid_token = attributes[:'uid_token']
       end
 
-      if attributes.key?(:'use_lower_letters')
-        self.use_lower_letters = attributes[:'use_lower_letters']
-      end
-
-      if attributes.key?(:'use_numbers')
-        self.use_numbers = attributes[:'use_numbers']
-      end
-
-      if attributes.key?(:'use_special_characters')
-        self.use_special_characters = attributes[:'use_special_characters']
-      end
-
-      if attributes.key?(:'use_capital_letters')
-        self.use_capital_letters = attributes[:'use_capital_letters']
-      end
-
-      if attributes.key?(:'username')
-        self.username = attributes[:'username']
-      end
-
       if attributes.key?(:'value')
         self.value = attributes[:'value']
-      end
-
-      if attributes.key?(:'website')
-        self.website = attributes[:'website']
       end
     end
 
@@ -323,13 +287,15 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          custom_fields == o.custom_fields &&
+          accessibility == o.accessibility &&
           delete_protection == o.delete_protection &&
-          item_accessibility == o.item_accessibility &&
           metadata == o.metadata &&
           multiline_value == o.multiline_value &&
           name == o.name &&
-          password_length == o.password_length &&
+          password_manager_custom_field == o.password_manager_custom_field &&
+          password_manager_inject_url == o.password_manager_inject_url &&
+          password_manager_password == o.password_manager_password &&
+          password_manager_username == o.password_manager_username &&
           protection_key == o.protection_key &&
           secure_access_bastion_issuer == o.secure_access_bastion_issuer &&
           secure_access_enable == o.secure_access_enable &&
@@ -343,13 +309,7 @@ module Akeyless
           token == o.token &&
           type == o.type &&
           uid_token == o.uid_token &&
-          use_lower_letters == o.use_lower_letters &&
-          use_numbers == o.use_numbers &&
-          use_special_characters == o.use_special_characters &&
-          use_capital_letters == o.use_capital_letters &&
-          username == o.username &&
-          value == o.value &&
-          website == o.website
+          value == o.value
     end
 
     # @see the `==` method
@@ -361,7 +321,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [custom_fields, delete_protection, item_accessibility, metadata, multiline_value, name, password_length, protection_key, secure_access_bastion_issuer, secure_access_enable, secure_access_host, secure_access_ssh_creds, secure_access_ssh_user, secure_access_url, secure_access_web_browsing, secure_access_web_proxy, tags, token, type, uid_token, use_lower_letters, use_numbers, use_special_characters, use_capital_letters, username, value, website].hash
+      [accessibility, delete_protection, metadata, multiline_value, name, password_manager_custom_field, password_manager_inject_url, password_manager_password, password_manager_username, protection_key, secure_access_bastion_issuer, secure_access_enable, secure_access_host, secure_access_ssh_creds, secure_access_ssh_user, secure_access_url, secure_access_web_browsing, secure_access_web_proxy, tags, token, type, uid_token, value].hash
     end
 
     # Builds the object from hash

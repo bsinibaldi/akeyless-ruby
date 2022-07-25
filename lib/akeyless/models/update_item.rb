@@ -15,6 +15,9 @@ require 'time'
 
 module Akeyless
   class UpdateItem
+    # for personal password manager
+    attr_accessor :accessibility
+
     # List of the new tags that will be attached to this item
     attr_accessor :add_tag
 
@@ -22,9 +25,6 @@ module Akeyless
     attr_accessor :cert_file_data
 
     attr_accessor :delete_protection
-
-    # for personal password manager
-    attr_accessor :item_accessibility
 
     # Current item name
     attr_accessor :name
@@ -95,10 +95,10 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'accessibility' => :'accessibility',
         :'add_tag' => :'add-tag',
         :'cert_file_data' => :'cert-file-data',
         :'delete_protection' => :'delete_protection',
-        :'item_accessibility' => :'item-accessibility',
         :'name' => :'name',
         :'new_metadata' => :'new-metadata',
         :'new_name' => :'new-name',
@@ -140,10 +140,10 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'accessibility' => :'String',
         :'add_tag' => :'Array<String>',
         :'cert_file_data' => :'String',
         :'delete_protection' => :'String',
-        :'item_accessibility' => :'String',
         :'name' => :'String',
         :'new_metadata' => :'String',
         :'new_name' => :'String',
@@ -198,6 +198,10 @@ module Akeyless
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'accessibility')
+        self.accessibility = attributes[:'accessibility']
+      end
+
       if attributes.key?(:'add_tag')
         if (value = attributes[:'add_tag']).is_a?(Array)
           self.add_tag = value
@@ -210,10 +214,6 @@ module Akeyless
 
       if attributes.key?(:'delete_protection')
         self.delete_protection = attributes[:'delete_protection']
-      end
-
-      if attributes.key?(:'item_accessibility')
-        self.item_accessibility = attributes[:'item_accessibility']
       end
 
       if attributes.key?(:'name')
@@ -370,10 +370,10 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          accessibility == o.accessibility &&
           add_tag == o.add_tag &&
           cert_file_data == o.cert_file_data &&
           delete_protection == o.delete_protection &&
-          item_accessibility == o.item_accessibility &&
           name == o.name &&
           new_metadata == o.new_metadata &&
           new_name == o.new_name &&
@@ -415,7 +415,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_tag, cert_file_data, delete_protection, item_accessibility, name, new_metadata, new_name, rm_tag, secure_access_add_host, secure_access_allow_external_user, secure_access_allow_port_forwading, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_aws_region, secure_access_bastion_api, secure_access_bastion_issuer, secure_access_bastion_ssh, secure_access_cluster_endpoint, secure_access_dashboard_url, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_rm_host, secure_access_ssh_creds, secure_access_ssh_creds_user, secure_access_url, secure_access_use_internal_bastion, secure_access_web_browsing, secure_access_web_proxy, token, uid_token].hash
+      [accessibility, add_tag, cert_file_data, delete_protection, name, new_metadata, new_name, rm_tag, secure_access_add_host, secure_access_allow_external_user, secure_access_allow_port_forwading, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_aws_region, secure_access_bastion_api, secure_access_bastion_issuer, secure_access_bastion_ssh, secure_access_cluster_endpoint, secure_access_dashboard_url, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_rm_host, secure_access_ssh_creds, secure_access_ssh_creds_user, secure_access_url, secure_access_use_internal_bastion, secure_access_web_browsing, secure_access_web_proxy, token, uid_token].hash
     end
 
     # Builds the object from hash

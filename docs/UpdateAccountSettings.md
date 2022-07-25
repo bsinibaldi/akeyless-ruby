@@ -9,6 +9,7 @@
 | **company_name** | **String** | Company name | [optional] |
 | **country** | **String** | Country | [optional] |
 | **default_versioning** | **String** | Should create version by default | [optional] |
+| **dp_enable_classic_key_protection** | **String** | Enable classic key protection [\&quot;true\&quot;/\&quot;false\&quot;] | [optional] |
 | **item_type** | **String** | VersionSettingsObjectType defines object types for account version settings | [optional] |
 | **jwt_ttl_default** | **Integer** | Default ttl | [optional] |
 | **jwt_ttl_max** | **Integer** | Maximum ttl | [optional] |
@@ -30,6 +31,7 @@ instance = Akeyless::UpdateAccountSettings.new(
   company_name: null,
   country: null,
   default_versioning: null,
+  dp_enable_classic_key_protection: null,
   item_type: null,
   jwt_ttl_default: null,
   jwt_ttl_max: null,

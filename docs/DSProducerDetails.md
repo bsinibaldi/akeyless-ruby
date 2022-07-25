@@ -96,6 +96,7 @@
 | **hanadb_revocation_statements** | **String** |  | [optional] |
 | **host_name** | **String** |  | [optional] |
 | **host_port** | **String** |  | [optional] |
+| **implementation_type** | **String** |  | [optional] |
 | **is_fixed_user** | **String** |  | [optional] |
 | **item_targets_assoc** | [**Array&lt;ItemTargetAssociation&gt;**](ItemTargetAssociation.md) |  | [optional] |
 | **k8s_bearer_token** | **String** |  | [optional] |
@@ -277,6 +278,7 @@ instance = Akeyless::DSProducerDetails.new(
   hanadb_revocation_statements: null,
   host_name: null,
   host_port: null,
+  implementation_type: null,
   is_fixed_user: null,
   item_targets_assoc: null,
   k8s_bearer_token: null,

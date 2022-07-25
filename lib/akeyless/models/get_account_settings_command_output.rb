@@ -23,6 +23,8 @@ module Akeyless
 
     attr_accessor :email
 
+    attr_accessor :general_settings
+
     attr_accessor :object_version_settings
 
     attr_accessor :phone
@@ -40,6 +42,7 @@ module Akeyless
         :'address' => :'address',
         :'company_name' => :'company_name',
         :'email' => :'email',
+        :'general_settings' => :'general_settings',
         :'object_version_settings' => :'object_version_settings',
         :'phone' => :'phone',
         :'secret_management' => :'secret_management',
@@ -60,6 +63,7 @@ module Akeyless
         :'address' => :'CustomerFullAddress',
         :'company_name' => :'String',
         :'email' => :'String',
+        :'general_settings' => :'AccountGeneralSettings',
         :'object_version_settings' => :'AccountObjectVersionSettingsOutput',
         :'phone' => :'String',
         :'secret_management' => :'SmInfo',
@@ -105,6 +109,10 @@ module Akeyless
         self.email = attributes[:'email']
       end
 
+      if attributes.key?(:'general_settings')
+        self.general_settings = attributes[:'general_settings']
+      end
+
       if attributes.key?(:'object_version_settings')
         self.object_version_settings = attributes[:'object_version_settings']
       end
@@ -148,6 +156,7 @@ module Akeyless
           address == o.address &&
           company_name == o.company_name &&
           email == o.email &&
+          general_settings == o.general_settings &&
           object_version_settings == o.object_version_settings &&
           phone == o.phone &&
           secret_management == o.secret_management &&
@@ -164,7 +173,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_id, address, company_name, email, object_version_settings, phone, secret_management, secure_remote_access, system_access_creds_settings].hash
+      [account_id, address, company_name, email, general_settings, object_version_settings, phone, secret_management, secure_remote_access, system_access_creds_settings].hash
     end
 
     # Builds the object from hash
