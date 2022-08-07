@@ -22,7 +22,7 @@ module Akeyless
     # DockerhubPassword is either the user's password access token to manage the repository
     attr_accessor :dockerhub_password
 
-    # Access token scopes list (comma seperated) to give the dynamic secret valid options are in \"repo:admin\", \"repo:write\", \"repo:read\", \"repo:public_read\"
+    # Access token scopes list (comma-separated) to give the dynamic secret valid options are in \"repo:admin\", \"repo:write\", \"repo:read\", \"repo:public_read\"
     attr_accessor :dockerhub_token_scopes
 
     # DockerhubUsername is the name of the user in dockerhub

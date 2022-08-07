@@ -19,6 +19,9 @@ module Akeyless
     # The access ID of the Kubernetes auth method
     attr_accessor :access_id
 
+    # Cluster access type. options: [native_k8s, rancher]
+    attr_accessor :cluster_api_type
+
     # Config encryption key
     attr_accessor :config_encryption_key_name
 
@@ -34,6 +37,12 @@ module Akeyless
     # K8S Auth config name
     attr_accessor :name
 
+    # The api key used to access the TokenReview API to validate other JWTs (relevant for \"rancher\" only)
+    attr_accessor :rancher_api_key
+
+    # The cluster id as define in rancher (relevant for \"rancher\" only)
+    attr_accessor :rancher_cluster_id
+
     # The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth
     attr_accessor :signing_key
 
@@ -43,7 +52,7 @@ module Akeyless
     # Time in seconds of expiration of the Akeyless Kube Auth Method token
     attr_accessor :token_exp
 
-    # A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs. If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API.
+    # A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs (relevant for \"native_k8s\" only). If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API.
     attr_accessor :token_reviewer_jwt
 
     # The universal identity token, Required only for universal_identity authentication
@@ -53,11 +62,14 @@ module Akeyless
     def self.attribute_map
       {
         :'access_id' => :'access-id',
+        :'cluster_api_type' => :'cluster-api-type',
         :'config_encryption_key_name' => :'config-encryption-key-name',
         :'k8s_ca_cert' => :'k8s-ca-cert',
         :'k8s_host' => :'k8s-host',
         :'k8s_issuer' => :'k8s-issuer',
         :'name' => :'name',
+        :'rancher_api_key' => :'rancher-api-key',
+        :'rancher_cluster_id' => :'rancher-cluster-id',
         :'signing_key' => :'signing-key',
         :'token' => :'token',
         :'token_exp' => :'token-exp',
@@ -75,11 +87,14 @@ module Akeyless
     def self.openapi_types
       {
         :'access_id' => :'String',
+        :'cluster_api_type' => :'String',
         :'config_encryption_key_name' => :'String',
         :'k8s_ca_cert' => :'String',
         :'k8s_host' => :'String',
         :'k8s_issuer' => :'String',
         :'name' => :'String',
+        :'rancher_api_key' => :'String',
+        :'rancher_cluster_id' => :'String',
         :'signing_key' => :'String',
         :'token' => :'String',
         :'token_exp' => :'Integer',
@@ -113,6 +128,12 @@ module Akeyless
         self.access_id = attributes[:'access_id']
       end
 
+      if attributes.key?(:'cluster_api_type')
+        self.cluster_api_type = attributes[:'cluster_api_type']
+      else
+        self.cluster_api_type = 'native_k8s'
+      end
+
       if attributes.key?(:'config_encryption_key_name')
         self.config_encryption_key_name = attributes[:'config_encryption_key_name']
       end
@@ -131,6 +152,14 @@ module Akeyless
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'rancher_api_key')
+        self.rancher_api_key = attributes[:'rancher_api_key']
+      end
+
+      if attributes.key?(:'rancher_cluster_id')
+        self.rancher_cluster_id = attributes[:'rancher_cluster_id']
       end
 
       if attributes.key?(:'signing_key')
@@ -195,11 +224,14 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           access_id == o.access_id &&
+          cluster_api_type == o.cluster_api_type &&
           config_encryption_key_name == o.config_encryption_key_name &&
           k8s_ca_cert == o.k8s_ca_cert &&
           k8s_host == o.k8s_host &&
           k8s_issuer == o.k8s_issuer &&
           name == o.name &&
+          rancher_api_key == o.rancher_api_key &&
+          rancher_cluster_id == o.rancher_cluster_id &&
           signing_key == o.signing_key &&
           token == o.token &&
           token_exp == o.token_exp &&
@@ -216,7 +248,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_id, config_encryption_key_name, k8s_ca_cert, k8s_host, k8s_issuer, name, signing_key, token, token_exp, token_reviewer_jwt, uid_token].hash
+      [access_id, cluster_api_type, config_encryption_key_name, k8s_ca_cert, k8s_host, k8s_issuer, name, rancher_api_key, rancher_cluster_id, signing_key, token, token_exp, token_reviewer_jwt, uid_token].hash
     end
 
     # Builds the object from hash

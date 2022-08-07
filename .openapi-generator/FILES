@@ -149,6 +149,8 @@ docs/DeleteTargets.md
 docs/DescribeItem.md
 docs/DescribePermissions.md
 docs/DescribePermissionsOutput.md
+docs/DescribeSubClaims.md
+docs/DescribeSubClaimsOutput.md
 docs/Detokenize.md
 docs/DetokenizeOutput.md
 docs/DynamicSecretProducerInfo.md
@@ -534,8 +536,6 @@ docs/UpdateSecretValOutput.md
 docs/UpdateTarget.md
 docs/UpdateTargetDetailsOutput.md
 docs/UpdateTargetOutput.md
-docs/UpdateTokenizer.md
-docs/UpdateTokenizerOutput.md
 docs/UpdateWebTarget.md
 docs/UpdateWebTargetDetails.md
 docs/UpdateWebTargetOutput.md
@@ -697,6 +697,8 @@ lib/akeyless/models/delete_targets.rb
 lib/akeyless/models/describe_item.rb
 lib/akeyless/models/describe_permissions.rb
 lib/akeyless/models/describe_permissions_output.rb
+lib/akeyless/models/describe_sub_claims.rb
+lib/akeyless/models/describe_sub_claims_output.rb
 lib/akeyless/models/detokenize.rb
 lib/akeyless/models/detokenize_output.rb
 lib/akeyless/models/ds_producer_details.rb
@@ -1083,8 +1085,6 @@ lib/akeyless/models/update_ssh_target_output.rb
 lib/akeyless/models/update_target.rb
 lib/akeyless/models/update_target_details_output.rb
 lib/akeyless/models/update_target_output.rb
-lib/akeyless/models/update_tokenizer.rb
-lib/akeyless/models/update_tokenizer_output.rb
 lib/akeyless/models/update_web_target.rb
 lib/akeyless/models/update_web_target_details.rb
 lib/akeyless/models/update_web_target_output.rb
@@ -1101,6 +1101,6 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/account_general_settings_spec.rb
-spec/models/data_protection_section_spec.rb
+spec/models/describe_sub_claims_output_spec.rb
+spec/models/describe_sub_claims_spec.rb
 spec/spec_helper.rb

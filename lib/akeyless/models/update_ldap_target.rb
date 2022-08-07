@@ -37,6 +37,9 @@ module Akeyless
     # New target name
     attr_accessor :new_name
 
+    # Set Ldap server type, Options:[OpenLDAP, ActiveDirectory]
+    attr_accessor :server_type
+
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
@@ -60,6 +63,7 @@ module Akeyless
         :'ldap_url' => :'ldap-url',
         :'name' => :'name',
         :'new_name' => :'new-name',
+        :'server_type' => :'server-type',
         :'token' => :'token',
         :'token_expiration' => :'token-expiration',
         :'uid_token' => :'uid-token',
@@ -84,6 +88,7 @@ module Akeyless
         :'ldap_url' => :'String',
         :'name' => :'String',
         :'new_name' => :'String',
+        :'server_type' => :'String',
         :'token' => :'String',
         :'token_expiration' => :'String',
         :'uid_token' => :'String',
@@ -148,6 +153,10 @@ module Akeyless
         self.new_name = attributes[:'new_name']
       end
 
+      if attributes.key?(:'server_type')
+        self.server_type = attributes[:'server_type']
+      end
+
       if attributes.key?(:'token')
         self.token = attributes[:'token']
       end
@@ -197,6 +206,7 @@ module Akeyless
           ldap_url == o.ldap_url &&
           name == o.name &&
           new_name == o.new_name &&
+          server_type == o.server_type &&
           token == o.token &&
           token_expiration == o.token_expiration &&
           uid_token == o.uid_token &&
@@ -212,7 +222,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [bind_dn, bind_dn_password, comment, keep_prev_version, key, ldap_ca_cert, ldap_url, name, new_name, token, token_expiration, uid_token, update_version].hash
+      [bind_dn, bind_dn_password, comment, keep_prev_version, key, ldap_ca_cert, ldap_url, name, new_name, server_type, token, token_expiration, uid_token, update_version].hash
     end
 
     # Builds the object from hash

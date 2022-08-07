@@ -3731,6 +3731,70 @@ module Akeyless
       return data, status_code, headers
     end
 
+    # @param body [DescribeSubClaims] 
+    # @param [Hash] opts the optional parameters
+    # @return [DescribeSubClaimsOutput]
+    def describe_sub_claims(body, opts = {})
+      data, _status_code, _headers = describe_sub_claims_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [DescribeSubClaims] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(DescribeSubClaimsOutput, Integer, Hash)>] DescribeSubClaimsOutput data, response status code and response headers
+    def describe_sub_claims_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.describe_sub_claims ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.describe_sub_claims"
+      end
+      # resource path
+      local_var_path = '/describe-sub-claims'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'DescribeSubClaimsOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.describe_sub_claims",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#describe_sub_claims\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # @param body [Detokenize] 
     # @param [Hash] opts the optional parameters
     # @return [DetokenizeOutput]
@@ -5155,7 +5219,7 @@ module Akeyless
         fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.gateway_create_producer_native_k8_s"
       end
       # resource path
-      local_var_path = '/gateway-create-producer-k8s-native'
+      local_var_path = '/gateway-create-producer-k8s'
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -14382,70 +14446,6 @@ module Akeyless
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: V2Api#update_target_details\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # @param body [UpdateTokenizer] 
-    # @param [Hash] opts the optional parameters
-    # @return [UpdateTokenizerOutput]
-    def update_tokenizer(body, opts = {})
-      data, _status_code, _headers = update_tokenizer_with_http_info(body, opts)
-      data
-    end
-
-    # @param body [UpdateTokenizer] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(UpdateTokenizerOutput, Integer, Hash)>] UpdateTokenizerOutput data, response status code and response headers
-    def update_tokenizer_with_http_info(body, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: V2Api.update_tokenizer ...'
-      end
-      # verify the required parameter 'body' is set
-      if @api_client.config.client_side_validation && body.nil?
-        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.update_tokenizer"
-      end
-      # resource path
-      local_var_path = '/update-tokenizer'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'UpdateTokenizerOutput'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || []
-
-      new_options = opts.merge(
-        :operation => :"V2Api.update_tokenizer",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: V2Api#update_tokenizer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

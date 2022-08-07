@@ -14,16 +14,8 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class DecryptFile
-    # The display id of the key to use in the decryption process
-    attr_accessor :display_id
-
-    # The item id of the key to use in the decryption process
-    attr_accessor :item_id
-
-    # The name of the key to use in the decryption process
-    attr_accessor :key_name
-
+  # describe-sub-claims Get the sub-claims associated with the provided token or authentication profile
+  class DescribeSubClaims
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
@@ -33,9 +25,6 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'display_id' => :'display-id',
-        :'item_id' => :'item-id',
-        :'key_name' => :'key-name',
         :'token' => :'token',
         :'uid_token' => :'uid-token'
       }
@@ -49,9 +38,6 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'display_id' => :'String',
-        :'item_id' => :'Integer',
-        :'key_name' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String'
       }
@@ -67,28 +53,16 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::DecryptFile` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::DescribeSubClaims` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::DecryptFile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::DescribeSubClaims`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'display_id')
-        self.display_id = attributes[:'display_id']
-      end
-
-      if attributes.key?(:'item_id')
-        self.item_id = attributes[:'item_id']
-      end
-
-      if attributes.key?(:'key_name')
-        self.key_name = attributes[:'key_name']
-      end
 
       if attributes.key?(:'token')
         self.token = attributes[:'token']
@@ -103,17 +77,12 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @key_name.nil?
-        invalid_properties.push('invalid value for "key_name", key_name cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @key_name.nil?
       true
     end
 
@@ -122,9 +91,6 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          display_id == o.display_id &&
-          item_id == o.item_id &&
-          key_name == o.key_name &&
           token == o.token &&
           uid_token == o.uid_token
     end
@@ -138,7 +104,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [display_id, item_id, key_name, token, uid_token].hash
+      [token, uid_token].hash
     end
 
     # Builds the object from hash

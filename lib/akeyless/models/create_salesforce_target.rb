@@ -15,6 +15,12 @@ require 'time'
 
 module Akeyless
   class CreateSalesforceTarget
+    # Base64 encoded PEM of the connected app private key (relevant for JWT auth only)
+    attr_accessor :app_private_key_data
+
+    # type of the auth flow ('jwt' / 'user-password')
+    attr_accessor :auth_flow
+
     # Base64 encoded PEM cert to use when uploading a new key to Salesforce
     attr_accessor :ca_cert_data
 
@@ -24,7 +30,7 @@ module Akeyless
     # Client ID of the oauth2 app to use for connecting to Salesforce
     attr_accessor :client_id
 
-    # Client secret of the oauth2 app to use for connecting to Salesforce
+    # Client secret of the oauth2 app to use for connecting to Salesforce (required for password flow)
     attr_accessor :client_secret
 
     # Comment about the target
@@ -39,10 +45,10 @@ module Akeyless
     # Target name
     attr_accessor :name
 
-    # The password of the user attached to the oauth2 app used for connecting to Salesforce
+    # The password of the user attached to the oauth2 app used for connecting to Salesforce (required for user-password flow)
     attr_accessor :password
 
-    # The security token of the user attached to the oauth2 app used for connecting to Salesforce
+    # The security token of the user attached to the oauth2 app used for connecting to Salesforce  (required for user-password flow)
     attr_accessor :security_token
 
     # Url of the Salesforce tenant
@@ -57,6 +63,8 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'app_private_key_data' => :'app-private-key-data',
+        :'auth_flow' => :'auth-flow',
         :'ca_cert_data' => :'ca-cert-data',
         :'ca_cert_name' => :'ca-cert-name',
         :'client_id' => :'client-id',
@@ -81,6 +89,8 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'app_private_key_data' => :'String',
+        :'auth_flow' => :'String',
         :'ca_cert_data' => :'String',
         :'ca_cert_name' => :'String',
         :'client_id' => :'String',
@@ -117,6 +127,14 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'app_private_key_data')
+        self.app_private_key_data = attributes[:'app_private_key_data']
+      end
+
+      if attributes.key?(:'auth_flow')
+        self.auth_flow = attributes[:'auth_flow']
+      end
 
       if attributes.key?(:'ca_cert_data')
         self.ca_cert_data = attributes[:'ca_cert_data']
@@ -175,12 +193,12 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @client_id.nil?
-        invalid_properties.push('invalid value for "client_id", client_id cannot be nil.')
+      if @auth_flow.nil?
+        invalid_properties.push('invalid value for "auth_flow", auth_flow cannot be nil.')
       end
 
-      if @client_secret.nil?
-        invalid_properties.push('invalid value for "client_secret", client_secret cannot be nil.')
+      if @client_id.nil?
+        invalid_properties.push('invalid value for "client_id", client_id cannot be nil.')
       end
 
       if @email.nil?
@@ -189,14 +207,6 @@ module Akeyless
 
       if @name.nil?
         invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @password.nil?
-        invalid_properties.push('invalid value for "password", password cannot be nil.')
-      end
-
-      if @security_token.nil?
-        invalid_properties.push('invalid value for "security_token", security_token cannot be nil.')
       end
 
       if @tenant_url.nil?
@@ -209,12 +219,10 @@ module Akeyless
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @auth_flow.nil?
       return false if @client_id.nil?
-      return false if @client_secret.nil?
       return false if @email.nil?
       return false if @name.nil?
-      return false if @password.nil?
-      return false if @security_token.nil?
       return false if @tenant_url.nil?
       true
     end
@@ -224,6 +232,8 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          app_private_key_data == o.app_private_key_data &&
+          auth_flow == o.auth_flow &&
           ca_cert_data == o.ca_cert_data &&
           ca_cert_name == o.ca_cert_name &&
           client_id == o.client_id &&
@@ -248,7 +258,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ca_cert_data, ca_cert_name, client_id, client_secret, comment, email, key, name, password, security_token, tenant_url, token, uid_token].hash
+      [app_private_key_data, auth_flow, ca_cert_data, ca_cert_name, client_id, client_secret, comment, email, key, name, password, security_token, tenant_url, token, uid_token].hash
     end
 
     # Builds the object from hash

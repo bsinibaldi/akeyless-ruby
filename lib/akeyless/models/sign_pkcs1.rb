@@ -16,6 +16,12 @@ require 'time'
 module Akeyless
   # signPKCS1 is a command that calculates the signature of hashed data using RSASSA-PKCS1-V1_5-SIGN from RSA PKCS#1 v1.5.
   class SignPKCS1
+    # The display id of the key to use in the signing process
+    attr_accessor :display_id
+
+    # The item id of the key to use in the signing process
+    attr_accessor :item_id
+
     # The name of the RSA key to use in the signing process
     attr_accessor :key_name
 
@@ -31,6 +37,8 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'display_id' => :'display-id',
+        :'item_id' => :'item-id',
         :'key_name' => :'key-name',
         :'message' => :'message',
         :'token' => :'token',
@@ -46,6 +54,8 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'display_id' => :'String',
+        :'item_id' => :'Integer',
         :'key_name' => :'String',
         :'message' => :'String',
         :'token' => :'String',
@@ -74,6 +84,14 @@ module Akeyless
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'display_id')
+        self.display_id = attributes[:'display_id']
+      end
+
+      if attributes.key?(:'item_id')
+        self.item_id = attributes[:'item_id']
+      end
+
       if attributes.key?(:'key_name')
         self.key_name = attributes[:'key_name']
       end
@@ -95,10 +113,6 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @key_name.nil?
-        invalid_properties.push('invalid value for "key_name", key_name cannot be nil.')
-      end
-
       if @message.nil?
         invalid_properties.push('invalid value for "message", message cannot be nil.')
       end
@@ -109,7 +123,6 @@ module Akeyless
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @key_name.nil?
       return false if @message.nil?
       true
     end
@@ -119,6 +132,8 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          display_id == o.display_id &&
+          item_id == o.item_id &&
           key_name == o.key_name &&
           message == o.message &&
           token == o.token &&
@@ -134,7 +149,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [key_name, message, token, uid_token].hash
+      [display_id, item_id, key_name, message, token, uid_token].hash
     end
 
     # Builds the object from hash

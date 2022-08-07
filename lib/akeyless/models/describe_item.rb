@@ -15,6 +15,12 @@ require 'time'
 
 module Akeyless
   class DescribeItem
+    # The display id of the item
+    attr_accessor :display_id
+
+    # Item id of the item
+    attr_accessor :item_id
+
     # Item name
     attr_accessor :name
 
@@ -30,6 +36,8 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'display_id' => :'display-id',
+        :'item_id' => :'item-id',
         :'name' => :'name',
         :'show_versions' => :'show-versions',
         :'token' => :'token',
@@ -45,6 +53,8 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'display_id' => :'String',
+        :'item_id' => :'Integer',
         :'name' => :'String',
         :'show_versions' => :'Boolean',
         :'token' => :'String',
@@ -72,6 +82,14 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'display_id')
+        self.display_id = attributes[:'display_id']
+      end
+
+      if attributes.key?(:'item_id')
+        self.item_id = attributes[:'item_id']
+      end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
@@ -115,6 +133,8 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          display_id == o.display_id &&
+          item_id == o.item_id &&
           name == o.name &&
           show_versions == o.show_versions &&
           token == o.token &&
@@ -130,7 +150,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, show_versions, token, uid_token].hash
+      [display_id, item_id, name, show_versions, token, uid_token].hash
     end
 
     # Builds the object from hash

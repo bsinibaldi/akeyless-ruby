@@ -62,6 +62,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**delete_targets**](V2Api.md#delete_targets) | **POST** /delete-targets |  |
 | [**describe_item**](V2Api.md#describe_item) | **POST** /describe-item |  |
 | [**describe_permissions**](V2Api.md#describe_permissions) | **POST** /describe-permissions |  |
+| [**describe_sub_claims**](V2Api.md#describe_sub_claims) | **POST** /describe-sub-claims |  |
 | [**detokenize**](V2Api.md#detokenize) | **POST** /detokenize |  |
 | [**encrypt**](V2Api.md#encrypt) | **POST** /encrypt |  |
 | [**encrypt_pkcs1**](V2Api.md#encrypt_pkcs1) | **POST** /encrypt-pkcs1 |  |
@@ -84,7 +85,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_create_producer_mongo**](V2Api.md#gateway_create_producer_mongo) | **POST** /gateway-create-producer-mongo |  |
 | [**gateway_create_producer_mssql**](V2Api.md#gateway_create_producer_mssql) | **POST** /gateway-create-producer-mssql |  |
 | [**gateway_create_producer_my_sql**](V2Api.md#gateway_create_producer_my_sql) | **POST** /gateway-create-producer-mysql |  |
-| [**gateway_create_producer_native_k8_s**](V2Api.md#gateway_create_producer_native_k8_s) | **POST** /gateway-create-producer-k8s-native |  |
+| [**gateway_create_producer_native_k8_s**](V2Api.md#gateway_create_producer_native_k8_s) | **POST** /gateway-create-producer-k8s |  |
 | [**gateway_create_producer_oracle_db**](V2Api.md#gateway_create_producer_oracle_db) | **POST** /gateway-create-producer-oracle |  |
 | [**gateway_create_producer_postgre_sql**](V2Api.md#gateway_create_producer_postgre_sql) | **POST** /gateway-create-producer-postgresql |  |
 | [**gateway_create_producer_rabbit_mq**](V2Api.md#gateway_create_producer_rabbit_mq) | **POST** /gateway-create-producer-rabbitmq |  |
@@ -230,7 +231,6 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_ssh_target_details**](V2Api.md#update_ssh_target_details) | **POST** /update-ssh-target-details |  |
 | [**update_target**](V2Api.md#update_target) | **POST** /update-target |  |
 | [**update_target_details**](V2Api.md#update_target_details) | **POST** /update-target-details |  |
-| [**update_tokenizer**](V2Api.md#update_tokenizer) | **POST** /update-tokenizer |  |
 | [**update_web_target**](V2Api.md#update_web_target) | **POST** /update-web-target |  |
 | [**update_web_target_details**](V2Api.md#update_web_target_details) | **POST** /update-web-target-details |  |
 | [**upload_rsa**](V2Api.md#upload_rsa) | **POST** /upload-rsa |  |
@@ -2423,7 +2423,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::CreateSalesforceTarget.new({client_id: 'client_id_example', client_secret: 'client_secret_example', email: 'email_example', name: 'name_example', password: 'password_example', security_token: 'security_token_example', tenant_url: 'tenant_url_example'}) # CreateSalesforceTarget | 
+body = Akeyless::CreateSalesforceTarget.new({auth_flow: 'auth_flow_example', client_id: 'client_id_example', email: 'email_example', name: 'name_example', tenant_url: 'tenant_url_example'}) # CreateSalesforceTarget | 
 
 begin
   
@@ -2857,7 +2857,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::Decrypt.new # Decrypt | 
+body = Akeyless::Decrypt.new({key_name: 'key_name_example'}) # Decrypt | 
 
 begin
   
@@ -3836,6 +3836,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## describe_sub_claims
+
+> <DescribeSubClaimsOutput> describe_sub_claims(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::DescribeSubClaims.new # DescribeSubClaims | 
+
+begin
+  
+  result = api_instance.describe_sub_claims(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->describe_sub_claims: #{e}"
+end
+```
+
+#### Using the describe_sub_claims_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DescribeSubClaimsOutput>, Integer, Hash)> describe_sub_claims_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.describe_sub_claims_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DescribeSubClaimsOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->describe_sub_claims_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**DescribeSubClaims**](DescribeSubClaims.md) |  |  |
+
+### Return type
+
+[**DescribeSubClaimsOutput**](DescribeSubClaimsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## detokenize
 
 > <DetokenizeOutput> detokenize(body)
@@ -3911,7 +3973,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::Encrypt.new # Encrypt | 
+body = Akeyless::Encrypt.new({key_name: 'key_name_example'}) # Encrypt | 
 
 begin
   
@@ -11127,7 +11189,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::SignPKCS1.new({key_name: 'key_name_example', message: 'message_example'}) # SignPKCS1 | 
+body = Akeyless::SignPKCS1.new({message: 'message_example'}) # SignPKCS1 | 
 
 begin
   
@@ -13852,7 +13914,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::UpdateSalesforceTarget.new({client_id: 'client_id_example', client_secret: 'client_secret_example', email: 'email_example', name: 'name_example', password: 'password_example', security_token: 'security_token_example', tenant_url: 'tenant_url_example'}) # UpdateSalesforceTarget | 
+body = Akeyless::UpdateSalesforceTarget.new({auth_flow: 'auth_flow_example', client_id: 'client_id_example', email: 'email_example', name: 'name_example', tenant_url: 'tenant_url_example'}) # UpdateSalesforceTarget | 
 
 begin
   
@@ -14262,68 +14324,6 @@ end
 ### Return type
 
 [**UpdateTargetOutput**](UpdateTargetOutput.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## update_tokenizer
-
-> <UpdateTokenizerOutput> update_tokenizer(body)
-
-
-
-### Examples
-
-```ruby
-require 'time'
-require 'akeyless'
-
-api_instance = Akeyless::V2Api.new
-body = Akeyless::UpdateTokenizer.new({name: 'name_example', template_type: 'template_type_example', tokenizer_type: 'tokenizer_type_example'}) # UpdateTokenizer | 
-
-begin
-  
-  result = api_instance.update_tokenizer(body)
-  p result
-rescue Akeyless::ApiError => e
-  puts "Error when calling V2Api->update_tokenizer: #{e}"
-end
-```
-
-#### Using the update_tokenizer_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<UpdateTokenizerOutput>, Integer, Hash)> update_tokenizer_with_http_info(body)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.update_tokenizer_with_http_info(body)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <UpdateTokenizerOutput>
-rescue Akeyless::ApiError => e
-  puts "Error when calling V2Api->update_tokenizer_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **body** | [**UpdateTokenizer**](UpdateTokenizer.md) |  |  |
-
-### Return type
-
-[**UpdateTokenizerOutput**](UpdateTokenizerOutput.md)
 
 ### Authorization
 

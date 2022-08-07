@@ -24,6 +24,9 @@ module Akeyless
     # AuthMethodSigningKey is the private key (in base64 of the PEM format) associated with the public key defined in the Kubernetes auth method, that used to sign the internal token for the Akeyless Kubernetes Auth Method
     attr_accessor :auth_method_prv_key_pem
 
+    # ClusterApiType defines types of API access to cluster
+    attr_accessor :cluster_api_type
+
     # DisableISSValidation is optional parameter to disable ISS validation
     attr_accessor :disable_iss_validation
 
@@ -41,12 +44,18 @@ module Akeyless
     # K8SPublicKeysPEM is the list of public key in PEM format
     attr_accessor :k8s_pub_keys_pem
 
-    # K8STokenReviewerJW\"K8S Auth config %v successfully created\\n\", clictx.Color().Bold(c.K8SAuthConfigName)T is the bearer to use during the TokenReview API call
+    # K8STokenReviewerJWT is the bearer for clusterApiTypeK8s, used during TokenReview API call
     attr_accessor :k8s_token_reviewer_jwt
 
     attr_accessor :name
 
     attr_accessor :protection_key
+
+    # RancherApiKey the bear token for clusterApiTypeRancher
+    attr_accessor :rancher_api_key
+
+    # RancherClusterId cluster id as define in rancher (in case of clusterApiTypeRancher)
+    attr_accessor :rancher_cluster_id
 
     # UseLocalCAJwt is an optional parameter to set defaulting to using the local CA cert and service account jwt when running in a Kubernetes pod
     attr_accessor :use_local_ca_jwt
@@ -57,6 +66,7 @@ module Akeyless
         :'am_token_expiration' => :'am_token_expiration',
         :'auth_method_access_id' => :'auth_method_access_id',
         :'auth_method_prv_key_pem' => :'auth_method_prv_key_pem',
+        :'cluster_api_type' => :'cluster_api_type',
         :'disable_iss_validation' => :'disable_iss_validation',
         :'id' => :'id',
         :'k8s_ca_cert' => :'k8s_ca_cert',
@@ -66,6 +76,8 @@ module Akeyless
         :'k8s_token_reviewer_jwt' => :'k8s_token_reviewer_jwt',
         :'name' => :'name',
         :'protection_key' => :'protection_key',
+        :'rancher_api_key' => :'rancher_api_key',
+        :'rancher_cluster_id' => :'rancher_cluster_id',
         :'use_local_ca_jwt' => :'use_local_ca_jwt'
       }
     end
@@ -81,6 +93,7 @@ module Akeyless
         :'am_token_expiration' => :'Integer',
         :'auth_method_access_id' => :'String',
         :'auth_method_prv_key_pem' => :'String',
+        :'cluster_api_type' => :'String',
         :'disable_iss_validation' => :'Boolean',
         :'id' => :'String',
         :'k8s_ca_cert' => :'String',
@@ -90,6 +103,8 @@ module Akeyless
         :'k8s_token_reviewer_jwt' => :'String',
         :'name' => :'String',
         :'protection_key' => :'String',
+        :'rancher_api_key' => :'String',
+        :'rancher_cluster_id' => :'String',
         :'use_local_ca_jwt' => :'Boolean'
       }
     end
@@ -125,6 +140,10 @@ module Akeyless
 
       if attributes.key?(:'auth_method_prv_key_pem')
         self.auth_method_prv_key_pem = attributes[:'auth_method_prv_key_pem']
+      end
+
+      if attributes.key?(:'cluster_api_type')
+        self.cluster_api_type = attributes[:'cluster_api_type']
       end
 
       if attributes.key?(:'disable_iss_validation')
@@ -165,6 +184,14 @@ module Akeyless
         self.protection_key = attributes[:'protection_key']
       end
 
+      if attributes.key?(:'rancher_api_key')
+        self.rancher_api_key = attributes[:'rancher_api_key']
+      end
+
+      if attributes.key?(:'rancher_cluster_id')
+        self.rancher_cluster_id = attributes[:'rancher_cluster_id']
+      end
+
       if attributes.key?(:'use_local_ca_jwt')
         self.use_local_ca_jwt = attributes[:'use_local_ca_jwt']
       end
@@ -191,6 +218,7 @@ module Akeyless
           am_token_expiration == o.am_token_expiration &&
           auth_method_access_id == o.auth_method_access_id &&
           auth_method_prv_key_pem == o.auth_method_prv_key_pem &&
+          cluster_api_type == o.cluster_api_type &&
           disable_iss_validation == o.disable_iss_validation &&
           id == o.id &&
           k8s_ca_cert == o.k8s_ca_cert &&
@@ -200,6 +228,8 @@ module Akeyless
           k8s_token_reviewer_jwt == o.k8s_token_reviewer_jwt &&
           name == o.name &&
           protection_key == o.protection_key &&
+          rancher_api_key == o.rancher_api_key &&
+          rancher_cluster_id == o.rancher_cluster_id &&
           use_local_ca_jwt == o.use_local_ca_jwt
     end
 
@@ -212,7 +242,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [am_token_expiration, auth_method_access_id, auth_method_prv_key_pem, disable_iss_validation, id, k8s_ca_cert, k8s_host, k8s_issuer, k8s_pub_keys_pem, k8s_token_reviewer_jwt, name, protection_key, use_local_ca_jwt].hash
+      [am_token_expiration, auth_method_access_id, auth_method_prv_key_pem, cluster_api_type, disable_iss_validation, id, k8s_ca_cert, k8s_host, k8s_issuer, k8s_pub_keys_pem, k8s_token_reviewer_jwt, name, protection_key, rancher_api_key, rancher_cluster_id, use_local_ca_jwt].hash
     end
 
     # Builds the object from hash

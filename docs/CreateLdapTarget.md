@@ -11,6 +11,7 @@
 | **ldap_ca_cert** | **String** | CA Certificate File Content | [optional] |
 | **ldap_url** | **String** | LDAP Server URL |  |
 | **name** | **String** | Target name |  |
+| **server_type** | **String** | Set Ldap server type, Options:[OpenLDAP, ActiveDirectory]. Default is OpenLDAP | [optional][default to &#39;OpenLDAP&#39;] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **token_expiration** | **String** | Token expiration | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
@@ -28,6 +29,7 @@ instance = Akeyless::CreateLdapTarget.new(
   ldap_ca_cert: null,
   ldap_url: null,
   name: null,
+  server_type: null,
   token: null,
   token_expiration: null,
   uid_token: null

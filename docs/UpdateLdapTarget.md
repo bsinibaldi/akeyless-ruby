@@ -13,6 +13,7 @@
 | **ldap_url** | **String** |  | [optional] |
 | **name** | **String** | Target name |  |
 | **new_name** | **String** | New target name | [optional] |
+| **server_type** | **String** | Set Ldap server type, Options:[OpenLDAP, ActiveDirectory] | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **token_expiration** | **String** |  | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
@@ -33,6 +34,7 @@ instance = Akeyless::UpdateLdapTarget.new(
   ldap_url: null,
   name: null,
   new_name: null,
+  server_type: null,
   token: null,
   token_expiration: null,
   uid_token: null,

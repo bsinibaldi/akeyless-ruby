@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **app_private_key** | **Array&lt;Integer&gt;** | params needed for jwt auth AppPrivateKey is the rsa private key in PEM format | [optional] |
 | **artifactory_admin_apikey** | **String** |  | [optional] |
 | **artifactory_admin_username** | **String** |  | [optional] |
 | **artifactory_base_url** | **String** |  | [optional] |
@@ -27,7 +28,7 @@
 | **chef_server_username** | **String** |  | [optional] |
 | **chef_skip_ssl** | **Boolean** |  | [optional] |
 | **client_id** | **String** |  | [optional] |
-| **client_secret** | **String** |  | [optional] |
+| **client_secret** | **String** | params needed for password auth | [optional] |
 | **db_host_name** | **String** |  | [optional] |
 | **db_name** | **String** |  | [optional] |
 | **db_port** | **String** |  | [optional] |
@@ -103,6 +104,7 @@
 require 'akeyless'
 
 instance = Akeyless::TargetTypeDetailsInput.new(
+  app_private_key: null,
   artifactory_admin_apikey: null,
   artifactory_admin_username: null,
   artifactory_base_url: null,

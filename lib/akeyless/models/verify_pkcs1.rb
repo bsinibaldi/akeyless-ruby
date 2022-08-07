@@ -15,6 +15,12 @@ require 'time'
 
 module Akeyless
   class VerifyPKCS1
+    # The display id of the key to use in the verification process
+    attr_accessor :display_id
+
+    # The item id of the key to use in the verification process
+    attr_accessor :item_id
+
     # The name of the RSA key to use in the verification process
     attr_accessor :key_name
 
@@ -33,6 +39,8 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'display_id' => :'display-id',
+        :'item_id' => :'item-id',
         :'key_name' => :'key-name',
         :'message' => :'message',
         :'signature' => :'signature',
@@ -49,6 +57,8 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'display_id' => :'String',
+        :'item_id' => :'Integer',
         :'key_name' => :'String',
         :'message' => :'String',
         :'signature' => :'String',
@@ -77,6 +87,14 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'display_id')
+        self.display_id = attributes[:'display_id']
+      end
+
+      if attributes.key?(:'item_id')
+        self.item_id = attributes[:'item_id']
+      end
 
       if attributes.key?(:'key_name')
         self.key_name = attributes[:'key_name']
@@ -132,6 +150,8 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          display_id == o.display_id &&
+          item_id == o.item_id &&
           key_name == o.key_name &&
           message == o.message &&
           signature == o.signature &&
@@ -148,7 +168,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [key_name, message, signature, token, uid_token].hash
+      [display_id, item_id, key_name, message, signature, token, uid_token].hash
     end
 
     # Builds the object from hash

@@ -18,7 +18,13 @@ module Akeyless
     # Ciphertext to be decrypted in base64 encoded format
     attr_accessor :ciphertext
 
-    # The name of the RSA key to use in the decryption process
+    # The display id of the key to use in the decryption process
+    attr_accessor :display_id
+
+    # The item id of the key to use in the decryption process
+    attr_accessor :item_id
+
+    # The name of the key to use in the decryption process
     attr_accessor :key_name
 
     # Authentication token (see `/auth` and `/configure`)
@@ -31,6 +37,8 @@ module Akeyless
     def self.attribute_map
       {
         :'ciphertext' => :'ciphertext',
+        :'display_id' => :'display-id',
+        :'item_id' => :'item-id',
         :'key_name' => :'key-name',
         :'token' => :'token',
         :'uid_token' => :'uid-token'
@@ -46,6 +54,8 @@ module Akeyless
     def self.openapi_types
       {
         :'ciphertext' => :'String',
+        :'display_id' => :'String',
+        :'item_id' => :'Integer',
         :'key_name' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String'
@@ -75,6 +85,14 @@ module Akeyless
 
       if attributes.key?(:'ciphertext')
         self.ciphertext = attributes[:'ciphertext']
+      end
+
+      if attributes.key?(:'display_id')
+        self.display_id = attributes[:'display_id']
+      end
+
+      if attributes.key?(:'item_id')
+        self.item_id = attributes[:'item_id']
       end
 
       if attributes.key?(:'key_name')
@@ -119,6 +137,8 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           ciphertext == o.ciphertext &&
+          display_id == o.display_id &&
+          item_id == o.item_id &&
           key_name == o.key_name &&
           token == o.token &&
           uid_token == o.uid_token
@@ -133,7 +153,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ciphertext, key_name, token, uid_token].hash
+      [ciphertext, display_id, item_id, key_name, token, uid_token].hash
     end
 
     # Builds the object from hash

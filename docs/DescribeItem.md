@@ -4,6 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **display_id** | **String** | The display id of the item | [optional] |
+| **item_id** | **Integer** | Item id of the item | [optional] |
 | **name** | **String** | Item name |  |
 | **show_versions** | **Boolean** | Include all item versions in reply | [optional][default to false] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
@@ -15,6 +17,8 @@
 require 'akeyless'
 
 instance = Akeyless::DescribeItem.new(
+  display_id: null,
+  item_id: null,
   name: null,
   show_versions: null,
   token: null,

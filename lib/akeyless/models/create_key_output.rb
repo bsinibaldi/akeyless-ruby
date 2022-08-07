@@ -15,12 +15,18 @@ require 'time'
 
 module Akeyless
   class CreateKeyOutput
+    attr_accessor :display_id
+
     attr_accessor :fragment_results
+
+    attr_accessor :item_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'fragment_results' => :'fragment_results'
+        :'display_id' => :'display_id',
+        :'fragment_results' => :'fragment_results',
+        :'item_id' => :'item_id'
       }
     end
 
@@ -32,7 +38,9 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'fragment_results' => :'Array<Integer>'
+        :'display_id' => :'String',
+        :'fragment_results' => :'Array<Integer>',
+        :'item_id' => :'Integer'
       }
     end
 
@@ -57,10 +65,18 @@ module Akeyless
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'display_id')
+        self.display_id = attributes[:'display_id']
+      end
+
       if attributes.key?(:'fragment_results')
         if (value = attributes[:'fragment_results']).is_a?(Array)
           self.fragment_results = value
         end
+      end
+
+      if attributes.key?(:'item_id')
+        self.item_id = attributes[:'item_id']
       end
     end
 
@@ -82,7 +98,9 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          fragment_results == o.fragment_results
+          display_id == o.display_id &&
+          fragment_results == o.fragment_results &&
+          item_id == o.item_id
     end
 
     # @see the `==` method
@@ -94,7 +112,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [fragment_results].hash
+      [display_id, fragment_results, item_id].hash
     end
 
     # Builds the object from hash

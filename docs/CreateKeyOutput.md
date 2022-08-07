@@ -4,7 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **display_id** | **String** |  | [optional] |
 | **fragment_results** | **Array&lt;Integer&gt;** |  | [optional] |
+| **item_id** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -12,7 +14,9 @@
 require 'akeyless'
 
 instance = Akeyless::CreateKeyOutput.new(
-  fragment_results: null
+  display_id: null,
+  fragment_results: null,
+  item_id: null
 )
 ```
 

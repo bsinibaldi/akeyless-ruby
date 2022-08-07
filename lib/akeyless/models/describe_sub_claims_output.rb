@@ -14,30 +14,13 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class DecryptFile
-    # The display id of the key to use in the decryption process
-    attr_accessor :display_id
-
-    # The item id of the key to use in the decryption process
-    attr_accessor :item_id
-
-    # The name of the key to use in the decryption process
-    attr_accessor :key_name
-
-    # Authentication token (see `/auth` and `/configure`)
-    attr_accessor :token
-
-    # The universal identity token, Required only for universal_identity authentication
-    attr_accessor :uid_token
+  class DescribeSubClaimsOutput
+    attr_accessor :sub_claims
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'display_id' => :'display-id',
-        :'item_id' => :'item-id',
-        :'key_name' => :'key-name',
-        :'token' => :'token',
-        :'uid_token' => :'uid-token'
+        :'sub_claims' => :'sub_claims'
       }
     end
 
@@ -49,11 +32,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'display_id' => :'String',
-        :'item_id' => :'Integer',
-        :'key_name' => :'String',
-        :'token' => :'String',
-        :'uid_token' => :'String'
+        :'sub_claims' => :'Hash<String, Array<String>>'
       }
     end
 
@@ -67,35 +46,21 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::DecryptFile` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::DescribeSubClaimsOutput` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::DecryptFile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::DescribeSubClaimsOutput`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'display_id')
-        self.display_id = attributes[:'display_id']
-      end
-
-      if attributes.key?(:'item_id')
-        self.item_id = attributes[:'item_id']
-      end
-
-      if attributes.key?(:'key_name')
-        self.key_name = attributes[:'key_name']
-      end
-
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
-      end
-
-      if attributes.key?(:'uid_token')
-        self.uid_token = attributes[:'uid_token']
+      if attributes.key?(:'sub_claims')
+        if (value = attributes[:'sub_claims']).is_a?(Hash)
+          self.sub_claims = value
+        end
       end
     end
 
@@ -103,17 +68,12 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @key_name.nil?
-        invalid_properties.push('invalid value for "key_name", key_name cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @key_name.nil?
       true
     end
 
@@ -122,11 +82,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          display_id == o.display_id &&
-          item_id == o.item_id &&
-          key_name == o.key_name &&
-          token == o.token &&
-          uid_token == o.uid_token
+          sub_claims == o.sub_claims
     end
 
     # @see the `==` method
@@ -138,7 +94,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [display_id, item_id, key_name, token, uid_token].hash
+      [sub_claims].hash
     end
 
     # Builds the object from hash

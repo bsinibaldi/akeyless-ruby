@@ -27,7 +27,7 @@ module Akeyless
     # Comment about the target
     attr_accessor :comment
 
-    # The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
+    # The name of a key used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
     attr_accessor :key
 
     # Target name

@@ -21,6 +21,9 @@ module Akeyless
     # name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail
     attr_accessor :encryption_context
 
+    # The item id of the key to use in the encryption process
+    attr_accessor :item_id
+
     # The name of the key to use in the encryption process
     attr_accessor :key_name
 
@@ -38,6 +41,7 @@ module Akeyless
       {
         :'display_id' => :'display-id',
         :'encryption_context' => :'encryption-context',
+        :'item_id' => :'item-id',
         :'key_name' => :'key-name',
         :'plaintext' => :'plaintext',
         :'token' => :'token',
@@ -55,6 +59,7 @@ module Akeyless
       {
         :'display_id' => :'String',
         :'encryption_context' => :'Hash<String, String>',
+        :'item_id' => :'Integer',
         :'key_name' => :'String',
         :'plaintext' => :'String',
         :'token' => :'String',
@@ -93,6 +98,10 @@ module Akeyless
         end
       end
 
+      if attributes.key?(:'item_id')
+        self.item_id = attributes[:'item_id']
+      end
+
       if attributes.key?(:'key_name')
         self.key_name = attributes[:'key_name']
       end
@@ -114,12 +123,17 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @key_name.nil?
+        invalid_properties.push('invalid value for "key_name", key_name cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @key_name.nil?
       true
     end
 
@@ -130,6 +144,7 @@ module Akeyless
       self.class == o.class &&
           display_id == o.display_id &&
           encryption_context == o.encryption_context &&
+          item_id == o.item_id &&
           key_name == o.key_name &&
           plaintext == o.plaintext &&
           token == o.token &&
@@ -145,7 +160,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [display_id, encryption_context, key_name, plaintext, token, uid_token].hash
+      [display_id, encryption_context, item_id, key_name, plaintext, token, uid_token].hash
     end
 
     # Builds the object from hash
