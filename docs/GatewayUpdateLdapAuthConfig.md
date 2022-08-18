@@ -10,11 +10,11 @@
 | **group_attr** | **String** | Group Attr | [optional] |
 | **group_dn** | **String** | Group Dn | [optional] |
 | **group_filter** | **String** | Group Filter | [optional] |
-| **ldap_ca_cert** | **String** | The CA Cert (in PEM format) to use to call into the ldap API server | [optional] |
+| **ldap_ca_cert** | **String** | LDAP CA Certificate (base64 encoded) | [optional] |
 | **ldap_enable** | **String** | Enable Ldap | [optional] |
 | **ldap_url** | **String** | LDAP Server URL, e.g. ldap://planetexpress.com:389 | [optional] |
 | **ldap_anonymous_search** | **Boolean** | Ldap Anonymous Search | [optional] |
-| **signing_key_data** | **String** | The private key (in PEM format) associated with the public key defined in the Ldap auth | [optional] |
+| **signing_key_data** | **String** | The private key (base64 encoded), associated with the public key defined in the Ldap auth | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
 | **user_attribute** | **String** | User Attribute | [optional] |

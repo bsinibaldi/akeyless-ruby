@@ -54,7 +54,7 @@ module Akeyless
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
-    # he requested Time To Live for the certificate, in seconds
+    # The requested Time To Live for the certificate, in seconds
     attr_accessor :ttl
 
     # The universal identity token, Required only for universal_identity authentication

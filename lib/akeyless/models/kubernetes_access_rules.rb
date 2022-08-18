@@ -29,6 +29,9 @@ module Akeyless
     # A list of service account names that the authentication is restricted to.
     attr_accessor :bound_service_account_names
 
+    # Generate public/private key (the private key is required for the K8S Auth Config in the Akeyless Gateway)
+    attr_accessor :gen_key_pair
+
     # The public key value of the Kubernetes auth method configuration in the Akeyless Gateway.
     attr_accessor :pub_key
 
@@ -40,6 +43,7 @@ module Akeyless
         :'bound_namespaces' => :'bound_namespaces',
         :'bound_pod_names' => :'bound_pod_names',
         :'bound_service_account_names' => :'bound_service_account_names',
+        :'gen_key_pair' => :'gen_key_pair',
         :'pub_key' => :'pub_key'
       }
     end
@@ -57,6 +61,7 @@ module Akeyless
         :'bound_namespaces' => :'Array<String>',
         :'bound_pod_names' => :'Array<String>',
         :'bound_service_account_names' => :'Array<String>',
+        :'gen_key_pair' => :'String',
         :'pub_key' => :'String'
       }
     end
@@ -108,6 +113,10 @@ module Akeyless
         end
       end
 
+      if attributes.key?(:'gen_key_pair')
+        self.gen_key_pair = attributes[:'gen_key_pair']
+      end
+
       if attributes.key?(:'pub_key')
         self.pub_key = attributes[:'pub_key']
       end
@@ -136,6 +145,7 @@ module Akeyless
           bound_namespaces == o.bound_namespaces &&
           bound_pod_names == o.bound_pod_names &&
           bound_service_account_names == o.bound_service_account_names &&
+          gen_key_pair == o.gen_key_pair &&
           pub_key == o.pub_key
     end
 
@@ -148,7 +158,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alg, audience, bound_namespaces, bound_pod_names, bound_service_account_names, pub_key].hash
+      [alg, audience, bound_namespaces, bound_pod_names, bound_service_account_names, gen_key_pair, pub_key].hash
     end
 
     # Builds the object from hash

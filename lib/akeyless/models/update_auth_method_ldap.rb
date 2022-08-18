@@ -25,6 +25,9 @@ module Akeyless
     # if true: enforce role-association must include sub claims
     attr_accessor :force_sub_claims
 
+    # Automatically generate key-pair for LDAP configuration. If set to false, a public key needs to be provided
+    attr_accessor :gen_key
+
     # A CIDR whitelist with the GW IPs that the access is restricted to
     attr_accessor :gw_bound_ips
 
@@ -37,7 +40,7 @@ module Akeyless
     # Auth Method new name
     attr_accessor :new_name
 
-    # A public key generated for LDAP authentication method on Akeyless in base64 format [RSA2048]
+    # A public key generated for LDAP authentication method on Akeyless in base64 or PEM format [RSA2048]
     attr_accessor :public_key_data
 
     # Authentication token (see `/auth` and `/configure`)
@@ -55,6 +58,7 @@ module Akeyless
         :'access_expires' => :'access-expires',
         :'bound_ips' => :'bound-ips',
         :'force_sub_claims' => :'force-sub-claims',
+        :'gen_key' => :'gen-key',
         :'gw_bound_ips' => :'gw-bound-ips',
         :'jwt_ttl' => :'jwt-ttl',
         :'name' => :'name',
@@ -77,6 +81,7 @@ module Akeyless
         :'access_expires' => :'Integer',
         :'bound_ips' => :'Array<String>',
         :'force_sub_claims' => :'Boolean',
+        :'gen_key' => :'String',
         :'gw_bound_ips' => :'Array<String>',
         :'jwt_ttl' => :'Integer',
         :'name' => :'String',
@@ -123,6 +128,10 @@ module Akeyless
 
       if attributes.key?(:'force_sub_claims')
         self.force_sub_claims = attributes[:'force_sub_claims']
+      end
+
+      if attributes.key?(:'gen_key')
+        self.gen_key = attributes[:'gen_key']
       end
 
       if attributes.key?(:'gw_bound_ips')
@@ -186,6 +195,7 @@ module Akeyless
           access_expires == o.access_expires &&
           bound_ips == o.bound_ips &&
           force_sub_claims == o.force_sub_claims &&
+          gen_key == o.gen_key &&
           gw_bound_ips == o.gw_bound_ips &&
           jwt_ttl == o.jwt_ttl &&
           name == o.name &&
@@ -205,7 +215,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_expires, bound_ips, force_sub_claims, gw_bound_ips, jwt_ttl, name, new_name, public_key_data, token, uid_token, unique_identifier].hash
+      [access_expires, bound_ips, force_sub_claims, gen_key, gw_bound_ips, jwt_ttl, name, new_name, public_key_data, token, uid_token, unique_identifier].hash
     end
 
     # Builds the object from hash

@@ -32,6 +32,7 @@
 | **protection_key_type** | **String** |  | [optional] |
 | **public_value** | **String** |  | [optional] |
 | **rotation_interval** | **Integer** |  | [optional] |
+| **shared_by** | [**RuleAssigner**](RuleAssigner.md) |  | [optional] |
 | **target_versions** | [**Array&lt;TargetItemVersion&gt;**](TargetItemVersion.md) |  | [optional] |
 | **with_customer_fragment** | **Boolean** |  | [optional] |
 
@@ -69,6 +70,7 @@ instance = Akeyless::Item.new(
   protection_key_type: null,
   public_value: null,
   rotation_interval: null,
+  shared_by: null,
   target_versions: null,
   with_customer_fragment: null
 )

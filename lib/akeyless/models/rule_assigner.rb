@@ -14,17 +14,16 @@ require 'date'
 require 'time'
 
 module Akeyless
-  # AccountGeneralSettings describes general settings for an account
-  class AccountGeneralSettings
-    attr_accessor :data_protection_section
+  class RuleAssigner
+    attr_accessor :access_id
 
-    attr_accessor :password_policy
+    attr_accessor :unique_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data_protection_section' => :'data_protection_section',
-        :'password_policy' => :'password_policy'
+        :'access_id' => :'access_id',
+        :'unique_id' => :'unique_id'
       }
     end
 
@@ -36,8 +35,8 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'data_protection_section' => :'DataProtectionSection',
-        :'password_policy' => :'PasswordPolicyInfo'
+        :'access_id' => :'String',
+        :'unique_id' => :'String'
       }
     end
 
@@ -51,23 +50,23 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::AccountGeneralSettings` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::RuleAssigner` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::AccountGeneralSettings`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::RuleAssigner`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data_protection_section')
-        self.data_protection_section = attributes[:'data_protection_section']
+      if attributes.key?(:'access_id')
+        self.access_id = attributes[:'access_id']
       end
 
-      if attributes.key?(:'password_policy')
-        self.password_policy = attributes[:'password_policy']
+      if attributes.key?(:'unique_id')
+        self.unique_id = attributes[:'unique_id']
       end
     end
 
@@ -89,8 +88,8 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data_protection_section == o.data_protection_section &&
-          password_policy == o.password_policy
+          access_id == o.access_id &&
+          unique_id == o.unique_id
     end
 
     # @see the `==` method
@@ -102,7 +101,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data_protection_section, password_policy].hash
+      [access_id, unique_id].hash
     end
 
     # Builds the object from hash

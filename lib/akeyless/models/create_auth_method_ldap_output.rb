@@ -17,10 +17,13 @@ module Akeyless
   class CreateAuthMethodLDAPOutput
     attr_accessor :access_id
 
+    attr_accessor :prv_key
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'access_id' => :'access_id'
+        :'access_id' => :'access_id',
+        :'prv_key' => :'prv_key'
       }
     end
 
@@ -32,7 +35,8 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'access_id' => :'String'
+        :'access_id' => :'String',
+        :'prv_key' => :'String'
       }
     end
 
@@ -60,6 +64,10 @@ module Akeyless
       if attributes.key?(:'access_id')
         self.access_id = attributes[:'access_id']
       end
+
+      if attributes.key?(:'prv_key')
+        self.prv_key = attributes[:'prv_key']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -80,7 +88,8 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          access_id == o.access_id
+          access_id == o.access_id &&
+          prv_key == o.prv_key
     end
 
     # @see the `==` method
@@ -92,7 +101,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_id].hash
+      [access_id, prv_key].hash
     end
 
     # Builds the object from hash

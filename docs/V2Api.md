@@ -65,7 +65,6 @@ All URIs are relative to *https://api.akeyless.io*
 | [**describe_sub_claims**](V2Api.md#describe_sub_claims) | **POST** /describe-sub-claims |  |
 | [**detokenize**](V2Api.md#detokenize) | **POST** /detokenize |  |
 | [**encrypt**](V2Api.md#encrypt) | **POST** /encrypt |  |
-| [**encrypt_pkcs1**](V2Api.md#encrypt_pkcs1) | **POST** /encrypt-pkcs1 |  |
 | [**encrypt_with_classic_key**](V2Api.md#encrypt_with_classic_key) | **POST** /encrypt-with-classic-key |  |
 | [**gateway_create_k8_s_auth_config**](V2Api.md#gateway_create_k8_s_auth_config) | **POST** /gateway-create-k8s-auth-config |  |
 | [**gateway_create_migration**](V2Api.md#gateway_create_migration) | **POST** /gateway-create-migration |  |
@@ -4011,68 +4010,6 @@ end
 ### Return type
 
 [**EncryptOutput**](EncryptOutput.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## encrypt_pkcs1
-
-> <EncryptPKCS1Output> encrypt_pkcs1(body)
-
-
-
-### Examples
-
-```ruby
-require 'time'
-require 'akeyless'
-
-api_instance = Akeyless::V2Api.new
-body = Akeyless::EncryptPKCS1.new({key_name: 'key_name_example', plaintext: 'plaintext_example'}) # EncryptPKCS1 | 
-
-begin
-  
-  result = api_instance.encrypt_pkcs1(body)
-  p result
-rescue Akeyless::ApiError => e
-  puts "Error when calling V2Api->encrypt_pkcs1: #{e}"
-end
-```
-
-#### Using the encrypt_pkcs1_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<EncryptPKCS1Output>, Integer, Hash)> encrypt_pkcs1_with_http_info(body)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.encrypt_pkcs1_with_http_info(body)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <EncryptPKCS1Output>
-rescue Akeyless::ApiError => e
-  puts "Error when calling V2Api->encrypt_pkcs1_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **body** | [**EncryptPKCS1**](EncryptPKCS1.md) |  |  |
-
-### Return type
-
-[**EncryptPKCS1Output**](EncryptPKCS1Output.md)
 
 ### Authorization
 
@@ -12294,7 +12231,7 @@ No authorization required
 
 ## update_auth_method_ldap
 
-> Object update_auth_method_ldap(body)
+> <UpdateAuthMethodLDAPOutput> update_auth_method_ldap(body)
 
 
 
@@ -12320,7 +12257,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(Object, Integer, Hash)> update_auth_method_ldap_with_http_info(body)
+> <Array(<UpdateAuthMethodLDAPOutput>, Integer, Hash)> update_auth_method_ldap_with_http_info(body)
 
 ```ruby
 begin
@@ -12328,7 +12265,7 @@ begin
   data, status_code, headers = api_instance.update_auth_method_ldap_with_http_info(body)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => Object
+  p data # => <UpdateAuthMethodLDAPOutput>
 rescue Akeyless::ApiError => e
   puts "Error when calling V2Api->update_auth_method_ldap_with_http_info: #{e}"
 end
@@ -12342,7 +12279,7 @@ end
 
 ### Return type
 
-**Object**
+[**UpdateAuthMethodLDAPOutput**](UpdateAuthMethodLDAPOutput.md)
 
 ### Authorization
 

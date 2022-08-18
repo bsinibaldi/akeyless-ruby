@@ -17,6 +17,9 @@ module Akeyless
   class LDAPAccessRules
     attr_accessor :alg
 
+    # Generate public/private key (the private key is required for the LDAP Auth Config in the Akeyless Gateway)
+    attr_accessor :gen_key_pair
+
     # The public key value of LDAP.
     attr_accessor :key
 
@@ -27,6 +30,7 @@ module Akeyless
     def self.attribute_map
       {
         :'alg' => :'alg',
+        :'gen_key_pair' => :'gen_key_pair',
         :'key' => :'key',
         :'unique_identifier' => :'unique_identifier'
       }
@@ -41,6 +45,7 @@ module Akeyless
     def self.openapi_types
       {
         :'alg' => :'String',
+        :'gen_key_pair' => :'String',
         :'key' => :'String',
         :'unique_identifier' => :'String'
       }
@@ -71,6 +76,10 @@ module Akeyless
         self.alg = attributes[:'alg']
       end
 
+      if attributes.key?(:'gen_key_pair')
+        self.gen_key_pair = attributes[:'gen_key_pair']
+      end
+
       if attributes.key?(:'key')
         self.key = attributes[:'key']
       end
@@ -99,6 +108,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           alg == o.alg &&
+          gen_key_pair == o.gen_key_pair &&
           key == o.key &&
           unique_identifier == o.unique_identifier
     end
@@ -112,7 +122,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alg, key, unique_identifier].hash
+      [alg, gen_key_pair, key, unique_identifier].hash
     end
 
     # Builds the object from hash

@@ -34,7 +34,7 @@ module Akeyless
     # Group Filter
     attr_accessor :group_filter
 
-    # The CA Cert (in PEM format) to use to call into the ldap API server
+    # LDAP CA Certificate (base64 encoded)
     attr_accessor :ldap_ca_cert
 
     # Enable Ldap
@@ -46,7 +46,7 @@ module Akeyless
     # Ldap Anonymous Search
     attr_accessor :ldap_anonymous_search
 
-    # The private key (in PEM format) associated with the public key defined in the Ldap auth
+    # The private key (base64 encoded), associated with the public key defined in the Ldap auth
     attr_accessor :signing_key_data
 
     # Authentication token (see `/auth` and `/configure`)

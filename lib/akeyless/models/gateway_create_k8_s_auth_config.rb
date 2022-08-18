@@ -25,7 +25,7 @@ module Akeyless
     # Config encryption key
     attr_accessor :config_encryption_key_name
 
-    # The CA Cert (in PEM format) to use to call into the kubernetes API server
+    # The CA Certificate (base64 encoded) to use to call into the kubernetes API server
     attr_accessor :k8s_ca_cert
 
     # The URL of the kubernetes API server
@@ -43,7 +43,7 @@ module Akeyless
     # The cluster id as define in rancher (relevant for \"rancher\" only)
     attr_accessor :rancher_cluster_id
 
-    # The private key (in base64 encoded of the PEM format) associated with the public key defined in the Kubernetes auth
+    # The private key (base64 encoded) associated with the public key defined in the Kubernetes auth
     attr_accessor :signing_key
 
     # Authentication token (see `/auth` and `/configure`)

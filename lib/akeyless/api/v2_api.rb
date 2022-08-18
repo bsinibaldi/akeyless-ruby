@@ -3923,70 +3923,6 @@ module Akeyless
       return data, status_code, headers
     end
 
-    # @param body [EncryptPKCS1] 
-    # @param [Hash] opts the optional parameters
-    # @return [EncryptPKCS1Output]
-    def encrypt_pkcs1(body, opts = {})
-      data, _status_code, _headers = encrypt_pkcs1_with_http_info(body, opts)
-      data
-    end
-
-    # @param body [EncryptPKCS1] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(EncryptPKCS1Output, Integer, Hash)>] EncryptPKCS1Output data, response status code and response headers
-    def encrypt_pkcs1_with_http_info(body, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: V2Api.encrypt_pkcs1 ...'
-      end
-      # verify the required parameter 'body' is set
-      if @api_client.config.client_side_validation && body.nil?
-        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.encrypt_pkcs1"
-      end
-      # resource path
-      local_var_path = '/encrypt-pkcs1'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'EncryptPKCS1Output'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || []
-
-      new_options = opts.merge(
-        :operation => :"V2Api.encrypt_pkcs1",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: V2Api#encrypt_pkcs1\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # @param body [EncryptWithClassicKey] 
     # @param [Hash] opts the optional parameters
     # @return [EncryptOutput]
@@ -12351,7 +12287,7 @@ module Akeyless
 
     # @param body [UpdateAuthMethodLDAP] 
     # @param [Hash] opts the optional parameters
-    # @return [Object]
+    # @return [UpdateAuthMethodLDAPOutput]
     def update_auth_method_ldap(body, opts = {})
       data, _status_code, _headers = update_auth_method_ldap_with_http_info(body, opts)
       data
@@ -12359,7 +12295,7 @@ module Akeyless
 
     # @param body [UpdateAuthMethodLDAP] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    # @return [Array<(UpdateAuthMethodLDAPOutput, Integer, Hash)>] UpdateAuthMethodLDAPOutput data, response status code and response headers
     def update_auth_method_ldap_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: V2Api.update_auth_method_ldap ...'
@@ -12391,7 +12327,7 @@ module Akeyless
       post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Object'
+      return_type = opts[:debug_return_type] || 'UpdateAuthMethodLDAPOutput'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || []

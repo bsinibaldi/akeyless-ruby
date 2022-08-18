@@ -33,7 +33,7 @@ module Akeyless
     # If set, certificates will be flagged for code signing use
     attr_accessor :code_signing_flag
 
-    # A comma-separated list of the country that will be set in the issued certificate
+    # A comma-separated list of countries that will be set in the issued certificate
     attr_accessor :country
 
     # Protection from accidental deletion of this item
@@ -42,7 +42,7 @@ module Akeyless
     # key-usage
     attr_accessor :key_usage
 
-    # A comma-separated list of the locality that will be set in the issued certificate
+    # A comma-separated list of localities that will be set in the issued certificate
     attr_accessor :locality
 
     # A metadata about the issuer
@@ -63,10 +63,10 @@ module Akeyless
     # A comma-separated list of organizations (O) that will be set in the issued certificate
     attr_accessor :organizations
 
-    # A comma-separated list of the postal code that will be set in the issued certificate
+    # A comma-separated list of postal codes that will be set in the issued certificate
     attr_accessor :postal_code
 
-    # A comma-separated list of the province that will be set in the issued certificate
+    # A comma-separated list of provinces that will be set in the issued certificate
     attr_accessor :province
 
     # If set, certificates will be flagged for server auth use
@@ -75,7 +75,7 @@ module Akeyless
     # A key to sign the certificate with
     attr_accessor :signer_key_name
 
-    # A comma-separated list of the street address that will be set in the issued certificate
+    # A comma-separated list of street addresses that will be set in the issued certificate
     attr_accessor :street_address
 
     # List of the tags attached to this key

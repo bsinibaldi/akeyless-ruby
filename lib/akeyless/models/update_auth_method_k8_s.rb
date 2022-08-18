@@ -37,7 +37,7 @@ module Akeyless
     # if true: enforce role-association must include sub claims
     attr_accessor :force_sub_claims
 
-    # If this flag is set to true, there is no need to manually provide a public key for the Kubernetes Auth Method, and instead, a key pair, will be generated as part of the command and the private part of the key will be returned (the private key is required for the K8S Auth Config in the Akeyless Gateway)
+    # Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided
     attr_accessor :gen_key
 
     # A CIDR whitelist with the GW IPs that the access is restricted to
@@ -52,7 +52,7 @@ module Akeyless
     # Auth Method new name
     attr_accessor :new_name
 
-    # Base64-encoded public key text for K8S authentication method is required [RSA2048]
+    # Base64-encoded or PEM formatted public key data for K8S authentication method is required [RSA2048]
     attr_accessor :public_key
 
     # Authentication token (see `/auth` and `/configure`)
@@ -169,8 +169,6 @@ module Akeyless
 
       if attributes.key?(:'gen_key')
         self.gen_key = attributes[:'gen_key']
-      else
-        self.gen_key = 'true'
       end
 
       if attributes.key?(:'gw_bound_ips')

@@ -1,10 +1,9 @@
-# Akeyless::CreateAuthMethodLDAPOutput
+# Akeyless::UpdateAuthMethodLDAPOutput
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **access_id** | **String** |  | [optional] |
 | **prv_key** | **String** |  | [optional] |
 
 ## Example
@@ -12,8 +11,7 @@
 ```ruby
 require 'akeyless'
 
-instance = Akeyless::CreateAuthMethodLDAPOutput.new(
-  access_id: null,
+instance = Akeyless::UpdateAuthMethodLDAPOutput.new(
   prv_key: null
 )
 ```

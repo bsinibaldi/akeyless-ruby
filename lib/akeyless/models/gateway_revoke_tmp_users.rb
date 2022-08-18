@@ -16,11 +16,14 @@ require 'time'
 module Akeyless
   # gatewayRevokeTmpUsers is a command that revoke producer tmp user
   class GatewayRevokeTmpUsers
-    # Host
+    # Deprecated: has no effect
     attr_accessor :host
 
     # Producer Name
     attr_accessor :name
+
+    # Revoke All Temp Creds
+    attr_accessor :revoke_all
 
     # Soft Delete
     attr_accessor :soft_delete
@@ -39,6 +42,7 @@ module Akeyless
       {
         :'host' => :'host',
         :'name' => :'name',
+        :'revoke_all' => :'revoke-all',
         :'soft_delete' => :'soft-delete',
         :'tmp_creds_id' => :'tmp-creds-id',
         :'token' => :'token',
@@ -56,6 +60,7 @@ module Akeyless
       {
         :'host' => :'String',
         :'name' => :'String',
+        :'revoke_all' => :'Boolean',
         :'soft_delete' => :'Boolean',
         :'tmp_creds_id' => :'String',
         :'token' => :'String',
@@ -92,12 +97,18 @@ module Akeyless
         self.name = attributes[:'name']
       end
 
+      if attributes.key?(:'revoke_all')
+        self.revoke_all = attributes[:'revoke_all']
+      end
+
       if attributes.key?(:'soft_delete')
         self.soft_delete = attributes[:'soft_delete']
       end
 
       if attributes.key?(:'tmp_creds_id')
         self.tmp_creds_id = attributes[:'tmp_creds_id']
+      else
+        self.tmp_creds_id = 'demo_default_tmp_creds_id_for_sdk_bc'
       end
 
       if attributes.key?(:'token')
@@ -139,6 +150,7 @@ module Akeyless
       self.class == o.class &&
           host == o.host &&
           name == o.name &&
+          revoke_all == o.revoke_all &&
           soft_delete == o.soft_delete &&
           tmp_creds_id == o.tmp_creds_id &&
           token == o.token &&
@@ -154,7 +166,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [host, name, soft_delete, tmp_creds_id, token, uid_token].hash
+      [host, name, revoke_all, soft_delete, tmp_creds_id, token, uid_token].hash
     end
 
     # Builds the object from hash

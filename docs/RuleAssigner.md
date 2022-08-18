@@ -1,20 +1,20 @@
-# Akeyless::CreateAuthMethodLDAPOutput
+# Akeyless::RuleAssigner
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **access_id** | **String** |  | [optional] |
-| **prv_key** | **String** |  | [optional] |
+| **unique_id** | **String** |  | [optional] |
 
 ## Example
 
 ```ruby
 require 'akeyless'
 
-instance = Akeyless::CreateAuthMethodLDAPOutput.new(
+instance = Akeyless::RuleAssigner.new(
   access_id: null,
-  prv_key: null
+  unique_id: null
 )
 ```
 

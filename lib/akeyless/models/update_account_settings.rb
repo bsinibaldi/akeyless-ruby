@@ -48,6 +48,9 @@ module Akeyless
     # Max versions
     attr_accessor :max_versions
 
+    # For PasswordPolicy use
+    attr_accessor :password_length
+
     # Phone number
     attr_accessor :phone
 
@@ -59,6 +62,18 @@ module Akeyless
 
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
+
+    # For PasswordPolicy use
+    attr_accessor :use_lower_letters
+
+    # For PasswordPolicy use
+    attr_accessor :use_numbers
+
+    # For PasswordPolicy use
+    attr_accessor :use_special_characters
+
+    # For PasswordPolicy use
+    attr_accessor :use_capital_letters
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -74,10 +89,15 @@ module Akeyless
         :'jwt_ttl_max' => :'jwt-ttl-max',
         :'jwt_ttl_min' => :'jwt-ttl-min',
         :'max_versions' => :'max-versions',
+        :'password_length' => :'password-length',
         :'phone' => :'phone',
         :'postal_code' => :'postal-code',
         :'token' => :'token',
-        :'uid_token' => :'uid-token'
+        :'uid_token' => :'uid-token',
+        :'use_lower_letters' => :'use-lower-letters',
+        :'use_numbers' => :'use-numbers',
+        :'use_special_characters' => :'use-special-characters',
+        :'use_capital_letters' => :'use_capital-letters'
       }
     end
 
@@ -100,10 +120,15 @@ module Akeyless
         :'jwt_ttl_max' => :'Integer',
         :'jwt_ttl_min' => :'Integer',
         :'max_versions' => :'String',
+        :'password_length' => :'Integer',
         :'phone' => :'String',
         :'postal_code' => :'String',
         :'token' => :'String',
-        :'uid_token' => :'String'
+        :'uid_token' => :'String',
+        :'use_lower_letters' => :'String',
+        :'use_numbers' => :'String',
+        :'use_special_characters' => :'String',
+        :'use_capital_letters' => :'String'
       }
     end
 
@@ -172,6 +197,10 @@ module Akeyless
         self.max_versions = attributes[:'max_versions']
       end
 
+      if attributes.key?(:'password_length')
+        self.password_length = attributes[:'password_length']
+      end
+
       if attributes.key?(:'phone')
         self.phone = attributes[:'phone']
       end
@@ -186,6 +215,22 @@ module Akeyless
 
       if attributes.key?(:'uid_token')
         self.uid_token = attributes[:'uid_token']
+      end
+
+      if attributes.key?(:'use_lower_letters')
+        self.use_lower_letters = attributes[:'use_lower_letters']
+      end
+
+      if attributes.key?(:'use_numbers')
+        self.use_numbers = attributes[:'use_numbers']
+      end
+
+      if attributes.key?(:'use_special_characters')
+        self.use_special_characters = attributes[:'use_special_characters']
+      end
+
+      if attributes.key?(:'use_capital_letters')
+        self.use_capital_letters = attributes[:'use_capital_letters']
       end
     end
 
@@ -218,10 +263,15 @@ module Akeyless
           jwt_ttl_max == o.jwt_ttl_max &&
           jwt_ttl_min == o.jwt_ttl_min &&
           max_versions == o.max_versions &&
+          password_length == o.password_length &&
           phone == o.phone &&
           postal_code == o.postal_code &&
           token == o.token &&
-          uid_token == o.uid_token
+          uid_token == o.uid_token &&
+          use_lower_letters == o.use_lower_letters &&
+          use_numbers == o.use_numbers &&
+          use_special_characters == o.use_special_characters &&
+          use_capital_letters == o.use_capital_letters
     end
 
     # @see the `==` method
@@ -233,7 +283,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address, city, company_name, country, default_versioning, dp_enable_classic_key_protection, item_type, jwt_ttl_default, jwt_ttl_max, jwt_ttl_min, max_versions, phone, postal_code, token, uid_token].hash
+      [address, city, company_name, country, default_versioning, dp_enable_classic_key_protection, item_type, jwt_ttl_default, jwt_ttl_max, jwt_ttl_min, max_versions, password_length, phone, postal_code, token, uid_token, use_lower_letters, use_numbers, use_special_characters, use_capital_letters].hash
     end
 
     # Builds the object from hash
