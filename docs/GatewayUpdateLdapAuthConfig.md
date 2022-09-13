@@ -10,6 +10,7 @@
 | **group_attr** | **String** | Group Attr | [optional] |
 | **group_dn** | **String** | Group Dn | [optional] |
 | **group_filter** | **String** | Group Filter | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **ldap_ca_cert** | **String** | LDAP CA Certificate (base64 encoded) | [optional] |
 | **ldap_enable** | **String** | Enable Ldap | [optional] |
 | **ldap_url** | **String** | LDAP Server URL, e.g. ldap://planetexpress.com:389 | [optional] |
@@ -32,6 +33,7 @@ instance = Akeyless::GatewayUpdateLdapAuthConfig.new(
   group_attr: null,
   group_dn: null,
   group_filter: null,
+  json: null,
   ldap_ca_cert: null,
   ldap_enable: null,
   ldap_url: null,

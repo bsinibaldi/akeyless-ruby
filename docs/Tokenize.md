@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **plaintext** | **String** | Data to be encrypted |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **tokenizer_name** | **String** | The name of the tokenizer to use in the encryption process |  |
@@ -16,6 +17,7 @@
 require 'akeyless'
 
 instance = Akeyless::Tokenize.new(
+  json: null,
   plaintext: null,
   token: null,
   tokenizer_name: null,

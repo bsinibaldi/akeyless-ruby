@@ -5,7 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **username** | **String** |  | [optional] |
-| **website** | **String** |  | [optional] |
+| **website** | **String** | deprecated | [optional] |
+| **websites** | **Array&lt;String&gt;** |  | [optional] |
 
 ## Example
 
@@ -14,7 +15,8 @@ require 'akeyless'
 
 instance = Akeyless::StaticSecretDetailsInfo.new(
   username: null,
-  website: null
+  website: null,
+  websites: null
 )
 ```
 

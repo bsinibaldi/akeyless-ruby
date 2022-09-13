@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the dynamic secret values (if empty, the account default protectionKey key will be used) | [optional] |
 | **metadata** | **String** | Metadata about the dynamic secret | [optional][default to &#39;None&#39;] |
 | **name** | **String** | Dynamic secret name |  |
@@ -19,6 +20,7 @@ require 'akeyless'
 
 instance = Akeyless::CreateDynamicSecret.new(
   delete_protection: null,
+  json: null,
   key: null,
   metadata: null,
   name: null,

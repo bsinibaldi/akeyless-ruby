@@ -10,6 +10,7 @@
 | **db_server_name** | **String** | (Optional) Server name for certificate verification | [optional] |
 | **db_type** | **String** |  |  |
 | **host** | **String** |  | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **keep_prev_version** | **String** |  | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **mongodb_atlas** | **Boolean** |  | [optional] |
@@ -43,6 +44,7 @@ instance = Akeyless::UpdateDBTarget.new(
   db_server_name: null,
   db_type: null,
   host: null,
+  json: null,
   keep_prev_version: null,
   key: null,
   mongodb_atlas: null,

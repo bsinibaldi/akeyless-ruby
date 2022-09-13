@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **creation_statements** | **String** | Redshift Creation statements | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key** | **String** | Dynamic producer encryption key | [optional] |
 | **redshift_db_name** | **String** | Redshift DB Name | [optional] |
@@ -30,6 +31,7 @@ require 'akeyless'
 instance = Akeyless::GatewayCreateProducerRedshift.new(
   creation_statements: null,
   delete_protection: null,
+  json: null,
   name: null,
   producer_encryption_key: null,
   redshift_db_name: null,

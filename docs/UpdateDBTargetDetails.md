@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **db_type** | **String** |  | [optional] |
 | **host_name** | **String** |  | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **keep_prev_version** | **String** |  | [optional] |
 | **mongo_db_name** | **String** |  | [optional] |
 | **mongo_uri** | **String** |  | [optional] |
@@ -26,6 +27,7 @@ require 'akeyless'
 instance = Akeyless::UpdateDBTargetDetails.new(
   db_type: null,
   host_name: null,
+  json: null,
   keep_prev_version: null,
   mongo_db_name: null,
   mongo_uri: null,

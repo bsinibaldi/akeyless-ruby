@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **bind_dn** | **String** |  | [optional] |
 | **bind_dn_password** | **String** |  | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **keep_prev_version** | **String** |  | [optional] |
 | **key** | **String** |  | [optional] |
 | **ldap_ca_cert** | **String** |  | [optional] |
@@ -25,6 +26,7 @@ require 'akeyless'
 instance = Akeyless::UpdateLdapTargetDetails.new(
   bind_dn: null,
   bind_dn_password: null,
+  json: null,
   keep_prev_version: null,
   key: null,
   ldap_ca_cert: null,

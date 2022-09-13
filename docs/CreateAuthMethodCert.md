@@ -15,6 +15,7 @@
 | **certificate_data** | **String** | The certificate data in base64, if no file was provided | [optional] |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
 | **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **jwt_ttl** | **Integer** | Jwt TTL | [optional] |
 | **name** | **String** | Auth Method name |  |
 | **revoked_cert_ids** | **Array&lt;String&gt;** | A list of revoked cert ids | [optional] |
@@ -39,6 +40,7 @@ instance = Akeyless::CreateAuthMethodCert.new(
   certificate_data: null,
   force_sub_claims: null,
   gw_bound_ips: null,
+  json: null,
   jwt_ttl: null,
   name: null,
   revoked_cert_ids: null,

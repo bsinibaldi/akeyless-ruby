@@ -66,6 +66,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**detokenize**](V2Api.md#detokenize) | **POST** /detokenize |  |
 | [**encrypt**](V2Api.md#encrypt) | **POST** /encrypt |  |
 | [**encrypt_with_classic_key**](V2Api.md#encrypt_with_classic_key) | **POST** /encrypt-with-classic-key |  |
+| [**gateway_add_allowed_management_access**](V2Api.md#gateway_add_allowed_management_access) | **POST** /gateway-add-allow-management-access |  |
 | [**gateway_create_k8_s_auth_config**](V2Api.md#gateway_create_k8_s_auth_config) | **POST** /gateway-create-k8s-auth-config |  |
 | [**gateway_create_migration**](V2Api.md#gateway_create_migration) | **POST** /gateway-create-migration |  |
 | [**gateway_create_producer_artifactory**](V2Api.md#gateway_create_producer_artifactory) | **POST** /gateway-create-producer-artifactory |  |
@@ -165,8 +166,10 @@ All URIs are relative to *https://api.akeyless.io*
 | [**kmip_server_setup**](V2Api.md#kmip_server_setup) | **POST** /kmip-create-environment |  |
 | [**kmip_set_server_state**](V2Api.md#kmip_set_server_state) | **POST** /kmip-set-environment-state |  |
 | [**list_auth_methods**](V2Api.md#list_auth_methods) | **POST** /list-auth-methods |  |
+| [**list_gateways**](V2Api.md#list_gateways) | **POST** /list-gateways |  |
 | [**list_items**](V2Api.md#list_items) | **POST** /list-items |  |
 | [**list_roles**](V2Api.md#list_roles) | **POST** /list-roles |  |
+| [**list_sra_bastions**](V2Api.md#list_sra_bastions) | **POST** /list-sra-bastions |  |
 | [**list_targets**](V2Api.md#list_targets) | **POST** /list-targets |  |
 | [**move_objects**](V2Api.md#move_objects) | **POST** /move-objects |  |
 | [**raw_creds**](V2Api.md#raw_creds) | **POST** /raw-creds |  |
@@ -4072,6 +4075,68 @@ end
 ### Return type
 
 [**EncryptOutput**](EncryptOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## gateway_add_allowed_management_access
+
+> Object gateway_add_allowed_management_access(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayAddAllowedManagementAccess.new({sub_admin_access_id: 'sub_admin_access_id_example'}) # GatewayAddAllowedManagementAccess | 
+
+begin
+  
+  result = api_instance.gateway_add_allowed_management_access(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_add_allowed_management_access: #{e}"
+end
+```
+
+#### Using the gateway_add_allowed_management_access_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> gateway_add_allowed_management_access_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_add_allowed_management_access_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_add_allowed_management_access_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayAddAllowedManagementAccess**](GatewayAddAllowedManagementAccess.md) |  |  |
+
+### Return type
+
+**Object**
 
 ### Authorization
 
@@ -10246,6 +10311,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## list_gateways
+
+> <GatewaysListResponse> list_gateways(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::ListGateways.new # ListGateways | 
+
+begin
+  
+  result = api_instance.list_gateways(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->list_gateways: #{e}"
+end
+```
+
+#### Using the list_gateways_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewaysListResponse>, Integer, Hash)> list_gateways_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_gateways_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewaysListResponse>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->list_gateways_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**ListGateways**](ListGateways.md) |  |  |
+
+### Return type
+
+[**GatewaysListResponse**](GatewaysListResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## list_items
 
 > <ListItemsInPathOutput> list_items(body)
@@ -10359,6 +10486,68 @@ end
 ### Return type
 
 [**ListRolesOutput**](ListRolesOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## list_sra_bastions
+
+> <BastionsList> list_sra_bastions(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::ListSRABastions.new # ListSRABastions | 
+
+begin
+  
+  result = api_instance.list_sra_bastions(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->list_sra_bastions: #{e}"
+end
+```
+
+#### Using the list_sra_bastions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<BastionsList>, Integer, Hash)> list_sra_bastions_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_sra_bastions_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <BastionsList>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->list_sra_bastions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**ListSRABastions**](ListSRABastions.md) |  |  |
+
+### Return type
+
+[**BastionsList**](BastionsList.md)
 
 ### Authorization
 
@@ -13347,7 +13536,7 @@ No authorization required
 
 ## update_native_k8_s_target
 
-> <UpdateNativeK8STarget> update_native_k8_s_target(body)
+> <UpdateNativeK8STargetOutput> update_native_k8_s_target(body)
 
 
 
@@ -13373,7 +13562,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<UpdateNativeK8STarget>, Integer, Hash)> update_native_k8_s_target_with_http_info(body)
+> <Array(<UpdateNativeK8STargetOutput>, Integer, Hash)> update_native_k8_s_target_with_http_info(body)
 
 ```ruby
 begin
@@ -13381,7 +13570,7 @@ begin
   data, status_code, headers = api_instance.update_native_k8_s_target_with_http_info(body)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <UpdateNativeK8STarget>
+  p data # => <UpdateNativeK8STargetOutput>
 rescue Akeyless::ApiError => e
   puts "Error when calling V2Api->update_native_k8_s_target_with_http_info: #{e}"
 end
@@ -13395,7 +13584,7 @@ end
 
 ### Return type
 
-[**UpdateNativeK8STarget**](UpdateNativeK8STarget.md)
+[**UpdateNativeK8STargetOutput**](UpdateNativeK8STargetOutput.md)
 
 ### Authorization
 
@@ -14223,7 +14412,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = { ... } # Object | 
+body = Akeyless::UpdateTargetDetails.new # UpdateTargetDetails | 
 
 begin
   
@@ -14256,7 +14445,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **body** | **Object** |  |  |
+| **body** | [**UpdateTargetDetails**](UpdateTargetDetails.md) |  |  |
 
 ### Return type
 

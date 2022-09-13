@@ -7,6 +7,7 @@
 | **allow_user_extend_session** | **Integer** | AllowUserExtendSession | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **fixed_user_only** | **String** | Fixed user | [optional][default to &#39;false&#39;] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
 | **rdp_admin_name** | **String** | RDP Admin Name | [optional] |
@@ -35,6 +36,7 @@ instance = Akeyless::GatewayCreateProducerRdp.new(
   allow_user_extend_session: null,
   delete_protection: null,
   fixed_user_only: null,
+  json: null,
   name: null,
   producer_encryption_key_name: null,
   rdp_admin_name: null,

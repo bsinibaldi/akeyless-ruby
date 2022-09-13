@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **k8s_cluster_ca_cert** | **String** | K8S cluster CA certificate | [optional] |
 | **k8s_cluster_endpoint** | **String** | K8S cluster URL endpoint | [optional] |
 | **k8s_cluster_token** | **String** | K8S cluster Bearer token | [optional] |
@@ -34,6 +35,7 @@ require 'akeyless'
 
 instance = Akeyless::GatewayUpdateProducerNativeK8S.new(
   delete_protection: null,
+  json: null,
   k8s_cluster_ca_cert: null,
   k8s_cluster_endpoint: null,
   k8s_cluster_token: null,

@@ -12,6 +12,7 @@
 | **azure_ad_object_id** | **String** | Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad) | [optional] |
 | **cert_data** | **String** | Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert in Curl Context) | [optional] |
 | **gcp_audience** | **String** | GCP JWT audience | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **k8s_auth_config_name** | **String** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] |
 | **key_data** | **String** | Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context) | [optional] |
 
@@ -29,6 +30,7 @@ instance = Akeyless::Configure.new(
   azure_ad_object_id: null,
   cert_data: null,
   gcp_audience: null,
+  json: null,
   k8s_auth_config_name: null,
   key_data: null
 )

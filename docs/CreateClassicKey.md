@@ -7,6 +7,7 @@
 | **alg** | **String** | Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384] |  |
 | **cert_file_data** | **String** | Certificate in a PEM format. | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **key_data** | **String** | Base64-encoded classic key value | [optional] |
 | **metadata** | **String** | Metadata about the classic key | [optional] |
 | **name** | **String** | ClassicKey name |  |
@@ -24,6 +25,7 @@ instance = Akeyless::CreateClassicKey.new(
   alg: null,
   cert_file_data: null,
   delete_protection: null,
+  json: null,
   key_data: null,
   metadata: null,
   name: null,

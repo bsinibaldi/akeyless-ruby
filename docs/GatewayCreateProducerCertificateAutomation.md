@@ -10,6 +10,7 @@
 | **auto_generated_folder** | **String** | Auto generated folder | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **enable_admin_rotation** | **Boolean** | Automatic admin credentials rotation | [optional][default to false] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
 | **root_first_in_chain** | **Boolean** | Root first in chain | [optional] |
@@ -40,6 +41,7 @@ instance = Akeyless::GatewayCreateProducerCertificateAutomation.new(
   auto_generated_folder: null,
   delete_protection: null,
   enable_admin_rotation: null,
+  json: null,
   name: null,
   producer_encryption_key_name: null,
   root_first_in_chain: null,

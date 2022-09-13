@@ -6,11 +6,12 @@
 | ---- | ---- | ----------- | ----- |
 | **accessibility** | **String** | for personal password manager | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **metadata** | **String** | Metadata about the secret | [optional] |
 | **multiline_value** | **Boolean** | The provided value is a multiline value (separated by &#39;\\n&#39;) | [optional] |
 | **name** | **String** | Secret name |  |
 | **password_manager_custom_field** | **Hash&lt;String, String&gt;** | For Password Management use, additional fields | [optional] |
-| **password_manager_inject_url** | **String** | For Password Management use, reflect the website context | [optional] |
+| **password_manager_inject_url** | **Array&lt;String&gt;** | For Password Management use, reflect the website context | [optional] |
 | **password_manager_password** | **String** | For Password Management use, additional fields | [optional] |
 | **password_manager_username** | **String** | For Password Management use | [optional] |
 | **protection_key** | **String** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] |
@@ -36,6 +37,7 @@ require 'akeyless'
 instance = Akeyless::CreateSecret.new(
   accessibility: null,
   delete_protection: null,
+  json: null,
   metadata: null,
   multiline_value: null,
   name: null,

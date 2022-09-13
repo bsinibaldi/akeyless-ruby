@@ -7,6 +7,7 @@
 | **db_server_certificates** | **String** | (Optional) DB server certificates | [optional] |
 | **db_server_name** | **String** | (Optional) Server name for certificate verification | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **new_name** | **String** | Producer name | [optional] |
 | **oracle_host** | **String** | Oracle Host | [optional][default to &#39;127.0.0.1&#39;] |
@@ -35,6 +36,7 @@ instance = Akeyless::GatewayUpdateProducerOracleDb.new(
   db_server_certificates: null,
   db_server_name: null,
   delete_protection: null,
+  json: null,
   name: null,
   new_name: null,
   oracle_host: null,

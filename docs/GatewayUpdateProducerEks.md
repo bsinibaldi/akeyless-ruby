@@ -12,6 +12,7 @@
 | **eks_cluster_name** | **String** | EKS cluster name | [optional] |
 | **eks_region** | **String** | Region | [optional][default to &#39;us-east-2&#39;] |
 | **eks_secret_access_key** | **String** | Secret Access Key | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **new_name** | **String** | Producer name | [optional] |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
@@ -40,6 +41,7 @@ instance = Akeyless::GatewayUpdateProducerEks.new(
   eks_cluster_name: null,
   eks_region: null,
   eks_secret_access_key: null,
+  json: null,
   name: null,
   new_name: null,
   producer_encryption_key_name: null,

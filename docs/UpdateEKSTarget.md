@@ -11,6 +11,7 @@
 | **eks_cluster_name** | **String** | EKS cluster name |  |
 | **eks_region** | **String** | Region | [optional][default to &#39;us-east-2&#39;] |
 | **eks_secret_access_key** | **String** | Secret Access Key |  |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **keep_prev_version** | **String** |  | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **name** | **String** | Target name |  |
@@ -33,6 +34,7 @@ instance = Akeyless::UpdateEKSTarget.new(
   eks_cluster_name: null,
   eks_region: null,
   eks_secret_access_key: null,
+  json: null,
   keep_prev_version: null,
   key: null,
   name: null,

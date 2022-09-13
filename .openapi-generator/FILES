@@ -28,6 +28,8 @@ docs/AzureADAccessRules.md
 docs/AzureKeyVaultMigration.md
 docs/AzureLogAnalyticsForwardingConfig.md
 docs/AzurePayload.md
+docs/BastionListEntry.md
+docs/BastionsList.md
 docs/CFConfigPart.md
 docs/CacheConfigPart.md
 docs/CertAccessRules.md
@@ -306,6 +308,7 @@ docs/GatewayUpdateProducerRedshiftOutput.md
 docs/GatewayUpdateProducerSnowflake.md
 docs/GatewayUpdateProducerSnowflakeOutput.md
 docs/GatewayUpdateTmpUsers.md
+docs/GatewaysListResponse.md
 docs/GenCustomerFragment.md
 docs/GeneralConfigPart.md
 docs/GetAccountSettings.md
@@ -331,6 +334,7 @@ docs/GetTags.md
 docs/GetTarget.md
 docs/GetTargetDetails.md
 docs/GetTargetDetailsOutput.md
+docs/GwClusterIdentity.md
 docs/HashiMigration.md
 docs/HashiPayload.md
 docs/HuaweiAccessRules.md
@@ -378,10 +382,12 @@ docs/LdapConfigPart.md
 docs/LeadershipConfigPart.md
 docs/ListAuthMethods.md
 docs/ListAuthMethodsOutput.md
+docs/ListGateways.md
 docs/ListItems.md
 docs/ListItemsInPathOutput.md
 docs/ListRoles.md
 docs/ListRolesOutput.md
+docs/ListSRABastions.md
 docs/ListTargets.md
 docs/ListTargetsOutput.md
 docs/LogForwardingConfigPart.md
@@ -399,6 +405,8 @@ docs/OAuth2CustomClaim.md
 docs/OIDCAccessRules.md
 docs/OIDCCustomClaim.md
 docs/ObjectVersionSettingsOutput.md
+docs/OnePasswordMigration.md
+docs/OnePasswordPayload.md
 docs/PKICertificateIssueDetails.md
 docs/PasswordPolicyInfo.md
 docs/PathRule.md
@@ -450,6 +458,7 @@ docs/SystemAccessCredsSettings.md
 docs/Target.md
 docs/TargetItemAssociation.md
 docs/TargetItemVersion.md
+docs/TargetObjectAssociation.md
 docs/TargetTypeDetailsInput.md
 docs/TmpUserData.md
 docs/Tokenize.md
@@ -534,6 +543,7 @@ docs/UpdateSalesforceTargetOutput.md
 docs/UpdateSecretVal.md
 docs/UpdateSecretValOutput.md
 docs/UpdateTarget.md
+docs/UpdateTargetDetails.md
 docs/UpdateTargetDetailsOutput.md
 docs/UpdateTargetOutput.md
 docs/UpdateWebTarget.md
@@ -577,6 +587,8 @@ lib/akeyless/models/azure_ad_access_rules.rb
 lib/akeyless/models/azure_key_vault_migration.rb
 lib/akeyless/models/azure_log_analytics_forwarding_config.rb
 lib/akeyless/models/azure_payload.rb
+lib/akeyless/models/bastion_list_entry.rb
+lib/akeyless/models/bastions_list.rb
 lib/akeyless/models/cache_config_part.rb
 lib/akeyless/models/cert_access_rules.rb
 lib/akeyless/models/certificate_issue_info.rb
@@ -852,6 +864,7 @@ lib/akeyless/models/gateway_update_producer_redshift_output.rb
 lib/akeyless/models/gateway_update_producer_snowflake.rb
 lib/akeyless/models/gateway_update_producer_snowflake_output.rb
 lib/akeyless/models/gateway_update_tmp_users.rb
+lib/akeyless/models/gateways_list_response.rb
 lib/akeyless/models/gcp_access_rules.rb
 lib/akeyless/models/gcp_payload.rb
 lib/akeyless/models/gcp_secrets_migration.rb
@@ -880,6 +893,7 @@ lib/akeyless/models/get_tags.rb
 lib/akeyless/models/get_target.rb
 lib/akeyless/models/get_target_details.rb
 lib/akeyless/models/get_target_details_output.rb
+lib/akeyless/models/gw_cluster_identity.rb
 lib/akeyless/models/hashi_migration.rb
 lib/akeyless/models/hashi_payload.rb
 lib/akeyless/models/huawei_access_rules.rb
@@ -927,10 +941,12 @@ lib/akeyless/models/ldap_config_part.rb
 lib/akeyless/models/leadership_config_part.rb
 lib/akeyless/models/list_auth_methods.rb
 lib/akeyless/models/list_auth_methods_output.rb
+lib/akeyless/models/list_gateways.rb
 lib/akeyless/models/list_items.rb
 lib/akeyless/models/list_items_in_path_output.rb
 lib/akeyless/models/list_roles.rb
 lib/akeyless/models/list_roles_output.rb
+lib/akeyless/models/list_sra_bastions.rb
 lib/akeyless/models/list_targets.rb
 lib/akeyless/models/list_targets_output.rb
 lib/akeyless/models/log_forwarding_config_part.rb
@@ -948,6 +964,8 @@ lib/akeyless/models/o_auth2_custom_claim.rb
 lib/akeyless/models/object_version_settings_output.rb
 lib/akeyless/models/oidc_access_rules.rb
 lib/akeyless/models/oidc_custom_claim.rb
+lib/akeyless/models/one_password_migration.rb
+lib/akeyless/models/one_password_payload.rb
 lib/akeyless/models/password_policy_info.rb
 lib/akeyless/models/path_rule.rb
 lib/akeyless/models/pki_certificate_issue_details.rb
@@ -999,6 +1017,7 @@ lib/akeyless/models/system_access_creds_settings.rb
 lib/akeyless/models/target.rb
 lib/akeyless/models/target_item_association.rb
 lib/akeyless/models/target_item_version.rb
+lib/akeyless/models/target_object_association.rb
 lib/akeyless/models/target_type_details_input.rb
 lib/akeyless/models/tmp_user_data.rb
 lib/akeyless/models/tokenize.rb
@@ -1083,6 +1102,7 @@ lib/akeyless/models/update_ssh_target.rb
 lib/akeyless/models/update_ssh_target_details.rb
 lib/akeyless/models/update_ssh_target_output.rb
 lib/akeyless/models/update_target.rb
+lib/akeyless/models/update_target_details.rb
 lib/akeyless/models/update_target_details_output.rb
 lib/akeyless/models/update_target_output.rb
 lib/akeyless/models/update_web_target.rb
@@ -1101,6 +1121,14 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/rule_assigner_spec.rb
-spec/models/update_auth_method_ldap_output_spec.rb
+spec/models/bastion_list_entry_spec.rb
+spec/models/bastions_list_spec.rb
+spec/models/gateways_list_response_spec.rb
+spec/models/gw_cluster_identity_spec.rb
+spec/models/list_gateways_spec.rb
+spec/models/list_sra_bastions_spec.rb
+spec/models/one_password_migration_spec.rb
+spec/models/one_password_payload_spec.rb
+spec/models/target_object_association_spec.rb
+spec/models/update_target_details_spec.rb
 spec/spec_helper.rb

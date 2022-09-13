@@ -12,6 +12,7 @@
 | **client_secret** | **String** | Client secret of the oauth2 app to use for connecting to Salesforce (required for password flow) | [optional] |
 | **comment** | **String** | Comment about the target | [optional] |
 | **email** | **String** | The email of the user attached to the oauth2 app used for connecting to Salesforce |  |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **keep_prev_version** | **String** |  | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **name** | **String** | Target name |  |
@@ -37,6 +38,7 @@ instance = Akeyless::UpdateSalesforceTarget.new(
   client_secret: null,
   comment: null,
   email: null,
+  json: null,
   keep_prev_version: null,
   key: null,
   name: null,

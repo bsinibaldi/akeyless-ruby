@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **accessibility** | **String** | for personal password manager | [optional] |
 | **filter** | **String** | Filter by item name or part of it | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **minimal_view** | **Boolean** |  | [optional] |
 | **pagination_token** | **String** | Next page reference | [optional] |
 | **path** | **String** | Path to folder | [optional] |
@@ -23,6 +24,7 @@ require 'akeyless'
 instance = Akeyless::ListItems.new(
   accessibility: null,
   filter: null,
+  json: null,
   minimal_view: null,
   pagination_token: null,
   path: null,

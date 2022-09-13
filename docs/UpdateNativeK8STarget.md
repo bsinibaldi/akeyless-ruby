@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **comment** | **String** | Comment about the target | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **k8s_cluster_ca_cert** | **String** | K8S cluster CA certificate |  |
 | **k8s_cluster_endpoint** | **String** | K8S cluster URL endpoint |  |
 | **k8s_cluster_token** | **String** | K8S cluster Bearer token |  |
@@ -23,6 +24,7 @@ require 'akeyless'
 
 instance = Akeyless::UpdateNativeK8STarget.new(
   comment: null,
+  json: null,
   k8s_cluster_ca_cert: null,
   k8s_cluster_endpoint: null,
   k8s_cluster_token: null,

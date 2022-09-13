@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **host** | **String** | Deprecated: has no effect | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer Name |  |
 | **revoke_all** | **Boolean** | Revoke All Temp Creds | [optional] |
 | **soft_delete** | **Boolean** | Soft Delete | [optional] |
@@ -19,6 +20,7 @@ require 'akeyless'
 
 instance = Akeyless::GatewayRevokeTmpUsers.new(
   host: null,
+  json: null,
   name: null,
   revoke_all: null,
   soft_delete: null,

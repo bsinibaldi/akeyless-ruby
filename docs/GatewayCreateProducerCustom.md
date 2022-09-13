@@ -8,6 +8,7 @@
 | **create_sync_url** | **String** | URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create |  |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **enable_admin_rotation** | **Boolean** | Should admin credentials be rotated | [optional][default to false] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **payload** | **String** | Secret payload to be sent with each create/revoke webhook request | [optional] |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
@@ -29,6 +30,7 @@ instance = Akeyless::GatewayCreateProducerCustom.new(
   create_sync_url: null,
   delete_protection: null,
   enable_admin_rotation: null,
+  json: null,
   name: null,
   payload: null,
   producer_encryption_key_name: null,

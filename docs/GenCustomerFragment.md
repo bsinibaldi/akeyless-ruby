@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **description** | **String** | The Customer Fragment Description | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 
 ## Example
 
@@ -12,7 +13,8 @@
 require 'akeyless'
 
 instance = Akeyless::GenCustomerFragment.new(
-  description: null
+  description: null,
+  json: null
 )
 ```
 

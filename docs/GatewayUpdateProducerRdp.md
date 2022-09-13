@@ -7,6 +7,7 @@
 | **allow_user_extend_session** | **Integer** | AllowUserExtendSession | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **fixed_user_only** | **String** | Fixed user | [optional][default to &#39;false&#39;] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **new_name** | **String** | Producer name | [optional] |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
@@ -36,6 +37,7 @@ instance = Akeyless::GatewayUpdateProducerRdp.new(
   allow_user_extend_session: null,
   delete_protection: null,
   fixed_user_only: null,
+  json: null,
   name: null,
   new_name: null,
   producer_encryption_key_name: null,

@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **comment** | **String** | Comment about the target | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **keep_prev_version** | **String** |  | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **name** | **String** | Target name |  |
@@ -21,6 +22,7 @@ require 'akeyless'
 
 instance = Akeyless::UpdateWebTarget.new(
   comment: null,
+  json: null,
   keep_prev_version: null,
   key: null,
   name: null,

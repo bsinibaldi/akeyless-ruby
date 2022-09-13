@@ -10,6 +10,7 @@
 | **github_base_url** | **String** | Base URL | [optional] |
 | **installation_id** | **Integer** | Github app installation id | [optional] |
 | **installation_repository** | **String** | Repository that the app installation has access to | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **target_name** | **String** | Target name | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
@@ -29,6 +30,7 @@ instance = Akeyless::GatewayCreateProducerGithub.new(
   github_base_url: null,
   installation_id: null,
   installation_repository: null,
+  json: null,
   name: null,
   target_name: null,
   token: null,

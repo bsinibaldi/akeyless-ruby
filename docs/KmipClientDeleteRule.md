@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **client_id** | **String** |  | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** |  | [optional] |
 | **path** | **String** | Access path |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
@@ -17,6 +18,7 @@ require 'akeyless'
 
 instance = Akeyless::KmipClientDeleteRule.new(
   client_id: null,
+  json: null,
   name: null,
   path: null,
   token: null,

@@ -10,6 +10,7 @@
 | **gke_cluster_endpoint** | **String** | GKE cluster URL endpoint | [optional] |
 | **gke_cluster_name** | **String** | GKE cluster name | [optional] |
 | **gke_service_account_email** | **String** | GKE service account email | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **name** | **String** | Target name |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
@@ -28,6 +29,7 @@ instance = Akeyless::CreateGKETarget.new(
   gke_cluster_endpoint: null,
   gke_cluster_name: null,
   gke_service_account_email: null,
+  json: null,
   key: null,
   name: null,
   token: null,

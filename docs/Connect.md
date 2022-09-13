@@ -12,6 +12,7 @@
 | **bastion_ctrl_subdomain** | **String** | The Bastion API prefix | [optional] |
 | **cert_issuer_name** | **String** | The Akeyless certificate issuer name | [optional] |
 | **identity_file** | **String** | The file from which the identity (private key) for public key authentication is read | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | The Secret name (for database and AWS producers - producer name) | [optional] |
 | **ssh_extra_args** | **String** | The Use to add offical SSH arguments (except -i) | [optional] |
 | **ssh_legacy_signing_alg** | **Boolean** | Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the ssh certificate. | [optional] |
@@ -34,6 +35,7 @@ instance = Akeyless::Connect.new(
   bastion_ctrl_subdomain: null,
   cert_issuer_name: null,
   identity_file: null,
+  json: null,
   name: null,
   ssh_extra_args: null,
   ssh_legacy_signing_alg: null,

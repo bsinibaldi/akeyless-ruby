@@ -12,6 +12,7 @@
 | **hanadb_port** | **String** | HanaDb Port | [optional][default to &#39;443&#39;] |
 | **hanadb_revocation_statements** | **String** | HanaDb Revocation statements | [optional] |
 | **hanadb_username** | **String** | HanaDb Username | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
 | **secure_access_bastion_issuer** | **String** |  | [optional] |
@@ -39,6 +40,7 @@ instance = Akeyless::GatewayCreateProducerHanaDb.new(
   hanadb_port: null,
   hanadb_revocation_statements: null,
   hanadb_username: null,
+  json: null,
   name: null,
   producer_encryption_key_name: null,
   secure_access_bastion_issuer: null,

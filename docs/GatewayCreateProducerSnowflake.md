@@ -9,6 +9,7 @@
 | **account_username** | **String** | Database Username | [optional] |
 | **db_name** | **String** | Database name | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **role** | **String** | User role | [optional] |
 | **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
@@ -29,6 +30,7 @@ instance = Akeyless::GatewayCreateProducerSnowflake.new(
   account_username: null,
   db_name: null,
   delete_protection: null,
+  json: null,
   name: null,
   role: null,
   tags: null,

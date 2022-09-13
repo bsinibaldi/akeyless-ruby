@@ -8,6 +8,7 @@
 | **country** | **String** | A comma-separated list of the country that will be set in the issued certificate | [optional] |
 | **display_id** | **String** | The name of the key to use in the sign PKI Cert process |  |
 | **dns_names** | **String** | DNS Names to be included in the PKI certificate (in a comma-delimited list) | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **key_usage** | **String** | key-usage | [optional][default to &#39;DigitalSignature,KeyAgreement,KeyEncipherment&#39;] |
 | **locality** | **String** | A comma-separated list of the locality that will be set in the issued certificate | [optional] |
 | **organizational_units** | **String** | A comma-separated list of organizational units (OU) that will be set in the issued certificate | [optional] |
@@ -33,6 +34,7 @@ instance = Akeyless::SignPKICertWithClassicKey.new(
   country: null,
   display_id: null,
   dns_names: null,
+  json: null,
   key_usage: null,
   locality: null,
   organizational_units: null,

@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **display_id** | **String** | The name of the key to use in the verify JWT process |  |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **jwt** | **String** | JWT |  |
 | **required_claims** | **String** | RequiredClaims |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
@@ -18,6 +19,7 @@ require 'akeyless'
 
 instance = Akeyless::VerifyJWTWithClassicKey.new(
   display_id: null,
+  json: null,
   jwt: null,
   required_claims: null,
   token: null,

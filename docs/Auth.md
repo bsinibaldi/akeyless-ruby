@@ -13,6 +13,7 @@
 | **cloud_id** | **String** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp) | [optional] |
 | **debug** | **Boolean** |  | [optional] |
 | **gcp_audience** | **String** | GCP JWT audience | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **jwt** | **String** | The Json Web Token (relevant only for access-type&#x3D;jwt/oidc) | [optional] |
 | **k8s_auth_config_name** | **String** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] |
 | **k8s_service_account_token** | **String** | The K8S service account token. (relevant only for access-type&#x3D;k8s) | [optional] |
@@ -36,6 +37,7 @@ instance = Akeyless::Auth.new(
   cloud_id: null,
   debug: null,
   gcp_audience: null,
+  json: null,
   jwt: null,
   k8s_auth_config_name: null,
   k8s_service_account_token: null,

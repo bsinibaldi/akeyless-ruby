@@ -9,6 +9,7 @@
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
 | **gen_key** | **String** | Automatically generate key-pair for LDAP configuration. If set to false, a public key needs to be provided | [optional][default to &#39;true&#39;] |
 | **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **jwt_ttl** | **Integer** | Jwt TTL | [optional] |
 | **name** | **String** | Auth Method name |  |
 | **public_key_data** | **String** | A public key generated for LDAP authentication method on Akeyless in base64 or PEM format [RSA2048] | [optional] |
@@ -27,6 +28,7 @@ instance = Akeyless::CreateAuthMethodLDAP.new(
   force_sub_claims: null,
   gen_key: null,
   gw_bound_ips: null,
+  json: null,
   jwt_ttl: null,
   name: null,
   public_key_data: null,

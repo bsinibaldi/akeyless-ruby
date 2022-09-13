@@ -10,6 +10,7 @@
 | **db_server_name** | **String** | (Optional) Server name for certificate verification | [optional] |
 | **db_type** | **String** |  |  |
 | **host** | **String** |  | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **mongodb_atlas** | **Boolean** |  | [optional] |
 | **mongodb_atlas_api_private_key** | **String** | MongoDB Atlas private key | [optional] |
@@ -40,6 +41,7 @@ instance = Akeyless::CreateDBTarget.new(
   db_server_name: null,
   db_type: null,
   host: null,
+  json: null,
   key: null,
   mongodb_atlas: null,
   mongodb_atlas_api_private_key: null,

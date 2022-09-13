@@ -12,6 +12,7 @@
 | **eks_cluster_name** | **String** | EKS cluster name | [optional] |
 | **eks_region** | **String** | Region | [optional][default to &#39;us-east-2&#39;] |
 | **eks_secret_access_key** | **String** | Secret Access Key | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
 | **secure_access_allow_port_forwading** | **Boolean** |  | [optional] |
@@ -39,6 +40,7 @@ instance = Akeyless::GatewayCreateProducerEks.new(
   eks_cluster_name: null,
   eks_region: null,
   eks_secret_access_key: null,
+  json: null,
   name: null,
   producer_encryption_key_name: null,
   secure_access_allow_port_forwading: null,

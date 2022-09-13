@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **display_id** | **String** | The display id of the key to use in the signing process | [optional] |
 | **item_id** | **Integer** | The item id of the key to use in the signing process | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **key_name** | **String** | The name of the RSA key to use in the signing process | [optional] |
 | **message** | **String** | The message to be signed |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
@@ -19,6 +20,7 @@ require 'akeyless'
 instance = Akeyless::SignPKCS1.new(
   display_id: null,
   item_id: null,
+  json: null,
   key_name: null,
   message: null,
   token: null,

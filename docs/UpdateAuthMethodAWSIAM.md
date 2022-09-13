@@ -15,6 +15,7 @@
 | **bound_user_name** | **Array&lt;String&gt;** | A list of full user-name that the access is restricted to | [optional] |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
 | **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **jwt_ttl** | **Integer** | Jwt TTL | [optional] |
 | **name** | **String** | Auth Method name |  |
 | **new_name** | **String** | Auth Method new name | [optional] |
@@ -39,6 +40,7 @@ instance = Akeyless::UpdateAuthMethodAWSIAM.new(
   bound_user_name: null,
   force_sub_claims: null,
   gw_bound_ips: null,
+  json: null,
   jwt_ttl: null,
   name: null,
   new_name: null,

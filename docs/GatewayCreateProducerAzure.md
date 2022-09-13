@@ -11,6 +11,7 @@
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **fixed_user_claim_keyname** | **String** | FixedUserClaimKeyname | [optional][default to &#39;false&#39;] |
 | **fixed_user_only** | **Boolean** | Fixed user | [optional][default to false] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
 | **secure_access_enable** | **String** |  | [optional] |
@@ -41,6 +42,7 @@ instance = Akeyless::GatewayCreateProducerAzure.new(
   delete_protection: null,
   fixed_user_claim_keyname: null,
   fixed_user_only: null,
+  json: null,
   name: null,
   producer_encryption_key_name: null,
   secure_access_enable: null,

@@ -12,6 +12,7 @@
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
 | **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
 | **issuer** | **String** | Issuer URL | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **jwt_ttl** | **Integer** | Jwt TTL | [optional] |
 | **name** | **String** | Auth Method name |  |
 | **required_scopes** | **Array&lt;String&gt;** | RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve | [optional] |
@@ -34,6 +35,7 @@ instance = Akeyless::CreateAuthMethodOIDC.new(
   force_sub_claims: null,
   gw_bound_ips: null,
   issuer: null,
+  json: null,
   jwt_ttl: null,
   name: null,
   required_scopes: null,

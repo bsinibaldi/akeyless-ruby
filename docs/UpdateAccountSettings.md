@@ -11,6 +11,7 @@
 | **default_versioning** | **String** | Should create version by default | [optional] |
 | **dp_enable_classic_key_protection** | **String** | Enable classic key protection [\&quot;true\&quot;/\&quot;false\&quot;] | [optional] |
 | **item_type** | **String** | VersionSettingsObjectType defines object types for account version settings | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **jwt_ttl_default** | **Integer** | Default ttl | [optional] |
 | **jwt_ttl_max** | **Integer** | Maximum ttl | [optional] |
 | **jwt_ttl_min** | **Integer** | Minimum ttl | [optional] |
@@ -38,6 +39,7 @@ instance = Akeyless::UpdateAccountSettings.new(
   default_versioning: null,
   dp_enable_classic_key_protection: null,
   item_type: null,
+  json: null,
   jwt_ttl_default: null,
   jwt_ttl_max: null,
   jwt_ttl_min: null,

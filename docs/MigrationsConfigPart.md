@@ -9,6 +9,7 @@
 | **gcp_secrets_migrations** | [**Array&lt;GCPSecretsMigration&gt;**](GCPSecretsMigration.md) |  | [optional] |
 | **hashi_migrations** | [**Array&lt;HashiMigration&gt;**](HashiMigration.md) |  | [optional] |
 | **k8s_migrations** | [**Array&lt;K8SMigration&gt;**](K8SMigration.md) |  | [optional] |
+| **one_password_migrations** | [**Array&lt;OnePasswordMigration&gt;**](OnePasswordMigration.md) |  | [optional] |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = Akeyless::MigrationsConfigPart.new(
   azure_kv_migrations: null,
   gcp_secrets_migrations: null,
   hashi_migrations: null,
-  k8s_migrations: null
+  k8s_migrations: null,
+  one_password_migrations: null
 )
 ```
 

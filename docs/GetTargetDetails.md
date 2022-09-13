@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Target name |  |
 | **show_versions** | **Boolean** | Include all target versions in reply | [optional][default to false] |
 | **target_version** | **Integer** | Target version | [optional] |
@@ -16,6 +17,7 @@
 require 'akeyless'
 
 instance = Akeyless::GetTargetDetails.new(
+  json: null,
   name: null,
   show_versions: null,
   target_version: null,

@@ -15,6 +15,7 @@
 | **aws_user_programmatic_access** | **Boolean** | AWS User programmatic access | [optional][default to true] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **enable_admin_rotation** | **Boolean** | Automatic admin credentials rotation | [optional][default to false] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **new_name** | **String** | Producer name | [optional] |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
@@ -49,6 +50,7 @@ instance = Akeyless::GatewayUpdateProducerAws.new(
   aws_user_programmatic_access: null,
   delete_protection: null,
   enable_admin_rotation: null,
+  json: null,
   name: null,
   new_name: null,
   producer_encryption_key_name: null,

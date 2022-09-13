@@ -8,6 +8,7 @@
 | **bind_dn_password** | **String** | Bind DN Password | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **external_username** | **String** | Fixed user | [optional][default to &#39;false&#39;] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **ldap_ca_cert** | **String** | CA Certificate File Content | [optional] |
 | **ldap_url** | **String** | LDAP Server URL | [optional] |
 | **name** | **String** | Producer name |  |
@@ -31,6 +32,7 @@ instance = Akeyless::GatewayCreateProducerLdap.new(
   bind_dn_password: null,
   delete_protection: null,
   external_username: null,
+  json: null,
   ldap_ca_cert: null,
   ldap_url: null,
   name: null,

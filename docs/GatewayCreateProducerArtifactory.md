@@ -10,6 +10,7 @@
 | **artifactory_token_scope** | **String** | Token Scope |  |
 | **base_url** | **String** | Base URL | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
 | **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
@@ -30,6 +31,7 @@ instance = Akeyless::GatewayCreateProducerArtifactory.new(
   artifactory_token_scope: null,
   base_url: null,
   delete_protection: null,
+  json: null,
   name: null,
   producer_encryption_key_name: null,
   tags: null,

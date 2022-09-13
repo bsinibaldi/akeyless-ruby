@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **display_id** | **String** | The name of the key to use in the sign JWT process |  |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **jwt_claims** | **String** | JWTClaims |  |
 | **signing_method** | **String** | SigningMethod |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
@@ -18,6 +19,7 @@ require 'akeyless'
 
 instance = Akeyless::SignJWTWithClassicKey.new(
   display_id: null,
+  json: null,
   jwt_claims: null,
   signing_method: null,
   token: null,

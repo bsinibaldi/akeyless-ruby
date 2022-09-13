@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **token** | **String** | Token | [optional] |
 
 ## Example
@@ -12,6 +13,7 @@
 require 'akeyless'
 
 instance = Akeyless::ValidateToken.new(
+  json: null,
   token: null
 )
 ```

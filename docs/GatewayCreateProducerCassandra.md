@@ -10,6 +10,7 @@
 | **cassandra_port** | **String** | Cassandra port | [optional][default to &#39;9042&#39;] |
 | **cassandra_username** | **String** | Cassandra superuser username | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
 | **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
@@ -30,6 +31,7 @@ instance = Akeyless::GatewayCreateProducerCassandra.new(
   cassandra_port: null,
   cassandra_username: null,
   delete_protection: null,
+  json: null,
   name: null,
   producer_encryption_key_name: null,
   tags: null,

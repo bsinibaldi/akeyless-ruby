@@ -7,6 +7,7 @@
 | **assoc_id** | **String** |  | [optional] |
 | **target_id** | **Integer** |  | [optional] |
 | **target_name** | **String** |  | [optional] |
+| **target_type** | **String** |  | [optional] |
 
 ## Example
 
@@ -16,7 +17,8 @@ require 'akeyless'
 instance = Akeyless::ItemTargetAssociation.new(
   assoc_id: null,
   target_id: null,
-  target_name: null
+  target_name: null,
+  target_type: null
 )
 ```
 

@@ -9,6 +9,7 @@
 | **certificate_issue_details** | [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] |
 | **certificates** | **String** |  | [optional] |
 | **client_permissions** | **Array&lt;String&gt;** |  | [optional] |
+| **creation_date** | **Time** |  | [optional] |
 | **customer_fragment_id** | **String** |  | [optional] |
 | **delete_protection** | **Boolean** |  | [optional] |
 | **deletion_date** | **Time** |  | [optional] |
@@ -27,6 +28,7 @@
 | **item_type** | **String** |  | [optional] |
 | **item_versions** | [**Array&lt;ItemVersion&gt;**](ItemVersion.md) |  | [optional] |
 | **last_version** | **Integer** |  | [optional] |
+| **modification_date** | **Time** |  | [optional] |
 | **next_rotation_date** | **Time** |  | [optional] |
 | **protection_key_name** | **String** |  | [optional] |
 | **protection_key_type** | **String** |  | [optional] |
@@ -34,6 +36,7 @@
 | **rotation_interval** | **Integer** |  | [optional] |
 | **shared_by** | [**RuleAssigner**](RuleAssigner.md) |  | [optional] |
 | **target_versions** | [**Array&lt;TargetItemVersion&gt;**](TargetItemVersion.md) |  | [optional] |
+| **usage_date** | **Time** |  | [optional] |
 | **with_customer_fragment** | **Boolean** |  | [optional] |
 
 ## Example
@@ -47,6 +50,7 @@ instance = Akeyless::Item.new(
   certificate_issue_details: null,
   certificates: null,
   client_permissions: null,
+  creation_date: null,
   customer_fragment_id: null,
   delete_protection: null,
   deletion_date: null,
@@ -65,6 +69,7 @@ instance = Akeyless::Item.new(
   item_type: null,
   item_versions: null,
   last_version: null,
+  modification_date: null,
   next_rotation_date: null,
   protection_key_name: null,
   protection_key_type: null,
@@ -72,6 +77,7 @@ instance = Akeyless::Item.new(
   rotation_interval: null,
   shared_by: null,
   target_versions: null,
+  usage_date: null,
   with_customer_fragment: null
 )
 ```

@@ -9,6 +9,7 @@
 | **chef_server_url** | **String** | Server URL | [optional] |
 | **chef_server_username** | **String** | Server username | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
 | **skip_ssl** | **Boolean** | Skip SSL | [optional][default to true] |
@@ -29,6 +30,7 @@ instance = Akeyless::GatewayCreateProducerChef.new(
   chef_server_url: null,
   chef_server_username: null,
   delete_protection: null,
+  json: null,
   name: null,
   producer_encryption_key_name: null,
   skip_ssl: null,

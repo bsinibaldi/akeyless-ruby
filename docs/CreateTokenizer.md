@@ -9,6 +9,7 @@
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
 | **encoding_template** | **String** | The Encoding output template to use in regexp vaultless tokenization | [optional] |
 | **encryption_key_name** | **String** | AES key name to use in vaultless tokenization | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **metadata** | **String** | A metadata about the tokenizer | [optional] |
 | **name** | **String** | Tokenizer name |  |
 | **pattern** | **String** | Pattern to use in regexp vaultless tokenization | [optional] |
@@ -30,6 +31,7 @@ instance = Akeyless::CreateTokenizer.new(
   delete_protection: null,
   encoding_template: null,
   encryption_key_name: null,
+  json: null,
   metadata: null,
   name: null,
   pattern: null,

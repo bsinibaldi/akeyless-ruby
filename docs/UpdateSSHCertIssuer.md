@@ -7,6 +7,7 @@
 | **add_tag** | **Array&lt;String&gt;** | List of the new tags that will be attached to this item | [optional] |
 | **allowed_users** | **String** | Users allowed to fetch the certificate, e.g root,ubuntu |  |
 | **extensions** | **Hash&lt;String, String&gt;** | Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot; | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **metadata** | **String** | A metadata about the issuer | [optional] |
 | **name** | **String** | SSH certificate issuer name |  |
 | **new_name** | **String** | New item name | [optional] |
@@ -32,6 +33,7 @@ instance = Akeyless::UpdateSSHCertIssuer.new(
   add_tag: null,
   allowed_users: null,
   extensions: null,
+  json: null,
   metadata: null,
   name: null,
   new_name: null,

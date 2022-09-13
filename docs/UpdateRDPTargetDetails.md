@@ -8,6 +8,7 @@
 | **admin_pwd** | **String** |  | [optional] |
 | **host_name** | **String** |  | [optional] |
 | **host_port** | **String** |  | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **keep_prev_version** | **String** |  | [optional] |
 | **name** | **String** | Target name |  |
 | **new_version** | **Boolean** | Deprecated | [optional] |
@@ -25,6 +26,7 @@ instance = Akeyless::UpdateRDPTargetDetails.new(
   admin_pwd: null,
   host_name: null,
   host_port: null,
+  json: null,
   keep_prev_version: null,
   name: null,
   new_version: null,

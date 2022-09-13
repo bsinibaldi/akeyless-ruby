@@ -11,6 +11,7 @@
 | **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
 | **idp_metadata_url** | **String** | IDP metadata url | [optional] |
 | **idp_metadata_xml_data** | **String** | IDP metadata xml data | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **jwt_ttl** | **Integer** | Jwt TTL | [optional] |
 | **name** | **String** | Auth Method name |  |
 | **new_name** | **String** | Auth Method new name | [optional] |
@@ -31,6 +32,7 @@ instance = Akeyless::UpdateAuthMethodSAML.new(
   gw_bound_ips: null,
   idp_metadata_url: null,
   idp_metadata_xml_data: null,
+  json: null,
   jwt_ttl: null,
   name: null,
   new_name: null,

@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **comment** | **String** | Comment about the target | [optional] |
 | **host** | **String** |  | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **name** | **String** | Target name |  |
 | **port** | **String** |  | [optional] |
@@ -24,6 +25,7 @@ require 'akeyless'
 instance = Akeyless::CreateSSHTarget.new(
   comment: null,
   host: null,
+  json: null,
   key: null,
   name: null,
   port: null,

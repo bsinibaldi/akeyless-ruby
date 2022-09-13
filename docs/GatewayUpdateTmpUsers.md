@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer Name |  |
 | **new_ttl_min** | **Integer** | New TTL in Minutes |  |
 | **tmp_creds_id** | **String** | Tmp Creds ID |  |
@@ -16,6 +17,7 @@
 require 'akeyless'
 
 instance = Akeyless::GatewayUpdateTmpUsers.new(
+  json: null,
   name: null,
   new_ttl_min: null,
   tmp_creds_id: null,

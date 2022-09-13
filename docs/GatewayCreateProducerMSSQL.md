@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **mssql_create_statements** | **String** | MSSQL Creation statements | [optional] |
 | **mssql_dbname** | **String** | MSSQL Name | [optional] |
 | **mssql_host** | **String** | MSSQL Host | [optional][default to &#39;127.0.0.1&#39;] |
@@ -32,6 +33,7 @@ require 'akeyless'
 
 instance = Akeyless::GatewayCreateProducerMSSQL.new(
   delete_protection: null,
+  json: null,
   mssql_create_statements: null,
   mssql_dbname: null,
   mssql_host: null,

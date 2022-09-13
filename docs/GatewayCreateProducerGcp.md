@@ -10,6 +10,7 @@
 | **gcp_key_algo** | **String** | Service account key algorithm, e.g. KEY_ALG_RSA_1024 | [optional] |
 | **gcp_sa_email** | **String** | GCP service account email | [optional] |
 | **gcp_token_scopes** | **String** | Access token scopes list, e.g. scope1,scope2 | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
 | **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
@@ -30,6 +31,7 @@ instance = Akeyless::GatewayCreateProducerGcp.new(
   gcp_key_algo: null,
   gcp_sa_email: null,
   gcp_token_scopes: null,
+  json: null,
   name: null,
   producer_encryption_key_name: null,
   tags: null,

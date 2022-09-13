@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **new_name** | **String** | Producer name | [optional] |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
@@ -34,6 +35,7 @@ require 'akeyless'
 
 instance = Akeyless::GatewayUpdateProducerRabbitMQ.new(
   delete_protection: null,
+  json: null,
   name: null,
   new_name: null,
   producer_encryption_key_name: null,

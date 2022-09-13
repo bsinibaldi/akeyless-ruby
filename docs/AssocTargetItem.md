@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **json** | **Boolean** | Set output format to JSON | [optional] |
 | **key_operations** | **Array&lt;String&gt;** | A list of allowed operations for the key (required for azure targets) | [optional] |
 | **keyring_name** | **String** | Keyring name of the GCP KMS (required for gcp targets) | [optional] |
 | **kms_algorithm** | **String** | Algorithm of the key in GCP KMS (required for gcp targets) | [optional] |
@@ -23,6 +24,7 @@
 require 'akeyless'
 
 instance = Akeyless::AssocTargetItem.new(
+  json: null,
   key_operations: null,
   keyring_name: null,
   kms_algorithm: null,
