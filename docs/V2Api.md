@@ -105,6 +105,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_list_allowed_management_access**](V2Api.md#gateway_list_allowed_management_access) | **POST** /gateway-list-allowed-management-access |  |
 | [**gateway_list_migration**](V2Api.md#gateway_list_migration) | **POST** /gateway-list-migration |  |
 | [**gateway_list_producers**](V2Api.md#gateway_list_producers) | **POST** /gateway-list-producers |  |
+| [**gateway_migrate_personal_items**](V2Api.md#gateway_migrate_personal_items) | **POST** /gateway-migrate-personal-items |  |
 | [**gateway_revoke_tmp_users**](V2Api.md#gateway_revoke_tmp_users) | **POST** /gateway-revoke-producer-tmp-creds |  |
 | [**gateway_start_producer**](V2Api.md#gateway_start_producer) | **POST** /gateway-start-producer |  |
 | [**gateway_status_migration**](V2Api.md#gateway_status_migration) | **POST** /gateway-migration-status |  |
@@ -4223,7 +4224,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::GatewayCreateMigration.new({name: 'name_example'}) # GatewayCreateMigration | 
+body = Akeyless::GatewayCreateMigration.new({name: 'name_example', target_location: 'target_location_example'}) # GatewayCreateMigration | 
 
 begin
   
@@ -6506,6 +6507,70 @@ No authorization required
 - **Accept**: application/json
 
 
+## gateway_migrate_personal_items
+
+> <GatewayMigratePersonalItemsOutput> gateway_migrate_personal_items(opts)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+opts = {
+  body: Akeyless::GatewayMigratePersonalItems.new # GatewayMigratePersonalItems | 
+}
+
+begin
+  
+  result = api_instance.gateway_migrate_personal_items(opts)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_migrate_personal_items: #{e}"
+end
+```
+
+#### Using the gateway_migrate_personal_items_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewayMigratePersonalItemsOutput>, Integer, Hash)> gateway_migrate_personal_items_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_migrate_personal_items_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewayMigratePersonalItemsOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_migrate_personal_items_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayMigratePersonalItems**](GatewayMigratePersonalItems.md) |  | [optional] |
+
+### Return type
+
+[**GatewayMigratePersonalItemsOutput**](GatewayMigratePersonalItemsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## gateway_revoke_tmp_users
 
 > gateway_revoke_tmp_users(body)
@@ -7014,7 +7079,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::GatewayUpdateMigration.new # GatewayUpdateMigration | 
+body = Akeyless::GatewayUpdateMigration.new({target_location: 'target_location_example'}) # GatewayUpdateMigration | 
 
 begin
   

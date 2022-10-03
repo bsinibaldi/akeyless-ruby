@@ -7,6 +7,7 @@
 | **access_id** | **String** | The access ID of the Kubernetes auth method |  |
 | **cluster_api_type** | **String** | Cluster access type. options: [native_k8s, rancher] | [optional][default to &#39;native_k8s&#39;] |
 | **config_encryption_key_name** | **String** | Config encryption key | [optional] |
+| **disable_issuer_validation** | **String** | Disable issuer validation | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **k8s_ca_cert** | **String** | The CA Certificate (base64 encoded) to use to call into the kubernetes API server | [optional] |
 | **k8s_host** | **String** | The URL of the kubernetes API server |  |
@@ -30,6 +31,7 @@ instance = Akeyless::GatewayUpdateK8SAuthConfig.new(
   access_id: null,
   cluster_api_type: null,
   config_encryption_key_name: null,
+  disable_issuer_validation: null,
   json: null,
   k8s_ca_cert: null,
   k8s_host: null,

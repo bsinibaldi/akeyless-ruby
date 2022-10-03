@@ -13,6 +13,8 @@ docs/AWSPayload.md
 docs/AWSSecretsMigration.md
 docs/AccountGeneralSettings.md
 docs/AccountObjectVersionSettingsOutput.md
+docs/ActiveDirectoryMigration.md
+docs/ActiveDirectoryPayload.md
 docs/AdminsConfigPart.md
 docs/AkeylessGatewayConfig.md
 docs/AllowedAccess.md
@@ -239,6 +241,8 @@ docs/GatewayListAllowedManagementAccess.md
 docs/GatewayListMigration.md
 docs/GatewayListProducers.md
 docs/GatewayMessageQueueInfo.md
+docs/GatewayMigratePersonalItems.md
+docs/GatewayMigratePersonalItemsOutput.md
 docs/GatewayMigrationCreateOutput.md
 docs/GatewayMigrationDeleteOutput.md
 docs/GatewayMigrationGetOutput.md
@@ -458,7 +462,6 @@ docs/SystemAccessCredsSettings.md
 docs/Target.md
 docs/TargetItemAssociation.md
 docs/TargetItemVersion.md
-docs/TargetObjectAssociation.md
 docs/TargetTypeDetailsInput.md
 docs/TmpUserData.md
 docs/Tokenize.md
@@ -568,6 +571,8 @@ lib/akeyless/api_error.rb
 lib/akeyless/configuration.rb
 lib/akeyless/models/account_general_settings.rb
 lib/akeyless/models/account_object_version_settings_output.rb
+lib/akeyless/models/active_directory_migration.rb
+lib/akeyless/models/active_directory_payload.rb
 lib/akeyless/models/admins_config_part.rb
 lib/akeyless/models/akeyless_gateway_config.rb
 lib/akeyless/models/allowed_access.rb
@@ -795,6 +800,8 @@ lib/akeyless/models/gateway_list_allowed_management_access.rb
 lib/akeyless/models/gateway_list_migration.rb
 lib/akeyless/models/gateway_list_producers.rb
 lib/akeyless/models/gateway_message_queue_info.rb
+lib/akeyless/models/gateway_migrate_personal_items.rb
+lib/akeyless/models/gateway_migrate_personal_items_output.rb
 lib/akeyless/models/gateway_migration_create_output.rb
 lib/akeyless/models/gateway_migration_delete_output.rb
 lib/akeyless/models/gateway_migration_get_output.rb
@@ -1017,7 +1024,6 @@ lib/akeyless/models/system_access_creds_settings.rb
 lib/akeyless/models/target.rb
 lib/akeyless/models/target_item_association.rb
 lib/akeyless/models/target_item_version.rb
-lib/akeyless/models/target_object_association.rb
 lib/akeyless/models/target_type_details_input.rb
 lib/akeyless/models/tmp_user_data.rb
 lib/akeyless/models/tokenize.rb
@@ -1121,14 +1127,8 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/bastion_list_entry_spec.rb
-spec/models/bastions_list_spec.rb
-spec/models/gateways_list_response_spec.rb
-spec/models/gw_cluster_identity_spec.rb
-spec/models/list_gateways_spec.rb
-spec/models/list_sra_bastions_spec.rb
-spec/models/one_password_migration_spec.rb
-spec/models/one_password_payload_spec.rb
-spec/models/target_object_association_spec.rb
-spec/models/update_target_details_spec.rb
+spec/models/active_directory_migration_spec.rb
+spec/models/active_directory_payload_spec.rb
+spec/models/gateway_migrate_personal_items_output_spec.rb
+spec/models/gateway_migrate_personal_items_spec.rb
 spec/spec_helper.rb

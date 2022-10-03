@@ -4,6 +4,30 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **_1password_email** | **String** | 1Password user email to connect to the API | [optional] |
+| **_1password_password** | **String** | 1Password user password to connect to the API | [optional] |
+| **_1password_secret_key** | **String** | 1Password user secret key to connect to the API | [optional] |
+| **_1password_url** | **String** | 1Password api container url | [optional] |
+| **_1password_vaults** | **Array&lt;String&gt;** | 1Password list of vault to get the items from | [optional] |
+| **ad_auto_rotate_boolean** | **Boolean** |  | [optional] |
+| **ad_discover_local_users_boolean** | **Boolean** |  | [optional] |
+| **ad_local_users_ignore_list** | **Hash&lt;String, Boolean&gt;** |  | [optional] |
+| **ad_sra_enable_rdp_boolean** | **Boolean** |  | [optional] |
+| **ad_auto_rotate** | **String** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration) | [optional] |
+| **ad_computer_base_dn** | **String** | Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] |
+| **ad_discover_local_users** | **String** | Enable/Disable discovery of local users from each domain server and migrate them as SSH Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) | [optional] |
+| **ad_domain_name** | **String** | Active Directory Domain Name (Relevant only for Active Directory migration) | [optional] |
+| **ad_domain_users_path_template** | **String** | Path location template for migrating domain users as Rotated Secrets e.g.: .../DomainUsers/{{USERNAME}} (Relevant only for Active Directory migration) | [optional] |
+| **ad_local_users_ignore** | **String** | Comma-separated list of Local Users which should not be migrated (Relevant only for Active Directory migration) | [optional] |
+| **ad_local_users_path_template** | **String** | Path location template for migrating domain users as Rotated Secrets e.g.: .../LocalUsers/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Active Directory migration) | [optional] |
+| **ad_rotation_hour** | **Integer** | The hour of the scheduled rotation in UTC (Relevant only for Active Directory migration) | [optional] |
+| **ad_rotation_interval** | **Integer** | The number of days to wait between every automatic rotation [1-365] (Relevant only for Active Directory migration) | [optional] |
+| **ad_sra_enable_rdp** | **String** | Enable/Disable RDP Secure Remote Access for the migrated local users rotated secrets. Default is false: rotated secrets will not be created with SRA (Relevant only for Active Directory migration) | [optional] |
+| **ad_target_name** | **String** | Active Directory LDAP Target Name. Server type should be Active Directory (Relevant only for Active Directory migration) | [optional] |
+| **ad_targets_path_template** | **String** | Path location template for migrating domain servers as SSH Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration) | [optional] |
+| **ad_user_base_dn** | **String** | Distinguished Name of User objects to search in Active Directory, e.g.: CN&#x3D;Users,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] |
+| **ad_user_groups** | **String** | Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration) | [optional] |
+| **as_ssh_port** | **String** | Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) | [optional] |
 | **aws_key** | **String** | AWS Secret Access Key (relevant only for AWS migration) | [optional] |
 | **aws_key_id** | **String** | AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/*]&#39; (relevant only for AWS migration) | [optional] |
 | **aws_region** | **String** | AWS region of the required Secrets Manager (relevant only for AWS migration) | [optional] |
@@ -29,13 +53,8 @@
 | **k8s_username** | **String** | For Password Authentication method K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method) | [optional] |
 | **name** | **String** | Migration name | [optional] |
 | **new_name** | **String** | New migration name | [optional] |
-| **op_email** | **String** | 1Password user email to connect to the API | [optional] |
-| **op_password** | **String** | 1Password user password to connect to the API | [optional] |
-| **op_secret_key** | **String** | 1Password user secret key to connect to the API | [optional] |
-| **op_url** | **String** | 1Password api container url | [optional] |
-| **op_vaults** | **Array&lt;String&gt;** | 1Password list of vault to get the items from | [optional] |
 | **protection_key** | **String** | The name of the key that protects the classic key value (if empty, the account default key will be used) | [optional] |
-| **target_location** | **String** | Target location in Akeyless for imported secrets | [optional] |
+| **target_location** | **String** | Target location in Akeyless for imported secrets |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
 
@@ -45,6 +64,30 @@
 require 'akeyless'
 
 instance = Akeyless::GatewayUpdateMigration.new(
+  _1password_email: null,
+  _1password_password: null,
+  _1password_secret_key: null,
+  _1password_url: null,
+  _1password_vaults: null,
+  ad_auto_rotate_boolean: null,
+  ad_discover_local_users_boolean: null,
+  ad_local_users_ignore_list: null,
+  ad_sra_enable_rdp_boolean: null,
+  ad_auto_rotate: null,
+  ad_computer_base_dn: null,
+  ad_discover_local_users: null,
+  ad_domain_name: null,
+  ad_domain_users_path_template: null,
+  ad_local_users_ignore: null,
+  ad_local_users_path_template: null,
+  ad_rotation_hour: null,
+  ad_rotation_interval: null,
+  ad_sra_enable_rdp: null,
+  ad_target_name: null,
+  ad_targets_path_template: null,
+  ad_user_base_dn: null,
+  ad_user_groups: null,
+  as_ssh_port: null,
   aws_key: null,
   aws_key_id: null,
   aws_region: null,
@@ -70,11 +113,6 @@ instance = Akeyless::GatewayUpdateMigration.new(
   k8s_username: null,
   name: null,
   new_name: null,
-  op_email: null,
-  op_password: null,
-  op_secret_key: null,
-  op_url: null,
-  op_vaults: null,
   protection_key: null,
   target_location: null,
   token: null,

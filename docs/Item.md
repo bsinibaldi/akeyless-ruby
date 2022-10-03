@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **access_date** | **Time** |  | [optional] |
 | **auto_rotate** | **Boolean** |  | [optional] |
 | **cert_issuer_signer_key_name** | **String** |  | [optional] |
 | **certificate_issue_details** | [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] |
@@ -36,7 +37,6 @@
 | **rotation_interval** | **Integer** |  | [optional] |
 | **shared_by** | [**RuleAssigner**](RuleAssigner.md) |  | [optional] |
 | **target_versions** | [**Array&lt;TargetItemVersion&gt;**](TargetItemVersion.md) |  | [optional] |
-| **usage_date** | **Time** |  | [optional] |
 | **with_customer_fragment** | **Boolean** |  | [optional] |
 
 ## Example
@@ -45,6 +45,7 @@
 require 'akeyless'
 
 instance = Akeyless::Item.new(
+  access_date: null,
   auto_rotate: null,
   cert_issuer_signer_key_name: null,
   certificate_issue_details: null,
@@ -77,7 +78,6 @@ instance = Akeyless::Item.new(
   rotation_interval: null,
   shared_by: null,
   target_versions: null,
-  usage_date: null,
   with_customer_fragment: null
 )
 ```

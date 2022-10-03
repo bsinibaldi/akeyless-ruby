@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **active_directory_migrations** | [**Array&lt;ActiveDirectoryMigration&gt;**](ActiveDirectoryMigration.md) |  | [optional] |
 | **aws_secrets_migrations** | [**Array&lt;AWSSecretsMigration&gt;**](AWSSecretsMigration.md) |  | [optional] |
 | **azure_kv_migrations** | [**Array&lt;AzureKeyVaultMigration&gt;**](AzureKeyVaultMigration.md) |  | [optional] |
 | **gcp_secrets_migrations** | [**Array&lt;GCPSecretsMigration&gt;**](GCPSecretsMigration.md) |  | [optional] |
@@ -17,6 +18,7 @@
 require 'akeyless'
 
 instance = Akeyless::MigrationsConfigPart.new(
+  active_directory_migrations: null,
   aws_secrets_migrations: null,
   azure_kv_migrations: null,
   gcp_secrets_migrations: null,
