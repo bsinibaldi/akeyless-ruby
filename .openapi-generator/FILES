@@ -403,6 +403,8 @@ docs/MigrationStatus.md
 docs/MigrationStatusReplyObj.md
 docs/MigrationsConfigLastChange.md
 docs/MigrationsConfigPart.md
+docs/MockMigration.md
+docs/MockPayload.md
 docs/MoveObjects.md
 docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
@@ -965,6 +967,8 @@ lib/akeyless/models/migration_status.rb
 lib/akeyless/models/migration_status_reply_obj.rb
 lib/akeyless/models/migrations_config_last_change.rb
 lib/akeyless/models/migrations_config_part.rb
+lib/akeyless/models/mock_migration.rb
+lib/akeyless/models/mock_payload.rb
 lib/akeyless/models/move_objects.rb
 lib/akeyless/models/o_auth2_access_rules.rb
 lib/akeyless/models/o_auth2_custom_claim.rb
@@ -1127,8 +1131,6 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/active_directory_migration_spec.rb
-spec/models/active_directory_payload_spec.rb
-spec/models/gateway_migrate_personal_items_output_spec.rb
-spec/models/gateway_migrate_personal_items_spec.rb
+spec/models/mock_migration_spec.rb
+spec/models/mock_payload_spec.rb
 spec/spec_helper.rb

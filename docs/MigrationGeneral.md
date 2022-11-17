@@ -9,6 +9,7 @@
 | **new_name** | **String** |  | [optional] |
 | **prefix** | **String** |  | [optional] |
 | **protection_key** | **String** |  | [optional] |
+| **status** | **String** |  | [optional] |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = Akeyless::MigrationGeneral.new(
   name: null,
   new_name: null,
   prefix: null,
-  protection_key: null
+  protection_key: null,
+  status: null
 )
 ```
 

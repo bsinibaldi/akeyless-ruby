@@ -4,8 +4,11 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **access_date** | **Time** |  | [optional] |
 | **client_permissions** | **Array&lt;String&gt;** |  | [optional] |
 | **comment** | **String** |  | [optional] |
+| **creation_date** | **Time** |  | [optional] |
+| **modification_date** | **Time** |  | [optional] |
 | **role_auth_methods_assoc** | [**Array&lt;RoleAuthMethodAssociation&gt;**](RoleAuthMethodAssociation.md) |  | [optional] |
 | **role_name** | **String** |  | [optional] |
 | **rules** | [**Rules**](Rules.md) |  | [optional] |
@@ -16,8 +19,11 @@
 require 'akeyless'
 
 instance = Akeyless::Role.new(
+  access_date: null,
   client_permissions: null,
   comment: null,
+  creation_date: null,
+  modification_date: null,
   role_auth_methods_assoc: null,
   role_name: null,
   rules: null

@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **activate_keys_on_creation** | **String** |  | [optional] |
 | **certificate_ttl** | **Integer** |  | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Client name |  |
@@ -16,6 +17,7 @@
 require 'akeyless'
 
 instance = Akeyless::KmipCreateClient.new(
+  activate_keys_on_creation: null,
   certificate_ttl: null,
   json: null,
   name: null,

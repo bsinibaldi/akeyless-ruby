@@ -12,6 +12,7 @@
 | **cert_data** | **String** | Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert) | [optional] |
 | **cloud_id** | **String** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp) | [optional] |
 | **debug** | **Boolean** |  | [optional] |
+| **gateway_url** | **String** | Gateway URL for the K8S authenticated (relevant only for access-type&#x3D;k8s) | [optional] |
 | **gcp_audience** | **String** | GCP JWT audience | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **jwt** | **String** | The Json Web Token (relevant only for access-type&#x3D;jwt/oidc) | [optional] |
@@ -36,6 +37,7 @@ instance = Akeyless::Auth.new(
   cert_data: null,
   cloud_id: null,
   debug: null,
+  gateway_url: null,
   gcp_audience: null,
   json: null,
   jwt: null,

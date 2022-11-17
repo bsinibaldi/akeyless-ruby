@@ -6,7 +6,6 @@
 | ---- | ---- | ----------- | ----- |
 | **comment** | **String** | Comment about the target | [optional] |
 | **gcp_key** | **String** | Base64-encoded service account private key text | [optional] |
-| **gcp_sa_email** | **String** | GCP service account email |  |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **keep_prev_version** | **String** |  | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
@@ -25,7 +24,6 @@ require 'akeyless'
 instance = Akeyless::UpdateGcpTarget.new(
   comment: null,
   gcp_key: null,
-  gcp_sa_email: null,
   json: null,
   keep_prev_version: null,
   key: null,

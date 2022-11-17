@@ -42,7 +42,7 @@
 | **eks_cluster_name** | **String** |  | [optional] |
 | **eks_region** | **String** |  | [optional] |
 | **eks_secret_access_key** | **String** |  | [optional] |
-| **gcp_service_account_email** | **String** |  | [optional] |
+| **gcp_service_account_email** | **String** | deprecated | [optional] |
 | **gcp_service_account_key** | **String** |  | [optional] |
 | **github_app_id** | **Integer** |  | [optional] |
 | **github_app_private_key** | **String** |  | [optional] |

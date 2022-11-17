@@ -73,8 +73,11 @@
 | **failure_message** | **String** |  | [optional] |
 | **fixed_user_only** | **String** |  | [optional] |
 | **gcp_key_algo** | **String** |  | [optional] |
-| **gcp_service_account_email** | **String** |  | [optional] |
+| **gcp_role_bindings** | **Hash&lt;String, Array&lt;String&gt;&gt;** |  | [optional] |
+| **gcp_service_account_email** | **String** | GCPServiceAccountEmail overrides the deprecated field from the target | [optional] |
 | **gcp_service_account_key** | **String** |  | [optional] |
+| **gcp_service_account_type** | **String** |  | [optional] |
+| **gcp_tmp_service_account_name** | **String** |  | [optional] |
 | **gcp_token_lifetime** | **String** |  | [optional] |
 | **gcp_token_scope** | **String** |  | [optional] |
 | **gcp_token_type** | **String** |  | [optional] |
@@ -255,8 +258,11 @@ instance = Akeyless::DSProducerDetails.new(
   failure_message: null,
   fixed_user_only: null,
   gcp_key_algo: null,
+  gcp_role_bindings: null,
   gcp_service_account_email: null,
   gcp_service_account_key: null,
+  gcp_service_account_type: null,
+  gcp_tmp_service_account_name: null,
   gcp_token_lifetime: null,
   gcp_token_scope: null,
   gcp_token_type: null,

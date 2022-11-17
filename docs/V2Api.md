@@ -131,7 +131,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_update_producer_mongo**](V2Api.md#gateway_update_producer_mongo) | **POST** /gateway-update-producer-mongo |  |
 | [**gateway_update_producer_mssql**](V2Api.md#gateway_update_producer_mssql) | **POST** /gateway-update-producer-mssql |  |
 | [**gateway_update_producer_my_sql**](V2Api.md#gateway_update_producer_my_sql) | **POST** /gateway-update-producer-mysql |  |
-| [**gateway_update_producer_native_k8_s**](V2Api.md#gateway_update_producer_native_k8_s) | **POST** /gateway-update-producer-k8s-native |  |
+| [**gateway_update_producer_native_k8_s**](V2Api.md#gateway_update_producer_native_k8_s) | **POST** /gateway-update-producer-k8s |  |
 | [**gateway_update_producer_oracle_db**](V2Api.md#gateway_update_producer_oracle_db) | **POST** /gateway-update-producer-oracle |  |
 | [**gateway_update_producer_postgre_sql**](V2Api.md#gateway_update_producer_postgre_sql) | **POST** /gateway-update-producer-postgresql |  |
 | [**gateway_update_producer_rabbit_mq**](V2Api.md#gateway_update_producer_rabbit_mq) | **POST** /gateway-update-producer-rabbitmq |  |
@@ -4784,7 +4784,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::GatewayCreateProducerGcp.new({name: 'name_example'}) # GatewayCreateProducerGcp | 
+body = Akeyless::GatewayCreateProducerGcp.new({name: 'name_example', service_account_type: 'service_account_type_example'}) # GatewayCreateProducerGcp | 
 
 begin
   
@@ -7639,7 +7639,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::GatewayUpdateProducerGcp.new({name: 'name_example'}) # GatewayUpdateProducerGcp | 
+body = Akeyless::GatewayUpdateProducerGcp.new({name: 'name_example', service_account_type: 'service_account_type_example'}) # GatewayUpdateProducerGcp | 
 
 begin
   
@@ -13240,7 +13240,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::UpdateGcpTarget.new({gcp_sa_email: 'gcp_sa_email_example', name: 'name_example'}) # UpdateGcpTarget | 
+body = Akeyless::UpdateGcpTarget.new({name: 'name_example'}) # UpdateGcpTarget | 
 
 begin
   
