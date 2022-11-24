@@ -66,6 +66,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**detokenize**](V2Api.md#detokenize) | **POST** /detokenize |  |
 | [**encrypt**](V2Api.md#encrypt) | **POST** /encrypt |  |
 | [**encrypt_with_classic_key**](V2Api.md#encrypt_with_classic_key) | **POST** /encrypt-with-classic-key |  |
+| [**export_classic_key**](V2Api.md#export_classic_key) | **GET** /export-classic-key |  |
 | [**gateway_add_allowed_management_access**](V2Api.md#gateway_add_allowed_management_access) | **POST** /gateway-add-allow-management-access |  |
 | [**gateway_create_k8_s_auth_config**](V2Api.md#gateway_create_k8_s_auth_config) | **POST** /gateway-create-k8s-auth-config |  |
 | [**gateway_create_migration**](V2Api.md#gateway_create_migration) | **POST** /gateway-create-migration |  |
@@ -182,6 +183,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**rotate_secret**](V2Api.md#rotate_secret) | **POST** /gateway-rotate-secret |  |
 | [**set_item_state**](V2Api.md#set_item_state) | **POST** /set-item-state |  |
 | [**set_role_rule**](V2Api.md#set_role_rule) | **POST** /set-role-rule |  |
+| [**share_item**](V2Api.md#share_item) | **POST** /share-item |  |
 | [**sign_jwt_with_classic_key**](V2Api.md#sign_jwt_with_classic_key) | **POST** /sign-jwt-with-classic-key |  |
 | [**sign_pkcs1**](V2Api.md#sign_pkcs1) | **POST** /sign-pkcs1 |  |
 | [**sign_pki_cert_with_classic_key**](V2Api.md#sign_pki_cert_with_classic_key) | **POST** /sign-pki-cert-with-classic-key |  |
@@ -4076,6 +4078,68 @@ end
 ### Return type
 
 [**EncryptOutput**](EncryptOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## export_classic_key
+
+> <ExportClassicKeyOutput> export_classic_key(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::ExportClassicKey.new({name: 'name_example'}) # ExportClassicKey | 
+
+begin
+  
+  result = api_instance.export_classic_key(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->export_classic_key: #{e}"
+end
+```
+
+#### Using the export_classic_key_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ExportClassicKeyOutput>, Integer, Hash)> export_classic_key_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.export_classic_key_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ExportClassicKeyOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->export_classic_key_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**ExportClassicKey**](ExportClassicKey.md) |  |  |
+
+### Return type
+
+[**ExportClassicKeyOutput**](ExportClassicKeyOutput.md)
 
 ### Authorization
 
@@ -11294,6 +11358,67 @@ end
 ### Return type
 
 **Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## share_item
+
+> share_item(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::ShareItem.new({action: 'action_example', item_name: 'item_name_example'}) # ShareItem | 
+
+begin
+  
+  api_instance.share_item(body)
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->share_item: #{e}"
+end
+```
+
+#### Using the share_item_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> share_item_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.share_item_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->share_item_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**ShareItem**](ShareItem.md) |  |  |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 

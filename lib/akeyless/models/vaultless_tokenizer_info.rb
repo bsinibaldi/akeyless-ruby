@@ -52,7 +52,7 @@ module Akeyless
         :'key_name' => :'String',
         :'regexp_tokenizer_info' => :'RegexpTokenizerInfo',
         :'template_type' => :'String',
-        :'tweak' => :'Array<Integer>',
+        :'tweak' => :'String',
         :'tweak_type' => :'String'
       }
     end
@@ -95,9 +95,7 @@ module Akeyless
       end
 
       if attributes.key?(:'tweak')
-        if (value = attributes[:'tweak']).is_a?(Array)
-          self.tweak = value
-        end
+        self.tweak = attributes[:'tweak']
       end
 
       if attributes.key?(:'tweak_type')

@@ -15,8 +15,9 @@ require 'time'
 
 module Akeyless
   class SraInfo
-    attr_accessor :package
+    attr_accessor :sla
 
+    # Tier represents a level of extensibility the account will have, defined by various limits for different resources of Akeyless e.g - A StarterTier may have a limit of 3 Client resources and 50 Secret resources
     attr_accessor :tier
 
     attr_accessor :user_type
@@ -24,7 +25,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'package' => :'package',
+        :'sla' => :'sla',
         :'tier' => :'tier',
         :'user_type' => :'user_type'
       }
@@ -38,7 +39,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'package' => :'String',
+        :'sla' => :'String',
         :'tier' => :'String',
         :'user_type' => :'String'
       }
@@ -65,8 +66,8 @@ module Akeyless
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'package')
-        self.package = attributes[:'package']
+      if attributes.key?(:'sla')
+        self.sla = attributes[:'sla']
       end
 
       if attributes.key?(:'tier')
@@ -96,7 +97,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          package == o.package &&
+          sla == o.sla &&
           tier == o.tier &&
           user_type == o.user_type
     end
@@ -110,7 +111,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [package, tier, user_type].hash
+      [sla, tier, user_type].hash
     end
 
     # Builds the object from hash

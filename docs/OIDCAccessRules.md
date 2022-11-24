@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **allowed_redirect_uris** | **Array&lt;String&gt;** | Allowed redirect URIs after the authentication | [optional] |
+| **audience** | **String** | Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider&#39;s Application | [optional] |
 | **bound_claims** | [**Array&lt;OIDCCustomClaim&gt;**](OIDCCustomClaim.md) | The claims that login is restricted to. | [optional] |
 | **client_id** | **String** | Client ID | [optional] |
 | **client_secret** | **String** | Client Secret | [optional] |
@@ -21,6 +22,7 @@ require 'akeyless'
 
 instance = Akeyless::OIDCAccessRules.new(
   allowed_redirect_uris: null,
+  audience: null,
   bound_claims: null,
   client_id: null,
   client_secret: null,

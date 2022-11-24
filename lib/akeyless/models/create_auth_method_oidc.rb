@@ -22,6 +22,9 @@ module Akeyless
     # Allowed redirect URIs after the authentication
     attr_accessor :allowed_redirect_uri
 
+    # Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider's Application
+    attr_accessor :audience
+
     # A CIDR whitelist with the IPs that the access is restricted to
     attr_accessor :bound_ips
 
@@ -69,6 +72,7 @@ module Akeyless
       {
         :'access_expires' => :'access-expires',
         :'allowed_redirect_uri' => :'allowed-redirect-uri',
+        :'audience' => :'audience',
         :'bound_ips' => :'bound-ips',
         :'client_id' => :'client-id',
         :'client_secret' => :'client-secret',
@@ -96,6 +100,7 @@ module Akeyless
       {
         :'access_expires' => :'Integer',
         :'allowed_redirect_uri' => :'Array<String>',
+        :'audience' => :'String',
         :'bound_ips' => :'Array<String>',
         :'client_id' => :'String',
         :'client_secret' => :'String',
@@ -144,6 +149,10 @@ module Akeyless
         if (value = attributes[:'allowed_redirect_uri']).is_a?(Array)
           self.allowed_redirect_uri = value
         end
+      end
+
+      if attributes.key?(:'audience')
+        self.audience = attributes[:'audience']
       end
 
       if attributes.key?(:'bound_ips')
@@ -239,6 +248,7 @@ module Akeyless
       self.class == o.class &&
           access_expires == o.access_expires &&
           allowed_redirect_uri == o.allowed_redirect_uri &&
+          audience == o.audience &&
           bound_ips == o.bound_ips &&
           client_id == o.client_id &&
           client_secret == o.client_secret &&
@@ -264,7 +274,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_expires, allowed_redirect_uri, bound_ips, client_id, client_secret, force_sub_claims, gw_bound_ips, issuer, json, jwt_ttl, name, required_scopes, required_scopes_prefix, token, uid_token, unique_identifier].hash
+      [access_expires, allowed_redirect_uri, audience, bound_ips, client_id, client_secret, force_sub_claims, gw_bound_ips, issuer, json, jwt_ttl, name, required_scopes, required_scopes_prefix, token, uid_token, unique_identifier].hash
     end
 
     # Builds the object from hash

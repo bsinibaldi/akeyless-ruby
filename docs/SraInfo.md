@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **package** | **String** |  | [optional] |
-| **tier** | **String** |  | [optional] |
+| **sla** | **String** |  | [optional] |
+| **tier** | **String** | Tier represents a level of extensibility the account will have, defined by various limits for different resources of Akeyless e.g - A StarterTier may have a limit of 3 Client resources and 50 Secret resources | [optional] |
 | **user_type** | **String** |  | [optional] |
 
 ## Example
@@ -14,7 +14,7 @@
 require 'akeyless'
 
 instance = Akeyless::SraInfo.new(
-  package: null,
+  sla: null,
   tier: null,
   user_type: null
 )

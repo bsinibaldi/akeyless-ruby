@@ -18,7 +18,7 @@ module Akeyless
     # Set output format to JSON
     attr_accessor :json
 
-    # Rotated Secret name
+    # Secret name (Rotated Secret or Custom Dynamic Secret)
     attr_accessor :name
 
     # Authentication token (see `/auth` and `/configure`)

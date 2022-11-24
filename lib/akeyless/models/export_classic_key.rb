@@ -14,51 +14,31 @@ require 'date'
 require 'time'
 
 module Akeyless
-  # OIDCAccessRules contains access rules specific to Open Id Connect authentication method.
-  class OIDCAccessRules
-    # Allowed redirect URIs after the authentication
-    attr_accessor :allowed_redirect_uris
+  # ExportClassicKey is a command that returns the classic key material
+  class ExportClassicKey
+    # Set output format to JSON
+    attr_accessor :json
 
-    # Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider's Application
-    attr_accessor :audience
+    # ClassicKey name
+    attr_accessor :name
 
-    # The claims that login is restricted to.
-    attr_accessor :bound_claims
+    # Authentication token (see `/auth` and `/configure`)
+    attr_accessor :token
 
-    # Client ID
-    attr_accessor :client_id
+    # The universal identity token, Required only for universal_identity authentication
+    attr_accessor :uid_token
 
-    # Client Secret
-    attr_accessor :client_secret
-
-    # IsInternal indicates whether this is an internal Auth Method where the client has no control over it, or it was created by the client e.g - Sign In with Google will create an OIDC Auth Method with IsInternal=true
-    attr_accessor :is_internal
-
-    # Issuer URL
-    attr_accessor :issuer
-
-    # A list of required scopes to request from the oidc provider, and to check on the token
-    attr_accessor :required_scopes
-
-    # A prefix to add to the required scopes (for example, azures' Application ID URI)
-    attr_accessor :required_scopes_prefix
-
-    # A unique identifier to distinguish different users
-    attr_accessor :unique_identifier
+    # Classic key version
+    attr_accessor :version
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'allowed_redirect_uris' => :'allowed_redirect_URIs',
-        :'audience' => :'audience',
-        :'bound_claims' => :'bound_claims',
-        :'client_id' => :'client_id',
-        :'client_secret' => :'client_secret',
-        :'is_internal' => :'is_internal',
-        :'issuer' => :'issuer',
-        :'required_scopes' => :'required_scopes',
-        :'required_scopes_prefix' => :'required_scopes_prefix',
-        :'unique_identifier' => :'unique_identifier'
+        :'json' => :'json',
+        :'name' => :'name',
+        :'token' => :'token',
+        :'uid_token' => :'uid-token',
+        :'version' => :'version'
       }
     end
 
@@ -70,16 +50,11 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'allowed_redirect_uris' => :'Array<String>',
-        :'audience' => :'String',
-        :'bound_claims' => :'Array<OIDCCustomClaim>',
-        :'client_id' => :'String',
-        :'client_secret' => :'String',
-        :'is_internal' => :'Boolean',
-        :'issuer' => :'String',
-        :'required_scopes' => :'Array<String>',
-        :'required_scopes_prefix' => :'String',
-        :'unique_identifier' => :'String'
+        :'json' => :'Boolean',
+        :'name' => :'String',
+        :'token' => :'String',
+        :'uid_token' => :'String',
+        :'version' => :'Integer'
       }
     end
 
@@ -93,61 +68,35 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::OIDCAccessRules` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::ExportClassicKey` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::OIDCAccessRules`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::ExportClassicKey`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'allowed_redirect_uris')
-        if (value = attributes[:'allowed_redirect_uris']).is_a?(Array)
-          self.allowed_redirect_uris = value
-        end
+      if attributes.key?(:'json')
+        self.json = attributes[:'json']
       end
 
-      if attributes.key?(:'audience')
-        self.audience = attributes[:'audience']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'bound_claims')
-        if (value = attributes[:'bound_claims']).is_a?(Array)
-          self.bound_claims = value
-        end
+      if attributes.key?(:'token')
+        self.token = attributes[:'token']
       end
 
-      if attributes.key?(:'client_id')
-        self.client_id = attributes[:'client_id']
+      if attributes.key?(:'uid_token')
+        self.uid_token = attributes[:'uid_token']
       end
 
-      if attributes.key?(:'client_secret')
-        self.client_secret = attributes[:'client_secret']
-      end
-
-      if attributes.key?(:'is_internal')
-        self.is_internal = attributes[:'is_internal']
-      end
-
-      if attributes.key?(:'issuer')
-        self.issuer = attributes[:'issuer']
-      end
-
-      if attributes.key?(:'required_scopes')
-        if (value = attributes[:'required_scopes']).is_a?(Array)
-          self.required_scopes = value
-        end
-      end
-
-      if attributes.key?(:'required_scopes_prefix')
-        self.required_scopes_prefix = attributes[:'required_scopes_prefix']
-      end
-
-      if attributes.key?(:'unique_identifier')
-        self.unique_identifier = attributes[:'unique_identifier']
+      if attributes.key?(:'version')
+        self.version = attributes[:'version']
       end
     end
 
@@ -155,12 +104,17 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @name.nil?
       true
     end
 
@@ -169,16 +123,11 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          allowed_redirect_uris == o.allowed_redirect_uris &&
-          audience == o.audience &&
-          bound_claims == o.bound_claims &&
-          client_id == o.client_id &&
-          client_secret == o.client_secret &&
-          is_internal == o.is_internal &&
-          issuer == o.issuer &&
-          required_scopes == o.required_scopes &&
-          required_scopes_prefix == o.required_scopes_prefix &&
-          unique_identifier == o.unique_identifier
+          json == o.json &&
+          name == o.name &&
+          token == o.token &&
+          uid_token == o.uid_token &&
+          version == o.version
     end
 
     # @see the `==` method
@@ -190,7 +139,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allowed_redirect_uris, audience, bound_claims, client_id, client_secret, is_internal, issuer, required_scopes, required_scopes_prefix, unique_identifier].hash
+      [json, name, token, uid_token, version].hash
     end
 
     # Builds the object from hash

@@ -15,8 +15,6 @@ require 'time'
 
 module Akeyless
   class ReverseRBACClient
-    attr_accessor :allowed_ops
-
     attr_accessor :assocs
 
     attr_accessor :auth_method_name
@@ -24,7 +22,6 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'allowed_ops' => :'allowed_ops',
         :'assocs' => :'assocs',
         :'auth_method_name' => :'auth_method_name'
       }
@@ -38,7 +35,6 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'allowed_ops' => :'Array<String>',
         :'assocs' => :'Array<AuthMethodRoleAssociation>',
         :'auth_method_name' => :'String'
       }
@@ -64,12 +60,6 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'allowed_ops')
-        if (value = attributes[:'allowed_ops']).is_a?(Array)
-          self.allowed_ops = value
-        end
-      end
 
       if attributes.key?(:'assocs')
         if (value = attributes[:'assocs']).is_a?(Array)
@@ -100,7 +90,6 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          allowed_ops == o.allowed_ops &&
           assocs == o.assocs &&
           auth_method_name == o.auth_method_name
     end
@@ -114,7 +103,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allowed_ops, assocs, auth_method_name].hash
+      [assocs, auth_method_name].hash
     end
 
     # Builds the object from hash

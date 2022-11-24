@@ -27,6 +27,8 @@ module Akeyless
 
     attr_accessor :status
 
+    attr_accessor :type
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -35,7 +37,8 @@ module Akeyless
         :'new_name' => :'new_name',
         :'prefix' => :'prefix',
         :'protection_key' => :'protection_key',
-        :'status' => :'status'
+        :'status' => :'status',
+        :'type' => :'type'
       }
     end
 
@@ -52,7 +55,8 @@ module Akeyless
         :'new_name' => :'String',
         :'prefix' => :'String',
         :'protection_key' => :'String',
-        :'status' => :'String'
+        :'status' => :'String',
+        :'type' => :'String'
       }
     end
 
@@ -100,6 +104,10 @@ module Akeyless
       if attributes.key?(:'status')
         self.status = attributes[:'status']
       end
+
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -125,7 +133,8 @@ module Akeyless
           new_name == o.new_name &&
           prefix == o.prefix &&
           protection_key == o.protection_key &&
-          status == o.status
+          status == o.status &&
+          type == o.type
     end
 
     # @see the `==` method
@@ -137,7 +146,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, new_name, prefix, protection_key, status].hash
+      [id, name, new_name, prefix, protection_key, status, type].hash
     end
 
     # Builds the object from hash

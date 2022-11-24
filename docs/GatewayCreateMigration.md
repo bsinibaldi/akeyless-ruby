@@ -9,10 +9,6 @@
 | **_1password_secret_key** | **String** | 1Password user secret key to connect to the API | [optional] |
 | **_1password_url** | **String** | 1Password api container url | [optional] |
 | **_1password_vaults** | **Array&lt;String&gt;** | 1Password list of vault to get the items from | [optional] |
-| **ad_auto_rotate_boolean** | **Boolean** |  | [optional] |
-| **ad_discover_local_users_boolean** | **Boolean** |  | [optional] |
-| **ad_local_users_ignore_list** | **Hash&lt;String, Boolean&gt;** |  | [optional] |
-| **ad_sra_enable_rdp_boolean** | **Boolean** |  | [optional] |
 | **ad_auto_rotate** | **String** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration) | [optional] |
 | **ad_computer_base_dn** | **String** | Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] |
 | **ad_discover_local_users** | **String** | Enable/Disable discovery of local users from each domain server and migrate them as SSH Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) | [optional] |
@@ -68,10 +64,6 @@ instance = Akeyless::GatewayCreateMigration.new(
   _1password_secret_key: null,
   _1password_url: null,
   _1password_vaults: null,
-  ad_auto_rotate_boolean: null,
-  ad_discover_local_users_boolean: null,
-  ad_local_users_ignore_list: null,
-  ad_sra_enable_rdp_boolean: null,
   ad_auto_rotate: null,
   ad_computer_base_dn: null,
   ad_discover_local_users: null,

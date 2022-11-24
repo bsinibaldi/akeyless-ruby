@@ -15,8 +15,6 @@ require 'time'
 
 module Akeyless
   class GetSecretValue
-    attr_accessor :ignore_cache_boolean
-
     # for personal password manager
     attr_accessor :accessibility
 
@@ -44,7 +42,6 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'ignore_cache_boolean' => :'IgnoreCacheBoolean',
         :'accessibility' => :'accessibility',
         :'ignore_cache' => :'ignore-cache',
         :'json' => :'json',
@@ -64,7 +61,6 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'ignore_cache_boolean' => :'Boolean',
         :'accessibility' => :'String',
         :'ignore_cache' => :'String',
         :'json' => :'Boolean',
@@ -97,12 +93,10 @@ module Akeyless
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'ignore_cache_boolean')
-        self.ignore_cache_boolean = attributes[:'ignore_cache_boolean']
-      end
-
       if attributes.key?(:'accessibility')
         self.accessibility = attributes[:'accessibility']
+      else
+        self.accessibility = 'regular'
       end
 
       if attributes.key?(:'ignore_cache')
@@ -159,7 +153,6 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          ignore_cache_boolean == o.ignore_cache_boolean &&
           accessibility == o.accessibility &&
           ignore_cache == o.ignore_cache &&
           json == o.json &&
@@ -179,7 +172,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ignore_cache_boolean, accessibility, ignore_cache, json, names, pretty_print, token, uid_token, version].hash
+      [accessibility, ignore_cache, json, names, pretty_print, token, uid_token, version].hash
     end
 
     # Builds the object from hash

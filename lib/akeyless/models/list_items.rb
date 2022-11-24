@@ -108,6 +108,8 @@ module Akeyless
 
       if attributes.key?(:'accessibility')
         self.accessibility = attributes[:'accessibility']
+      else
+        self.accessibility = 'regular'
       end
 
       if attributes.key?(:'filter')

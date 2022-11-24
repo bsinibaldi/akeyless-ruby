@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **allowed_ops** | **Array&lt;String&gt;** |  | [optional] |
 | **assoc_id** | **String** |  | [optional] |
 | **auth_method_sub_claims** | **Hash&lt;String, Array&lt;String&gt;&gt;** |  | [optional] |
 | **role_name** | **String** |  | [optional] |
@@ -15,6 +16,7 @@
 require 'akeyless'
 
 instance = Akeyless::AuthMethodRoleAssociation.new(
+  allowed_ops: null,
   assoc_id: null,
   auth_method_sub_claims: null,
   role_name: null,

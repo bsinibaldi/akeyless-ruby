@@ -1,24 +1,26 @@
-# Akeyless::RotateSecret
+# Akeyless::ExportClassicKey
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
-| **name** | **String** | Secret name (Rotated Secret or Custom Dynamic Secret) |  |
+| **name** | **String** | ClassicKey name |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
+| **version** | **Integer** | Classic key version | [optional] |
 
 ## Example
 
 ```ruby
 require 'akeyless'
 
-instance = Akeyless::RotateSecret.new(
+instance = Akeyless::ExportClassicKey.new(
   json: null,
   name: null,
   token: null,
-  uid_token: null
+  uid_token: null,
+  version: null
 )
 ```
 

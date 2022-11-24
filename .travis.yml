@@ -8,4 +8,4 @@ script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build akeyless.gemspec
-  - gem install ./akeyless-2.20.1.gem
+  - gem install ./akeyless-2.20.2.gem

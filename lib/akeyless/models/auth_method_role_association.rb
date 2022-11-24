@@ -16,6 +16,8 @@ require 'time'
 module Akeyless
   # AuthMethodRoleAssociation includes details of an association between an auth method and a role.
   class AuthMethodRoleAssociation
+    attr_accessor :allowed_ops
+
     attr_accessor :assoc_id
 
     attr_accessor :auth_method_sub_claims
@@ -27,6 +29,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'allowed_ops' => :'allowed_ops',
         :'assoc_id' => :'assoc_id',
         :'auth_method_sub_claims' => :'auth_method_sub_claims',
         :'role_name' => :'role_name',
@@ -42,6 +45,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'allowed_ops' => :'Array<String>',
         :'assoc_id' => :'String',
         :'auth_method_sub_claims' => :'Hash<String, Array<String>>',
         :'role_name' => :'String',
@@ -69,6 +73,12 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'allowed_ops')
+        if (value = attributes[:'allowed_ops']).is_a?(Array)
+          self.allowed_ops = value
+        end
+      end
 
       if attributes.key?(:'assoc_id')
         self.assoc_id = attributes[:'assoc_id']
@@ -107,6 +117,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          allowed_ops == o.allowed_ops &&
           assoc_id == o.assoc_id &&
           auth_method_sub_claims == o.auth_method_sub_claims &&
           role_name == o.role_name &&
@@ -122,7 +133,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [assoc_id, auth_method_sub_claims, role_name, rules].hash
+      [allowed_ops, assoc_id, auth_method_sub_claims, role_name, rules].hash
     end
 
     # Builds the object from hash

@@ -14,51 +14,16 @@ require 'date'
 require 'time'
 
 module Akeyless
-  # OIDCAccessRules contains access rules specific to Open Id Connect authentication method.
-  class OIDCAccessRules
-    # Allowed redirect URIs after the authentication
-    attr_accessor :allowed_redirect_uris
+  class ExportClassicKeyOutput
+    attr_accessor :certificate_pem
 
-    # Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider's Application
-    attr_accessor :audience
-
-    # The claims that login is restricted to.
-    attr_accessor :bound_claims
-
-    # Client ID
-    attr_accessor :client_id
-
-    # Client Secret
-    attr_accessor :client_secret
-
-    # IsInternal indicates whether this is an internal Auth Method where the client has no control over it, or it was created by the client e.g - Sign In with Google will create an OIDC Auth Method with IsInternal=true
-    attr_accessor :is_internal
-
-    # Issuer URL
-    attr_accessor :issuer
-
-    # A list of required scopes to request from the oidc provider, and to check on the token
-    attr_accessor :required_scopes
-
-    # A prefix to add to the required scopes (for example, azures' Application ID URI)
-    attr_accessor :required_scopes_prefix
-
-    # A unique identifier to distinguish different users
-    attr_accessor :unique_identifier
+    attr_accessor :key
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'allowed_redirect_uris' => :'allowed_redirect_URIs',
-        :'audience' => :'audience',
-        :'bound_claims' => :'bound_claims',
-        :'client_id' => :'client_id',
-        :'client_secret' => :'client_secret',
-        :'is_internal' => :'is_internal',
-        :'issuer' => :'issuer',
-        :'required_scopes' => :'required_scopes',
-        :'required_scopes_prefix' => :'required_scopes_prefix',
-        :'unique_identifier' => :'unique_identifier'
+        :'certificate_pem' => :'certificatePem',
+        :'key' => :'key'
       }
     end
 
@@ -70,16 +35,8 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'allowed_redirect_uris' => :'Array<String>',
-        :'audience' => :'String',
-        :'bound_claims' => :'Array<OIDCCustomClaim>',
-        :'client_id' => :'String',
-        :'client_secret' => :'String',
-        :'is_internal' => :'Boolean',
-        :'issuer' => :'String',
-        :'required_scopes' => :'Array<String>',
-        :'required_scopes_prefix' => :'String',
-        :'unique_identifier' => :'String'
+        :'certificate_pem' => :'String',
+        :'key' => :'String'
       }
     end
 
@@ -93,61 +50,23 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::OIDCAccessRules` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::ExportClassicKeyOutput` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::OIDCAccessRules`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::ExportClassicKeyOutput`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'allowed_redirect_uris')
-        if (value = attributes[:'allowed_redirect_uris']).is_a?(Array)
-          self.allowed_redirect_uris = value
-        end
+      if attributes.key?(:'certificate_pem')
+        self.certificate_pem = attributes[:'certificate_pem']
       end
 
-      if attributes.key?(:'audience')
-        self.audience = attributes[:'audience']
-      end
-
-      if attributes.key?(:'bound_claims')
-        if (value = attributes[:'bound_claims']).is_a?(Array)
-          self.bound_claims = value
-        end
-      end
-
-      if attributes.key?(:'client_id')
-        self.client_id = attributes[:'client_id']
-      end
-
-      if attributes.key?(:'client_secret')
-        self.client_secret = attributes[:'client_secret']
-      end
-
-      if attributes.key?(:'is_internal')
-        self.is_internal = attributes[:'is_internal']
-      end
-
-      if attributes.key?(:'issuer')
-        self.issuer = attributes[:'issuer']
-      end
-
-      if attributes.key?(:'required_scopes')
-        if (value = attributes[:'required_scopes']).is_a?(Array)
-          self.required_scopes = value
-        end
-      end
-
-      if attributes.key?(:'required_scopes_prefix')
-        self.required_scopes_prefix = attributes[:'required_scopes_prefix']
-      end
-
-      if attributes.key?(:'unique_identifier')
-        self.unique_identifier = attributes[:'unique_identifier']
+      if attributes.key?(:'key')
+        self.key = attributes[:'key']
       end
     end
 
@@ -169,16 +88,8 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          allowed_redirect_uris == o.allowed_redirect_uris &&
-          audience == o.audience &&
-          bound_claims == o.bound_claims &&
-          client_id == o.client_id &&
-          client_secret == o.client_secret &&
-          is_internal == o.is_internal &&
-          issuer == o.issuer &&
-          required_scopes == o.required_scopes &&
-          required_scopes_prefix == o.required_scopes_prefix &&
-          unique_identifier == o.unique_identifier
+          certificate_pem == o.certificate_pem &&
+          key == o.key
     end
 
     # @see the `==` method
@@ -190,7 +101,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allowed_redirect_uris, audience, bound_claims, client_id, client_secret, is_internal, issuer, required_scopes, required_scopes_prefix, unique_identifier].hash
+      [certificate_pem, key].hash
     end
 
     # Builds the object from hash
