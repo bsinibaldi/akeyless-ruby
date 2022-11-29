@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **accessibility** | **String** | for personal password manager | [optional][default to &#39;regular&#39;] |
-| **ignore_cache** | **String** | Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache. This flag is only relevant when using the RestAPI | [optional] |
+| **ignore_cache** | **String** | Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **names** | **Array&lt;String&gt;** | Secret name |  |
 | **pretty_print** | **Boolean** | Print the secret value with json-pretty-print (not relevent to SDK) | [optional] |

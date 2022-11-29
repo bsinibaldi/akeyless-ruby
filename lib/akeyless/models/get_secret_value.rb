@@ -18,7 +18,7 @@ module Akeyless
     # for personal password manager
     attr_accessor :accessibility
 
-    # Ignore Cache Retrieve the Secret value without checking the Gateway's cache. This flag is only relevant when using the RestAPI
+    # Ignore Cache Retrieve the Secret value without checking the Gateway's cache [true/false]. This flag is only relevant when using the RestAPI
     attr_accessor :ignore_cache
 
     # Set output format to JSON

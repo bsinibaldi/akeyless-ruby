@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **ignore_cache** | **String** | Ignore Cache Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **names** | **String** | Secret name |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
@@ -16,6 +17,7 @@
 require 'akeyless'
 
 instance = Akeyless::GetRotatedSecretValue.new(
+  ignore_cache: null,
   json: null,
   names: null,
   token: null,
