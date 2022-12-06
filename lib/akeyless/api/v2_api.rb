@@ -4044,7 +4044,7 @@ module Akeyless
         :return_type => return_type
       )
 
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: V2Api#export_classic_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

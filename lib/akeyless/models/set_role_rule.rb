@@ -33,6 +33,9 @@ module Akeyless
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
+    # RoleRule ttl
+    attr_accessor :ttl
+
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
 
@@ -45,6 +48,7 @@ module Akeyless
         :'role_name' => :'role-name',
         :'rule_type' => :'rule-type',
         :'token' => :'token',
+        :'ttl' => :'ttl',
         :'uid_token' => :'uid-token'
       }
     end
@@ -63,6 +67,7 @@ module Akeyless
         :'role_name' => :'String',
         :'rule_type' => :'String',
         :'token' => :'String',
+        :'ttl' => :'Integer',
         :'uid_token' => :'String'
       }
     end
@@ -116,6 +121,10 @@ module Akeyless
         self.token = attributes[:'token']
       end
 
+      if attributes.key?(:'ttl')
+        self.ttl = attributes[:'ttl']
+      end
+
       if attributes.key?(:'uid_token')
         self.uid_token = attributes[:'uid_token']
       end
@@ -160,6 +169,7 @@ module Akeyless
           role_name == o.role_name &&
           rule_type == o.rule_type &&
           token == o.token &&
+          ttl == o.ttl &&
           uid_token == o.uid_token
     end
 
@@ -172,7 +182,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [capability, json, path, role_name, rule_type, token, uid_token].hash
+      [capability, json, path, role_name, rule_type, token, ttl, uid_token].hash
     end
 
     # Builds the object from hash

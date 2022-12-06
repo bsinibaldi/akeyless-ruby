@@ -37,7 +37,7 @@ module Akeyless
     # The name of a key that used to encrypt the secret value
     attr_accessor :protection_key
 
-    # Target location in Akeyless for migrated secrets
+    # Target location in your Akeyless personal folder for migrated secrets
     attr_accessor :target_location
 
     # Authentication token (see `/auth` and `/configure`)
