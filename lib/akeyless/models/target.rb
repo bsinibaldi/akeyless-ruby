@@ -17,6 +17,8 @@ module Akeyless
   class Target
     attr_accessor :access_date
 
+    attr_accessor :access_request_status
+
     # this is not \"omitempty\" since an empty value causes no update while an empty map will clear the attributes
     attr_accessor :attributes
 
@@ -27,6 +29,8 @@ module Akeyless
     attr_accessor :creation_date
 
     attr_accessor :credentials_less
+
+    attr_accessor :is_access_request_enabled
 
     attr_accessor :last_version
 
@@ -50,11 +54,13 @@ module Akeyless
     def self.attribute_map
       {
         :'access_date' => :'access_date',
+        :'access_request_status' => :'access_request_status',
         :'attributes' => :'attributes',
         :'client_permissions' => :'client_permissions',
         :'comment' => :'comment',
         :'creation_date' => :'creation_date',
         :'credentials_less' => :'credentials_less',
+        :'is_access_request_enabled' => :'is_access_request_enabled',
         :'last_version' => :'last_version',
         :'modification_date' => :'modification_date',
         :'protection_key_name' => :'protection_key_name',
@@ -76,11 +82,13 @@ module Akeyless
     def self.openapi_types
       {
         :'access_date' => :'Time',
+        :'access_request_status' => :'String',
         :'attributes' => :'Hash<String, Object>',
         :'client_permissions' => :'Array<String>',
         :'comment' => :'String',
         :'creation_date' => :'Time',
         :'credentials_less' => :'Boolean',
+        :'is_access_request_enabled' => :'Boolean',
         :'last_version' => :'Integer',
         :'modification_date' => :'Time',
         :'protection_key_name' => :'String',
@@ -118,6 +126,10 @@ module Akeyless
         self.access_date = attributes[:'access_date']
       end
 
+      if attributes.key?(:'access_request_status')
+        self.access_request_status = attributes[:'access_request_status']
+      end
+
       if attributes.key?(:'attributes')
         if (value = attributes[:'attributes']).is_a?(Hash)
           self.attributes = value
@@ -140,6 +152,10 @@ module Akeyless
 
       if attributes.key?(:'credentials_less')
         self.credentials_less = attributes[:'credentials_less']
+      end
+
+      if attributes.key?(:'is_access_request_enabled')
+        self.is_access_request_enabled = attributes[:'is_access_request_enabled']
       end
 
       if attributes.key?(:'last_version')
@@ -202,11 +218,13 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           access_date == o.access_date &&
+          access_request_status == o.access_request_status &&
           attributes == o.attributes &&
           client_permissions == o.client_permissions &&
           comment == o.comment &&
           creation_date == o.creation_date &&
           credentials_less == o.credentials_less &&
+          is_access_request_enabled == o.is_access_request_enabled &&
           last_version == o.last_version &&
           modification_date == o.modification_date &&
           protection_key_name == o.protection_key_name &&
@@ -227,7 +245,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_date, attributes, client_permissions, comment, creation_date, credentials_less, last_version, modification_date, protection_key_name, target_id, target_items_assoc, target_name, target_type, target_versions, with_customer_fragment].hash
+      [access_date, access_request_status, attributes, client_permissions, comment, creation_date, credentials_less, is_access_request_enabled, last_version, modification_date, protection_key_name, target_id, target_items_assoc, target_name, target_type, target_versions, with_customer_fragment].hash
     end
 
     # Builds the object from hash

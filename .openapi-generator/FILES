@@ -20,6 +20,7 @@ docs/AkeylessGatewayConfig.md
 docs/AllowedAccess.md
 docs/AssocRoleAuthMethod.md
 docs/AssocTargetItem.md
+docs/AttributeTypeAndValue.md
 docs/Auth.md
 docs/AuthMethod.md
 docs/AuthMethodAccessInfo.md
@@ -35,6 +36,9 @@ docs/BastionsList.md
 docs/CFConfigPart.md
 docs/CacheConfigPart.md
 docs/CertAccessRules.md
+docs/CertificateChainInfo.md
+docs/CertificateExpirationEvent.md
+docs/CertificateInfo.md
 docs/CertificateIssueInfo.md
 docs/ClassicKeyDetailsInfo.md
 docs/ClassicKeyStatusInfo.md
@@ -86,6 +90,8 @@ docs/CreateDockerhubTargetOutput.md
 docs/CreateDynamicSecret.md
 docs/CreateEKSTarget.md
 docs/CreateEKSTargetOutput.md
+docs/CreateEventForwarder.md
+docs/CreateEventForwarderOutput.md
 docs/CreateGKETarget.md
 docs/CreateGKETargetOutput.md
 docs/CreateGcpTarget.md
@@ -138,6 +144,7 @@ docs/DeleteAuthMethod.md
 docs/DeleteAuthMethodOutput.md
 docs/DeleteAuthMethods.md
 docs/DeleteAuthMethodsOutput.md
+docs/DeleteEventForwarder.md
 docs/DeleteItem.md
 docs/DeleteItemOutput.md
 docs/DeleteItems.md
@@ -159,6 +166,7 @@ docs/Detokenize.md
 docs/DetokenizeOutput.md
 docs/DynamicSecretProducerInfo.md
 docs/ElasticsearchLogForwardingConfig.md
+docs/EmailEntry.md
 docs/EmailPassAccessRules.md
 docs/EmailTokenizerInfo.md
 docs/Encrypt.md
@@ -169,11 +177,11 @@ docs/EncryptWithClassicKey.md
 docs/EncryptWithClassicKeyOutput.md
 docs/ExportClassicKey.md
 docs/ExportClassicKeyOutput.md
+docs/Extension.md
 docs/ExternalKMSKeyId.md
 docs/GCPAccessRules.md
 docs/GCPPayload.md
 docs/GCPSecretsMigration.md
-docs/GatewayAddAllowedManagementAccess.md
 docs/GatewayCreateK8SAuthConfig.md
 docs/GatewayCreateK8SAuthConfigOutput.md
 docs/GatewayCreateMigration.md
@@ -321,6 +329,8 @@ docs/GetAccountSettings.md
 docs/GetAccountSettingsCommandOutput.md
 docs/GetAuthMethod.md
 docs/GetDynamicSecretValue.md
+docs/GetEventForwarder.md
+docs/GetEventForwarderOutput.md
 docs/GetKubeExecCreds.md
 docs/GetKubeExecCredsOutput.md
 docs/GetPKICertificate.md
@@ -392,6 +402,7 @@ docs/ListItemsInPathOutput.md
 docs/ListRoles.md
 docs/ListRolesOutput.md
 docs/ListSRABastions.md
+docs/ListSharedItems.md
 docs/ListTargets.md
 docs/ListTargetsOutput.md
 docs/LogForwardingConfigPart.md
@@ -406,6 +417,8 @@ docs/MigrationsConfigPart.md
 docs/MockMigration.md
 docs/MockPayload.md
 docs/MoveObjects.md
+docs/Name.md
+docs/NotiForwarder.md
 docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
 docs/OIDCAccessRules.md
@@ -422,6 +435,8 @@ docs/RawCreds.md
 docs/RefreshKey.md
 docs/RefreshKeyOutput.md
 docs/RegexpTokenizerInfo.md
+docs/RequestAccess.md
+docs/RequestAccessOutput.md
 docs/RequiredActivity.md
 docs/ReverseRBAC.md
 docs/ReverseRBACClient.md
@@ -514,6 +529,7 @@ docs/UpdateDockerhubTarget.md
 docs/UpdateDockerhubTargetOutput.md
 docs/UpdateEKSTarget.md
 docs/UpdateEKSTargetOutput.md
+docs/UpdateEventForwarder.md
 docs/UpdateGKETarget.md
 docs/UpdateGKETargetOutput.md
 docs/UpdateGcpTarget.md
@@ -582,6 +598,7 @@ lib/akeyless/models/allowed_access.rb
 lib/akeyless/models/api_key_access_rules.rb
 lib/akeyless/models/assoc_role_auth_method.rb
 lib/akeyless/models/assoc_target_item.rb
+lib/akeyless/models/attribute_type_and_value.rb
 lib/akeyless/models/auth.rb
 lib/akeyless/models/auth_method.rb
 lib/akeyless/models/auth_method_access_info.rb
@@ -599,6 +616,9 @@ lib/akeyless/models/bastion_list_entry.rb
 lib/akeyless/models/bastions_list.rb
 lib/akeyless/models/cache_config_part.rb
 lib/akeyless/models/cert_access_rules.rb
+lib/akeyless/models/certificate_chain_info.rb
+lib/akeyless/models/certificate_expiration_event.rb
+lib/akeyless/models/certificate_info.rb
 lib/akeyless/models/certificate_issue_info.rb
 lib/akeyless/models/cf_config_part.rb
 lib/akeyless/models/classic_key_details_info.rb
@@ -651,6 +671,8 @@ lib/akeyless/models/create_dockerhub_target_output.rb
 lib/akeyless/models/create_dynamic_secret.rb
 lib/akeyless/models/create_eks_target.rb
 lib/akeyless/models/create_eks_target_output.rb
+lib/akeyless/models/create_event_forwarder.rb
+lib/akeyless/models/create_event_forwarder_output.rb
 lib/akeyless/models/create_gcp_target.rb
 lib/akeyless/models/create_gcp_target_output.rb
 lib/akeyless/models/create_github_target.rb
@@ -702,6 +724,7 @@ lib/akeyless/models/delete_auth_method.rb
 lib/akeyless/models/delete_auth_method_output.rb
 lib/akeyless/models/delete_auth_methods.rb
 lib/akeyless/models/delete_auth_methods_output.rb
+lib/akeyless/models/delete_event_forwarder.rb
 lib/akeyless/models/delete_item.rb
 lib/akeyless/models/delete_item_output.rb
 lib/akeyless/models/delete_items.rb
@@ -724,6 +747,7 @@ lib/akeyless/models/detokenize_output.rb
 lib/akeyless/models/ds_producer_details.rb
 lib/akeyless/models/dynamic_secret_producer_info.rb
 lib/akeyless/models/elasticsearch_log_forwarding_config.rb
+lib/akeyless/models/email_entry.rb
 lib/akeyless/models/email_pass_access_rules.rb
 lib/akeyless/models/email_tokenizer_info.rb
 lib/akeyless/models/encrypt.rb
@@ -734,8 +758,8 @@ lib/akeyless/models/encrypt_with_classic_key.rb
 lib/akeyless/models/encrypt_with_classic_key_output.rb
 lib/akeyless/models/export_classic_key.rb
 lib/akeyless/models/export_classic_key_output.rb
+lib/akeyless/models/extension.rb
 lib/akeyless/models/external_kms_key_id.rb
-lib/akeyless/models/gateway_add_allowed_management_access.rb
 lib/akeyless/models/gateway_create_k8_s_auth_config.rb
 lib/akeyless/models/gateway_create_k8_s_auth_config_output.rb
 lib/akeyless/models/gateway_create_migration.rb
@@ -886,6 +910,8 @@ lib/akeyless/models/get_account_settings.rb
 lib/akeyless/models/get_account_settings_command_output.rb
 lib/akeyless/models/get_auth_method.rb
 lib/akeyless/models/get_dynamic_secret_value.rb
+lib/akeyless/models/get_event_forwarder.rb
+lib/akeyless/models/get_event_forwarder_output.rb
 lib/akeyless/models/get_kube_exec_creds.rb
 lib/akeyless/models/get_kube_exec_creds_output.rb
 lib/akeyless/models/get_pki_certificate.rb
@@ -956,6 +982,7 @@ lib/akeyless/models/list_items.rb
 lib/akeyless/models/list_items_in_path_output.rb
 lib/akeyless/models/list_roles.rb
 lib/akeyless/models/list_roles_output.rb
+lib/akeyless/models/list_shared_items.rb
 lib/akeyless/models/list_sra_bastions.rb
 lib/akeyless/models/list_targets.rb
 lib/akeyless/models/list_targets_output.rb
@@ -971,6 +998,8 @@ lib/akeyless/models/migrations_config_part.rb
 lib/akeyless/models/mock_migration.rb
 lib/akeyless/models/mock_payload.rb
 lib/akeyless/models/move_objects.rb
+lib/akeyless/models/name.rb
+lib/akeyless/models/noti_forwarder.rb
 lib/akeyless/models/o_auth2_access_rules.rb
 lib/akeyless/models/o_auth2_custom_claim.rb
 lib/akeyless/models/object_version_settings_output.rb
@@ -987,6 +1016,8 @@ lib/akeyless/models/raw_creds.rb
 lib/akeyless/models/refresh_key.rb
 lib/akeyless/models/refresh_key_output.rb
 lib/akeyless/models/regexp_tokenizer_info.rb
+lib/akeyless/models/request_access.rb
+lib/akeyless/models/request_access_output.rb
 lib/akeyless/models/required_activity.rb
 lib/akeyless/models/reverse_rbac.rb
 lib/akeyless/models/reverse_rbac_client.rb
@@ -1079,6 +1110,7 @@ lib/akeyless/models/update_dockerhub_target.rb
 lib/akeyless/models/update_dockerhub_target_output.rb
 lib/akeyless/models/update_eks_target.rb
 lib/akeyless/models/update_eks_target_output.rb
+lib/akeyless/models/update_event_forwarder.rb
 lib/akeyless/models/update_gcp_target.rb
 lib/akeyless/models/update_gcp_target_output.rb
 lib/akeyless/models/update_github_target.rb
@@ -1133,4 +1165,21 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
+spec/models/attribute_type_and_value_spec.rb
+spec/models/certificate_chain_info_spec.rb
+spec/models/certificate_expiration_event_spec.rb
+spec/models/certificate_info_spec.rb
+spec/models/create_event_forwarder_output_spec.rb
+spec/models/create_event_forwarder_spec.rb
+spec/models/delete_event_forwarder_spec.rb
+spec/models/email_entry_spec.rb
+spec/models/extension_spec.rb
+spec/models/get_event_forwarder_output_spec.rb
+spec/models/get_event_forwarder_spec.rb
+spec/models/list_shared_items_spec.rb
+spec/models/name_spec.rb
+spec/models/noti_forwarder_spec.rb
+spec/models/request_access_output_spec.rb
+spec/models/request_access_spec.rb
+spec/models/update_event_forwarder_spec.rb
 spec/spec_helper.rb

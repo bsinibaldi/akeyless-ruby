@@ -17,6 +17,8 @@ module Akeyless
   class ItemGeneralInfo
     attr_accessor :cert_issue_details
 
+    attr_accessor :certificate_chain_info
+
     attr_accessor :classic_key_details
 
     attr_accessor :cluster_gw_url
@@ -39,6 +41,7 @@ module Akeyless
     def self.attribute_map
       {
         :'cert_issue_details' => :'cert_issue_details',
+        :'certificate_chain_info' => :'certificate_chain_info',
         :'classic_key_details' => :'classic_key_details',
         :'cluster_gw_url' => :'cluster_gw_url',
         :'display_metadata' => :'display_metadata',
@@ -60,6 +63,7 @@ module Akeyless
     def self.openapi_types
       {
         :'cert_issue_details' => :'CertificateIssueInfo',
+        :'certificate_chain_info' => :'CertificateChainInfo',
         :'classic_key_details' => :'ClassicKeyDetailsInfo',
         :'cluster_gw_url' => :'String',
         :'display_metadata' => :'String',
@@ -95,6 +99,10 @@ module Akeyless
 
       if attributes.key?(:'cert_issue_details')
         self.cert_issue_details = attributes[:'cert_issue_details']
+      end
+
+      if attributes.key?(:'certificate_chain_info')
+        self.certificate_chain_info = attributes[:'certificate_chain_info']
       end
 
       if attributes.key?(:'classic_key_details')
@@ -153,6 +161,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           cert_issue_details == o.cert_issue_details &&
+          certificate_chain_info == o.certificate_chain_info &&
           classic_key_details == o.classic_key_details &&
           cluster_gw_url == o.cluster_gw_url &&
           display_metadata == o.display_metadata &&
@@ -173,7 +182,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cert_issue_details, classic_key_details, cluster_gw_url, display_metadata, dynamic_secret_producer_details, password_policy, rotated_secret_details, secure_remote_access_details, static_secret_info, tokenizer_info].hash
+      [cert_issue_details, certificate_chain_info, classic_key_details, cluster_gw_url, display_metadata, dynamic_secret_producer_details, password_policy, rotated_secret_details, secure_remote_access_details, static_secret_info, tokenizer_info].hash
     end
 
     # Builds the object from hash

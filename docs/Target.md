@@ -5,11 +5,13 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **access_date** | **Time** |  | [optional] |
+| **access_request_status** | **String** |  | [optional] |
 | **attributes** | **Hash&lt;String, Object&gt;** | this is not \&quot;omitempty\&quot; since an empty value causes no update while an empty map will clear the attributes | [optional] |
 | **client_permissions** | **Array&lt;String&gt;** |  | [optional] |
 | **comment** | **String** |  | [optional] |
 | **creation_date** | **Time** |  | [optional] |
 | **credentials_less** | **Boolean** |  | [optional] |
+| **is_access_request_enabled** | **Boolean** |  | [optional] |
 | **last_version** | **Integer** |  | [optional] |
 | **modification_date** | **Time** |  | [optional] |
 | **protection_key_name** | **String** |  | [optional] |
@@ -27,11 +29,13 @@ require 'akeyless'
 
 instance = Akeyless::Target.new(
   access_date: null,
+  access_request_status: null,
   attributes: null,
   client_permissions: null,
   comment: null,
   creation_date: null,
   credentials_less: null,
+  is_access_request_enabled: null,
   last_version: null,
   modification_date: null,
   protection_key_name: null,

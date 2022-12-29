@@ -17,6 +17,8 @@ module Akeyless
   class Item
     attr_accessor :access_date
 
+    attr_accessor :access_request_status
+
     attr_accessor :auto_rotate
 
     attr_accessor :cert_issuer_signer_key_name
@@ -36,6 +38,8 @@ module Akeyless
     attr_accessor :deletion_date
 
     attr_accessor :display_id
+
+    attr_accessor :is_access_request_enabled
 
     attr_accessor :is_enabled
 
@@ -88,6 +92,7 @@ module Akeyless
     def self.attribute_map
       {
         :'access_date' => :'access_date',
+        :'access_request_status' => :'access_request_status',
         :'auto_rotate' => :'auto_rotate',
         :'cert_issuer_signer_key_name' => :'cert_issuer_signer_key_name',
         :'certificate_issue_details' => :'certificate_issue_details',
@@ -98,6 +103,7 @@ module Akeyless
         :'delete_protection' => :'delete_protection',
         :'deletion_date' => :'deletion_date',
         :'display_id' => :'display_id',
+        :'is_access_request_enabled' => :'is_access_request_enabled',
         :'is_enabled' => :'is_enabled',
         :'item_accessibility' => :'item_accessibility',
         :'item_general_info' => :'item_general_info',
@@ -133,6 +139,7 @@ module Akeyless
     def self.openapi_types
       {
         :'access_date' => :'Time',
+        :'access_request_status' => :'String',
         :'auto_rotate' => :'Boolean',
         :'cert_issuer_signer_key_name' => :'String',
         :'certificate_issue_details' => :'CertificateIssueInfo',
@@ -143,6 +150,7 @@ module Akeyless
         :'delete_protection' => :'Boolean',
         :'deletion_date' => :'Time',
         :'display_id' => :'String',
+        :'is_access_request_enabled' => :'Boolean',
         :'is_enabled' => :'Boolean',
         :'item_accessibility' => :'Integer',
         :'item_general_info' => :'ItemGeneralInfo',
@@ -194,6 +202,10 @@ module Akeyless
         self.access_date = attributes[:'access_date']
       end
 
+      if attributes.key?(:'access_request_status')
+        self.access_request_status = attributes[:'access_request_status']
+      end
+
       if attributes.key?(:'auto_rotate')
         self.auto_rotate = attributes[:'auto_rotate']
       end
@@ -234,6 +246,10 @@ module Akeyless
 
       if attributes.key?(:'display_id')
         self.display_id = attributes[:'display_id']
+      end
+
+      if attributes.key?(:'is_access_request_enabled')
+        self.is_access_request_enabled = attributes[:'is_access_request_enabled']
       end
 
       if attributes.key?(:'is_enabled')
@@ -356,6 +372,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           access_date == o.access_date &&
+          access_request_status == o.access_request_status &&
           auto_rotate == o.auto_rotate &&
           cert_issuer_signer_key_name == o.cert_issuer_signer_key_name &&
           certificate_issue_details == o.certificate_issue_details &&
@@ -366,6 +383,7 @@ module Akeyless
           delete_protection == o.delete_protection &&
           deletion_date == o.deletion_date &&
           display_id == o.display_id &&
+          is_access_request_enabled == o.is_access_request_enabled &&
           is_enabled == o.is_enabled &&
           item_accessibility == o.item_accessibility &&
           item_general_info == o.item_general_info &&
@@ -400,7 +418,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_date, auto_rotate, cert_issuer_signer_key_name, certificate_issue_details, certificates, client_permissions, creation_date, customer_fragment_id, delete_protection, deletion_date, display_id, is_enabled, item_accessibility, item_general_info, item_id, item_metadata, item_name, item_size, item_state, item_sub_type, item_tags, item_targets_assoc, item_type, item_versions, last_version, modification_date, next_rotation_date, protection_key_name, protection_key_type, public_value, rotation_interval, shared_by, target_versions, with_customer_fragment].hash
+      [access_date, access_request_status, auto_rotate, cert_issuer_signer_key_name, certificate_issue_details, certificates, client_permissions, creation_date, customer_fragment_id, delete_protection, deletion_date, display_id, is_access_request_enabled, is_enabled, item_accessibility, item_general_info, item_id, item_metadata, item_name, item_size, item_state, item_sub_type, item_tags, item_targets_assoc, item_type, item_versions, last_version, modification_date, next_rotation_date, protection_key_name, protection_key_type, public_value, rotation_interval, shared_by, target_versions, with_customer_fragment].hash
     end
 
     # Builds the object from hash

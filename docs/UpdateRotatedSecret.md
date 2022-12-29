@@ -10,6 +10,7 @@
 | **auto_rotate** | **String** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] |
 | **aws_region** | **String** | Region (used in aws) | [optional][default to &#39;us-east-2&#39;] |
 | **custom_payload** | **String** |  | [optional] |
+| **gcp_key** | **String** | Base64-encoded service account private key text | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **keep_prev_version** | **String** |  | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] |
@@ -55,6 +56,7 @@ instance = Akeyless::UpdateRotatedSecret.new(
   auto_rotate: null,
   aws_region: null,
   custom_payload: null,
+  gcp_key: null,
   json: null,
   keep_prev_version: null,
   key: null,

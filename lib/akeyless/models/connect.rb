@@ -45,6 +45,9 @@ module Akeyless
     # The Secret name (for database and AWS producers - producer name)
     attr_accessor :name
 
+    # Path to SSH executable. e.g. /usr/bin/ssh
+    attr_accessor :ssh_command
+
     # The Use to add offical SSH arguments (except -i)
     attr_accessor :ssh_extra_args
 
@@ -76,6 +79,7 @@ module Akeyless
         :'identity_file' => :'identity-file',
         :'json' => :'json',
         :'name' => :'name',
+        :'ssh_command' => :'ssh-command',
         :'ssh_extra_args' => :'ssh-extra-args',
         :'ssh_legacy_signing_alg' => :'ssh-legacy-signing-alg',
         :'target' => :'target',
@@ -103,6 +107,7 @@ module Akeyless
         :'identity_file' => :'String',
         :'json' => :'Boolean',
         :'name' => :'String',
+        :'ssh_command' => :'String',
         :'ssh_extra_args' => :'String',
         :'ssh_legacy_signing_alg' => :'Boolean',
         :'target' => :'String',
@@ -177,6 +182,10 @@ module Akeyless
         self.name = attributes[:'name']
       end
 
+      if attributes.key?(:'ssh_command')
+        self.ssh_command = attributes[:'ssh_command']
+      end
+
       if attributes.key?(:'ssh_extra_args')
         self.ssh_extra_args = attributes[:'ssh_extra_args']
       end
@@ -230,6 +239,7 @@ module Akeyless
           identity_file == o.identity_file &&
           json == o.json &&
           name == o.name &&
+          ssh_command == o.ssh_command &&
           ssh_extra_args == o.ssh_extra_args &&
           ssh_legacy_signing_alg == o.ssh_legacy_signing_alg &&
           target == o.target &&
@@ -247,7 +257,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [helper, rc_file_override, bastion_ctrl_path, bastion_ctrl_port, bastion_ctrl_proto, bastion_ctrl_subdomain, cert_issuer_name, identity_file, json, name, ssh_extra_args, ssh_legacy_signing_alg, target, token, uid_token, via_bastion].hash
+      [helper, rc_file_override, bastion_ctrl_path, bastion_ctrl_port, bastion_ctrl_proto, bastion_ctrl_subdomain, cert_issuer_name, identity_file, json, name, ssh_command, ssh_extra_args, ssh_legacy_signing_alg, target, token, uid_token, via_bastion].hash
     end
 
     # Builds the object from hash

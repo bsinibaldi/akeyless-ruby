@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **access_date** | **Time** |  | [optional] |
+| **access_request_status** | **String** |  | [optional] |
 | **auto_rotate** | **Boolean** |  | [optional] |
 | **cert_issuer_signer_key_name** | **String** |  | [optional] |
 | **certificate_issue_details** | [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] |
@@ -15,6 +16,7 @@
 | **delete_protection** | **Boolean** |  | [optional] |
 | **deletion_date** | **Time** |  | [optional] |
 | **display_id** | **String** |  | [optional] |
+| **is_access_request_enabled** | **Boolean** |  | [optional] |
 | **is_enabled** | **Boolean** |  | [optional] |
 | **item_accessibility** | **Integer** |  | [optional] |
 | **item_general_info** | [**ItemGeneralInfo**](ItemGeneralInfo.md) |  | [optional] |
@@ -46,6 +48,7 @@ require 'akeyless'
 
 instance = Akeyless::Item.new(
   access_date: null,
+  access_request_status: null,
   auto_rotate: null,
   cert_issuer_signer_key_name: null,
   certificate_issue_details: null,
@@ -56,6 +59,7 @@ instance = Akeyless::Item.new(
   delete_protection: null,
   deletion_date: null,
   display_id: null,
+  is_access_request_enabled: null,
   is_enabled: null,
   item_accessibility: null,
   item_general_info: null,

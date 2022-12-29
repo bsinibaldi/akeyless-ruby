@@ -30,6 +30,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_dockerhub_target**](V2Api.md#create_dockerhub_target) | **POST** /create-dockerhub-target |  |
 | [**create_dynamic_secret**](V2Api.md#create_dynamic_secret) | **POST** /create-dynamic-secret |  |
 | [**create_eks_target**](V2Api.md#create_eks_target) | **POST** /create-eks-target |  |
+| [**create_event_forwarder**](V2Api.md#create_event_forwarder) | **POST** /create-event-forwarder |  |
 | [**create_gcp_target**](V2Api.md#create_gcp_target) | **POST** /create-gcp-target |  |
 | [**create_github_target**](V2Api.md#create_github_target) | **POST** /create-github-target |  |
 | [**create_gke_target**](V2Api.md#create_gke_target) | **POST** /create-gke-target |  |
@@ -51,6 +52,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**decrypt_with_classic_key**](V2Api.md#decrypt_with_classic_key) | **POST** /decrypt-with-classic-key |  |
 | [**delete_auth_method**](V2Api.md#delete_auth_method) | **POST** /delete-auth-method |  |
 | [**delete_auth_methods**](V2Api.md#delete_auth_methods) | **POST** /delete-auth-methods |  |
+| [**delete_event_forwarder**](V2Api.md#delete_event_forwarder) | **POST** /delete-event-forwarder |  |
 | [**delete_item**](V2Api.md#delete_item) | **POST** /delete-item |  |
 | [**delete_items**](V2Api.md#delete_items) | **POST** /delete-items |  |
 | [**delete_role**](V2Api.md#delete_role) | **POST** /delete-role |  |
@@ -67,7 +69,6 @@ All URIs are relative to *https://api.akeyless.io*
 | [**encrypt**](V2Api.md#encrypt) | **POST** /encrypt |  |
 | [**encrypt_with_classic_key**](V2Api.md#encrypt_with_classic_key) | **POST** /encrypt-with-classic-key |  |
 | [**export_classic_key**](V2Api.md#export_classic_key) | **POST** /export-classic-key |  |
-| [**gateway_add_allowed_management_access**](V2Api.md#gateway_add_allowed_management_access) | **POST** /gateway-add-allow-management-access |  |
 | [**gateway_create_k8_s_auth_config**](V2Api.md#gateway_create_k8_s_auth_config) | **POST** /gateway-create-k8s-auth-config |  |
 | [**gateway_create_migration**](V2Api.md#gateway_create_migration) | **POST** /gateway-create-migration |  |
 | [**gateway_create_producer_artifactory**](V2Api.md#gateway_create_producer_artifactory) | **POST** /gateway-create-producer-artifactory |  |
@@ -144,6 +145,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**get_account_settings**](V2Api.md#get_account_settings) | **POST** /get-account-settings |  |
 | [**get_auth_method**](V2Api.md#get_auth_method) | **POST** /get-auth-method |  |
 | [**get_dynamic_secret_value**](V2Api.md#get_dynamic_secret_value) | **POST** /get-dynamic-secret-value |  |
+| [**get_event_forwarder**](V2Api.md#get_event_forwarder) | **POST** /get-event-forwarder |  |
 | [**get_kube_exec_creds**](V2Api.md#get_kube_exec_creds) | **POST** /get-kube-exec-creds |  |
 | [**get_pki_certificate**](V2Api.md#get_pki_certificate) | **POST** /get-pki-certificate |  |
 | [**get_role**](V2Api.md#get_role) | **POST** /get-role |  |
@@ -171,11 +173,13 @@ All URIs are relative to *https://api.akeyless.io*
 | [**list_gateways**](V2Api.md#list_gateways) | **POST** /list-gateways |  |
 | [**list_items**](V2Api.md#list_items) | **POST** /list-items |  |
 | [**list_roles**](V2Api.md#list_roles) | **POST** /list-roles |  |
+| [**list_shared_items**](V2Api.md#list_shared_items) | **POST** /list-shared-items |  |
 | [**list_sra_bastions**](V2Api.md#list_sra_bastions) | **POST** /list-sra-bastions |  |
 | [**list_targets**](V2Api.md#list_targets) | **POST** /list-targets |  |
 | [**move_objects**](V2Api.md#move_objects) | **POST** /move-objects |  |
 | [**raw_creds**](V2Api.md#raw_creds) | **POST** /raw-creds |  |
 | [**refresh_key**](V2Api.md#refresh_key) | **POST** /refresh-key |  |
+| [**request_access**](V2Api.md#request_access) | **POST** /request-access |  |
 | [**reverse_rbac**](V2Api.md#reverse_rbac) | **POST** /reverse-rbac |  |
 | [**revoke_creds**](V2Api.md#revoke_creds) | **POST** /revoke-creds |  |
 | [**rollback_secret**](V2Api.md#rollback_secret) | **POST** /rollback-secret |  |
@@ -215,6 +219,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_db_target_details**](V2Api.md#update_db_target_details) | **POST** /update-db-target-details |  |
 | [**update_dockerhub_target**](V2Api.md#update_dockerhub_target) | **POST** /update-dockerhub-target |  |
 | [**update_eks_target**](V2Api.md#update_eks_target) | **POST** /update-eks-target |  |
+| [**update_event_forwarder**](V2Api.md#update_event_forwarder) | **POST** /update-event-forwarder |  |
 | [**update_gcp_target**](V2Api.md#update_gcp_target) | **POST** /update-gcp-target |  |
 | [**update_github_target**](V2Api.md#update_github_target) | **POST** /update-github-target |  |
 | [**update_gke_target**](V2Api.md#update_gke_target) | **POST** /update-gke-target |  |
@@ -1857,6 +1862,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## create_event_forwarder
+
+> <CreateEventForwarderOutput> create_event_forwarder(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateEventForwarder.new({event_source_locations: ['event_source_locations_example'], forwarder_type: 'forwarder_type_example', name: 'name_example', runner_type: 'runner_type_example'}) # CreateEventForwarder | 
+
+begin
+  
+  result = api_instance.create_event_forwarder(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_event_forwarder: #{e}"
+end
+```
+
+#### Using the create_event_forwarder_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateEventForwarderOutput>, Integer, Hash)> create_event_forwarder_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_event_forwarder_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateEventForwarderOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_event_forwarder_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateEventForwarder**](CreateEventForwarder.md) |  |  |
+
+### Return type
+
+[**CreateEventForwarderOutput**](CreateEventForwarderOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_gcp_target
 
 > <CreateGcpTargetOutput> create_gcp_target(body)
@@ -3159,6 +3226,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## delete_event_forwarder
+
+> Object delete_event_forwarder(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::DeleteEventForwarder.new({name: 'name_example'}) # DeleteEventForwarder | 
+
+begin
+  
+  result = api_instance.delete_event_forwarder(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->delete_event_forwarder: #{e}"
+end
+```
+
+#### Using the delete_event_forwarder_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> delete_event_forwarder_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_event_forwarder_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->delete_event_forwarder_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**DeleteEventForwarder**](DeleteEventForwarder.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## delete_item
 
 > <DeleteItemOutput> delete_item(body)
@@ -4140,68 +4269,6 @@ end
 ### Return type
 
 [**ExportClassicKeyOutput**](ExportClassicKeyOutput.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## gateway_add_allowed_management_access
-
-> Object gateway_add_allowed_management_access(body)
-
-
-
-### Examples
-
-```ruby
-require 'time'
-require 'akeyless'
-
-api_instance = Akeyless::V2Api.new
-body = Akeyless::GatewayAddAllowedManagementAccess.new({sub_admin_access_id: 'sub_admin_access_id_example'}) # GatewayAddAllowedManagementAccess | 
-
-begin
-  
-  result = api_instance.gateway_add_allowed_management_access(body)
-  p result
-rescue Akeyless::ApiError => e
-  puts "Error when calling V2Api->gateway_add_allowed_management_access: #{e}"
-end
-```
-
-#### Using the gateway_add_allowed_management_access_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(Object, Integer, Hash)> gateway_add_allowed_management_access_with_http_info(body)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.gateway_add_allowed_management_access_with_http_info(body)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => Object
-rescue Akeyless::ApiError => e
-  puts "Error when calling V2Api->gateway_add_allowed_management_access_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **body** | [**GatewayAddAllowedManagementAccess**](GatewayAddAllowedManagementAccess.md) |  |  |
-
-### Return type
-
-**Object**
 
 ### Authorization
 
@@ -8926,6 +8993,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## get_event_forwarder
+
+> <GetEventForwarderOutput> get_event_forwarder(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GetEventForwarder.new({name: 'name_example'}) # GetEventForwarder | 
+
+begin
+  
+  result = api_instance.get_event_forwarder(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->get_event_forwarder: #{e}"
+end
+```
+
+#### Using the get_event_forwarder_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetEventForwarderOutput>, Integer, Hash)> get_event_forwarder_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_event_forwarder_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetEventForwarderOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->get_event_forwarder_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GetEventForwarder**](GetEventForwarder.md) |  |  |
+
+### Return type
+
+[**GetEventForwarderOutput**](GetEventForwarderOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## get_kube_exec_creds
 
 > <GetKubeExecCredsOutput> get_kube_exec_creds(body)
@@ -10626,6 +10755,67 @@ No authorization required
 - **Accept**: application/json
 
 
+## list_shared_items
+
+> list_shared_items(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::ListSharedItems.new # ListSharedItems | 
+
+begin
+  
+  api_instance.list_shared_items(body)
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->list_shared_items: #{e}"
+end
+```
+
+#### Using the list_shared_items_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> list_shared_items_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_shared_items_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->list_shared_items_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**ListSharedItems**](ListSharedItems.md) |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## list_sra_bastions
 
 > <BastionsList> list_sra_bastions(body)
@@ -10927,6 +11117,68 @@ end
 ### Return type
 
 [**RefreshKeyOutput**](RefreshKeyOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## request_access
+
+> <RequestAccessOutput> request_access(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::RequestAccess.new({capability: ['capability_example'], name: 'name_example'}) # RequestAccess | 
+
+begin
+  
+  result = api_instance.request_access(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->request_access: #{e}"
+end
+```
+
+#### Using the request_access_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RequestAccessOutput>, Integer, Hash)> request_access_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.request_access_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RequestAccessOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->request_access_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**RequestAccess**](RequestAccess.md) |  |  |
+
+### Return type
+
+[**RequestAccessOutput**](RequestAccessOutput.md)
 
 ### Authorization
 
@@ -13341,6 +13593,68 @@ end
 ### Return type
 
 [**UpdateEKSTargetOutput**](UpdateEKSTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_event_forwarder
+
+> Object update_event_forwarder(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateEventForwarder.new({name: 'name_example'}) # UpdateEventForwarder | 
+
+begin
+  
+  result = api_instance.update_event_forwarder(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_event_forwarder: #{e}"
+end
+```
+
+#### Using the update_event_forwarder_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> update_event_forwarder_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_event_forwarder_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_event_forwarder_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateEventForwarder**](UpdateEventForwarder.md) |  |  |
+
+### Return type
+
+**Object**
 
 ### Authorization
 
