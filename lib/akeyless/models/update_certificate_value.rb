@@ -14,11 +14,24 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class ListSRABastions
-    attr_accessor :allowed_urls_only
+  class UpdateCertificateValue
+    # Content of the certificate PEM in a Base64 format.
+    attr_accessor :certificate_data
+
+    # How many days before the expiration of the certificate would you like to be notified.
+    attr_accessor :expiration_event_in
 
     # Set output format to JSON
     attr_accessor :json
+
+    # The name of a key to use to encrypt the certificate's key (if empty, the account default protectionKey key will be used)
+    attr_accessor :key
+
+    # Content of the certificate's private key PEM in a Base64 format.
+    attr_accessor :key_data
+
+    # Certificate name
+    attr_accessor :name
 
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
@@ -29,8 +42,12 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'allowed_urls_only' => :'allowed-urls-only',
+        :'certificate_data' => :'certificate-data',
+        :'expiration_event_in' => :'expiration-event-in',
         :'json' => :'json',
+        :'key' => :'key',
+        :'key_data' => :'key-data',
+        :'name' => :'name',
         :'token' => :'token',
         :'uid_token' => :'uid-token'
       }
@@ -44,8 +61,12 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'allowed_urls_only' => :'Boolean',
+        :'certificate_data' => :'String',
+        :'expiration_event_in' => :'Array<String>',
         :'json' => :'Boolean',
+        :'key' => :'String',
+        :'key_data' => :'String',
+        :'name' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String'
       }
@@ -61,23 +82,41 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::ListSRABastions` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::UpdateCertificateValue` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::ListSRABastions`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::UpdateCertificateValue`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'allowed_urls_only')
-        self.allowed_urls_only = attributes[:'allowed_urls_only']
+      if attributes.key?(:'certificate_data')
+        self.certificate_data = attributes[:'certificate_data']
+      end
+
+      if attributes.key?(:'expiration_event_in')
+        if (value = attributes[:'expiration_event_in']).is_a?(Array)
+          self.expiration_event_in = value
+        end
       end
 
       if attributes.key?(:'json')
         self.json = attributes[:'json']
+      end
+
+      if attributes.key?(:'key')
+        self.key = attributes[:'key']
+      end
+
+      if attributes.key?(:'key_data')
+        self.key_data = attributes[:'key_data']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
       if attributes.key?(:'token')
@@ -93,12 +132,17 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @name.nil?
       true
     end
 
@@ -107,8 +151,12 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          allowed_urls_only == o.allowed_urls_only &&
+          certificate_data == o.certificate_data &&
+          expiration_event_in == o.expiration_event_in &&
           json == o.json &&
+          key == o.key &&
+          key_data == o.key_data &&
+          name == o.name &&
           token == o.token &&
           uid_token == o.uid_token
     end
@@ -122,7 +170,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allowed_urls_only, json, token, uid_token].hash
+      [certificate_data, expiration_event_in, json, key, key_data, name, token, uid_token].hash
     end
 
     # Builds the object from hash

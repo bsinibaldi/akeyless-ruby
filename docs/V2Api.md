@@ -24,6 +24,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_auth_method_universal_identity**](V2Api.md#create_auth_method_universal_identity) | **POST** /create-auth-method-universal-identity |  |
 | [**create_aws_target**](V2Api.md#create_aws_target) | **POST** /create-aws-target |  |
 | [**create_azure_target**](V2Api.md#create_azure_target) | **POST** /create-azure-target |  |
+| [**create_certificate**](V2Api.md#create_certificate) | **POST** /create-certificate |  |
 | [**create_classic_key**](V2Api.md#create_classic_key) | **POST** /create-classic-key |  |
 | [**create_db_target**](V2Api.md#create_db_target) | **POST** /create-db-target |  |
 | [**create_dfc_key**](V2Api.md#create_dfc_key) | **POST** /create-dfc-key |  |
@@ -140,10 +141,12 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_update_producer_rdp**](V2Api.md#gateway_update_producer_rdp) | **POST** /gateway-update-producer-rdp |  |
 | [**gateway_update_producer_redshift**](V2Api.md#gateway_update_producer_redshift) | **POST** /gateway-update-producer-redshift |  |
 | [**gateway_update_producer_snowflake**](V2Api.md#gateway_update_producer_snowflake) | **POST** /gateway-update-producer-snowflake |  |
+| [**gateway_update_tls_cert**](V2Api.md#gateway_update_tls_cert) | **POST** /gateway-update-tls-cert |  |
 | [**gateway_update_tmp_users**](V2Api.md#gateway_update_tmp_users) | **POST** /gateway-update-producer-tmp-creds |  |
 | [**get_account_logo**](V2Api.md#get_account_logo) | **POST** /get-account-logo |  |
 | [**get_account_settings**](V2Api.md#get_account_settings) | **POST** /get-account-settings |  |
 | [**get_auth_method**](V2Api.md#get_auth_method) | **POST** /get-auth-method |  |
+| [**get_certificate_value**](V2Api.md#get_certificate_value) | **POST** /get-certificate-value |  |
 | [**get_dynamic_secret_value**](V2Api.md#get_dynamic_secret_value) | **POST** /get-dynamic-secret-value |  |
 | [**get_event_forwarder**](V2Api.md#get_event_forwarder) | **POST** /get-event-forwarder |  |
 | [**get_kube_exec_creds**](V2Api.md#get_kube_exec_creds) | **POST** /get-kube-exec-creds |  |
@@ -215,6 +218,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_aws_target**](V2Api.md#update_aws_target) | **POST** /update-aws-target |  |
 | [**update_aws_target_details**](V2Api.md#update_aws_target_details) | **POST** /update-aws-target-details |  |
 | [**update_azure_target**](V2Api.md#update_azure_target) | **POST** /update-azure-target |  |
+| [**update_certificate_value**](V2Api.md#update_certificate_value) | **POST** /update-certificate-value |  |
 | [**update_db_target**](V2Api.md#update_db_target) | **POST** /update-db-target |  |
 | [**update_db_target_details**](V2Api.md#update_db_target_details) | **POST** /update-db-target-details |  |
 | [**update_dockerhub_target**](V2Api.md#update_dockerhub_target) | **POST** /update-dockerhub-target |  |
@@ -1479,6 +1483,68 @@ end
 ### Return type
 
 [**CreateAzureTargetOutput**](CreateAzureTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_certificate
+
+> <CreateCertificateOutput> create_certificate(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateCertificate.new({name: 'name_example'}) # CreateCertificate | 
+
+begin
+  
+  result = api_instance.create_certificate(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_certificate: #{e}"
+end
+```
+
+#### Using the create_certificate_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateCertificateOutput>, Integer, Hash)> create_certificate_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_certificate_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateCertificateOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_certificate_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateCertificate**](CreateCertificate.md) |  |  |
+
+### Return type
+
+[**CreateCertificateOutput**](CreateCertificateOutput.md)
 
 ### Authorization
 
@@ -8687,6 +8753,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## gateway_update_tls_cert
+
+> <GatewayUpdateTlsCertOutput> gateway_update_tls_cert(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayUpdateTlsCert.new # GatewayUpdateTlsCert | 
+
+begin
+  
+  result = api_instance.gateway_update_tls_cert(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_update_tls_cert: #{e}"
+end
+```
+
+#### Using the gateway_update_tls_cert_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewayUpdateTlsCertOutput>, Integer, Hash)> gateway_update_tls_cert_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_update_tls_cert_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewayUpdateTlsCertOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_update_tls_cert_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayUpdateTlsCert**](GatewayUpdateTlsCert.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateTlsCertOutput**](GatewayUpdateTlsCertOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## gateway_update_tmp_users
 
 > gateway_update_tmp_users(body)
@@ -8920,6 +9048,68 @@ end
 ### Return type
 
 [**AuthMethod**](AuthMethod.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_certificate_value
+
+> <GetCertificateValueOutput> get_certificate_value(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GetCertificateValue.new({name: 'name_example'}) # GetCertificateValue | 
+
+begin
+  
+  result = api_instance.get_certificate_value(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->get_certificate_value: #{e}"
+end
+```
+
+#### Using the get_certificate_value_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetCertificateValueOutput>, Integer, Hash)> get_certificate_value_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_certificate_value_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetCertificateValueOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->get_certificate_value_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GetCertificateValue**](GetCertificateValue.md) |  |  |
+
+### Return type
+
+[**GetCertificateValueOutput**](GetCertificateValueOutput.md)
 
 ### Authorization
 
@@ -13345,6 +13535,68 @@ end
 ### Return type
 
 [**UpdateAzureTargetOutput**](UpdateAzureTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_certificate_value
+
+> <UpdateCertificateOutput> update_certificate_value(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateCertificateValue.new({name: 'name_example'}) # UpdateCertificateValue | 
+
+begin
+  
+  result = api_instance.update_certificate_value(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_certificate_value: #{e}"
+end
+```
+
+#### Using the update_certificate_value_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpdateCertificateOutput>, Integer, Hash)> update_certificate_value_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_certificate_value_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpdateCertificateOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_certificate_value_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateCertificateValue**](UpdateCertificateValue.md) |  |  |
+
+### Return type
+
+[**UpdateCertificateOutput**](UpdateCertificateOutput.md)
 
 ### Authorization
 

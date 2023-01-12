@@ -14,11 +14,12 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class ListSRABastions
-    attr_accessor :allowed_urls_only
-
+  class GetCertificateValue
     # Set output format to JSON
     attr_accessor :json
+
+    # Certificate name
+    attr_accessor :name
 
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
@@ -26,13 +27,17 @@ module Akeyless
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
 
+    # Certificate version
+    attr_accessor :version
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'allowed_urls_only' => :'allowed-urls-only',
         :'json' => :'json',
+        :'name' => :'name',
         :'token' => :'token',
-        :'uid_token' => :'uid-token'
+        :'uid_token' => :'uid-token',
+        :'version' => :'version'
       }
     end
 
@@ -44,10 +49,11 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'allowed_urls_only' => :'Boolean',
         :'json' => :'Boolean',
+        :'name' => :'String',
         :'token' => :'String',
-        :'uid_token' => :'String'
+        :'uid_token' => :'String',
+        :'version' => :'Integer'
       }
     end
 
@@ -61,23 +67,23 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::ListSRABastions` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::GetCertificateValue` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::ListSRABastions`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::GetCertificateValue`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'allowed_urls_only')
-        self.allowed_urls_only = attributes[:'allowed_urls_only']
-      end
-
       if attributes.key?(:'json')
         self.json = attributes[:'json']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
       if attributes.key?(:'token')
@@ -87,18 +93,27 @@ module Akeyless
       if attributes.key?(:'uid_token')
         self.uid_token = attributes[:'uid_token']
       end
+
+      if attributes.key?(:'version')
+        self.version = attributes[:'version']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @name.nil?
       true
     end
 
@@ -107,10 +122,11 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          allowed_urls_only == o.allowed_urls_only &&
           json == o.json &&
+          name == o.name &&
           token == o.token &&
-          uid_token == o.uid_token
+          uid_token == o.uid_token &&
+          version == o.version
     end
 
     # @see the `==` method
@@ -122,7 +138,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allowed_urls_only, json, token, uid_token].hash
+      [json, name, token, uid_token, version].hash
     end
 
     # Builds the object from hash

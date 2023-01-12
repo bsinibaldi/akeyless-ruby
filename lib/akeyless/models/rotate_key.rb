@@ -22,6 +22,9 @@ module Akeyless
     # Key name
     attr_accessor :name
 
+    # The new pem encoded certificate for the classic key. relevant only for keys provided by user ('bring-your-own-key')
+    attr_accessor :new_cert_pem_data
+
     # The new base64 encoded value for the classic key. relevant only for keys provided by user ('bring-your-own-key')
     attr_accessor :new_key_data
 
@@ -36,6 +39,7 @@ module Akeyless
       {
         :'json' => :'json',
         :'name' => :'name',
+        :'new_cert_pem_data' => :'new-cert-pem-data',
         :'new_key_data' => :'new-key-data',
         :'token' => :'token',
         :'uid_token' => :'uid-token'
@@ -52,6 +56,7 @@ module Akeyless
       {
         :'json' => :'Boolean',
         :'name' => :'String',
+        :'new_cert_pem_data' => :'String',
         :'new_key_data' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String'
@@ -85,6 +90,10 @@ module Akeyless
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'new_cert_pem_data')
+        self.new_cert_pem_data = attributes[:'new_cert_pem_data']
       end
 
       if attributes.key?(:'new_key_data')
@@ -125,6 +134,7 @@ module Akeyless
       self.class == o.class &&
           json == o.json &&
           name == o.name &&
+          new_cert_pem_data == o.new_cert_pem_data &&
           new_key_data == o.new_key_data &&
           token == o.token &&
           uid_token == o.uid_token
@@ -139,7 +149,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [json, name, new_key_data, token, uid_token].hash
+      [json, name, new_cert_pem_data, new_key_data, token, uid_token].hash
     end
 
     # Builds the object from hash

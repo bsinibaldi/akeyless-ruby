@@ -14,25 +14,13 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class ListSRABastions
-    attr_accessor :allowed_urls_only
-
-    # Set output format to JSON
-    attr_accessor :json
-
-    # Authentication token (see `/auth` and `/configure`)
-    attr_accessor :token
-
-    # The universal identity token, Required only for universal_identity authentication
-    attr_accessor :uid_token
+  class UpdateCertificateOutput
+    attr_accessor :name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'allowed_urls_only' => :'allowed-urls-only',
-        :'json' => :'json',
-        :'token' => :'token',
-        :'uid_token' => :'uid-token'
+        :'name' => :'name'
       }
     end
 
@@ -44,10 +32,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'allowed_urls_only' => :'Boolean',
-        :'json' => :'Boolean',
-        :'token' => :'String',
-        :'uid_token' => :'String'
+        :'name' => :'String'
       }
     end
 
@@ -61,31 +46,19 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::ListSRABastions` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::UpdateCertificateOutput` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::ListSRABastions`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::UpdateCertificateOutput`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'allowed_urls_only')
-        self.allowed_urls_only = attributes[:'allowed_urls_only']
-      end
-
-      if attributes.key?(:'json')
-        self.json = attributes[:'json']
-      end
-
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
-      end
-
-      if attributes.key?(:'uid_token')
-        self.uid_token = attributes[:'uid_token']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
     end
 
@@ -107,10 +80,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          allowed_urls_only == o.allowed_urls_only &&
-          json == o.json &&
-          token == o.token &&
-          uid_token == o.uid_token
+          name == o.name
     end
 
     # @see the `==` method
@@ -122,7 +92,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allowed_urls_only, json, token, uid_token].hash
+      [name].hash
     end
 
     # Builds the object from hash

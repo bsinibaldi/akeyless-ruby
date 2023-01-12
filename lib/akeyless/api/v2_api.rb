@@ -1299,6 +1299,70 @@ module Akeyless
       return data, status_code, headers
     end
 
+    # @param body [CreateCertificate] 
+    # @param [Hash] opts the optional parameters
+    # @return [CreateCertificateOutput]
+    def create_certificate(body, opts = {})
+      data, _status_code, _headers = create_certificate_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [CreateCertificate] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CreateCertificateOutput, Integer, Hash)>] CreateCertificateOutput data, response status code and response headers
+    def create_certificate_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.create_certificate ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.create_certificate"
+      end
+      # resource path
+      local_var_path = '/create-certificate'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CreateCertificateOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.create_certificate",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#create_certificate\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # @param body [CreateClassicKey] 
     # @param [Hash] opts the optional parameters
     # @return [CreateClassicKeyOutput]
@@ -8711,6 +8775,70 @@ module Akeyless
       return data, status_code, headers
     end
 
+    # @param body [GatewayUpdateTlsCert] 
+    # @param [Hash] opts the optional parameters
+    # @return [GatewayUpdateTlsCertOutput]
+    def gateway_update_tls_cert(body, opts = {})
+      data, _status_code, _headers = gateway_update_tls_cert_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [GatewayUpdateTlsCert] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GatewayUpdateTlsCertOutput, Integer, Hash)>] GatewayUpdateTlsCertOutput data, response status code and response headers
+    def gateway_update_tls_cert_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.gateway_update_tls_cert ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.gateway_update_tls_cert"
+      end
+      # resource path
+      local_var_path = '/gateway-update-tls-cert'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GatewayUpdateTlsCertOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.gateway_update_tls_cert",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#gateway_update_tls_cert\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # @param body [GatewayUpdateTmpUsers] 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -8952,6 +9080,70 @@ module Akeyless
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: V2Api#get_auth_method\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param body [GetCertificateValue] 
+    # @param [Hash] opts the optional parameters
+    # @return [GetCertificateValueOutput]
+    def get_certificate_value(body, opts = {})
+      data, _status_code, _headers = get_certificate_value_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [GetCertificateValue] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GetCertificateValueOutput, Integer, Hash)>] GetCertificateValueOutput data, response status code and response headers
+    def get_certificate_value_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.get_certificate_value ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.get_certificate_value"
+      end
+      # resource path
+      local_var_path = '/get-certificate-value'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GetCertificateValueOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.get_certificate_value",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#get_certificate_value\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -13429,6 +13621,70 @@ module Akeyless
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: V2Api#update_azure_target\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param body [UpdateCertificateValue] 
+    # @param [Hash] opts the optional parameters
+    # @return [UpdateCertificateOutput]
+    def update_certificate_value(body, opts = {})
+      data, _status_code, _headers = update_certificate_value_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [UpdateCertificateValue] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(UpdateCertificateOutput, Integer, Hash)>] UpdateCertificateOutput data, response status code and response headers
+    def update_certificate_value_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.update_certificate_value ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.update_certificate_value"
+      end
+      # resource path
+      local_var_path = '/update-certificate-value'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'UpdateCertificateOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.update_certificate_value",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#update_certificate_value\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

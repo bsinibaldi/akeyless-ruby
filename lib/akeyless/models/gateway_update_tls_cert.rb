@@ -14,11 +14,16 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class ListSRABastions
-    attr_accessor :allowed_urls_only
+  # gatewayUpdateTlsCert is a command that updates Gateway TLS certificate
+  class GatewayUpdateTlsCert
+    # TLS Certificate (base64 encoded)
+    attr_accessor :cert_data
 
     # Set output format to JSON
     attr_accessor :json
+
+    # TLS Private Key (base64 encoded)
+    attr_accessor :key_data
 
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
@@ -29,8 +34,9 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'allowed_urls_only' => :'allowed-urls-only',
+        :'cert_data' => :'cert-data',
         :'json' => :'json',
+        :'key_data' => :'key-data',
         :'token' => :'token',
         :'uid_token' => :'uid-token'
       }
@@ -44,8 +50,9 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'allowed_urls_only' => :'Boolean',
+        :'cert_data' => :'String',
         :'json' => :'Boolean',
+        :'key_data' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String'
       }
@@ -61,23 +68,27 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::ListSRABastions` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::GatewayUpdateTlsCert` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::ListSRABastions`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::GatewayUpdateTlsCert`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'allowed_urls_only')
-        self.allowed_urls_only = attributes[:'allowed_urls_only']
+      if attributes.key?(:'cert_data')
+        self.cert_data = attributes[:'cert_data']
       end
 
       if attributes.key?(:'json')
         self.json = attributes[:'json']
+      end
+
+      if attributes.key?(:'key_data')
+        self.key_data = attributes[:'key_data']
       end
 
       if attributes.key?(:'token')
@@ -107,8 +118,9 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          allowed_urls_only == o.allowed_urls_only &&
+          cert_data == o.cert_data &&
           json == o.json &&
+          key_data == o.key_data &&
           token == o.token &&
           uid_token == o.uid_token
     end
@@ -122,7 +134,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allowed_urls_only, json, token, uid_token].hash
+      [cert_data, json, key_data, token, uid_token].hash
     end
 
     # Builds the object from hash
