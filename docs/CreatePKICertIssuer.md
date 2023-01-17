@@ -12,10 +12,11 @@
 | **code_signing_flag** | **Boolean** | If set, certificates will be flagged for code signing use | [optional] |
 | **country** | **String** | A comma-separated list of countries that will be set in the issued certificate | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **key_usage** | **String** | key-usage | [optional][default to &#39;DigitalSignature,KeyAgreement,KeyEncipherment&#39;] |
 | **locality** | **String** | A comma-separated list of localities that will be set in the issued certificate | [optional] |
-| **metadata** | **String** | A metadata about the issuer | [optional] |
+| **metadata** | **String** | Deprecated - use description | [optional] |
 | **name** | **String** | PKI certificate issuer name |  |
 | **not_enforce_hostnames** | **Boolean** | If set, any names are allowed for CN and SANs in the certificate and not only a valid host name | [optional] |
 | **not_require_cn** | **Boolean** | If set, clients can request certificates without a CN | [optional] |
@@ -45,6 +46,7 @@ instance = Akeyless::CreatePKICertIssuer.new(
   code_signing_flag: null,
   country: null,
   delete_protection: null,
+  description: null,
   json: null,
   key_usage: null,
   locality: null,

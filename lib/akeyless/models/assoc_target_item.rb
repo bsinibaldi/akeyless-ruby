@@ -16,6 +16,9 @@ require 'time'
 module Akeyless
   # assocTargetItem is a command that creates an association between target and item.
   class AssocTargetItem
+    # Automatically disable previous key version (required for azure targets)
+    attr_accessor :disable_previous_key_version
+
     # Set output format to JSON
     attr_accessor :json
 
@@ -64,6 +67,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'disable_previous_key_version' => :'disable-previous-key-version',
         :'json' => :'json',
         :'key_operations' => :'key-operations',
         :'keyring_name' => :'keyring-name',
@@ -90,6 +94,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'disable_previous_key_version' => :'Boolean',
         :'json' => :'Boolean',
         :'key_operations' => :'Array<String>',
         :'keyring_name' => :'String',
@@ -128,6 +133,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'disable_previous_key_version')
+        self.disable_previous_key_version = attributes[:'disable_previous_key_version']
+      end
 
       if attributes.key?(:'json')
         self.json = attributes[:'json']
@@ -224,6 +233,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          disable_previous_key_version == o.disable_previous_key_version &&
           json == o.json &&
           key_operations == o.key_operations &&
           keyring_name == o.keyring_name &&
@@ -250,7 +260,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [json, key_operations, keyring_name, kms_algorithm, location_id, multi_region, name, project_id, purpose, regions, target_name, tenant_secret_type, token, uid_token, vault_name].hash
+      [disable_previous_key_version, json, key_operations, keyring_name, kms_algorithm, location_id, multi_region, name, project_id, purpose, regions, target_name, tenant_secret_type, token, uid_token, vault_name].hash
     end
 
     # Builds the object from hash

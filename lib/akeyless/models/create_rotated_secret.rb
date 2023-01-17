@@ -35,6 +35,9 @@ module Akeyless
     # Protection from accidental deletion of this item
     attr_accessor :delete_protection
 
+    # Description of the object
+    attr_accessor :description
+
     # Base64-encoded service account private key text
     attr_accessor :gcp_key
 
@@ -44,7 +47,7 @@ module Akeyless
     # The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
     attr_accessor :key
 
-    # Metadata about the secret
+    # Deprecated - use description
     attr_accessor :metadata
 
     # Secret name
@@ -143,6 +146,7 @@ module Akeyless
         :'aws_region' => :'aws-region',
         :'custom_payload' => :'custom-payload',
         :'delete_protection' => :'delete_protection',
+        :'description' => :'description',
         :'gcp_key' => :'gcp-key',
         :'json' => :'json',
         :'key' => :'key',
@@ -196,6 +200,7 @@ module Akeyless
         :'aws_region' => :'String',
         :'custom_payload' => :'String',
         :'delete_protection' => :'String',
+        :'description' => :'String',
         :'gcp_key' => :'String',
         :'json' => :'Boolean',
         :'key' => :'String',
@@ -286,6 +291,10 @@ module Akeyless
 
       if attributes.key?(:'delete_protection')
         self.delete_protection = attributes[:'delete_protection']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'gcp_key')
@@ -478,6 +487,7 @@ module Akeyless
           aws_region == o.aws_region &&
           custom_payload == o.custom_payload &&
           delete_protection == o.delete_protection &&
+          description == o.description &&
           gcp_key == o.gcp_key &&
           json == o.json &&
           key == o.key &&
@@ -523,7 +533,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [api_id, api_key, application_id, authentication_credentials, auto_rotate, aws_region, custom_payload, delete_protection, gcp_key, json, key, metadata, name, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, rotator_custom_cmd, rotator_type, secure_access_allow_external_user, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, ssh_password, ssh_username, storage_account_key_name, tags, target_name, token, uid_token, user_attribute, user_dn].hash
+      [api_id, api_key, application_id, authentication_credentials, auto_rotate, aws_region, custom_payload, delete_protection, description, gcp_key, json, key, metadata, name, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, rotator_custom_cmd, rotator_type, secure_access_allow_external_user, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, ssh_password, ssh_username, storage_account_key_name, tags, target_name, token, uid_token, user_attribute, user_dn].hash
     end
 
     # Builds the object from hash

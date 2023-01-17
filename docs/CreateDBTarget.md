@@ -23,6 +23,8 @@
 | **port** | **String** |  | [optional] |
 | **pwd** | **String** |  | [optional] |
 | **snowflake_account** | **String** |  | [optional] |
+| **snowflake_api_private_key** | **String** | RSA Private key (base64 encoded) | [optional] |
+| **snowflake_api_private_key_password** | **String** | The Private key passphrase | [optional] |
 | **ssl** | **Boolean** | SSL connection mode | [optional] |
 | **ssl_certificate** | **String** | SSL connection certificate | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
@@ -54,6 +56,8 @@ instance = Akeyless::CreateDBTarget.new(
   port: null,
   pwd: null,
   snowflake_account: null,
+  snowflake_api_private_key: null,
+  snowflake_api_private_key_password: null,
   ssl: null,
   ssl_certificate: null,
   token: null,

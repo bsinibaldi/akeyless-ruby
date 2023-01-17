@@ -75,6 +75,11 @@ module Akeyless
 
     attr_accessor :db_port
 
+    # (Optional) Private Key in PEM format
+    attr_accessor :db_private_key
+
+    attr_accessor :db_private_key_passphrase
+
     attr_accessor :db_pwd
 
     # (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host's root CA set.
@@ -244,6 +249,8 @@ module Akeyless
         :'db_host_name' => :'db_host_name',
         :'db_name' => :'db_name',
         :'db_port' => :'db_port',
+        :'db_private_key' => :'db_private_key',
+        :'db_private_key_passphrase' => :'db_private_key_passphrase',
         :'db_pwd' => :'db_pwd',
         :'db_server_certificates' => :'db_server_certificates',
         :'db_server_name' => :'db_server_name',
@@ -348,6 +355,8 @@ module Akeyless
         :'db_host_name' => :'String',
         :'db_name' => :'String',
         :'db_port' => :'String',
+        :'db_private_key' => :'String',
+        :'db_private_key_passphrase' => :'String',
         :'db_pwd' => :'String',
         :'db_server_certificates' => :'String',
         :'db_server_name' => :'String',
@@ -551,6 +560,14 @@ module Akeyless
 
       if attributes.key?(:'db_port')
         self.db_port = attributes[:'db_port']
+      end
+
+      if attributes.key?(:'db_private_key')
+        self.db_private_key = attributes[:'db_private_key']
+      end
+
+      if attributes.key?(:'db_private_key_passphrase')
+        self.db_private_key_passphrase = attributes[:'db_private_key_passphrase']
       end
 
       if attributes.key?(:'db_pwd')
@@ -860,6 +877,8 @@ module Akeyless
           db_host_name == o.db_host_name &&
           db_name == o.db_name &&
           db_port == o.db_port &&
+          db_private_key == o.db_private_key &&
+          db_private_key_passphrase == o.db_private_key_passphrase &&
           db_pwd == o.db_pwd &&
           db_server_certificates == o.db_server_certificates &&
           db_server_name == o.db_server_name &&
@@ -936,7 +955,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [app_private_key, artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, auth_flow, aws_access_key_id, aws_region, aws_secret_access_key, aws_session_token, azure_client_id, azure_client_secret, azure_resource_group_name, azure_resource_name, azure_subscription_id, azure_tenant_id, ca_cert_data, ca_cert_name, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, client_id, client_secret, db_host_name, db_name, db_port, db_pwd, db_server_certificates, db_server_name, db_user_name, eks_access_key_id, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, gcp_service_account_email, gcp_service_account_key, github_app_id, github_app_private_key, github_base_url, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, host, implementation_type, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_uri_connection, mongodb_uri_options, mongodb_username, password, payload, port, private_key, private_key_password, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, security_token, sf_account, ssl_connection_certificate, ssl_connection_mode, tenant_url, url, use_gw_cloud_identity, user_name, username, venafi_api_key, venafi_base_url, venafi_tpp_password, venafi_tpp_username, venafi_use_tpp, venafi_zone].hash
+      [app_private_key, artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, auth_flow, aws_access_key_id, aws_region, aws_secret_access_key, aws_session_token, azure_client_id, azure_client_secret, azure_resource_group_name, azure_resource_name, azure_subscription_id, azure_tenant_id, ca_cert_data, ca_cert_name, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, client_id, client_secret, db_host_name, db_name, db_port, db_private_key, db_private_key_passphrase, db_pwd, db_server_certificates, db_server_name, db_user_name, eks_access_key_id, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, gcp_service_account_email, gcp_service_account_key, github_app_id, github_app_private_key, github_base_url, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, host, implementation_type, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_uri_connection, mongodb_uri_options, mongodb_username, password, payload, port, private_key, private_key_password, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, security_token, sf_account, ssl_connection_certificate, ssl_connection_mode, tenant_url, url, use_gw_cloud_identity, user_name, username, venafi_api_key, venafi_base_url, venafi_tpp_password, venafi_tpp_username, venafi_use_tpp, venafi_zone].hash
     end
 
     # Builds the object from hash

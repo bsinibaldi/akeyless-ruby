@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module Akeyless
-  # gatewayUpdateProducerSnowflakeCmd is a command that updates a Snowflake producer
+  # GatewayUpdateProducerSnowflakeCmd is a command that updates a Snowflake producer
   class GatewayUpdateProducerSnowflake
     # Account name
     attr_accessor :account
@@ -39,6 +39,12 @@ module Akeyless
 
     # Producer name
     attr_accessor :new_name
+
+    # RSA Private key (base64 encoded)
+    attr_accessor :private_key
+
+    # The Private key passphrase
+    attr_accessor :private_key_passphrase
 
     # User role
     attr_accessor :role
@@ -72,6 +78,8 @@ module Akeyless
         :'json' => :'json',
         :'name' => :'name',
         :'new_name' => :'new-name',
+        :'private_key' => :'private-key',
+        :'private_key_passphrase' => :'private-key-passphrase',
         :'role' => :'role',
         :'tags' => :'tags',
         :'target_name' => :'target-name',
@@ -98,6 +106,8 @@ module Akeyless
         :'json' => :'Boolean',
         :'name' => :'String',
         :'new_name' => :'String',
+        :'private_key' => :'String',
+        :'private_key_passphrase' => :'String',
         :'role' => :'String',
         :'tags' => :'Array<String>',
         :'target_name' => :'String',
@@ -159,6 +169,14 @@ module Akeyless
 
       if attributes.key?(:'new_name')
         self.new_name = attributes[:'new_name']
+      end
+
+      if attributes.key?(:'private_key')
+        self.private_key = attributes[:'private_key']
+      end
+
+      if attributes.key?(:'private_key_passphrase')
+        self.private_key_passphrase = attributes[:'private_key_passphrase']
       end
 
       if attributes.key?(:'role')
@@ -225,6 +243,8 @@ module Akeyless
           json == o.json &&
           name == o.name &&
           new_name == o.new_name &&
+          private_key == o.private_key &&
+          private_key_passphrase == o.private_key_passphrase &&
           role == o.role &&
           tags == o.tags &&
           target_name == o.target_name &&
@@ -243,7 +263,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account, account_password, account_username, db_name, delete_protection, json, name, new_name, role, tags, target_name, token, uid_token, user_ttl, warehouse].hash
+      [account, account_password, account_username, db_name, delete_protection, json, name, new_name, private_key, private_key_passphrase, role, tags, target_name, token, uid_token, user_ttl, warehouse].hash
     end
 
     # Builds the object from hash

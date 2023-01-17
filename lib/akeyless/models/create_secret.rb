@@ -21,10 +21,13 @@ module Akeyless
     # Protection from accidental deletion of this item
     attr_accessor :delete_protection
 
+    # Description of the object
+    attr_accessor :description
+
     # Set output format to JSON
     attr_accessor :json
 
-    # Metadata about the secret
+    # Deprecated - use description
     attr_accessor :metadata
 
     # The provided value is a multiline value (separated by '\\n')
@@ -84,6 +87,7 @@ module Akeyless
       {
         :'accessibility' => :'accessibility',
         :'delete_protection' => :'delete_protection',
+        :'description' => :'description',
         :'json' => :'json',
         :'metadata' => :'metadata',
         :'multiline_value' => :'multiline_value',
@@ -119,6 +123,7 @@ module Akeyless
       {
         :'accessibility' => :'String',
         :'delete_protection' => :'String',
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'metadata' => :'String',
         :'multiline_value' => :'Boolean',
@@ -173,6 +178,10 @@ module Akeyless
 
       if attributes.key?(:'delete_protection')
         self.delete_protection = attributes[:'delete_protection']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'json')
@@ -302,6 +311,7 @@ module Akeyless
       self.class == o.class &&
           accessibility == o.accessibility &&
           delete_protection == o.delete_protection &&
+          description == o.description &&
           json == o.json &&
           metadata == o.metadata &&
           multiline_value == o.multiline_value &&
@@ -335,7 +345,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accessibility, delete_protection, json, metadata, multiline_value, name, password_manager_custom_field, password_manager_inject_url, password_manager_password, password_manager_username, protection_key, secure_access_bastion_issuer, secure_access_enable, secure_access_host, secure_access_ssh_creds, secure_access_ssh_user, secure_access_url, secure_access_web_browsing, secure_access_web_proxy, tags, token, type, uid_token, value].hash
+      [accessibility, delete_protection, description, json, metadata, multiline_value, name, password_manager_custom_field, password_manager_inject_url, password_manager_password, password_manager_username, protection_key, secure_access_bastion_issuer, secure_access_enable, secure_access_host, secure_access_ssh_creds, secure_access_ssh_user, secure_access_url, secure_access_web_browsing, secure_access_web_proxy, tags, token, type, uid_token, value].hash
     end
 
     # Builds the object from hash

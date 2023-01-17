@@ -12,6 +12,8 @@
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Producer name |  |
 | **new_name** | **String** | Producer name | [optional] |
+| **private_key** | **String** | RSA Private key (base64 encoded) | [optional] |
+| **private_key_passphrase** | **String** | The Private key passphrase | [optional] |
 | **role** | **String** | User role | [optional] |
 | **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
 | **target_name** | **String** | Target name | [optional] |
@@ -34,6 +36,8 @@ instance = Akeyless::GatewayUpdateProducerSnowflake.new(
   json: null,
   name: null,
   new_name: null,
+  private_key: null,
+  private_key_passphrase: null,
   role: null,
   tags: null,
   target_name: null,

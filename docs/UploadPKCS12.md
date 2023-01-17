@@ -6,9 +6,10 @@
 | ---- | ---- | ----------- | ----- |
 | **customer_frg_id** | **String** | The customer fragment ID that will be used to split the key (if empty, the key will be created independently of a customer fragment) | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **_in** | **String** | PKCS#12 input file (private key and certificate only) |  |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
-| **metadata** | **String** | A metadata about the key | [optional] |
+| **metadata** | **String** | Deprecated - use description | [optional] |
 | **name** | **String** | Name of key to be created |  |
 | **passphrase** | **String** | Passphrase to unlock the pkcs#12 bundle |  |
 | **split_level** | **Integer** | The number of fragments that the item will be split into | [optional][default to 2] |
@@ -24,6 +25,7 @@ require 'akeyless'
 instance = Akeyless::UploadPKCS12.new(
   customer_frg_id: null,
   delete_protection: null,
+  description: null,
   _in: null,
   json: null,
   metadata: null,

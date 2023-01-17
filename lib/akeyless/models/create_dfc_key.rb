@@ -24,10 +24,13 @@ module Akeyless
     # Protection from accidental deletion of this item
     attr_accessor :delete_protection
 
+    # Description of the object
+    attr_accessor :description
+
     # Set output format to JSON
     attr_accessor :json
 
-    # Metadata about the DFC key
+    # Deprecated - use description
     attr_accessor :metadata
 
     # DFCKey name
@@ -51,6 +54,7 @@ module Akeyless
         :'alg' => :'alg',
         :'customer_frg_id' => :'customer-frg-id',
         :'delete_protection' => :'delete_protection',
+        :'description' => :'description',
         :'json' => :'json',
         :'metadata' => :'metadata',
         :'name' => :'name',
@@ -72,6 +76,7 @@ module Akeyless
         :'alg' => :'String',
         :'customer_frg_id' => :'String',
         :'delete_protection' => :'String',
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'metadata' => :'String',
         :'name' => :'String',
@@ -113,6 +118,10 @@ module Akeyless
 
       if attributes.key?(:'delete_protection')
         self.delete_protection = attributes[:'delete_protection']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'json')
@@ -179,6 +188,7 @@ module Akeyless
           alg == o.alg &&
           customer_frg_id == o.customer_frg_id &&
           delete_protection == o.delete_protection &&
+          description == o.description &&
           json == o.json &&
           metadata == o.metadata &&
           name == o.name &&
@@ -197,7 +207,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alg, customer_frg_id, delete_protection, json, metadata, name, split_level, tag, token, uid_token].hash
+      [alg, customer_frg_id, delete_protection, description, json, metadata, name, split_level, tag, token, uid_token].hash
     end
 
     # Builds the object from hash

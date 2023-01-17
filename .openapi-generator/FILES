@@ -136,6 +136,8 @@ docs/DatadogForwardingConfig.md
 docs/Decrypt.md
 docs/DecryptFile.md
 docs/DecryptFileOutput.md
+docs/DecryptGPG.md
+docs/DecryptGPGOutput.md
 docs/DecryptOutput.md
 docs/DecryptPKCS1.md
 docs/DecryptPKCS1Output.md
@@ -174,6 +176,8 @@ docs/EmailTokenizerInfo.md
 docs/Encrypt.md
 docs/EncryptFile.md
 docs/EncryptFileOutput.md
+docs/EncryptGPG.md
+docs/EncryptGPGOutput.md
 docs/EncryptOutput.md
 docs/EncryptWithClassicKey.md
 docs/EncryptWithClassicKeyOutput.md
@@ -468,6 +472,8 @@ docs/SecureRemoteAccess.md
 docs/SetItemState.md
 docs/SetRoleRule.md
 docs/ShareItem.md
+docs/SignGPG.md
+docs/SignGPGOutput.md
 docs/SignJWTOutput.md
 docs/SignJWTWithClassicKey.md
 docs/SignPKCS1.md
@@ -585,6 +591,7 @@ docs/V2Api.md
 docs/ValidateToken.md
 docs/ValidateTokenOutput.md
 docs/VaultlessTokenizerInfo.md
+docs/VerifyGPG.md
 docs/VerifyJWTOutput.md
 docs/VerifyJWTWithClassicKey.md
 docs/VerifyPKCS1.md
@@ -724,6 +731,8 @@ lib/akeyless/models/datadog_forwarding_config.rb
 lib/akeyless/models/decrypt.rb
 lib/akeyless/models/decrypt_file.rb
 lib/akeyless/models/decrypt_file_output.rb
+lib/akeyless/models/decrypt_gpg.rb
+lib/akeyless/models/decrypt_gpg_output.rb
 lib/akeyless/models/decrypt_output.rb
 lib/akeyless/models/decrypt_pkcs1.rb
 lib/akeyless/models/decrypt_pkcs1_output.rb
@@ -763,6 +772,8 @@ lib/akeyless/models/email_tokenizer_info.rb
 lib/akeyless/models/encrypt.rb
 lib/akeyless/models/encrypt_file.rb
 lib/akeyless/models/encrypt_file_output.rb
+lib/akeyless/models/encrypt_gpg.rb
+lib/akeyless/models/encrypt_gpg_output.rb
 lib/akeyless/models/encrypt_output.rb
 lib/akeyless/models/encrypt_with_classic_key.rb
 lib/akeyless/models/encrypt_with_classic_key_output.rb
@@ -1056,6 +1067,8 @@ lib/akeyless/models/secure_remote_access.rb
 lib/akeyless/models/set_item_state.rb
 lib/akeyless/models/set_role_rule.rb
 lib/akeyless/models/share_item.rb
+lib/akeyless/models/sign_gpg.rb
+lib/akeyless/models/sign_gpg_output.rb
 lib/akeyless/models/sign_jwt_output.rb
 lib/akeyless/models/sign_jwt_with_classic_key.rb
 lib/akeyless/models/sign_pkcs1.rb
@@ -1173,6 +1186,7 @@ lib/akeyless/models/upload_rsa.rb
 lib/akeyless/models/validate_token.rb
 lib/akeyless/models/validate_token_output.rb
 lib/akeyless/models/vaultless_tokenizer_info.rb
+lib/akeyless/models/verify_gpg.rb
 lib/akeyless/models/verify_jwt_output.rb
 lib/akeyless/models/verify_jwt_with_classic_key.rb
 lib/akeyless/models/verify_pkcs1.rb
@@ -1181,12 +1195,11 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/create_certificate_output_spec.rb
-spec/models/create_certificate_spec.rb
-spec/models/gateway_update_tls_cert_output_spec.rb
-spec/models/gateway_update_tls_cert_spec.rb
-spec/models/get_certificate_value_output_spec.rb
-spec/models/get_certificate_value_spec.rb
-spec/models/update_certificate_output_spec.rb
-spec/models/update_certificate_value_spec.rb
+spec/models/decrypt_gpg_output_spec.rb
+spec/models/decrypt_gpg_spec.rb
+spec/models/encrypt_gpg_output_spec.rb
+spec/models/encrypt_gpg_spec.rb
+spec/models/sign_gpg_output_spec.rb
+spec/models/sign_gpg_spec.rb
+spec/models/verify_gpg_spec.rb
 spec/spec_helper.rb

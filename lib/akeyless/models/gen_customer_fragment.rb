@@ -15,17 +15,21 @@ require 'time'
 
 module Akeyless
   class GenCustomerFragment
-    # The Customer Fragment Description
+    # Description of the object
     attr_accessor :description
 
     # Set output format to JSON
     attr_accessor :json
 
+    # Deprecated - use description
+    attr_accessor :metadata
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'description' => :'description',
-        :'json' => :'json'
+        :'json' => :'json',
+        :'metadata' => :'metadata'
       }
     end
 
@@ -38,7 +42,8 @@ module Akeyless
     def self.openapi_types
       {
         :'description' => :'String',
-        :'json' => :'Boolean'
+        :'json' => :'Boolean',
+        :'metadata' => :'String'
       }
     end
 
@@ -70,6 +75,10 @@ module Akeyless
       if attributes.key?(:'json')
         self.json = attributes[:'json']
       end
+
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -91,7 +100,8 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           description == o.description &&
-          json == o.json
+          json == o.json &&
+          metadata == o.metadata
     end
 
     # @see the `==` method
@@ -103,7 +113,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [description, json].hash
+      [description, json, metadata].hash
     end
 
     # Builds the object from hash

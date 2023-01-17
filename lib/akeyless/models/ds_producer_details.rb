@@ -111,6 +111,11 @@ module Akeyless
 
     attr_accessor :db_port
 
+    # (Optional) Private Key in PEM format
+    attr_accessor :db_private_key
+
+    attr_accessor :db_private_key_passphrase
+
     attr_accessor :db_pwd
 
     # (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host's root CA set.
@@ -214,11 +219,17 @@ module Akeyless
 
     attr_accessor :item_targets_assoc
 
+    # comma-separated list of allowed namespaces. Can hold just * which signifies that any namespace is allowed
+    attr_accessor :k8s_allowed_namespaces
+
     attr_accessor :k8s_bearer_token
 
     attr_accessor :k8s_cluster_ca_certificate
 
     attr_accessor :k8s_cluster_endpoint
+
+    # when native k8s is in dynamic mode, user can define allowed namespaces, K8sServiceAccount doesn't exist from the start and will only be created at time of getting dynamic secret value By default dynamic mode is false and producer behaves like it did before
+    attr_accessor :k8s_dynamic_mode
 
     attr_accessor :k8s_namespace
 
@@ -433,6 +444,8 @@ module Akeyless
         :'db_max_open_conns' => :'db_max_open_conns',
         :'db_name' => :'db_name',
         :'db_port' => :'db_port',
+        :'db_private_key' => :'db_private_key',
+        :'db_private_key_passphrase' => :'db_private_key_passphrase',
         :'db_pwd' => :'db_pwd',
         :'db_server_certificates' => :'db_server_certificates',
         :'db_server_name' => :'db_server_name',
@@ -483,9 +496,11 @@ module Akeyless
         :'implementation_type' => :'implementation_type',
         :'is_fixed_user' => :'is_fixed_user',
         :'item_targets_assoc' => :'item_targets_assoc',
+        :'k8s_allowed_namespaces' => :'k8s_allowed_namespaces',
         :'k8s_bearer_token' => :'k8s_bearer_token',
         :'k8s_cluster_ca_certificate' => :'k8s_cluster_ca_certificate',
         :'k8s_cluster_endpoint' => :'k8s_cluster_endpoint',
+        :'k8s_dynamic_mode' => :'k8s_dynamic_mode',
         :'k8s_namespace' => :'k8s_namespace',
         :'k8s_service_account' => :'k8s_service_account',
         :'last_admin_rotation' => :'last_admin_rotation',
@@ -622,6 +637,8 @@ module Akeyless
         :'db_max_open_conns' => :'String',
         :'db_name' => :'String',
         :'db_port' => :'String',
+        :'db_private_key' => :'String',
+        :'db_private_key_passphrase' => :'String',
         :'db_pwd' => :'String',
         :'db_server_certificates' => :'String',
         :'db_server_name' => :'String',
@@ -672,9 +689,11 @@ module Akeyless
         :'implementation_type' => :'String',
         :'is_fixed_user' => :'String',
         :'item_targets_assoc' => :'Array<ItemTargetAssociation>',
+        :'k8s_allowed_namespaces' => :'String',
         :'k8s_bearer_token' => :'String',
         :'k8s_cluster_ca_certificate' => :'String',
         :'k8s_cluster_endpoint' => :'String',
+        :'k8s_dynamic_mode' => :'Boolean',
         :'k8s_namespace' => :'String',
         :'k8s_service_account' => :'String',
         :'last_admin_rotation' => :'Integer',
@@ -968,6 +987,14 @@ module Akeyless
         self.db_port = attributes[:'db_port']
       end
 
+      if attributes.key?(:'db_private_key')
+        self.db_private_key = attributes[:'db_private_key']
+      end
+
+      if attributes.key?(:'db_private_key_passphrase')
+        self.db_private_key_passphrase = attributes[:'db_private_key_passphrase']
+      end
+
       if attributes.key?(:'db_pwd')
         self.db_pwd = attributes[:'db_pwd']
       end
@@ -1178,6 +1205,10 @@ module Akeyless
         end
       end
 
+      if attributes.key?(:'k8s_allowed_namespaces')
+        self.k8s_allowed_namespaces = attributes[:'k8s_allowed_namespaces']
+      end
+
       if attributes.key?(:'k8s_bearer_token')
         self.k8s_bearer_token = attributes[:'k8s_bearer_token']
       end
@@ -1188,6 +1219,10 @@ module Akeyless
 
       if attributes.key?(:'k8s_cluster_endpoint')
         self.k8s_cluster_endpoint = attributes[:'k8s_cluster_endpoint']
+      end
+
+      if attributes.key?(:'k8s_dynamic_mode')
+        self.k8s_dynamic_mode = attributes[:'k8s_dynamic_mode']
       end
 
       if attributes.key?(:'k8s_namespace')
@@ -1571,6 +1606,8 @@ module Akeyless
           db_max_open_conns == o.db_max_open_conns &&
           db_name == o.db_name &&
           db_port == o.db_port &&
+          db_private_key == o.db_private_key &&
+          db_private_key_passphrase == o.db_private_key_passphrase &&
           db_pwd == o.db_pwd &&
           db_server_certificates == o.db_server_certificates &&
           db_server_name == o.db_server_name &&
@@ -1621,9 +1658,11 @@ module Akeyless
           implementation_type == o.implementation_type &&
           is_fixed_user == o.is_fixed_user &&
           item_targets_assoc == o.item_targets_assoc &&
+          k8s_allowed_namespaces == o.k8s_allowed_namespaces &&
           k8s_bearer_token == o.k8s_bearer_token &&
           k8s_cluster_ca_certificate == o.k8s_cluster_ca_certificate &&
           k8s_cluster_endpoint == o.k8s_cluster_endpoint &&
+          k8s_dynamic_mode == o.k8s_dynamic_mode &&
           k8s_namespace == o.k8s_namespace &&
           k8s_service_account == o.k8s_service_account &&
           last_admin_rotation == o.last_admin_rotation &&
@@ -1712,7 +1751,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [active, admin_name, admin_pwd, admin_rotation_interval_days, artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, artifactory_token_audience, artifactory_token_scope, aws_access_key_id, aws_access_mode, aws_region, aws_role_arns, aws_secret_access_key, aws_session_token, aws_user_console_access, aws_user_groups, aws_user_policies, aws_user_programmatic_access, azure_app_object_id, azure_client_id, azure_client_secret, azure_fixed_user_name_sub_claim_key, azure_fixed_user_only, azure_resource_group_name, azure_resource_name, azure_subscription_id, azure_tenant_id, azure_user_groups_obj_id, azure_user_portal_access, azure_user_programmatic_access, azure_user_roles_template_id, cassandra_creation_statements, chef_organizations, chef_server_access_mode, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, create_sync_url, db_host_name, db_isolation_level, db_max_idle_conns, db_max_open_conns, db_name, db_port, db_pwd, db_server_certificates, db_server_name, db_user_name, delete_protection, dynamic_secret_id, dynamic_secret_key, dynamic_secret_name, dynamic_secret_type, eks_access_key_id, eks_assume_role, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, enable_admin_rotation, externally_provided_user, failure_message, fixed_user_only, gcp_key_algo, gcp_role_bindings, gcp_service_account_email, gcp_service_account_key, gcp_service_account_type, gcp_tmp_service_account_name, gcp_token_lifetime, gcp_token_scope, gcp_token_type, github_app_id, github_app_private_key, github_base_url, github_installation_id, github_installation_token_permissions, github_installation_token_repositories, github_installation_token_repositories_ids, github_repository_path, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, groups, hanadb_creation_statements, hanadb_revocation_statements, host_name, host_port, implementation_type, is_fixed_user, item_targets_assoc, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, k8s_namespace, k8s_service_account, last_admin_rotation, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, ldap_user_attr, ldap_user_dn, metadata, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_custom_data, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_roles, mongodb_uri_connection, mongodb_uri_options, mongodb_username, mssql_creation_statements, mssql_revocation_statements, mysql_creation_statements, oracle_creation_statements, password, password_length, password_policy, payload, postgres_creation_statements, postgres_revocation_statements, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, rabbitmq_user_conf_permission, rabbitmq_user_read_permission, rabbitmq_user_tags, rabbitmq_user_vhost, rabbitmq_user_write_permission, redshift_creation_statements, revoke_sync_url, rotate_sync_url, scopes, secure_remote_access_details, session_extension_warn_interval_min, sf_account, sf_user_role, sf_warehouse_name, should_stop, ssl_connection_certificate, ssl_connection_mode, tags, timeout_seconds, use_gw_cloud_identity, user_name, user_principal_name, user_ttl, username_length, username_policy, venafi_allow_subdomains, venafi_allowed_domains, venafi_api_key, venafi_auto_generated_folder, venafi_base_url, venafi_root_first_in_chain, venafi_sign_using_akeyless_pki, venafi_signer_key_name, venafi_store_private_key, venafi_tpp_password, venafi_tpp_username, venafi_use_tpp, venafi_zone, warn_before_user_expiration_min].hash
+      [active, admin_name, admin_pwd, admin_rotation_interval_days, artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, artifactory_token_audience, artifactory_token_scope, aws_access_key_id, aws_access_mode, aws_region, aws_role_arns, aws_secret_access_key, aws_session_token, aws_user_console_access, aws_user_groups, aws_user_policies, aws_user_programmatic_access, azure_app_object_id, azure_client_id, azure_client_secret, azure_fixed_user_name_sub_claim_key, azure_fixed_user_only, azure_resource_group_name, azure_resource_name, azure_subscription_id, azure_tenant_id, azure_user_groups_obj_id, azure_user_portal_access, azure_user_programmatic_access, azure_user_roles_template_id, cassandra_creation_statements, chef_organizations, chef_server_access_mode, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, create_sync_url, db_host_name, db_isolation_level, db_max_idle_conns, db_max_open_conns, db_name, db_port, db_private_key, db_private_key_passphrase, db_pwd, db_server_certificates, db_server_name, db_user_name, delete_protection, dynamic_secret_id, dynamic_secret_key, dynamic_secret_name, dynamic_secret_type, eks_access_key_id, eks_assume_role, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, enable_admin_rotation, externally_provided_user, failure_message, fixed_user_only, gcp_key_algo, gcp_role_bindings, gcp_service_account_email, gcp_service_account_key, gcp_service_account_type, gcp_tmp_service_account_name, gcp_token_lifetime, gcp_token_scope, gcp_token_type, github_app_id, github_app_private_key, github_base_url, github_installation_id, github_installation_token_permissions, github_installation_token_repositories, github_installation_token_repositories_ids, github_repository_path, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, groups, hanadb_creation_statements, hanadb_revocation_statements, host_name, host_port, implementation_type, is_fixed_user, item_targets_assoc, k8s_allowed_namespaces, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, k8s_dynamic_mode, k8s_namespace, k8s_service_account, last_admin_rotation, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, ldap_user_attr, ldap_user_dn, metadata, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_custom_data, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_roles, mongodb_uri_connection, mongodb_uri_options, mongodb_username, mssql_creation_statements, mssql_revocation_statements, mysql_creation_statements, oracle_creation_statements, password, password_length, password_policy, payload, postgres_creation_statements, postgres_revocation_statements, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, rabbitmq_user_conf_permission, rabbitmq_user_read_permission, rabbitmq_user_tags, rabbitmq_user_vhost, rabbitmq_user_write_permission, redshift_creation_statements, revoke_sync_url, rotate_sync_url, scopes, secure_remote_access_details, session_extension_warn_interval_min, sf_account, sf_user_role, sf_warehouse_name, should_stop, ssl_connection_certificate, ssl_connection_mode, tags, timeout_seconds, use_gw_cloud_identity, user_name, user_principal_name, user_ttl, username_length, username_policy, venafi_allow_subdomains, venafi_allowed_domains, venafi_api_key, venafi_auto_generated_folder, venafi_base_url, venafi_root_first_in_chain, venafi_sign_using_akeyless_pki, venafi_signer_key_name, venafi_store_private_key, venafi_tpp_password, venafi_tpp_username, venafi_use_tpp, venafi_zone, warn_before_user_expiration_min].hash
     end
 
     # Builds the object from hash

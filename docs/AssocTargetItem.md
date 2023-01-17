@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **disable_previous_key_version** | **Boolean** | Automatically disable previous key version (required for azure targets) | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **key_operations** | **Array&lt;String&gt;** | A list of allowed operations for the key (required for azure targets) | [optional] |
 | **keyring_name** | **String** | Keyring name of the GCP KMS (required for gcp targets) | [optional] |
@@ -26,6 +27,7 @@
 require 'akeyless'
 
 instance = Akeyless::AssocTargetItem.new(
+  disable_previous_key_version: null,
   json: null,
   key_operations: null,
   keyring_name: null,

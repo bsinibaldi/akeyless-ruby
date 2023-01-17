@@ -21,6 +21,9 @@ module Akeyless
     # Protection from accidental deletion of this item
     attr_accessor :delete_protection
 
+    # Description of the object
+    attr_accessor :description
+
     # How many days before the expiration of the certificate would you like to be notified.
     attr_accessor :expiration_event_in
 
@@ -33,7 +36,7 @@ module Akeyless
     # Content of the certificate's private key PEM in a Base64 format.
     attr_accessor :key_data
 
-    # Metadata about the certificate
+    # Deprecated - use description
     attr_accessor :metadata
 
     # Certificate name
@@ -53,6 +56,7 @@ module Akeyless
       {
         :'certificate_data' => :'certificate-data',
         :'delete_protection' => :'delete_protection',
+        :'description' => :'description',
         :'expiration_event_in' => :'expiration-event-in',
         :'json' => :'json',
         :'key' => :'key',
@@ -75,6 +79,7 @@ module Akeyless
       {
         :'certificate_data' => :'String',
         :'delete_protection' => :'String',
+        :'description' => :'String',
         :'expiration_event_in' => :'Array<String>',
         :'json' => :'Boolean',
         :'key' => :'String',
@@ -114,6 +119,10 @@ module Akeyless
 
       if attributes.key?(:'delete_protection')
         self.delete_protection = attributes[:'delete_protection']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'expiration_event_in')
@@ -182,6 +191,7 @@ module Akeyless
       self.class == o.class &&
           certificate_data == o.certificate_data &&
           delete_protection == o.delete_protection &&
+          description == o.description &&
           expiration_event_in == o.expiration_event_in &&
           json == o.json &&
           key == o.key &&
@@ -202,7 +212,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [certificate_data, delete_protection, expiration_event_in, json, key, key_data, metadata, name, tags, token, uid_token].hash
+      [certificate_data, delete_protection, description, expiration_event_in, json, key, key_data, metadata, name, tags, token, uid_token].hash
     end
 
     # Builds the object from hash

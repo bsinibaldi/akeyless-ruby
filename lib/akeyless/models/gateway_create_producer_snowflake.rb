@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module Akeyless
-  # gatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer
+  # GatewayCreateProducerSnowflakeCmd is a command that creates a Snowflake producer
   class GatewayCreateProducerSnowflake
     # Account name
     attr_accessor :account
@@ -36,6 +36,12 @@ module Akeyless
 
     # Producer name
     attr_accessor :name
+
+    # RSA Private key (base64 encoded)
+    attr_accessor :private_key
+
+    # The Private key passphrase
+    attr_accessor :private_key_passphrase
 
     # User role
     attr_accessor :role
@@ -68,6 +74,8 @@ module Akeyless
         :'delete_protection' => :'delete_protection',
         :'json' => :'json',
         :'name' => :'name',
+        :'private_key' => :'private-key',
+        :'private_key_passphrase' => :'private-key-passphrase',
         :'role' => :'role',
         :'tags' => :'tags',
         :'target_name' => :'target-name',
@@ -93,6 +101,8 @@ module Akeyless
         :'delete_protection' => :'String',
         :'json' => :'Boolean',
         :'name' => :'String',
+        :'private_key' => :'String',
+        :'private_key_passphrase' => :'String',
         :'role' => :'String',
         :'tags' => :'Array<String>',
         :'target_name' => :'String',
@@ -150,6 +160,14 @@ module Akeyless
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'private_key')
+        self.private_key = attributes[:'private_key']
+      end
+
+      if attributes.key?(:'private_key_passphrase')
+        self.private_key_passphrase = attributes[:'private_key_passphrase']
       end
 
       if attributes.key?(:'role')
@@ -215,6 +233,8 @@ module Akeyless
           delete_protection == o.delete_protection &&
           json == o.json &&
           name == o.name &&
+          private_key == o.private_key &&
+          private_key_passphrase == o.private_key_passphrase &&
           role == o.role &&
           tags == o.tags &&
           target_name == o.target_name &&
@@ -233,7 +253,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account, account_password, account_username, db_name, delete_protection, json, name, role, tags, target_name, token, uid_token, user_ttl, warehouse].hash
+      [account, account_password, account_username, db_name, delete_protection, json, name, private_key, private_key_passphrase, role, tags, target_name, token, uid_token, user_ttl, warehouse].hash
     end
 
     # Builds the object from hash

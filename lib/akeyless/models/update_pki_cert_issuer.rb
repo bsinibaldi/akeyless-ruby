@@ -39,6 +39,9 @@ module Akeyless
     # A comma-separated list of the country that will be set in the issued certificate
     attr_accessor :country
 
+    # Description of the object
+    attr_accessor :description
+
     # Set output format to JSON
     attr_accessor :json
 
@@ -48,7 +51,7 @@ module Akeyless
     # A comma-separated list of the locality that will be set in the issued certificate
     attr_accessor :locality
 
-    # A metadata about the issuer
+    # Deprecated - use description
     attr_accessor :metadata
 
     # PKI certificate issuer name
@@ -107,6 +110,7 @@ module Akeyless
         :'client_flag' => :'client-flag',
         :'code_signing_flag' => :'code-signing-flag',
         :'country' => :'country',
+        :'description' => :'description',
         :'json' => :'json',
         :'key_usage' => :'key-usage',
         :'locality' => :'locality',
@@ -145,6 +149,7 @@ module Akeyless
         :'client_flag' => :'Boolean',
         :'code_signing_flag' => :'Boolean',
         :'country' => :'String',
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'key_usage' => :'String',
         :'locality' => :'String',
@@ -220,6 +225,10 @@ module Akeyless
 
       if attributes.key?(:'country')
         self.country = attributes[:'country']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'json')
@@ -344,6 +353,7 @@ module Akeyless
           client_flag == o.client_flag &&
           code_signing_flag == o.code_signing_flag &&
           country == o.country &&
+          description == o.description &&
           json == o.json &&
           key_usage == o.key_usage &&
           locality == o.locality &&
@@ -374,7 +384,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_tag, allow_any_name, allow_subdomains, allowed_domains, allowed_uri_sans, client_flag, code_signing_flag, country, json, key_usage, locality, metadata, name, new_name, not_enforce_hostnames, not_require_cn, organizational_units, organizations, postal_code, province, rm_tag, server_flag, signer_key_name, street_address, token, ttl, uid_token].hash
+      [add_tag, allow_any_name, allow_subdomains, allowed_domains, allowed_uri_sans, client_flag, code_signing_flag, country, description, json, key_usage, locality, metadata, name, new_name, not_enforce_hostnames, not_require_cn, organizational_units, organizations, postal_code, province, rm_tag, server_flag, signer_key_name, street_address, token, ttl, uid_token].hash
     end
 
     # Builds the object from hash

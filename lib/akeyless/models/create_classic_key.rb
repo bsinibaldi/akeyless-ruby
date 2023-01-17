@@ -16,7 +16,7 @@ require 'time'
 module Akeyless
   # CreateClassicKey is a command that creates classic key
   class CreateClassicKey
-    # Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384]
+    # Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG]
     attr_accessor :alg
 
     # Certificate in a PEM format.
@@ -25,13 +25,19 @@ module Akeyless
     # Protection from accidental deletion of this item
     attr_accessor :delete_protection
 
+    # Description of the object
+    attr_accessor :description
+
+    # gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519]
+    attr_accessor :gpg_alg
+
     # Set output format to JSON
     attr_accessor :json
 
     # Base64-encoded classic key value
     attr_accessor :key_data
 
-    # Metadata about the classic key
+    # Deprecated - use description
     attr_accessor :metadata
 
     # ClassicKey name
@@ -55,6 +61,8 @@ module Akeyless
         :'alg' => :'alg',
         :'cert_file_data' => :'cert-file-data',
         :'delete_protection' => :'delete_protection',
+        :'description' => :'description',
+        :'gpg_alg' => :'gpg-alg',
         :'json' => :'json',
         :'key_data' => :'key-data',
         :'metadata' => :'metadata',
@@ -77,6 +85,8 @@ module Akeyless
         :'alg' => :'String',
         :'cert_file_data' => :'String',
         :'delete_protection' => :'String',
+        :'description' => :'String',
+        :'gpg_alg' => :'String',
         :'json' => :'Boolean',
         :'key_data' => :'String',
         :'metadata' => :'String',
@@ -119,6 +129,14 @@ module Akeyless
 
       if attributes.key?(:'delete_protection')
         self.delete_protection = attributes[:'delete_protection']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'gpg_alg')
+        self.gpg_alg = attributes[:'gpg_alg']
       end
 
       if attributes.key?(:'json')
@@ -187,6 +205,8 @@ module Akeyless
           alg == o.alg &&
           cert_file_data == o.cert_file_data &&
           delete_protection == o.delete_protection &&
+          description == o.description &&
+          gpg_alg == o.gpg_alg &&
           json == o.json &&
           key_data == o.key_data &&
           metadata == o.metadata &&
@@ -206,7 +226,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alg, cert_file_data, delete_protection, json, key_data, metadata, name, protection_key_name, tags, token, uid_token].hash
+      [alg, cert_file_data, delete_protection, description, gpg_alg, json, key_data, metadata, name, protection_key_name, tags, token, uid_token].hash
     end
 
     # Builds the object from hash

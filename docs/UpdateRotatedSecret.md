@@ -10,12 +10,13 @@
 | **auto_rotate** | **String** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] |
 | **aws_region** | **String** | Region (used in aws) | [optional][default to &#39;us-east-2&#39;] |
 | **custom_payload** | **String** |  | [optional] |
+| **description** | **String** | Description of the object | [optional][default to &#39;default_metadata&#39;] |
 | **gcp_key** | **String** | Base64-encoded service account private key text | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **keep_prev_version** | **String** |  | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **name** | **String** | Secret name |  |
-| **new_metadata** | **String** | New item metadata | [optional][default to &#39;default_metadata&#39;] |
+| **new_metadata** | **String** | Deprecated - use description | [optional][default to &#39;default_metadata&#39;] |
 | **new_name** | **String** | New item name | [optional] |
 | **new_version** | **Boolean** | Deprecated | [optional] |
 | **rm_tag** | **Array&lt;String&gt;** | List of the existent tags that will be removed from this item | [optional] |
@@ -56,6 +57,7 @@ instance = Akeyless::UpdateRotatedSecret.new(
   auto_rotate: null,
   aws_region: null,
   custom_payload: null,
+  description: null,
   gcp_key: null,
   json: null,
   keep_prev_version: null,

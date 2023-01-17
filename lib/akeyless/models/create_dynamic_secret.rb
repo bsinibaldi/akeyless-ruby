@@ -18,13 +18,16 @@ module Akeyless
     # Protection from accidental deletion of this item
     attr_accessor :delete_protection
 
+    # Description of the object
+    attr_accessor :description
+
     # Set output format to JSON
     attr_accessor :json
 
     # The name of a key that used to encrypt the dynamic secret values (if empty, the account default protectionKey key will be used)
     attr_accessor :key
 
-    # Metadata about the dynamic secret
+    # Deprecated - use description
     attr_accessor :metadata
 
     # Dynamic secret name
@@ -43,6 +46,7 @@ module Akeyless
     def self.attribute_map
       {
         :'delete_protection' => :'delete_protection',
+        :'description' => :'description',
         :'json' => :'json',
         :'key' => :'key',
         :'metadata' => :'metadata',
@@ -62,6 +66,7 @@ module Akeyless
     def self.openapi_types
       {
         :'delete_protection' => :'String',
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'key' => :'String',
         :'metadata' => :'String',
@@ -97,6 +102,10 @@ module Akeyless
         self.delete_protection = attributes[:'delete_protection']
       end
 
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
       if attributes.key?(:'json')
         self.json = attributes[:'json']
       end
@@ -107,8 +116,6 @@ module Akeyless
 
       if attributes.key?(:'metadata')
         self.metadata = attributes[:'metadata']
-      else
-        self.metadata = 'None'
       end
 
       if attributes.key?(:'name')
@@ -154,6 +161,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           delete_protection == o.delete_protection &&
+          description == o.description &&
           json == o.json &&
           key == o.key &&
           metadata == o.metadata &&
@@ -172,7 +180,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [delete_protection, json, key, metadata, name, tags, token, uid_token].hash
+      [delete_protection, description, json, key, metadata, name, tags, token, uid_token].hash
     end
 
     # Builds the object from hash

@@ -7,10 +7,11 @@
 | **alphabet** | **String** | Alphabet to use in regexp vaultless tokenization | [optional] |
 | **decoding_template** | **String** | The Decoding output template to use in regexp vaultless tokenization | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **encoding_template** | **String** | The Encoding output template to use in regexp vaultless tokenization | [optional] |
 | **encryption_key_name** | **String** | AES key name to use in vaultless tokenization | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
-| **metadata** | **String** | A metadata about the tokenizer | [optional] |
+| **metadata** | **String** | Deprecated - use description | [optional] |
 | **name** | **String** | Tokenizer name |  |
 | **pattern** | **String** | Pattern to use in regexp vaultless tokenization | [optional] |
 | **tag** | **Array&lt;String&gt;** | List of the tags attached to this key | [optional] |
@@ -29,6 +30,7 @@ instance = Akeyless::CreateTokenizer.new(
   alphabet: null,
   decoding_template: null,
   delete_protection: null,
+  description: null,
   encoding_template: null,
   encryption_key_name: null,
   json: null,

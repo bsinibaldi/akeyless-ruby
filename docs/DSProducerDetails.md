@@ -52,6 +52,8 @@
 | **db_max_open_conns** | **String** |  | [optional] |
 | **db_name** | **String** |  | [optional] |
 | **db_port** | **String** |  | [optional] |
+| **db_private_key** | **String** | (Optional) Private Key in PEM format | [optional] |
+| **db_private_key_passphrase** | **String** |  | [optional] |
 | **db_pwd** | **String** |  | [optional] |
 | **db_server_certificates** | **String** | (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set. | [optional] |
 | **db_server_name** | **String** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] |
@@ -102,9 +104,11 @@
 | **implementation_type** | **String** |  | [optional] |
 | **is_fixed_user** | **String** |  | [optional] |
 | **item_targets_assoc** | [**Array&lt;ItemTargetAssociation&gt;**](ItemTargetAssociation.md) |  | [optional] |
+| **k8s_allowed_namespaces** | **String** | comma-separated list of allowed namespaces. Can hold just * which signifies that any namespace is allowed | [optional] |
 | **k8s_bearer_token** | **String** |  | [optional] |
 | **k8s_cluster_ca_certificate** | **String** |  | [optional] |
 | **k8s_cluster_endpoint** | **String** |  | [optional] |
+| **k8s_dynamic_mode** | **Boolean** | when native k8s is in dynamic mode, user can define allowed namespaces, K8sServiceAccount doesn&#39;t exist from the start and will only be created at time of getting dynamic secret value By default dynamic mode is false and producer behaves like it did before | [optional] |
 | **k8s_namespace** | **String** |  | [optional] |
 | **k8s_service_account** | **String** |  | [optional] |
 | **last_admin_rotation** | **Integer** |  | [optional] |
@@ -237,6 +241,8 @@ instance = Akeyless::DSProducerDetails.new(
   db_max_open_conns: null,
   db_name: null,
   db_port: null,
+  db_private_key: null,
+  db_private_key_passphrase: null,
   db_pwd: null,
   db_server_certificates: null,
   db_server_name: null,
@@ -287,9 +293,11 @@ instance = Akeyless::DSProducerDetails.new(
   implementation_type: null,
   is_fixed_user: null,
   item_targets_assoc: null,
+  k8s_allowed_namespaces: null,
   k8s_bearer_token: null,
   k8s_cluster_ca_certificate: null,
   k8s_cluster_endpoint: null,
+  k8s_dynamic_mode: null,
   k8s_namespace: null,
   k8s_service_account: null,
   last_admin_rotation: null,

@@ -21,13 +21,16 @@ module Akeyless
     # Users allowed to fetch the certificate, e.g root,ubuntu
     attr_accessor :allowed_users
 
+    # Description of the object
+    attr_accessor :description
+
     # Signed certificates with extensions, e.g permit-port-forwarding=\\\"\\\"
     attr_accessor :extensions
 
     # Set output format to JSON
     attr_accessor :json
 
-    # A metadata about the issuer
+    # Deprecated - use description
     attr_accessor :metadata
 
     # SSH certificate issuer name
@@ -71,6 +74,7 @@ module Akeyless
       {
         :'add_tag' => :'add-tag',
         :'allowed_users' => :'allowed-users',
+        :'description' => :'description',
         :'extensions' => :'extensions',
         :'json' => :'json',
         :'metadata' => :'metadata',
@@ -101,6 +105,7 @@ module Akeyless
       {
         :'add_tag' => :'Array<String>',
         :'allowed_users' => :'String',
+        :'description' => :'String',
         :'extensions' => :'Hash<String, String>',
         :'json' => :'Boolean',
         :'metadata' => :'String',
@@ -150,6 +155,10 @@ module Akeyless
 
       if attributes.key?(:'allowed_users')
         self.allowed_users = attributes[:'allowed_users']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'extensions')
@@ -267,6 +276,7 @@ module Akeyless
       self.class == o.class &&
           add_tag == o.add_tag &&
           allowed_users == o.allowed_users &&
+          description == o.description &&
           extensions == o.extensions &&
           json == o.json &&
           metadata == o.metadata &&
@@ -295,7 +305,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_tag, allowed_users, extensions, json, metadata, name, new_name, principals, rm_tag, secure_access_bastion_api, secure_access_bastion_ssh, secure_access_enable, secure_access_host, secure_access_ssh_creds_user, secure_access_use_internal_bastion, signer_key_name, token, ttl, uid_token].hash
+      [add_tag, allowed_users, description, extensions, json, metadata, name, new_name, principals, rm_tag, secure_access_bastion_api, secure_access_bastion_ssh, secure_access_enable, secure_access_host, secure_access_ssh_creds_user, secure_access_use_internal_bastion, signer_key_name, token, ttl, uid_token].hash
     end
 
     # Builds the object from hash

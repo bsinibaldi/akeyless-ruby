@@ -8,9 +8,10 @@
 | **add_tag** | **Array&lt;String&gt;** | List of the new tags that will be attached to this item | [optional] |
 | **cert_file_data** | **String** | PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates. | [optional] |
 | **delete_protection** | **String** |  | [optional] |
+| **description** | **String** | Description of the object | [optional][default to &#39;default_metadata&#39;] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | Current item name |  |
-| **new_metadata** | **String** | New item metadata | [optional][default to &#39;default_metadata&#39;] |
+| **new_metadata** | **String** | Deprecated - use description | [optional][default to &#39;default_metadata&#39;] |
 | **new_name** | **String** | New item name | [optional] |
 | **rm_tag** | **Array&lt;String&gt;** | List of the existent tags that will be removed from this item | [optional] |
 | **secure_access_add_host** | **Array&lt;String&gt;** |  | [optional] |
@@ -50,6 +51,7 @@ instance = Akeyless::UpdateItem.new(
   add_tag: null,
   cert_file_data: null,
   delete_protection: null,
+  description: null,
   json: null,
   name: null,
   new_metadata: null,

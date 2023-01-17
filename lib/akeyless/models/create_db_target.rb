@@ -64,6 +64,12 @@ module Akeyless
 
     attr_accessor :snowflake_account
 
+    # RSA Private key (base64 encoded)
+    attr_accessor :snowflake_api_private_key
+
+    # The Private key passphrase
+    attr_accessor :snowflake_api_private_key_password
+
     # SSL connection mode
     attr_accessor :ssl
 
@@ -100,6 +106,8 @@ module Akeyless
         :'port' => :'port',
         :'pwd' => :'pwd',
         :'snowflake_account' => :'snowflake-account',
+        :'snowflake_api_private_key' => :'snowflake-api-private-key',
+        :'snowflake_api_private_key_password' => :'snowflake-api-private-key-password',
         :'ssl' => :'ssl',
         :'ssl_certificate' => :'ssl-certificate',
         :'token' => :'token',
@@ -135,6 +143,8 @@ module Akeyless
         :'port' => :'String',
         :'pwd' => :'String',
         :'snowflake_account' => :'String',
+        :'snowflake_api_private_key' => :'String',
+        :'snowflake_api_private_key_password' => :'String',
         :'ssl' => :'Boolean',
         :'ssl_certificate' => :'String',
         :'token' => :'String',
@@ -240,6 +250,14 @@ module Akeyless
         self.snowflake_account = attributes[:'snowflake_account']
       end
 
+      if attributes.key?(:'snowflake_api_private_key')
+        self.snowflake_api_private_key = attributes[:'snowflake_api_private_key']
+      end
+
+      if attributes.key?(:'snowflake_api_private_key_password')
+        self.snowflake_api_private_key_password = attributes[:'snowflake_api_private_key_password']
+      end
+
       if attributes.key?(:'ssl')
         self.ssl = attributes[:'ssl']
       end
@@ -308,6 +326,8 @@ module Akeyless
           port == o.port &&
           pwd == o.pwd &&
           snowflake_account == o.snowflake_account &&
+          snowflake_api_private_key == o.snowflake_api_private_key &&
+          snowflake_api_private_key_password == o.snowflake_api_private_key_password &&
           ssl == o.ssl &&
           ssl_certificate == o.ssl_certificate &&
           token == o.token &&
@@ -324,7 +344,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [comment, db_name, db_server_certificates, db_server_name, db_type, host, json, key, mongodb_atlas, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_default_auth_db, mongodb_uri_options, name, oracle_service_name, port, pwd, snowflake_account, ssl, ssl_certificate, token, uid_token, user_name].hash
+      [comment, db_name, db_server_certificates, db_server_name, db_type, host, json, key, mongodb_atlas, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_default_auth_db, mongodb_uri_options, name, oracle_service_name, port, pwd, snowflake_account, snowflake_api_private_key, snowflake_api_private_key_password, ssl, ssl_certificate, token, uid_token, user_name].hash
     end
 
     # Builds the object from hash

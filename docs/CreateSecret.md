@@ -6,8 +6,9 @@
 | ---- | ---- | ----------- | ----- |
 | **accessibility** | **String** | for personal password manager | [optional][default to &#39;regular&#39;] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
-| **metadata** | **String** | Metadata about the secret | [optional] |
+| **metadata** | **String** | Deprecated - use description | [optional] |
 | **multiline_value** | **Boolean** | The provided value is a multiline value (separated by &#39;\\n&#39;) | [optional] |
 | **name** | **String** | Secret name |  |
 | **password_manager_custom_field** | **Hash&lt;String, String&gt;** | For Password Management use, additional fields | [optional] |
@@ -37,6 +38,7 @@ require 'akeyless'
 instance = Akeyless::CreateSecret.new(
   accessibility: null,
   delete_protection: null,
+  description: null,
   json: null,
   metadata: null,
   multiline_value: null,

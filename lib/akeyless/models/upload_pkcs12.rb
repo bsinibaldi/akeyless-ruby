@@ -21,13 +21,16 @@ module Akeyless
     # Protection from accidental deletion of this item
     attr_accessor :delete_protection
 
+    # Description of the object
+    attr_accessor :description
+
     # PKCS#12 input file (private key and certificate only)
     attr_accessor :_in
 
     # Set output format to JSON
     attr_accessor :json
 
-    # A metadata about the key
+    # Deprecated - use description
     attr_accessor :metadata
 
     # Name of key to be created
@@ -53,6 +56,7 @@ module Akeyless
       {
         :'customer_frg_id' => :'customer-frg-id',
         :'delete_protection' => :'delete_protection',
+        :'description' => :'description',
         :'_in' => :'in',
         :'json' => :'json',
         :'metadata' => :'metadata',
@@ -75,6 +79,7 @@ module Akeyless
       {
         :'customer_frg_id' => :'String',
         :'delete_protection' => :'String',
+        :'description' => :'String',
         :'_in' => :'String',
         :'json' => :'Boolean',
         :'metadata' => :'String',
@@ -114,6 +119,10 @@ module Akeyless
 
       if attributes.key?(:'delete_protection')
         self.delete_protection = attributes[:'delete_protection']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'_in')
@@ -192,6 +201,7 @@ module Akeyless
       self.class == o.class &&
           customer_frg_id == o.customer_frg_id &&
           delete_protection == o.delete_protection &&
+          description == o.description &&
           _in == o._in &&
           json == o.json &&
           metadata == o.metadata &&
@@ -212,7 +222,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [customer_frg_id, delete_protection, _in, json, metadata, name, passphrase, split_level, tag, token, uid_token].hash
+      [customer_frg_id, delete_protection, description, _in, json, metadata, name, passphrase, split_level, tag, token, uid_token].hash
     end
 
     # Builds the object from hash

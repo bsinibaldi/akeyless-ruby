@@ -26,13 +26,16 @@ module Akeyless
 
     attr_accessor :delete_protection
 
+    # Description of the object
+    attr_accessor :description
+
     # Set output format to JSON
     attr_accessor :json
 
     # Current item name
     attr_accessor :name
 
-    # New item metadata
+    # Deprecated - use description
     attr_accessor :new_metadata
 
     # New item name
@@ -102,6 +105,7 @@ module Akeyless
         :'add_tag' => :'add-tag',
         :'cert_file_data' => :'cert-file-data',
         :'delete_protection' => :'delete_protection',
+        :'description' => :'description',
         :'json' => :'json',
         :'name' => :'name',
         :'new_metadata' => :'new-metadata',
@@ -148,6 +152,7 @@ module Akeyless
         :'add_tag' => :'Array<String>',
         :'cert_file_data' => :'String',
         :'delete_protection' => :'String',
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'name' => :'String',
         :'new_metadata' => :'String',
@@ -221,6 +226,12 @@ module Akeyless
 
       if attributes.key?(:'delete_protection')
         self.delete_protection = attributes[:'delete_protection']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      else
+        self.description = 'default_metadata'
       end
 
       if attributes.key?(:'json')
@@ -385,6 +396,7 @@ module Akeyless
           add_tag == o.add_tag &&
           cert_file_data == o.cert_file_data &&
           delete_protection == o.delete_protection &&
+          description == o.description &&
           json == o.json &&
           name == o.name &&
           new_metadata == o.new_metadata &&
@@ -427,7 +439,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accessibility, add_tag, cert_file_data, delete_protection, json, name, new_metadata, new_name, rm_tag, secure_access_add_host, secure_access_allow_external_user, secure_access_allow_port_forwading, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_aws_region, secure_access_bastion_api, secure_access_bastion_issuer, secure_access_bastion_ssh, secure_access_cluster_endpoint, secure_access_dashboard_url, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_rm_host, secure_access_ssh_creds, secure_access_ssh_creds_user, secure_access_url, secure_access_use_internal_bastion, secure_access_web_browsing, secure_access_web_proxy, token, uid_token].hash
+      [accessibility, add_tag, cert_file_data, delete_protection, description, json, name, new_metadata, new_name, rm_tag, secure_access_add_host, secure_access_allow_external_user, secure_access_allow_port_forwading, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_aws_region, secure_access_bastion_api, secure_access_bastion_issuer, secure_access_bastion_ssh, secure_access_cluster_endpoint, secure_access_dashboard_url, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_rm_host, secure_access_ssh_creds, secure_access_ssh_creds_user, secure_access_url, secure_access_use_internal_bastion, secure_access_web_browsing, secure_access_web_proxy, token, uid_token].hash
     end
 
     # Builds the object from hash

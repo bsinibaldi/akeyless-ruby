@@ -25,6 +25,9 @@ module Akeyless
     # Protection from accidental deletion of this item
     attr_accessor :delete_protection
 
+    # Description of the object
+    attr_accessor :description
+
     # The Encoding output template to use in regexp vaultless tokenization
     attr_accessor :encoding_template
 
@@ -34,7 +37,7 @@ module Akeyless
     # Set output format to JSON
     attr_accessor :json
 
-    # A metadata about the tokenizer
+    # Deprecated - use description
     attr_accessor :metadata
 
     # Tokenizer name
@@ -67,6 +70,7 @@ module Akeyless
         :'alphabet' => :'alphabet',
         :'decoding_template' => :'decoding-template',
         :'delete_protection' => :'delete_protection',
+        :'description' => :'description',
         :'encoding_template' => :'encoding-template',
         :'encryption_key_name' => :'encryption-key-name',
         :'json' => :'json',
@@ -93,6 +97,7 @@ module Akeyless
         :'alphabet' => :'String',
         :'decoding_template' => :'String',
         :'delete_protection' => :'String',
+        :'description' => :'String',
         :'encoding_template' => :'String',
         :'encryption_key_name' => :'String',
         :'json' => :'Boolean',
@@ -139,6 +144,10 @@ module Akeyless
 
       if attributes.key?(:'delete_protection')
         self.delete_protection = attributes[:'delete_protection']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'encoding_template')
@@ -228,6 +237,7 @@ module Akeyless
           alphabet == o.alphabet &&
           decoding_template == o.decoding_template &&
           delete_protection == o.delete_protection &&
+          description == o.description &&
           encoding_template == o.encoding_template &&
           encryption_key_name == o.encryption_key_name &&
           json == o.json &&
@@ -251,7 +261,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alphabet, decoding_template, delete_protection, encoding_template, encryption_key_name, json, metadata, name, pattern, tag, template_type, token, tokenizer_type, tweak_type, uid_token].hash
+      [alphabet, decoding_template, delete_protection, description, encoding_template, encryption_key_name, json, metadata, name, pattern, tag, template_type, token, tokenizer_type, tweak_type, uid_token].hash
     end
 
     # Builds the object from hash

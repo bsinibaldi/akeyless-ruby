@@ -49,6 +49,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_web_target**](V2Api.md#create_web_target) | **POST** /create-web-target |  |
 | [**createldap_target**](V2Api.md#createldap_target) | **POST** /create-ldap-target |  |
 | [**decrypt**](V2Api.md#decrypt) | **POST** /decrypt |  |
+| [**decrypt_gpg**](V2Api.md#decrypt_gpg) | **POST** /decrypt-gpg |  |
 | [**decrypt_pkcs1**](V2Api.md#decrypt_pkcs1) | **POST** /decrypt-pkcs1 |  |
 | [**decrypt_with_classic_key**](V2Api.md#decrypt_with_classic_key) | **POST** /decrypt-with-classic-key |  |
 | [**delete_auth_method**](V2Api.md#delete_auth_method) | **POST** /delete-auth-method |  |
@@ -68,6 +69,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**describe_sub_claims**](V2Api.md#describe_sub_claims) | **POST** /describe-sub-claims |  |
 | [**detokenize**](V2Api.md#detokenize) | **POST** /detokenize |  |
 | [**encrypt**](V2Api.md#encrypt) | **POST** /encrypt |  |
+| [**encrypt_gpg**](V2Api.md#encrypt_gpg) | **POST** /encrypt-gpg |  |
 | [**encrypt_with_classic_key**](V2Api.md#encrypt_with_classic_key) | **POST** /encrypt-with-classic-key |  |
 | [**export_classic_key**](V2Api.md#export_classic_key) | **POST** /export-classic-key |  |
 | [**gateway_create_k8_s_auth_config**](V2Api.md#gateway_create_k8_s_auth_config) | **POST** /gateway-create-k8s-auth-config |  |
@@ -191,6 +193,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**set_item_state**](V2Api.md#set_item_state) | **POST** /set-item-state |  |
 | [**set_role_rule**](V2Api.md#set_role_rule) | **POST** /set-role-rule |  |
 | [**share_item**](V2Api.md#share_item) | **POST** /share-item |  |
+| [**sign_gpg**](V2Api.md#sign_gpg) | **POST** /sign-gpg |  |
 | [**sign_jwt_with_classic_key**](V2Api.md#sign_jwt_with_classic_key) | **POST** /sign-jwt-with-classic-key |  |
 | [**sign_pkcs1**](V2Api.md#sign_pkcs1) | **POST** /sign-pkcs1 |  |
 | [**sign_pki_cert_with_classic_key**](V2Api.md#sign_pki_cert_with_classic_key) | **POST** /sign-pki-cert-with-classic-key |  |
@@ -249,6 +252,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_web_target_details**](V2Api.md#update_web_target_details) | **POST** /update-web-target-details |  |
 | [**upload_rsa**](V2Api.md#upload_rsa) | **POST** /upload-rsa |  |
 | [**validate_token**](V2Api.md#validate_token) | **POST** /validate-token |  |
+| [**verify_gpg**](V2Api.md#verify_gpg) | **POST** /verify-gpg |  |
 | [**verify_jwt_with_classic_key**](V2Api.md#verify_jwt_with_classic_key) | **POST** /verify-jwt-with-classic-key |  |
 | [**verify_pkcs1**](V2Api.md#verify_pkcs1) | **POST** /verify-pkcs1 |  |
 | [**verify_pki_cert_with_classic_key**](V2Api.md#verify_pki_cert_with_classic_key) | **POST** /verify-pki-cert-with-classic-key |  |
@@ -3044,6 +3048,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## decrypt_gpg
+
+> <DecryptGPGOutput> decrypt_gpg(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::DecryptGPG.new({ciphertext: 'ciphertext_example', key_name: 'key_name_example'}) # DecryptGPG | 
+
+begin
+  
+  result = api_instance.decrypt_gpg(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->decrypt_gpg: #{e}"
+end
+```
+
+#### Using the decrypt_gpg_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DecryptGPGOutput>, Integer, Hash)> decrypt_gpg_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.decrypt_gpg_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DecryptGPGOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->decrypt_gpg_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**DecryptGPG**](DecryptGPG.md) |  |  |
+
+### Return type
+
+[**DecryptGPGOutput**](DecryptGPGOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## decrypt_pkcs1
 
 > <DecryptPKCS1Output> decrypt_pkcs1(body)
@@ -4211,6 +4277,68 @@ end
 ### Return type
 
 [**EncryptOutput**](EncryptOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## encrypt_gpg
+
+> <EncryptGPGOutput> encrypt_gpg(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::EncryptGPG.new({key_name: 'key_name_example', plaintext: 'plaintext_example'}) # EncryptGPG | 
+
+begin
+  
+  result = api_instance.encrypt_gpg(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->encrypt_gpg: #{e}"
+end
+```
+
+#### Using the encrypt_gpg_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EncryptGPGOutput>, Integer, Hash)> encrypt_gpg_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.encrypt_gpg_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EncryptGPGOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->encrypt_gpg_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**EncryptGPG**](EncryptGPG.md) |  |  |
+
+### Return type
+
+[**EncryptGPGOutput**](EncryptGPGOutput.md)
 
 ### Authorization
 
@@ -11872,6 +12000,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## sign_gpg
+
+> <SignGPGOutput> sign_gpg(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::SignGPG.new({key_name: 'key_name_example', message: 'message_example'}) # SignGPG | 
+
+begin
+  
+  result = api_instance.sign_gpg(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->sign_gpg: #{e}"
+end
+```
+
+#### Using the sign_gpg_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SignGPGOutput>, Integer, Hash)> sign_gpg_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.sign_gpg_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SignGPGOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->sign_gpg_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**SignGPG**](SignGPG.md) |  |  |
+
+### Return type
+
+[**SignGPGOutput**](SignGPGOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## sign_jwt_with_classic_key
 
 > <SignJWTOutput> sign_jwt_with_classic_key(body)
@@ -15454,6 +15644,68 @@ end
 ### Return type
 
 [**ValidateTokenOutput**](ValidateTokenOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## verify_gpg
+
+> Object verify_gpg(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::VerifyGPG.new({key_name: 'key_name_example', signature: 'signature_example'}) # VerifyGPG | 
+
+begin
+  
+  result = api_instance.verify_gpg(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->verify_gpg: #{e}"
+end
+```
+
+#### Using the verify_gpg_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> verify_gpg_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.verify_gpg_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->verify_gpg_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**VerifyGPG**](VerifyGPG.md) |  |  |
+
+### Return type
+
+**Object**
 
 ### Authorization
 
