@@ -24,6 +24,7 @@
 | **native** | **Boolean** |  | [optional] |
 | **rdp_user** | **String** |  | [optional] |
 | **region** | **String** |  | [optional] |
+| **rotate_after_disconnect** | **Boolean** |  | [optional] |
 | **schema** | **String** |  | [optional] |
 | **ssh_password** | **Boolean** |  | [optional] |
 | **ssh_private_key** | **Boolean** |  | [optional] |
@@ -58,6 +59,7 @@ instance = Akeyless::SecureRemoteAccess.new(
   native: null,
   rdp_user: null,
   region: null,
+  rotate_after_disconnect: null,
   schema: null,
   ssh_password: null,
   ssh_private_key: null,

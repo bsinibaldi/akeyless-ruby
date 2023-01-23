@@ -108,6 +108,8 @@ docs/CreateNativeK8STarget.md
 docs/CreateNativeK8STargetOutput.md
 docs/CreatePKICertIssuer.md
 docs/CreatePKICertIssuerOutput.md
+docs/CreatePingTarget.md
+docs/CreatePingTargetOutput.md
 docs/CreateRabbitMQTarget.md
 docs/CreateRabbitMQTargetOutput.md
 docs/CreateRole.md
@@ -229,6 +231,8 @@ docs/GatewayCreateProducerNativeK8S.md
 docs/GatewayCreateProducerNativeK8SOutput.md
 docs/GatewayCreateProducerOracleDb.md
 docs/GatewayCreateProducerOracleDbOutput.md
+docs/GatewayCreateProducerPing.md
+docs/GatewayCreateProducerPingOutput.md
 docs/GatewayCreateProducerPostgreSQL.md
 docs/GatewayCreateProducerPostgreSQLOutput.md
 docs/GatewayCreateProducerRabbitMQ.md
@@ -317,6 +321,8 @@ docs/GatewayUpdateProducerNativeK8S.md
 docs/GatewayUpdateProducerNativeK8SOutput.md
 docs/GatewayUpdateProducerOracleDb.md
 docs/GatewayUpdateProducerOracleDbOutput.md
+docs/GatewayUpdateProducerPing.md
+docs/GatewayUpdateProducerPingOutput.md
 docs/GatewayUpdateProducerPostgreSQL.md
 docs/GatewayUpdateProducerPostgreSQLOutput.md
 docs/GatewayUpdateProducerRabbitMQ.md
@@ -560,6 +566,7 @@ docs/UpdateNativeK8STargetOutput.md
 docs/UpdateOutput.md
 docs/UpdatePKICertIssuer.md
 docs/UpdatePKICertIssuerOutput.md
+docs/UpdatePingTarget.md
 docs/UpdateRDPTargetDetails.md
 docs/UpdateRabbitMQTarget.md
 docs/UpdateRabbitMQTargetDetails.md
@@ -702,6 +709,8 @@ lib/akeyless/models/create_ldap_target.rb
 lib/akeyless/models/create_ldap_target_output.rb
 lib/akeyless/models/create_native_k8_s_target.rb
 lib/akeyless/models/create_native_k8_s_target_output.rb
+lib/akeyless/models/create_ping_target.rb
+lib/akeyless/models/create_ping_target_output.rb
 lib/akeyless/models/create_pki_cert_issuer.rb
 lib/akeyless/models/create_pki_cert_issuer_output.rb
 lib/akeyless/models/create_rabbit_mq_target.rb
@@ -822,6 +831,8 @@ lib/akeyless/models/gateway_create_producer_native_k8_s.rb
 lib/akeyless/models/gateway_create_producer_native_k8_s_output.rb
 lib/akeyless/models/gateway_create_producer_oracle_db.rb
 lib/akeyless/models/gateway_create_producer_oracle_db_output.rb
+lib/akeyless/models/gateway_create_producer_ping.rb
+lib/akeyless/models/gateway_create_producer_ping_output.rb
 lib/akeyless/models/gateway_create_producer_postgre_sql.rb
 lib/akeyless/models/gateway_create_producer_postgre_sql_output.rb
 lib/akeyless/models/gateway_create_producer_rabbit_mq.rb
@@ -910,6 +921,8 @@ lib/akeyless/models/gateway_update_producer_native_k8_s.rb
 lib/akeyless/models/gateway_update_producer_native_k8_s_output.rb
 lib/akeyless/models/gateway_update_producer_oracle_db.rb
 lib/akeyless/models/gateway_update_producer_oracle_db_output.rb
+lib/akeyless/models/gateway_update_producer_ping.rb
+lib/akeyless/models/gateway_update_producer_ping_output.rb
 lib/akeyless/models/gateway_update_producer_postgre_sql.rb
 lib/akeyless/models/gateway_update_producer_postgre_sql_output.rb
 lib/akeyless/models/gateway_update_producer_rabbit_mq.rb
@@ -1154,6 +1167,7 @@ lib/akeyless/models/update_ldap_target_output.rb
 lib/akeyless/models/update_native_k8_s_target.rb
 lib/akeyless/models/update_native_k8_s_target_output.rb
 lib/akeyless/models/update_output.rb
+lib/akeyless/models/update_ping_target.rb
 lib/akeyless/models/update_pki_cert_issuer.rb
 lib/akeyless/models/update_pki_cert_issuer_output.rb
 lib/akeyless/models/update_rabbit_mq_target.rb
@@ -1195,11 +1209,11 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/decrypt_gpg_output_spec.rb
-spec/models/decrypt_gpg_spec.rb
-spec/models/encrypt_gpg_output_spec.rb
-spec/models/encrypt_gpg_spec.rb
-spec/models/sign_gpg_output_spec.rb
-spec/models/sign_gpg_spec.rb
-spec/models/verify_gpg_spec.rb
+spec/models/create_ping_target_output_spec.rb
+spec/models/create_ping_target_spec.rb
+spec/models/gateway_create_producer_ping_output_spec.rb
+spec/models/gateway_create_producer_ping_spec.rb
+spec/models/gateway_update_producer_ping_output_spec.rb
+spec/models/gateway_update_producer_ping_spec.rb
+spec/models/update_ping_target_spec.rb
 spec/spec_helper.rb

@@ -20,6 +20,7 @@
 | **new_name** | **String** | New item name | [optional] |
 | **new_version** | **Boolean** | Deprecated | [optional] |
 | **rm_tag** | **Array&lt;String&gt;** | List of the existent tags that will be removed from this item | [optional] |
+| **rotate_after_disconnect** | **String** | Rotate the value of the secret after SRA session ends | [optional][default to &#39;false&#39;] |
 | **rotated_password** | **String** |  | [optional] |
 | **rotated_username** | **String** |  | [optional] |
 | **rotation_hour** | **Integer** |  | [optional] |
@@ -67,6 +68,7 @@ instance = Akeyless::UpdateRotatedSecret.new(
   new_name: null,
   new_version: null,
   rm_tag: null,
+  rotate_after_disconnect: null,
   rotated_password: null,
   rotated_username: null,
   rotation_hour: null,

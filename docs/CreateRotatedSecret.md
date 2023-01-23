@@ -18,6 +18,7 @@
 | **key** | **String** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **metadata** | **String** | Deprecated - use description | [optional] |
 | **name** | **String** | Secret name |  |
+| **rotate_after_disconnect** | **String** | Rotate the value of the secret after SRA session ends | [optional][default to &#39;false&#39;] |
 | **rotated_password** | **String** |  | [optional] |
 | **rotated_username** | **String** |  | [optional] |
 | **rotation_hour** | **Integer** |  | [optional] |
@@ -68,6 +69,7 @@ instance = Akeyless::CreateRotatedSecret.new(
   key: null,
   metadata: null,
   name: null,
+  rotate_after_disconnect: null,
   rotated_password: null,
   rotated_username: null,
   rotation_hour: null,

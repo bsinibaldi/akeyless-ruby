@@ -2131,6 +2131,70 @@ module Akeyless
       return data, status_code, headers
     end
 
+    # @param body [CreatePingTarget] 
+    # @param [Hash] opts the optional parameters
+    # @return [CreatePingTargetOutput]
+    def create_ping_target(body, opts = {})
+      data, _status_code, _headers = create_ping_target_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [CreatePingTarget] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CreatePingTargetOutput, Integer, Hash)>] CreatePingTargetOutput data, response status code and response headers
+    def create_ping_target_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.create_ping_target ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.create_ping_target"
+      end
+      # resource path
+      local_var_path = '/create-ping-target'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CreatePingTargetOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.create_ping_target",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#create_ping_target\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # @param body [CreatePKICertIssuer] 
     # @param [Hash] opts the optional parameters
     # @return [CreatePKICertIssuerOutput]
@@ -5647,6 +5711,70 @@ module Akeyless
       return data, status_code, headers
     end
 
+    # @param body [GatewayCreateProducerPing] 
+    # @param [Hash] opts the optional parameters
+    # @return [GatewayCreateProducerPingOutput]
+    def gateway_create_producer_ping(body, opts = {})
+      data, _status_code, _headers = gateway_create_producer_ping_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [GatewayCreateProducerPing] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GatewayCreateProducerPingOutput, Integer, Hash)>] GatewayCreateProducerPingOutput data, response status code and response headers
+    def gateway_create_producer_ping_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.gateway_create_producer_ping ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.gateway_create_producer_ping"
+      end
+      # resource path
+      local_var_path = '/gateway-create-producer-ping'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GatewayCreateProducerPingOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.gateway_create_producer_ping",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#gateway_create_producer_ping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # @param body [GatewayCreateProducerPostgreSQL] 
     # @param [Hash] opts the optional parameters
     # @return [GatewayCreateProducerPostgreSQLOutput]
@@ -8579,6 +8707,70 @@ module Akeyless
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: V2Api#gateway_update_producer_oracle_db\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param body [GatewayUpdateProducerPing] 
+    # @param [Hash] opts the optional parameters
+    # @return [GatewayUpdateProducerPingOutput]
+    def gateway_update_producer_ping(body, opts = {})
+      data, _status_code, _headers = gateway_update_producer_ping_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [GatewayUpdateProducerPing] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GatewayUpdateProducerPingOutput, Integer, Hash)>] GatewayUpdateProducerPingOutput data, response status code and response headers
+    def gateway_update_producer_ping_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.gateway_update_producer_ping ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.gateway_update_producer_ping"
+      end
+      # resource path
+      local_var_path = '/gateway-update-producer-ping'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GatewayUpdateProducerPingOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.gateway_update_producer_ping",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#gateway_update_producer_ping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -14645,6 +14837,70 @@ module Akeyless
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: V2Api#update_native_k8_s_target\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param body [UpdatePingTarget] 
+    # @param [Hash] opts the optional parameters
+    # @return [Object]
+    def update_ping_target(body, opts = {})
+      data, _status_code, _headers = update_ping_target_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [UpdatePingTarget] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    def update_ping_target_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.update_ping_target ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.update_ping_target"
+      end
+      # resource path
+      local_var_path = '/update-ping-target'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Object'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.update_ping_target",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#update_ping_target\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

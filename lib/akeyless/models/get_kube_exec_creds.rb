@@ -16,14 +16,17 @@ require 'time'
 module Akeyless
   # getKubeExecCreds is a command that gets credentials for authentication with Kubernetes cluster based on a PKI cert issuer.
   class GetKubeExecCreds
-    # The Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)
+    # The Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any DNS.* names are taken from it)
     attr_accessor :alt_names
 
     # The name of the PKI certificate issuer
     attr_accessor :cert_issuer_name
 
-    # The common name to be included in the PKI certificate
+    # The common name to be included in the PKI certificate (if CSR is supplied this flag is ignored and the CSR subject CN is taken)
     attr_accessor :common_name
+
+    # Certificate Signing Request contents encoded in base64 to generate the certificate with
+    attr_accessor :csr_data_base64
 
     # A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: 'clientauth', 'serverauth'.
     attr_accessor :extended_key_usage
@@ -43,7 +46,7 @@ module Akeyless
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
 
-    # The URI Subject Alternative Names to be included in the PKI certificate (in a comma-delimited list)
+    # The URI Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any URI.* names are taken from it)
     attr_accessor :uri_sans
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -52,6 +55,7 @@ module Akeyless
         :'alt_names' => :'alt-names',
         :'cert_issuer_name' => :'cert-issuer-name',
         :'common_name' => :'common-name',
+        :'csr_data_base64' => :'csr-data-base64',
         :'extended_key_usage' => :'extended-key-usage',
         :'json' => :'json',
         :'key_data_base64' => :'key-data-base64',
@@ -73,6 +77,7 @@ module Akeyless
         :'alt_names' => :'String',
         :'cert_issuer_name' => :'String',
         :'common_name' => :'String',
+        :'csr_data_base64' => :'String',
         :'extended_key_usage' => :'String',
         :'json' => :'Boolean',
         :'key_data_base64' => :'String',
@@ -114,6 +119,10 @@ module Akeyless
 
       if attributes.key?(:'common_name')
         self.common_name = attributes[:'common_name']
+      end
+
+      if attributes.key?(:'csr_data_base64')
+        self.csr_data_base64 = attributes[:'csr_data_base64']
       end
 
       if attributes.key?(:'extended_key_usage')
@@ -171,6 +180,7 @@ module Akeyless
           alt_names == o.alt_names &&
           cert_issuer_name == o.cert_issuer_name &&
           common_name == o.common_name &&
+          csr_data_base64 == o.csr_data_base64 &&
           extended_key_usage == o.extended_key_usage &&
           json == o.json &&
           key_data_base64 == o.key_data_base64 &&
@@ -189,7 +199,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alt_names, cert_issuer_name, common_name, extended_key_usage, json, key_data_base64, token, ttl, uid_token, uri_sans].hash
+      [alt_names, cert_issuer_name, common_name, csr_data_base64, extended_key_usage, json, key_data_base64, token, ttl, uid_token, uri_sans].hash
     end
 
     # Builds the object from hash

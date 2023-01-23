@@ -53,6 +53,9 @@ module Akeyless
     # Secret name
     attr_accessor :name
 
+    # Rotate the value of the secret after SRA session ends
+    attr_accessor :rotate_after_disconnect
+
     attr_accessor :rotated_password
 
     attr_accessor :rotated_username
@@ -152,6 +155,7 @@ module Akeyless
         :'key' => :'key',
         :'metadata' => :'metadata',
         :'name' => :'name',
+        :'rotate_after_disconnect' => :'rotate-after-disconnect',
         :'rotated_password' => :'rotated-password',
         :'rotated_username' => :'rotated-username',
         :'rotation_hour' => :'rotation-hour',
@@ -206,6 +210,7 @@ module Akeyless
         :'key' => :'String',
         :'metadata' => :'String',
         :'name' => :'String',
+        :'rotate_after_disconnect' => :'String',
         :'rotated_password' => :'String',
         :'rotated_username' => :'String',
         :'rotation_hour' => :'Integer',
@@ -315,6 +320,12 @@ module Akeyless
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'rotate_after_disconnect')
+        self.rotate_after_disconnect = attributes[:'rotate_after_disconnect']
+      else
+        self.rotate_after_disconnect = 'false'
       end
 
       if attributes.key?(:'rotated_password')
@@ -493,6 +504,7 @@ module Akeyless
           key == o.key &&
           metadata == o.metadata &&
           name == o.name &&
+          rotate_after_disconnect == o.rotate_after_disconnect &&
           rotated_password == o.rotated_password &&
           rotated_username == o.rotated_username &&
           rotation_hour == o.rotation_hour &&
@@ -533,7 +545,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [api_id, api_key, application_id, authentication_credentials, auto_rotate, aws_region, custom_payload, delete_protection, description, gcp_key, json, key, metadata, name, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, rotator_custom_cmd, rotator_type, secure_access_allow_external_user, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, ssh_password, ssh_username, storage_account_key_name, tags, target_name, token, uid_token, user_attribute, user_dn].hash
+      [api_id, api_key, application_id, authentication_credentials, auto_rotate, aws_region, custom_payload, delete_protection, description, gcp_key, json, key, metadata, name, rotate_after_disconnect, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, rotator_custom_cmd, rotator_type, secure_access_allow_external_user, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, ssh_password, ssh_username, storage_account_key_name, tags, target_name, token, uid_token, user_attribute, user_dn].hash
     end
 
     # Builds the object from hash

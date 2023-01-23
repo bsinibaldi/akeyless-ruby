@@ -4,15 +4,18 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **access_token_manager_id** | **String** |  | [optional] |
 | **active** | **Boolean** |  | [optional] |
 | **admin_name** | **String** |  | [optional] |
 | **admin_pwd** | **String** |  | [optional] |
 | **admin_rotation_interval_days** | **Integer** |  | [optional] |
+| **administrative_port** | **String** |  | [optional] |
 | **artifactory_admin_apikey** | **String** |  | [optional] |
 | **artifactory_admin_username** | **String** |  | [optional] |
 | **artifactory_base_url** | **String** |  | [optional] |
 | **artifactory_token_audience** | **String** |  | [optional] |
 | **artifactory_token_scope** | **String** |  | [optional] |
+| **authorization_port** | **String** |  | [optional] |
 | **aws_access_key_id** | **String** |  | [optional] |
 | **aws_access_mode** | **String** |  | [optional] |
 | **aws_region** | **String** |  | [optional] |
@@ -45,6 +48,7 @@
 | **chef_server_url** | **String** |  | [optional] |
 | **chef_server_username** | **String** |  | [optional] |
 | **chef_skip_ssl** | **Boolean** |  | [optional] |
+| **client_authentication_type** | **String** |  | [optional] |
 | **create_sync_url** | **String** |  | [optional] |
 | **db_host_name** | **String** |  | [optional] |
 | **db_isolation_level** | **String** |  | [optional] |
@@ -71,6 +75,7 @@
 | **eks_region** | **String** |  | [optional] |
 | **eks_secret_access_key** | **String** |  | [optional] |
 | **enable_admin_rotation** | **Boolean** |  | [optional] |
+| **enforce_replay_prevention** | **Boolean** | relevant for PRIVATE_KEY_JWT client authentication type | [optional] |
 | **externally_provided_user** | **String** |  | [optional] |
 | **failure_message** | **String** |  | [optional] |
 | **fixed_user_only** | **String** |  | [optional] |
@@ -96,6 +101,7 @@
 | **gke_cluster_name** | **String** |  | [optional] |
 | **gke_service_account_key** | **String** |  | [optional] |
 | **gke_service_account_name** | **String** |  | [optional] |
+| **grant_types** | **Array&lt;String&gt;** |  | [optional] |
 | **groups** | **String** |  | [optional] |
 | **hanadb_creation_statements** | **String** |  | [optional] |
 | **hanadb_revocation_statements** | **String** |  | [optional] |
@@ -103,14 +109,21 @@
 | **host_port** | **String** |  | [optional] |
 | **implementation_type** | **String** |  | [optional] |
 | **is_fixed_user** | **String** |  | [optional] |
+| **issuer** | **String** | relevant for CLIENT_TLS_CERTIFICATE client authentication type | [optional] |
 | **item_targets_assoc** | [**Array&lt;ItemTargetAssociation&gt;**](ItemTargetAssociation.md) |  | [optional] |
+| **jwks** | **String** |  | [optional] |
+| **jwks_url** | **String** |  | [optional] |
 | **k8s_allowed_namespaces** | **String** | comma-separated list of allowed namespaces. Can hold just * which signifies that any namespace is allowed | [optional] |
 | **k8s_bearer_token** | **String** |  | [optional] |
 | **k8s_cluster_ca_certificate** | **String** |  | [optional] |
 | **k8s_cluster_endpoint** | **String** |  | [optional] |
 | **k8s_dynamic_mode** | **Boolean** | when native k8s is in dynamic mode, user can define allowed namespaces, K8sServiceAccount doesn&#39;t exist from the start and will only be created at time of getting dynamic secret value By default dynamic mode is false and producer behaves like it did before | [optional] |
 | **k8s_namespace** | **String** |  | [optional] |
+| **k8s_role_name** | **String** | Name of the pre-existing Role or ClusterRole to bind a generated service account to. | [optional] |
+| **k8s_role_type** | **String** |  | [optional] |
 | **k8s_service_account** | **String** |  | [optional] |
+| **k8s_temp_role_binding_definition** | **Array&lt;Integer&gt;** | Yaml/Json definition of temporary role binding that will be created and deleted when TTL is due. Must have as subject name of Service Account specified in K8sServiceAccount field | [optional] |
+| **k8s_temp_role_definition** | **Array&lt;Integer&gt;** | Yaml/Json definition of temporary role that will be created and deleted when TTL is due | [optional] |
 | **last_admin_rotation** | **Integer** |  | [optional] |
 | **ldap_audience** | **String** |  | [optional] |
 | **ldap_bind_dn** | **String** |  | [optional] |
@@ -142,8 +155,10 @@
 | **password_length** | **Integer** |  | [optional] |
 | **password_policy** | **String** |  | [optional] |
 | **payload** | **String** |  | [optional] |
+| **ping_url** | **String** |  | [optional] |
 | **postgres_creation_statements** | **String** |  | [optional] |
 | **postgres_revocation_statements** | **String** |  | [optional] |
+| **privileged_user** | **String** |  | [optional] |
 | **rabbitmq_server_password** | **String** |  | [optional] |
 | **rabbitmq_server_uri** | **String** |  | [optional] |
 | **rabbitmq_server_user** | **String** |  | [optional] |
@@ -152,7 +167,9 @@
 | **rabbitmq_user_tags** | **String** |  | [optional] |
 | **rabbitmq_user_vhost** | **String** |  | [optional] |
 | **rabbitmq_user_write_permission** | **String** |  | [optional] |
+| **redirect_uris** | **Array&lt;String&gt;** |  | [optional] |
 | **redshift_creation_statements** | **String** |  | [optional] |
+| **restricted_scopes** | **Array&lt;String&gt;** |  | [optional] |
 | **revoke_sync_url** | **String** |  | [optional] |
 | **rotate_sync_url** | **String** |  | [optional] |
 | **scopes** | **Array&lt;String&gt;** |  | [optional] |
@@ -162,12 +179,15 @@
 | **sf_user_role** | **String** | generated  users info | [optional] |
 | **sf_warehouse_name** | **String** |  | [optional] |
 | **should_stop** | **String** | TODO delete this after migration | [optional] |
+| **signing_algorithm** | **String** |  | [optional] |
 | **ssl_connection_certificate** | **String** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] |
 | **ssl_connection_mode** | **Boolean** | (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB | [optional] |
+| **subject_dn** | **String** |  | [optional] |
 | **tags** | **Array&lt;String&gt;** |  | [optional] |
 | **timeout_seconds** | **Integer** |  | [optional] |
 | **use_gw_cloud_identity** | **Boolean** |  | [optional] |
 | **user_name** | **String** |  | [optional] |
+| **user_password** | **String** |  | [optional] |
 | **user_principal_name** | **String** |  | [optional] |
 | **user_ttl** | **String** |  | [optional] |
 | **username_length** | **Integer** |  | [optional] |
@@ -193,15 +213,18 @@
 require 'akeyless'
 
 instance = Akeyless::DSProducerDetails.new(
+  access_token_manager_id: null,
   active: null,
   admin_name: null,
   admin_pwd: null,
   admin_rotation_interval_days: null,
+  administrative_port: null,
   artifactory_admin_apikey: null,
   artifactory_admin_username: null,
   artifactory_base_url: null,
   artifactory_token_audience: null,
   artifactory_token_scope: null,
+  authorization_port: null,
   aws_access_key_id: null,
   aws_access_mode: null,
   aws_region: null,
@@ -234,6 +257,7 @@ instance = Akeyless::DSProducerDetails.new(
   chef_server_url: null,
   chef_server_username: null,
   chef_skip_ssl: null,
+  client_authentication_type: null,
   create_sync_url: null,
   db_host_name: null,
   db_isolation_level: null,
@@ -260,6 +284,7 @@ instance = Akeyless::DSProducerDetails.new(
   eks_region: null,
   eks_secret_access_key: null,
   enable_admin_rotation: null,
+  enforce_replay_prevention: null,
   externally_provided_user: null,
   failure_message: null,
   fixed_user_only: null,
@@ -285,6 +310,7 @@ instance = Akeyless::DSProducerDetails.new(
   gke_cluster_name: null,
   gke_service_account_key: null,
   gke_service_account_name: null,
+  grant_types: null,
   groups: null,
   hanadb_creation_statements: null,
   hanadb_revocation_statements: null,
@@ -292,14 +318,21 @@ instance = Akeyless::DSProducerDetails.new(
   host_port: null,
   implementation_type: null,
   is_fixed_user: null,
+  issuer: null,
   item_targets_assoc: null,
+  jwks: null,
+  jwks_url: null,
   k8s_allowed_namespaces: null,
   k8s_bearer_token: null,
   k8s_cluster_ca_certificate: null,
   k8s_cluster_endpoint: null,
   k8s_dynamic_mode: null,
   k8s_namespace: null,
+  k8s_role_name: null,
+  k8s_role_type: null,
   k8s_service_account: null,
+  k8s_temp_role_binding_definition: null,
+  k8s_temp_role_definition: null,
   last_admin_rotation: null,
   ldap_audience: null,
   ldap_bind_dn: null,
@@ -331,8 +364,10 @@ instance = Akeyless::DSProducerDetails.new(
   password_length: null,
   password_policy: null,
   payload: null,
+  ping_url: null,
   postgres_creation_statements: null,
   postgres_revocation_statements: null,
+  privileged_user: null,
   rabbitmq_server_password: null,
   rabbitmq_server_uri: null,
   rabbitmq_server_user: null,
@@ -341,7 +376,9 @@ instance = Akeyless::DSProducerDetails.new(
   rabbitmq_user_tags: null,
   rabbitmq_user_vhost: null,
   rabbitmq_user_write_permission: null,
+  redirect_uris: null,
   redshift_creation_statements: null,
+  restricted_scopes: null,
   revoke_sync_url: null,
   rotate_sync_url: null,
   scopes: null,
@@ -351,12 +388,15 @@ instance = Akeyless::DSProducerDetails.new(
   sf_user_role: null,
   sf_warehouse_name: null,
   should_stop: null,
+  signing_algorithm: null,
   ssl_connection_certificate: null,
   ssl_connection_mode: null,
+  subject_dn: null,
   tags: null,
   timeout_seconds: null,
   use_gw_cloud_identity: null,
   user_name: null,
+  user_password: null,
   user_principal_name: null,
   user_ttl: null,
   username_length: null,

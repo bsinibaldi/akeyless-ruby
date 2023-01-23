@@ -14,54 +14,13 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class GetPKICertificate
-    # The Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any DNS.* names are taken from it)
-    attr_accessor :alt_names
-
-    # The name of the PKI certificate issuer
-    attr_accessor :cert_issuer_name
-
-    # The common name to be included in the PKI certificate (if CSR is supplied this flag is ignored and the CSR subject CN is taken)
-    attr_accessor :common_name
-
-    # Certificate Signing Request contents encoded in base64 to generate the certificate with
-    attr_accessor :csr_data_base64
-
-    # A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: 'clientauth', 'serverauth'.
-    attr_accessor :extended_key_usage
-
-    # Set output format to JSON
-    attr_accessor :json
-
-    # PKI key file contents. If this option is used, the certificate will be printed to stdout
-    attr_accessor :key_data_base64
-
-    # Authentication token (see `/auth` and `/configure`)
-    attr_accessor :token
-
-    # Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL)
-    attr_accessor :ttl
-
-    # The universal identity token, Required only for universal_identity authentication
-    attr_accessor :uid_token
-
-    # The URI Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any URI.* names are taken from it)
-    attr_accessor :uri_sans
+  class GatewayCreateProducerPingOutput
+    attr_accessor :producer_details
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'alt_names' => :'alt-names',
-        :'cert_issuer_name' => :'cert-issuer-name',
-        :'common_name' => :'common-name',
-        :'csr_data_base64' => :'csr-data-base64',
-        :'extended_key_usage' => :'extended-key-usage',
-        :'json' => :'json',
-        :'key_data_base64' => :'key-data-base64',
-        :'token' => :'token',
-        :'ttl' => :'ttl',
-        :'uid_token' => :'uid-token',
-        :'uri_sans' => :'uri-sans'
+        :'producer_details' => :'producer_details'
       }
     end
 
@@ -73,17 +32,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'alt_names' => :'String',
-        :'cert_issuer_name' => :'String',
-        :'common_name' => :'String',
-        :'csr_data_base64' => :'String',
-        :'extended_key_usage' => :'String',
-        :'json' => :'Boolean',
-        :'key_data_base64' => :'String',
-        :'token' => :'String',
-        :'ttl' => :'Integer',
-        :'uid_token' => :'String',
-        :'uri_sans' => :'String'
+        :'producer_details' => :'DSProducerDetails'
       }
     end
 
@@ -97,59 +46,19 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::GetPKICertificate` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::GatewayCreateProducerPingOutput` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::GetPKICertificate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::GatewayCreateProducerPingOutput`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'alt_names')
-        self.alt_names = attributes[:'alt_names']
-      end
-
-      if attributes.key?(:'cert_issuer_name')
-        self.cert_issuer_name = attributes[:'cert_issuer_name']
-      end
-
-      if attributes.key?(:'common_name')
-        self.common_name = attributes[:'common_name']
-      end
-
-      if attributes.key?(:'csr_data_base64')
-        self.csr_data_base64 = attributes[:'csr_data_base64']
-      end
-
-      if attributes.key?(:'extended_key_usage')
-        self.extended_key_usage = attributes[:'extended_key_usage']
-      end
-
-      if attributes.key?(:'json')
-        self.json = attributes[:'json']
-      end
-
-      if attributes.key?(:'key_data_base64')
-        self.key_data_base64 = attributes[:'key_data_base64']
-      end
-
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
-      end
-
-      if attributes.key?(:'ttl')
-        self.ttl = attributes[:'ttl']
-      end
-
-      if attributes.key?(:'uid_token')
-        self.uid_token = attributes[:'uid_token']
-      end
-
-      if attributes.key?(:'uri_sans')
-        self.uri_sans = attributes[:'uri_sans']
+      if attributes.key?(:'producer_details')
+        self.producer_details = attributes[:'producer_details']
       end
     end
 
@@ -157,17 +66,12 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @cert_issuer_name.nil?
-        invalid_properties.push('invalid value for "cert_issuer_name", cert_issuer_name cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @cert_issuer_name.nil?
       true
     end
 
@@ -176,17 +80,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          alt_names == o.alt_names &&
-          cert_issuer_name == o.cert_issuer_name &&
-          common_name == o.common_name &&
-          csr_data_base64 == o.csr_data_base64 &&
-          extended_key_usage == o.extended_key_usage &&
-          json == o.json &&
-          key_data_base64 == o.key_data_base64 &&
-          token == o.token &&
-          ttl == o.ttl &&
-          uid_token == o.uid_token &&
-          uri_sans == o.uri_sans
+          producer_details == o.producer_details
     end
 
     # @see the `==` method
@@ -198,7 +92,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alt_names, cert_issuer_name, common_name, csr_data_base64, extended_key_usage, json, key_data_base64, token, ttl, uid_token, uri_sans].hash
+      [producer_details].hash
     end
 
     # Builds the object from hash

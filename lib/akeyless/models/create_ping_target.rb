@@ -14,54 +14,54 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class GetPKICertificate
-    # The Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any DNS.* names are taken from it)
-    attr_accessor :alt_names
+  class CreatePingTarget
+    # Ping Federate administrative port
+    attr_accessor :administrative_port
 
-    # The name of the PKI certificate issuer
-    attr_accessor :cert_issuer_name
+    # Ping Federate authorization port
+    attr_accessor :authorization_port
 
-    # The common name to be included in the PKI certificate (if CSR is supplied this flag is ignored and the CSR subject CN is taken)
-    attr_accessor :common_name
-
-    # Certificate Signing Request contents encoded in base64 to generate the certificate with
-    attr_accessor :csr_data_base64
-
-    # A comma-separated list of extended key usage requests which will be used for certificate issuance. Supported values: 'clientauth', 'serverauth'.
-    attr_accessor :extended_key_usage
+    # Comment about the target
+    attr_accessor :comment
 
     # Set output format to JSON
     attr_accessor :json
 
-    # PKI key file contents. If this option is used, the certificate will be printed to stdout
-    attr_accessor :key_data_base64
+    # The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
+    attr_accessor :key
+
+    # Target name
+    attr_accessor :name
+
+    # Ping Federate privileged user password
+    attr_accessor :password
+
+    # Ping URL
+    attr_accessor :ping_url
+
+    # Ping Federate privileged user
+    attr_accessor :privileged_user
 
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
-    # Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL)
-    attr_accessor :ttl
-
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
-
-    # The URI Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any URI.* names are taken from it)
-    attr_accessor :uri_sans
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'alt_names' => :'alt-names',
-        :'cert_issuer_name' => :'cert-issuer-name',
-        :'common_name' => :'common-name',
-        :'csr_data_base64' => :'csr-data-base64',
-        :'extended_key_usage' => :'extended-key-usage',
+        :'administrative_port' => :'administrative-port',
+        :'authorization_port' => :'authorization-port',
+        :'comment' => :'comment',
         :'json' => :'json',
-        :'key_data_base64' => :'key-data-base64',
+        :'key' => :'key',
+        :'name' => :'name',
+        :'password' => :'password',
+        :'ping_url' => :'ping-url',
+        :'privileged_user' => :'privileged-user',
         :'token' => :'token',
-        :'ttl' => :'ttl',
-        :'uid_token' => :'uid-token',
-        :'uri_sans' => :'uri-sans'
+        :'uid_token' => :'uid-token'
       }
     end
 
@@ -73,17 +73,17 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'alt_names' => :'String',
-        :'cert_issuer_name' => :'String',
-        :'common_name' => :'String',
-        :'csr_data_base64' => :'String',
-        :'extended_key_usage' => :'String',
+        :'administrative_port' => :'String',
+        :'authorization_port' => :'String',
+        :'comment' => :'String',
         :'json' => :'Boolean',
-        :'key_data_base64' => :'String',
+        :'key' => :'String',
+        :'name' => :'String',
+        :'password' => :'String',
+        :'ping_url' => :'String',
+        :'privileged_user' => :'String',
         :'token' => :'String',
-        :'ttl' => :'Integer',
-        :'uid_token' => :'String',
-        :'uri_sans' => :'String'
+        :'uid_token' => :'String'
       }
     end
 
@@ -97,59 +97,63 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::GetPKICertificate` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::CreatePingTarget` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::GetPKICertificate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::CreatePingTarget`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'alt_names')
-        self.alt_names = attributes[:'alt_names']
+      if attributes.key?(:'administrative_port')
+        self.administrative_port = attributes[:'administrative_port']
+      else
+        self.administrative_port = '9999'
       end
 
-      if attributes.key?(:'cert_issuer_name')
-        self.cert_issuer_name = attributes[:'cert_issuer_name']
+      if attributes.key?(:'authorization_port')
+        self.authorization_port = attributes[:'authorization_port']
+      else
+        self.authorization_port = '9031'
       end
 
-      if attributes.key?(:'common_name')
-        self.common_name = attributes[:'common_name']
-      end
-
-      if attributes.key?(:'csr_data_base64')
-        self.csr_data_base64 = attributes[:'csr_data_base64']
-      end
-
-      if attributes.key?(:'extended_key_usage')
-        self.extended_key_usage = attributes[:'extended_key_usage']
+      if attributes.key?(:'comment')
+        self.comment = attributes[:'comment']
       end
 
       if attributes.key?(:'json')
         self.json = attributes[:'json']
       end
 
-      if attributes.key?(:'key_data_base64')
-        self.key_data_base64 = attributes[:'key_data_base64']
+      if attributes.key?(:'key')
+        self.key = attributes[:'key']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'password')
+        self.password = attributes[:'password']
+      end
+
+      if attributes.key?(:'ping_url')
+        self.ping_url = attributes[:'ping_url']
+      end
+
+      if attributes.key?(:'privileged_user')
+        self.privileged_user = attributes[:'privileged_user']
       end
 
       if attributes.key?(:'token')
         self.token = attributes[:'token']
       end
 
-      if attributes.key?(:'ttl')
-        self.ttl = attributes[:'ttl']
-      end
-
       if attributes.key?(:'uid_token')
         self.uid_token = attributes[:'uid_token']
-      end
-
-      if attributes.key?(:'uri_sans')
-        self.uri_sans = attributes[:'uri_sans']
       end
     end
 
@@ -157,8 +161,8 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @cert_issuer_name.nil?
-        invalid_properties.push('invalid value for "cert_issuer_name", cert_issuer_name cannot be nil.')
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
       invalid_properties
@@ -167,7 +171,7 @@ module Akeyless
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @cert_issuer_name.nil?
+      return false if @name.nil?
       true
     end
 
@@ -176,17 +180,17 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          alt_names == o.alt_names &&
-          cert_issuer_name == o.cert_issuer_name &&
-          common_name == o.common_name &&
-          csr_data_base64 == o.csr_data_base64 &&
-          extended_key_usage == o.extended_key_usage &&
+          administrative_port == o.administrative_port &&
+          authorization_port == o.authorization_port &&
+          comment == o.comment &&
           json == o.json &&
-          key_data_base64 == o.key_data_base64 &&
+          key == o.key &&
+          name == o.name &&
+          password == o.password &&
+          ping_url == o.ping_url &&
+          privileged_user == o.privileged_user &&
           token == o.token &&
-          ttl == o.ttl &&
-          uid_token == o.uid_token &&
-          uri_sans == o.uri_sans
+          uid_token == o.uid_token
     end
 
     # @see the `==` method
@@ -198,7 +202,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alt_names, cert_issuer_name, common_name, csr_data_base64, extended_key_usage, json, key_data_base64, token, ttl, uid_token, uri_sans].hash
+      [administrative_port, authorization_port, comment, json, key, name, password, ping_url, privileged_user, token, uid_token].hash
     end
 
     # Builds the object from hash

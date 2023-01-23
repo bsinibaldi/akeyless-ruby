@@ -15,6 +15,8 @@ require 'time'
 
 module Akeyless
   class DSProducerDetails
+    attr_accessor :access_token_manager_id
+
     attr_accessor :active
 
     attr_accessor :admin_name
@@ -22,6 +24,8 @@ module Akeyless
     attr_accessor :admin_pwd
 
     attr_accessor :admin_rotation_interval_days
+
+    attr_accessor :administrative_port
 
     attr_accessor :artifactory_admin_apikey
 
@@ -32,6 +36,8 @@ module Akeyless
     attr_accessor :artifactory_token_audience
 
     attr_accessor :artifactory_token_scope
+
+    attr_accessor :authorization_port
 
     attr_accessor :aws_access_key_id
 
@@ -97,6 +103,8 @@ module Akeyless
 
     attr_accessor :chef_skip_ssl
 
+    attr_accessor :client_authentication_type
+
     attr_accessor :create_sync_url
 
     attr_accessor :db_host_name
@@ -152,6 +160,9 @@ module Akeyless
 
     attr_accessor :enable_admin_rotation
 
+    # relevant for PRIVATE_KEY_JWT client authentication type
+    attr_accessor :enforce_replay_prevention
+
     attr_accessor :externally_provided_user
 
     attr_accessor :failure_message
@@ -203,6 +214,8 @@ module Akeyless
 
     attr_accessor :gke_service_account_name
 
+    attr_accessor :grant_types
+
     attr_accessor :groups
 
     attr_accessor :hanadb_creation_statements
@@ -217,7 +230,14 @@ module Akeyless
 
     attr_accessor :is_fixed_user
 
+    # relevant for CLIENT_TLS_CERTIFICATE client authentication type
+    attr_accessor :issuer
+
     attr_accessor :item_targets_assoc
+
+    attr_accessor :jwks
+
+    attr_accessor :jwks_url
 
     # comma-separated list of allowed namespaces. Can hold just * which signifies that any namespace is allowed
     attr_accessor :k8s_allowed_namespaces
@@ -233,7 +253,18 @@ module Akeyless
 
     attr_accessor :k8s_namespace
 
+    # Name of the pre-existing Role or ClusterRole to bind a generated service account to.
+    attr_accessor :k8s_role_name
+
+    attr_accessor :k8s_role_type
+
     attr_accessor :k8s_service_account
+
+    # Yaml/Json definition of temporary role binding that will be created and deleted when TTL is due. Must have as subject name of Service Account specified in K8sServiceAccount field
+    attr_accessor :k8s_temp_role_binding_definition
+
+    # Yaml/Json definition of temporary role that will be created and deleted when TTL is due
+    attr_accessor :k8s_temp_role_definition
 
     attr_accessor :last_admin_rotation
 
@@ -301,9 +332,13 @@ module Akeyless
 
     attr_accessor :payload
 
+    attr_accessor :ping_url
+
     attr_accessor :postgres_creation_statements
 
     attr_accessor :postgres_revocation_statements
+
+    attr_accessor :privileged_user
 
     attr_accessor :rabbitmq_server_password
 
@@ -321,7 +356,11 @@ module Akeyless
 
     attr_accessor :rabbitmq_user_write_permission
 
+    attr_accessor :redirect_uris
+
     attr_accessor :redshift_creation_statements
+
+    attr_accessor :restricted_scopes
 
     attr_accessor :revoke_sync_url
 
@@ -343,11 +382,15 @@ module Akeyless
     # TODO delete this after migration
     attr_accessor :should_stop
 
+    attr_accessor :signing_algorithm
+
     # (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field
     attr_accessor :ssl_connection_certificate
 
     # (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB
     attr_accessor :ssl_connection_mode
+
+    attr_accessor :subject_dn
 
     attr_accessor :tags
 
@@ -356,6 +399,8 @@ module Akeyless
     attr_accessor :use_gw_cloud_identity
 
     attr_accessor :user_name
+
+    attr_accessor :user_password
 
     attr_accessor :user_principal_name
 
@@ -396,15 +441,18 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'access_token_manager_id' => :'access_token_manager_id',
         :'active' => :'active',
         :'admin_name' => :'admin_name',
         :'admin_pwd' => :'admin_pwd',
         :'admin_rotation_interval_days' => :'admin_rotation_interval_days',
+        :'administrative_port' => :'administrative_port',
         :'artifactory_admin_apikey' => :'artifactory_admin_apikey',
         :'artifactory_admin_username' => :'artifactory_admin_username',
         :'artifactory_base_url' => :'artifactory_base_url',
         :'artifactory_token_audience' => :'artifactory_token_audience',
         :'artifactory_token_scope' => :'artifactory_token_scope',
+        :'authorization_port' => :'authorization_port',
         :'aws_access_key_id' => :'aws_access_key_id',
         :'aws_access_mode' => :'aws_access_mode',
         :'aws_region' => :'aws_region',
@@ -437,6 +485,7 @@ module Akeyless
         :'chef_server_url' => :'chef_server_url',
         :'chef_server_username' => :'chef_server_username',
         :'chef_skip_ssl' => :'chef_skip_ssl',
+        :'client_authentication_type' => :'client_authentication_type',
         :'create_sync_url' => :'create_sync_url',
         :'db_host_name' => :'db_host_name',
         :'db_isolation_level' => :'db_isolation_level',
@@ -463,6 +512,7 @@ module Akeyless
         :'eks_region' => :'eks_region',
         :'eks_secret_access_key' => :'eks_secret_access_key',
         :'enable_admin_rotation' => :'enable_admin_rotation',
+        :'enforce_replay_prevention' => :'enforce_replay_prevention',
         :'externally_provided_user' => :'externally_provided_user',
         :'failure_message' => :'failure_message',
         :'fixed_user_only' => :'fixed_user_only',
@@ -488,6 +538,7 @@ module Akeyless
         :'gke_cluster_name' => :'gke_cluster_name',
         :'gke_service_account_key' => :'gke_service_account_key',
         :'gke_service_account_name' => :'gke_service_account_name',
+        :'grant_types' => :'grant_types',
         :'groups' => :'groups',
         :'hanadb_creation_statements' => :'hanadb_creation_statements',
         :'hanadb_revocation_statements' => :'hanadb_revocation_statements',
@@ -495,14 +546,21 @@ module Akeyless
         :'host_port' => :'host_port',
         :'implementation_type' => :'implementation_type',
         :'is_fixed_user' => :'is_fixed_user',
+        :'issuer' => :'issuer',
         :'item_targets_assoc' => :'item_targets_assoc',
+        :'jwks' => :'jwks',
+        :'jwks_url' => :'jwks_url',
         :'k8s_allowed_namespaces' => :'k8s_allowed_namespaces',
         :'k8s_bearer_token' => :'k8s_bearer_token',
         :'k8s_cluster_ca_certificate' => :'k8s_cluster_ca_certificate',
         :'k8s_cluster_endpoint' => :'k8s_cluster_endpoint',
         :'k8s_dynamic_mode' => :'k8s_dynamic_mode',
         :'k8s_namespace' => :'k8s_namespace',
+        :'k8s_role_name' => :'k8s_role_name',
+        :'k8s_role_type' => :'k8s_role_type',
         :'k8s_service_account' => :'k8s_service_account',
+        :'k8s_temp_role_binding_definition' => :'k8s_temp_role_binding_definition',
+        :'k8s_temp_role_definition' => :'k8s_temp_role_definition',
         :'last_admin_rotation' => :'last_admin_rotation',
         :'ldap_audience' => :'ldap_audience',
         :'ldap_bind_dn' => :'ldap_bind_dn',
@@ -534,8 +592,10 @@ module Akeyless
         :'password_length' => :'password_length',
         :'password_policy' => :'password_policy',
         :'payload' => :'payload',
+        :'ping_url' => :'ping_url',
         :'postgres_creation_statements' => :'postgres_creation_statements',
         :'postgres_revocation_statements' => :'postgres_revocation_statements',
+        :'privileged_user' => :'privileged_user',
         :'rabbitmq_server_password' => :'rabbitmq_server_password',
         :'rabbitmq_server_uri' => :'rabbitmq_server_uri',
         :'rabbitmq_server_user' => :'rabbitmq_server_user',
@@ -544,7 +604,9 @@ module Akeyless
         :'rabbitmq_user_tags' => :'rabbitmq_user_tags',
         :'rabbitmq_user_vhost' => :'rabbitmq_user_vhost',
         :'rabbitmq_user_write_permission' => :'rabbitmq_user_write_permission',
+        :'redirect_uris' => :'redirect_uris',
         :'redshift_creation_statements' => :'redshift_creation_statements',
+        :'restricted_scopes' => :'restricted_scopes',
         :'revoke_sync_url' => :'revoke_sync_url',
         :'rotate_sync_url' => :'rotate_sync_url',
         :'scopes' => :'scopes',
@@ -554,12 +616,15 @@ module Akeyless
         :'sf_user_role' => :'sf_user_role',
         :'sf_warehouse_name' => :'sf_warehouse_name',
         :'should_stop' => :'should_stop',
+        :'signing_algorithm' => :'signing_algorithm',
         :'ssl_connection_certificate' => :'ssl_connection_certificate',
         :'ssl_connection_mode' => :'ssl_connection_mode',
+        :'subject_dn' => :'subject_dn',
         :'tags' => :'tags',
         :'timeout_seconds' => :'timeout_seconds',
         :'use_gw_cloud_identity' => :'use_gw_cloud_identity',
         :'user_name' => :'user_name',
+        :'user_password' => :'user_password',
         :'user_principal_name' => :'user_principal_name',
         :'user_ttl' => :'user_ttl',
         :'username_length' => :'username_length',
@@ -589,15 +654,18 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'access_token_manager_id' => :'String',
         :'active' => :'Boolean',
         :'admin_name' => :'String',
         :'admin_pwd' => :'String',
         :'admin_rotation_interval_days' => :'Integer',
+        :'administrative_port' => :'String',
         :'artifactory_admin_apikey' => :'String',
         :'artifactory_admin_username' => :'String',
         :'artifactory_base_url' => :'String',
         :'artifactory_token_audience' => :'String',
         :'artifactory_token_scope' => :'String',
+        :'authorization_port' => :'String',
         :'aws_access_key_id' => :'String',
         :'aws_access_mode' => :'String',
         :'aws_region' => :'String',
@@ -630,6 +698,7 @@ module Akeyless
         :'chef_server_url' => :'String',
         :'chef_server_username' => :'String',
         :'chef_skip_ssl' => :'Boolean',
+        :'client_authentication_type' => :'String',
         :'create_sync_url' => :'String',
         :'db_host_name' => :'String',
         :'db_isolation_level' => :'String',
@@ -656,6 +725,7 @@ module Akeyless
         :'eks_region' => :'String',
         :'eks_secret_access_key' => :'String',
         :'enable_admin_rotation' => :'Boolean',
+        :'enforce_replay_prevention' => :'Boolean',
         :'externally_provided_user' => :'String',
         :'failure_message' => :'String',
         :'fixed_user_only' => :'String',
@@ -681,6 +751,7 @@ module Akeyless
         :'gke_cluster_name' => :'String',
         :'gke_service_account_key' => :'String',
         :'gke_service_account_name' => :'String',
+        :'grant_types' => :'Array<String>',
         :'groups' => :'String',
         :'hanadb_creation_statements' => :'String',
         :'hanadb_revocation_statements' => :'String',
@@ -688,14 +759,21 @@ module Akeyless
         :'host_port' => :'String',
         :'implementation_type' => :'String',
         :'is_fixed_user' => :'String',
+        :'issuer' => :'String',
         :'item_targets_assoc' => :'Array<ItemTargetAssociation>',
+        :'jwks' => :'String',
+        :'jwks_url' => :'String',
         :'k8s_allowed_namespaces' => :'String',
         :'k8s_bearer_token' => :'String',
         :'k8s_cluster_ca_certificate' => :'String',
         :'k8s_cluster_endpoint' => :'String',
         :'k8s_dynamic_mode' => :'Boolean',
         :'k8s_namespace' => :'String',
+        :'k8s_role_name' => :'String',
+        :'k8s_role_type' => :'String',
         :'k8s_service_account' => :'String',
+        :'k8s_temp_role_binding_definition' => :'Array<Integer>',
+        :'k8s_temp_role_definition' => :'Array<Integer>',
         :'last_admin_rotation' => :'Integer',
         :'ldap_audience' => :'String',
         :'ldap_bind_dn' => :'String',
@@ -727,8 +805,10 @@ module Akeyless
         :'password_length' => :'Integer',
         :'password_policy' => :'String',
         :'payload' => :'String',
+        :'ping_url' => :'String',
         :'postgres_creation_statements' => :'String',
         :'postgres_revocation_statements' => :'String',
+        :'privileged_user' => :'String',
         :'rabbitmq_server_password' => :'String',
         :'rabbitmq_server_uri' => :'String',
         :'rabbitmq_server_user' => :'String',
@@ -737,7 +817,9 @@ module Akeyless
         :'rabbitmq_user_tags' => :'String',
         :'rabbitmq_user_vhost' => :'String',
         :'rabbitmq_user_write_permission' => :'String',
+        :'redirect_uris' => :'Array<String>',
         :'redshift_creation_statements' => :'String',
+        :'restricted_scopes' => :'Array<String>',
         :'revoke_sync_url' => :'String',
         :'rotate_sync_url' => :'String',
         :'scopes' => :'Array<String>',
@@ -747,12 +829,15 @@ module Akeyless
         :'sf_user_role' => :'String',
         :'sf_warehouse_name' => :'String',
         :'should_stop' => :'String',
+        :'signing_algorithm' => :'String',
         :'ssl_connection_certificate' => :'String',
         :'ssl_connection_mode' => :'Boolean',
+        :'subject_dn' => :'String',
         :'tags' => :'Array<String>',
         :'timeout_seconds' => :'Integer',
         :'use_gw_cloud_identity' => :'Boolean',
         :'user_name' => :'String',
+        :'user_password' => :'String',
         :'user_principal_name' => :'String',
         :'user_ttl' => :'String',
         :'username_length' => :'Integer',
@@ -795,6 +880,10 @@ module Akeyless
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'access_token_manager_id')
+        self.access_token_manager_id = attributes[:'access_token_manager_id']
+      end
+
       if attributes.key?(:'active')
         self.active = attributes[:'active']
       end
@@ -809,6 +898,10 @@ module Akeyless
 
       if attributes.key?(:'admin_rotation_interval_days')
         self.admin_rotation_interval_days = attributes[:'admin_rotation_interval_days']
+      end
+
+      if attributes.key?(:'administrative_port')
+        self.administrative_port = attributes[:'administrative_port']
       end
 
       if attributes.key?(:'artifactory_admin_apikey')
@@ -829,6 +922,10 @@ module Akeyless
 
       if attributes.key?(:'artifactory_token_scope')
         self.artifactory_token_scope = attributes[:'artifactory_token_scope']
+      end
+
+      if attributes.key?(:'authorization_port')
+        self.authorization_port = attributes[:'authorization_port']
       end
 
       if attributes.key?(:'aws_access_key_id')
@@ -959,6 +1056,10 @@ module Akeyless
         self.chef_skip_ssl = attributes[:'chef_skip_ssl']
       end
 
+      if attributes.key?(:'client_authentication_type')
+        self.client_authentication_type = attributes[:'client_authentication_type']
+      end
+
       if attributes.key?(:'create_sync_url')
         self.create_sync_url = attributes[:'create_sync_url']
       end
@@ -1061,6 +1162,10 @@ module Akeyless
 
       if attributes.key?(:'enable_admin_rotation')
         self.enable_admin_rotation = attributes[:'enable_admin_rotation']
+      end
+
+      if attributes.key?(:'enforce_replay_prevention')
+        self.enforce_replay_prevention = attributes[:'enforce_replay_prevention']
       end
 
       if attributes.key?(:'externally_provided_user')
@@ -1171,6 +1276,12 @@ module Akeyless
         self.gke_service_account_name = attributes[:'gke_service_account_name']
       end
 
+      if attributes.key?(:'grant_types')
+        if (value = attributes[:'grant_types']).is_a?(Array)
+          self.grant_types = value
+        end
+      end
+
       if attributes.key?(:'groups')
         self.groups = attributes[:'groups']
       end
@@ -1199,10 +1310,22 @@ module Akeyless
         self.is_fixed_user = attributes[:'is_fixed_user']
       end
 
+      if attributes.key?(:'issuer')
+        self.issuer = attributes[:'issuer']
+      end
+
       if attributes.key?(:'item_targets_assoc')
         if (value = attributes[:'item_targets_assoc']).is_a?(Array)
           self.item_targets_assoc = value
         end
+      end
+
+      if attributes.key?(:'jwks')
+        self.jwks = attributes[:'jwks']
+      end
+
+      if attributes.key?(:'jwks_url')
+        self.jwks_url = attributes[:'jwks_url']
       end
 
       if attributes.key?(:'k8s_allowed_namespaces')
@@ -1229,8 +1352,28 @@ module Akeyless
         self.k8s_namespace = attributes[:'k8s_namespace']
       end
 
+      if attributes.key?(:'k8s_role_name')
+        self.k8s_role_name = attributes[:'k8s_role_name']
+      end
+
+      if attributes.key?(:'k8s_role_type')
+        self.k8s_role_type = attributes[:'k8s_role_type']
+      end
+
       if attributes.key?(:'k8s_service_account')
         self.k8s_service_account = attributes[:'k8s_service_account']
+      end
+
+      if attributes.key?(:'k8s_temp_role_binding_definition')
+        if (value = attributes[:'k8s_temp_role_binding_definition']).is_a?(Array)
+          self.k8s_temp_role_binding_definition = value
+        end
+      end
+
+      if attributes.key?(:'k8s_temp_role_definition')
+        if (value = attributes[:'k8s_temp_role_definition']).is_a?(Array)
+          self.k8s_temp_role_definition = value
+        end
       end
 
       if attributes.key?(:'last_admin_rotation')
@@ -1357,12 +1500,20 @@ module Akeyless
         self.payload = attributes[:'payload']
       end
 
+      if attributes.key?(:'ping_url')
+        self.ping_url = attributes[:'ping_url']
+      end
+
       if attributes.key?(:'postgres_creation_statements')
         self.postgres_creation_statements = attributes[:'postgres_creation_statements']
       end
 
       if attributes.key?(:'postgres_revocation_statements')
         self.postgres_revocation_statements = attributes[:'postgres_revocation_statements']
+      end
+
+      if attributes.key?(:'privileged_user')
+        self.privileged_user = attributes[:'privileged_user']
       end
 
       if attributes.key?(:'rabbitmq_server_password')
@@ -1397,8 +1548,20 @@ module Akeyless
         self.rabbitmq_user_write_permission = attributes[:'rabbitmq_user_write_permission']
       end
 
+      if attributes.key?(:'redirect_uris')
+        if (value = attributes[:'redirect_uris']).is_a?(Array)
+          self.redirect_uris = value
+        end
+      end
+
       if attributes.key?(:'redshift_creation_statements')
         self.redshift_creation_statements = attributes[:'redshift_creation_statements']
+      end
+
+      if attributes.key?(:'restricted_scopes')
+        if (value = attributes[:'restricted_scopes']).is_a?(Array)
+          self.restricted_scopes = value
+        end
       end
 
       if attributes.key?(:'revoke_sync_url')
@@ -1439,12 +1602,20 @@ module Akeyless
         self.should_stop = attributes[:'should_stop']
       end
 
+      if attributes.key?(:'signing_algorithm')
+        self.signing_algorithm = attributes[:'signing_algorithm']
+      end
+
       if attributes.key?(:'ssl_connection_certificate')
         self.ssl_connection_certificate = attributes[:'ssl_connection_certificate']
       end
 
       if attributes.key?(:'ssl_connection_mode')
         self.ssl_connection_mode = attributes[:'ssl_connection_mode']
+      end
+
+      if attributes.key?(:'subject_dn')
+        self.subject_dn = attributes[:'subject_dn']
       end
 
       if attributes.key?(:'tags')
@@ -1463,6 +1634,10 @@ module Akeyless
 
       if attributes.key?(:'user_name')
         self.user_name = attributes[:'user_name']
+      end
+
+      if attributes.key?(:'user_password')
+        self.user_password = attributes[:'user_password']
       end
 
       if attributes.key?(:'user_principal_name')
@@ -1558,15 +1733,18 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          access_token_manager_id == o.access_token_manager_id &&
           active == o.active &&
           admin_name == o.admin_name &&
           admin_pwd == o.admin_pwd &&
           admin_rotation_interval_days == o.admin_rotation_interval_days &&
+          administrative_port == o.administrative_port &&
           artifactory_admin_apikey == o.artifactory_admin_apikey &&
           artifactory_admin_username == o.artifactory_admin_username &&
           artifactory_base_url == o.artifactory_base_url &&
           artifactory_token_audience == o.artifactory_token_audience &&
           artifactory_token_scope == o.artifactory_token_scope &&
+          authorization_port == o.authorization_port &&
           aws_access_key_id == o.aws_access_key_id &&
           aws_access_mode == o.aws_access_mode &&
           aws_region == o.aws_region &&
@@ -1599,6 +1777,7 @@ module Akeyless
           chef_server_url == o.chef_server_url &&
           chef_server_username == o.chef_server_username &&
           chef_skip_ssl == o.chef_skip_ssl &&
+          client_authentication_type == o.client_authentication_type &&
           create_sync_url == o.create_sync_url &&
           db_host_name == o.db_host_name &&
           db_isolation_level == o.db_isolation_level &&
@@ -1625,6 +1804,7 @@ module Akeyless
           eks_region == o.eks_region &&
           eks_secret_access_key == o.eks_secret_access_key &&
           enable_admin_rotation == o.enable_admin_rotation &&
+          enforce_replay_prevention == o.enforce_replay_prevention &&
           externally_provided_user == o.externally_provided_user &&
           failure_message == o.failure_message &&
           fixed_user_only == o.fixed_user_only &&
@@ -1650,6 +1830,7 @@ module Akeyless
           gke_cluster_name == o.gke_cluster_name &&
           gke_service_account_key == o.gke_service_account_key &&
           gke_service_account_name == o.gke_service_account_name &&
+          grant_types == o.grant_types &&
           groups == o.groups &&
           hanadb_creation_statements == o.hanadb_creation_statements &&
           hanadb_revocation_statements == o.hanadb_revocation_statements &&
@@ -1657,14 +1838,21 @@ module Akeyless
           host_port == o.host_port &&
           implementation_type == o.implementation_type &&
           is_fixed_user == o.is_fixed_user &&
+          issuer == o.issuer &&
           item_targets_assoc == o.item_targets_assoc &&
+          jwks == o.jwks &&
+          jwks_url == o.jwks_url &&
           k8s_allowed_namespaces == o.k8s_allowed_namespaces &&
           k8s_bearer_token == o.k8s_bearer_token &&
           k8s_cluster_ca_certificate == o.k8s_cluster_ca_certificate &&
           k8s_cluster_endpoint == o.k8s_cluster_endpoint &&
           k8s_dynamic_mode == o.k8s_dynamic_mode &&
           k8s_namespace == o.k8s_namespace &&
+          k8s_role_name == o.k8s_role_name &&
+          k8s_role_type == o.k8s_role_type &&
           k8s_service_account == o.k8s_service_account &&
+          k8s_temp_role_binding_definition == o.k8s_temp_role_binding_definition &&
+          k8s_temp_role_definition == o.k8s_temp_role_definition &&
           last_admin_rotation == o.last_admin_rotation &&
           ldap_audience == o.ldap_audience &&
           ldap_bind_dn == o.ldap_bind_dn &&
@@ -1696,8 +1884,10 @@ module Akeyless
           password_length == o.password_length &&
           password_policy == o.password_policy &&
           payload == o.payload &&
+          ping_url == o.ping_url &&
           postgres_creation_statements == o.postgres_creation_statements &&
           postgres_revocation_statements == o.postgres_revocation_statements &&
+          privileged_user == o.privileged_user &&
           rabbitmq_server_password == o.rabbitmq_server_password &&
           rabbitmq_server_uri == o.rabbitmq_server_uri &&
           rabbitmq_server_user == o.rabbitmq_server_user &&
@@ -1706,7 +1896,9 @@ module Akeyless
           rabbitmq_user_tags == o.rabbitmq_user_tags &&
           rabbitmq_user_vhost == o.rabbitmq_user_vhost &&
           rabbitmq_user_write_permission == o.rabbitmq_user_write_permission &&
+          redirect_uris == o.redirect_uris &&
           redshift_creation_statements == o.redshift_creation_statements &&
+          restricted_scopes == o.restricted_scopes &&
           revoke_sync_url == o.revoke_sync_url &&
           rotate_sync_url == o.rotate_sync_url &&
           scopes == o.scopes &&
@@ -1716,12 +1908,15 @@ module Akeyless
           sf_user_role == o.sf_user_role &&
           sf_warehouse_name == o.sf_warehouse_name &&
           should_stop == o.should_stop &&
+          signing_algorithm == o.signing_algorithm &&
           ssl_connection_certificate == o.ssl_connection_certificate &&
           ssl_connection_mode == o.ssl_connection_mode &&
+          subject_dn == o.subject_dn &&
           tags == o.tags &&
           timeout_seconds == o.timeout_seconds &&
           use_gw_cloud_identity == o.use_gw_cloud_identity &&
           user_name == o.user_name &&
+          user_password == o.user_password &&
           user_principal_name == o.user_principal_name &&
           user_ttl == o.user_ttl &&
           username_length == o.username_length &&
@@ -1751,7 +1946,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [active, admin_name, admin_pwd, admin_rotation_interval_days, artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, artifactory_token_audience, artifactory_token_scope, aws_access_key_id, aws_access_mode, aws_region, aws_role_arns, aws_secret_access_key, aws_session_token, aws_user_console_access, aws_user_groups, aws_user_policies, aws_user_programmatic_access, azure_app_object_id, azure_client_id, azure_client_secret, azure_fixed_user_name_sub_claim_key, azure_fixed_user_only, azure_resource_group_name, azure_resource_name, azure_subscription_id, azure_tenant_id, azure_user_groups_obj_id, azure_user_portal_access, azure_user_programmatic_access, azure_user_roles_template_id, cassandra_creation_statements, chef_organizations, chef_server_access_mode, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, create_sync_url, db_host_name, db_isolation_level, db_max_idle_conns, db_max_open_conns, db_name, db_port, db_private_key, db_private_key_passphrase, db_pwd, db_server_certificates, db_server_name, db_user_name, delete_protection, dynamic_secret_id, dynamic_secret_key, dynamic_secret_name, dynamic_secret_type, eks_access_key_id, eks_assume_role, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, enable_admin_rotation, externally_provided_user, failure_message, fixed_user_only, gcp_key_algo, gcp_role_bindings, gcp_service_account_email, gcp_service_account_key, gcp_service_account_type, gcp_tmp_service_account_name, gcp_token_lifetime, gcp_token_scope, gcp_token_type, github_app_id, github_app_private_key, github_base_url, github_installation_id, github_installation_token_permissions, github_installation_token_repositories, github_installation_token_repositories_ids, github_repository_path, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, groups, hanadb_creation_statements, hanadb_revocation_statements, host_name, host_port, implementation_type, is_fixed_user, item_targets_assoc, k8s_allowed_namespaces, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, k8s_dynamic_mode, k8s_namespace, k8s_service_account, last_admin_rotation, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, ldap_user_attr, ldap_user_dn, metadata, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_custom_data, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_roles, mongodb_uri_connection, mongodb_uri_options, mongodb_username, mssql_creation_statements, mssql_revocation_statements, mysql_creation_statements, oracle_creation_statements, password, password_length, password_policy, payload, postgres_creation_statements, postgres_revocation_statements, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, rabbitmq_user_conf_permission, rabbitmq_user_read_permission, rabbitmq_user_tags, rabbitmq_user_vhost, rabbitmq_user_write_permission, redshift_creation_statements, revoke_sync_url, rotate_sync_url, scopes, secure_remote_access_details, session_extension_warn_interval_min, sf_account, sf_user_role, sf_warehouse_name, should_stop, ssl_connection_certificate, ssl_connection_mode, tags, timeout_seconds, use_gw_cloud_identity, user_name, user_principal_name, user_ttl, username_length, username_policy, venafi_allow_subdomains, venafi_allowed_domains, venafi_api_key, venafi_auto_generated_folder, venafi_base_url, venafi_root_first_in_chain, venafi_sign_using_akeyless_pki, venafi_signer_key_name, venafi_store_private_key, venafi_tpp_password, venafi_tpp_username, venafi_use_tpp, venafi_zone, warn_before_user_expiration_min].hash
+      [access_token_manager_id, active, admin_name, admin_pwd, admin_rotation_interval_days, administrative_port, artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, artifactory_token_audience, artifactory_token_scope, authorization_port, aws_access_key_id, aws_access_mode, aws_region, aws_role_arns, aws_secret_access_key, aws_session_token, aws_user_console_access, aws_user_groups, aws_user_policies, aws_user_programmatic_access, azure_app_object_id, azure_client_id, azure_client_secret, azure_fixed_user_name_sub_claim_key, azure_fixed_user_only, azure_resource_group_name, azure_resource_name, azure_subscription_id, azure_tenant_id, azure_user_groups_obj_id, azure_user_portal_access, azure_user_programmatic_access, azure_user_roles_template_id, cassandra_creation_statements, chef_organizations, chef_server_access_mode, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, client_authentication_type, create_sync_url, db_host_name, db_isolation_level, db_max_idle_conns, db_max_open_conns, db_name, db_port, db_private_key, db_private_key_passphrase, db_pwd, db_server_certificates, db_server_name, db_user_name, delete_protection, dynamic_secret_id, dynamic_secret_key, dynamic_secret_name, dynamic_secret_type, eks_access_key_id, eks_assume_role, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, enable_admin_rotation, enforce_replay_prevention, externally_provided_user, failure_message, fixed_user_only, gcp_key_algo, gcp_role_bindings, gcp_service_account_email, gcp_service_account_key, gcp_service_account_type, gcp_tmp_service_account_name, gcp_token_lifetime, gcp_token_scope, gcp_token_type, github_app_id, github_app_private_key, github_base_url, github_installation_id, github_installation_token_permissions, github_installation_token_repositories, github_installation_token_repositories_ids, github_repository_path, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, grant_types, groups, hanadb_creation_statements, hanadb_revocation_statements, host_name, host_port, implementation_type, is_fixed_user, issuer, item_targets_assoc, jwks, jwks_url, k8s_allowed_namespaces, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, k8s_dynamic_mode, k8s_namespace, k8s_role_name, k8s_role_type, k8s_service_account, k8s_temp_role_binding_definition, k8s_temp_role_definition, last_admin_rotation, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, ldap_user_attr, ldap_user_dn, metadata, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_custom_data, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_roles, mongodb_uri_connection, mongodb_uri_options, mongodb_username, mssql_creation_statements, mssql_revocation_statements, mysql_creation_statements, oracle_creation_statements, password, password_length, password_policy, payload, ping_url, postgres_creation_statements, postgres_revocation_statements, privileged_user, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, rabbitmq_user_conf_permission, rabbitmq_user_read_permission, rabbitmq_user_tags, rabbitmq_user_vhost, rabbitmq_user_write_permission, redirect_uris, redshift_creation_statements, restricted_scopes, revoke_sync_url, rotate_sync_url, scopes, secure_remote_access_details, session_extension_warn_interval_min, sf_account, sf_user_role, sf_warehouse_name, should_stop, signing_algorithm, ssl_connection_certificate, ssl_connection_mode, subject_dn, tags, timeout_seconds, use_gw_cloud_identity, user_name, user_password, user_principal_name, user_ttl, username_length, username_policy, venafi_allow_subdomains, venafi_allowed_domains, venafi_api_key, venafi_auto_generated_folder, venafi_base_url, venafi_root_first_in_chain, venafi_sign_using_akeyless_pki, venafi_signer_key_name, venafi_store_private_key, venafi_tpp_password, venafi_tpp_username, venafi_use_tpp, venafi_zone, warn_before_user_expiration_min].hash
     end
 
     # Builds the object from hash

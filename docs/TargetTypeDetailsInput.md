@@ -4,11 +4,13 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **administrative_port** | **String** |  | [optional] |
 | **app_private_key** | **Array&lt;Integer&gt;** | params needed for jwt auth AppPrivateKey is the rsa private key in PEM format | [optional] |
 | **artifactory_admin_apikey** | **String** |  | [optional] |
 | **artifactory_admin_username** | **String** |  | [optional] |
 | **artifactory_base_url** | **String** |  | [optional] |
 | **auth_flow** | **String** |  | [optional] |
+| **authorization_port** | **String** |  | [optional] |
 | **aws_access_key_id** | **String** |  | [optional] |
 | **aws_region** | **String** |  | [optional] |
 | **aws_secret_access_key** | **String** |  | [optional] |
@@ -78,9 +80,11 @@
 | **mongodb_username** | **String** |  | [optional] |
 | **password** | **String** |  | [optional] |
 | **payload** | **String** |  | [optional] |
+| **ping_url** | **String** |  | [optional] |
 | **port** | **String** |  | [optional] |
 | **private_key** | **String** |  | [optional] |
 | **private_key_password** | **String** |  | [optional] |
+| **privileged_user** | **String** |  | [optional] |
 | **rabbitmq_server_password** | **String** |  | [optional] |
 | **rabbitmq_server_uri** | **String** |  | [optional] |
 | **rabbitmq_server_user** | **String** |  | [optional] |
@@ -92,6 +96,7 @@
 | **url** | **String** |  | [optional] |
 | **use_gw_cloud_identity** | **Boolean** |  | [optional] |
 | **user_name** | **String** |  | [optional] |
+| **user_password** | **String** |  | [optional] |
 | **username** | **String** |  | [optional] |
 | **venafi_api_key** | **String** |  | [optional] |
 | **venafi_base_url** | **String** |  | [optional] |
@@ -106,11 +111,13 @@
 require 'akeyless'
 
 instance = Akeyless::TargetTypeDetailsInput.new(
+  administrative_port: null,
   app_private_key: null,
   artifactory_admin_apikey: null,
   artifactory_admin_username: null,
   artifactory_base_url: null,
   auth_flow: null,
+  authorization_port: null,
   aws_access_key_id: null,
   aws_region: null,
   aws_secret_access_key: null,
@@ -180,9 +187,11 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   mongodb_username: null,
   password: null,
   payload: null,
+  ping_url: null,
   port: null,
   private_key: null,
   private_key_password: null,
+  privileged_user: null,
   rabbitmq_server_password: null,
   rabbitmq_server_uri: null,
   rabbitmq_server_user: null,
@@ -194,6 +203,7 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   url: null,
   use_gw_cloud_identity: null,
   user_name: null,
+  user_password: null,
   username: null,
   venafi_api_key: null,
   venafi_base_url: null,

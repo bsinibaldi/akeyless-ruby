@@ -37,6 +37,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_gke_target**](V2Api.md#create_gke_target) | **POST** /create-gke-target |  |
 | [**create_key**](V2Api.md#create_key) | **POST** /create-key |  |
 | [**create_native_k8_s_target**](V2Api.md#create_native_k8_s_target) | **POST** /create-k8s-target |  |
+| [**create_ping_target**](V2Api.md#create_ping_target) | **POST** /create-ping-target |  |
 | [**create_pki_cert_issuer**](V2Api.md#create_pki_cert_issuer) | **POST** /create-pki-cert-issuer |  |
 | [**create_rabbit_mq_target**](V2Api.md#create_rabbit_mq_target) | **POST** /create-rabbitmq-target |  |
 | [**create_role**](V2Api.md#create_role) | **POST** /create-role |  |
@@ -92,6 +93,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_create_producer_my_sql**](V2Api.md#gateway_create_producer_my_sql) | **POST** /gateway-create-producer-mysql |  |
 | [**gateway_create_producer_native_k8_s**](V2Api.md#gateway_create_producer_native_k8_s) | **POST** /gateway-create-producer-k8s |  |
 | [**gateway_create_producer_oracle_db**](V2Api.md#gateway_create_producer_oracle_db) | **POST** /gateway-create-producer-oracle |  |
+| [**gateway_create_producer_ping**](V2Api.md#gateway_create_producer_ping) | **POST** /gateway-create-producer-ping |  |
 | [**gateway_create_producer_postgre_sql**](V2Api.md#gateway_create_producer_postgre_sql) | **POST** /gateway-create-producer-postgresql |  |
 | [**gateway_create_producer_rabbit_mq**](V2Api.md#gateway_create_producer_rabbit_mq) | **POST** /gateway-create-producer-rabbitmq |  |
 | [**gateway_create_producer_rdp**](V2Api.md#gateway_create_producer_rdp) | **POST** /gateway-create-producer-rdp |  |
@@ -138,6 +140,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_update_producer_my_sql**](V2Api.md#gateway_update_producer_my_sql) | **POST** /gateway-update-producer-mysql |  |
 | [**gateway_update_producer_native_k8_s**](V2Api.md#gateway_update_producer_native_k8_s) | **POST** /gateway-update-producer-k8s |  |
 | [**gateway_update_producer_oracle_db**](V2Api.md#gateway_update_producer_oracle_db) | **POST** /gateway-update-producer-oracle |  |
+| [**gateway_update_producer_ping**](V2Api.md#gateway_update_producer_ping) | **POST** /gateway-update-producer-ping |  |
 | [**gateway_update_producer_postgre_sql**](V2Api.md#gateway_update_producer_postgre_sql) | **POST** /gateway-update-producer-postgresql |  |
 | [**gateway_update_producer_rabbit_mq**](V2Api.md#gateway_update_producer_rabbit_mq) | **POST** /gateway-update-producer-rabbitmq |  |
 | [**gateway_update_producer_rdp**](V2Api.md#gateway_update_producer_rdp) | **POST** /gateway-update-producer-rdp |  |
@@ -234,6 +237,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_ldap_target**](V2Api.md#update_ldap_target) | **POST** /update-ldap-target |  |
 | [**update_ldap_target_details**](V2Api.md#update_ldap_target_details) | **POST** /update-ldap-target-details |  |
 | [**update_native_k8_s_target**](V2Api.md#update_native_k8_s_target) | **POST** /update-k8s-target |  |
+| [**update_ping_target**](V2Api.md#update_ping_target) | **POST** /update-ping-target |  |
 | [**update_pki_cert_issuer**](V2Api.md#update_pki_cert_issuer) | **POST** /update-pki-cert-issuer |  |
 | [**update_rabbit_mq_target**](V2Api.md#update_rabbit_mq_target) | **POST** /update-rabbitmq-target |  |
 | [**update_rabbit_mq_target_details**](V2Api.md#update_rabbit_mq_target_details) | **POST** /update-rabbitmq-target-details |  |
@@ -2293,6 +2297,68 @@ end
 ### Return type
 
 [**CreateNativeK8STargetOutput**](CreateNativeK8STargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_ping_target
+
+> <CreatePingTargetOutput> create_ping_target(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreatePingTarget.new({name: 'name_example'}) # CreatePingTarget | 
+
+begin
+  
+  result = api_instance.create_ping_target(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_ping_target: #{e}"
+end
+```
+
+#### Using the create_ping_target_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreatePingTargetOutput>, Integer, Hash)> create_ping_target_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_ping_target_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreatePingTargetOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_ping_target_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreatePingTarget**](CreatePingTarget.md) |  |  |
+
+### Return type
+
+[**CreatePingTargetOutput**](CreatePingTargetOutput.md)
 
 ### Authorization
 
@@ -5716,6 +5782,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## gateway_create_producer_ping
+
+> <GatewayCreateProducerPingOutput> gateway_create_producer_ping(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayCreateProducerPing.new({name: 'name_example'}) # GatewayCreateProducerPing | 
+
+begin
+  
+  result = api_instance.gateway_create_producer_ping(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_create_producer_ping: #{e}"
+end
+```
+
+#### Using the gateway_create_producer_ping_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewayCreateProducerPingOutput>, Integer, Hash)> gateway_create_producer_ping_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_create_producer_ping_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewayCreateProducerPingOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_create_producer_ping_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayCreateProducerPing**](GatewayCreateProducerPing.md) |  |  |
+
+### Return type
+
+[**GatewayCreateProducerPingOutput**](GatewayCreateProducerPingOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## gateway_create_producer_postgre_sql
 
 > <GatewayCreateProducerPostgreSQLOutput> gateway_create_producer_postgre_sql(body)
@@ -8560,6 +8688,68 @@ end
 ### Return type
 
 [**GatewayUpdateProducerOracleDbOutput**](GatewayUpdateProducerOracleDbOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## gateway_update_producer_ping
+
+> <GatewayUpdateProducerPingOutput> gateway_update_producer_ping(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayUpdateProducerPing.new({name: 'name_example'}) # GatewayUpdateProducerPing | 
+
+begin
+  
+  result = api_instance.gateway_update_producer_ping(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_update_producer_ping: #{e}"
+end
+```
+
+#### Using the gateway_update_producer_ping_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewayUpdateProducerPingOutput>, Integer, Hash)> gateway_update_producer_ping_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_update_producer_ping_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewayUpdateProducerPingOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_update_producer_ping_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayUpdateProducerPing**](GatewayUpdateProducerPing.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateProducerPingOutput**](GatewayUpdateProducerPingOutput.md)
 
 ### Authorization
 
@@ -14531,6 +14721,68 @@ end
 ### Return type
 
 [**UpdateNativeK8STargetOutput**](UpdateNativeK8STargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_ping_target
+
+> Object update_ping_target(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdatePingTarget.new({name: 'name_example'}) # UpdatePingTarget | 
+
+begin
+  
+  result = api_instance.update_ping_target(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_ping_target: #{e}"
+end
+```
+
+#### Using the update_ping_target_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> update_ping_target_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_ping_target_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_ping_target_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdatePingTarget**](UpdatePingTarget.md) |  |  |
+
+### Return type
+
+**Object**
 
 ### Authorization
 
