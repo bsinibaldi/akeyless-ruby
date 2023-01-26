@@ -241,7 +241,7 @@ module Akeyless
       if attributes.key?(:'user_ttl')
         self.user_ttl = attributes[:'user_ttl']
       else
-        self.user_ttl = '60m'
+        self.user_ttl = '15m'
       end
     end
 

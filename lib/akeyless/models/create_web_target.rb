@@ -15,8 +15,11 @@ require 'time'
 
 module Akeyless
   class CreateWebTarget
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # Set output format to JSON
     attr_accessor :json
@@ -40,6 +43,7 @@ module Akeyless
     def self.attribute_map
       {
         :'comment' => :'comment',
+        :'description' => :'description',
         :'json' => :'json',
         :'key' => :'key',
         :'name' => :'name',
@@ -58,6 +62,7 @@ module Akeyless
     def self.openapi_types
       {
         :'comment' => :'String',
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'key' => :'String',
         :'name' => :'String',
@@ -90,6 +95,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'json')
@@ -141,6 +150,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           comment == o.comment &&
+          description == o.description &&
           json == o.json &&
           key == o.key &&
           name == o.name &&
@@ -158,7 +168,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [comment, json, key, name, token, uid_token, url].hash
+      [comment, description, json, key, name, token, uid_token, url].hash
     end
 
     # Builds the object from hash

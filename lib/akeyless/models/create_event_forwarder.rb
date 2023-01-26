@@ -21,8 +21,11 @@ module Akeyless
     # Workstation Admin password
     attr_accessor :admin_pwd
 
-    # Comment about the EventForwarder
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # A comma seperated list of email addresses to send event to (relevant only for \\\"email\\\" Event Forwarder)
     attr_accessor :email_to
@@ -67,6 +70,7 @@ module Akeyless
         :'admin_name' => :'admin-name',
         :'admin_pwd' => :'admin-pwd',
         :'comment' => :'comment',
+        :'description' => :'description',
         :'email_to' => :'email-to',
         :'event_source_locations' => :'event-source-locations',
         :'event_source_type' => :'event-source-type',
@@ -94,6 +98,7 @@ module Akeyless
         :'admin_name' => :'String',
         :'admin_pwd' => :'String',
         :'comment' => :'String',
+        :'description' => :'String',
         :'email_to' => :'String',
         :'event_source_locations' => :'Array<String>',
         :'event_source_type' => :'String',
@@ -141,6 +146,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'email_to')
@@ -243,6 +252,7 @@ module Akeyless
           admin_name == o.admin_name &&
           admin_pwd == o.admin_pwd &&
           comment == o.comment &&
+          description == o.description &&
           email_to == o.email_to &&
           event_source_locations == o.event_source_locations &&
           event_source_type == o.event_source_type &&
@@ -267,7 +277,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [admin_name, admin_pwd, comment, email_to, event_source_locations, event_source_type, event_types, every, forwarder_type, host, json, key, name, runner_type, token, uid_token].hash
+      [admin_name, admin_pwd, comment, description, email_to, event_source_locations, event_source_type, event_types, every, forwarder_type, host, json, key, name, runner_type, token, uid_token].hash
     end
 
     # Builds the object from hash

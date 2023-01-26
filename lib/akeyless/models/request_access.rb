@@ -18,8 +18,11 @@ module Akeyless
     # List of the required capabilities options: [read, update, delete]
     attr_accessor :capability
 
-    # Comment about this request
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # Set output format to JSON
     attr_accessor :json
@@ -38,6 +41,7 @@ module Akeyless
       {
         :'capability' => :'capability',
         :'comment' => :'comment',
+        :'description' => :'description',
         :'json' => :'json',
         :'name' => :'name',
         :'token' => :'token',
@@ -55,6 +59,7 @@ module Akeyless
       {
         :'capability' => :'Array<String>',
         :'comment' => :'String',
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'name' => :'String',
         :'token' => :'String',
@@ -91,6 +96,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'json')
@@ -140,6 +149,7 @@ module Akeyless
       self.class == o.class &&
           capability == o.capability &&
           comment == o.comment &&
+          description == o.description &&
           json == o.json &&
           name == o.name &&
           token == o.token &&
@@ -155,7 +165,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [capability, comment, json, name, token, uid_token].hash
+      [capability, comment, description, json, name, token, uid_token].hash
     end
 
     # Builds the object from hash

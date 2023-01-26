@@ -14,51 +14,16 @@ require 'date'
 require 'time'
 
 module Akeyless
-  # uidCreateChildToken is a command that creates a new child token using Akeyless Universal Identity.
-  class UidCreateChildToken
-    # The universal identity auth method name, required only when uid-token is not provided
-    attr_accessor :auth_method_name
+  class ImporterInfo
+    attr_accessor :external_item_id
 
-    # Deny from new child to create their own children
-    attr_accessor :child_deny_inheritance
-
-    # Deny from new child to rotate
-    attr_accessor :child_deny_rotate
-
-    # New child token ttl
-    attr_accessor :child_ttl
-
-    # Deprecated - use description
-    attr_accessor :comment
-
-    # Description of the object
-    attr_accessor :description
-
-    # Set output format to JSON
-    attr_accessor :json
-
-    # Authentication token (see `/auth` and `/configure`)
-    attr_accessor :token
-
-    # The universal identity token, Required only for universal_identity authentication
-    attr_accessor :uid_token
-
-    # The ID of the uid-token, required only when uid-token is not provided
-    attr_accessor :uid_token_id
+    attr_accessor :version
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'auth_method_name' => :'auth-method-name',
-        :'child_deny_inheritance' => :'child-deny-inheritance',
-        :'child_deny_rotate' => :'child-deny-rotate',
-        :'child_ttl' => :'child-ttl',
-        :'comment' => :'comment',
-        :'description' => :'description',
-        :'json' => :'json',
-        :'token' => :'token',
-        :'uid_token' => :'uid-token',
-        :'uid_token_id' => :'uid-token-id'
+        :'external_item_id' => :'external_item_id',
+        :'version' => :'version'
       }
     end
 
@@ -70,16 +35,8 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'auth_method_name' => :'String',
-        :'child_deny_inheritance' => :'Boolean',
-        :'child_deny_rotate' => :'Boolean',
-        :'child_ttl' => :'Integer',
-        :'comment' => :'String',
-        :'description' => :'String',
-        :'json' => :'Boolean',
-        :'token' => :'String',
-        :'uid_token' => :'String',
-        :'uid_token_id' => :'String'
+        :'external_item_id' => :'String',
+        :'version' => :'Integer'
       }
     end
 
@@ -93,55 +50,23 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::UidCreateChildToken` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::ImporterInfo` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::UidCreateChildToken`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::ImporterInfo`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'auth_method_name')
-        self.auth_method_name = attributes[:'auth_method_name']
+      if attributes.key?(:'external_item_id')
+        self.external_item_id = attributes[:'external_item_id']
       end
 
-      if attributes.key?(:'child_deny_inheritance')
-        self.child_deny_inheritance = attributes[:'child_deny_inheritance']
-      end
-
-      if attributes.key?(:'child_deny_rotate')
-        self.child_deny_rotate = attributes[:'child_deny_rotate']
-      end
-
-      if attributes.key?(:'child_ttl')
-        self.child_ttl = attributes[:'child_ttl']
-      end
-
-      if attributes.key?(:'comment')
-        self.comment = attributes[:'comment']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'json')
-        self.json = attributes[:'json']
-      end
-
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
-      end
-
-      if attributes.key?(:'uid_token')
-        self.uid_token = attributes[:'uid_token']
-      end
-
-      if attributes.key?(:'uid_token_id')
-        self.uid_token_id = attributes[:'uid_token_id']
+      if attributes.key?(:'version')
+        self.version = attributes[:'version']
       end
     end
 
@@ -163,16 +88,8 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          auth_method_name == o.auth_method_name &&
-          child_deny_inheritance == o.child_deny_inheritance &&
-          child_deny_rotate == o.child_deny_rotate &&
-          child_ttl == o.child_ttl &&
-          comment == o.comment &&
-          description == o.description &&
-          json == o.json &&
-          token == o.token &&
-          uid_token == o.uid_token &&
-          uid_token_id == o.uid_token_id
+          external_item_id == o.external_item_id &&
+          version == o.version
     end
 
     # @see the `==` method
@@ -184,7 +101,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auth_method_name, child_deny_inheritance, child_deny_rotate, child_ttl, comment, description, json, token, uid_token, uid_token_id].hash
+      [external_item_id, version].hash
     end
 
     # Builds the object from hash

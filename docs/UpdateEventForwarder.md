@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **admin_name** | **String** | Workstation Admin Name | [optional] |
+| **description** | **String** | Description of the object | [optional][default to &#39;default_comment&#39;] |
 | **email_to** | **String** | A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder) | [optional] |
 | **enable** | **String** | Enable | [optional] |
 | **event_source_locations** | **Array&lt;String&gt;** | Event sources | [optional] |
@@ -12,7 +13,7 @@
 | **host** | **String** | Workstation Host | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **name** | **String** | EventForwarder name |  |
-| **new_comment** | **String** | New comment about the Event Forwarder | [optional][default to &#39;default_comment&#39;] |
+| **new_comment** | **String** | Deprecated - use description | [optional][default to &#39;default_comment&#39;] |
 | **new_name** | **String** | New EventForwarder name | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
@@ -24,6 +25,7 @@ require 'akeyless'
 
 instance = Akeyless::UpdateEventForwarder.new(
   admin_name: null,
+  description: null,
   email_to: null,
   enable: null,
   event_source_locations: null,

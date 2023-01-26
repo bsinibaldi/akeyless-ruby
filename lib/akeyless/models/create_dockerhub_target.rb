@@ -15,8 +15,11 @@ require 'time'
 
 module Akeyless
   class CreateDockerhubTarget
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # DockerhubPassword is either the user's password to manage the repository
     attr_accessor :dockerhub_password
@@ -43,6 +46,7 @@ module Akeyless
     def self.attribute_map
       {
         :'comment' => :'comment',
+        :'description' => :'description',
         :'dockerhub_password' => :'dockerhub-password',
         :'dockerhub_username' => :'dockerhub-username',
         :'json' => :'json',
@@ -62,6 +66,7 @@ module Akeyless
     def self.openapi_types
       {
         :'comment' => :'String',
+        :'description' => :'String',
         :'dockerhub_password' => :'String',
         :'dockerhub_username' => :'String',
         :'json' => :'Boolean',
@@ -95,6 +100,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'dockerhub_password')
@@ -150,6 +159,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           comment == o.comment &&
+          description == o.description &&
           dockerhub_password == o.dockerhub_password &&
           dockerhub_username == o.dockerhub_username &&
           json == o.json &&
@@ -168,7 +178,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [comment, dockerhub_password, dockerhub_username, json, key, name, token, uid_token].hash
+      [comment, description, dockerhub_password, dockerhub_username, json, key, name, token, uid_token].hash
     end
 
     # Builds the object from hash

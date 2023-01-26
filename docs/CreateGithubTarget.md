@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **comment** | **String** | Comment about the target | [optional] |
+| **comment** | **String** | Deprecated - use description | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **github_app_id** | **Integer** | Github app id | [optional] |
 | **github_app_private_key** | **String** | App private key | [optional] |
 | **github_base_url** | **String** | Base URL | [optional] |
@@ -21,6 +22,7 @@ require 'akeyless'
 
 instance = Akeyless::CreateGithubTarget.new(
   comment: null,
+  description: null,
   github_app_id: null,
   github_app_private_key: null,
   github_base_url: null,

@@ -15,8 +15,11 @@ require 'time'
 
 module Akeyless
   class UpdateGKETarget
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # GKE Service Account key file path
     attr_accessor :gke_account_key
@@ -62,6 +65,7 @@ module Akeyless
     def self.attribute_map
       {
         :'comment' => :'comment',
+        :'description' => :'description',
         :'gke_account_key' => :'gke-account-key',
         :'gke_cluster_cert' => :'gke-cluster-cert',
         :'gke_cluster_endpoint' => :'gke-cluster-endpoint',
@@ -88,6 +92,7 @@ module Akeyless
     def self.openapi_types
       {
         :'comment' => :'String',
+        :'description' => :'String',
         :'gke_account_key' => :'String',
         :'gke_cluster_cert' => :'String',
         :'gke_cluster_endpoint' => :'String',
@@ -128,6 +133,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'gke_account_key')
@@ -211,6 +220,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           comment == o.comment &&
+          description == o.description &&
           gke_account_key == o.gke_account_key &&
           gke_cluster_cert == o.gke_cluster_cert &&
           gke_cluster_endpoint == o.gke_cluster_endpoint &&
@@ -236,7 +246,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [comment, gke_account_key, gke_cluster_cert, gke_cluster_endpoint, gke_cluster_name, gke_service_account_email, json, keep_prev_version, key, name, new_name, token, uid_token, update_version, use_gw_cloud_identity].hash
+      [comment, description, gke_account_key, gke_cluster_cert, gke_cluster_endpoint, gke_cluster_name, gke_service_account_email, json, keep_prev_version, key, name, new_name, token, uid_token, update_version, use_gw_cloud_identity].hash
     end
 
     # Builds the object from hash

@@ -15,8 +15,11 @@ require 'time'
 
 module Akeyless
   class UpdateGcpTarget
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # Base64-encoded service account private key text
     attr_accessor :gcp_key
@@ -50,6 +53,7 @@ module Akeyless
     def self.attribute_map
       {
         :'comment' => :'comment',
+        :'description' => :'description',
         :'gcp_key' => :'gcp-key',
         :'json' => :'json',
         :'keep_prev_version' => :'keep-prev-version',
@@ -72,6 +76,7 @@ module Akeyless
     def self.openapi_types
       {
         :'comment' => :'String',
+        :'description' => :'String',
         :'gcp_key' => :'String',
         :'json' => :'Boolean',
         :'keep_prev_version' => :'String',
@@ -108,6 +113,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'gcp_key')
@@ -175,6 +184,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           comment == o.comment &&
+          description == o.description &&
           gcp_key == o.gcp_key &&
           json == o.json &&
           keep_prev_version == o.keep_prev_version &&
@@ -196,7 +206,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [comment, gcp_key, json, keep_prev_version, key, name, new_name, token, uid_token, update_version, use_gw_cloud_identity].hash
+      [comment, description, gcp_key, json, keep_prev_version, key, name, new_name, token, uid_token, update_version, use_gw_cloud_identity].hash
     end
 
     # Builds the object from hash

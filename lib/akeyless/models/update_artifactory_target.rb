@@ -24,8 +24,11 @@ module Akeyless
     # Base URL
     attr_accessor :base_url
 
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # Set output format to JSON
     attr_accessor :json
@@ -57,6 +60,7 @@ module Akeyless
         :'artifactory_admin_pwd' => :'artifactory-admin-pwd',
         :'base_url' => :'base-url',
         :'comment' => :'comment',
+        :'description' => :'description',
         :'json' => :'json',
         :'keep_prev_version' => :'keep-prev-version',
         :'key' => :'key',
@@ -80,6 +84,7 @@ module Akeyless
         :'artifactory_admin_pwd' => :'String',
         :'base_url' => :'String',
         :'comment' => :'String',
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'keep_prev_version' => :'String',
         :'key' => :'String',
@@ -126,6 +131,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'json')
@@ -203,6 +212,7 @@ module Akeyless
           artifactory_admin_pwd == o.artifactory_admin_pwd &&
           base_url == o.base_url &&
           comment == o.comment &&
+          description == o.description &&
           json == o.json &&
           keep_prev_version == o.keep_prev_version &&
           key == o.key &&
@@ -222,7 +232,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [artifactory_admin_name, artifactory_admin_pwd, base_url, comment, json, keep_prev_version, key, name, new_name, token, uid_token, update_version].hash
+      [artifactory_admin_name, artifactory_admin_pwd, base_url, comment, description, json, keep_prev_version, key, name, new_name, token, uid_token, update_version].hash
     end
 
     # Builds the object from hash

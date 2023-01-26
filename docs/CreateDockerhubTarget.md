@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **comment** | **String** | Comment about the target | [optional] |
+| **comment** | **String** | Deprecated - use description | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **dockerhub_password** | **String** | DockerhubPassword is either the user&#39;s password to manage the repository | [optional] |
 | **dockerhub_username** | **String** | DockerhubUsername is the name of the user in dockerhub | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
@@ -20,6 +21,7 @@ require 'akeyless'
 
 instance = Akeyless::CreateDockerhubTarget.new(
   comment: null,
+  description: null,
   dockerhub_password: null,
   dockerhub_username: null,
   json: null,

@@ -15,8 +15,11 @@ require 'time'
 
 module Akeyless
   class UpdateGithubTarget
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # Github app id
     attr_accessor :github_app_id
@@ -54,6 +57,7 @@ module Akeyless
     def self.attribute_map
       {
         :'comment' => :'comment',
+        :'description' => :'description',
         :'github_app_id' => :'github-app-id',
         :'github_app_private_key' => :'github-app-private-key',
         :'github_base_url' => :'github-base-url',
@@ -77,6 +81,7 @@ module Akeyless
     def self.openapi_types
       {
         :'comment' => :'String',
+        :'description' => :'String',
         :'github_app_id' => :'Integer',
         :'github_app_private_key' => :'String',
         :'github_base_url' => :'String',
@@ -114,6 +119,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'github_app_id')
@@ -185,6 +194,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           comment == o.comment &&
+          description == o.description &&
           github_app_id == o.github_app_id &&
           github_app_private_key == o.github_app_private_key &&
           github_base_url == o.github_base_url &&
@@ -207,7 +217,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [comment, github_app_id, github_app_private_key, github_base_url, json, keep_prev_version, key, name, new_name, token, uid_token, update_version].hash
+      [comment, description, github_app_id, github_app_private_key, github_base_url, json, keep_prev_version, key, name, new_name, token, uid_token, update_version].hash
     end
 
     # Builds the object from hash

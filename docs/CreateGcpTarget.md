@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **comment** | **String** | Comment about the target | [optional] |
+| **comment** | **String** | Deprecated - use description | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **gcp_key** | **String** | Base64-encoded service account private key text | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
@@ -20,6 +21,7 @@ require 'akeyless'
 
 instance = Akeyless::CreateGcpTarget.new(
   comment: null,
+  description: null,
   gcp_key: null,
   json: null,
   key: null,

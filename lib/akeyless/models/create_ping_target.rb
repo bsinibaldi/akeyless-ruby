@@ -21,8 +21,11 @@ module Akeyless
     # Ping Federate authorization port
     attr_accessor :authorization_port
 
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # Set output format to JSON
     attr_accessor :json
@@ -54,6 +57,7 @@ module Akeyless
         :'administrative_port' => :'administrative-port',
         :'authorization_port' => :'authorization-port',
         :'comment' => :'comment',
+        :'description' => :'description',
         :'json' => :'json',
         :'key' => :'key',
         :'name' => :'name',
@@ -76,6 +80,7 @@ module Akeyless
         :'administrative_port' => :'String',
         :'authorization_port' => :'String',
         :'comment' => :'String',
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'key' => :'String',
         :'name' => :'String',
@@ -122,6 +127,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'json')
@@ -183,6 +192,7 @@ module Akeyless
           administrative_port == o.administrative_port &&
           authorization_port == o.authorization_port &&
           comment == o.comment &&
+          description == o.description &&
           json == o.json &&
           key == o.key &&
           name == o.name &&
@@ -202,7 +212,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [administrative_port, authorization_port, comment, json, key, name, password, ping_url, privileged_user, token, uid_token].hash
+      [administrative_port, authorization_port, comment, description, json, key, name, password, ping_url, privileged_user, token, uid_token].hash
     end
 
     # Builds the object from hash

@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **comment** | **String** | Comment about the target | [optional] |
+| **comment** | **String** | Deprecated - use description | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **host** | **String** |  | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **keep_prev_version** | **String** |  | [optional] |
@@ -27,6 +28,7 @@ require 'akeyless'
 
 instance = Akeyless::UpdateSSHTarget.new(
   comment: null,
+  description: null,
   host: null,
   json: null,
   keep_prev_version: null,

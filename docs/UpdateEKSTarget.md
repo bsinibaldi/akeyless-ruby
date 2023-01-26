@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **comment** | **String** | Comment about the target | [optional] |
+| **comment** | **String** | Deprecated - use description | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **eks_access_key_id** | **String** | Access Key ID |  |
 | **eks_cluster_ca_cert** | **String** | EKS cluster CA certificate |  |
 | **eks_cluster_endpoint** | **String** | EKS cluster URL endpoint |  |
@@ -28,6 +29,7 @@ require 'akeyless'
 
 instance = Akeyless::UpdateEKSTarget.new(
   comment: null,
+  description: null,
   eks_access_key_id: null,
   eks_cluster_ca_cert: null,
   eks_cluster_endpoint: null,

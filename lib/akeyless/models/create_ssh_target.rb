@@ -15,8 +15,11 @@ require 'time'
 
 module Akeyless
   class CreateSSHTarget
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     attr_accessor :host
 
@@ -49,6 +52,7 @@ module Akeyless
     def self.attribute_map
       {
         :'comment' => :'comment',
+        :'description' => :'description',
         :'host' => :'host',
         :'json' => :'json',
         :'key' => :'key',
@@ -72,6 +76,7 @@ module Akeyless
     def self.openapi_types
       {
         :'comment' => :'String',
+        :'description' => :'String',
         :'host' => :'String',
         :'json' => :'Boolean',
         :'key' => :'String',
@@ -109,6 +114,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'host')
@@ -180,6 +189,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           comment == o.comment &&
+          description == o.description &&
           host == o.host &&
           json == o.json &&
           key == o.key &&
@@ -202,7 +212,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [comment, host, json, key, name, port, private_key, private_key_password, ssh_password, ssh_username, token, uid_token].hash
+      [comment, description, host, json, key, name, port, private_key, private_key_password, ssh_password, ssh_username, token, uid_token].hash
     end
 
     # Builds the object from hash

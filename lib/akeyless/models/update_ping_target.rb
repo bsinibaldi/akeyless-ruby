@@ -21,8 +21,11 @@ module Akeyless
     # Ping Federate authorization port
     attr_accessor :authorization_port
 
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # Set output format to JSON
     attr_accessor :json
@@ -62,6 +65,7 @@ module Akeyless
         :'administrative_port' => :'administrative-port',
         :'authorization_port' => :'authorization-port',
         :'comment' => :'comment',
+        :'description' => :'description',
         :'json' => :'json',
         :'keep_prev_version' => :'keep-prev-version',
         :'key' => :'key',
@@ -87,6 +91,7 @@ module Akeyless
         :'administrative_port' => :'String',
         :'authorization_port' => :'String',
         :'comment' => :'String',
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'keep_prev_version' => :'String',
         :'key' => :'String',
@@ -136,6 +141,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'json')
@@ -209,6 +218,7 @@ module Akeyless
           administrative_port == o.administrative_port &&
           authorization_port == o.authorization_port &&
           comment == o.comment &&
+          description == o.description &&
           json == o.json &&
           keep_prev_version == o.keep_prev_version &&
           key == o.key &&
@@ -231,7 +241,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [administrative_port, authorization_port, comment, json, keep_prev_version, key, name, new_name, password, ping_url, privileged_user, token, uid_token, update_version].hash
+      [administrative_port, authorization_port, comment, description, json, keep_prev_version, key, name, new_name, password, ping_url, privileged_user, token, uid_token, update_version].hash
     end
 
     # Builds the object from hash

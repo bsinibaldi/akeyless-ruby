@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **comment** | **String** | Comment about the target | [optional] |
+| **comment** | **String** | Deprecated - use description | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **gcp_key** | **String** | Base64-encoded service account private key text | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **keep_prev_version** | **String** |  | [optional] |
@@ -23,6 +24,7 @@ require 'akeyless'
 
 instance = Akeyless::UpdateGcpTarget.new(
   comment: null,
+  description: null,
   gcp_key: null,
   json: null,
   keep_prev_version: null,

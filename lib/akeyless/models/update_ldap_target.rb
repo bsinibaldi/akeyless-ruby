@@ -19,8 +19,11 @@ module Akeyless
 
     attr_accessor :bind_dn_password
 
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # Set output format to JSON
     attr_accessor :json
@@ -60,6 +63,7 @@ module Akeyless
         :'bind_dn' => :'bind-dn',
         :'bind_dn_password' => :'bind-dn-password',
         :'comment' => :'comment',
+        :'description' => :'description',
         :'json' => :'json',
         :'keep_prev_version' => :'keep-prev-version',
         :'key' => :'key',
@@ -86,6 +90,7 @@ module Akeyless
         :'bind_dn' => :'String',
         :'bind_dn_password' => :'String',
         :'comment' => :'String',
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'keep_prev_version' => :'String',
         :'key' => :'String',
@@ -132,6 +137,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'json')
@@ -209,6 +218,7 @@ module Akeyless
           bind_dn == o.bind_dn &&
           bind_dn_password == o.bind_dn_password &&
           comment == o.comment &&
+          description == o.description &&
           json == o.json &&
           keep_prev_version == o.keep_prev_version &&
           key == o.key &&
@@ -232,7 +242,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [bind_dn, bind_dn_password, comment, json, keep_prev_version, key, ldap_ca_cert, ldap_url, name, new_name, server_type, token, token_expiration, uid_token, update_version].hash
+      [bind_dn, bind_dn_password, comment, description, json, keep_prev_version, key, ldap_ca_cert, ldap_url, name, new_name, server_type, token, token_expiration, uid_token, update_version].hash
     end
 
     # Builds the object from hash

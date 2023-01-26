@@ -18,6 +18,9 @@ module Akeyless
     # Workstation Admin Name
     attr_accessor :admin_name
 
+    # Description of the object
+    attr_accessor :description
+
     # A comma seperated list of email addresses to send event to (relevant only for \\\"email\\\" Event Forwarder)
     attr_accessor :email_to
 
@@ -39,7 +42,7 @@ module Akeyless
     # EventForwarder name
     attr_accessor :name
 
-    # New comment about the Event Forwarder
+    # Deprecated - use description
     attr_accessor :new_comment
 
     # New EventForwarder name
@@ -55,6 +58,7 @@ module Akeyless
     def self.attribute_map
       {
         :'admin_name' => :'admin-name',
+        :'description' => :'description',
         :'email_to' => :'email-to',
         :'enable' => :'enable',
         :'event_source_locations' => :'event-source-locations',
@@ -78,6 +82,7 @@ module Akeyless
     def self.openapi_types
       {
         :'admin_name' => :'String',
+        :'description' => :'String',
         :'email_to' => :'String',
         :'enable' => :'String',
         :'event_source_locations' => :'Array<String>',
@@ -115,6 +120,12 @@ module Akeyless
 
       if attributes.key?(:'admin_name')
         self.admin_name = attributes[:'admin_name']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      else
+        self.description = 'default_comment'
       end
 
       if attributes.key?(:'email_to')
@@ -192,6 +203,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           admin_name == o.admin_name &&
+          description == o.description &&
           email_to == o.email_to &&
           enable == o.enable &&
           event_source_locations == o.event_source_locations &&
@@ -214,7 +226,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [admin_name, email_to, enable, event_source_locations, event_types, host, json, name, new_comment, new_name, token, uid_token].hash
+      [admin_name, description, email_to, enable, event_source_locations, event_types, host, json, name, new_comment, new_name, token, uid_token].hash
     end
 
     # Builds the object from hash

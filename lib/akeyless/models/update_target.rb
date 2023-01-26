@@ -15,13 +15,16 @@ require 'time'
 
 module Akeyless
   class UpdateTarget
+    # Description of the object
+    attr_accessor :description
+
     # Set output format to JSON
     attr_accessor :json
 
     # Target name
     attr_accessor :name
 
-    # New comment about the target
+    # Deprecated - use description
     attr_accessor :new_comment
 
     # New Target name
@@ -36,6 +39,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'description' => :'description',
         :'json' => :'json',
         :'name' => :'name',
         :'new_comment' => :'new-comment',
@@ -53,6 +57,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'name' => :'String',
         :'new_comment' => :'String',
@@ -82,6 +87,12 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      else
+        self.description = 'default_comment'
+      end
 
       if attributes.key?(:'json')
         self.json = attributes[:'json']
@@ -133,6 +144,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          description == o.description &&
           json == o.json &&
           name == o.name &&
           new_comment == o.new_comment &&
@@ -150,7 +162,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [json, name, new_comment, new_name, token, uid_token].hash
+      [description, json, name, new_comment, new_name, token, uid_token].hash
     end
 
     # Builds the object from hash

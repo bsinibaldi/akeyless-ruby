@@ -33,8 +33,11 @@ module Akeyless
     # Client secret of the oauth2 app to use for connecting to Salesforce (required for password flow)
     attr_accessor :client_secret
 
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # The email of the user attached to the oauth2 app used for connecting to Salesforce
     attr_accessor :email
@@ -81,6 +84,7 @@ module Akeyless
         :'client_id' => :'client-id',
         :'client_secret' => :'client-secret',
         :'comment' => :'comment',
+        :'description' => :'description',
         :'email' => :'email',
         :'json' => :'json',
         :'keep_prev_version' => :'keep-prev-version',
@@ -111,6 +115,7 @@ module Akeyless
         :'client_id' => :'String',
         :'client_secret' => :'String',
         :'comment' => :'String',
+        :'description' => :'String',
         :'email' => :'String',
         :'json' => :'Boolean',
         :'keep_prev_version' => :'String',
@@ -173,6 +178,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'email')
@@ -274,6 +283,7 @@ module Akeyless
           client_id == o.client_id &&
           client_secret == o.client_secret &&
           comment == o.comment &&
+          description == o.description &&
           email == o.email &&
           json == o.json &&
           keep_prev_version == o.keep_prev_version &&
@@ -297,7 +307,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [app_private_key_data, auth_flow, ca_cert_data, ca_cert_name, client_id, client_secret, comment, email, json, keep_prev_version, key, name, new_name, password, security_token, tenant_url, token, uid_token, update_version].hash
+      [app_private_key_data, auth_flow, ca_cert_data, ca_cert_name, client_id, client_secret, comment, description, email, json, keep_prev_version, key, name, new_name, password, security_token, tenant_url, token, uid_token, update_version].hash
     end
 
     # Builds the object from hash

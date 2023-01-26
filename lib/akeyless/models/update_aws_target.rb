@@ -19,8 +19,11 @@ module Akeyless
 
     attr_accessor :access_key_id
 
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # Set output format to JSON
     attr_accessor :json
@@ -57,6 +60,7 @@ module Akeyless
         :'access_key' => :'access-key',
         :'access_key_id' => :'access-key-id',
         :'comment' => :'comment',
+        :'description' => :'description',
         :'json' => :'json',
         :'keep_prev_version' => :'keep-prev-version',
         :'key' => :'key',
@@ -82,6 +86,7 @@ module Akeyless
         :'access_key' => :'String',
         :'access_key_id' => :'String',
         :'comment' => :'String',
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'keep_prev_version' => :'String',
         :'key' => :'String',
@@ -127,6 +132,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'json')
@@ -200,6 +209,7 @@ module Akeyless
           access_key == o.access_key &&
           access_key_id == o.access_key_id &&
           comment == o.comment &&
+          description == o.description &&
           json == o.json &&
           keep_prev_version == o.keep_prev_version &&
           key == o.key &&
@@ -222,7 +232,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_key, access_key_id, comment, json, keep_prev_version, key, name, new_name, region, session_token, token, uid_token, update_version, use_gw_cloud_identity].hash
+      [access_key, access_key_id, comment, description, json, keep_prev_version, key, name, new_name, region, session_token, token, uid_token, update_version, use_gw_cloud_identity].hash
     end
 
     # Builds the object from hash

@@ -6,7 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **admin_name** | **String** | Workstation Admin Name | [optional] |
 | **admin_pwd** | **String** | Workstation Admin password | [optional] |
-| **comment** | **String** | Comment about the EventForwarder | [optional] |
+| **comment** | **String** | Deprecated - use description | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **email_to** | **String** | A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder) | [optional] |
 | **event_source_locations** | **Array&lt;String&gt;** | Event sources |  |
 | **event_source_type** | **String** | Event Source type [item, target] | [optional][default to &#39;item&#39;] |
@@ -30,6 +31,7 @@ instance = Akeyless::CreateEventForwarder.new(
   admin_name: null,
   admin_pwd: null,
   comment: null,
+  description: null,
   email_to: null,
   event_source_locations: null,
   event_source_type: null,

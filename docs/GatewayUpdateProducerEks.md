@@ -25,7 +25,7 @@
 | **target_name** | **String** | Target name | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
-| **user_ttl** | **String** | User TTL | [optional][default to &#39;60m&#39;] |
+| **user_ttl** | **String** | User TTL | [optional][default to &#39;15m&#39;] |
 
 ## Example
 

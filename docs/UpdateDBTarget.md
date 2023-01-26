@@ -4,11 +4,12 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **comment** | **String** | Comment about the target | [optional] |
+| **comment** | **String** | Deprecated - use description | [optional] |
 | **db_name** | **String** |  | [optional] |
 | **db_server_certificates** | **String** | (Optional) DB server certificates | [optional] |
 | **db_server_name** | **String** | (Optional) Server name for certificate verification | [optional] |
 | **db_type** | **String** |  |  |
+| **description** | **String** | Description of the object | [optional] |
 | **host** | **String** |  | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **keep_prev_version** | **String** |  | [optional] |
@@ -45,6 +46,7 @@ instance = Akeyless::UpdateDBTarget.new(
   db_server_certificates: null,
   db_server_name: null,
   db_type: null,
+  description: null,
   host: null,
   json: null,
   keep_prev_version: null,

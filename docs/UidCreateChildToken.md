@@ -8,7 +8,8 @@
 | **child_deny_inheritance** | **Boolean** | Deny from new child to create their own children | [optional] |
 | **child_deny_rotate** | **Boolean** | Deny from new child to rotate | [optional] |
 | **child_ttl** | **Integer** | New child token ttl | [optional] |
-| **comment** | **String** | New Token comment | [optional] |
+| **comment** | **String** | Deprecated - use description | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
@@ -25,6 +26,7 @@ instance = Akeyless::UidCreateChildToken.new(
   child_deny_rotate: null,
   child_ttl: null,
   comment: null,
+  description: null,
   json: null,
   token: null,
   uid_token: null,

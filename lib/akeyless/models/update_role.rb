@@ -21,6 +21,9 @@ module Akeyless
     # Allow this role to view audit logs. Currently only 'none', 'own' and 'all' values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
     attr_accessor :audit_access
 
+    # Description of the object
+    attr_accessor :description
+
     # Allow this role to view gw analytics. Currently only 'none', 'own', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
     attr_accessor :gw_analytics_access
 
@@ -30,7 +33,7 @@ module Akeyless
     # Role name
     attr_accessor :name
 
-    # New comment about the role
+    # Deprecated - use description
     attr_accessor :new_comment
 
     # New Role name
@@ -50,6 +53,7 @@ module Akeyless
       {
         :'analytics_access' => :'analytics-access',
         :'audit_access' => :'audit-access',
+        :'description' => :'description',
         :'gw_analytics_access' => :'gw-analytics-access',
         :'json' => :'json',
         :'name' => :'name',
@@ -71,6 +75,7 @@ module Akeyless
       {
         :'analytics_access' => :'String',
         :'audit_access' => :'String',
+        :'description' => :'String',
         :'gw_analytics_access' => :'String',
         :'json' => :'Boolean',
         :'name' => :'String',
@@ -109,6 +114,12 @@ module Akeyless
 
       if attributes.key?(:'audit_access')
         self.audit_access = attributes[:'audit_access']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      else
+        self.description = 'default_comment'
       end
 
       if attributes.key?(:'gw_analytics_access')
@@ -171,6 +182,7 @@ module Akeyless
       self.class == o.class &&
           analytics_access == o.analytics_access &&
           audit_access == o.audit_access &&
+          description == o.description &&
           gw_analytics_access == o.gw_analytics_access &&
           json == o.json &&
           name == o.name &&
@@ -190,7 +202,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [analytics_access, audit_access, gw_analytics_access, json, name, new_comment, new_name, sra_reports_access, token, uid_token].hash
+      [analytics_access, audit_access, description, gw_analytics_access, json, name, new_comment, new_name, sra_reports_access, token, uid_token].hash
     end
 
     # Builds the object from hash

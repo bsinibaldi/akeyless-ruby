@@ -24,8 +24,11 @@ module Akeyless
     # Base URL
     attr_accessor :base_url
 
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # Set output format to JSON
     attr_accessor :json
@@ -49,6 +52,7 @@ module Akeyless
         :'artifactory_admin_pwd' => :'artifactory-admin-pwd',
         :'base_url' => :'base-url',
         :'comment' => :'comment',
+        :'description' => :'description',
         :'json' => :'json',
         :'key' => :'key',
         :'name' => :'name',
@@ -69,6 +73,7 @@ module Akeyless
         :'artifactory_admin_pwd' => :'String',
         :'base_url' => :'String',
         :'comment' => :'String',
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'key' => :'String',
         :'name' => :'String',
@@ -112,6 +117,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'json')
@@ -177,6 +186,7 @@ module Akeyless
           artifactory_admin_pwd == o.artifactory_admin_pwd &&
           base_url == o.base_url &&
           comment == o.comment &&
+          description == o.description &&
           json == o.json &&
           key == o.key &&
           name == o.name &&
@@ -193,7 +203,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [artifactory_admin_name, artifactory_admin_pwd, base_url, comment, json, key, name, token, uid_token].hash
+      [artifactory_admin_name, artifactory_admin_pwd, base_url, comment, description, json, key, name, token, uid_token].hash
     end
 
     # Builds the object from hash

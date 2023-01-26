@@ -10,6 +10,7 @@
 | **cluster_gw_url** | **String** |  | [optional] |
 | **display_metadata** | **String** |  | [optional] |
 | **dynamic_secret_producer_details** | [**DynamicSecretProducerInfo**](DynamicSecretProducerInfo.md) |  | [optional] |
+| **importer_info** | [**ImporterInfo**](ImporterInfo.md) |  | [optional] |
 | **password_policy** | [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] |
 | **rotated_secret_details** | [**RotatedSecretDetailsInfo**](RotatedSecretDetailsInfo.md) |  | [optional] |
 | **secure_remote_access_details** | [**SecureRemoteAccess**](SecureRemoteAccess.md) |  | [optional] |
@@ -28,6 +29,7 @@ instance = Akeyless::ItemGeneralInfo.new(
   cluster_gw_url: null,
   display_metadata: null,
   dynamic_secret_producer_details: null,
+  importer_info: null,
   password_policy: null,
   rotated_secret_details: null,
   secure_remote_access_details: null,

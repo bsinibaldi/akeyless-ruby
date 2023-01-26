@@ -4,11 +4,12 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **comment** | **String** | Comment about the target | [optional] |
+| **comment** | **String** | Deprecated - use description | [optional] |
 | **db_name** | **String** |  | [optional] |
 | **db_server_certificates** | **String** | (Optional) DB server certificates | [optional] |
 | **db_server_name** | **String** | (Optional) Server name for certificate verification | [optional] |
 | **db_type** | **String** |  |  |
+| **description** | **String** | Description of the object | [optional] |
 | **host** | **String** |  | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
@@ -42,6 +43,7 @@ instance = Akeyless::CreateDBTarget.new(
   db_server_certificates: null,
   db_server_name: null,
   db_type: null,
+  description: null,
   host: null,
   json: null,
   key: null,

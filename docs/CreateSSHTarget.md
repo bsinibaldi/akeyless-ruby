@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **comment** | **String** | Comment about the target | [optional] |
+| **comment** | **String** | Deprecated - use description | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **host** | **String** |  | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
@@ -24,6 +25,7 @@ require 'akeyless'
 
 instance = Akeyless::CreateSSHTarget.new(
   comment: null,
+  description: null,
   host: null,
   json: null,
   key: null,

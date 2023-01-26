@@ -21,8 +21,11 @@ module Akeyless
     # Bind DN Password
     attr_accessor :bind_dn_password
 
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # Set output format to JSON
     attr_accessor :json
@@ -57,6 +60,7 @@ module Akeyless
         :'bind_dn' => :'bind-dn',
         :'bind_dn_password' => :'bind-dn-password',
         :'comment' => :'comment',
+        :'description' => :'description',
         :'json' => :'json',
         :'key' => :'key',
         :'ldap_ca_cert' => :'ldap-ca-cert',
@@ -80,6 +84,7 @@ module Akeyless
         :'bind_dn' => :'String',
         :'bind_dn_password' => :'String',
         :'comment' => :'String',
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'key' => :'String',
         :'ldap_ca_cert' => :'String',
@@ -123,6 +128,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'json')
@@ -205,6 +214,7 @@ module Akeyless
           bind_dn == o.bind_dn &&
           bind_dn_password == o.bind_dn_password &&
           comment == o.comment &&
+          description == o.description &&
           json == o.json &&
           key == o.key &&
           ldap_ca_cert == o.ldap_ca_cert &&
@@ -225,7 +235,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [bind_dn, bind_dn_password, comment, json, key, ldap_ca_cert, ldap_url, name, server_type, token, token_expiration, uid_token].hash
+      [bind_dn, bind_dn_password, comment, description, json, key, ldap_ca_cert, ldap_url, name, server_type, token, token_expiration, uid_token].hash
     end
 
     # Builds the object from hash

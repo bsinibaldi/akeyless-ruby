@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **comment** | **String** | Comment about the target | [optional] |
+| **comment** | **String** | Deprecated - use description | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **dockerhub_password** | **String** |  | [optional] |
 | **dockerhub_username** | **String** |  | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
@@ -23,6 +24,7 @@ require 'akeyless'
 
 instance = Akeyless::UpdateDockerhubTarget.new(
   comment: null,
+  description: null,
   dockerhub_password: null,
   dockerhub_username: null,
   json: null,

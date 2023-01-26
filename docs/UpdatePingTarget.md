@@ -6,7 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **administrative_port** | **String** | Ping Federate administrative port | [optional][default to &#39;9999&#39;] |
 | **authorization_port** | **String** | Ping Federate authorization port | [optional][default to &#39;9031&#39;] |
-| **comment** | **String** | Comment about the target | [optional] |
+| **comment** | **String** | Deprecated - use description | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **keep_prev_version** | **String** |  | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
@@ -28,6 +29,7 @@ instance = Akeyless::UpdatePingTarget.new(
   administrative_port: null,
   authorization_port: null,
   comment: null,
+  description: null,
   json: null,
   keep_prev_version: null,
   key: null,

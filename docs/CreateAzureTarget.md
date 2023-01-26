@@ -6,7 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **client_id** | **String** |  | [optional] |
 | **client_secret** | **String** |  | [optional] |
-| **comment** | **String** | Comment about the target | [optional] |
+| **comment** | **String** | Deprecated - use description | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **name** | **String** | Target name |  |
@@ -27,6 +28,7 @@ instance = Akeyless::CreateAzureTarget.new(
   client_id: null,
   client_secret: null,
   comment: null,
+  description: null,
   json: null,
   key: null,
   name: null,

@@ -19,8 +19,11 @@ module Akeyless
 
     attr_accessor :client_secret
 
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # Set output format to JSON
     attr_accessor :json
@@ -64,6 +67,7 @@ module Akeyless
         :'client_id' => :'client-id',
         :'client_secret' => :'client-secret',
         :'comment' => :'comment',
+        :'description' => :'description',
         :'json' => :'json',
         :'keep_prev_version' => :'keep-prev-version',
         :'key' => :'key',
@@ -91,6 +95,7 @@ module Akeyless
         :'client_id' => :'String',
         :'client_secret' => :'String',
         :'comment' => :'String',
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'keep_prev_version' => :'String',
         :'key' => :'String',
@@ -138,6 +143,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'json')
@@ -219,6 +228,7 @@ module Akeyless
           client_id == o.client_id &&
           client_secret == o.client_secret &&
           comment == o.comment &&
+          description == o.description &&
           json == o.json &&
           keep_prev_version == o.keep_prev_version &&
           key == o.key &&
@@ -243,7 +253,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [client_id, client_secret, comment, json, keep_prev_version, key, name, new_name, resource_group_name, resource_name, subscription_id, tenant_id, token, uid_token, update_version, use_gw_cloud_identity].hash
+      [client_id, client_secret, comment, description, json, keep_prev_version, key, name, new_name, resource_group_name, resource_name, subscription_id, tenant_id, token, uid_token, update_version, use_gw_cloud_identity].hash
     end
 
     # Builds the object from hash

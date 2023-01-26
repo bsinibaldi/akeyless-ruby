@@ -15,7 +15,7 @@ require 'time'
 
 module Akeyless
   class UpdateDBTarget
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
 
     attr_accessor :db_name
@@ -27,6 +27,9 @@ module Akeyless
     attr_accessor :db_server_name
 
     attr_accessor :db_type
+
+    # Description of the object
+    attr_accessor :description
 
     attr_accessor :host
 
@@ -100,6 +103,7 @@ module Akeyless
         :'db_server_certificates' => :'db-server-certificates',
         :'db_server_name' => :'db-server-name',
         :'db_type' => :'db-type',
+        :'description' => :'description',
         :'host' => :'host',
         :'json' => :'json',
         :'keep_prev_version' => :'keep-prev-version',
@@ -140,6 +144,7 @@ module Akeyless
         :'db_server_certificates' => :'String',
         :'db_server_name' => :'String',
         :'db_type' => :'String',
+        :'description' => :'String',
         :'host' => :'String',
         :'json' => :'Boolean',
         :'keep_prev_version' => :'String',
@@ -206,6 +211,10 @@ module Akeyless
 
       if attributes.key?(:'db_type')
         self.db_type = attributes[:'db_type']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'host')
@@ -338,6 +347,7 @@ module Akeyless
           db_server_certificates == o.db_server_certificates &&
           db_server_name == o.db_server_name &&
           db_type == o.db_type &&
+          description == o.description &&
           host == o.host &&
           json == o.json &&
           keep_prev_version == o.keep_prev_version &&
@@ -373,7 +383,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [comment, db_name, db_server_certificates, db_server_name, db_type, host, json, keep_prev_version, key, mongodb_atlas, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_default_auth_db, mongodb_uri_options, name, new_name, oracle_service_name, port, pwd, snowflake_account, snowflake_api_private_key, snowflake_api_private_key_password, ssl, ssl_certificate, token, uid_token, update_version, user_name].hash
+      [comment, db_name, db_server_certificates, db_server_name, db_type, description, host, json, keep_prev_version, key, mongodb_atlas, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_default_auth_db, mongodb_uri_options, name, new_name, oracle_service_name, port, pwd, snowflake_account, snowflake_api_private_key, snowflake_api_private_key_password, ssl, ssl_certificate, token, uid_token, update_version, user_name].hash
     end
 
     # Builds the object from hash

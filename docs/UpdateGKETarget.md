@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **comment** | **String** | Comment about the target | [optional] |
+| **comment** | **String** | Deprecated - use description | [optional] |
+| **description** | **String** | Description of the object | [optional] |
 | **gke_account_key** | **String** | GKE Service Account key file path | [optional] |
 | **gke_cluster_cert** | **String** | GKE cluster CA certificate | [optional] |
 | **gke_cluster_endpoint** | **String** | GKE cluster URL endpoint | [optional] |
@@ -27,6 +28,7 @@ require 'akeyless'
 
 instance = Akeyless::UpdateGKETarget.new(
   comment: null,
+  description: null,
   gke_account_key: null,
   gke_cluster_cert: null,
   gke_cluster_endpoint: null,

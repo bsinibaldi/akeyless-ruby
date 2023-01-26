@@ -15,8 +15,11 @@ require 'time'
 
 module Akeyless
   class UpdateEKSTarget
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # Access Key ID
     attr_accessor :eks_access_key_id
@@ -65,6 +68,7 @@ module Akeyless
     def self.attribute_map
       {
         :'comment' => :'comment',
+        :'description' => :'description',
         :'eks_access_key_id' => :'eks-access-key-id',
         :'eks_cluster_ca_cert' => :'eks-cluster-ca-cert',
         :'eks_cluster_endpoint' => :'eks-cluster-endpoint',
@@ -92,6 +96,7 @@ module Akeyless
     def self.openapi_types
       {
         :'comment' => :'String',
+        :'description' => :'String',
         :'eks_access_key_id' => :'String',
         :'eks_cluster_ca_cert' => :'String',
         :'eks_cluster_endpoint' => :'String',
@@ -133,6 +138,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'eks_access_key_id')
@@ -247,6 +256,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           comment == o.comment &&
+          description == o.description &&
           eks_access_key_id == o.eks_access_key_id &&
           eks_cluster_ca_cert == o.eks_cluster_ca_cert &&
           eks_cluster_endpoint == o.eks_cluster_endpoint &&
@@ -273,7 +283,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [comment, eks_access_key_id, eks_cluster_ca_cert, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, json, keep_prev_version, key, name, new_name, token, uid_token, update_version, use_gw_cloud_identity].hash
+      [comment, description, eks_access_key_id, eks_cluster_ca_cert, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, json, keep_prev_version, key, name, new_name, token, uid_token, update_version, use_gw_cloud_identity].hash
     end
 
     # Builds the object from hash

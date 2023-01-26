@@ -15,8 +15,11 @@ require 'time'
 
 module Akeyless
   class UpdateNativeK8STarget
-    # Comment about the target
+    # Deprecated - use description
     attr_accessor :comment
+
+    # Description of the object
+    attr_accessor :description
 
     # Set output format to JSON
     attr_accessor :json
@@ -54,6 +57,7 @@ module Akeyless
     def self.attribute_map
       {
         :'comment' => :'comment',
+        :'description' => :'description',
         :'json' => :'json',
         :'k8s_cluster_ca_cert' => :'k8s-cluster-ca-cert',
         :'k8s_cluster_endpoint' => :'k8s-cluster-endpoint',
@@ -77,6 +81,7 @@ module Akeyless
     def self.openapi_types
       {
         :'comment' => :'String',
+        :'description' => :'String',
         :'json' => :'Boolean',
         :'k8s_cluster_ca_cert' => :'String',
         :'k8s_cluster_endpoint' => :'String',
@@ -114,6 +119,10 @@ module Akeyless
 
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'json')
@@ -200,6 +209,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           comment == o.comment &&
+          description == o.description &&
           json == o.json &&
           k8s_cluster_ca_cert == o.k8s_cluster_ca_cert &&
           k8s_cluster_endpoint == o.k8s_cluster_endpoint &&
@@ -222,7 +232,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [comment, json, k8s_cluster_ca_cert, k8s_cluster_endpoint, k8s_cluster_token, keep_prev_version, key, name, new_name, token, uid_token, update_version].hash
+      [comment, description, json, k8s_cluster_ca_cert, k8s_cluster_endpoint, k8s_cluster_token, keep_prev_version, key, name, new_name, token, uid_token, update_version].hash
     end
 
     # Builds the object from hash
