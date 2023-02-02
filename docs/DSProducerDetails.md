@@ -118,12 +118,11 @@
 | **k8s_cluster_ca_certificate** | **String** |  | [optional] |
 | **k8s_cluster_endpoint** | **String** |  | [optional] |
 | **k8s_dynamic_mode** | **Boolean** | when native k8s is in dynamic mode, user can define allowed namespaces, K8sServiceAccount doesn&#39;t exist from the start and will only be created at time of getting dynamic secret value By default dynamic mode is false and producer behaves like it did before | [optional] |
+| **k8s_multiple_doc_yaml_temp_definition** | **Array&lt;Integer&gt;** | Yaml definition for creation of temporary objects. Field that can hold multiple docs from which following will be extracted: ServiceAccount, Role/ClusterRole and RoleBinding/ClusterRoleBinding. If ServiceAccount not specified - it will be generated automatically | [optional] |
 | **k8s_namespace** | **String** |  | [optional] |
 | **k8s_role_name** | **String** | Name of the pre-existing Role or ClusterRole to bind a generated service account to. | [optional] |
 | **k8s_role_type** | **String** |  | [optional] |
 | **k8s_service_account** | **String** |  | [optional] |
-| **k8s_temp_role_binding_definition** | **Array&lt;Integer&gt;** | Yaml/Json definition of temporary role binding that will be created and deleted when TTL is due. Must have as subject name of Service Account specified in K8sServiceAccount field | [optional] |
-| **k8s_temp_role_definition** | **Array&lt;Integer&gt;** | Yaml/Json definition of temporary role that will be created and deleted when TTL is due | [optional] |
 | **last_admin_rotation** | **Integer** |  | [optional] |
 | **ldap_audience** | **String** |  | [optional] |
 | **ldap_bind_dn** | **String** |  | [optional] |
@@ -327,12 +326,11 @@ instance = Akeyless::DSProducerDetails.new(
   k8s_cluster_ca_certificate: null,
   k8s_cluster_endpoint: null,
   k8s_dynamic_mode: null,
+  k8s_multiple_doc_yaml_temp_definition: null,
   k8s_namespace: null,
   k8s_role_name: null,
   k8s_role_type: null,
   k8s_service_account: null,
-  k8s_temp_role_binding_definition: null,
-  k8s_temp_role_definition: null,
   last_admin_rotation: null,
   ldap_audience: null,
   ldap_bind_dn: null,

@@ -14,6 +14,7 @@
 | **new_metadata** | **String** | Deprecated - use description | [optional][default to &#39;default_metadata&#39;] |
 | **new_name** | **String** | New item name | [optional] |
 | **rm_tag** | **Array&lt;String&gt;** | List of the existent tags that will be removed from this item | [optional] |
+| **rotate_after_disconnect** | **String** | Rotate the value of the secret after SRA session ends | [optional][default to &#39;false&#39;] |
 | **secure_access_add_host** | **Array&lt;String&gt;** |  | [optional] |
 | **secure_access_allow_external_user** | **String** |  | [optional] |
 | **secure_access_allow_port_forwading** | **Boolean** |  | [optional] |
@@ -57,6 +58,7 @@ instance = Akeyless::UpdateItem.new(
   new_metadata: null,
   new_name: null,
   rm_tag: null,
+  rotate_after_disconnect: null,
   secure_access_add_host: null,
   secure_access_allow_external_user: null,
   secure_access_allow_port_forwading: null,
