@@ -15,6 +15,7 @@
 | **last_version** | **Integer** |  | [optional] |
 | **modification_date** | **Time** |  | [optional] |
 | **protection_key_name** | **String** |  | [optional] |
+| **target_details** | **String** |  | [optional] |
 | **target_id** | **Integer** |  | [optional] |
 | **target_items_assoc** | [**Array&lt;TargetItemAssociation&gt;**](TargetItemAssociation.md) |  | [optional] |
 | **target_name** | **String** |  | [optional] |
@@ -39,6 +40,7 @@ instance = Akeyless::Target.new(
   last_version: null,
   modification_date: null,
   protection_key_name: null,
+  target_details: null,
   target_id: null,
   target_items_assoc: null,
   target_name: null,

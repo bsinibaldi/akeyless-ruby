@@ -9,7 +9,7 @@
 | **_1password_secret_key** | **String** | 1Password user secret key to connect to the API | [optional] |
 | **_1password_url** | **String** | 1Password api container url | [optional] |
 | **_1password_vaults** | **Array&lt;String&gt;** | 1Password list of vault to get the items from | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **protection_key** | **String** | The name of a key that used to encrypt the secret value | [optional] |
 | **target_location** | **String** | Target location in your Akeyless personal folder for migrated secrets | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |

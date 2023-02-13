@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **mssql_create_statements** | **String** | MSSQL Creation statements | [optional] |
 | **mssql_dbname** | **String** | MSSQL Name | [optional] |
 | **mssql_host** | **String** | MSSQL Host | [optional][default to &#39;127.0.0.1&#39;] |
@@ -15,11 +15,11 @@
 | **mssql_username** | **String** | MSSQL Username | [optional] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
-| **secure_access_bastion_issuer** | **String** |  | [optional] |
-| **secure_access_db_schema** | **String** |  | [optional] |
-| **secure_access_enable** | **String** |  | [optional] |
-| **secure_access_host** | **Array&lt;String&gt;** |  | [optional] |
-| **secure_access_web** | **Boolean** |  | [optional] |
+| **secure_access_bastion_issuer** | **String** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] |
+| **secure_access_db_schema** | **String** | The DB schema | [optional] |
+| **secure_access_enable** | **String** | Enable/Disable secure remote access [true/false] | [optional] |
+| **secure_access_host** | **Array&lt;String&gt;** | Target DB servers for connections | [optional] |
+| **secure_access_web** | **Boolean** | Enable Web Secure Remote Access | [optional][default to false] |
 | **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
 | **target_name** | **String** | Target name | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |

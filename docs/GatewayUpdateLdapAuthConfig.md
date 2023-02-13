@@ -10,9 +10,9 @@
 | **group_attr** | **String** | Group Attr | [optional] |
 | **group_dn** | **String** | Group Dn | [optional] |
 | **group_filter** | **String** | Group Filter | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **ldap_ca_cert** | **String** | LDAP CA Certificate (base64 encoded) | [optional] |
-| **ldap_enable** | **String** | Enable Ldap | [optional] |
+| **ldap_enable** | **String** | Enable Ldap [true/false] | [optional] |
 | **ldap_url** | **String** | LDAP Server URL, e.g. ldap://planetexpress.com:389 | [optional] |
 | **ldap_anonymous_search** | **Boolean** | Ldap Anonymous Search | [optional] |
 | **signing_key_data** | **String** | The private key (base64 encoded), associated with the public key defined in the Ldap auth | [optional] |

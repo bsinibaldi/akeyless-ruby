@@ -6,15 +6,15 @@
 | ---- | ---- | ----------- | ----- |
 | **comment** | **String** | Deprecated - use description | [optional] |
 | **description** | **String** | Description of the object | [optional] |
-| **host** | **String** |  | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **host** | **String** | SSH host name | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **name** | **String** | Target name |  |
-| **port** | **String** |  | [optional] |
-| **private_key** | **String** |  | [optional] |
-| **private_key_password** | **String** |  | [optional] |
-| **ssh_password** | **String** |  | [optional] |
-| **ssh_username** | **String** |  | [optional] |
+| **port** | **String** | SSH port | [optional][default to &#39;22&#39;] |
+| **private_key** | **String** | SSH private key | [optional] |
+| **private_key_password** | **String** | SSH private key password | [optional] |
+| **ssh_password** | **String** | SSH password to rotate | [optional] |
+| **ssh_username** | **String** | SSH username | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
 

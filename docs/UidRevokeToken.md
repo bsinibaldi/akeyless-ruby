@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **auth_method_name** | **String** | The universal identity auth method name | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **revoke_token** | **String** | the universal identity token/token-id to revoke |  |
 | **revoke_type** | **String** | revokeSelf/revokeAll (delete only this token/this token and his children) |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |

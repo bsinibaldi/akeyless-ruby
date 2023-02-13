@@ -13,8 +13,8 @@
 | **cloud_id** | **String** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp) | [optional] |
 | **debug** | **Boolean** |  | [optional] |
 | **gateway_url** | **String** | Gateway URL for the K8S authenticated (relevant only for access-type&#x3D;k8s) | [optional] |
-| **gcp_audience** | **String** | GCP JWT audience | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **gcp_audience** | **String** | GCP JWT audience | [optional][default to &#39;akeyless.io&#39;] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **jwt** | **String** | The Json Web Token (relevant only for access-type&#x3D;jwt/oidc) | [optional] |
 | **k8s_auth_config_name** | **String** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] |
 | **k8s_service_account_token** | **String** | The K8S service account token. (relevant only for access-type&#x3D;k8s) | [optional] |

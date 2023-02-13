@@ -6,8 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **bind_dn** | **String** |  | [optional] |
 | **bind_dn_password** | **String** |  | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
-| **keep_prev_version** | **String** |  | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
+| **keep_prev_version** | **String** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] |
 | **key** | **String** |  | [optional] |
 | **ldap_ca_cert** | **String** |  | [optional] |
 | **ldap_url** | **String** |  | [optional] |

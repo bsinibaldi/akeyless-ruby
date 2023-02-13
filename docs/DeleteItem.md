@@ -7,7 +7,7 @@
 | **accessibility** | **String** | for personal password manager | [optional][default to &#39;regular&#39;] |
 | **delete_immediately** | **Boolean** | When delete-in-days&#x3D;-1, must be set | [optional][default to false] |
 | **delete_in_days** | **Integer** | The number of days to wait before deleting the item (relevant for keys only) | [optional][default to 7] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **name** | **String** | Item name |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |

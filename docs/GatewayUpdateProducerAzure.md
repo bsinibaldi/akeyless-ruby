@@ -8,17 +8,17 @@
 | **azure_client_id** | **String** | Azure Client ID | [optional] |
 | **azure_client_secret** | **String** | Azure Client Secret | [optional] |
 | **azure_tenant_id** | **String** | Azure Tenant ID | [optional] |
-| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
 | **fixed_user_claim_keyname** | **String** | FixedUserClaimKeyname | [optional][default to &#39;false&#39;] |
 | **fixed_user_only** | **Boolean** | Fixed user | [optional][default to false] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **name** | **String** | Producer name |  |
 | **new_name** | **String** | Producer name | [optional] |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
-| **secure_access_enable** | **String** |  | [optional] |
-| **secure_access_web** | **Boolean** |  | [optional] |
-| **secure_access_web_browsing** | **Boolean** |  | [optional] |
-| **secure_access_web_proxy** | **Boolean** |  | [optional] |
+| **secure_access_enable** | **String** | Enable/Disable secure remote access [true/false] | [optional] |
+| **secure_access_web** | **Boolean** | Enable Web Secure Remote Access | [optional][default to true] |
+| **secure_access_web_browsing** | **Boolean** | Secure browser via Akeyless Web Access Bastion | [optional][default to false] |
+| **secure_access_web_proxy** | **Boolean** | Web-Proxy via Akeyless Web Access Bastion | [optional][default to false] |
 | **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
 | **target_name** | **String** | Target name | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |

@@ -36,6 +36,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_github_target**](V2Api.md#create_github_target) | **POST** /create-github-target |  |
 | [**create_gke_target**](V2Api.md#create_gke_target) | **POST** /create-gke-target |  |
 | [**create_key**](V2Api.md#create_key) | **POST** /create-key |  |
+| [**create_linked_target**](V2Api.md#create_linked_target) | **POST** /create-linked-target |  |
 | [**create_native_k8_s_target**](V2Api.md#create_native_k8_s_target) | **POST** /create-k8s-target |  |
 | [**create_ping_target**](V2Api.md#create_ping_target) | **POST** /create-ping-target |  |
 | [**create_pki_cert_issuer**](V2Api.md#create_pki_cert_issuer) | **POST** /create-pki-cert-issuer |  |
@@ -48,6 +49,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_ssh_target**](V2Api.md#create_ssh_target) | **POST** /create-ssh-target |  |
 | [**create_tokenizer**](V2Api.md#create_tokenizer) | **POST** /create-tokenizer |  |
 | [**create_web_target**](V2Api.md#create_web_target) | **POST** /create-web-target |  |
+| [**create_windows_target**](V2Api.md#create_windows_target) | **POST** /create-windows-target |  |
 | [**createldap_target**](V2Api.md#createldap_target) | **POST** /create-ldap-target |  |
 | [**decrypt**](V2Api.md#decrypt) | **POST** /decrypt |  |
 | [**decrypt_gpg**](V2Api.md#decrypt_gpg) | **POST** /decrypt-gpg |  |
@@ -236,6 +238,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_item**](V2Api.md#update_item) | **POST** /update-item |  |
 | [**update_ldap_target**](V2Api.md#update_ldap_target) | **POST** /update-ldap-target |  |
 | [**update_ldap_target_details**](V2Api.md#update_ldap_target_details) | **POST** /update-ldap-target-details |  |
+| [**update_linked_target**](V2Api.md#update_linked_target) | **POST** /update-linked-target |  |
 | [**update_native_k8_s_target**](V2Api.md#update_native_k8_s_target) | **POST** /update-k8s-target |  |
 | [**update_ping_target**](V2Api.md#update_ping_target) | **POST** /update-ping-target |  |
 | [**update_pki_cert_issuer**](V2Api.md#update_pki_cert_issuer) | **POST** /update-pki-cert-issuer |  |
@@ -254,6 +257,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_target_details**](V2Api.md#update_target_details) | **POST** /update-target-details |  |
 | [**update_web_target**](V2Api.md#update_web_target) | **POST** /update-web-target |  |
 | [**update_web_target_details**](V2Api.md#update_web_target_details) | **POST** /update-web-target-details |  |
+| [**update_windows_target**](V2Api.md#update_windows_target) | **POST** /update-windows-target |  |
 | [**upload_rsa**](V2Api.md#upload_rsa) | **POST** /upload-rsa |  |
 | [**validate_token**](V2Api.md#validate_token) | **POST** /validate-token |  |
 | [**verify_gpg**](V2Api.md#verify_gpg) | **POST** /verify-gpg |  |
@@ -1391,7 +1395,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::CreateAWSTarget.new({name: 'name_example'}) # CreateAWSTarget | 
+body = Akeyless::CreateAWSTarget.new({access_key: 'access_key_example', access_key_id: 'access_key_id_example', name: 'name_example'}) # CreateAWSTarget | 
 
 begin
   
@@ -2246,6 +2250,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## create_linked_target
+
+> <CreateLinkedTargetOutput> create_linked_target(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateLinkedTarget.new({hosts: 'hosts_example', name: 'name_example'}) # CreateLinkedTarget | 
+
+begin
+  
+  result = api_instance.create_linked_target(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_linked_target: #{e}"
+end
+```
+
+#### Using the create_linked_target_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateLinkedTargetOutput>, Integer, Hash)> create_linked_target_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_linked_target_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateLinkedTargetOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_linked_target_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateLinkedTarget**](CreateLinkedTarget.md) |  |  |
+
+### Return type
+
+[**CreateLinkedTargetOutput**](CreateLinkedTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_native_k8_s_target
 
 > <CreateNativeK8STargetOutput> create_native_k8_s_target(body)
@@ -2979,6 +3045,68 @@ end
 ### Return type
 
 [**CreateWebTargetOutput**](CreateWebTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_windows_target
+
+> <CreateWindowsTargetOutput> create_windows_target(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateWindowsTarget.new({name: 'name_example'}) # CreateWindowsTarget | 
+
+begin
+  
+  result = api_instance.create_windows_target(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_windows_target: #{e}"
+end
+```
+
+#### Using the create_windows_target_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateWindowsTargetOutput>, Integer, Hash)> create_windows_target_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_windows_target_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateWindowsTargetOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_windows_target_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateWindowsTarget**](CreateWindowsTarget.md) |  |  |
+
+### Return type
+
+[**CreateWindowsTargetOutput**](CreateWindowsTargetOutput.md)
 
 ### Authorization
 
@@ -10709,7 +10837,7 @@ require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
 opts = {
-  body: Akeyless::KmipMoveServer.new # KmipMoveServer | 
+  body: Akeyless::KmipMoveServer.new({new_root: 'new_root_example'}) # KmipMoveServer | 
 }
 
 begin
@@ -10901,7 +11029,7 @@ require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
 opts = {
-  body: Akeyless::KmipServerSetup.new({hostname: 'hostname_example'}) # KmipServerSetup | 
+  body: Akeyless::KmipServerSetup.new({hostname: 'hostname_example', root: 'root_example'}) # KmipServerSetup | 
 }
 
 begin
@@ -13753,7 +13881,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::UpdateAWSTarget.new({name: 'name_example'}) # UpdateAWSTarget | 
+body = Akeyless::UpdateAWSTarget.new({access_key: 'access_key_example', access_key_id: 'access_key_id_example', name: 'name_example'}) # UpdateAWSTarget | 
 
 begin
   
@@ -14659,6 +14787,68 @@ end
 ### Return type
 
 [**UpdateTargetOutput**](UpdateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_linked_target
+
+> Object update_linked_target(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateLinkedTarget.new({hosts: 'hosts_example', name: 'name_example'}) # UpdateLinkedTarget | 
+
+begin
+  
+  result = api_instance.update_linked_target(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_linked_target: #{e}"
+end
+```
+
+#### Using the update_linked_target_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> update_linked_target_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_linked_target_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_linked_target_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateLinkedTarget**](UpdateLinkedTarget.md) |  |  |
+
+### Return type
+
+**Object**
 
 ### Authorization
 
@@ -15772,6 +15962,68 @@ end
 ### Return type
 
 [**UpdateTargetOutput**](UpdateTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_windows_target
+
+> Object update_windows_target(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateWindowsTarget.new({name: 'name_example'}) # UpdateWindowsTarget | 
+
+begin
+  
+  result = api_instance.update_windows_target(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_windows_target: #{e}"
+end
+```
+
+#### Using the update_windows_target_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> update_windows_target_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_windows_target_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_windows_target_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateWindowsTarget**](UpdateWindowsTarget.md) |  |  |
+
+### Return type
+
+**Object**
 
 ### Authorization
 

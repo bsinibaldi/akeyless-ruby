@@ -6,8 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **db_type** | **String** |  | [optional] |
 | **host_name** | **String** |  | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
-| **keep_prev_version** | **String** |  | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
+| **keep_prev_version** | **String** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] |
 | **mongo_db_name** | **String** |  | [optional] |
 | **mongo_uri** | **String** |  | [optional] |
 | **name** | **String** | Target name |  |

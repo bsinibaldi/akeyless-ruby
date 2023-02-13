@@ -8,23 +8,24 @@
 | **city** | **String** | City | [optional] |
 | **company_name** | **String** | Company name | [optional] |
 | **country** | **String** | Country | [optional] |
-| **default_versioning** | **String** | Should create version by default | [optional] |
-| **dp_enable_classic_key_protection** | **String** | Enable classic key protection [\&quot;true\&quot;/\&quot;false\&quot;] | [optional] |
+| **default_share_link_ttl_minutes** | **String** | Set the default ttl in minutes for sharing item number between 60 and 43200 | [optional] |
+| **default_versioning** | **String** | If set to true, new item version will be created on each update [true/false] | [optional] |
+| **dp_enable_classic_key_protection** | **String** | Set to update protection with classic keys state [true/false] | [optional] |
 | **item_type** | **String** | VersionSettingsObjectType defines object types for account version settings | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **jwt_ttl_default** | **Integer** | Default ttl | [optional] |
 | **jwt_ttl_max** | **Integer** | Maximum ttl | [optional] |
 | **jwt_ttl_min** | **Integer** | Minimum ttl | [optional] |
 | **max_versions** | **String** | Max versions | [optional] |
-| **password_length** | **Integer** | For PasswordPolicy use | [optional] |
+| **password_length** | **Integer** | Password length between 5 - to 50 characters | [optional] |
 | **phone** | **String** | Phone number | [optional] |
 | **postal_code** | **String** | Postal code | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
-| **use_lower_letters** | **String** | For PasswordPolicy use | [optional] |
-| **use_numbers** | **String** | For PasswordPolicy use | [optional] |
-| **use_special_characters** | **String** | For PasswordPolicy use | [optional] |
-| **use_capital_letters** | **String** | For PasswordPolicy use | [optional] |
+| **use_lower_letters** | **String** | Password must contain lower case letters [true/false] | [optional] |
+| **use_numbers** | **String** | Password must contain numbers [true/false] | [optional] |
+| **use_special_characters** | **String** | Password must contain special characters [true/false] | [optional] |
+| **use_capital_letters** | **String** | Password must contain capital letters [true/false] | [optional] |
 
 ## Example
 
@@ -36,6 +37,7 @@ instance = Akeyless::UpdateAccountSettings.new(
   city: null,
   company_name: null,
   country: null,
+  default_share_link_ttl_minutes: null,
   default_versioning: null,
   dp_enable_classic_key_protection: null,
   item_type: null,

@@ -8,7 +8,7 @@
 | **bind_dn_password** | **String** | Bind DN Password |  |
 | **comment** | **String** | Deprecated - use description | [optional] |
 | **description** | **String** | Description of the object | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **ldap_ca_cert** | **String** | CA Certificate File Content | [optional] |
 | **ldap_url** | **String** | LDAP Server URL |  |

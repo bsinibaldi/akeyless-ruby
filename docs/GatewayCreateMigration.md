@@ -23,20 +23,20 @@
 | **ad_targets_path_template** | **String** | Path location template for migrating domain servers as SSH Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration) | [optional] |
 | **ad_user_base_dn** | **String** | Distinguished Name of User objects to search in Active Directory, e.g.: CN&#x3D;Users,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] |
 | **ad_user_groups** | **String** | Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration) | [optional] |
-| **as_ssh_port** | **String** | Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) | [optional] |
+| **as_ssh_port** | **String** | Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) | [optional][default to &#39;22&#39;] |
 | **aws_key** | **String** | AWS Secret Access Key (relevant only for AWS migration) | [optional] |
 | **aws_key_id** | **String** | AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/*]&#39; (relevant only for AWS migration) | [optional] |
-| **aws_region** | **String** | AWS region of the required Secrets Manager (relevant only for AWS migration) | [optional] |
+| **aws_region** | **String** | AWS region of the required Secrets Manager (relevant only for AWS migration) | [optional][default to &#39;us-east-2&#39;] |
 | **azure_client_id** | **String** | Azure Key Vault Access client ID, should be Azure AD App with a service principal (relevant only for Azure Key Vault migration) | [optional] |
 | **azure_kv_name** | **String** | Azure Key Vault Name (relevant only for Azure Key Vault migration) | [optional] |
 | **azure_secret** | **String** | Azure Key Vault secret (relevant only for Azure Key Vault migration) | [optional] |
 | **azure_tenant_id** | **String** | Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration) | [optional] |
 | **gcp_key** | **String** | Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration) | [optional] |
-| **hashi_json** | **String** | Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) | [optional] |
+| **hashi_json** | **String** | Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false] | [optional][default to &#39;true&#39;] |
 | **hashi_ns** | **Array&lt;String&gt;** | HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration) | [optional] |
 | **hashi_token** | **String** | HashiCorp Vault access token with sufficient permissions to preform list &amp; read operations on secrets objects (relevant only for HasiCorp Vault migration) | [optional] |
 | **hashi_url** | **String** | HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration) | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **k8s_ca_certificate** | **Array&lt;Integer&gt;** | For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method) | [optional] |
 | **k8s_client_certificate** | **Array&lt;Integer&gt;** | K8s Client certificate with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Certificate Authentication method) | [optional] |
 | **k8s_client_key** | **Array&lt;Integer&gt;** | K8s Client key (relevant only for K8s migration with Certificate Authentication method) | [optional] |

@@ -48,6 +48,7 @@
 | **eks_secret_access_key** | **String** |  | [optional] |
 | **gcp_service_account_email** | **String** | deprecated | [optional] |
 | **gcp_service_account_key** | **String** |  | [optional] |
+| **gcp_service_account_key_base64** | **String** |  | [optional] |
 | **github_app_id** | **Integer** |  | [optional] |
 | **github_app_private_key** | **String** |  | [optional] |
 | **github_base_url** | **String** |  | [optional] |
@@ -57,6 +58,8 @@
 | **gke_service_account_key** | **String** |  | [optional] |
 | **gke_service_account_name** | **String** |  | [optional] |
 | **host** | **String** |  | [optional] |
+| **hostname** | **String** |  | [optional] |
+| **hosts** | **Array&lt;String&gt;** |  | [optional] |
 | **implementation_type** | **String** |  | [optional] |
 | **k8s_bearer_token** | **String** |  | [optional] |
 | **k8s_cluster_ca_certificate** | **String** |  | [optional] |
@@ -88,6 +91,7 @@
 | **rabbitmq_server_password** | **String** |  | [optional] |
 | **rabbitmq_server_uri** | **String** |  | [optional] |
 | **rabbitmq_server_user** | **String** |  | [optional] |
+| **rdp_port** | **String** |  | [optional] |
 | **security_token** | **String** |  | [optional] |
 | **sf_account** | **String** |  | [optional] |
 | **ssl_connection_certificate** | **String** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] |
@@ -155,6 +159,7 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   eks_secret_access_key: null,
   gcp_service_account_email: null,
   gcp_service_account_key: null,
+  gcp_service_account_key_base64: null,
   github_app_id: null,
   github_app_private_key: null,
   github_base_url: null,
@@ -164,6 +169,8 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   gke_service_account_key: null,
   gke_service_account_name: null,
   host: null,
+  hostname: null,
+  hosts: null,
   implementation_type: null,
   k8s_bearer_token: null,
   k8s_cluster_ca_certificate: null,
@@ -195,6 +202,7 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   rabbitmq_server_password: null,
   rabbitmq_server_uri: null,
   rabbitmq_server_user: null,
+  rdp_port: null,
   security_token: null,
   sf_account: null,
   ssl_connection_certificate: null,

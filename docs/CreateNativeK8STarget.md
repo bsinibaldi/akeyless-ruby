@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **comment** | **String** | Deprecated - use description | [optional] |
 | **description** | **String** | Description of the object | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **k8s_cluster_ca_cert** | **String** | K8S cluster CA certificate |  |
 | **k8s_cluster_endpoint** | **String** | K8S cluster URL endpoint |  |
 | **k8s_cluster_token** | **String** | K8S cluster Bearer token |  |

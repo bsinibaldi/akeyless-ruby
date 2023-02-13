@@ -8,8 +8,8 @@
 | **account_password** | **String** | Database Password | [optional] |
 | **account_username** | **String** | Database Username | [optional] |
 | **db_name** | **String** | Database name | [optional] |
-| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **name** | **String** | Producer name |  |
 | **private_key** | **String** | RSA Private key (base64 encoded) | [optional] |
 | **private_key_passphrase** | **String** | The Private key passphrase | [optional] |

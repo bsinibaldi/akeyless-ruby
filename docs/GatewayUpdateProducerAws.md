@@ -12,21 +12,21 @@
 | **aws_user_console_access** | **Boolean** | AWS User console access | [optional][default to false] |
 | **aws_user_groups** | **String** | AWS User groups | [optional] |
 | **aws_user_policies** | **String** | AWS User policies | [optional] |
-| **aws_user_programmatic_access** | **Boolean** | AWS User programmatic access | [optional][default to true] |
-| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **aws_user_programmatic_access** | **Boolean** | Enable AWS User programmatic access | [optional][default to true] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
 | **enable_admin_rotation** | **Boolean** | Automatic admin credentials rotation | [optional][default to false] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **name** | **String** | Producer name |  |
 | **new_name** | **String** | Producer name | [optional] |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
 | **region** | **String** | Region | [optional][default to &#39;us-east-2&#39;] |
-| **secure_access_aws_account_id** | **String** |  | [optional] |
-| **secure_access_aws_native_cli** | **Boolean** |  | [optional] |
-| **secure_access_bastion_issuer** | **String** |  | [optional] |
-| **secure_access_enable** | **String** |  | [optional] |
-| **secure_access_web** | **Boolean** |  | [optional] |
-| **secure_access_web_browsing** | **Boolean** |  | [optional] |
-| **secure_access_web_proxy** | **Boolean** |  | [optional] |
+| **secure_access_aws_account_id** | **String** | The AWS account id | [optional] |
+| **secure_access_aws_native_cli** | **Boolean** | The AWS native cli | [optional] |
+| **secure_access_bastion_issuer** | **String** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] |
+| **secure_access_enable** | **String** | Enable/Disable secure remote access [true/false] | [optional] |
+| **secure_access_web** | **Boolean** | Enable Web Secure Remote Access | [optional][default to true] |
+| **secure_access_web_browsing** | **Boolean** | Secure browser via Akeyless Web Access Bastion | [optional][default to false] |
+| **secure_access_web_proxy** | **Boolean** | Web-Proxy via Akeyless Web Access Bastion | [optional][default to false] |
 | **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
 | **target_name** | **String** | Target name | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |

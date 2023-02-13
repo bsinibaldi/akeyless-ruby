@@ -8,9 +8,9 @@
 | **allow_subdomains** | **Boolean** | Allow subdomains | [optional] |
 | **allowed_domains** | **Array&lt;String&gt;** | Allowed domains | [optional] |
 | **auto_generated_folder** | **String** | Auto generated folder | [optional] |
-| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
 | **enable_admin_rotation** | **Boolean** | Automatic admin credentials rotation | [optional][default to false] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
 | **root_first_in_chain** | **Boolean** | Root first in chain | [optional] |
@@ -21,7 +21,7 @@
 | **target_name** | **String** | Target name | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
-| **user_ttl** | **String** | User TTL in time.Duration format (2160h / 129600m / etc...). When using sign-using-akeyless-pki certificates created will have this validity period, otherwise the user-ttl is taken from the Validity Period field of the Zone&#39;s&#39; Issuing Template. When using cert-manager it is advised to have a TTL of above 60 days (1440h). For more information - https://cert-manager.io/docs/usage/certificate/ | [optional] |
+| **user_ttl** | **String** | User TTL in time.Duration format (2160h / 129600m / etc...). When using sign-using-akeyless-pki certificates created will have this validity period, otherwise the user-ttl is taken from the Validity Period field of the Zone&#39;s&#39; Issuing Template. When using cert-manager it is advised to have a TTL of above 60 days (1440h). For more information - https://cert-manager.io/docs/usage/certificate/ | [optional][default to &#39;2160h&#39;] |
 | **venafi_api_key** | **String** | Venafi API key | [optional] |
 | **venafi_baseurl** | **String** | Venafi Baseurl | [optional] |
 | **venafi_password** | **String** | Venafi Password | [optional] |

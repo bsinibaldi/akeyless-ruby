@@ -6,9 +6,9 @@
 | ---- | ---- | ----------- | ----- |
 | **bind_dn** | **String** | Bind DN | [optional] |
 | **bind_dn_password** | **String** | Bind DN Password | [optional] |
-| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
-| **external_username** | **String** | Fixed user | [optional][default to &#39;false&#39;] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
+| **external_username** | **String** | Externally provided username [true/false] | [optional][default to &#39;false&#39;] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **ldap_ca_cert** | **String** | CA Certificate File Content | [optional] |
 | **ldap_url** | **String** | LDAP Server URL | [optional] |
 | **name** | **String** | Producer name |  |

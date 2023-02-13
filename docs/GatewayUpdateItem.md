@@ -5,26 +5,26 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **add_tag** | **Array&lt;String&gt;** | List of the new tags that will be attached to this item | [optional] |
-| **api_id** | **String** |  | [optional] |
-| **api_key** | **String** |  | [optional] |
-| **auto_rotate** | **String** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation | [optional] |
-| **custom_payload** | **String** |  | [optional] |
-| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **api_id** | **String** | API ID to rotate (relevant only for rotator-type&#x3D;api-key) | [optional] |
+| **api_key** | **String** | API key to rotate (relevant only for rotator-type&#x3D;api-key) | [optional] |
+| **auto_rotate** | **String** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false] | [optional] |
+| **custom_payload** | **String** | Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom) | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
 | **description** | **String** | Description of the object | [optional][default to &#39;default_metadata&#39;] |
 | **gcp_key** | **String** | Base64-encoded service account private key text | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
-| **keep_prev_version** | **String** |  | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
+| **keep_prev_version** | **String** | Whether to keep previous version [true/false]. (relevant only for --type&#x3D;rotated-secret). If not set, use default according to account settings | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **name** | **String** | Item name |  |
 | **new_metadata** | **String** | Deprecated - use description | [optional][default to &#39;default_metadata&#39;] |
 | **new_name** | **String** | New item name | [optional] |
 | **new_version** | **Boolean** | Deprecated | [optional] |
 | **rm_tag** | **Array&lt;String&gt;** | List of the existent tags that will be removed from this item | [optional] |
-| **rotated_password** | **String** |  | [optional] |
-| **rotated_username** | **String** |  | [optional] |
+| **rotated_password** | **String** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] |
+| **rotated_username** | **String** | username to be rotated, if selected \\\&quot;use-self-creds\\\&quot; at rotator-creds-type, this username will try to rotate it&#39;s own password, if \\\&quot;use-target-creds\\\&quot; is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password) | [optional] |
 | **rotation_hour** | **Integer** | The Rotation Hour | [optional][default to 0] |
 | **rotation_interval** | **String** | The number of days to wait between every automatic key rotation (1-365) | [optional] |
-| **rotator_creds_type** | **String** | The rotation credentials type | [optional] |
+| **rotator_creds_type** | **String** | The rotation credentials type | [optional][default to &#39;use-self-creds&#39;] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **type** | **String** | Item type |  |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |

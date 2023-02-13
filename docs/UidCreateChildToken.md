@@ -10,7 +10,7 @@
 | **child_ttl** | **Integer** | New child token ttl | [optional] |
 | **comment** | **String** | Deprecated - use description | [optional] |
 | **description** | **String** | Description of the object | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
 | **uid_token_id** | **String** | The ID of the uid-token, required only when uid-token is not provided | [optional] |

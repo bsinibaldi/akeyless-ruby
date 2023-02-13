@@ -6,8 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **db_server_certificates** | **String** | (Optional) DB server certificates | [optional] |
 | **db_server_name** | **String** | (Optional) Server name for certificate verification | [optional] |
-| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **mysql_dbname** | **String** | MySQL DB Name | [optional] |
 | **mysql_host** | **String** | MySQL Host | [optional][default to &#39;127.0.0.1&#39;] |
 | **mysql_password** | **String** | MySQL Password | [optional] |
@@ -16,11 +16,11 @@
 | **mysql_username** | **String** | MySQL Username | [optional] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
-| **secure_access_bastion_issuer** | **String** |  | [optional] |
-| **secure_access_enable** | **String** |  | [optional] |
-| **secure_access_host** | **Array&lt;String&gt;** |  | [optional] |
-| **secure_access_web** | **Boolean** |  | [optional] |
-| **ssl** | **Boolean** | SSL connection mode | [optional] |
+| **secure_access_bastion_issuer** | **String** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] |
+| **secure_access_enable** | **String** | Enable/Disable secure remote access [true/false] | [optional] |
+| **secure_access_host** | **Array&lt;String&gt;** | Target DB servers for connections | [optional] |
+| **secure_access_web** | **Boolean** | Enable Web Secure Remote Access | [optional][default to false] |
+| **ssl** | **Boolean** | Enable/Disable SSL [true/false] | [optional][default to false] |
 | **ssl_certificate** | **String** | SSL connection certificate | [optional] |
 | **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
 | **target_name** | **String** | Target name | [optional] |

@@ -15,6 +15,7 @@ docs/AccountGeneralSettings.md
 docs/AccountObjectVersionSettingsOutput.md
 docs/ActiveDirectoryMigration.md
 docs/ActiveDirectoryPayload.md
+docs/AddGatewayAllowedAccessId.md
 docs/AdminsConfigPart.md
 docs/AkeylessGatewayConfig.md
 docs/AllowedAccess.md
@@ -104,6 +105,8 @@ docs/CreateKey.md
 docs/CreateKeyOutput.md
 docs/CreateLdapTarget.md
 docs/CreateLdapTargetOutput.md
+docs/CreateLinkedTarget.md
+docs/CreateLinkedTargetOutput.md
 docs/CreateNativeK8STarget.md
 docs/CreateNativeK8STargetOutput.md
 docs/CreatePKICertIssuer.md
@@ -129,6 +132,8 @@ docs/CreateTokenizer.md
 docs/CreateTokenizerOutput.md
 docs/CreateWebTarget.md
 docs/CreateWebTargetOutput.md
+docs/CreateWindowsTarget.md
+docs/CreateWindowsTargetOutput.md
 docs/CustomerFragment.md
 docs/CustomerFragmentsJson.md
 docs/CustomerFullAddress.md
@@ -151,6 +156,7 @@ docs/DeleteAuthMethodOutput.md
 docs/DeleteAuthMethods.md
 docs/DeleteAuthMethodsOutput.md
 docs/DeleteEventForwarder.md
+docs/DeleteGatewayAllowedAccessId.md
 docs/DeleteItem.md
 docs/DeleteItemOutput.md
 docs/DeleteItems.md
@@ -479,6 +485,7 @@ docs/SecureRemoteAccess.md
 docs/SetItemState.md
 docs/SetRoleRule.md
 docs/ShareItem.md
+docs/SharingPolicyInfo.md
 docs/SignGPG.md
 docs/SignGPGOutput.md
 docs/SignJWTOutput.md
@@ -562,6 +569,7 @@ docs/UpdateItemOutput.md
 docs/UpdateLdapTarget.md
 docs/UpdateLdapTargetDetails.md
 docs/UpdateLdapTargetOutput.md
+docs/UpdateLinkedTarget.md
 docs/UpdateNativeK8STarget.md
 docs/UpdateNativeK8STargetOutput.md
 docs/UpdateOutput.md
@@ -593,6 +601,7 @@ docs/UpdateTargetOutput.md
 docs/UpdateWebTarget.md
 docs/UpdateWebTargetDetails.md
 docs/UpdateWebTargetOutput.md
+docs/UpdateWindowsTarget.md
 docs/UploadPKCS12.md
 docs/UploadRSA.md
 docs/V2Api.md
@@ -615,6 +624,7 @@ lib/akeyless/models/account_general_settings.rb
 lib/akeyless/models/account_object_version_settings_output.rb
 lib/akeyless/models/active_directory_migration.rb
 lib/akeyless/models/active_directory_payload.rb
+lib/akeyless/models/add_gateway_allowed_access_id.rb
 lib/akeyless/models/admins_config_part.rb
 lib/akeyless/models/akeyless_gateway_config.rb
 lib/akeyless/models/allowed_access.rb
@@ -708,6 +718,8 @@ lib/akeyless/models/create_key.rb
 lib/akeyless/models/create_key_output.rb
 lib/akeyless/models/create_ldap_target.rb
 lib/akeyless/models/create_ldap_target_output.rb
+lib/akeyless/models/create_linked_target.rb
+lib/akeyless/models/create_linked_target_output.rb
 lib/akeyless/models/create_native_k8_s_target.rb
 lib/akeyless/models/create_native_k8_s_target_output.rb
 lib/akeyless/models/create_ping_target.rb
@@ -733,6 +745,8 @@ lib/akeyless/models/create_tokenizer.rb
 lib/akeyless/models/create_tokenizer_output.rb
 lib/akeyless/models/create_web_target.rb
 lib/akeyless/models/create_web_target_output.rb
+lib/akeyless/models/create_windows_target.rb
+lib/akeyless/models/create_windows_target_output.rb
 lib/akeyless/models/customer_fragment.rb
 lib/akeyless/models/customer_fragments_json.rb
 lib/akeyless/models/customer_full_address.rb
@@ -754,6 +768,7 @@ lib/akeyless/models/delete_auth_method_output.rb
 lib/akeyless/models/delete_auth_methods.rb
 lib/akeyless/models/delete_auth_methods_output.rb
 lib/akeyless/models/delete_event_forwarder.rb
+lib/akeyless/models/delete_gateway_allowed_access_id.rb
 lib/akeyless/models/delete_item.rb
 lib/akeyless/models/delete_item_output.rb
 lib/akeyless/models/delete_items.rb
@@ -1082,6 +1097,7 @@ lib/akeyless/models/secure_remote_access.rb
 lib/akeyless/models/set_item_state.rb
 lib/akeyless/models/set_role_rule.rb
 lib/akeyless/models/share_item.rb
+lib/akeyless/models/sharing_policy_info.rb
 lib/akeyless/models/sign_gpg.rb
 lib/akeyless/models/sign_gpg_output.rb
 lib/akeyless/models/sign_jwt_output.rb
@@ -1166,6 +1182,7 @@ lib/akeyless/models/update_item_output.rb
 lib/akeyless/models/update_ldap_target.rb
 lib/akeyless/models/update_ldap_target_details.rb
 lib/akeyless/models/update_ldap_target_output.rb
+lib/akeyless/models/update_linked_target.rb
 lib/akeyless/models/update_native_k8_s_target.rb
 lib/akeyless/models/update_native_k8_s_target_output.rb
 lib/akeyless/models/update_output.rb
@@ -1197,6 +1214,7 @@ lib/akeyless/models/update_target_output.rb
 lib/akeyless/models/update_web_target.rb
 lib/akeyless/models/update_web_target_details.rb
 lib/akeyless/models/update_web_target_output.rb
+lib/akeyless/models/update_windows_target.rb
 lib/akeyless/models/upload_pkcs12.rb
 lib/akeyless/models/upload_rsa.rb
 lib/akeyless/models/validate_token.rb
@@ -1211,4 +1229,13 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
+spec/models/add_gateway_allowed_access_id_spec.rb
+spec/models/create_linked_target_output_spec.rb
+spec/models/create_linked_target_spec.rb
+spec/models/create_windows_target_output_spec.rb
+spec/models/create_windows_target_spec.rb
+spec/models/delete_gateway_allowed_access_id_spec.rb
+spec/models/sharing_policy_info_spec.rb
+spec/models/update_linked_target_spec.rb
+spec/models/update_windows_target_spec.rb
 spec/spec_helper.rb

@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **assoc_id** | **String** | The association id to be updated |  |
-| **case_sensitive** | **String** |  | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **case_sensitive** | **String** | Treat sub claims as case-sensitive [true/false] | [optional][default to &#39;true&#39;] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **sub_claims** | **Hash&lt;String, String&gt;** | key/val of sub claims, e.g group&#x3D;admins,developers | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |

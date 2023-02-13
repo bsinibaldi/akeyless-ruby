@@ -9,8 +9,8 @@
 | **artifactory_token_audience** | **String** | Token Audience |  |
 | **artifactory_token_scope** | **String** | Token Scope |  |
 | **base_url** | **String** | Base URL | [optional] |
-| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
 | **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |

@@ -12,7 +12,7 @@
 | **eks_cluster_name** | **String** | EKS cluster name |  |
 | **eks_region** | **String** | Region | [optional][default to &#39;us-east-2&#39;] |
 | **eks_secret_access_key** | **String** | Secret Access Key |  |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **name** | **String** | Target name |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |

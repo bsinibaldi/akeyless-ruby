@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
 | **eks_access_key_id** | **String** | Access Key ID | [optional] |
 | **eks_assume_role** | **String** | IAM assume role | [optional] |
 | **eks_cluster_ca_cert** | **String** | EKS cluster CA certificate | [optional] |
@@ -12,15 +12,15 @@
 | **eks_cluster_name** | **String** | EKS cluster name | [optional] |
 | **eks_region** | **String** | Region | [optional][default to &#39;us-east-2&#39;] |
 | **eks_secret_access_key** | **String** | Secret Access Key | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **name** | **String** | Producer name |  |
 | **new_name** | **String** | Producer name | [optional] |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
-| **secure_access_allow_port_forwading** | **Boolean** |  | [optional] |
-| **secure_access_bastion_issuer** | **String** |  | [optional] |
-| **secure_access_cluster_endpoint** | **String** |  | [optional] |
-| **secure_access_enable** | **String** |  | [optional] |
-| **secure_access_web** | **Boolean** |  | [optional] |
+| **secure_access_allow_port_forwading** | **Boolean** | Enable Port forwarding while using CLI access | [optional] |
+| **secure_access_bastion_issuer** | **String** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] |
+| **secure_access_cluster_endpoint** | **String** | The K8s cluster endpoint URL | [optional] |
+| **secure_access_enable** | **String** | Enable/Disable secure remote access [true/false] | [optional] |
+| **secure_access_web** | **Boolean** | Enable Web Secure Remote Access | [optional][default to false] |
 | **tags** | **Array&lt;String&gt;** | List of the tags attached to this secret | [optional] |
 | **target_name** | **String** | Target name | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |

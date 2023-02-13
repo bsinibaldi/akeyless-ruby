@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **capability** | **Array&lt;String&gt;** | Access capabilities |  |
 | **client_id** | **String** |  | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **name** | **String** |  | [optional] |
 | **path** | **String** | Access path |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |

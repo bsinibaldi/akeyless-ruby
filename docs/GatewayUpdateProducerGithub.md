@@ -4,13 +4,13 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
 | **github_app_id** | **Integer** | Github app id | [optional] |
 | **github_app_private_key** | **String** | App private key | [optional] |
-| **github_base_url** | **String** | Base URL | [optional] |
+| **github_base_url** | **String** | Base URL | [optional][default to &#39;https://api.github.com/&#39;] |
 | **installation_id** | **Integer** | Github app installation id | [optional] |
 | **installation_repository** | **String** | Repository that the app installation has access to | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **name** | **String** | Producer name |  |
 | **new_name** | **String** | Producer name | [optional] |
 | **target_name** | **String** | Target name | [optional] |

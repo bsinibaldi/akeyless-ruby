@@ -11,9 +11,9 @@
 | **client_flag** | **Boolean** | If set, certificates will be flagged for client auth use | [optional] |
 | **code_signing_flag** | **Boolean** | If set, certificates will be flagged for code signing use | [optional] |
 | **country** | **String** | A comma-separated list of countries that will be set in the issued certificate | [optional] |
-| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
 | **description** | **String** | Description of the object | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **key_usage** | **String** | key-usage | [optional][default to &#39;DigitalSignature,KeyAgreement,KeyEncipherment&#39;] |
 | **locality** | **String** | A comma-separated list of localities that will be set in the issued certificate | [optional] |
 | **metadata** | **String** | Deprecated - use description | [optional] |

@@ -11,8 +11,8 @@
 | **gke_cluster_endpoint** | **String** | GKE cluster URL endpoint | [optional] |
 | **gke_cluster_name** | **String** | GKE cluster name | [optional] |
 | **gke_service_account_email** | **String** | GKE service account email | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
-| **keep_prev_version** | **String** |  | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
+| **keep_prev_version** | **String** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **name** | **String** | Target name |  |
 | **new_name** | **String** | New target name | [optional] |

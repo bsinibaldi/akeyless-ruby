@@ -8,8 +8,8 @@
 | **chef_server_key** | **String** | Server key | [optional] |
 | **chef_server_url** | **String** | Server URL | [optional] |
 | **chef_server_username** | **String** | Server username | [optional] |
-| **delete_protection** | **String** | Protection from accidental deletion of this item | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
+| **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
 | **skip_ssl** | **Boolean** | Skip SSL | [optional][default to true] |

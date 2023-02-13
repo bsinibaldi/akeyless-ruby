@@ -11,8 +11,8 @@
 | **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
 | **idp_metadata_url** | **String** | IDP metadata url | [optional] |
 | **idp_metadata_xml_data** | **String** | IDP metadata xml data | [optional] |
-| **json** | **Boolean** | Set output format to JSON | [optional] |
-| **jwt_ttl** | **Integer** | Jwt TTL | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
+| **jwt_ttl** | **Integer** | Jwt TTL | [optional][default to 0] |
 | **name** | **String** | Auth Method name |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
