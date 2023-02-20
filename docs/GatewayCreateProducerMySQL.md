@@ -12,6 +12,7 @@
 | **mysql_host** | **String** | MySQL Host | [optional][default to &#39;127.0.0.1&#39;] |
 | **mysql_password** | **String** | MySQL Password | [optional] |
 | **mysql_port** | **String** | MySQL Port | [optional][default to &#39;3306&#39;] |
+| **mysql_revocation_statements** | **String** | MySQL Revocation statements | [optional] |
 | **mysql_screation_statements** | **String** | MySQL Creation statements | [optional] |
 | **mysql_username** | **String** | MySQL Username | [optional] |
 | **name** | **String** | Producer name |  |
@@ -42,6 +43,7 @@ instance = Akeyless::GatewayCreateProducerMySQL.new(
   mysql_host: null,
   mysql_password: null,
   mysql_port: null,
+  mysql_revocation_statements: null,
   mysql_screation_statements: null,
   mysql_username: null,
   name: null,

@@ -7,6 +7,7 @@
 | **access_id** | **String** | Access ID | [optional] |
 | **access_key** | **String** | Access key (relevant only for access-type&#x3D;access_key) | [optional] |
 | **access_type** | **String** | Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert) | [optional][default to &#39;access_key&#39;] |
+| **account_id** | **String** | Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account) | [optional] |
 | **admin_email** | **String** | Email (relevant only for access-type&#x3D;password) | [optional] |
 | **admin_password** | **String** | Password (relevant only for access-type&#x3D;password) | [optional] |
 | **cert_data** | **String** | Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert) | [optional] |
@@ -32,6 +33,7 @@ instance = Akeyless::Auth.new(
   access_id: null,
   access_key: null,
   access_type: null,
+  account_id: null,
   admin_email: null,
   admin_password: null,
   cert_data: null,

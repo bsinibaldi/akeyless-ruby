@@ -7,6 +7,7 @@
 | **access_id** | **String** | Access ID | [optional] |
 | **access_key** | **String** | Access Key | [optional] |
 | **access_type** | **String** | Access Type (access_key/password/azure_ad/saml/oidc/aws_iam/gcp/k8s) | [optional][default to &#39;access_key&#39;] |
+| **account_id** | **String** | Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account) | [optional] |
 | **admin_email** | **String** | Email (relevant only for access-type&#x3D;password) | [optional] |
 | **admin_password** | **String** | Password (relevant only for access-type&#x3D;password) | [optional] |
 | **azure_ad_object_id** | **String** | Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad) | [optional] |
@@ -25,6 +26,7 @@ instance = Akeyless::Configure.new(
   access_id: null,
   access_key: null,
   access_type: null,
+  account_id: null,
   admin_email: null,
   admin_password: null,
   azure_ad_object_id: null,

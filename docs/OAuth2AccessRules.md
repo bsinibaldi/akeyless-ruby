@@ -8,6 +8,7 @@
 | **bound_claims** | [**Array&lt;OAuth2CustomClaim&gt;**](OAuth2CustomClaim.md) | The claims that login is restricted to. | [optional] |
 | **bound_clients_id** | **Array&lt;String&gt;** | The clients ids that login is restricted to. | [optional] |
 | **issuer** | **String** | Issuer URL | [optional] |
+| **jwks_json_data** | **String** | The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string | [optional] |
 | **jwks_uri** | **String** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [optional] |
 | **unique_identifier** | **String** | A unique identifier to distinguish different users | [optional] |
 
@@ -21,6 +22,7 @@ instance = Akeyless::OAuth2AccessRules.new(
   bound_claims: null,
   bound_clients_id: null,
   issuer: null,
+  jwks_json_data: null,
   jwks_uri: null,
   unique_identifier: null
 )

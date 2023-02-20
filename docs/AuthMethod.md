@@ -12,6 +12,7 @@
 | **auth_method_roles_assoc** | [**Array&lt;AuthMethodRoleAssociation&gt;**](AuthMethodRoleAssociation.md) |  | [optional] |
 | **client_permissions** | **Array&lt;String&gt;** |  | [optional] |
 | **creation_date** | **Time** |  | [optional] |
+| **is_approved** | **Boolean** |  | [optional] |
 | **modification_date** | **Time** |  | [optional] |
 
 ## Example
@@ -28,6 +29,7 @@ instance = Akeyless::AuthMethod.new(
   auth_method_roles_assoc: null,
   client_permissions: null,
   creation_date: null,
+  is_approved: null,
   modification_date: null
 )
 ```

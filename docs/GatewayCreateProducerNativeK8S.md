@@ -9,8 +9,8 @@
 | **k8s_cluster_ca_cert** | **String** | K8S cluster CA certificate | [optional] |
 | **k8s_cluster_endpoint** | **String** | K8S cluster URL endpoint | [optional] |
 | **k8s_cluster_token** | **String** | K8S cluster Bearer token | [optional] |
-| **k8s_namespace** | **String** | K8S namespace | [optional][default to &#39;default&#39;] |
-| **k8s_service_account** | **String** | K8S service account | [optional] |
+| **k8s_namespace** | **String** | K8S Namespace where the ServiceAccount exists. | [optional] |
+| **k8s_service_account** | **String** | K8S ServiceAccount to extract token from. | [optional] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
 | **secure_access_allow_port_forwading** | **Boolean** | Enable Port forwarding while using CLI access | [optional] |
