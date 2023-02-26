@@ -14,22 +14,22 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class GatewayMessageQueueInfo
-    attr_accessor :broadcast_queue_name
+  class GatewayBasicInfo
+    attr_accessor :cluster_display_name
 
-    attr_accessor :mq_type
+    attr_accessor :cluster_id
 
-    attr_accessor :queue_name
+    attr_accessor :cluster_name
 
-    attr_accessor :queue_url
+    attr_accessor :cluster_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'broadcast_queue_name' => :'broadcast_queue_name',
-        :'mq_type' => :'mq_type',
-        :'queue_name' => :'queue_name',
-        :'queue_url' => :'queue_url'
+        :'cluster_display_name' => :'cluster_display_name',
+        :'cluster_id' => :'cluster_id',
+        :'cluster_name' => :'cluster_name',
+        :'cluster_url' => :'cluster_url'
       }
     end
 
@@ -41,10 +41,10 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'broadcast_queue_name' => :'String',
-        :'mq_type' => :'String',
-        :'queue_name' => :'String',
-        :'queue_url' => :'String'
+        :'cluster_display_name' => :'String',
+        :'cluster_id' => :'Integer',
+        :'cluster_name' => :'String',
+        :'cluster_url' => :'String'
       }
     end
 
@@ -58,31 +58,31 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::GatewayMessageQueueInfo` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::GatewayBasicInfo` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::GatewayMessageQueueInfo`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::GatewayBasicInfo`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'broadcast_queue_name')
-        self.broadcast_queue_name = attributes[:'broadcast_queue_name']
+      if attributes.key?(:'cluster_display_name')
+        self.cluster_display_name = attributes[:'cluster_display_name']
       end
 
-      if attributes.key?(:'mq_type')
-        self.mq_type = attributes[:'mq_type']
+      if attributes.key?(:'cluster_id')
+        self.cluster_id = attributes[:'cluster_id']
       end
 
-      if attributes.key?(:'queue_name')
-        self.queue_name = attributes[:'queue_name']
+      if attributes.key?(:'cluster_name')
+        self.cluster_name = attributes[:'cluster_name']
       end
 
-      if attributes.key?(:'queue_url')
-        self.queue_url = attributes[:'queue_url']
+      if attributes.key?(:'cluster_url')
+        self.cluster_url = attributes[:'cluster_url']
       end
     end
 
@@ -104,10 +104,10 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          broadcast_queue_name == o.broadcast_queue_name &&
-          mq_type == o.mq_type &&
-          queue_name == o.queue_name &&
-          queue_url == o.queue_url
+          cluster_display_name == o.cluster_display_name &&
+          cluster_id == o.cluster_id &&
+          cluster_name == o.cluster_name &&
+          cluster_url == o.cluster_url
     end
 
     # @see the `==` method
@@ -119,7 +119,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [broadcast_queue_name, mq_type, queue_name, queue_url].hash
+      [cluster_display_name, cluster_id, cluster_name, cluster_url].hash
     end
 
     # Builds the object from hash

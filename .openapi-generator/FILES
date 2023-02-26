@@ -196,6 +196,7 @@ docs/ExternalKMSKeyId.md
 docs/GCPAccessRules.md
 docs/GCPPayload.md
 docs/GCPSecretsMigration.md
+docs/GatewayBasicInfo.md
 docs/GatewayCreateK8SAuthConfig.md
 docs/GatewayCreateK8SAuthConfigOutput.md
 docs/GatewayCreateMigration.md
@@ -806,6 +807,7 @@ lib/akeyless/models/export_classic_key.rb
 lib/akeyless/models/export_classic_key_output.rb
 lib/akeyless/models/extension.rb
 lib/akeyless/models/external_kms_key_id.rb
+lib/akeyless/models/gateway_basic_info.rb
 lib/akeyless/models/gateway_create_k8_s_auth_config.rb
 lib/akeyless/models/gateway_create_k8_s_auth_config_output.rb
 lib/akeyless/models/gateway_create_migration.rb
@@ -1229,4 +1231,5 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
+spec/models/gateway_basic_info_spec.rb
 spec/spec_helper.rb

@@ -6,11 +6,16 @@
 | ---- | ---- | ----------- | ----- |
 | **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
+| **k8s_allowed_namespaces** | **String** | Comma-separated list of allowed K8S namespaces for the generated ServiceAccount (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] |
 | **k8s_cluster_ca_cert** | **String** | K8S cluster CA certificate | [optional] |
 | **k8s_cluster_endpoint** | **String** | K8S cluster URL endpoint | [optional] |
 | **k8s_cluster_token** | **String** | K8S cluster Bearer token | [optional] |
 | **k8s_namespace** | **String** | K8S Namespace where the ServiceAccount exists. | [optional] |
+| **k8s_predefined_role_name** | **String** | The pre-existing Role or ClusterRole name to bind the generated ServiceAccount to (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] |
+| **k8s_predefined_role_type** | **String** | Specifies the type of the pre-existing K8S role [Role, ClusterRole] (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] |
+| **k8s_rolebinding_yaml_def** | **String** | Path to yaml file that contains definitions of K8S role and role binding (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] |
 | **k8s_service_account** | **String** | K8S ServiceAccount to extract token from. | [optional] |
+| **k8s_service_account_type** | **String** | K8S ServiceAccount type [fixed, dynamic]. | [optional] |
 | **name** | **String** | Producer name |  |
 | **producer_encryption_key_name** | **String** | Dynamic producer encryption key | [optional] |
 | **secure_access_allow_port_forwading** | **Boolean** | Enable Port forwarding while using CLI access | [optional] |
@@ -35,11 +40,16 @@ require 'akeyless'
 instance = Akeyless::GatewayCreateProducerNativeK8S.new(
   delete_protection: null,
   json: null,
+  k8s_allowed_namespaces: null,
   k8s_cluster_ca_cert: null,
   k8s_cluster_endpoint: null,
   k8s_cluster_token: null,
   k8s_namespace: null,
+  k8s_predefined_role_name: null,
+  k8s_predefined_role_type: null,
+  k8s_rolebinding_yaml_def: null,
   k8s_service_account: null,
+  k8s_service_account_type: null,
   name: null,
   producer_encryption_key_name: null,
   secure_access_allow_port_forwading: null,

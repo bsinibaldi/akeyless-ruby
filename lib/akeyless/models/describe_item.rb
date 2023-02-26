@@ -18,6 +18,9 @@ module Akeyless
     # The display id of the item
     attr_accessor :display_id
 
+    # Indicate if the item should return with clusters details (url, etc)
+    attr_accessor :gateway_details
+
     # Item id of the item
     attr_accessor :item_id
 
@@ -40,6 +43,7 @@ module Akeyless
     def self.attribute_map
       {
         :'display_id' => :'display-id',
+        :'gateway_details' => :'gateway-details',
         :'item_id' => :'item-id',
         :'json' => :'json',
         :'name' => :'name',
@@ -58,6 +62,7 @@ module Akeyless
     def self.openapi_types
       {
         :'display_id' => :'String',
+        :'gateway_details' => :'Boolean',
         :'item_id' => :'Integer',
         :'json' => :'Boolean',
         :'name' => :'String',
@@ -90,6 +95,12 @@ module Akeyless
 
       if attributes.key?(:'display_id')
         self.display_id = attributes[:'display_id']
+      end
+
+      if attributes.key?(:'gateway_details')
+        self.gateway_details = attributes[:'gateway_details']
+      else
+        self.gateway_details = false
       end
 
       if attributes.key?(:'item_id')
@@ -145,6 +156,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           display_id == o.display_id &&
+          gateway_details == o.gateway_details &&
           item_id == o.item_id &&
           json == o.json &&
           name == o.name &&
@@ -162,7 +174,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [display_id, item_id, json, name, show_versions, token, uid_token].hash
+      [display_id, gateway_details, item_id, json, name, show_versions, token, uid_token].hash
     end
 
     # Builds the object from hash

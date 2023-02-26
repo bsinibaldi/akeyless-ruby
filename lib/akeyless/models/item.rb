@@ -39,6 +39,8 @@ module Akeyless
 
     attr_accessor :display_id
 
+    attr_accessor :gateway_details
+
     attr_accessor :is_access_request_enabled
 
     attr_accessor :is_enabled
@@ -103,6 +105,7 @@ module Akeyless
         :'delete_protection' => :'delete_protection',
         :'deletion_date' => :'deletion_date',
         :'display_id' => :'display_id',
+        :'gateway_details' => :'gateway_details',
         :'is_access_request_enabled' => :'is_access_request_enabled',
         :'is_enabled' => :'is_enabled',
         :'item_accessibility' => :'item_accessibility',
@@ -150,6 +153,7 @@ module Akeyless
         :'delete_protection' => :'Boolean',
         :'deletion_date' => :'Time',
         :'display_id' => :'String',
+        :'gateway_details' => :'Array<GatewayBasicInfo>',
         :'is_access_request_enabled' => :'Boolean',
         :'is_enabled' => :'Boolean',
         :'item_accessibility' => :'Integer',
@@ -246,6 +250,12 @@ module Akeyless
 
       if attributes.key?(:'display_id')
         self.display_id = attributes[:'display_id']
+      end
+
+      if attributes.key?(:'gateway_details')
+        if (value = attributes[:'gateway_details']).is_a?(Array)
+          self.gateway_details = value
+        end
       end
 
       if attributes.key?(:'is_access_request_enabled')
@@ -383,6 +393,7 @@ module Akeyless
           delete_protection == o.delete_protection &&
           deletion_date == o.deletion_date &&
           display_id == o.display_id &&
+          gateway_details == o.gateway_details &&
           is_access_request_enabled == o.is_access_request_enabled &&
           is_enabled == o.is_enabled &&
           item_accessibility == o.item_accessibility &&
@@ -418,7 +429,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_date, access_request_status, auto_rotate, cert_issuer_signer_key_name, certificate_issue_details, certificates, client_permissions, creation_date, customer_fragment_id, delete_protection, deletion_date, display_id, is_access_request_enabled, is_enabled, item_accessibility, item_general_info, item_id, item_metadata, item_name, item_size, item_state, item_sub_type, item_tags, item_targets_assoc, item_type, item_versions, last_version, modification_date, next_rotation_date, protection_key_name, protection_key_type, public_value, rotation_interval, shared_by, target_versions, with_customer_fragment].hash
+      [access_date, access_request_status, auto_rotate, cert_issuer_signer_key_name, certificate_issue_details, certificates, client_permissions, creation_date, customer_fragment_id, delete_protection, deletion_date, display_id, gateway_details, is_access_request_enabled, is_enabled, item_accessibility, item_general_info, item_id, item_metadata, item_name, item_size, item_state, item_sub_type, item_tags, item_targets_assoc, item_type, item_versions, last_version, modification_date, next_rotation_date, protection_key_name, protection_key_type, public_value, rotation_interval, shared_by, target_versions, with_customer_fragment].hash
     end
 
     # Builds the object from hash

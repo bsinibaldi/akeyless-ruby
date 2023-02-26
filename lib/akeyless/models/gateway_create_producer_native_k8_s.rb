@@ -22,6 +22,9 @@ module Akeyless
     # Set output format to JSON
     attr_accessor :json
 
+    # Comma-separated list of allowed K8S namespaces for the generated ServiceAccount (relevant only for k8s-service-account-type=dynamic)
+    attr_accessor :k8s_allowed_namespaces
+
     # K8S cluster CA certificate
     attr_accessor :k8s_cluster_ca_cert
 
@@ -34,8 +37,20 @@ module Akeyless
     # K8S Namespace where the ServiceAccount exists.
     attr_accessor :k8s_namespace
 
+    # The pre-existing Role or ClusterRole name to bind the generated ServiceAccount to (relevant only for k8s-service-account-type=dynamic)
+    attr_accessor :k8s_predefined_role_name
+
+    # Specifies the type of the pre-existing K8S role [Role, ClusterRole] (relevant only for k8s-service-account-type=dynamic)
+    attr_accessor :k8s_predefined_role_type
+
+    # Path to yaml file that contains definitions of K8S role and role binding (relevant only for k8s-service-account-type=dynamic)
+    attr_accessor :k8s_rolebinding_yaml_def
+
     # K8S ServiceAccount to extract token from.
     attr_accessor :k8s_service_account
+
+    # K8S ServiceAccount type [fixed, dynamic].
+    attr_accessor :k8s_service_account_type
 
     # Producer name
     attr_accessor :name
@@ -87,11 +102,16 @@ module Akeyless
       {
         :'delete_protection' => :'delete_protection',
         :'json' => :'json',
+        :'k8s_allowed_namespaces' => :'k8s-allowed-namespaces',
         :'k8s_cluster_ca_cert' => :'k8s-cluster-ca-cert',
         :'k8s_cluster_endpoint' => :'k8s-cluster-endpoint',
         :'k8s_cluster_token' => :'k8s-cluster-token',
         :'k8s_namespace' => :'k8s-namespace',
+        :'k8s_predefined_role_name' => :'k8s-predefined-role-name',
+        :'k8s_predefined_role_type' => :'k8s-predefined-role-type',
+        :'k8s_rolebinding_yaml_def' => :'k8s-rolebinding-yaml-def',
         :'k8s_service_account' => :'k8s-service-account',
+        :'k8s_service_account_type' => :'k8s-service-account-type',
         :'name' => :'name',
         :'producer_encryption_key_name' => :'producer-encryption-key-name',
         :'secure_access_allow_port_forwading' => :'secure-access-allow-port-forwading',
@@ -120,11 +140,16 @@ module Akeyless
       {
         :'delete_protection' => :'String',
         :'json' => :'Boolean',
+        :'k8s_allowed_namespaces' => :'String',
         :'k8s_cluster_ca_cert' => :'String',
         :'k8s_cluster_endpoint' => :'String',
         :'k8s_cluster_token' => :'String',
         :'k8s_namespace' => :'String',
+        :'k8s_predefined_role_name' => :'String',
+        :'k8s_predefined_role_type' => :'String',
+        :'k8s_rolebinding_yaml_def' => :'String',
         :'k8s_service_account' => :'String',
+        :'k8s_service_account_type' => :'String',
         :'name' => :'String',
         :'producer_encryption_key_name' => :'String',
         :'secure_access_allow_port_forwading' => :'Boolean',
@@ -174,6 +199,10 @@ module Akeyless
         self.json = false
       end
 
+      if attributes.key?(:'k8s_allowed_namespaces')
+        self.k8s_allowed_namespaces = attributes[:'k8s_allowed_namespaces']
+      end
+
       if attributes.key?(:'k8s_cluster_ca_cert')
         self.k8s_cluster_ca_cert = attributes[:'k8s_cluster_ca_cert']
       end
@@ -190,8 +219,24 @@ module Akeyless
         self.k8s_namespace = attributes[:'k8s_namespace']
       end
 
+      if attributes.key?(:'k8s_predefined_role_name')
+        self.k8s_predefined_role_name = attributes[:'k8s_predefined_role_name']
+      end
+
+      if attributes.key?(:'k8s_predefined_role_type')
+        self.k8s_predefined_role_type = attributes[:'k8s_predefined_role_type']
+      end
+
+      if attributes.key?(:'k8s_rolebinding_yaml_def')
+        self.k8s_rolebinding_yaml_def = attributes[:'k8s_rolebinding_yaml_def']
+      end
+
       if attributes.key?(:'k8s_service_account')
         self.k8s_service_account = attributes[:'k8s_service_account']
+      end
+
+      if attributes.key?(:'k8s_service_account_type')
+        self.k8s_service_account_type = attributes[:'k8s_service_account_type']
       end
 
       if attributes.key?(:'name')
@@ -290,11 +335,16 @@ module Akeyless
       self.class == o.class &&
           delete_protection == o.delete_protection &&
           json == o.json &&
+          k8s_allowed_namespaces == o.k8s_allowed_namespaces &&
           k8s_cluster_ca_cert == o.k8s_cluster_ca_cert &&
           k8s_cluster_endpoint == o.k8s_cluster_endpoint &&
           k8s_cluster_token == o.k8s_cluster_token &&
           k8s_namespace == o.k8s_namespace &&
+          k8s_predefined_role_name == o.k8s_predefined_role_name &&
+          k8s_predefined_role_type == o.k8s_predefined_role_type &&
+          k8s_rolebinding_yaml_def == o.k8s_rolebinding_yaml_def &&
           k8s_service_account == o.k8s_service_account &&
+          k8s_service_account_type == o.k8s_service_account_type &&
           name == o.name &&
           producer_encryption_key_name == o.producer_encryption_key_name &&
           secure_access_allow_port_forwading == o.secure_access_allow_port_forwading &&
@@ -321,7 +371,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [delete_protection, json, k8s_cluster_ca_cert, k8s_cluster_endpoint, k8s_cluster_token, k8s_namespace, k8s_service_account, name, producer_encryption_key_name, secure_access_allow_port_forwading, secure_access_bastion_issuer, secure_access_cluster_endpoint, secure_access_dashboard_url, secure_access_enable, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, tags, target_name, token, uid_token, user_ttl].hash
+      [delete_protection, json, k8s_allowed_namespaces, k8s_cluster_ca_cert, k8s_cluster_endpoint, k8s_cluster_token, k8s_namespace, k8s_predefined_role_name, k8s_predefined_role_type, k8s_rolebinding_yaml_def, k8s_service_account, k8s_service_account_type, name, producer_encryption_key_name, secure_access_allow_port_forwading, secure_access_bastion_issuer, secure_access_cluster_endpoint, secure_access_dashboard_url, secure_access_enable, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

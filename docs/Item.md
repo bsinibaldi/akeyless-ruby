@@ -16,6 +16,7 @@
 | **delete_protection** | **Boolean** |  | [optional] |
 | **deletion_date** | **Time** |  | [optional] |
 | **display_id** | **String** |  | [optional] |
+| **gateway_details** | [**Array&lt;GatewayBasicInfo&gt;**](GatewayBasicInfo.md) |  | [optional] |
 | **is_access_request_enabled** | **Boolean** |  | [optional] |
 | **is_enabled** | **Boolean** |  | [optional] |
 | **item_accessibility** | **Integer** |  | [optional] |
@@ -59,6 +60,7 @@ instance = Akeyless::Item.new(
   delete_protection: null,
   deletion_date: null,
   display_id: null,
+  gateway_details: null,
   is_access_request_enabled: null,
   is_enabled: null,
   item_accessibility: null,

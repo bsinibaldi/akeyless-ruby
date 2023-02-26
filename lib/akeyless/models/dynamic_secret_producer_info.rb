@@ -20,6 +20,12 @@ module Akeyless
 
     attr_accessor :gw_cluster_id
 
+    # Relevant only for generic k8s producer
+    attr_accessor :k8s_allowed_namespaces
+
+    # Relevant only for generic k8s producer
+    attr_accessor :k8s_dynamic_mode
+
     attr_accessor :producer_last_keep_alive
 
     attr_accessor :producer_metadata
@@ -34,6 +40,8 @@ module Akeyless
       {
         :'failure_message' => :'failure_message',
         :'gw_cluster_id' => :'gw_cluster_id',
+        :'k8s_allowed_namespaces' => :'k8s_allowed_namespaces',
+        :'k8s_dynamic_mode' => :'k8s_dynamic_mode',
         :'producer_last_keep_alive' => :'producer_last_keep_alive',
         :'producer_metadata' => :'producer_metadata',
         :'producer_status' => :'producer_status',
@@ -51,6 +59,8 @@ module Akeyless
       {
         :'failure_message' => :'String',
         :'gw_cluster_id' => :'Integer',
+        :'k8s_allowed_namespaces' => :'String',
+        :'k8s_dynamic_mode' => :'Boolean',
         :'producer_last_keep_alive' => :'String',
         :'producer_metadata' => :'String',
         :'producer_status' => :'String',
@@ -85,6 +95,14 @@ module Akeyless
 
       if attributes.key?(:'gw_cluster_id')
         self.gw_cluster_id = attributes[:'gw_cluster_id']
+      end
+
+      if attributes.key?(:'k8s_allowed_namespaces')
+        self.k8s_allowed_namespaces = attributes[:'k8s_allowed_namespaces']
+      end
+
+      if attributes.key?(:'k8s_dynamic_mode')
+        self.k8s_dynamic_mode = attributes[:'k8s_dynamic_mode']
       end
 
       if attributes.key?(:'producer_last_keep_alive')
@@ -124,6 +142,8 @@ module Akeyless
       self.class == o.class &&
           failure_message == o.failure_message &&
           gw_cluster_id == o.gw_cluster_id &&
+          k8s_allowed_namespaces == o.k8s_allowed_namespaces &&
+          k8s_dynamic_mode == o.k8s_dynamic_mode &&
           producer_last_keep_alive == o.producer_last_keep_alive &&
           producer_metadata == o.producer_metadata &&
           producer_status == o.producer_status &&
@@ -139,7 +159,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [failure_message, gw_cluster_id, producer_last_keep_alive, producer_metadata, producer_status, producer_type].hash
+      [failure_message, gw_cluster_id, k8s_allowed_namespaces, k8s_dynamic_mode, producer_last_keep_alive, producer_metadata, producer_status, producer_type].hash
     end
 
     # Builds the object from hash
