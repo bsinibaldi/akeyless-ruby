@@ -1245,11 +1245,4 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/describe_assoc_spec.rb
-spec/models/gateway_download_customer_fragments_output_spec.rb
-spec/models/gateway_download_customer_fragments_spec.rb
-spec/models/import_passwords_output_spec.rb
-spec/models/import_passwords_spec.rb
-spec/models/linked_details_spec.rb
-spec/models/role_association_details_spec.rb
 spec/spec_helper.rb
