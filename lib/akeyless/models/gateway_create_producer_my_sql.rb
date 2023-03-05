@@ -73,7 +73,7 @@ module Akeyless
     # SSL connection certificate
     attr_accessor :ssl_certificate
 
-    # List of the tags attached to this secret
+    # Add tags attached to this object
     attr_accessor :tags
 
     # Target name

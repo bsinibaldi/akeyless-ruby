@@ -13,7 +13,7 @@
 | **key_data** | **String** | Content of the certificate&#39;s private key PEM in a Base64 format. | [optional] |
 | **metadata** | **String** | Deprecated - use description | [optional] |
 | **name** | **String** | Certificate name |  |
-| **tags** | **Array&lt;String&gt;** | List of the tags attached to this certificate | [optional] |
+| **tags** | **Array&lt;String&gt;** | Add tags attached to this object | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
 

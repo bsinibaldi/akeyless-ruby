@@ -67,6 +67,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**delete_target**](V2Api.md#delete_target) | **POST** /delete-target |  |
 | [**delete_target_association**](V2Api.md#delete_target_association) | **POST** /delete-assoc-target-item |  |
 | [**delete_targets**](V2Api.md#delete_targets) | **POST** /delete-targets |  |
+| [**describe_assoc**](V2Api.md#describe_assoc) | **POST** /describe-role-am-assoc |  |
 | [**describe_item**](V2Api.md#describe_item) | **POST** /describe-item |  |
 | [**describe_permissions**](V2Api.md#describe_permissions) | **POST** /describe-permissions |  |
 | [**describe_sub_claims**](V2Api.md#describe_sub_claims) | **POST** /describe-sub-claims |  |
@@ -105,6 +106,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_delete_k8_s_auth_config**](V2Api.md#gateway_delete_k8_s_auth_config) | **POST** /gateway-delete-k8s-auth-config |  |
 | [**gateway_delete_migration**](V2Api.md#gateway_delete_migration) | **POST** /gateway-delete-migration |  |
 | [**gateway_delete_producer**](V2Api.md#gateway_delete_producer) | **POST** /gateway-delete-producer |  |
+| [**gateway_download_customer_fragments**](V2Api.md#gateway_download_customer_fragments) | **POST** /gateway-download-customer-fragments |  |
 | [**gateway_get_config**](V2Api.md#gateway_get_config) | **POST** /gateway-get-config |  |
 | [**gateway_get_k8_s_auth_config**](V2Api.md#gateway_get_k8_s_auth_config) | **POST** /gateway-get-k8s-auth-config |  |
 | [**gateway_get_ldap_auth_config**](V2Api.md#gateway_get_ldap_auth_config) | **POST** /gateway-get-ldap-auth-config |  |
@@ -166,6 +168,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**get_tags**](V2Api.md#get_tags) | **POST** /get-tags |  |
 | [**get_target**](V2Api.md#get_target) | **POST** /get-target |  |
 | [**get_target_details**](V2Api.md#get_target_details) | **POST** /get-target-details |  |
+| [**import_passwords**](V2Api.md#import_passwords) | **POST** /import-passwords |  |
 | [**kmip_client_delete_rule**](V2Api.md#kmip_client_delete_rule) | **POST** /kmip-client-delete-rule |  |
 | [**kmip_client_set_rule**](V2Api.md#kmip_client_set_rule) | **POST** /kmip-client-set-rule |  |
 | [**kmip_create_client**](V2Api.md#kmip_create_client) | **POST** /kmip-create-client |  |
@@ -2263,7 +2266,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::CreateLinkedTarget.new({hosts: 'hosts_example', name: 'name_example'}) # CreateLinkedTarget | 
+body = Akeyless::CreateLinkedTarget.new({name: 'name_example'}) # CreateLinkedTarget | 
 
 begin
   
@@ -4161,6 +4164,68 @@ end
 ### Return type
 
 **Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## describe_assoc
+
+> <RoleAssociationDetails> describe_assoc(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::DescribeAssoc.new({assoc_id: 'assoc_id_example'}) # DescribeAssoc | 
+
+begin
+  
+  result = api_instance.describe_assoc(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->describe_assoc: #{e}"
+end
+```
+
+#### Using the describe_assoc_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RoleAssociationDetails>, Integer, Hash)> describe_assoc_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.describe_assoc_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RoleAssociationDetails>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->describe_assoc_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**DescribeAssoc**](DescribeAssoc.md) |  |  |
+
+### Return type
+
+[**RoleAssociationDetails**](RoleAssociationDetails.md)
 
 ### Authorization
 
@@ -6519,6 +6584,68 @@ end
 ### Return type
 
 [**GatewayDeleteProducerOutput**](GatewayDeleteProducerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## gateway_download_customer_fragments
+
+> <GatewayDownloadCustomerFragmentsOutput> gateway_download_customer_fragments(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayDownloadCustomerFragments.new # GatewayDownloadCustomerFragments | 
+
+begin
+  
+  result = api_instance.gateway_download_customer_fragments(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_download_customer_fragments: #{e}"
+end
+```
+
+#### Using the gateway_download_customer_fragments_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewayDownloadCustomerFragmentsOutput>, Integer, Hash)> gateway_download_customer_fragments_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_download_customer_fragments_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewayDownloadCustomerFragmentsOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_download_customer_fragments_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayDownloadCustomerFragments**](GatewayDownloadCustomerFragments.md) |  |  |
+
+### Return type
+
+[**GatewayDownloadCustomerFragmentsOutput**](GatewayDownloadCustomerFragmentsOutput.md)
 
 ### Authorization
 
@@ -10300,6 +10427,68 @@ end
 ### Return type
 
 [**GetTargetDetailsOutput**](GetTargetDetailsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## import_passwords
+
+> <ImportPasswordsOutput> import_passwords(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::ImportPasswords.new({import_path: 'import_path_example'}) # ImportPasswords | 
+
+begin
+  
+  result = api_instance.import_passwords(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->import_passwords: #{e}"
+end
+```
+
+#### Using the import_passwords_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ImportPasswordsOutput>, Integer, Hash)> import_passwords_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.import_passwords_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ImportPasswordsOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->import_passwords_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**ImportPasswords**](ImportPasswords.md) |  |  |
+
+### Return type
+
+[**ImportPasswordsOutput**](ImportPasswordsOutput.md)
 
 ### Authorization
 
@@ -14811,7 +15000,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::UpdateLinkedTarget.new({hosts: 'hosts_example', name: 'name_example'}) # UpdateLinkedTarget | 
+body = Akeyless::UpdateLinkedTarget.new({name: 'name_example'}) # UpdateLinkedTarget | 
 
 begin
   

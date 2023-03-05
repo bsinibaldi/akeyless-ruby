@@ -169,6 +169,7 @@ docs/DeleteRoles.md
 docs/DeleteTarget.md
 docs/DeleteTargetAssociation.md
 docs/DeleteTargets.md
+docs/DescribeAssoc.md
 docs/DescribeItem.md
 docs/DescribePermissions.md
 docs/DescribePermissionsOutput.md
@@ -256,6 +257,8 @@ docs/GatewayDeleteK8SAuthConfigOutput.md
 docs/GatewayDeleteMigration.md
 docs/GatewayDeleteProducer.md
 docs/GatewayDeleteProducerOutput.md
+docs/GatewayDownloadCustomerFragments.md
+docs/GatewayDownloadCustomerFragmentsOutput.md
 docs/GatewayGetConfig.md
 docs/GatewayGetK8SAuthConfig.md
 docs/GatewayGetK8SAuthConfigOutput.md
@@ -375,6 +378,8 @@ docs/GwClusterIdentity.md
 docs/HashiMigration.md
 docs/HashiPayload.md
 docs/HuaweiAccessRules.md
+docs/ImportPasswords.md
+docs/ImportPasswordsOutput.md
 docs/ImporterInfo.md
 docs/Item.md
 docs/ItemGeneralInfo.md
@@ -418,6 +423,7 @@ docs/LastConfigChange.md
 docs/LastStatusInfo.md
 docs/LdapConfigPart.md
 docs/LeadershipConfigPart.md
+docs/LinkedDetails.md
 docs/ListAuthMethods.md
 docs/ListAuthMethodsOutput.md
 docs/ListGateways.md
@@ -467,6 +473,7 @@ docs/ReverseRBACClient.md
 docs/ReverseRBACOutput.md
 docs/RevokeCreds.md
 docs/Role.md
+docs/RoleAssociationDetails.md
 docs/RoleAuthMethodAssociation.md
 docs/RollbackSecret.md
 docs/RollbackSecretOutput.md
@@ -782,6 +789,7 @@ lib/akeyless/models/delete_roles.rb
 lib/akeyless/models/delete_target.rb
 lib/akeyless/models/delete_target_association.rb
 lib/akeyless/models/delete_targets.rb
+lib/akeyless/models/describe_assoc.rb
 lib/akeyless/models/describe_item.rb
 lib/akeyless/models/describe_permissions.rb
 lib/akeyless/models/describe_permissions_output.rb
@@ -867,6 +875,8 @@ lib/akeyless/models/gateway_delete_k8_s_auth_config_output.rb
 lib/akeyless/models/gateway_delete_migration.rb
 lib/akeyless/models/gateway_delete_producer.rb
 lib/akeyless/models/gateway_delete_producer_output.rb
+lib/akeyless/models/gateway_download_customer_fragments.rb
+lib/akeyless/models/gateway_download_customer_fragments_output.rb
 lib/akeyless/models/gateway_get_config.rb
 lib/akeyless/models/gateway_get_k8_s_auth_config.rb
 lib/akeyless/models/gateway_get_k8_s_auth_config_output.rb
@@ -989,6 +999,8 @@ lib/akeyless/models/gw_cluster_identity.rb
 lib/akeyless/models/hashi_migration.rb
 lib/akeyless/models/hashi_payload.rb
 lib/akeyless/models/huawei_access_rules.rb
+lib/akeyless/models/import_passwords.rb
+lib/akeyless/models/import_passwords_output.rb
 lib/akeyless/models/importer_info.rb
 lib/akeyless/models/item.rb
 lib/akeyless/models/item_general_info.rb
@@ -1032,6 +1044,7 @@ lib/akeyless/models/last_status_info.rb
 lib/akeyless/models/ldap_access_rules.rb
 lib/akeyless/models/ldap_config_part.rb
 lib/akeyless/models/leadership_config_part.rb
+lib/akeyless/models/linked_details.rb
 lib/akeyless/models/list_auth_methods.rb
 lib/akeyless/models/list_auth_methods_output.rb
 lib/akeyless/models/list_gateways.rb
@@ -1081,6 +1094,7 @@ lib/akeyless/models/reverse_rbac_client.rb
 lib/akeyless/models/reverse_rbac_output.rb
 lib/akeyless/models/revoke_creds.rb
 lib/akeyless/models/role.rb
+lib/akeyless/models/role_association_details.rb
 lib/akeyless/models/role_auth_method_association.rb
 lib/akeyless/models/rollback_secret.rb
 lib/akeyless/models/rollback_secret_output.rb
@@ -1231,5 +1245,11 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/gateway_basic_info_spec.rb
+spec/models/describe_assoc_spec.rb
+spec/models/gateway_download_customer_fragments_output_spec.rb
+spec/models/gateway_download_customer_fragments_spec.rb
+spec/models/import_passwords_output_spec.rb
+spec/models/import_passwords_spec.rb
+spec/models/linked_details_spec.rb
+spec/models/role_association_details_spec.rb
 spec/spec_helper.rb

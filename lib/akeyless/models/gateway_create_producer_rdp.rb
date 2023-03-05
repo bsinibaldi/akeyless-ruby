@@ -64,7 +64,7 @@ module Akeyless
     # Override the RDP Domain username
     attr_accessor :secure_access_rdp_user
 
-    # List of the tags attached to this secret
+    # Add tags attached to this object
     attr_accessor :tags
 
     # Target name

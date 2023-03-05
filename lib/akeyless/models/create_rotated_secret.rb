@@ -128,7 +128,7 @@ module Akeyless
     # The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account)
     attr_accessor :storage_account_key_name
 
-    # List of the tags attached to this secret
+    # Add tags attached to this object
     attr_accessor :tags
 
     # Target name

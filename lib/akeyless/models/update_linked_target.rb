@@ -15,16 +15,13 @@ require 'time'
 
 module Akeyless
   class UpdateLinkedTarget
-    # Comma separated list of new hosts that will be added to the Linked Target hosts.
+    # A comma seperated list of new server hosts and server descriptions joined by semicolon ';' that will be added to the Linked Target hosts.
     attr_accessor :add_hosts
-
-    # Deprecated - use description
-    attr_accessor :comment
 
     # Description of the object
     attr_accessor :description
 
-    # A comma seperated list of server hosts.
+    # A comma seperated list of server hosts and server descriptions joined by semicolon ';' (i.e. 'server-dev.com;My Dev server,server-prod.com;My Prod server description')
     attr_accessor :hosts
 
     # Set output format to JSON
@@ -55,7 +52,6 @@ module Akeyless
     def self.attribute_map
       {
         :'add_hosts' => :'add-hosts',
-        :'comment' => :'comment',
         :'description' => :'description',
         :'hosts' => :'hosts',
         :'json' => :'json',
@@ -78,7 +74,6 @@ module Akeyless
     def self.openapi_types
       {
         :'add_hosts' => :'String',
-        :'comment' => :'String',
         :'description' => :'String',
         :'hosts' => :'String',
         :'json' => :'Boolean',
@@ -115,10 +110,6 @@ module Akeyless
 
       if attributes.key?(:'add_hosts')
         self.add_hosts = attributes[:'add_hosts']
-      end
-
-      if attributes.key?(:'comment')
-        self.comment = attributes[:'comment']
       end
 
       if attributes.key?(:'description')
@@ -168,10 +159,6 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @hosts.nil?
-        invalid_properties.push('invalid value for "hosts", hosts cannot be nil.')
-      end
-
       if @name.nil?
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
@@ -182,7 +169,6 @@ module Akeyless
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @hosts.nil?
       return false if @name.nil?
       true
     end
@@ -193,7 +179,6 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           add_hosts == o.add_hosts &&
-          comment == o.comment &&
           description == o.description &&
           hosts == o.hosts &&
           json == o.json &&
@@ -215,7 +200,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_hosts, comment, description, hosts, json, keep_prev_version, name, new_name, parent_target_name, rm_hosts, token, uid_token].hash
+      [add_hosts, description, hosts, json, keep_prev_version, name, new_name, parent_target_name, rm_hosts, token, uid_token].hash
     end
 
     # Builds the object from hash

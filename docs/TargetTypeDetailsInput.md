@@ -59,7 +59,7 @@
 | **gke_service_account_name** | **String** |  | [optional] |
 | **host** | **String** |  | [optional] |
 | **hostname** | **String** |  | [optional] |
-| **hosts** | **Array&lt;String&gt;** |  | [optional] |
+| **hosts** | **Hash&lt;String, String&gt;** |  | [optional] |
 | **implementation_type** | **String** |  | [optional] |
 | **k8s_bearer_token** | **String** |  | [optional] |
 | **k8s_cluster_ca_certificate** | **String** |  | [optional] |
@@ -91,7 +91,6 @@
 | **rabbitmq_server_password** | **String** |  | [optional] |
 | **rabbitmq_server_uri** | **String** |  | [optional] |
 | **rabbitmq_server_user** | **String** |  | [optional] |
-| **rdp_port** | **String** |  | [optional] |
 | **security_token** | **String** |  | [optional] |
 | **sf_account** | **String** |  | [optional] |
 | **ssl_connection_certificate** | **String** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] |
@@ -202,7 +201,6 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   rabbitmq_server_password: null,
   rabbitmq_server_uri: null,
   rabbitmq_server_user: null,
-  rdp_port: null,
   security_token: null,
   sf_account: null,
   ssl_connection_certificate: null,

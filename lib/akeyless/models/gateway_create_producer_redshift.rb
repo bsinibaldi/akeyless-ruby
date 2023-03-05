@@ -55,7 +55,7 @@ module Akeyless
     # Enable/Disable SSL [true/false]
     attr_accessor :ssl
 
-    # List of the tags attached to this secret
+    # Add tags attached to this object
     attr_accessor :tags
 
     # Target name

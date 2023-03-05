@@ -46,7 +46,7 @@ module Akeyless
     # Skip SSL
     attr_accessor :skip_ssl
 
-    # List of the tags attached to this secret
+    # Add tags attached to this object
     attr_accessor :tags
 
     # Target name

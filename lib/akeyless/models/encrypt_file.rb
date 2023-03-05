@@ -18,9 +18,6 @@ module Akeyless
     # The display id of the key to use in the encryption process
     attr_accessor :display_id
 
-    # name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the decrypt command or decryption will fail
-    attr_accessor :encryption_context
-
     # Path to the file to be encrypted. If not provided, the content will be taken from stdin
     attr_accessor :_in
 
@@ -46,7 +43,6 @@ module Akeyless
     def self.attribute_map
       {
         :'display_id' => :'display-id',
-        :'encryption_context' => :'encryption-context',
         :'_in' => :'in',
         :'item_id' => :'item-id',
         :'json' => :'json',
@@ -66,7 +62,6 @@ module Akeyless
     def self.openapi_types
       {
         :'display_id' => :'String',
-        :'encryption_context' => :'Hash<String, String>',
         :'_in' => :'String',
         :'item_id' => :'Integer',
         :'json' => :'Boolean',
@@ -100,12 +95,6 @@ module Akeyless
 
       if attributes.key?(:'display_id')
         self.display_id = attributes[:'display_id']
-      end
-
-      if attributes.key?(:'encryption_context')
-        if (value = attributes[:'encryption_context']).is_a?(Hash)
-          self.encryption_context = value
-        end
       end
 
       if attributes.key?(:'_in')
@@ -168,7 +157,6 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           display_id == o.display_id &&
-          encryption_context == o.encryption_context &&
           _in == o._in &&
           item_id == o.item_id &&
           json == o.json &&
@@ -187,7 +175,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [display_id, encryption_context, _in, item_id, json, key_name, out, token, uid_token].hash
+      [display_id, _in, item_id, json, key_name, out, token, uid_token].hash
     end
 
     # Builds the object from hash

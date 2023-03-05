@@ -45,7 +45,7 @@ module Akeyless
     # URL of an endpoint that implements /sync/rotate method, for example https://webhook.example.com/sync/rotate
     attr_accessor :rotate_sync_url
 
-    # List of the tags attached to this secret
+    # Add tags attached to this object
     attr_accessor :tags
 
     # Maximum allowed time in seconds for the webhook to return the results

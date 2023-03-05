@@ -32,6 +32,7 @@
 | **item_type** | **String** |  | [optional] |
 | **item_versions** | [**Array&lt;ItemVersion&gt;**](ItemVersion.md) |  | [optional] |
 | **last_version** | **Integer** |  | [optional] |
+| **linked_details** | [**LinkedDetails**](LinkedDetails.md) |  | [optional] |
 | **modification_date** | **Time** |  | [optional] |
 | **next_rotation_date** | **Time** |  | [optional] |
 | **protection_key_name** | **String** |  | [optional] |
@@ -76,6 +77,7 @@ instance = Akeyless::Item.new(
   item_type: null,
   item_versions: null,
   last_version: null,
+  linked_details: null,
   modification_date: null,
   next_rotation_date: null,
   protection_key_name: null,

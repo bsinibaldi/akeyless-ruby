@@ -46,7 +46,7 @@ module Akeyless
     # The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
     attr_accessor :protection_key_name
 
-    # List of the tags attached to this classic key
+    # Add tags attached to this object
     attr_accessor :tags
 
     # Authentication token (see `/auth` and `/configure`)

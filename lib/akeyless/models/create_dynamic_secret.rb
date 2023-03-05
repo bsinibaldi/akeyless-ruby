@@ -33,7 +33,7 @@ module Akeyless
     # Dynamic secret name
     attr_accessor :name
 
-    # List of the tags attached to this secret
+    # Add tags attached to this object
     attr_accessor :tags
 
     # Authentication token (see `/auth` and `/configure`)

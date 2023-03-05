@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **allowed_cors** | **Array&lt;String&gt;** | a list of allowed cors domains if used for browser authentication | [optional] |
 | **bound_common_names** | **Array&lt;String&gt;** | A list of names. At least one must exist in the Common Name. Supports globbing. | [optional] |
 | **bound_dns_sans** | **Array&lt;String&gt;** | A list of DNS names. At least one must exist in the SANs. Supports globbing. | [optional] |
 | **bound_email_sans** | **Array&lt;String&gt;** | A list of Email Addresses. At least one must exist in the SANs. Supports globbing. | [optional] |
@@ -20,6 +21,7 @@
 require 'akeyless'
 
 instance = Akeyless::CertAccessRules.new(
+  allowed_cors: null,
   bound_common_names: null,
   bound_dns_sans: null,
   bound_email_sans: null,

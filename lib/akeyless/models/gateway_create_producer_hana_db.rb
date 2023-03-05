@@ -64,7 +64,7 @@ module Akeyless
     # Enable Web Secure Remote Access
     attr_accessor :secure_access_web
 
-    # List of the tags attached to this secret
+    # Add tags attached to this object
     attr_accessor :tags
 
     # Target name

@@ -19,6 +19,9 @@ module Akeyless
     # Access expiration date in Unix timestamp (select 0 for access without expiry date)
     attr_accessor :access_expires
 
+    # Comma separated list of allowed CORS domains to be validated as part of the authentication flow.
+    attr_accessor :allowed_cors
+
     # A list of names. At least one must exist in the Common Name. Supports globbing.
     attr_accessor :bound_common_names
 
@@ -74,6 +77,7 @@ module Akeyless
     def self.attribute_map
       {
         :'access_expires' => :'access-expires',
+        :'allowed_cors' => :'allowed-cors',
         :'bound_common_names' => :'bound-common-names',
         :'bound_dns_sans' => :'bound-dns-sans',
         :'bound_email_sans' => :'bound-email-sans',
@@ -103,6 +107,7 @@ module Akeyless
     def self.openapi_types
       {
         :'access_expires' => :'Integer',
+        :'allowed_cors' => :'String',
         :'bound_common_names' => :'Array<String>',
         :'bound_dns_sans' => :'Array<String>',
         :'bound_email_sans' => :'Array<String>',
@@ -148,6 +153,10 @@ module Akeyless
         self.access_expires = attributes[:'access_expires']
       else
         self.access_expires = 0
+      end
+
+      if attributes.key?(:'allowed_cors')
+        self.allowed_cors = attributes[:'allowed_cors']
       end
 
       if attributes.key?(:'bound_common_names')
@@ -270,6 +279,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           access_expires == o.access_expires &&
+          allowed_cors == o.allowed_cors &&
           bound_common_names == o.bound_common_names &&
           bound_dns_sans == o.bound_dns_sans &&
           bound_email_sans == o.bound_email_sans &&
@@ -298,7 +308,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_expires, bound_common_names, bound_dns_sans, bound_email_sans, bound_extensions, bound_ips, bound_organizational_units, bound_uri_sans, certificate_data, force_sub_claims, gw_bound_ips, json, jwt_ttl, name, revoked_cert_ids, token, uid_token, unique_identifier].hash
+      [access_expires, allowed_cors, bound_common_names, bound_dns_sans, bound_email_sans, bound_extensions, bound_ips, bound_organizational_units, bound_uri_sans, certificate_data, force_sub_claims, gw_bound_ips, json, jwt_ttl, name, revoked_cert_ids, token, uid_token, unique_identifier].hash
     end
 
     # Builds the object from hash

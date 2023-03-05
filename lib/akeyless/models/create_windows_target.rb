@@ -15,9 +15,6 @@ require 'time'
 
 module Akeyless
   class CreateWindowsTarget
-    # Deprecated - use description
-    attr_accessor :comment
-
     # Description of the object
     attr_accessor :description
 
@@ -36,8 +33,8 @@ module Akeyless
     # The privileged user password
     attr_accessor :password
 
-    # Server port for RDP (Remote Desktop Protocol)
-    attr_accessor :rdp_port
+    # Server WinRM HTTPS port
+    attr_accessor :port
 
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
@@ -51,14 +48,13 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'comment' => :'comment',
         :'description' => :'description',
         :'hostname' => :'hostname',
         :'json' => :'json',
         :'key' => :'key',
         :'name' => :'name',
         :'password' => :'password',
-        :'rdp_port' => :'rdp-port',
+        :'port' => :'port',
         :'token' => :'token',
         :'uid_token' => :'uid-token',
         :'username' => :'username'
@@ -73,14 +69,13 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'comment' => :'String',
         :'description' => :'String',
         :'hostname' => :'String',
         :'json' => :'Boolean',
         :'key' => :'String',
         :'name' => :'String',
         :'password' => :'String',
-        :'rdp_port' => :'String',
+        :'port' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String',
         :'username' => :'String'
@@ -108,10 +103,6 @@ module Akeyless
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'comment')
-        self.comment = attributes[:'comment']
-      end
-
       if attributes.key?(:'description')
         self.description = attributes[:'description']
       end
@@ -138,10 +129,10 @@ module Akeyless
         self.password = attributes[:'password']
       end
 
-      if attributes.key?(:'rdp_port')
-        self.rdp_port = attributes[:'rdp_port']
+      if attributes.key?(:'port')
+        self.port = attributes[:'port']
       else
-        self.rdp_port = '3389'
+        self.port = '5986'
       end
 
       if attributes.key?(:'token')
@@ -180,14 +171,13 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          comment == o.comment &&
           description == o.description &&
           hostname == o.hostname &&
           json == o.json &&
           key == o.key &&
           name == o.name &&
           password == o.password &&
-          rdp_port == o.rdp_port &&
+          port == o.port &&
           token == o.token &&
           uid_token == o.uid_token &&
           username == o.username
@@ -202,7 +192,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [comment, description, hostname, json, key, name, password, rdp_port, token, uid_token, username].hash
+      [description, hostname, json, key, name, password, port, token, uid_token, username].hash
     end
 
     # Builds the object from hash

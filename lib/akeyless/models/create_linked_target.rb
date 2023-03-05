@@ -15,13 +15,10 @@ require 'time'
 
 module Akeyless
   class CreateLinkedTarget
-    # Deprecated - use description
-    attr_accessor :comment
-
     # Description of the object
     attr_accessor :description
 
-    # A comma seperated list of server hosts.
+    # A comma seperated list of server hosts and server descriptions joined by semicolon ';' (i.e. 'server-dev.com;My Dev server,server-prod.com;My Prod server description')
     attr_accessor :hosts
 
     # Set output format to JSON
@@ -42,7 +39,6 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'comment' => :'comment',
         :'description' => :'description',
         :'hosts' => :'hosts',
         :'json' => :'json',
@@ -61,7 +57,6 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'comment' => :'String',
         :'description' => :'String',
         :'hosts' => :'String',
         :'json' => :'Boolean',
@@ -92,10 +87,6 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'comment')
-        self.comment = attributes[:'comment']
-      end
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
@@ -132,10 +123,6 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @hosts.nil?
-        invalid_properties.push('invalid value for "hosts", hosts cannot be nil.')
-      end
-
       if @name.nil?
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
@@ -146,7 +133,6 @@ module Akeyless
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @hosts.nil?
       return false if @name.nil?
       true
     end
@@ -156,7 +142,6 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          comment == o.comment &&
           description == o.description &&
           hosts == o.hosts &&
           json == o.json &&
@@ -175,7 +160,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [comment, description, hosts, json, name, parent_target_name, token, uid_token].hash
+      [description, hosts, json, name, parent_target_name, token, uid_token].hash
     end
 
     # Builds the object from hash

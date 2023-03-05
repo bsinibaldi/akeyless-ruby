@@ -15,6 +15,9 @@ require 'time'
 
 module Akeyless
   class CertAccessRules
+    # a list of allowed cors domains if used for browser authentication
+    attr_accessor :allowed_cors
+
     # A list of names. At least one must exist in the Common Name. Supports globbing.
     attr_accessor :bound_common_names
 
@@ -45,6 +48,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'allowed_cors' => :'allowed_cors',
         :'bound_common_names' => :'bound_common_names',
         :'bound_dns_sans' => :'bound_dns_sans',
         :'bound_email_sans' => :'bound_email_sans',
@@ -65,6 +69,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'allowed_cors' => :'Array<String>',
         :'bound_common_names' => :'Array<String>',
         :'bound_dns_sans' => :'Array<String>',
         :'bound_email_sans' => :'Array<String>',
@@ -97,6 +102,12 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'allowed_cors')
+        if (value = attributes[:'allowed_cors']).is_a?(Array)
+          self.allowed_cors = value
+        end
+      end
 
       if attributes.key?(:'bound_common_names')
         if (value = attributes[:'bound_common_names']).is_a?(Array)
@@ -167,6 +178,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          allowed_cors == o.allowed_cors &&
           bound_common_names == o.bound_common_names &&
           bound_dns_sans == o.bound_dns_sans &&
           bound_email_sans == o.bound_email_sans &&
@@ -187,7 +199,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [bound_common_names, bound_dns_sans, bound_email_sans, bound_extensions, bound_organizational_units, bound_uri_sans, certificate, revoked_cert_ids, unique_identifier].hash
+      [allowed_cors, bound_common_names, bound_dns_sans, bound_email_sans, bound_extensions, bound_organizational_units, bound_uri_sans, certificate, revoked_cert_ids, unique_identifier].hash
     end
 
     # Builds the object from hash

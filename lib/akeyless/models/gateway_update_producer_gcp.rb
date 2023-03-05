@@ -51,7 +51,7 @@ module Akeyless
     # The type of the gcp dynamic secret. Options[fixed, dynamic]
     attr_accessor :service_account_type
 
-    # List of the tags attached to this secret
+    # Add tags attached to this object
     attr_accessor :tags
 
     # Target name

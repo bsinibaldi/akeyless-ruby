@@ -46,7 +46,7 @@ module Akeyless
     # User role
     attr_accessor :role
 
-    # List of the tags attached to this secret
+    # Add tags attached to this object
     attr_accessor :tags
 
     # Target name

@@ -58,7 +58,7 @@ module Akeyless
     # Store private key
     attr_accessor :store_private_key
 
-    # List of the tags attached to this secret
+    # Add tags attached to this object
     attr_accessor :tags
 
     # Target name

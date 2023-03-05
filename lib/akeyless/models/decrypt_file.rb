@@ -15,8 +15,13 @@ require 'time'
 
 module Akeyless
   class DecryptFile
+    attr_accessor :cyphertext_header
+
     # The display id of the key to use in the decryption process
     attr_accessor :display_id
+
+    # Path to the file to be decrypted. If not provided, the content will be taken from stdin
+    attr_accessor :_in
 
     # The item id of the key to use in the decryption process
     attr_accessor :item_id
@@ -27,6 +32,9 @@ module Akeyless
     # The name of the key to use in the decryption process
     attr_accessor :key_name
 
+    # Path to the output file. If not provided, the output will be sent to stdout
+    attr_accessor :out
+
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
@@ -36,10 +44,13 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'cyphertext_header' => :'cyphertext-header',
         :'display_id' => :'display-id',
+        :'_in' => :'in',
         :'item_id' => :'item-id',
         :'json' => :'json',
         :'key_name' => :'key-name',
+        :'out' => :'out',
         :'token' => :'token',
         :'uid_token' => :'uid-token'
       }
@@ -53,10 +64,13 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'cyphertext_header' => :'String',
         :'display_id' => :'String',
+        :'_in' => :'String',
         :'item_id' => :'Integer',
         :'json' => :'Boolean',
         :'key_name' => :'String',
+        :'out' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String'
       }
@@ -83,8 +97,16 @@ module Akeyless
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'cyphertext_header')
+        self.cyphertext_header = attributes[:'cyphertext_header']
+      end
+
       if attributes.key?(:'display_id')
         self.display_id = attributes[:'display_id']
+      end
+
+      if attributes.key?(:'_in')
+        self._in = attributes[:'_in']
       end
 
       if attributes.key?(:'item_id')
@@ -101,6 +123,10 @@ module Akeyless
         self.key_name = attributes[:'key_name']
       end
 
+      if attributes.key?(:'out')
+        self.out = attributes[:'out']
+      end
+
       if attributes.key?(:'token')
         self.token = attributes[:'token']
       end
@@ -114,6 +140,10 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @_in.nil?
+        invalid_properties.push('invalid value for "_in", _in cannot be nil.')
+      end
+
       if @key_name.nil?
         invalid_properties.push('invalid value for "key_name", key_name cannot be nil.')
       end
@@ -124,6 +154,7 @@ module Akeyless
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @_in.nil?
       return false if @key_name.nil?
       true
     end
@@ -133,10 +164,13 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          cyphertext_header == o.cyphertext_header &&
           display_id == o.display_id &&
+          _in == o._in &&
           item_id == o.item_id &&
           json == o.json &&
           key_name == o.key_name &&
+          out == o.out &&
           token == o.token &&
           uid_token == o.uid_token
     end
@@ -150,7 +184,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [display_id, item_id, json, key_name, token, uid_token].hash
+      [cyphertext_header, display_id, _in, item_id, json, key_name, out, token, uid_token].hash
     end
 
     # Builds the object from hash

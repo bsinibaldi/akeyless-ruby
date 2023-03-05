@@ -42,7 +42,7 @@ module Akeyless
     # Certificate name
     attr_accessor :name
 
-    # List of the tags attached to this certificate
+    # Add tags attached to this object
     attr_accessor :tags
 
     # Authentication token (see `/auth` and `/configure`)

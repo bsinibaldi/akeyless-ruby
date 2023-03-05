@@ -70,7 +70,7 @@ module Akeyless
     # Web-Proxy via Akeyless Web Access Bastion
     attr_accessor :secure_access_web_proxy
 
-    # List of the tags attached to this secret
+    # Add tags attached to this object
     attr_accessor :tags
 
     # Target name

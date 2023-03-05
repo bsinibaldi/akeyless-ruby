@@ -22,6 +22,8 @@ module Akeyless
 
     attr_accessor :display_name
 
+    attr_accessor :enable_sni_proxy
+
     attr_accessor :enable_tls
 
     attr_accessor :enable_tls_configure
@@ -44,6 +46,7 @@ module Akeyless
         :'akeyless_url' => :'akeyless_url',
         :'api_token_ttl' => :'api_token_ttl',
         :'display_name' => :'display_name',
+        :'enable_sni_proxy' => :'enable_sni_proxy',
         :'enable_tls' => :'enable_tls',
         :'enable_tls_configure' => :'enable_tls_configure',
         :'enable_tls_curl' => :'enable_tls_curl',
@@ -66,6 +69,7 @@ module Akeyless
         :'akeyless_url' => :'String',
         :'api_token_ttl' => :'String',
         :'display_name' => :'String',
+        :'enable_sni_proxy' => :'Boolean',
         :'enable_tls' => :'Boolean',
         :'enable_tls_configure' => :'Boolean',
         :'enable_tls_curl' => :'Boolean',
@@ -108,6 +112,10 @@ module Akeyless
 
       if attributes.key?(:'display_name')
         self.display_name = attributes[:'display_name']
+      end
+
+      if attributes.key?(:'enable_sni_proxy')
+        self.enable_sni_proxy = attributes[:'enable_sni_proxy']
       end
 
       if attributes.key?(:'enable_tls')
@@ -164,6 +172,7 @@ module Akeyless
           akeyless_url == o.akeyless_url &&
           api_token_ttl == o.api_token_ttl &&
           display_name == o.display_name &&
+          enable_sni_proxy == o.enable_sni_proxy &&
           enable_tls == o.enable_tls &&
           enable_tls_configure == o.enable_tls_configure &&
           enable_tls_curl == o.enable_tls_curl &&
@@ -183,7 +192,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [akeyless_url, api_token_ttl, display_name, enable_tls, enable_tls_configure, enable_tls_curl, enable_tls_hvp, gw_cluster_url, tcp_port, tls_cert, tls_key].hash
+      [akeyless_url, api_token_ttl, display_name, enable_sni_proxy, enable_tls, enable_tls_configure, enable_tls_curl, enable_tls_hvp, gw_cluster_url, tcp_port, tls_cert, tls_key].hash
     end
 
     # Builds the object from hash
