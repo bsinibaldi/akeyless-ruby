@@ -18,7 +18,7 @@
 | **protection_key** | **String** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **secure_access_bastion_issuer** | **String** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] |
 | **secure_access_enable** | **String** | Enable/Disable secure remote access [true/false] | [optional] |
-| **secure_access_host** | **Array&lt;String&gt;** | Target servers for connections | [optional] |
+| **secure_access_host** | **Array&lt;String&gt;** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] |
 | **secure_access_ssh_creds** | **String** | Static-Secret values contains SSH Credentials, either Private Key or Password [password/private-key] | [optional] |
 | **secure_access_ssh_user** | **String** | Override the SSH username as indicated in SSH Certificate Issuer | [optional] |
 | **secure_access_url** | **String** | Destination URL to inject secrets | [optional] |

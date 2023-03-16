@@ -7,6 +7,7 @@
 | **access_date** | **Time** |  | [optional] |
 | **access_request_status** | **String** |  | [optional] |
 | **auto_rotate** | **Boolean** |  | [optional] |
+| **bastion_details** | [**BastionsList**](BastionsList.md) |  | [optional] |
 | **cert_issuer_signer_key_name** | **String** |  | [optional] |
 | **certificate_issue_details** | [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] |
 | **certificates** | **String** |  | [optional] |
@@ -52,6 +53,7 @@ instance = Akeyless::Item.new(
   access_date: null,
   access_request_status: null,
   auto_rotate: null,
+  bastion_details: null,
   cert_issuer_signer_key_name: null,
   certificate_issue_details: null,
   certificates: null,

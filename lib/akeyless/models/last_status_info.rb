@@ -19,11 +19,15 @@ module Akeyless
 
     attr_accessor :producers_errors
 
+    # flag to indicate migrationStatus copied to new table
+    attr_accessor :was_migrations_copied_to_new_table
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'migrations_status' => :'migrations_status',
-        :'producers_errors' => :'producers_errors'
+        :'producers_errors' => :'producers_errors',
+        :'was_migrations_copied_to_new_table' => :'was_migrations_copied_to_new_table'
       }
     end
 
@@ -36,7 +40,8 @@ module Akeyless
     def self.openapi_types
       {
         :'migrations_status' => :'MigrationStatus',
-        :'producers_errors' => :'Object'
+        :'producers_errors' => :'Object',
+        :'was_migrations_copied_to_new_table' => :'Boolean'
       }
     end
 
@@ -68,6 +73,10 @@ module Akeyless
       if attributes.key?(:'producers_errors')
         self.producers_errors = attributes[:'producers_errors']
       end
+
+      if attributes.key?(:'was_migrations_copied_to_new_table')
+        self.was_migrations_copied_to_new_table = attributes[:'was_migrations_copied_to_new_table']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -89,7 +98,8 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           migrations_status == o.migrations_status &&
-          producers_errors == o.producers_errors
+          producers_errors == o.producers_errors &&
+          was_migrations_copied_to_new_table == o.was_migrations_copied_to_new_table
     end
 
     # @see the `==` method
@@ -101,7 +111,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [migrations_status, producers_errors].hash
+      [migrations_status, producers_errors, was_migrations_copied_to_new_table].hash
     end
 
     # Builds the object from hash

@@ -57,7 +57,7 @@ module Akeyless
     # Enable/Disable secure remote access [true/false]
     attr_accessor :secure_access_enable
 
-    # Target servers for connections
+    # Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
     attr_accessor :secure_access_host
 
     # Static-Secret values contains SSH Credentials, either Private Key or Password [password/private-key]

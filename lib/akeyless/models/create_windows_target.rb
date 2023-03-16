@@ -15,6 +15,9 @@ require 'time'
 
 module Akeyless
   class CreateWindowsTarget
+    # SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA)
+    attr_accessor :certificate
+
     # Description of the object
     attr_accessor :description
 
@@ -30,10 +33,10 @@ module Akeyless
     # Target name
     attr_accessor :name
 
-    # The privileged user password
+    # Privileged user password
     attr_accessor :password
 
-    # Server WinRM HTTPS port
+    # Server WinRM port
     attr_accessor :port
 
     # Authentication token (see `/auth` and `/configure`)
@@ -42,12 +45,16 @@ module Akeyless
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
 
+    # Enable/Disable TLS for WinRM over HTTPS [true/false]
+    attr_accessor :use_tls
+
     # Privileged username
     attr_accessor :username
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'certificate' => :'certificate',
         :'description' => :'description',
         :'hostname' => :'hostname',
         :'json' => :'json',
@@ -57,6 +64,7 @@ module Akeyless
         :'port' => :'port',
         :'token' => :'token',
         :'uid_token' => :'uid-token',
+        :'use_tls' => :'use-tls',
         :'username' => :'username'
       }
     end
@@ -69,6 +77,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'certificate' => :'String',
         :'description' => :'String',
         :'hostname' => :'String',
         :'json' => :'Boolean',
@@ -78,6 +87,7 @@ module Akeyless
         :'port' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String',
+        :'use_tls' => :'String',
         :'username' => :'String'
       }
     end
@@ -102,6 +112,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'certificate')
+        self.certificate = attributes[:'certificate']
+      end
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
@@ -143,6 +157,12 @@ module Akeyless
         self.uid_token = attributes[:'uid_token']
       end
 
+      if attributes.key?(:'use_tls')
+        self.use_tls = attributes[:'use_tls']
+      else
+        self.use_tls = 'true'
+      end
+
       if attributes.key?(:'username')
         self.username = attributes[:'username']
       end
@@ -152,8 +172,20 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @hostname.nil?
+        invalid_properties.push('invalid value for "hostname", hostname cannot be nil.')
+      end
+
       if @name.nil?
         invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
+      if @password.nil?
+        invalid_properties.push('invalid value for "password", password cannot be nil.')
+      end
+
+      if @username.nil?
+        invalid_properties.push('invalid value for "username", username cannot be nil.')
       end
 
       invalid_properties
@@ -162,7 +194,10 @@ module Akeyless
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @hostname.nil?
       return false if @name.nil?
+      return false if @password.nil?
+      return false if @username.nil?
       true
     end
 
@@ -171,6 +206,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          certificate == o.certificate &&
           description == o.description &&
           hostname == o.hostname &&
           json == o.json &&
@@ -180,6 +216,7 @@ module Akeyless
           port == o.port &&
           token == o.token &&
           uid_token == o.uid_token &&
+          use_tls == o.use_tls &&
           username == o.username
     end
 
@@ -192,7 +229,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [description, hostname, json, key, name, password, port, token, uid_token, username].hash
+      [certificate, description, hostname, json, key, name, password, port, token, uid_token, use_tls, username].hash
     end
 
     # Builds the object from hash

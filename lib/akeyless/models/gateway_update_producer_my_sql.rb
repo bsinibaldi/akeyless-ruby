@@ -64,7 +64,7 @@ module Akeyless
     # Enable/Disable secure remote access [true/false]
     attr_accessor :secure_access_enable
 
-    # Target DB servers for connections
+    # Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts)
     attr_accessor :secure_access_host
 
     # Enable Web Secure Remote Access

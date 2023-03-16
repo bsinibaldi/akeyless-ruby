@@ -31,6 +31,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_dockerhub_target**](V2Api.md#create_dockerhub_target) | **POST** /create-dockerhub-target |  |
 | [**create_dynamic_secret**](V2Api.md#create_dynamic_secret) | **POST** /create-dynamic-secret |  |
 | [**create_eks_target**](V2Api.md#create_eks_target) | **POST** /create-eks-target |  |
+| [**create_esm**](V2Api.md#create_esm) | **POST** /create-esm |  |
 | [**create_event_forwarder**](V2Api.md#create_event_forwarder) | **POST** /create-event-forwarder |  |
 | [**create_gcp_target**](V2Api.md#create_gcp_target) | **POST** /create-gcp-target |  |
 | [**create_github_target**](V2Api.md#create_github_target) | **POST** /create-github-target |  |
@@ -75,6 +76,11 @@ All URIs are relative to *https://api.akeyless.io*
 | [**encrypt**](V2Api.md#encrypt) | **POST** /encrypt |  |
 | [**encrypt_gpg**](V2Api.md#encrypt_gpg) | **POST** /encrypt-gpg |  |
 | [**encrypt_with_classic_key**](V2Api.md#encrypt_with_classic_key) | **POST** /encrypt-with-classic-key |  |
+| [**esm_create**](V2Api.md#esm_create) | **POST** /esm-create |  |
+| [**esm_delete**](V2Api.md#esm_delete) | **POST** /esm-delete |  |
+| [**esm_get**](V2Api.md#esm_get) | **POST** /esm-get |  |
+| [**esm_list**](V2Api.md#esm_list) | **POST** /esm-list |  |
+| [**esm_update**](V2Api.md#esm_update) | **POST** /esm-update |  |
 | [**export_classic_key**](V2Api.md#export_classic_key) | **POST** /export-classic-key |  |
 | [**gateway_create_k8_s_auth_config**](V2Api.md#gateway_create_k8_s_auth_config) | **POST** /gateway-create-k8s-auth-config |  |
 | [**gateway_create_migration**](V2Api.md#gateway_create_migration) | **POST** /gateway-create-migration |  |
@@ -100,6 +106,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_create_producer_postgre_sql**](V2Api.md#gateway_create_producer_postgre_sql) | **POST** /gateway-create-producer-postgresql |  |
 | [**gateway_create_producer_rabbit_mq**](V2Api.md#gateway_create_producer_rabbit_mq) | **POST** /gateway-create-producer-rabbitmq |  |
 | [**gateway_create_producer_rdp**](V2Api.md#gateway_create_producer_rdp) | **POST** /gateway-create-producer-rdp |  |
+| [**gateway_create_producer_redis**](V2Api.md#gateway_create_producer_redis) | **POST** /gateway-create-producer-Redis |  |
 | [**gateway_create_producer_redshift**](V2Api.md#gateway_create_producer_redshift) | **POST** /gateway-create-producer-redshift |  |
 | [**gateway_create_producer_snowflake**](V2Api.md#gateway_create_producer_snowflake) | **POST** /gateway-create-producer-snowflake |  |
 | [**gateway_delete_allowed_management_access**](V2Api.md#gateway_delete_allowed_management_access) | **POST** /gateway-delete-allowed-management-access |  |
@@ -148,6 +155,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_update_producer_postgre_sql**](V2Api.md#gateway_update_producer_postgre_sql) | **POST** /gateway-update-producer-postgresql |  |
 | [**gateway_update_producer_rabbit_mq**](V2Api.md#gateway_update_producer_rabbit_mq) | **POST** /gateway-update-producer-rabbitmq |  |
 | [**gateway_update_producer_rdp**](V2Api.md#gateway_update_producer_rdp) | **POST** /gateway-update-producer-rdp |  |
+| [**gateway_update_producer_redis**](V2Api.md#gateway_update_producer_redis) | **POST** /gateway-update-producer-redis |  |
 | [**gateway_update_producer_redshift**](V2Api.md#gateway_update_producer_redshift) | **POST** /gateway-update-producer-redshift |  |
 | [**gateway_update_producer_snowflake**](V2Api.md#gateway_update_producer_snowflake) | **POST** /gateway-update-producer-snowflake |  |
 | [**gateway_update_tls_cert**](V2Api.md#gateway_update_tls_cert) | **POST** /gateway-update-tls-cert |  |
@@ -1943,6 +1951,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## create_esm
+
+> <CreateESMOutput> create_esm(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateESM.new({name: 'name_example', target_to_associate: 'target_to_associate_example'}) # CreateESM | 
+
+begin
+  
+  result = api_instance.create_esm(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_esm: #{e}"
+end
+```
+
+#### Using the create_esm_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateESMOutput>, Integer, Hash)> create_esm_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_esm_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateESMOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_esm_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateESM**](CreateESM.md) |  |  |
+
+### Return type
+
+[**CreateESMOutput**](CreateESMOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_event_forwarder
 
 > <CreateEventForwarderOutput> create_event_forwarder(body)
@@ -3072,7 +3142,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::CreateWindowsTarget.new({name: 'name_example'}) # CreateWindowsTarget | 
+body = Akeyless::CreateWindowsTarget.new({hostname: 'hostname_example', name: 'name_example', password: 'password_example', username: 'username_example'}) # CreateWindowsTarget | 
 
 begin
   
@@ -4671,6 +4741,313 @@ No authorization required
 - **Accept**: application/json
 
 
+## esm_create
+
+> <EsmCreateSecretOutput> esm_create(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::EsmUpdate.new({esm_name: 'esm_name_example', secret_id: 'secret_id_example', value: 'value_example'}) # EsmUpdate | 
+
+begin
+  
+  result = api_instance.esm_create(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->esm_create: #{e}"
+end
+```
+
+#### Using the esm_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EsmCreateSecretOutput>, Integer, Hash)> esm_create_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.esm_create_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EsmCreateSecretOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->esm_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**EsmUpdate**](EsmUpdate.md) |  |  |
+
+### Return type
+
+[**EsmCreateSecretOutput**](EsmCreateSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## esm_delete
+
+> Object esm_delete(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::EsmDelete.new({esm_name: 'esm_name_example', secret_id: 'secret_id_example'}) # EsmDelete | 
+
+begin
+  
+  result = api_instance.esm_delete(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->esm_delete: #{e}"
+end
+```
+
+#### Using the esm_delete_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> esm_delete_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.esm_delete_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->esm_delete_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**EsmDelete**](EsmDelete.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## esm_get
+
+> <EsmGetSecretOutput> esm_get(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::EsmGet.new({esm_name: 'esm_name_example', secret_id: 'secret_id_example'}) # EsmGet | 
+
+begin
+  
+  result = api_instance.esm_get(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->esm_get: #{e}"
+end
+```
+
+#### Using the esm_get_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EsmGetSecretOutput>, Integer, Hash)> esm_get_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.esm_get_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EsmGetSecretOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->esm_get_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**EsmGet**](EsmGet.md) |  |  |
+
+### Return type
+
+[**EsmGetSecretOutput**](EsmGetSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## esm_list
+
+> <EsmListSecretsOutput> esm_list(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::EsmList.new({esm_name: 'esm_name_example'}) # EsmList | 
+
+begin
+  
+  result = api_instance.esm_list(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->esm_list: #{e}"
+end
+```
+
+#### Using the esm_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EsmListSecretsOutput>, Integer, Hash)> esm_list_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.esm_list_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EsmListSecretsOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->esm_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**EsmList**](EsmList.md) |  |  |
+
+### Return type
+
+[**EsmListSecretsOutput**](EsmListSecretsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## esm_update
+
+> <EsmUpdateSecretOutput> esm_update
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+
+begin
+  
+  result = api_instance.esm_update
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->esm_update: #{e}"
+end
+```
+
+#### Using the esm_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EsmUpdateSecretOutput>, Integer, Hash)> esm_update_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.esm_update_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EsmUpdateSecretOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->esm_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**EsmUpdateSecretOutput**](EsmUpdateSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## export_classic_key
 
 > <ExportClassicKeyOutput> export_classic_key(body)
@@ -6212,6 +6589,68 @@ end
 ### Return type
 
 [**GatewayCreateProducerRdpOutput**](GatewayCreateProducerRdpOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## gateway_create_producer_redis
+
+> <GatewayCreateProducerRedisOutput> gateway_create_producer_redis(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayCreateProducerRedis.new({name: 'name_example'}) # GatewayCreateProducerRedis | 
+
+begin
+  
+  result = api_instance.gateway_create_producer_redis(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_create_producer_redis: #{e}"
+end
+```
+
+#### Using the gateway_create_producer_redis_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewayCreateProducerRedisOutput>, Integer, Hash)> gateway_create_producer_redis_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_create_producer_redis_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewayCreateProducerRedisOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_create_producer_redis_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayCreateProducerRedis**](GatewayCreateProducerRedis.md) |  |  |
+
+### Return type
+
+[**GatewayCreateProducerRedisOutput**](GatewayCreateProducerRedisOutput.md)
 
 ### Authorization
 
@@ -9191,6 +9630,68 @@ end
 ### Return type
 
 [**GatewayUpdateProducerRdpOutput**](GatewayUpdateProducerRdpOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## gateway_update_producer_redis
+
+> <GatewayUpdateProducerRedisOutput> gateway_update_producer_redis(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayUpdateProducerRedis.new({name: 'name_example'}) # GatewayUpdateProducerRedis | 
+
+begin
+  
+  result = api_instance.gateway_update_producer_redis(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_update_producer_redis: #{e}"
+end
+```
+
+#### Using the gateway_update_producer_redis_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewayUpdateProducerRedisOutput>, Integer, Hash)> gateway_update_producer_redis_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_update_producer_redis_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewayUpdateProducerRedisOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_update_producer_redis_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayUpdateProducerRedis**](GatewayUpdateProducerRedis.md) |  |  |
+
+### Return type
+
+[**GatewayUpdateProducerRedisOutput**](GatewayUpdateProducerRedisOutput.md)
 
 ### Authorization
 
@@ -16175,7 +16676,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::UpdateWindowsTarget.new({name: 'name_example'}) # UpdateWindowsTarget | 
+body = Akeyless::UpdateWindowsTarget.new({hostname: 'hostname_example', name: 'name_example', password: 'password_example', username: 'username_example'}) # UpdateWindowsTarget | 
 
 begin
   

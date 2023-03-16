@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **bastion_details** | **Boolean** | Indicate if the item should return with ztb cluster details (url, etc) | [optional][default to false] |
 | **display_id** | **String** | The display id of the item | [optional] |
 | **gateway_details** | **Boolean** | Indicate if the item should return with clusters details (url, etc) | [optional][default to false] |
 | **item_id** | **Integer** | Item id of the item | [optional] |
@@ -19,6 +20,7 @@
 require 'akeyless'
 
 instance = Akeyless::DescribeItem.new(
+  bastion_details: null,
   display_id: null,
   gateway_details: null,
   item_id: null,

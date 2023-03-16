@@ -56,6 +56,8 @@ module Akeyless
     # CACertName is the name of the certificate in SalesForce tenant
     attr_accessor :ca_cert_name
 
+    attr_accessor :certificate
+
     attr_accessor :chef_server_host_name
 
     attr_accessor :chef_server_key
@@ -216,6 +218,8 @@ module Akeyless
 
     attr_accessor :use_gw_cloud_identity
 
+    attr_accessor :use_tls
+
     attr_accessor :user_name
 
     attr_accessor :user_password
@@ -256,6 +260,7 @@ module Akeyless
         :'azure_tenant_id' => :'azure_tenant_id',
         :'ca_cert_data' => :'ca_cert_data',
         :'ca_cert_name' => :'ca_cert_name',
+        :'certificate' => :'certificate',
         :'chef_server_host_name' => :'chef_server_host_name',
         :'chef_server_key' => :'chef_server_key',
         :'chef_server_port' => :'chef_server_port',
@@ -331,6 +336,7 @@ module Akeyless
         :'tenant_url' => :'tenant_url',
         :'url' => :'url',
         :'use_gw_cloud_identity' => :'use_gw_cloud_identity',
+        :'use_tls' => :'use_tls',
         :'user_name' => :'user_name',
         :'user_password' => :'user_password',
         :'username' => :'username',
@@ -370,6 +376,7 @@ module Akeyless
         :'azure_tenant_id' => :'String',
         :'ca_cert_data' => :'Array<Integer>',
         :'ca_cert_name' => :'String',
+        :'certificate' => :'String',
         :'chef_server_host_name' => :'String',
         :'chef_server_key' => :'String',
         :'chef_server_port' => :'String',
@@ -445,6 +452,7 @@ module Akeyless
         :'tenant_url' => :'String',
         :'url' => :'String',
         :'use_gw_cloud_identity' => :'Boolean',
+        :'use_tls' => :'Boolean',
         :'user_name' => :'String',
         :'user_password' => :'String',
         :'username' => :'String',
@@ -556,6 +564,10 @@ module Akeyless
 
       if attributes.key?(:'ca_cert_name')
         self.ca_cert_name = attributes[:'ca_cert_name']
+      end
+
+      if attributes.key?(:'certificate')
+        self.certificate = attributes[:'certificate']
       end
 
       if attributes.key?(:'chef_server_host_name')
@@ -860,6 +872,10 @@ module Akeyless
         self.use_gw_cloud_identity = attributes[:'use_gw_cloud_identity']
       end
 
+      if attributes.key?(:'use_tls')
+        self.use_tls = attributes[:'use_tls']
+      end
+
       if attributes.key?(:'user_name')
         self.user_name = attributes[:'user_name']
       end
@@ -934,6 +950,7 @@ module Akeyless
           azure_tenant_id == o.azure_tenant_id &&
           ca_cert_data == o.ca_cert_data &&
           ca_cert_name == o.ca_cert_name &&
+          certificate == o.certificate &&
           chef_server_host_name == o.chef_server_host_name &&
           chef_server_key == o.chef_server_key &&
           chef_server_port == o.chef_server_port &&
@@ -1009,6 +1026,7 @@ module Akeyless
           tenant_url == o.tenant_url &&
           url == o.url &&
           use_gw_cloud_identity == o.use_gw_cloud_identity &&
+          use_tls == o.use_tls &&
           user_name == o.user_name &&
           user_password == o.user_password &&
           username == o.username &&
@@ -1029,7 +1047,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [administrative_port, app_private_key, artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, auth_flow, authorization_port, aws_access_key_id, aws_region, aws_secret_access_key, aws_session_token, azure_client_id, azure_client_secret, azure_resource_group_name, azure_resource_name, azure_subscription_id, azure_tenant_id, ca_cert_data, ca_cert_name, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, client_id, client_secret, db_host_name, db_name, db_port, db_private_key, db_private_key_passphrase, db_pwd, db_server_certificates, db_server_name, db_user_name, eks_access_key_id, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, gcp_service_account_email, gcp_service_account_key, gcp_service_account_key_base64, github_app_id, github_app_private_key, github_base_url, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, host, hostname, hosts, implementation_type, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_uri_connection, mongodb_uri_options, mongodb_username, password, payload, ping_url, port, private_key, private_key_password, privileged_user, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, security_token, sf_account, ssl_connection_certificate, ssl_connection_mode, tenant_url, url, use_gw_cloud_identity, user_name, user_password, username, venafi_api_key, venafi_base_url, venafi_tpp_password, venafi_tpp_username, venafi_use_tpp, venafi_zone].hash
+      [administrative_port, app_private_key, artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, auth_flow, authorization_port, aws_access_key_id, aws_region, aws_secret_access_key, aws_session_token, azure_client_id, azure_client_secret, azure_resource_group_name, azure_resource_name, azure_subscription_id, azure_tenant_id, ca_cert_data, ca_cert_name, certificate, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, client_id, client_secret, db_host_name, db_name, db_port, db_private_key, db_private_key_passphrase, db_pwd, db_server_certificates, db_server_name, db_user_name, eks_access_key_id, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, gcp_service_account_email, gcp_service_account_key, gcp_service_account_key_base64, github_app_id, github_app_private_key, github_base_url, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, host, hostname, hosts, implementation_type, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_uri_connection, mongodb_uri_options, mongodb_username, password, payload, ping_url, port, private_key, private_key_password, privileged_user, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, security_token, sf_account, ssl_connection_certificate, ssl_connection_mode, tenant_url, url, use_gw_cloud_identity, use_tls, user_name, user_password, username, venafi_api_key, venafi_base_url, venafi_tpp_password, venafi_tpp_username, venafi_use_tpp, venafi_zone].hash
     end
 
     # Builds the object from hash

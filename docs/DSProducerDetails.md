@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **access_token_manager_id** | **String** |  | [optional] |
+| **acl_rules** | **Array&lt;String&gt;** |  | [optional] |
 | **active** | **Boolean** |  | [optional] |
 | **admin_name** | **String** |  | [optional] |
 | **admin_pwd** | **String** |  | [optional] |
@@ -215,6 +216,7 @@ require 'akeyless'
 
 instance = Akeyless::DSProducerDetails.new(
   access_token_manager_id: null,
+  acl_rules: null,
   active: null,
   admin_name: null,
   admin_pwd: null,

@@ -15,7 +15,7 @@
 | **redshift_port** | **String** | Redshift Port | [optional][default to &#39;5439&#39;] |
 | **redshift_username** | **String** | Redshift Username | [optional] |
 | **secure_access_enable** | **String** | Enable/Disable secure remote access [true/false] | [optional] |
-| **secure_access_host** | **Array&lt;String&gt;** | Target DB servers for connections | [optional] |
+| **secure_access_host** | **Array&lt;String&gt;** | Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts) | [optional] |
 | **ssl** | **Boolean** | Enable/Disable SSL [true/false] | [optional][default to false] |
 | **tags** | **Array&lt;String&gt;** | Add tags attached to this object | [optional] |
 | **target_name** | **String** | Target name | [optional] |

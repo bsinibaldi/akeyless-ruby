@@ -4,16 +4,18 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **certificate** | **String** | SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA) | [optional] |
 | **description** | **String** | Description of the object | [optional] |
-| **hostname** | **String** | Server hostname | [optional] |
+| **hostname** | **String** | Server hostname |  |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
 | **name** | **String** | Target name |  |
-| **password** | **String** | The privileged user password | [optional] |
-| **port** | **String** | Server WinRM HTTPS port | [optional][default to &#39;5986&#39;] |
+| **password** | **String** | Privileged user password |  |
+| **port** | **String** | Server WinRM port | [optional][default to &#39;5986&#39;] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
-| **username** | **String** | Privileged username | [optional] |
+| **use_tls** | **String** | Enable/Disable TLS for WinRM over HTTPS [true/false] | [optional][default to &#39;true&#39;] |
+| **username** | **String** | Privileged username |  |
 
 ## Example
 
@@ -21,6 +23,7 @@
 require 'akeyless'
 
 instance = Akeyless::CreateWindowsTarget.new(
+  certificate: null,
   description: null,
   hostname: null,
   json: null,
@@ -30,6 +33,7 @@ instance = Akeyless::CreateWindowsTarget.new(
   port: null,
   token: null,
   uid_token: null,
+  use_tls: null,
   username: null
 )
 ```

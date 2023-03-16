@@ -21,6 +21,8 @@ module Akeyless
 
     attr_accessor :auto_rotate
 
+    attr_accessor :bastion_details
+
     attr_accessor :cert_issuer_signer_key_name
 
     attr_accessor :certificate_issue_details
@@ -98,6 +100,7 @@ module Akeyless
         :'access_date' => :'access_date',
         :'access_request_status' => :'access_request_status',
         :'auto_rotate' => :'auto_rotate',
+        :'bastion_details' => :'bastion_details',
         :'cert_issuer_signer_key_name' => :'cert_issuer_signer_key_name',
         :'certificate_issue_details' => :'certificate_issue_details',
         :'certificates' => :'certificates',
@@ -147,6 +150,7 @@ module Akeyless
         :'access_date' => :'Time',
         :'access_request_status' => :'String',
         :'auto_rotate' => :'Boolean',
+        :'bastion_details' => :'BastionsList',
         :'cert_issuer_signer_key_name' => :'String',
         :'certificate_issue_details' => :'CertificateIssueInfo',
         :'certificates' => :'String',
@@ -216,6 +220,10 @@ module Akeyless
 
       if attributes.key?(:'auto_rotate')
         self.auto_rotate = attributes[:'auto_rotate']
+      end
+
+      if attributes.key?(:'bastion_details')
+        self.bastion_details = attributes[:'bastion_details']
       end
 
       if attributes.key?(:'cert_issuer_signer_key_name')
@@ -392,6 +400,7 @@ module Akeyless
           access_date == o.access_date &&
           access_request_status == o.access_request_status &&
           auto_rotate == o.auto_rotate &&
+          bastion_details == o.bastion_details &&
           cert_issuer_signer_key_name == o.cert_issuer_signer_key_name &&
           certificate_issue_details == o.certificate_issue_details &&
           certificates == o.certificates &&
@@ -438,7 +447,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_date, access_request_status, auto_rotate, cert_issuer_signer_key_name, certificate_issue_details, certificates, client_permissions, creation_date, customer_fragment_id, delete_protection, deletion_date, display_id, gateway_details, is_access_request_enabled, is_enabled, item_accessibility, item_general_info, item_id, item_metadata, item_name, item_size, item_state, item_sub_type, item_tags, item_targets_assoc, item_type, item_versions, last_version, linked_details, modification_date, next_rotation_date, protection_key_name, protection_key_type, public_value, rotation_interval, shared_by, target_versions, with_customer_fragment].hash
+      [access_date, access_request_status, auto_rotate, bastion_details, cert_issuer_signer_key_name, certificate_issue_details, certificates, client_permissions, creation_date, customer_fragment_id, delete_protection, deletion_date, display_id, gateway_details, is_access_request_enabled, is_enabled, item_accessibility, item_general_info, item_id, item_metadata, item_name, item_size, item_state, item_sub_type, item_tags, item_targets_assoc, item_type, item_versions, last_version, linked_details, modification_date, next_rotation_date, protection_key_name, protection_key_type, public_value, rotation_interval, shared_by, target_versions, with_customer_fragment].hash
     end
 
     # Builds the object from hash

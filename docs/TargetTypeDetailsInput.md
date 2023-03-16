@@ -23,6 +23,7 @@
 | **azure_tenant_id** | **String** |  | [optional] |
 | **ca_cert_data** | **Array&lt;Integer&gt;** | CACertData is the rsa 4096 certificate data in PEM format | [optional] |
 | **ca_cert_name** | **String** | CACertName is the name of the certificate in SalesForce tenant | [optional] |
+| **certificate** | **String** |  | [optional] |
 | **chef_server_host_name** | **String** |  | [optional] |
 | **chef_server_key** | **String** |  | [optional] |
 | **chef_server_port** | **String** |  | [optional] |
@@ -98,6 +99,7 @@
 | **tenant_url** | **String** |  | [optional] |
 | **url** | **String** |  | [optional] |
 | **use_gw_cloud_identity** | **Boolean** |  | [optional] |
+| **use_tls** | **Boolean** |  | [optional] |
 | **user_name** | **String** |  | [optional] |
 | **user_password** | **String** |  | [optional] |
 | **username** | **String** |  | [optional] |
@@ -133,6 +135,7 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   azure_tenant_id: null,
   ca_cert_data: null,
   ca_cert_name: null,
+  certificate: null,
   chef_server_host_name: null,
   chef_server_key: null,
   chef_server_port: null,
@@ -208,6 +211,7 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   tenant_url: null,
   url: null,
   use_gw_cloud_identity: null,
+  use_tls: null,
   user_name: null,
   user_password: null,
   username: null,
