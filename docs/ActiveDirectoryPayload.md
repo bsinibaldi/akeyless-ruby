@@ -17,8 +17,11 @@
 | **local_users_ignore_list** | **Hash&lt;String, Boolean&gt;** |  | [optional] |
 | **local_users_rotated_secrets_path_template** | **String** |  | [optional] |
 | **ssh_port** | **String** |  | [optional] |
+| **targets_type** | **String** |  | [optional] |
 | **user_base_dn** | **String** |  | [optional] |
 | **user_groups** | **Array&lt;String&gt;** |  | [optional] |
+| **winrm_over_http** | **Boolean** |  | [optional] |
+| **winrm_port** | **String** |  | [optional] |
 
 ## Example
 
@@ -39,8 +42,11 @@ instance = Akeyless::ActiveDirectoryPayload.new(
   local_users_ignore_list: null,
   local_users_rotated_secrets_path_template: null,
   ssh_port: null,
+  targets_type: null,
   user_base_dn: null,
-  user_groups: null
+  user_groups: null,
+  winrm_over_http: null,
+  winrm_port: null
 )
 ```
 

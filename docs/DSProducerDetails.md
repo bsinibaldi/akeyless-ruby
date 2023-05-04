@@ -188,6 +188,7 @@
 | **tags** | **Array&lt;String&gt;** |  | [optional] |
 | **timeout_seconds** | **Integer** |  | [optional] |
 | **use_gw_cloud_identity** | **Boolean** |  | [optional] |
+| **use_gw_service_account** | **Boolean** |  | [optional] |
 | **user_name** | **String** |  | [optional] |
 | **user_password** | **String** |  | [optional] |
 | **user_principal_name** | **String** |  | [optional] |
@@ -399,6 +400,7 @@ instance = Akeyless::DSProducerDetails.new(
   tags: null,
   timeout_seconds: null,
   use_gw_cloud_identity: null,
+  use_gw_service_account: null,
   user_name: null,
   user_password: null,
   user_principal_name: null,

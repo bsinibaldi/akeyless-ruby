@@ -36,6 +36,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_gcp_target**](V2Api.md#create_gcp_target) | **POST** /create-gcp-target |  |
 | [**create_github_target**](V2Api.md#create_github_target) | **POST** /create-github-target |  |
 | [**create_gke_target**](V2Api.md#create_gke_target) | **POST** /create-gke-target |  |
+| [**create_global_sign_target**](V2Api.md#create_global_sign_target) | **POST** /create-globalsign-target |  |
 | [**create_key**](V2Api.md#create_key) | **POST** /create-key |  |
 | [**create_linked_target**](V2Api.md#create_linked_target) | **POST** /create-linked-target |  |
 | [**create_native_k8_s_target**](V2Api.md#create_native_k8_s_target) | **POST** /create-k8s-target |  |
@@ -51,6 +52,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_tokenizer**](V2Api.md#create_tokenizer) | **POST** /create-tokenizer |  |
 | [**create_web_target**](V2Api.md#create_web_target) | **POST** /create-web-target |  |
 | [**create_windows_target**](V2Api.md#create_windows_target) | **POST** /create-windows-target |  |
+| [**create_zero_ssl_target**](V2Api.md#create_zero_ssl_target) | **POST** /create-zerossl-target |  |
 | [**createldap_target**](V2Api.md#createldap_target) | **POST** /create-ldap-target |  |
 | [**decrypt**](V2Api.md#decrypt) | **POST** /decrypt |  |
 | [**decrypt_gpg**](V2Api.md#decrypt_gpg) | **POST** /decrypt-gpg |  |
@@ -59,6 +61,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**delete_auth_method**](V2Api.md#delete_auth_method) | **POST** /delete-auth-method |  |
 | [**delete_auth_methods**](V2Api.md#delete_auth_methods) | **POST** /delete-auth-methods |  |
 | [**delete_event_forwarder**](V2Api.md#delete_event_forwarder) | **POST** /delete-event-forwarder |  |
+| [**delete_gateway_allowed_access_id**](V2Api.md#delete_gateway_allowed_access_id) | **POST** /gateway-delete-allowed-management-access |  |
 | [**delete_item**](V2Api.md#delete_item) | **POST** /delete-item |  |
 | [**delete_items**](V2Api.md#delete_items) | **POST** /delete-items |  |
 | [**delete_role**](V2Api.md#delete_role) | **POST** /delete-role |  |
@@ -109,7 +112,6 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_create_producer_redis**](V2Api.md#gateway_create_producer_redis) | **POST** /gateway-create-producer-Redis |  |
 | [**gateway_create_producer_redshift**](V2Api.md#gateway_create_producer_redshift) | **POST** /gateway-create-producer-redshift |  |
 | [**gateway_create_producer_snowflake**](V2Api.md#gateway_create_producer_snowflake) | **POST** /gateway-create-producer-snowflake |  |
-| [**gateway_delete_allowed_management_access**](V2Api.md#gateway_delete_allowed_management_access) | **POST** /gateway-delete-allowed-management-access |  |
 | [**gateway_delete_k8_s_auth_config**](V2Api.md#gateway_delete_k8_s_auth_config) | **POST** /gateway-delete-k8s-auth-config |  |
 | [**gateway_delete_migration**](V2Api.md#gateway_delete_migration) | **POST** /gateway-delete-migration |  |
 | [**gateway_delete_producer**](V2Api.md#gateway_delete_producer) | **POST** /gateway-delete-producer |  |
@@ -120,9 +122,9 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_get_migration**](V2Api.md#gateway_get_migration) | **POST** /gateway-get-migration |  |
 | [**gateway_get_producer**](V2Api.md#gateway_get_producer) | **POST** /gateway-get-producer |  |
 | [**gateway_get_tmp_users**](V2Api.md#gateway_get_tmp_users) | **POST** /gateway-get-producer-tmp-creds |  |
-| [**gateway_list_allowed_management_access**](V2Api.md#gateway_list_allowed_management_access) | **POST** /gateway-list-allowed-management-access |  |
 | [**gateway_list_migration**](V2Api.md#gateway_list_migration) | **POST** /gateway-list-migration |  |
 | [**gateway_list_producers**](V2Api.md#gateway_list_producers) | **POST** /gateway-list-producers |  |
+| [**gateway_list_rotated_secrets**](V2Api.md#gateway_list_rotated_secrets) | **POST** /gateway-list-rotated-secrets |  |
 | [**gateway_migrate_personal_items**](V2Api.md#gateway_migrate_personal_items) | **POST** /gateway-migrate-personal-items |  |
 | [**gateway_revoke_tmp_users**](V2Api.md#gateway_revoke_tmp_users) | **POST** /gateway-revoke-producer-tmp-creds |  |
 | [**gateway_start_producer**](V2Api.md#gateway_start_producer) | **POST** /gateway-start-producer |  |
@@ -176,6 +178,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**get_tags**](V2Api.md#get_tags) | **POST** /get-tags |  |
 | [**get_target**](V2Api.md#get_target) | **POST** /get-target |  |
 | [**get_target_details**](V2Api.md#get_target_details) | **POST** /get-target-details |  |
+| [**hmac**](V2Api.md#hmac) | **POST** /hmac |  |
 | [**import_passwords**](V2Api.md#import_passwords) | **POST** /import-passwords |  |
 | [**kmip_client_delete_rule**](V2Api.md#kmip_client_delete_rule) | **POST** /kmip-client-delete-rule |  |
 | [**kmip_client_set_rule**](V2Api.md#kmip_client_set_rule) | **POST** /kmip-client-set-rule |  |
@@ -246,6 +249,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_gcp_target**](V2Api.md#update_gcp_target) | **POST** /update-gcp-target |  |
 | [**update_github_target**](V2Api.md#update_github_target) | **POST** /update-github-target |  |
 | [**update_gke_target**](V2Api.md#update_gke_target) | **POST** /update-gke-target |  |
+| [**update_global_sign_target**](V2Api.md#update_global_sign_target) | **POST** /update-globalsign-target |  |
 | [**update_item**](V2Api.md#update_item) | **POST** /update-item |  |
 | [**update_ldap_target**](V2Api.md#update_ldap_target) | **POST** /update-ldap-target |  |
 | [**update_ldap_target_details**](V2Api.md#update_ldap_target_details) | **POST** /update-ldap-target-details |  |
@@ -269,6 +273,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_web_target**](V2Api.md#update_web_target) | **POST** /update-web-target |  |
 | [**update_web_target_details**](V2Api.md#update_web_target_details) | **POST** /update-web-target-details |  |
 | [**update_windows_target**](V2Api.md#update_windows_target) | **POST** /update-windows-target |  |
+| [**update_zero_ssl_target**](V2Api.md#update_zero_ssl_target) | **POST** /update-zerossl-target |  |
 | [**upload_rsa**](V2Api.md#upload_rsa) | **POST** /upload-rsa |  |
 | [**validate_token**](V2Api.md#validate_token) | **POST** /validate-token |  |
 | [**verify_gpg**](V2Api.md#verify_gpg) | **POST** /verify-gpg |  |
@@ -2261,6 +2266,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## create_global_sign_target
+
+> <CreateGlobalSignTargetOutput> create_global_sign_target(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateGlobalSignTarget.new({contact_email: 'contact_email_example', contact_first_name: 'contact_first_name_example', contact_last_name: 'contact_last_name_example', contact_phone: 'contact_phone_example', name: 'name_example', password: 'password_example', profile_id: 'profile_id_example', username: 'username_example'}) # CreateGlobalSignTarget | 
+
+begin
+  
+  result = api_instance.create_global_sign_target(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_global_sign_target: #{e}"
+end
+```
+
+#### Using the create_global_sign_target_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateGlobalSignTargetOutput>, Integer, Hash)> create_global_sign_target_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_global_sign_target_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateGlobalSignTargetOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_global_sign_target_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateGlobalSignTarget**](CreateGlobalSignTarget.md) |  |  |
+
+### Return type
+
+[**CreateGlobalSignTargetOutput**](CreateGlobalSignTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_key
 
 > <CreateKeyOutput> create_key(body)
@@ -3191,6 +3258,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## create_zero_ssl_target
+
+> <CreateZeroSSLTargetOutput> create_zero_ssl_target(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateZeroSSLTarget.new({api_key: 'api_key_example', imap_fqdn: 'imap_fqdn_example', imap_password: 'imap_password_example', imap_username: 'imap_username_example', name: 'name_example'}) # CreateZeroSSLTarget | 
+
+begin
+  
+  result = api_instance.create_zero_ssl_target(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_zero_ssl_target: #{e}"
+end
+```
+
+#### Using the create_zero_ssl_target_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateZeroSSLTargetOutput>, Integer, Hash)> create_zero_ssl_target_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_zero_ssl_target_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateZeroSSLTargetOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_zero_ssl_target_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateZeroSSLTarget**](CreateZeroSSLTarget.md) |  |  |
+
+### Return type
+
+[**CreateZeroSSLTargetOutput**](CreateZeroSSLTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## createldap_target
 
 > <CreateLdapTargetOutput> createldap_target(body)
@@ -3672,6 +3801,68 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **body** | [**DeleteEventForwarder**](DeleteEventForwarder.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## delete_gateway_allowed_access_id
+
+> Object delete_gateway_allowed_access_id(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::DeleteGatewayAllowedAccessId.new({access_id: 'access_id_example', cluster_name: 'cluster_name_example'}) # DeleteGatewayAllowedAccessId | 
+
+begin
+  
+  result = api_instance.delete_gateway_allowed_access_id(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->delete_gateway_allowed_access_id: #{e}"
+end
+```
+
+#### Using the delete_gateway_allowed_access_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> delete_gateway_allowed_access_id_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_gateway_allowed_access_id_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->delete_gateway_allowed_access_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**DeleteGatewayAllowedAccessId**](DeleteGatewayAllowedAccessId.md) |  |  |
 
 ### Return type
 
@@ -6786,68 +6977,6 @@ No authorization required
 - **Accept**: application/json
 
 
-## gateway_delete_allowed_management_access
-
-> Object gateway_delete_allowed_management_access(body)
-
-
-
-### Examples
-
-```ruby
-require 'time'
-require 'akeyless'
-
-api_instance = Akeyless::V2Api.new
-body = Akeyless::GatewayDeleteAllowedManagementAccess.new({sub_admin_id: 'sub_admin_id_example'}) # GatewayDeleteAllowedManagementAccess | 
-
-begin
-  
-  result = api_instance.gateway_delete_allowed_management_access(body)
-  p result
-rescue Akeyless::ApiError => e
-  puts "Error when calling V2Api->gateway_delete_allowed_management_access: #{e}"
-end
-```
-
-#### Using the gateway_delete_allowed_management_access_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(Object, Integer, Hash)> gateway_delete_allowed_management_access_with_http_info(body)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.gateway_delete_allowed_management_access_with_http_info(body)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => Object
-rescue Akeyless::ApiError => e
-  puts "Error when calling V2Api->gateway_delete_allowed_management_access_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **body** | [**GatewayDeleteAllowedManagementAccess**](GatewayDeleteAllowedManagementAccess.md) |  |  |
-
-### Return type
-
-**Object**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## gateway_delete_k8_s_auth_config
 
 > <GatewayDeleteK8SAuthConfigOutput> gateway_delete_k8_s_auth_config(body)
@@ -7468,68 +7597,6 @@ No authorization required
 - **Accept**: application/json
 
 
-## gateway_list_allowed_management_access
-
-> <GetSubAdminsListReplyObj> gateway_list_allowed_management_access(body)
-
-
-
-### Examples
-
-```ruby
-require 'time'
-require 'akeyless'
-
-api_instance = Akeyless::V2Api.new
-body = Akeyless::GatewayListAllowedManagementAccess.new # GatewayListAllowedManagementAccess | 
-
-begin
-  
-  result = api_instance.gateway_list_allowed_management_access(body)
-  p result
-rescue Akeyless::ApiError => e
-  puts "Error when calling V2Api->gateway_list_allowed_management_access: #{e}"
-end
-```
-
-#### Using the gateway_list_allowed_management_access_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GetSubAdminsListReplyObj>, Integer, Hash)> gateway_list_allowed_management_access_with_http_info(body)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.gateway_list_allowed_management_access_with_http_info(body)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GetSubAdminsListReplyObj>
-rescue Akeyless::ApiError => e
-  puts "Error when calling V2Api->gateway_list_allowed_management_access_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **body** | [**GatewayListAllowedManagementAccess**](GatewayListAllowedManagementAccess.md) |  |  |
-
-### Return type
-
-[**GetSubAdminsListReplyObj**](GetSubAdminsListReplyObj.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## gateway_list_migration
 
 > <GatewayMigrationListOutput> gateway_list_migration(body)
@@ -7643,6 +7710,68 @@ end
 ### Return type
 
 [**GetProducersListReplyObj**](GetProducersListReplyObj.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## gateway_list_rotated_secrets
+
+> <ListItemsOutput> gateway_list_rotated_secrets(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GatewayListRotatedSecrets.new # GatewayListRotatedSecrets | 
+
+begin
+  
+  result = api_instance.gateway_list_rotated_secrets(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_list_rotated_secrets: #{e}"
+end
+```
+
+#### Using the gateway_list_rotated_secrets_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListItemsOutput>, Integer, Hash)> gateway_list_rotated_secrets_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_list_rotated_secrets_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListItemsOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_list_rotated_secrets_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GatewayListRotatedSecrets**](GatewayListRotatedSecrets.md) |  |  |
+
+### Return type
+
+[**ListItemsOutput**](ListItemsOutput.md)
 
 ### Authorization
 
@@ -10928,6 +11057,68 @@ end
 ### Return type
 
 [**GetTargetDetailsOutput**](GetTargetDetailsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## hmac
+
+> <HmacOutput> hmac(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::Hmac.new({key_name: 'key_name_example'}) # Hmac | 
+
+begin
+  
+  result = api_instance.hmac(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->hmac: #{e}"
+end
+```
+
+#### Using the hmac_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<HmacOutput>, Integer, Hash)> hmac_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.hmac_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <HmacOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->hmac_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**Hmac**](Hmac.md) |  |  |
+
+### Return type
+
+[**HmacOutput**](HmacOutput.md)
 
 ### Authorization
 
@@ -15302,6 +15493,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## update_global_sign_target
+
+> <UpdateGlobalSignTargetOutput> update_global_sign_target(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateGlobalSignTarget.new({contact_email: 'contact_email_example', contact_first_name: 'contact_first_name_example', contact_last_name: 'contact_last_name_example', contact_phone: 'contact_phone_example', name: 'name_example', password: 'password_example', profile_id: 'profile_id_example', username: 'username_example'}) # UpdateGlobalSignTarget | 
+
+begin
+  
+  result = api_instance.update_global_sign_target(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_global_sign_target: #{e}"
+end
+```
+
+#### Using the update_global_sign_target_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpdateGlobalSignTargetOutput>, Integer, Hash)> update_global_sign_target_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_global_sign_target_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpdateGlobalSignTargetOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_global_sign_target_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateGlobalSignTarget**](UpdateGlobalSignTarget.md) |  |  |
+
+### Return type
+
+[**UpdateGlobalSignTargetOutput**](UpdateGlobalSignTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_item
 
 > <UpdateItemOutput> update_item(body)
@@ -16714,6 +16967,68 @@ end
 ### Return type
 
 **Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_zero_ssl_target
+
+> <UpdateZeroSSLTargetOutput> update_zero_ssl_target(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateZeroSSLTarget.new({api_key: 'api_key_example', imap_fqdn: 'imap_fqdn_example', imap_password: 'imap_password_example', imap_username: 'imap_username_example', name: 'name_example'}) # UpdateZeroSSLTarget | 
+
+begin
+  
+  result = api_instance.update_zero_ssl_target(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_zero_ssl_target: #{e}"
+end
+```
+
+#### Using the update_zero_ssl_target_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpdateZeroSSLTargetOutput>, Integer, Hash)> update_zero_ssl_target_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_zero_ssl_target_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpdateZeroSSLTargetOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_zero_ssl_target_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateZeroSSLTarget**](UpdateZeroSSLTarget.md) |  |  |
+
+### Return type
+
+[**UpdateZeroSSLTargetOutput**](UpdateZeroSSLTargetOutput.md)
 
 ### Authorization
 

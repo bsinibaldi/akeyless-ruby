@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **administrative_port** | **String** |  | [optional] |
+| **api_key** | **String** |  | [optional] |
 | **app_private_key** | **Array&lt;Integer&gt;** | params needed for jwt auth AppPrivateKey is the rsa private key in PEM format | [optional] |
 | **artifactory_admin_apikey** | **String** |  | [optional] |
 | **artifactory_admin_username** | **String** |  | [optional] |
@@ -41,12 +42,15 @@
 | **db_server_certificates** | **String** | (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set. | [optional] |
 | **db_server_name** | **String** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] |
 | **db_user_name** | **String** |  | [optional] |
+| **domain_name** | **String** |  | [optional] |
 | **eks_access_key_id** | **String** |  | [optional] |
 | **eks_cluster_ca_certificate** | **String** |  | [optional] |
 | **eks_cluster_endpoint** | **String** |  | [optional] |
 | **eks_cluster_name** | **String** |  | [optional] |
 | **eks_region** | **String** |  | [optional] |
 | **eks_secret_access_key** | **String** |  | [optional] |
+| **email** | **String** |  | [optional] |
+| **first_name** | **String** | Contact Info - GlobalSign requires this to be sent with every certificate creation request | [optional] |
 | **gcp_service_account_email** | **String** | deprecated | [optional] |
 | **gcp_service_account_key** | **String** |  | [optional] |
 | **gcp_service_account_key_base64** | **String** |  | [optional] |
@@ -61,10 +65,15 @@
 | **host** | **String** |  | [optional] |
 | **hostname** | **String** |  | [optional] |
 | **hosts** | **Hash&lt;String, String&gt;** |  | [optional] |
+| **imap_fqdn** | **String** |  | [optional] |
+| **imap_password** | **String** |  | [optional] |
+| **imap_port** | **String** |  | [optional] |
+| **imap_user** | **String** |  | [optional] |
 | **implementation_type** | **String** |  | [optional] |
 | **k8s_bearer_token** | **String** |  | [optional] |
 | **k8s_cluster_ca_certificate** | **String** |  | [optional] |
 | **k8s_cluster_endpoint** | **String** |  | [optional] |
+| **last_name** | **String** |  | [optional] |
 | **ldap_audience** | **String** |  | [optional] |
 | **ldap_bind_dn** | **String** |  | [optional] |
 | **ldap_bind_password** | **String** |  | [optional] |
@@ -84,11 +93,13 @@
 | **mongodb_username** | **String** |  | [optional] |
 | **password** | **String** |  | [optional] |
 | **payload** | **String** |  | [optional] |
+| **phone** | **String** |  | [optional] |
 | **ping_url** | **String** |  | [optional] |
 | **port** | **String** |  | [optional] |
 | **private_key** | **String** |  | [optional] |
 | **private_key_password** | **String** |  | [optional] |
 | **privileged_user** | **String** |  | [optional] |
+| **profile_id** | **String** |  | [optional] |
 | **rabbitmq_server_password** | **String** |  | [optional] |
 | **rabbitmq_server_uri** | **String** |  | [optional] |
 | **rabbitmq_server_user** | **String** |  | [optional] |
@@ -97,12 +108,15 @@
 | **ssl_connection_certificate** | **String** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] |
 | **ssl_connection_mode** | **Boolean** | (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB | [optional] |
 | **tenant_url** | **String** |  | [optional] |
+| **timeout** | **Integer** | A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years. | [optional] |
 | **url** | **String** |  | [optional] |
 | **use_gw_cloud_identity** | **Boolean** |  | [optional] |
+| **use_gw_service_account** | **Boolean** |  | [optional] |
 | **use_tls** | **Boolean** |  | [optional] |
 | **user_name** | **String** |  | [optional] |
 | **user_password** | **String** |  | [optional] |
 | **username** | **String** |  | [optional] |
+| **validation_email** | **String** |  | [optional] |
 | **venafi_api_key** | **String** |  | [optional] |
 | **venafi_base_url** | **String** |  | [optional] |
 | **venafi_tpp_password** | **String** |  | [optional] |
@@ -117,6 +131,7 @@ require 'akeyless'
 
 instance = Akeyless::TargetTypeDetailsInput.new(
   administrative_port: null,
+  api_key: null,
   app_private_key: null,
   artifactory_admin_apikey: null,
   artifactory_admin_username: null,
@@ -153,12 +168,15 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   db_server_certificates: null,
   db_server_name: null,
   db_user_name: null,
+  domain_name: null,
   eks_access_key_id: null,
   eks_cluster_ca_certificate: null,
   eks_cluster_endpoint: null,
   eks_cluster_name: null,
   eks_region: null,
   eks_secret_access_key: null,
+  email: null,
+  first_name: null,
   gcp_service_account_email: null,
   gcp_service_account_key: null,
   gcp_service_account_key_base64: null,
@@ -173,10 +191,15 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   host: null,
   hostname: null,
   hosts: null,
+  imap_fqdn: null,
+  imap_password: null,
+  imap_port: null,
+  imap_user: null,
   implementation_type: null,
   k8s_bearer_token: null,
   k8s_cluster_ca_certificate: null,
   k8s_cluster_endpoint: null,
+  last_name: null,
   ldap_audience: null,
   ldap_bind_dn: null,
   ldap_bind_password: null,
@@ -196,11 +219,13 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   mongodb_username: null,
   password: null,
   payload: null,
+  phone: null,
   ping_url: null,
   port: null,
   private_key: null,
   private_key_password: null,
   privileged_user: null,
+  profile_id: null,
   rabbitmq_server_password: null,
   rabbitmq_server_uri: null,
   rabbitmq_server_user: null,
@@ -209,12 +234,15 @@ instance = Akeyless::TargetTypeDetailsInput.new(
   ssl_connection_certificate: null,
   ssl_connection_mode: null,
   tenant_url: null,
+  timeout: null,
   url: null,
   use_gw_cloud_identity: null,
+  use_gw_service_account: null,
   use_tls: null,
   user_name: null,
   user_password: null,
   username: null,
+  validation_email: null,
   venafi_api_key: null,
   venafi_base_url: null,
   venafi_tpp_password: null,

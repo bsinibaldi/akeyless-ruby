@@ -9,9 +9,13 @@
 | **_1password_secret_key** | **String** | 1Password user secret key to connect to the API | [optional] |
 | **_1password_url** | **String** | 1Password api container url | [optional] |
 | **_1password_vaults** | **Array&lt;String&gt;** | 1Password list of vault to get the items from | [optional] |
+| **ad_ssh_port** | **String** | Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) | [optional][default to &#39;22&#39;] |
+| **ad_targets_type** | **String** | Set the target type of the domain servers [ssh/windows](Relevant only for Active Directory migration) | [optional][default to &#39;windows&#39;] |
+| **ad_winrm_over_http** | **String** | Use WinRM over HTTP, by default runs over HTTPS | [optional][default to &#39;false&#39;] |
+| **ad_winrm_port** | **String** | Set the WinRM Port for further connection to the domain servers. Default is 5986 (Relevant only for Active Directory migration) | [optional][default to &#39;5986&#39;] |
 | **ad_auto_rotate** | **String** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration) | [optional] |
 | **ad_computer_base_dn** | **String** | Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] |
-| **ad_discover_local_users** | **String** | Enable/Disable discovery of local users from each domain server and migrate them as SSH Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) | [optional] |
+| **ad_discover_local_users** | **String** | Enable/Disable discovery of local users from each domain server and migrate them as SSH/Windows Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) | [optional] |
 | **ad_domain_name** | **String** | Active Directory Domain Name (Relevant only for Active Directory migration) | [optional] |
 | **ad_domain_users_path_template** | **String** | Path location template for migrating domain users as Rotated Secrets e.g.: .../DomainUsers/{{USERNAME}} (Relevant only for Active Directory migration) | [optional] |
 | **ad_local_users_ignore** | **String** | Comma-separated list of Local Users which should not be migrated (Relevant only for Active Directory migration) | [optional] |
@@ -20,10 +24,9 @@
 | **ad_rotation_interval** | **Integer** | The number of days to wait between every automatic rotation [1-365] (Relevant only for Active Directory migration) | [optional] |
 | **ad_sra_enable_rdp** | **String** | Enable/Disable RDP Secure Remote Access for the migrated local users rotated secrets. Default is false: rotated secrets will not be created with SRA (Relevant only for Active Directory migration) | [optional] |
 | **ad_target_name** | **String** | Active Directory LDAP Target Name. Server type should be Active Directory (Relevant only for Active Directory migration) | [optional] |
-| **ad_targets_path_template** | **String** | Path location template for migrating domain servers as SSH Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration) | [optional] |
+| **ad_targets_path_template** | **String** | Path location template for migrating domain servers as SSH/Windows Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration) | [optional] |
 | **ad_user_base_dn** | **String** | Distinguished Name of User objects to search in Active Directory, e.g.: CN&#x3D;Users,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] |
 | **ad_user_groups** | **String** | Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration) | [optional] |
-| **as_ssh_port** | **String** | Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) | [optional][default to &#39;22&#39;] |
 | **aws_key** | **String** | AWS Secret Access Key (relevant only for AWS migration) | [optional] |
 | **aws_key_id** | **String** | AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/*]&#39; (relevant only for AWS migration) | [optional] |
 | **aws_region** | **String** | AWS region of the required Secrets Manager (relevant only for AWS migration) | [optional][default to &#39;us-east-2&#39;] |
@@ -64,6 +67,10 @@ instance = Akeyless::GatewayCreateMigration.new(
   _1password_secret_key: null,
   _1password_url: null,
   _1password_vaults: null,
+  ad_ssh_port: null,
+  ad_targets_type: null,
+  ad_winrm_over_http: null,
+  ad_winrm_port: null,
   ad_auto_rotate: null,
   ad_computer_base_dn: null,
   ad_discover_local_users: null,
@@ -78,7 +85,6 @@ instance = Akeyless::GatewayCreateMigration.new(
   ad_targets_path_template: null,
   ad_user_base_dn: null,
   ad_user_groups: null,
-  as_ssh_port: null,
   aws_key: null,
   aws_key_id: null,
   aws_region: null,

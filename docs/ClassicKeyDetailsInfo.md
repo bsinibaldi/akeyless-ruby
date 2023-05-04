@@ -12,6 +12,7 @@
 | **key_state** | **String** | ItemState defines the different states an Item can be in | [optional] |
 | **key_type** | **String** |  | [optional] |
 | **last_error** | **String** |  | [optional] |
+| **public_key** | **String** |  | [optional] |
 | **target_alias_helper** | **String** |  | [optional] |
 | **target_types** | **Array&lt;String&gt;** |  | [optional] |
 | **targets** | [**Array&lt;ClassicKeyTargetInfo&gt;**](ClassicKeyTargetInfo.md) |  | [optional] |
@@ -30,6 +31,7 @@ instance = Akeyless::ClassicKeyDetailsInfo.new(
   key_state: null,
   key_type: null,
   last_error: null,
+  public_key: null,
   target_alias_helper: null,
   target_types: null,
   targets: null

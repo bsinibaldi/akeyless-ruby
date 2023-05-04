@@ -31,6 +31,7 @@
 | **target_name** | **String** | Target name | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
+| **use_gw_service_account** | **Boolean** | Use the GW&#39;s service account | [optional] |
 | **user_ttl** | **String** | User TTL | [optional][default to &#39;60m&#39;] |
 
 ## Example
@@ -66,6 +67,7 @@ instance = Akeyless::GatewayUpdateProducerNativeK8S.new(
   target_name: null,
   token: null,
   uid_token: null,
+  use_gw_service_account: null,
   user_ttl: null
 )
 ```

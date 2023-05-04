@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **certificate** | **String** | SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA) | [optional] |
 | **description** | **String** | Description of the object | [optional] |
+| **domain** | **String** | User domain name | [optional] |
 | **hostname** | **String** | Server hostname |  |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **keep_prev_version** | **String** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] |
@@ -28,6 +29,7 @@ require 'akeyless'
 instance = Akeyless::UpdateWindowsTarget.new(
   certificate: null,
   description: null,
+  domain: null,
   hostname: null,
   json: null,
   keep_prev_version: null,

@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **certificate** | **String** | SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA) | [optional] |
 | **description** | **String** | Description of the object | [optional] |
+| **domain** | **String** | User domain name | [optional] |
 | **hostname** | **String** | Server hostname |  |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **key** | **String** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] |
@@ -25,6 +26,7 @@ require 'akeyless'
 instance = Akeyless::CreateWindowsTarget.new(
   certificate: null,
   description: null,
+  domain: null,
   hostname: null,
   json: null,
   key: null,

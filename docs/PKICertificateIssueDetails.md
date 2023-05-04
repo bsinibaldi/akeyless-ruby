@@ -9,10 +9,14 @@
 | **allowed_domains_list** | **Array&lt;String&gt;** |  | [optional] |
 | **allowed_uri_sans** | **Array&lt;String&gt;** |  | [optional] |
 | **basic_constraints_valid_for_non_ca** | **Boolean** |  | [optional] |
+| **certificate_authority_mode** | **String** |  | [optional] |
 | **client_flag** | **Boolean** |  | [optional] |
 | **code_signing_flag** | **Boolean** |  | [optional] |
 | **country** | **Array&lt;String&gt;** |  | [optional] |
+| **destination_path** | **String** | DestinationPath is the destination to save generated certificates | [optional] |
 | **enforce_hostnames** | **Boolean** |  | [optional] |
+| **expiration_events** | [**Array&lt;CertificateExpirationEvent&gt;**](CertificateExpirationEvent.md) | ExpirationNotification holds a list of expiration notices that should be sent in case a certificate is about to expire, this value is being propagated to the Certificate resources that are created | [optional] |
+| **gw_cluster_url** | **String** | GWClusterURL is required when CAMode is \&quot;public\&quot; and it defines the cluster URL the PKI should be issued from. The GW cluster must have permissions to read associated target&#39;s details | [optional] |
 | **is_ca** | **Boolean** |  | [optional] |
 | **key_bits** | **Integer** |  | [optional] |
 | **key_type** | **String** |  | [optional] |
@@ -22,6 +26,7 @@
 | **organization_list** | **Array&lt;String&gt;** |  | [optional] |
 | **organization_unit_list** | **Array&lt;String&gt;** |  | [optional] |
 | **postal_code** | **Array&lt;String&gt;** |  | [optional] |
+| **protect_generated_certificates** | **Boolean** | ProtectGeneratedCertificates dictates whether the created certificates should be protected from deletion | [optional] |
 | **province** | **Array&lt;String&gt;** |  | [optional] |
 | **require_cn** | **Boolean** |  | [optional] |
 | **server_flag** | **Boolean** |  | [optional] |
@@ -38,10 +43,14 @@ instance = Akeyless::PKICertificateIssueDetails.new(
   allowed_domains_list: null,
   allowed_uri_sans: null,
   basic_constraints_valid_for_non_ca: null,
+  certificate_authority_mode: null,
   client_flag: null,
   code_signing_flag: null,
   country: null,
+  destination_path: null,
   enforce_hostnames: null,
+  expiration_events: null,
+  gw_cluster_url: null,
   is_ca: null,
   key_bits: null,
   key_type: null,
@@ -51,6 +60,7 @@ instance = Akeyless::PKICertificateIssueDetails.new(
   organization_list: null,
   organization_unit_list: null,
   postal_code: null,
+  protect_generated_certificates: null,
   province: null,
   require_cn: null,
   server_flag: null,
