@@ -21,6 +21,7 @@
 | **token_exp** | **Integer** | Time in seconds of expiration of the Akeyless Kube Auth Method token | [optional][default to 300] |
 | **token_reviewer_jwt** | **String** | A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs (relevant for \&quot;native_k8s\&quot; only). If not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API. | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
+| **use_gw_service_account** | **Boolean** | Use the GW&#39;s service account | [optional] |
 
 ## Example
 
@@ -44,7 +45,8 @@ instance = Akeyless::GatewayUpdateK8SAuthConfig.new(
   token: null,
   token_exp: null,
   token_reviewer_jwt: null,
-  uid_token: null
+  uid_token: null,
+  use_gw_service_account: null
 )
 ```
 

@@ -57,7 +57,7 @@ module Akeyless
     # RancherClusterId cluster id as define in rancher (in case of clusterApiTypeRancher)
     attr_accessor :rancher_cluster_id
 
-    # UseLocalCAJwt is an optional parameter to set defaulting to using the local CA cert and service account jwt when running in a Kubernetes pod
+    # UseLocalCAJwt is an optional parameter to set defaulting to using the local service account when running in a Kubernetes pod
     attr_accessor :use_local_ca_jwt
 
     # Attribute mapping from ruby-style variable name to JSON key.

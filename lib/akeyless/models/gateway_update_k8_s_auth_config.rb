@@ -67,6 +67,9 @@ module Akeyless
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
 
+    # Use the GW's service account
+    attr_accessor :use_gw_service_account
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -86,7 +89,8 @@ module Akeyless
         :'token' => :'token',
         :'token_exp' => :'token-exp',
         :'token_reviewer_jwt' => :'token-reviewer-jwt',
-        :'uid_token' => :'uid-token'
+        :'uid_token' => :'uid-token',
+        :'use_gw_service_account' => :'use-gw-service-account'
       }
     end
 
@@ -114,7 +118,8 @@ module Akeyless
         :'token' => :'String',
         :'token_exp' => :'Integer',
         :'token_reviewer_jwt' => :'String',
-        :'uid_token' => :'String'
+        :'uid_token' => :'String',
+        :'use_gw_service_account' => :'Boolean'
       }
     end
 
@@ -214,6 +219,10 @@ module Akeyless
       if attributes.key?(:'uid_token')
         self.uid_token = attributes[:'uid_token']
       end
+
+      if attributes.key?(:'use_gw_service_account')
+        self.use_gw_service_account = attributes[:'use_gw_service_account']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -275,7 +284,8 @@ module Akeyless
           token == o.token &&
           token_exp == o.token_exp &&
           token_reviewer_jwt == o.token_reviewer_jwt &&
-          uid_token == o.uid_token
+          uid_token == o.uid_token &&
+          use_gw_service_account == o.use_gw_service_account
     end
 
     # @see the `==` method
@@ -287,7 +297,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_id, cluster_api_type, config_encryption_key_name, disable_issuer_validation, json, k8s_ca_cert, k8s_host, k8s_issuer, name, new_name, rancher_api_key, rancher_cluster_id, signing_key, token, token_exp, token_reviewer_jwt, uid_token].hash
+      [access_id, cluster_api_type, config_encryption_key_name, disable_issuer_validation, json, k8s_ca_cert, k8s_host, k8s_issuer, name, new_name, rancher_api_key, rancher_cluster_id, signing_key, token, token_exp, token_reviewer_jwt, uid_token, use_gw_service_account].hash
     end
 
     # Builds the object from hash
