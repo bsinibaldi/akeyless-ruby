@@ -62,6 +62,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**delete_auth_methods**](V2Api.md#delete_auth_methods) | **POST** /delete-auth-methods |  |
 | [**delete_event_forwarder**](V2Api.md#delete_event_forwarder) | **POST** /delete-event-forwarder |  |
 | [**delete_gateway_allowed_access_id**](V2Api.md#delete_gateway_allowed_access_id) | **POST** /gateway-delete-allowed-management-access |  |
+| [**delete_gw_cluster**](V2Api.md#delete_gw_cluster) | **POST** /delete-gateway-cluster |  |
 | [**delete_item**](V2Api.md#delete_item) | **POST** /delete-item |  |
 | [**delete_items**](V2Api.md#delete_items) | **POST** /delete-items |  |
 | [**delete_role**](V2Api.md#delete_role) | **POST** /delete-role |  |
@@ -3878,6 +3879,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## delete_gw_cluster
+
+> Object delete_gw_cluster(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::DeleteGwCluster.new({cluster_name: 'cluster_name_example'}) # DeleteGwCluster | 
+
+begin
+  
+  result = api_instance.delete_gw_cluster(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->delete_gw_cluster: #{e}"
+end
+```
+
+#### Using the delete_gw_cluster_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> delete_gw_cluster_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_gw_cluster_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->delete_gw_cluster_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**DeleteGwCluster**](DeleteGwCluster.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## delete_item
 
 > <DeleteItemOutput> delete_item(body)
@@ -5376,7 +5439,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::GatewayCreateMigration.new({name: 'name_example', target_location: 'target_location_example'}) # GatewayCreateMigration | 
+body = Akeyless::GatewayCreateMigration.new({name: 'name_example', si_target_name: 'si_target_name_example', si_users_path_template: 'si_users_path_template_example', target_location: 'target_location_example'}) # GatewayCreateMigration | 
 
 begin
   
@@ -8355,7 +8418,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::GatewayUpdateMigration.new({target_location: 'target_location_example'}) # GatewayUpdateMigration | 
+body = Akeyless::GatewayUpdateMigration.new({si_target_name: 'si_target_name_example', si_users_path_template: 'si_users_path_template_example', target_location: 'target_location_example'}) # GatewayUpdateMigration | 
 
 begin
   

@@ -26,7 +26,7 @@
 | **ad_target_name** | **String** | Active Directory LDAP Target Name. Server type should be Active Directory (Relevant only for Active Directory migration) | [optional] |
 | **ad_targets_path_template** | **String** | Path location template for migrating domain servers as SSH/Windows Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration) | [optional] |
 | **ad_user_base_dn** | **String** | Distinguished Name of User objects to search in Active Directory, e.g.: CN&#x3D;Users,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] |
-| **ad_user_groups** | **String** | Comma-separated list of domain groups from which privileged domain users will be migrated (Relevant only for Active Directory migration) | [optional] |
+| **ad_user_groups** | **String** | Comma-separated list of domain groups from which privileged domain users will be migrated. If empty, migrate all users based on the --ad-user-base-dn (Relevant only for Active Directory migration) | [optional] |
 | **aws_key** | **String** | AWS Secret Access Key (relevant only for AWS migration) | [optional] |
 | **aws_key_id** | **String** | AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/*]&#39; (relevant only for AWS migration) | [optional] |
 | **aws_region** | **String** | AWS region of the required Secrets Manager (relevant only for AWS migration) | [optional][default to &#39;us-east-2&#39;] |
@@ -53,6 +53,13 @@
 | **name** | **String** | Migration name | [optional] |
 | **new_name** | **String** | New migration name | [optional] |
 | **protection_key** | **String** | The name of the key that protects the classic key value (if empty, the account default key will be used) | [optional] |
+| **si_auto_rotate** | **String** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --si-rotation-interval and --si-rotation-hour parameters (Relevant only for Server Inventory migration) | [optional] |
+| **si_rotation_hour** | **Integer** | The hour of the scheduled rotation in UTC (Relevant only for Server Inventory migration) | [optional] |
+| **si_rotation_interval** | **Integer** | The number of days to wait between every automatic rotation [1-365] (Relevant only for Server Inventory migration) | [optional] |
+| **si_sra_enable_rdp** | **String** | Enable/Disable RDP Secure Remote Access for the migrated local users rotated secrets. Default is false: rotated secrets will not be created with SRA (Relevant only for Server Inventory migration) | [optional][default to &#39;false&#39;] |
+| **si_target_name** | **String** | SSH, Windows or Linked Target Name. (Relevant only for Server Inventory migration) |  |
+| **si_users_ignore** | **String** | Comma-separated list of Local Users which should not be migrated (Relevant only for Server Inventory migration) | [optional] |
+| **si_users_path_template** | **String** | Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration) |  |
 | **target_location** | **String** | Target location in Akeyless for imported secrets |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
@@ -112,6 +119,13 @@ instance = Akeyless::GatewayUpdateMigration.new(
   name: null,
   new_name: null,
   protection_key: null,
+  si_auto_rotate: null,
+  si_rotation_hour: null,
+  si_rotation_interval: null,
+  si_sra_enable_rdp: null,
+  si_target_name: null,
+  si_users_ignore: null,
+  si_users_path_template: null,
   target_location: null,
   token: null,
   uid_token: null

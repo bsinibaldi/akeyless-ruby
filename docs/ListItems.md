@@ -10,6 +10,7 @@
 | **minimal_view** | **Boolean** |  | [optional] |
 | **pagination_token** | **String** | Next page reference | [optional] |
 | **path** | **String** | Path to folder | [optional] |
+| **sra_only** | **Boolean** | Filter by items with SRA functionality enabled | [optional][default to false] |
 | **sub_types** | **Array&lt;String&gt;** |  | [optional] |
 | **tag** | **String** | Filter by item tag | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
@@ -28,6 +29,7 @@ instance = Akeyless::ListItems.new(
   minimal_view: null,
   pagination_token: null,
   path: null,
+  sra_only: null,
   sub_types: null,
   tag: null,
   token: null,

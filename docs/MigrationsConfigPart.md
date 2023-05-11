@@ -12,6 +12,7 @@
 | **k8s_migrations** | [**Array&lt;K8SMigration&gt;**](K8SMigration.md) |  | [optional] |
 | **mock_migrations** | [**Array&lt;MockMigration&gt;**](MockMigration.md) |  | [optional] |
 | **one_password_migrations** | [**Array&lt;OnePasswordMigration&gt;**](OnePasswordMigration.md) |  | [optional] |
+| **server_inventory_migrations** | [**Array&lt;ServerInventoryMigration&gt;**](ServerInventoryMigration.md) |  | [optional] |
 
 ## Example
 
@@ -26,7 +27,8 @@ instance = Akeyless::MigrationsConfigPart.new(
   hashi_migrations: null,
   k8s_migrations: null,
   mock_migrations: null,
-  one_password_migrations: null
+  one_password_migrations: null,
+  server_inventory_migrations: null
 )
 ```
 
