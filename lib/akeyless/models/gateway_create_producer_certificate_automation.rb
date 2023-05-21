@@ -70,20 +70,23 @@ module Akeyless
     # User TTL in time.Duration format (2160h / 129600m / etc...). When using sign-using-akeyless-pki certificates created will have this validity period, otherwise the user-ttl is taken from the Validity Period field of the Zone's' Issuing Template. When using cert-manager it is advised to have a TTL of above 60 days (1440h). For more information - https://cert-manager.io/docs/usage/certificate/
     attr_accessor :user_ttl
 
+    # Venafi Access Token to use to access the TPP environment (Relevant when using TPP)
+    attr_accessor :venafi_access_token
+
     # Venafi API key
     attr_accessor :venafi_api_key
 
     # Venafi Baseurl
     attr_accessor :venafi_baseurl
 
-    # Venafi Password
-    attr_accessor :venafi_password
+    # Venafi Client ID that was used when the access token was generated
+    attr_accessor :venafi_client_id
+
+    # Venafi Refresh Token to use when the Access Token is expired (Relevant when using TPP)
+    attr_accessor :venafi_refresh_token
 
     # Venafi using TPP
     attr_accessor :venafi_use_tpp
-
-    # Venafi Username
-    attr_accessor :venafi_username
 
     # Venafi Zone
     attr_accessor :venafi_zone
@@ -109,11 +112,12 @@ module Akeyless
         :'token' => :'token',
         :'uid_token' => :'uid-token',
         :'user_ttl' => :'user-ttl',
+        :'venafi_access_token' => :'venafi-access-token',
         :'venafi_api_key' => :'venafi-api-key',
         :'venafi_baseurl' => :'venafi-baseurl',
-        :'venafi_password' => :'venafi-password',
+        :'venafi_client_id' => :'venafi-client-id',
+        :'venafi_refresh_token' => :'venafi-refresh-token',
         :'venafi_use_tpp' => :'venafi-use-tpp',
-        :'venafi_username' => :'venafi-username',
         :'venafi_zone' => :'venafi-zone'
       }
     end
@@ -144,11 +148,12 @@ module Akeyless
         :'token' => :'String',
         :'uid_token' => :'String',
         :'user_ttl' => :'String',
+        :'venafi_access_token' => :'String',
         :'venafi_api_key' => :'String',
         :'venafi_baseurl' => :'String',
-        :'venafi_password' => :'String',
+        :'venafi_client_id' => :'String',
+        :'venafi_refresh_token' => :'String',
         :'venafi_use_tpp' => :'Boolean',
-        :'venafi_username' => :'String',
         :'venafi_zone' => :'String'
       }
     end
@@ -258,6 +263,10 @@ module Akeyless
         self.user_ttl = '2160h'
       end
 
+      if attributes.key?(:'venafi_access_token')
+        self.venafi_access_token = attributes[:'venafi_access_token']
+      end
+
       if attributes.key?(:'venafi_api_key')
         self.venafi_api_key = attributes[:'venafi_api_key']
       end
@@ -266,16 +275,18 @@ module Akeyless
         self.venafi_baseurl = attributes[:'venafi_baseurl']
       end
 
-      if attributes.key?(:'venafi_password')
-        self.venafi_password = attributes[:'venafi_password']
+      if attributes.key?(:'venafi_client_id')
+        self.venafi_client_id = attributes[:'venafi_client_id']
+      else
+        self.venafi_client_id = 'akeyless'
+      end
+
+      if attributes.key?(:'venafi_refresh_token')
+        self.venafi_refresh_token = attributes[:'venafi_refresh_token']
       end
 
       if attributes.key?(:'venafi_use_tpp')
         self.venafi_use_tpp = attributes[:'venafi_use_tpp']
-      end
-
-      if attributes.key?(:'venafi_username')
-        self.venafi_username = attributes[:'venafi_username']
       end
 
       if attributes.key?(:'venafi_zone')
@@ -324,11 +335,12 @@ module Akeyless
           token == o.token &&
           uid_token == o.uid_token &&
           user_ttl == o.user_ttl &&
+          venafi_access_token == o.venafi_access_token &&
           venafi_api_key == o.venafi_api_key &&
           venafi_baseurl == o.venafi_baseurl &&
-          venafi_password == o.venafi_password &&
+          venafi_client_id == o.venafi_client_id &&
+          venafi_refresh_token == o.venafi_refresh_token &&
           venafi_use_tpp == o.venafi_use_tpp &&
-          venafi_username == o.venafi_username &&
           venafi_zone == o.venafi_zone
     end
 
@@ -341,7 +353,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [admin_rotation_interval_days, allow_subdomains, allowed_domains, auto_generated_folder, delete_protection, enable_admin_rotation, json, name, producer_encryption_key_name, root_first_in_chain, sign_using_akeyless_pki, signer_key_name, store_private_key, tags, target_name, token, uid_token, user_ttl, venafi_api_key, venafi_baseurl, venafi_password, venafi_use_tpp, venafi_username, venafi_zone].hash
+      [admin_rotation_interval_days, allow_subdomains, allowed_domains, auto_generated_folder, delete_protection, enable_admin_rotation, json, name, producer_encryption_key_name, root_first_in_chain, sign_using_akeyless_pki, signer_key_name, store_private_key, tags, target_name, token, uid_token, user_ttl, venafi_access_token, venafi_api_key, venafi_baseurl, venafi_client_id, venafi_refresh_token, venafi_use_tpp, venafi_zone].hash
     end
 
     # Builds the object from hash

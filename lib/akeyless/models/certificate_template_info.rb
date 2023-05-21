@@ -14,49 +14,34 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class ItemGeneralInfo
-    attr_accessor :cert_issue_details
+  class CertificateTemplateInfo
+    attr_accessor :common_name
 
-    attr_accessor :certificate_chain_info
+    attr_accessor :country
 
-    attr_accessor :certificates_template_info
+    attr_accessor :digest_algo
 
-    attr_accessor :classic_key_details
+    attr_accessor :locality
 
-    attr_accessor :cluster_gw_url
+    attr_accessor :organization
 
-    attr_accessor :display_metadata
+    attr_accessor :province
 
-    attr_accessor :dynamic_secret_producer_details
+    attr_accessor :self_signed_enabled
 
-    attr_accessor :importer_info
-
-    attr_accessor :password_policy
-
-    attr_accessor :rotated_secret_details
-
-    attr_accessor :secure_remote_access_details
-
-    attr_accessor :static_secret_info
-
-    attr_accessor :tokenizer_info
+    attr_accessor :ttl
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'cert_issue_details' => :'cert_issue_details',
-        :'certificate_chain_info' => :'certificate_chain_info',
-        :'certificates_template_info' => :'certificates_template_info',
-        :'classic_key_details' => :'classic_key_details',
-        :'cluster_gw_url' => :'cluster_gw_url',
-        :'display_metadata' => :'display_metadata',
-        :'dynamic_secret_producer_details' => :'dynamic_secret_producer_details',
-        :'importer_info' => :'importer_info',
-        :'password_policy' => :'password_policy',
-        :'rotated_secret_details' => :'rotated_secret_details',
-        :'secure_remote_access_details' => :'secure_remote_access_details',
-        :'static_secret_info' => :'static_secret_info',
-        :'tokenizer_info' => :'tokenizer_info'
+        :'common_name' => :'common_name',
+        :'country' => :'country',
+        :'digest_algo' => :'digest_algo',
+        :'locality' => :'locality',
+        :'organization' => :'organization',
+        :'province' => :'province',
+        :'self_signed_enabled' => :'self_signed_enabled',
+        :'ttl' => :'ttl'
       }
     end
 
@@ -68,19 +53,14 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'cert_issue_details' => :'CertificateIssueInfo',
-        :'certificate_chain_info' => :'CertificateChainInfo',
-        :'certificates_template_info' => :'CertificateTemplateInfo',
-        :'classic_key_details' => :'ClassicKeyDetailsInfo',
-        :'cluster_gw_url' => :'String',
-        :'display_metadata' => :'String',
-        :'dynamic_secret_producer_details' => :'DynamicSecretProducerInfo',
-        :'importer_info' => :'ImporterInfo',
-        :'password_policy' => :'PasswordPolicyInfo',
-        :'rotated_secret_details' => :'RotatedSecretDetailsInfo',
-        :'secure_remote_access_details' => :'SecureRemoteAccess',
-        :'static_secret_info' => :'StaticSecretDetailsInfo',
-        :'tokenizer_info' => :'TokenizerInfo'
+        :'common_name' => :'String',
+        :'country' => :'String',
+        :'digest_algo' => :'String',
+        :'locality' => :'String',
+        :'organization' => :'String',
+        :'province' => :'String',
+        :'self_signed_enabled' => :'Boolean',
+        :'ttl' => :'Integer'
       }
     end
 
@@ -94,67 +74,47 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::ItemGeneralInfo` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::CertificateTemplateInfo` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::ItemGeneralInfo`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::CertificateTemplateInfo`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'cert_issue_details')
-        self.cert_issue_details = attributes[:'cert_issue_details']
+      if attributes.key?(:'common_name')
+        self.common_name = attributes[:'common_name']
       end
 
-      if attributes.key?(:'certificate_chain_info')
-        self.certificate_chain_info = attributes[:'certificate_chain_info']
+      if attributes.key?(:'country')
+        self.country = attributes[:'country']
       end
 
-      if attributes.key?(:'certificates_template_info')
-        self.certificates_template_info = attributes[:'certificates_template_info']
+      if attributes.key?(:'digest_algo')
+        self.digest_algo = attributes[:'digest_algo']
       end
 
-      if attributes.key?(:'classic_key_details')
-        self.classic_key_details = attributes[:'classic_key_details']
+      if attributes.key?(:'locality')
+        self.locality = attributes[:'locality']
       end
 
-      if attributes.key?(:'cluster_gw_url')
-        self.cluster_gw_url = attributes[:'cluster_gw_url']
+      if attributes.key?(:'organization')
+        self.organization = attributes[:'organization']
       end
 
-      if attributes.key?(:'display_metadata')
-        self.display_metadata = attributes[:'display_metadata']
+      if attributes.key?(:'province')
+        self.province = attributes[:'province']
       end
 
-      if attributes.key?(:'dynamic_secret_producer_details')
-        self.dynamic_secret_producer_details = attributes[:'dynamic_secret_producer_details']
+      if attributes.key?(:'self_signed_enabled')
+        self.self_signed_enabled = attributes[:'self_signed_enabled']
       end
 
-      if attributes.key?(:'importer_info')
-        self.importer_info = attributes[:'importer_info']
-      end
-
-      if attributes.key?(:'password_policy')
-        self.password_policy = attributes[:'password_policy']
-      end
-
-      if attributes.key?(:'rotated_secret_details')
-        self.rotated_secret_details = attributes[:'rotated_secret_details']
-      end
-
-      if attributes.key?(:'secure_remote_access_details')
-        self.secure_remote_access_details = attributes[:'secure_remote_access_details']
-      end
-
-      if attributes.key?(:'static_secret_info')
-        self.static_secret_info = attributes[:'static_secret_info']
-      end
-
-      if attributes.key?(:'tokenizer_info')
-        self.tokenizer_info = attributes[:'tokenizer_info']
+      if attributes.key?(:'ttl')
+        self.ttl = attributes[:'ttl']
       end
     end
 
@@ -176,19 +136,14 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          cert_issue_details == o.cert_issue_details &&
-          certificate_chain_info == o.certificate_chain_info &&
-          certificates_template_info == o.certificates_template_info &&
-          classic_key_details == o.classic_key_details &&
-          cluster_gw_url == o.cluster_gw_url &&
-          display_metadata == o.display_metadata &&
-          dynamic_secret_producer_details == o.dynamic_secret_producer_details &&
-          importer_info == o.importer_info &&
-          password_policy == o.password_policy &&
-          rotated_secret_details == o.rotated_secret_details &&
-          secure_remote_access_details == o.secure_remote_access_details &&
-          static_secret_info == o.static_secret_info &&
-          tokenizer_info == o.tokenizer_info
+          common_name == o.common_name &&
+          country == o.country &&
+          digest_algo == o.digest_algo &&
+          locality == o.locality &&
+          organization == o.organization &&
+          province == o.province &&
+          self_signed_enabled == o.self_signed_enabled &&
+          ttl == o.ttl
     end
 
     # @see the `==` method
@@ -200,7 +155,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cert_issue_details, certificate_chain_info, certificates_template_info, classic_key_details, cluster_gw_url, display_metadata, dynamic_secret_producer_details, importer_info, password_policy, rotated_secret_details, secure_remote_access_details, static_secret_info, tokenizer_info].hash
+      [common_name, country, digest_algo, locality, organization, province, self_signed_enabled, ttl].hash
     end
 
     # Builds the object from hash

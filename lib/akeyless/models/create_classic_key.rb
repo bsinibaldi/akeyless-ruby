@@ -22,11 +22,35 @@ module Akeyless
     # Certificate in a PEM format.
     attr_accessor :cert_file_data
 
+    # Common name for the generated certificate. Relevant only for generate-self-signed-certificate.
+    attr_accessor :certificate_common_name
+
+    # Country name for the generated certificate. Relevant only for generate-self-signed-certificate.
+    attr_accessor :certificate_country
+
+    # Digest algorithm to be used for the certificate key signing. Currently, we support only \"sha256\" so we hide this option for CLI.
+    attr_accessor :certificate_digest_algo
+
+    # Locality for the generated certificate. Relevant only for generate-self-signed-certificate.
+    attr_accessor :certificate_locality
+
+    # Organization name for the generated certificate. Relevant only for generate-self-signed-certificate.
+    attr_accessor :certificate_organization
+
+    # Province name for the generated certificate. Relevant only for generate-self-signed-certificate.
+    attr_accessor :certificate_province
+
+    # TTL in days for the generated certificate. Required only for generate-self-signed-certificate.
+    attr_accessor :certificate_ttl
+
     # Protection from accidental deletion of this item [true/false]
     attr_accessor :delete_protection
 
     # Description of the object
     attr_accessor :description
+
+    # Whether to generate a self signed certificate with the key. If set, --certificate-ttl must be provided.
+    attr_accessor :generate_self_signed_certificate
 
     # gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519]
     attr_accessor :gpg_alg
@@ -60,8 +84,16 @@ module Akeyless
       {
         :'alg' => :'alg',
         :'cert_file_data' => :'cert-file-data',
+        :'certificate_common_name' => :'certificate-common-name',
+        :'certificate_country' => :'certificate-country',
+        :'certificate_digest_algo' => :'certificate-digest-algo',
+        :'certificate_locality' => :'certificate-locality',
+        :'certificate_organization' => :'certificate-organization',
+        :'certificate_province' => :'certificate-province',
+        :'certificate_ttl' => :'certificate-ttl',
         :'delete_protection' => :'delete_protection',
         :'description' => :'description',
+        :'generate_self_signed_certificate' => :'generate-self-signed-certificate',
         :'gpg_alg' => :'gpg-alg',
         :'json' => :'json',
         :'key_data' => :'key-data',
@@ -84,8 +116,16 @@ module Akeyless
       {
         :'alg' => :'String',
         :'cert_file_data' => :'String',
+        :'certificate_common_name' => :'String',
+        :'certificate_country' => :'String',
+        :'certificate_digest_algo' => :'String',
+        :'certificate_locality' => :'String',
+        :'certificate_organization' => :'String',
+        :'certificate_province' => :'String',
+        :'certificate_ttl' => :'Integer',
         :'delete_protection' => :'String',
         :'description' => :'String',
+        :'generate_self_signed_certificate' => :'Boolean',
         :'gpg_alg' => :'String',
         :'json' => :'Boolean',
         :'key_data' => :'String',
@@ -127,12 +167,44 @@ module Akeyless
         self.cert_file_data = attributes[:'cert_file_data']
       end
 
+      if attributes.key?(:'certificate_common_name')
+        self.certificate_common_name = attributes[:'certificate_common_name']
+      end
+
+      if attributes.key?(:'certificate_country')
+        self.certificate_country = attributes[:'certificate_country']
+      end
+
+      if attributes.key?(:'certificate_digest_algo')
+        self.certificate_digest_algo = attributes[:'certificate_digest_algo']
+      end
+
+      if attributes.key?(:'certificate_locality')
+        self.certificate_locality = attributes[:'certificate_locality']
+      end
+
+      if attributes.key?(:'certificate_organization')
+        self.certificate_organization = attributes[:'certificate_organization']
+      end
+
+      if attributes.key?(:'certificate_province')
+        self.certificate_province = attributes[:'certificate_province']
+      end
+
+      if attributes.key?(:'certificate_ttl')
+        self.certificate_ttl = attributes[:'certificate_ttl']
+      end
+
       if attributes.key?(:'delete_protection')
         self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'generate_self_signed_certificate')
+        self.generate_self_signed_certificate = attributes[:'generate_self_signed_certificate']
       end
 
       if attributes.key?(:'gpg_alg')
@@ -206,8 +278,16 @@ module Akeyless
       self.class == o.class &&
           alg == o.alg &&
           cert_file_data == o.cert_file_data &&
+          certificate_common_name == o.certificate_common_name &&
+          certificate_country == o.certificate_country &&
+          certificate_digest_algo == o.certificate_digest_algo &&
+          certificate_locality == o.certificate_locality &&
+          certificate_organization == o.certificate_organization &&
+          certificate_province == o.certificate_province &&
+          certificate_ttl == o.certificate_ttl &&
           delete_protection == o.delete_protection &&
           description == o.description &&
+          generate_self_signed_certificate == o.generate_self_signed_certificate &&
           gpg_alg == o.gpg_alg &&
           json == o.json &&
           key_data == o.key_data &&
@@ -228,7 +308,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alg, cert_file_data, delete_protection, description, gpg_alg, json, key_data, metadata, name, protection_key_name, tags, token, uid_token].hash
+      [alg, cert_file_data, certificate_common_name, certificate_country, certificate_digest_algo, certificate_locality, certificate_organization, certificate_province, certificate_ttl, delete_protection, description, generate_self_signed_certificate, gpg_alg, json, key_data, metadata, name, protection_key_name, tags, token, uid_token].hash
     end
 
     # Builds the object from hash

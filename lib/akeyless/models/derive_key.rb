@@ -14,49 +14,58 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class ItemGeneralInfo
-    attr_accessor :cert_issue_details
+  class DeriveKey
+    # for personal password manager
+    attr_accessor :accessibility
 
-    attr_accessor :certificate_chain_info
+    # Kdf algorithm
+    attr_accessor :alg
 
-    attr_accessor :certificates_template_info
+    # HashFunction the hash function to use (relevant for pbkdf2)
+    attr_accessor :hash_function
 
-    attr_accessor :classic_key_details
+    # IterationCount the number of iterations
+    attr_accessor :iter
 
-    attr_accessor :cluster_gw_url
+    # Set output format to JSON
+    attr_accessor :json
 
-    attr_accessor :display_metadata
+    # KeyLength the byte length of the generated key
+    attr_accessor :key_len
 
-    attr_accessor :dynamic_secret_producer_details
+    # MemorySizeInKb the memory paramter in kb (relevant for argon2id)
+    attr_accessor :mem
 
-    attr_accessor :importer_info
+    # Static Secret full name
+    attr_accessor :name
 
-    attr_accessor :password_policy
+    # Parallelism the number of threads to use (relevant for argon2id)
+    attr_accessor :parallelism
 
-    attr_accessor :rotated_secret_details
+    # Salt Base64 encoded salt value. If not provided, the salt will be generated as part of the operation. The salt should be securely-generated random bytes, minimum 64 bits, 128 bits is recommended
+    attr_accessor :salt
 
-    attr_accessor :secure_remote_access_details
+    # Authentication token (see `/auth` and `/configure`)
+    attr_accessor :token
 
-    attr_accessor :static_secret_info
-
-    attr_accessor :tokenizer_info
+    # The universal identity token, Required only for universal_identity authentication
+    attr_accessor :uid_token
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'cert_issue_details' => :'cert_issue_details',
-        :'certificate_chain_info' => :'certificate_chain_info',
-        :'certificates_template_info' => :'certificates_template_info',
-        :'classic_key_details' => :'classic_key_details',
-        :'cluster_gw_url' => :'cluster_gw_url',
-        :'display_metadata' => :'display_metadata',
-        :'dynamic_secret_producer_details' => :'dynamic_secret_producer_details',
-        :'importer_info' => :'importer_info',
-        :'password_policy' => :'password_policy',
-        :'rotated_secret_details' => :'rotated_secret_details',
-        :'secure_remote_access_details' => :'secure_remote_access_details',
-        :'static_secret_info' => :'static_secret_info',
-        :'tokenizer_info' => :'tokenizer_info'
+        :'accessibility' => :'accessibility',
+        :'alg' => :'alg',
+        :'hash_function' => :'hash-function',
+        :'iter' => :'iter',
+        :'json' => :'json',
+        :'key_len' => :'key-len',
+        :'mem' => :'mem',
+        :'name' => :'name',
+        :'parallelism' => :'parallelism',
+        :'salt' => :'salt',
+        :'token' => :'token',
+        :'uid_token' => :'uid-token'
       }
     end
 
@@ -68,19 +77,18 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'cert_issue_details' => :'CertificateIssueInfo',
-        :'certificate_chain_info' => :'CertificateChainInfo',
-        :'certificates_template_info' => :'CertificateTemplateInfo',
-        :'classic_key_details' => :'ClassicKeyDetailsInfo',
-        :'cluster_gw_url' => :'String',
-        :'display_metadata' => :'String',
-        :'dynamic_secret_producer_details' => :'DynamicSecretProducerInfo',
-        :'importer_info' => :'ImporterInfo',
-        :'password_policy' => :'PasswordPolicyInfo',
-        :'rotated_secret_details' => :'RotatedSecretDetailsInfo',
-        :'secure_remote_access_details' => :'SecureRemoteAccess',
-        :'static_secret_info' => :'StaticSecretDetailsInfo',
-        :'tokenizer_info' => :'TokenizerInfo'
+        :'accessibility' => :'String',
+        :'alg' => :'String',
+        :'hash_function' => :'String',
+        :'iter' => :'Integer',
+        :'json' => :'Boolean',
+        :'key_len' => :'Integer',
+        :'mem' => :'Integer',
+        :'name' => :'String',
+        :'parallelism' => :'Integer',
+        :'salt' => :'String',
+        :'token' => :'String',
+        :'uid_token' => :'String'
       }
     end
 
@@ -94,67 +102,75 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::ItemGeneralInfo` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::DeriveKey` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::ItemGeneralInfo`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::DeriveKey`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'cert_issue_details')
-        self.cert_issue_details = attributes[:'cert_issue_details']
+      if attributes.key?(:'accessibility')
+        self.accessibility = attributes[:'accessibility']
+      else
+        self.accessibility = 'regular'
       end
 
-      if attributes.key?(:'certificate_chain_info')
-        self.certificate_chain_info = attributes[:'certificate_chain_info']
+      if attributes.key?(:'alg')
+        self.alg = attributes[:'alg']
+      else
+        self.alg = 'pbkdf2'
       end
 
-      if attributes.key?(:'certificates_template_info')
-        self.certificates_template_info = attributes[:'certificates_template_info']
+      if attributes.key?(:'hash_function')
+        self.hash_function = attributes[:'hash_function']
+      else
+        self.hash_function = 'sha256'
       end
 
-      if attributes.key?(:'classic_key_details')
-        self.classic_key_details = attributes[:'classic_key_details']
+      if attributes.key?(:'iter')
+        self.iter = attributes[:'iter']
       end
 
-      if attributes.key?(:'cluster_gw_url')
-        self.cluster_gw_url = attributes[:'cluster_gw_url']
+      if attributes.key?(:'json')
+        self.json = attributes[:'json']
+      else
+        self.json = false
       end
 
-      if attributes.key?(:'display_metadata')
-        self.display_metadata = attributes[:'display_metadata']
+      if attributes.key?(:'key_len')
+        self.key_len = attributes[:'key_len']
       end
 
-      if attributes.key?(:'dynamic_secret_producer_details')
-        self.dynamic_secret_producer_details = attributes[:'dynamic_secret_producer_details']
+      if attributes.key?(:'mem')
+        self.mem = attributes[:'mem']
+      else
+        self.mem = 16384
       end
 
-      if attributes.key?(:'importer_info')
-        self.importer_info = attributes[:'importer_info']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'password_policy')
-        self.password_policy = attributes[:'password_policy']
+      if attributes.key?(:'parallelism')
+        self.parallelism = attributes[:'parallelism']
+      else
+        self.parallelism = 1
       end
 
-      if attributes.key?(:'rotated_secret_details')
-        self.rotated_secret_details = attributes[:'rotated_secret_details']
+      if attributes.key?(:'salt')
+        self.salt = attributes[:'salt']
       end
 
-      if attributes.key?(:'secure_remote_access_details')
-        self.secure_remote_access_details = attributes[:'secure_remote_access_details']
+      if attributes.key?(:'token')
+        self.token = attributes[:'token']
       end
 
-      if attributes.key?(:'static_secret_info')
-        self.static_secret_info = attributes[:'static_secret_info']
-      end
-
-      if attributes.key?(:'tokenizer_info')
-        self.tokenizer_info = attributes[:'tokenizer_info']
+      if attributes.key?(:'uid_token')
+        self.uid_token = attributes[:'uid_token']
       end
     end
 
@@ -162,12 +178,32 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @alg.nil?
+        invalid_properties.push('invalid value for "alg", alg cannot be nil.')
+      end
+
+      if @iter.nil?
+        invalid_properties.push('invalid value for "iter", iter cannot be nil.')
+      end
+
+      if @key_len.nil?
+        invalid_properties.push('invalid value for "key_len", key_len cannot be nil.')
+      end
+
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @alg.nil?
+      return false if @iter.nil?
+      return false if @key_len.nil?
+      return false if @name.nil?
       true
     end
 
@@ -176,19 +212,18 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          cert_issue_details == o.cert_issue_details &&
-          certificate_chain_info == o.certificate_chain_info &&
-          certificates_template_info == o.certificates_template_info &&
-          classic_key_details == o.classic_key_details &&
-          cluster_gw_url == o.cluster_gw_url &&
-          display_metadata == o.display_metadata &&
-          dynamic_secret_producer_details == o.dynamic_secret_producer_details &&
-          importer_info == o.importer_info &&
-          password_policy == o.password_policy &&
-          rotated_secret_details == o.rotated_secret_details &&
-          secure_remote_access_details == o.secure_remote_access_details &&
-          static_secret_info == o.static_secret_info &&
-          tokenizer_info == o.tokenizer_info
+          accessibility == o.accessibility &&
+          alg == o.alg &&
+          hash_function == o.hash_function &&
+          iter == o.iter &&
+          json == o.json &&
+          key_len == o.key_len &&
+          mem == o.mem &&
+          name == o.name &&
+          parallelism == o.parallelism &&
+          salt == o.salt &&
+          token == o.token &&
+          uid_token == o.uid_token
     end
 
     # @see the `==` method
@@ -200,7 +235,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cert_issue_details, certificate_chain_info, certificates_template_info, classic_key_details, cluster_gw_url, display_metadata, dynamic_secret_producer_details, importer_info, password_policy, rotated_secret_details, secure_remote_access_details, static_secret_info, tokenizer_info].hash
+      [accessibility, alg, hash_function, iter, json, key_len, mem, name, parallelism, salt, token, uid_token].hash
     end
 
     # Builds the object from hash

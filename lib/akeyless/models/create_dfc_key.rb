@@ -18,6 +18,27 @@ module Akeyless
     # DFCKey type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, AES128CBC, AES256CBC, RSA1024, RSA2048, RSA3072, RSA4096]
     attr_accessor :alg
 
+    # Common name for the generated certificate. Relevant only for generate-self-signed-certificate.
+    attr_accessor :certificate_common_name
+
+    # Country name for the generated certificate. Relevant only for generate-self-signed-certificate.
+    attr_accessor :certificate_country
+
+    # Digest algorithm to be used for the certificate key signing. Currently, we support only \"sha256\" so we hide this option for CLI.
+    attr_accessor :certificate_digest_algo
+
+    # Locality for the generated certificate. Relevant only for generate-self-signed-certificate.
+    attr_accessor :certificate_locality
+
+    # Organization name for the generated certificate. Relevant only for generate-self-signed-certificate.
+    attr_accessor :certificate_organization
+
+    # Province name for the generated certificate. Relevant only for generate-self-signed-certificate.
+    attr_accessor :certificate_province
+
+    # TTL in days for the generated certificate. Required only for generate-self-signed-certificate.
+    attr_accessor :certificate_ttl
+
     # The customer fragment ID that will be used to create the DFC key (if empty, the key will be created independently of a customer fragment)
     attr_accessor :customer_frg_id
 
@@ -26,6 +47,9 @@ module Akeyless
 
     # Description of the object
     attr_accessor :description
+
+    # Whether to generate a self signed certificate with the key. If set, --certificate-ttl must be provided.
+    attr_accessor :generate_self_signed_certificate
 
     # Set output format to JSON
     attr_accessor :json
@@ -52,9 +76,17 @@ module Akeyless
     def self.attribute_map
       {
         :'alg' => :'alg',
+        :'certificate_common_name' => :'certificate-common-name',
+        :'certificate_country' => :'certificate-country',
+        :'certificate_digest_algo' => :'certificate-digest-algo',
+        :'certificate_locality' => :'certificate-locality',
+        :'certificate_organization' => :'certificate-organization',
+        :'certificate_province' => :'certificate-province',
+        :'certificate_ttl' => :'certificate-ttl',
         :'customer_frg_id' => :'customer-frg-id',
         :'delete_protection' => :'delete_protection',
         :'description' => :'description',
+        :'generate_self_signed_certificate' => :'generate-self-signed-certificate',
         :'json' => :'json',
         :'metadata' => :'metadata',
         :'name' => :'name',
@@ -74,9 +106,17 @@ module Akeyless
     def self.openapi_types
       {
         :'alg' => :'String',
+        :'certificate_common_name' => :'String',
+        :'certificate_country' => :'String',
+        :'certificate_digest_algo' => :'String',
+        :'certificate_locality' => :'String',
+        :'certificate_organization' => :'String',
+        :'certificate_province' => :'String',
+        :'certificate_ttl' => :'Integer',
         :'customer_frg_id' => :'String',
         :'delete_protection' => :'String',
         :'description' => :'String',
+        :'generate_self_signed_certificate' => :'Boolean',
         :'json' => :'Boolean',
         :'metadata' => :'String',
         :'name' => :'String',
@@ -112,6 +152,34 @@ module Akeyless
         self.alg = attributes[:'alg']
       end
 
+      if attributes.key?(:'certificate_common_name')
+        self.certificate_common_name = attributes[:'certificate_common_name']
+      end
+
+      if attributes.key?(:'certificate_country')
+        self.certificate_country = attributes[:'certificate_country']
+      end
+
+      if attributes.key?(:'certificate_digest_algo')
+        self.certificate_digest_algo = attributes[:'certificate_digest_algo']
+      end
+
+      if attributes.key?(:'certificate_locality')
+        self.certificate_locality = attributes[:'certificate_locality']
+      end
+
+      if attributes.key?(:'certificate_organization')
+        self.certificate_organization = attributes[:'certificate_organization']
+      end
+
+      if attributes.key?(:'certificate_province')
+        self.certificate_province = attributes[:'certificate_province']
+      end
+
+      if attributes.key?(:'certificate_ttl')
+        self.certificate_ttl = attributes[:'certificate_ttl']
+      end
+
       if attributes.key?(:'customer_frg_id')
         self.customer_frg_id = attributes[:'customer_frg_id']
       end
@@ -122,6 +190,10 @@ module Akeyless
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'generate_self_signed_certificate')
+        self.generate_self_signed_certificate = attributes[:'generate_self_signed_certificate']
       end
 
       if attributes.key?(:'json')
@@ -188,9 +260,17 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           alg == o.alg &&
+          certificate_common_name == o.certificate_common_name &&
+          certificate_country == o.certificate_country &&
+          certificate_digest_algo == o.certificate_digest_algo &&
+          certificate_locality == o.certificate_locality &&
+          certificate_organization == o.certificate_organization &&
+          certificate_province == o.certificate_province &&
+          certificate_ttl == o.certificate_ttl &&
           customer_frg_id == o.customer_frg_id &&
           delete_protection == o.delete_protection &&
           description == o.description &&
+          generate_self_signed_certificate == o.generate_self_signed_certificate &&
           json == o.json &&
           metadata == o.metadata &&
           name == o.name &&
@@ -209,7 +289,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alg, customer_frg_id, delete_protection, description, json, metadata, name, split_level, tag, token, uid_token].hash
+      [alg, certificate_common_name, certificate_country, certificate_digest_algo, certificate_locality, certificate_organization, certificate_province, certificate_ttl, customer_frg_id, delete_protection, description, generate_self_signed_certificate, json, metadata, name, split_level, tag, token, uid_token].hash
     end
 
     # Builds the object from hash

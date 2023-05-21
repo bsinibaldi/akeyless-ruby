@@ -5,9 +5,17 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **alg** | **String** | Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, AES128CBC, AES256CBC, RSA1024, RSA2048, RSA3072, RSA4096] |  |
+| **certificate_common_name** | **String** | Common name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] |
+| **certificate_country** | **String** | Country name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] |
+| **certificate_digest_algo** | **String** | Digest algorithm to be used for the certificate key signing. Currently, we support only \&quot;sha256\&quot; so we hide this option for CLI. | [optional] |
+| **certificate_locality** | **String** | Locality for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] |
+| **certificate_organization** | **String** | Organization name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] |
+| **certificate_province** | **String** | Province name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] |
+| **certificate_ttl** | **Integer** | TTL in days for the generated certificate. Required only for generate-self-signed-certificate. | [optional] |
 | **customer_frg_id** | **String** | The customer fragment ID that will be used to create the key (if empty, the key will be created independently of a customer fragment) | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
 | **description** | **String** | Description of the object | [optional] |
+| **generate_self_signed_certificate** | **Boolean** | Whether to generate a self signed certificate with the key. If set, --certificate-ttl must be provided. | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **metadata** | **String** | Deprecated - use description | [optional] |
 | **name** | **String** | Key name |  |
@@ -23,9 +31,17 @@ require 'akeyless'
 
 instance = Akeyless::CreateKey.new(
   alg: null,
+  certificate_common_name: null,
+  certificate_country: null,
+  certificate_digest_algo: null,
+  certificate_locality: null,
+  certificate_organization: null,
+  certificate_province: null,
+  certificate_ttl: null,
   customer_frg_id: null,
   delete_protection: null,
   description: null,
+  generate_self_signed_certificate: null,
   json: null,
   metadata: null,
   name: null,

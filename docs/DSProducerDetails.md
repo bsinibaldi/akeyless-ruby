@@ -204,8 +204,11 @@
 | **venafi_sign_using_akeyless_pki** | **Boolean** |  | [optional] |
 | **venafi_signer_key_name** | **String** |  | [optional] |
 | **venafi_store_private_key** | **Boolean** |  | [optional] |
-| **venafi_tpp_password** | **String** |  | [optional] |
-| **venafi_tpp_username** | **String** |  | [optional] |
+| **venafi_tpp_access_token** | **String** |  | [optional] |
+| **venafi_tpp_client_id** | **String** |  | [optional] |
+| **venafi_tpp_password** | **String** | Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead | [optional] |
+| **venafi_tpp_refresh_token** | **String** |  | [optional] |
+| **venafi_tpp_username** | **String** | Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead | [optional] |
 | **venafi_use_tpp** | **Boolean** |  | [optional] |
 | **venafi_zone** | **String** |  | [optional] |
 | **warn_before_user_expiration_min** | **Integer** |  | [optional] |
@@ -416,7 +419,10 @@ instance = Akeyless::DSProducerDetails.new(
   venafi_sign_using_akeyless_pki: null,
   venafi_signer_key_name: null,
   venafi_store_private_key: null,
+  venafi_tpp_access_token: null,
+  venafi_tpp_client_id: null,
   venafi_tpp_password: null,
+  venafi_tpp_refresh_token: null,
   venafi_tpp_username: null,
   venafi_use_tpp: null,
   venafi_zone: null,

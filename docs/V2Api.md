@@ -72,6 +72,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**delete_target**](V2Api.md#delete_target) | **POST** /delete-target |  |
 | [**delete_target_association**](V2Api.md#delete_target_association) | **POST** /delete-assoc-target-item |  |
 | [**delete_targets**](V2Api.md#delete_targets) | **POST** /delete-targets |  |
+| [**derive_key**](V2Api.md#derive_key) | **POST** /derive-key |  |
 | [**describe_assoc**](V2Api.md#describe_assoc) | **POST** /describe-role-am-assoc |  |
 | [**describe_item**](V2Api.md#describe_item) | **POST** /describe-item |  |
 | [**describe_permissions**](V2Api.md#describe_permissions) | **POST** /describe-permissions |  |
@@ -85,6 +86,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**esm_get**](V2Api.md#esm_get) | **POST** /esm-get |  |
 | [**esm_list**](V2Api.md#esm_list) | **POST** /esm-list |  |
 | [**esm_update**](V2Api.md#esm_update) | **POST** /esm-update |  |
+| [**event_action**](V2Api.md#event_action) | **POST** /event-action |  |
 | [**export_classic_key**](V2Api.md#export_classic_key) | **POST** /export-classic-key |  |
 | [**gateway_create_k8_s_auth_config**](V2Api.md#gateway_create_k8_s_auth_config) | **POST** /gateway-create-k8s-auth-config |  |
 | [**gateway_create_migration**](V2Api.md#gateway_create_migration) | **POST** /gateway-create-migration |  |
@@ -4499,6 +4501,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## derive_key
+
+> <DeriveKeyOutput> derive_key(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::DeriveKey.new({alg: 'alg_example', iter: 3.56, key_len: 3.56, name: 'name_example'}) # DeriveKey | 
+
+begin
+  
+  result = api_instance.derive_key(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->derive_key: #{e}"
+end
+```
+
+#### Using the derive_key_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeriveKeyOutput>, Integer, Hash)> derive_key_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.derive_key_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeriveKeyOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->derive_key_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**DeriveKey**](DeriveKey.md) |  |  |
+
+### Return type
+
+[**DeriveKeyOutput**](DeriveKeyOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## describe_assoc
 
 > <RoleAssociationDetails> describe_assoc(body)
@@ -5299,6 +5363,68 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## event_action
+
+> Object event_action(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::EventAction.new({action: 'action_example', event_id: 3.56}) # EventAction | 
+
+begin
+  
+  result = api_instance.event_action(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->event_action: #{e}"
+end
+```
+
+#### Using the event_action_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> event_action_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.event_action_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->event_action_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**EventAction**](EventAction.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

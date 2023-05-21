@@ -260,8 +260,16 @@ module Akeyless
 
     attr_accessor :venafi_base_url
 
+    attr_accessor :venafi_tpp_access_token
+
+    attr_accessor :venafi_tpp_client_id
+
+    # Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead
     attr_accessor :venafi_tpp_password
 
+    attr_accessor :venafi_tpp_refresh_token
+
+    # Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead
     attr_accessor :venafi_tpp_username
 
     attr_accessor :venafi_use_tpp
@@ -386,7 +394,10 @@ module Akeyless
         :'validation_email' => :'validation_email',
         :'venafi_api_key' => :'venafi_api_key',
         :'venafi_base_url' => :'venafi_base_url',
+        :'venafi_tpp_access_token' => :'venafi_tpp_access_token',
+        :'venafi_tpp_client_id' => :'venafi_tpp_client_id',
         :'venafi_tpp_password' => :'venafi_tpp_password',
+        :'venafi_tpp_refresh_token' => :'venafi_tpp_refresh_token',
         :'venafi_tpp_username' => :'venafi_tpp_username',
         :'venafi_use_tpp' => :'venafi_use_tpp',
         :'venafi_zone' => :'venafi_zone'
@@ -516,7 +527,10 @@ module Akeyless
         :'validation_email' => :'String',
         :'venafi_api_key' => :'String',
         :'venafi_base_url' => :'String',
+        :'venafi_tpp_access_token' => :'String',
+        :'venafi_tpp_client_id' => :'String',
         :'venafi_tpp_password' => :'String',
+        :'venafi_tpp_refresh_token' => :'String',
         :'venafi_tpp_username' => :'String',
         :'venafi_use_tpp' => :'Boolean',
         :'venafi_zone' => :'String'
@@ -1010,8 +1024,20 @@ module Akeyless
         self.venafi_base_url = attributes[:'venafi_base_url']
       end
 
+      if attributes.key?(:'venafi_tpp_access_token')
+        self.venafi_tpp_access_token = attributes[:'venafi_tpp_access_token']
+      end
+
+      if attributes.key?(:'venafi_tpp_client_id')
+        self.venafi_tpp_client_id = attributes[:'venafi_tpp_client_id']
+      end
+
       if attributes.key?(:'venafi_tpp_password')
         self.venafi_tpp_password = attributes[:'venafi_tpp_password']
+      end
+
+      if attributes.key?(:'venafi_tpp_refresh_token')
+        self.venafi_tpp_refresh_token = attributes[:'venafi_tpp_refresh_token']
       end
 
       if attributes.key?(:'venafi_tpp_username')
@@ -1160,7 +1186,10 @@ module Akeyless
           validation_email == o.validation_email &&
           venafi_api_key == o.venafi_api_key &&
           venafi_base_url == o.venafi_base_url &&
+          venafi_tpp_access_token == o.venafi_tpp_access_token &&
+          venafi_tpp_client_id == o.venafi_tpp_client_id &&
           venafi_tpp_password == o.venafi_tpp_password &&
+          venafi_tpp_refresh_token == o.venafi_tpp_refresh_token &&
           venafi_tpp_username == o.venafi_tpp_username &&
           venafi_use_tpp == o.venafi_use_tpp &&
           venafi_zone == o.venafi_zone
@@ -1175,7 +1204,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [administrative_port, api_key, app_private_key, artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, auth_flow, authorization_port, aws_access_key_id, aws_region, aws_secret_access_key, aws_session_token, azure_client_id, azure_client_secret, azure_resource_group_name, azure_resource_name, azure_subscription_id, azure_tenant_id, ca_cert_data, ca_cert_name, certificate, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, client_id, client_secret, db_host_name, db_name, db_port, db_private_key, db_private_key_passphrase, db_pwd, db_server_certificates, db_server_name, db_user_name, domain_name, eks_access_key_id, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, email, first_name, gcp_service_account_email, gcp_service_account_key, gcp_service_account_key_base64, github_app_id, github_app_private_key, github_base_url, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, host, hostname, hosts, imap_fqdn, imap_password, imap_port, imap_user, implementation_type, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, last_name, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_uri_connection, mongodb_uri_options, mongodb_username, password, payload, phone, ping_url, port, private_key, private_key_password, privileged_user, profile_id, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, security_token, sf_account, ssl_connection_certificate, ssl_connection_mode, tenant_url, timeout, url, use_gw_cloud_identity, use_gw_service_account, use_tls, user_name, user_password, username, validation_email, venafi_api_key, venafi_base_url, venafi_tpp_password, venafi_tpp_username, venafi_use_tpp, venafi_zone].hash
+      [administrative_port, api_key, app_private_key, artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, auth_flow, authorization_port, aws_access_key_id, aws_region, aws_secret_access_key, aws_session_token, azure_client_id, azure_client_secret, azure_resource_group_name, azure_resource_name, azure_subscription_id, azure_tenant_id, ca_cert_data, ca_cert_name, certificate, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, client_id, client_secret, db_host_name, db_name, db_port, db_private_key, db_private_key_passphrase, db_pwd, db_server_certificates, db_server_name, db_user_name, domain_name, eks_access_key_id, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, email, first_name, gcp_service_account_email, gcp_service_account_key, gcp_service_account_key_base64, github_app_id, github_app_private_key, github_base_url, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, host, hostname, hosts, imap_fqdn, imap_password, imap_port, imap_user, implementation_type, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, last_name, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_uri_connection, mongodb_uri_options, mongodb_username, password, payload, phone, ping_url, port, private_key, private_key_password, privileged_user, profile_id, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, security_token, sf_account, ssl_connection_certificate, ssl_connection_mode, tenant_url, timeout, url, use_gw_cloud_identity, use_gw_service_account, use_tls, user_name, user_password, username, validation_email, venafi_api_key, venafi_base_url, venafi_tpp_access_token, venafi_tpp_client_id, venafi_tpp_password, venafi_tpp_refresh_token, venafi_tpp_username, venafi_use_tpp, venafi_zone].hash
     end
 
     # Builds the object from hash

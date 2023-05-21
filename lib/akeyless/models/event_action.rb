@@ -14,49 +14,30 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class ItemGeneralInfo
-    attr_accessor :cert_issue_details
+  class EventAction
+    # The Event Action [approve/deny]
+    attr_accessor :action
 
-    attr_accessor :certificate_chain_info
+    # The Event ID
+    attr_accessor :event_id
 
-    attr_accessor :certificates_template_info
+    # Set output format to JSON
+    attr_accessor :json
 
-    attr_accessor :classic_key_details
+    # Authentication token (see `/auth` and `/configure`)
+    attr_accessor :token
 
-    attr_accessor :cluster_gw_url
-
-    attr_accessor :display_metadata
-
-    attr_accessor :dynamic_secret_producer_details
-
-    attr_accessor :importer_info
-
-    attr_accessor :password_policy
-
-    attr_accessor :rotated_secret_details
-
-    attr_accessor :secure_remote_access_details
-
-    attr_accessor :static_secret_info
-
-    attr_accessor :tokenizer_info
+    # The universal identity token, Required only for universal_identity authentication
+    attr_accessor :uid_token
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'cert_issue_details' => :'cert_issue_details',
-        :'certificate_chain_info' => :'certificate_chain_info',
-        :'certificates_template_info' => :'certificates_template_info',
-        :'classic_key_details' => :'classic_key_details',
-        :'cluster_gw_url' => :'cluster_gw_url',
-        :'display_metadata' => :'display_metadata',
-        :'dynamic_secret_producer_details' => :'dynamic_secret_producer_details',
-        :'importer_info' => :'importer_info',
-        :'password_policy' => :'password_policy',
-        :'rotated_secret_details' => :'rotated_secret_details',
-        :'secure_remote_access_details' => :'secure_remote_access_details',
-        :'static_secret_info' => :'static_secret_info',
-        :'tokenizer_info' => :'tokenizer_info'
+        :'action' => :'action',
+        :'event_id' => :'event-id',
+        :'json' => :'json',
+        :'token' => :'token',
+        :'uid_token' => :'uid-token'
       }
     end
 
@@ -68,19 +49,11 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'cert_issue_details' => :'CertificateIssueInfo',
-        :'certificate_chain_info' => :'CertificateChainInfo',
-        :'certificates_template_info' => :'CertificateTemplateInfo',
-        :'classic_key_details' => :'ClassicKeyDetailsInfo',
-        :'cluster_gw_url' => :'String',
-        :'display_metadata' => :'String',
-        :'dynamic_secret_producer_details' => :'DynamicSecretProducerInfo',
-        :'importer_info' => :'ImporterInfo',
-        :'password_policy' => :'PasswordPolicyInfo',
-        :'rotated_secret_details' => :'RotatedSecretDetailsInfo',
-        :'secure_remote_access_details' => :'SecureRemoteAccess',
-        :'static_secret_info' => :'StaticSecretDetailsInfo',
-        :'tokenizer_info' => :'TokenizerInfo'
+        :'action' => :'String',
+        :'event_id' => :'Integer',
+        :'json' => :'Boolean',
+        :'token' => :'String',
+        :'uid_token' => :'String'
       }
     end
 
@@ -94,67 +67,37 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::ItemGeneralInfo` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::EventAction` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::ItemGeneralInfo`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::EventAction`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'cert_issue_details')
-        self.cert_issue_details = attributes[:'cert_issue_details']
+      if attributes.key?(:'action')
+        self.action = attributes[:'action']
       end
 
-      if attributes.key?(:'certificate_chain_info')
-        self.certificate_chain_info = attributes[:'certificate_chain_info']
+      if attributes.key?(:'event_id')
+        self.event_id = attributes[:'event_id']
       end
 
-      if attributes.key?(:'certificates_template_info')
-        self.certificates_template_info = attributes[:'certificates_template_info']
+      if attributes.key?(:'json')
+        self.json = attributes[:'json']
+      else
+        self.json = false
       end
 
-      if attributes.key?(:'classic_key_details')
-        self.classic_key_details = attributes[:'classic_key_details']
+      if attributes.key?(:'token')
+        self.token = attributes[:'token']
       end
 
-      if attributes.key?(:'cluster_gw_url')
-        self.cluster_gw_url = attributes[:'cluster_gw_url']
-      end
-
-      if attributes.key?(:'display_metadata')
-        self.display_metadata = attributes[:'display_metadata']
-      end
-
-      if attributes.key?(:'dynamic_secret_producer_details')
-        self.dynamic_secret_producer_details = attributes[:'dynamic_secret_producer_details']
-      end
-
-      if attributes.key?(:'importer_info')
-        self.importer_info = attributes[:'importer_info']
-      end
-
-      if attributes.key?(:'password_policy')
-        self.password_policy = attributes[:'password_policy']
-      end
-
-      if attributes.key?(:'rotated_secret_details')
-        self.rotated_secret_details = attributes[:'rotated_secret_details']
-      end
-
-      if attributes.key?(:'secure_remote_access_details')
-        self.secure_remote_access_details = attributes[:'secure_remote_access_details']
-      end
-
-      if attributes.key?(:'static_secret_info')
-        self.static_secret_info = attributes[:'static_secret_info']
-      end
-
-      if attributes.key?(:'tokenizer_info')
-        self.tokenizer_info = attributes[:'tokenizer_info']
+      if attributes.key?(:'uid_token')
+        self.uid_token = attributes[:'uid_token']
       end
     end
 
@@ -162,12 +105,22 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @action.nil?
+        invalid_properties.push('invalid value for "action", action cannot be nil.')
+      end
+
+      if @event_id.nil?
+        invalid_properties.push('invalid value for "event_id", event_id cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @action.nil?
+      return false if @event_id.nil?
       true
     end
 
@@ -176,19 +129,11 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          cert_issue_details == o.cert_issue_details &&
-          certificate_chain_info == o.certificate_chain_info &&
-          certificates_template_info == o.certificates_template_info &&
-          classic_key_details == o.classic_key_details &&
-          cluster_gw_url == o.cluster_gw_url &&
-          display_metadata == o.display_metadata &&
-          dynamic_secret_producer_details == o.dynamic_secret_producer_details &&
-          importer_info == o.importer_info &&
-          password_policy == o.password_policy &&
-          rotated_secret_details == o.rotated_secret_details &&
-          secure_remote_access_details == o.secure_remote_access_details &&
-          static_secret_info == o.static_secret_info &&
-          tokenizer_info == o.tokenizer_info
+          action == o.action &&
+          event_id == o.event_id &&
+          json == o.json &&
+          token == o.token &&
+          uid_token == o.uid_token
     end
 
     # @see the `==` method
@@ -200,7 +145,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cert_issue_details, certificate_chain_info, certificates_template_info, classic_key_details, cluster_gw_url, display_metadata, dynamic_secret_producer_details, importer_info, password_policy, rotated_secret_details, secure_remote_access_details, static_secret_info, tokenizer_info].hash
+      [action, event_id, json, token, uid_token].hash
     end
 
     # Builds the object from hash
