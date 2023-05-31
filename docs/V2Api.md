@@ -215,6 +215,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**set_item_state**](V2Api.md#set_item_state) | **POST** /set-item-state |  |
 | [**set_role_rule**](V2Api.md#set_role_rule) | **POST** /set-role-rule |  |
 | [**share_item**](V2Api.md#share_item) | **POST** /share-item |  |
+| [**sign_data_with_classic_key**](V2Api.md#sign_data_with_classic_key) | **POST** /sign-data-with-classic-key |  |
 | [**sign_gpg**](V2Api.md#sign_gpg) | **POST** /sign-gpg |  |
 | [**sign_jwt_with_classic_key**](V2Api.md#sign_jwt_with_classic_key) | **POST** /sign-jwt-with-classic-key |  |
 | [**sign_pkcs1**](V2Api.md#sign_pkcs1) | **POST** /sign-pkcs1 |  |
@@ -279,6 +280,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_zero_ssl_target**](V2Api.md#update_zero_ssl_target) | **POST** /update-zerossl-target |  |
 | [**upload_rsa**](V2Api.md#upload_rsa) | **POST** /upload-rsa |  |
 | [**validate_token**](V2Api.md#validate_token) | **POST** /validate-token |  |
+| [**verify_data_with_classic_key**](V2Api.md#verify_data_with_classic_key) | **POST** /verify-data-with-classic-key |  |
 | [**verify_gpg**](V2Api.md#verify_gpg) | **POST** /verify-gpg |  |
 | [**verify_jwt_with_classic_key**](V2Api.md#verify_jwt_with_classic_key) | **POST** /verify-jwt-with-classic-key |  |
 | [**verify_pkcs1**](V2Api.md#verify_pkcs1) | **POST** /verify-pkcs1 |  |
@@ -13388,6 +13390,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## sign_data_with_classic_key
+
+> <SignOutput> sign_data_with_classic_key(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::SignDataWithClassicKey.new({data: 'data_example', display_id: 'display_id_example', name: 'name_example', version: 37}) # SignDataWithClassicKey | 
+
+begin
+  
+  result = api_instance.sign_data_with_classic_key(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->sign_data_with_classic_key: #{e}"
+end
+```
+
+#### Using the sign_data_with_classic_key_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SignOutput>, Integer, Hash)> sign_data_with_classic_key_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.sign_data_with_classic_key_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SignOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->sign_data_with_classic_key_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**SignDataWithClassicKey**](SignDataWithClassicKey.md) |  |  |
+
+### Return type
+
+[**SignOutput**](SignOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## sign_gpg
 
 > <SignGPGOutput> sign_gpg(body)
@@ -17342,6 +17406,68 @@ end
 ### Return type
 
 [**ValidateTokenOutput**](ValidateTokenOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## verify_data_with_classic_key
+
+> <VerifyPKICertOutput> verify_data_with_classic_key(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::VerifyDataWithClassicKey.new({data: 'data_example', key_name: 'key_name_example', signature: 'signature_example', version: 37}) # VerifyDataWithClassicKey | 
+
+begin
+  
+  result = api_instance.verify_data_with_classic_key(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->verify_data_with_classic_key: #{e}"
+end
+```
+
+#### Using the verify_data_with_classic_key_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<VerifyPKICertOutput>, Integer, Hash)> verify_data_with_classic_key_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.verify_data_with_classic_key_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <VerifyPKICertOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->verify_data_with_classic_key_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**VerifyDataWithClassicKey**](VerifyDataWithClassicKey.md) |  |  |
+
+### Return type
+
+[**VerifyPKICertOutput**](VerifyPKICertOutput.md)
 
 ### Authorization
 
