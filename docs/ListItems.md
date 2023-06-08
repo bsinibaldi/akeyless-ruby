@@ -8,6 +8,7 @@
 | **filter** | **String** | Filter by item name or part of it | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **minimal_view** | **Boolean** |  | [optional] |
+| **pagination** | **String** | Retrieve items with pagination | [optional][default to &#39;enabled&#39;] |
 | **pagination_token** | **String** | Next page reference | [optional] |
 | **path** | **String** | Path to folder | [optional] |
 | **sra_only** | **Boolean** | Filter by items with SRA functionality enabled | [optional][default to false] |
@@ -27,6 +28,7 @@ instance = Akeyless::ListItems.new(
   filter: null,
   json: null,
   minimal_view: null,
+  pagination: null,
   pagination_token: null,
   path: null,
   sra_only: null,

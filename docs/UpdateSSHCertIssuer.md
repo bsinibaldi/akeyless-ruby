@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **add_tag** | **Array&lt;String&gt;** | List of the new tags that will be attached to this item | [optional] |
 | **allowed_users** | **String** | Users allowed to fetch the certificate, e.g root,ubuntu |  |
+| **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
 | **description** | **String** | Description of the object | [optional] |
 | **extensions** | **Hash&lt;String, String&gt;** | Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot; | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
@@ -22,7 +23,7 @@
 | **secure_access_use_internal_bastion** | **Boolean** | Use internal SSH Bastion | [optional] |
 | **signer_key_name** | **String** | A key to sign the certificate with |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
-| **ttl** | **Integer** | he requested Time To Live for the certificate, in seconds |  |
+| **ttl** | **Integer** | The requested Time To Live for the certificate, in seconds |  |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
 
 ## Example
@@ -33,6 +34,7 @@ require 'akeyless'
 instance = Akeyless::UpdateSSHCertIssuer.new(
   add_tag: null,
   allowed_users: null,
+  delete_protection: null,
   description: null,
   extensions: null,
   json: null,

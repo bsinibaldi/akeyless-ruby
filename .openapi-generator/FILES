@@ -1325,7 +1325,4 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/sign_data_with_classic_key_spec.rb
-spec/models/sign_output_spec.rb
-spec/models/verify_data_with_classic_key_spec.rb
 spec/spec_helper.rb

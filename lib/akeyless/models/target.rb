@@ -46,6 +46,8 @@ module Akeyless
 
     attr_accessor :target_name
 
+    attr_accessor :target_sub_type
+
     attr_accessor :target_type
 
     attr_accessor :target_versions
@@ -70,6 +72,7 @@ module Akeyless
         :'target_id' => :'target_id',
         :'target_items_assoc' => :'target_items_assoc',
         :'target_name' => :'target_name',
+        :'target_sub_type' => :'target_sub_type',
         :'target_type' => :'target_type',
         :'target_versions' => :'target_versions',
         :'with_customer_fragment' => :'with_customer_fragment'
@@ -99,6 +102,7 @@ module Akeyless
         :'target_id' => :'Integer',
         :'target_items_assoc' => :'Array<TargetItemAssociation>',
         :'target_name' => :'String',
+        :'target_sub_type' => :'String',
         :'target_type' => :'String',
         :'target_versions' => :'Array<ItemVersion>',
         :'with_customer_fragment' => :'Boolean'
@@ -192,6 +196,10 @@ module Akeyless
         self.target_name = attributes[:'target_name']
       end
 
+      if attributes.key?(:'target_sub_type')
+        self.target_sub_type = attributes[:'target_sub_type']
+      end
+
       if attributes.key?(:'target_type')
         self.target_type = attributes[:'target_type']
       end
@@ -240,6 +248,7 @@ module Akeyless
           target_id == o.target_id &&
           target_items_assoc == o.target_items_assoc &&
           target_name == o.target_name &&
+          target_sub_type == o.target_sub_type &&
           target_type == o.target_type &&
           target_versions == o.target_versions &&
           with_customer_fragment == o.with_customer_fragment
@@ -254,7 +263,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_date, access_request_status, attributes, client_permissions, comment, creation_date, credentials_less, is_access_request_enabled, last_version, modification_date, protection_key_name, target_details, target_id, target_items_assoc, target_name, target_type, target_versions, with_customer_fragment].hash
+      [access_date, access_request_status, attributes, client_permissions, comment, creation_date, credentials_less, is_access_request_enabled, last_version, modification_date, protection_key_name, target_details, target_id, target_items_assoc, target_name, target_sub_type, target_type, target_versions, with_customer_fragment].hash
     end
 
     # Builds the object from hash

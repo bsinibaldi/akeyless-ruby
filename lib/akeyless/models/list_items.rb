@@ -26,6 +26,9 @@ module Akeyless
 
     attr_accessor :minimal_view
 
+    # Retrieve items with pagination
+    attr_accessor :pagination
+
     # Next page reference
     attr_accessor :pagination_token
 
@@ -56,6 +59,7 @@ module Akeyless
         :'filter' => :'filter',
         :'json' => :'json',
         :'minimal_view' => :'minimal-view',
+        :'pagination' => :'pagination',
         :'pagination_token' => :'pagination-token',
         :'path' => :'path',
         :'sra_only' => :'sra-only',
@@ -79,6 +83,7 @@ module Akeyless
         :'filter' => :'String',
         :'json' => :'Boolean',
         :'minimal_view' => :'Boolean',
+        :'pagination' => :'String',
         :'pagination_token' => :'String',
         :'path' => :'String',
         :'sra_only' => :'Boolean',
@@ -129,6 +134,12 @@ module Akeyless
 
       if attributes.key?(:'minimal_view')
         self.minimal_view = attributes[:'minimal_view']
+      end
+
+      if attributes.key?(:'pagination')
+        self.pagination = attributes[:'pagination']
+      else
+        self.pagination = 'enabled'
       end
 
       if attributes.key?(:'pagination_token')
@@ -192,6 +203,7 @@ module Akeyless
           filter == o.filter &&
           json == o.json &&
           minimal_view == o.minimal_view &&
+          pagination == o.pagination &&
           pagination_token == o.pagination_token &&
           path == o.path &&
           sra_only == o.sra_only &&
@@ -211,7 +223,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accessibility, filter, json, minimal_view, pagination_token, path, sra_only, sub_types, tag, token, type, uid_token].hash
+      [accessibility, filter, json, minimal_view, pagination, pagination_token, path, sra_only, sub_types, tag, token, type, uid_token].hash
     end
 
     # Builds the object from hash

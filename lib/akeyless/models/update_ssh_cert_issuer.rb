@@ -21,6 +21,9 @@ module Akeyless
     # Users allowed to fetch the certificate, e.g root,ubuntu
     attr_accessor :allowed_users
 
+    # Protection from accidental deletion of this item [true/false]
+    attr_accessor :delete_protection
+
     # Description of the object
     attr_accessor :description
 
@@ -69,7 +72,7 @@ module Akeyless
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
-    # he requested Time To Live for the certificate, in seconds
+    # The requested Time To Live for the certificate, in seconds
     attr_accessor :ttl
 
     # The universal identity token, Required only for universal_identity authentication
@@ -80,6 +83,7 @@ module Akeyless
       {
         :'add_tag' => :'add-tag',
         :'allowed_users' => :'allowed-users',
+        :'delete_protection' => :'delete_protection',
         :'description' => :'description',
         :'extensions' => :'extensions',
         :'json' => :'json',
@@ -111,6 +115,7 @@ module Akeyless
       {
         :'add_tag' => :'Array<String>',
         :'allowed_users' => :'String',
+        :'delete_protection' => :'String',
         :'description' => :'String',
         :'extensions' => :'Hash<String, String>',
         :'json' => :'Boolean',
@@ -161,6 +166,10 @@ module Akeyless
 
       if attributes.key?(:'allowed_users')
         self.allowed_users = attributes[:'allowed_users']
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'description')
@@ -284,6 +293,7 @@ module Akeyless
       self.class == o.class &&
           add_tag == o.add_tag &&
           allowed_users == o.allowed_users &&
+          delete_protection == o.delete_protection &&
           description == o.description &&
           extensions == o.extensions &&
           json == o.json &&
@@ -313,7 +323,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_tag, allowed_users, description, extensions, json, metadata, name, new_name, principals, rm_tag, secure_access_bastion_api, secure_access_bastion_ssh, secure_access_enable, secure_access_host, secure_access_ssh_creds_user, secure_access_use_internal_bastion, signer_key_name, token, ttl, uid_token].hash
+      [add_tag, allowed_users, delete_protection, description, extensions, json, metadata, name, new_name, principals, rm_tag, secure_access_bastion_api, secure_access_bastion_ssh, secure_access_enable, secure_access_host, secure_access_ssh_creds_user, secure_access_use_internal_bastion, signer_key_name, token, ttl, uid_token].hash
     end
 
     # Builds the object from hash

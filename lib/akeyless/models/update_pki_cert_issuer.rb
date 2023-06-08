@@ -36,8 +36,11 @@ module Akeyless
     # If set, certificates will be flagged for code signing use
     attr_accessor :code_signing_flag
 
-    # A comma-separated list of the country that will be set in the issued certificate
+    # A comma-separated list of countries that will be set in the issued certificate
     attr_accessor :country
+
+    # Protection from accidental deletion of this item [true/false]
+    attr_accessor :delete_protection
 
     # Description of the object
     attr_accessor :description
@@ -57,7 +60,7 @@ module Akeyless
     # key-usage
     attr_accessor :key_usage
 
-    # A comma-separated list of the locality that will be set in the issued certificate
+    # A comma-separated list of localities that will be set in the issued certificate
     attr_accessor :locality
 
     # Deprecated - use description
@@ -81,13 +84,13 @@ module Akeyless
     # A comma-separated list of organizations (O) that will be set in the issued certificate
     attr_accessor :organizations
 
-    # A comma-separated list of the postal code that will be set in the issued certificate
+    # A comma-separated list of postal codes that will be set in the issued certificate
     attr_accessor :postal_code
 
     # Whether to protect generated certificates from deletion
     attr_accessor :protect_certificates
 
-    # A comma-separated list of the province that will be set in the issued certificate
+    # A comma-separated list of provinces that will be set in the issued certificate
     attr_accessor :province
 
     # List of the existent tags that will be removed from this item
@@ -99,13 +102,13 @@ module Akeyless
     # A key to sign the certificate with, required in Private CA mode
     attr_accessor :signer_key_name
 
-    # A comma-separated list of the street address that will be set in the issued certificate
+    # A comma-separated list of street addresses that will be set in the issued certificate
     attr_accessor :street_address
 
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
-    # he requested Time To Live for the certificate, in seconds
+    # The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target's supported maximum TTLs
     attr_accessor :ttl
 
     # The universal identity token, Required only for universal_identity authentication
@@ -122,6 +125,7 @@ module Akeyless
         :'client_flag' => :'client-flag',
         :'code_signing_flag' => :'code-signing-flag',
         :'country' => :'country',
+        :'delete_protection' => :'delete_protection',
         :'description' => :'description',
         :'destination_path' => :'destination-path',
         :'expiration_event_in' => :'expiration-event-in',
@@ -165,6 +169,7 @@ module Akeyless
         :'client_flag' => :'Boolean',
         :'code_signing_flag' => :'Boolean',
         :'country' => :'String',
+        :'delete_protection' => :'String',
         :'description' => :'String',
         :'destination_path' => :'String',
         :'expiration_event_in' => :'Array<String>',
@@ -245,6 +250,10 @@ module Akeyless
 
       if attributes.key?(:'country')
         self.country = attributes[:'country']
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
       end
 
       if attributes.key?(:'description')
@@ -395,6 +404,7 @@ module Akeyless
           client_flag == o.client_flag &&
           code_signing_flag == o.code_signing_flag &&
           country == o.country &&
+          delete_protection == o.delete_protection &&
           description == o.description &&
           destination_path == o.destination_path &&
           expiration_event_in == o.expiration_event_in &&
@@ -430,7 +440,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_tag, allow_any_name, allow_subdomains, allowed_domains, allowed_uri_sans, client_flag, code_signing_flag, country, description, destination_path, expiration_event_in, gw_cluster_url, json, key_usage, locality, metadata, name, new_name, not_enforce_hostnames, not_require_cn, organizational_units, organizations, postal_code, protect_certificates, province, rm_tag, server_flag, signer_key_name, street_address, token, ttl, uid_token].hash
+      [add_tag, allow_any_name, allow_subdomains, allowed_domains, allowed_uri_sans, client_flag, code_signing_flag, country, delete_protection, description, destination_path, expiration_event_in, gw_cluster_url, json, key_usage, locality, metadata, name, new_name, not_enforce_hostnames, not_require_cn, organizational_units, organizations, postal_code, protect_certificates, province, rm_tag, server_flag, signer_key_name, street_address, token, ttl, uid_token].hash
     end
 
     # Builds the object from hash

@@ -17430,7 +17430,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::VerifyDataWithClassicKey.new({data: 'data_example', key_name: 'key_name_example', signature: 'signature_example', version: 37}) # VerifyDataWithClassicKey | 
+body = Akeyless::VerifyDataWithClassicKey.new({data: 'data_example', name: 'name_example', signature: 'signature_example', version: 37}) # VerifyDataWithClassicKey | 
 
 begin
   

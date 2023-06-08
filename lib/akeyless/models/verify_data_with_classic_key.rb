@@ -31,7 +31,7 @@ module Akeyless
     attr_accessor :json
 
     # The name of the key to use in the verification process
-    attr_accessor :key_name
+    attr_accessor :name
 
     # The data's signature in a Base64 format.
     attr_accessor :signature
@@ -53,7 +53,7 @@ module Akeyless
         :'hashed' => :'hashed',
         :'hashing_method' => :'hashing-method',
         :'json' => :'json',
-        :'key_name' => :'key-name',
+        :'name' => :'name',
         :'signature' => :'signature',
         :'token' => :'token',
         :'uid_token' => :'uid-token',
@@ -74,7 +74,7 @@ module Akeyless
         :'hashed' => :'Boolean',
         :'hashing_method' => :'String',
         :'json' => :'Boolean',
-        :'key_name' => :'String',
+        :'name' => :'String',
         :'signature' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String',
@@ -129,8 +129,8 @@ module Akeyless
         self.json = false
       end
 
-      if attributes.key?(:'key_name')
-        self.key_name = attributes[:'key_name']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
       if attributes.key?(:'signature')
@@ -158,8 +158,8 @@ module Akeyless
         invalid_properties.push('invalid value for "data", data cannot be nil.')
       end
 
-      if @key_name.nil?
-        invalid_properties.push('invalid value for "key_name", key_name cannot be nil.')
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
       if @signature.nil?
@@ -177,7 +177,7 @@ module Akeyless
     # @return true if the model is valid
     def valid?
       return false if @data.nil?
-      return false if @key_name.nil?
+      return false if @name.nil?
       return false if @signature.nil?
       return false if @version.nil?
       true
@@ -193,7 +193,7 @@ module Akeyless
           hashed == o.hashed &&
           hashing_method == o.hashing_method &&
           json == o.json &&
-          key_name == o.key_name &&
+          name == o.name &&
           signature == o.signature &&
           token == o.token &&
           uid_token == o.uid_token &&
@@ -209,7 +209,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, display_id, hashed, hashing_method, json, key_name, signature, token, uid_token, version].hash
+      [data, display_id, hashed, hashing_method, json, name, signature, token, uid_token, version].hash
     end
 
     # Builds the object from hash

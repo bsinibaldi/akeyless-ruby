@@ -19,6 +19,7 @@
 | **target_id** | **Integer** |  | [optional] |
 | **target_items_assoc** | [**Array&lt;TargetItemAssociation&gt;**](TargetItemAssociation.md) |  | [optional] |
 | **target_name** | **String** |  | [optional] |
+| **target_sub_type** | **String** |  | [optional] |
 | **target_type** | **String** |  | [optional] |
 | **target_versions** | [**Array&lt;ItemVersion&gt;**](ItemVersion.md) |  | [optional] |
 | **with_customer_fragment** | **Boolean** |  | [optional] |
@@ -44,6 +45,7 @@ instance = Akeyless::Target.new(
   target_id: null,
   target_items_assoc: null,
   target_name: null,
+  target_sub_type: null,
   target_type: null,
   target_versions: null,
   with_customer_fragment: null
