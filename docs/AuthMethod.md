@@ -7,6 +7,7 @@
 | **access_date** | **Time** |  | [optional] |
 | **access_info** | [**AuthMethodAccessInfo**](AuthMethodAccessInfo.md) |  | [optional] |
 | **account_id** | **String** |  | [optional] |
+| **associated_gw_ids** | **Array&lt;Integer&gt;** |  | [optional] |
 | **auth_method_access_id** | **String** |  | [optional] |
 | **auth_method_name** | **String** |  | [optional] |
 | **auth_method_roles_assoc** | [**Array&lt;AuthMethodRoleAssociation&gt;**](AuthMethodRoleAssociation.md) |  | [optional] |
@@ -24,6 +25,7 @@ instance = Akeyless::AuthMethod.new(
   access_date: null,
   access_info: null,
   account_id: null,
+  associated_gw_ids: null,
   auth_method_access_id: null,
   auth_method_name: null,
   auth_method_roles_assoc: null,

@@ -21,6 +21,8 @@ module Akeyless
 
     attr_accessor :account_id
 
+    attr_accessor :associated_gw_ids
+
     attr_accessor :auth_method_access_id
 
     attr_accessor :auth_method_name
@@ -41,6 +43,7 @@ module Akeyless
         :'access_date' => :'access_date',
         :'access_info' => :'access_info',
         :'account_id' => :'account_id',
+        :'associated_gw_ids' => :'associated_gw_ids',
         :'auth_method_access_id' => :'auth_method_access_id',
         :'auth_method_name' => :'auth_method_name',
         :'auth_method_roles_assoc' => :'auth_method_roles_assoc',
@@ -62,6 +65,7 @@ module Akeyless
         :'access_date' => :'Time',
         :'access_info' => :'AuthMethodAccessInfo',
         :'account_id' => :'String',
+        :'associated_gw_ids' => :'Array<Integer>',
         :'auth_method_access_id' => :'String',
         :'auth_method_name' => :'String',
         :'auth_method_roles_assoc' => :'Array<AuthMethodRoleAssociation>',
@@ -103,6 +107,12 @@ module Akeyless
 
       if attributes.key?(:'account_id')
         self.account_id = attributes[:'account_id']
+      end
+
+      if attributes.key?(:'associated_gw_ids')
+        if (value = attributes[:'associated_gw_ids']).is_a?(Array)
+          self.associated_gw_ids = value
+        end
       end
 
       if attributes.key?(:'auth_method_access_id')
@@ -159,6 +169,7 @@ module Akeyless
           access_date == o.access_date &&
           access_info == o.access_info &&
           account_id == o.account_id &&
+          associated_gw_ids == o.associated_gw_ids &&
           auth_method_access_id == o.auth_method_access_id &&
           auth_method_name == o.auth_method_name &&
           auth_method_roles_assoc == o.auth_method_roles_assoc &&
@@ -177,7 +188,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_date, access_info, account_id, auth_method_access_id, auth_method_name, auth_method_roles_assoc, client_permissions, creation_date, is_approved, modification_date].hash
+      [access_date, access_info, account_id, associated_gw_ids, auth_method_access_id, auth_method_name, auth_method_roles_assoc, client_permissions, creation_date, is_approved, modification_date].hash
     end
 
     # Builds the object from hash
