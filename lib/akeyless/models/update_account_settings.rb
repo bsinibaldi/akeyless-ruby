@@ -39,6 +39,9 @@ module Akeyless
     # VersionSettingsObjectType defines object types for account version settings
     attr_accessor :item_type
 
+    # Set or unset the default behaviour of items deletion protection [true/false]
+    attr_accessor :items_deletion_protection
+
     # Set output format to JSON
     attr_accessor :json
 
@@ -92,6 +95,7 @@ module Akeyless
         :'default_versioning' => :'default-versioning',
         :'dp_enable_classic_key_protection' => :'dp-enable-classic-key-protection',
         :'item_type' => :'item-type',
+        :'items_deletion_protection' => :'items-deletion-protection',
         :'json' => :'json',
         :'jwt_ttl_default' => :'jwt-ttl-default',
         :'jwt_ttl_max' => :'jwt-ttl-max',
@@ -125,6 +129,7 @@ module Akeyless
         :'default_versioning' => :'String',
         :'dp_enable_classic_key_protection' => :'String',
         :'item_type' => :'String',
+        :'items_deletion_protection' => :'String',
         :'json' => :'Boolean',
         :'jwt_ttl_default' => :'Integer',
         :'jwt_ttl_max' => :'Integer',
@@ -193,6 +198,10 @@ module Akeyless
 
       if attributes.key?(:'item_type')
         self.item_type = attributes[:'item_type']
+      end
+
+      if attributes.key?(:'items_deletion_protection')
+        self.items_deletion_protection = attributes[:'items_deletion_protection']
       end
 
       if attributes.key?(:'json')
@@ -280,6 +289,7 @@ module Akeyless
           default_versioning == o.default_versioning &&
           dp_enable_classic_key_protection == o.dp_enable_classic_key_protection &&
           item_type == o.item_type &&
+          items_deletion_protection == o.items_deletion_protection &&
           json == o.json &&
           jwt_ttl_default == o.jwt_ttl_default &&
           jwt_ttl_max == o.jwt_ttl_max &&
@@ -305,7 +315,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address, city, company_name, country, default_share_link_ttl_minutes, default_versioning, dp_enable_classic_key_protection, item_type, json, jwt_ttl_default, jwt_ttl_max, jwt_ttl_min, max_versions, password_length, phone, postal_code, token, uid_token, use_lower_letters, use_numbers, use_special_characters, use_capital_letters].hash
+      [address, city, company_name, country, default_share_link_ttl_minutes, default_versioning, dp_enable_classic_key_protection, item_type, items_deletion_protection, json, jwt_ttl_default, jwt_ttl_max, jwt_ttl_min, max_versions, password_length, phone, postal_code, token, uid_token, use_lower_letters, use_numbers, use_special_characters, use_capital_letters].hash
     end
 
     # Builds the object from hash

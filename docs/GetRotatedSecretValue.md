@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **host** | **String** | Get rotated secret value of specific Host (relevant only for Linked Target) | [optional] |
 | **ignore_cache** | **String** | Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI | [optional][default to &#39;false&#39;] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **names** | **String** | Secret name |  |
@@ -17,6 +18,7 @@
 require 'akeyless'
 
 instance = Akeyless::GetRotatedSecretValue.new(
+  host: null,
   ignore_cache: null,
   json: null,
   names: null,

@@ -15,8 +15,17 @@ require 'time'
 
 module Akeyless
   class UpdateCertificateValue
+    # List of the new tags that will be attached to this item
+    attr_accessor :add_tag
+
     # Content of the certificate in a Base64 format.
     attr_accessor :certificate_data
+
+    # Protection from accidental deletion of this item [true/false]
+    attr_accessor :delete_protection
+
+    # Description of the object
+    attr_accessor :description
 
     # How many days before the expiration of the certificate would you like to be notified.
     attr_accessor :expiration_event_in
@@ -33,8 +42,14 @@ module Akeyless
     # Content of the certificate's private key in a Base64 format.
     attr_accessor :key_data
 
+    # Deprecated - use description
+    attr_accessor :metadata
+
     # Certificate name
     attr_accessor :name
+
+    # List of the existent tags that will be removed from this item
+    attr_accessor :rm_tag
 
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
@@ -45,13 +60,18 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'add_tag' => :'add-tag',
         :'certificate_data' => :'certificate-data',
+        :'delete_protection' => :'delete_protection',
+        :'description' => :'description',
         :'expiration_event_in' => :'expiration-event-in',
         :'format' => :'format',
         :'json' => :'json',
         :'key' => :'key',
         :'key_data' => :'key-data',
+        :'metadata' => :'metadata',
         :'name' => :'name',
+        :'rm_tag' => :'rm-tag',
         :'token' => :'token',
         :'uid_token' => :'uid-token'
       }
@@ -65,13 +85,18 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'add_tag' => :'Array<String>',
         :'certificate_data' => :'String',
+        :'delete_protection' => :'String',
+        :'description' => :'String',
         :'expiration_event_in' => :'Array<String>',
         :'format' => :'String',
         :'json' => :'Boolean',
         :'key' => :'String',
         :'key_data' => :'String',
+        :'metadata' => :'String',
         :'name' => :'String',
+        :'rm_tag' => :'Array<String>',
         :'token' => :'String',
         :'uid_token' => :'String'
       }
@@ -98,8 +123,22 @@ module Akeyless
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'add_tag')
+        if (value = attributes[:'add_tag']).is_a?(Array)
+          self.add_tag = value
+        end
+      end
+
       if attributes.key?(:'certificate_data')
         self.certificate_data = attributes[:'certificate_data']
+      end
+
+      if attributes.key?(:'delete_protection')
+        self.delete_protection = attributes[:'delete_protection']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'expiration_event_in')
@@ -126,8 +165,18 @@ module Akeyless
         self.key_data = attributes[:'key_data']
       end
 
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'rm_tag')
+        if (value = attributes[:'rm_tag']).is_a?(Array)
+          self.rm_tag = value
+        end
       end
 
       if attributes.key?(:'token')
@@ -162,13 +211,18 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          add_tag == o.add_tag &&
           certificate_data == o.certificate_data &&
+          delete_protection == o.delete_protection &&
+          description == o.description &&
           expiration_event_in == o.expiration_event_in &&
           format == o.format &&
           json == o.json &&
           key == o.key &&
           key_data == o.key_data &&
+          metadata == o.metadata &&
           name == o.name &&
+          rm_tag == o.rm_tag &&
           token == o.token &&
           uid_token == o.uid_token
     end
@@ -182,7 +236,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [certificate_data, expiration_event_in, format, json, key, key_data, name, token, uid_token].hash
+      [add_tag, certificate_data, delete_protection, description, expiration_event_in, format, json, key, key_data, metadata, name, rm_tag, token, uid_token].hash
     end
 
     # Builds the object from hash

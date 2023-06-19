@@ -85,6 +85,9 @@ module Akeyless
     # \"Custom rotation command (relevant only for ssh target)
     attr_accessor :rotator_custom_cmd
 
+    # Rotate same password for each host from the Linked Target (relevant only for Linked Target)
+    attr_accessor :same_password
+
     # Allow providing external user for a domain users (relevant only for rdp)
     attr_accessor :secure_access_allow_external_user
 
@@ -165,6 +168,7 @@ module Akeyless
         :'rotation_interval' => :'rotation-interval',
         :'rotator_creds_type' => :'rotator-creds-type',
         :'rotator_custom_cmd' => :'rotator-custom-cmd',
+        :'same_password' => :'same-password',
         :'secure_access_allow_external_user' => :'secure-access-allow-external-user',
         :'secure_access_aws_account_id' => :'secure-access-aws-account-id',
         :'secure_access_aws_native_cli' => :'secure-access-aws-native-cli',
@@ -217,6 +221,7 @@ module Akeyless
         :'rotation_interval' => :'String',
         :'rotator_creds_type' => :'String',
         :'rotator_custom_cmd' => :'String',
+        :'same_password' => :'String',
         :'secure_access_allow_external_user' => :'Boolean',
         :'secure_access_aws_account_id' => :'String',
         :'secure_access_aws_native_cli' => :'Boolean',
@@ -367,6 +372,10 @@ module Akeyless
         self.rotator_custom_cmd = attributes[:'rotator_custom_cmd']
       end
 
+      if attributes.key?(:'same_password')
+        self.same_password = attributes[:'same_password']
+      end
+
       if attributes.key?(:'secure_access_allow_external_user')
         self.secure_access_allow_external_user = attributes[:'secure_access_allow_external_user']
       else
@@ -496,6 +505,7 @@ module Akeyless
           rotation_interval == o.rotation_interval &&
           rotator_creds_type == o.rotator_creds_type &&
           rotator_custom_cmd == o.rotator_custom_cmd &&
+          same_password == o.same_password &&
           secure_access_allow_external_user == o.secure_access_allow_external_user &&
           secure_access_aws_account_id == o.secure_access_aws_account_id &&
           secure_access_aws_native_cli == o.secure_access_aws_native_cli &&
@@ -525,7 +535,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_tag, api_id, api_key, auto_rotate, aws_region, custom_payload, description, gcp_key, json, keep_prev_version, key, name, new_metadata, new_name, new_version, rm_tag, rotate_after_disconnect, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, rotator_custom_cmd, secure_access_allow_external_user, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, ssh_password, ssh_username, storage_account_key_name, token, uid_token].hash
+      [add_tag, api_id, api_key, auto_rotate, aws_region, custom_payload, description, gcp_key, json, keep_prev_version, key, name, new_metadata, new_name, new_version, rm_tag, rotate_after_disconnect, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, rotator_custom_cmd, same_password, secure_access_allow_external_user, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, ssh_password, ssh_username, storage_account_key_name, token, uid_token].hash
     end
 
     # Builds the object from hash

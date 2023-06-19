@@ -144,6 +144,7 @@ module Akeyless
 
     attr_accessor :hostname
 
+    # key hostname, value description
     attr_accessor :hosts
 
     attr_accessor :imap_fqdn

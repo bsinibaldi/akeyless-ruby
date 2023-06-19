@@ -37,6 +37,8 @@ module Akeyless
 
     attr_accessor :rotator_type
 
+    attr_accessor :same_password
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -49,7 +51,8 @@ module Akeyless
         :'rotation_statement' => :'rotation_statement',
         :'rotator_creds_type' => :'rotator_creds_type',
         :'rotator_status' => :'rotator_status',
-        :'rotator_type' => :'rotator_type'
+        :'rotator_type' => :'rotator_type',
+        :'same_password' => :'same_password'
       }
     end
 
@@ -70,7 +73,8 @@ module Akeyless
         :'rotation_statement' => :'String',
         :'rotator_creds_type' => :'String',
         :'rotator_status' => :'String',
-        :'rotator_type' => :'String'
+        :'rotator_type' => :'String',
+        :'same_password' => :'Boolean'
       }
     end
 
@@ -134,6 +138,10 @@ module Akeyless
       if attributes.key?(:'rotator_type')
         self.rotator_type = attributes[:'rotator_type']
       end
+
+      if attributes.key?(:'same_password')
+        self.same_password = attributes[:'same_password']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -163,7 +171,8 @@ module Akeyless
           rotation_statement == o.rotation_statement &&
           rotator_creds_type == o.rotator_creds_type &&
           rotator_status == o.rotator_status &&
-          rotator_type == o.rotator_type
+          rotator_type == o.rotator_type &&
+          same_password == o.same_password
     end
 
     # @see the `==` method
@@ -175,7 +184,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [delete_previous_version_in_days, gw_cluster_id, last_rotation_error, number_of_versions_to_save, rotation_hour, rotation_interval_min, rotation_statement, rotator_creds_type, rotator_status, rotator_type].hash
+      [delete_previous_version_in_days, gw_cluster_id, last_rotation_error, number_of_versions_to_save, rotation_hour, rotation_interval_min, rotation_statement, rotator_creds_type, rotator_status, rotator_type, same_password].hash
     end
 
     # Builds the object from hash

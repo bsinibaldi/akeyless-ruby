@@ -64,7 +64,7 @@
 | **gke_service_account_name** | **String** |  | [optional] |
 | **host** | **String** |  | [optional] |
 | **hostname** | **String** |  | [optional] |
-| **hosts** | **Hash&lt;String, String&gt;** |  | [optional] |
+| **hosts** | **Hash&lt;String, String&gt;** | key hostname, value description | [optional] |
 | **imap_fqdn** | **String** |  | [optional] |
 | **imap_password** | **String** |  | [optional] |
 | **imap_port** | **String** |  | [optional] |

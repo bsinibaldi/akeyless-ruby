@@ -14,6 +14,7 @@
 | **rotator_creds_type** | **String** |  | [optional] |
 | **rotator_status** | **String** | RotationStatus defines types of rotation Status | [optional] |
 | **rotator_type** | **String** |  | [optional] |
+| **same_password** | **Boolean** |  | [optional] |
 
 ## Example
 
@@ -30,7 +31,8 @@ instance = Akeyless::RotatedSecretDetailsInfo.new(
   rotation_statement: null,
   rotator_creds_type: null,
   rotator_status: null,
-  rotator_type: null
+  rotator_type: null,
+  same_password: null
 )
 ```
 

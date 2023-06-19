@@ -26,6 +26,7 @@
 | **rotator_creds_type** | **String** |  | [optional] |
 | **rotator_custom_cmd** | **String** | Custom rotation command (relevant only for ssh target) | [optional] |
 | **rotator_type** | **String** | Rotator Type |  |
+| **same_password** | **String** | Rotate same password for each host from the Linked Target (relevant only for Linked Target) | [optional] |
 | **secure_access_allow_external_user** | **Boolean** | Allow providing external user for a domain users (relevant only for rdp) | [optional][default to false] |
 | **secure_access_aws_account_id** | **String** | The AWS account id (relevant only for aws) | [optional] |
 | **secure_access_aws_native_cli** | **Boolean** | The AWS native cli | [optional] |
@@ -77,6 +78,7 @@ instance = Akeyless::CreateRotatedSecret.new(
   rotator_creds_type: null,
   rotator_custom_cmd: null,
   rotator_type: null,
+  same_password: null,
   secure_access_allow_external_user: null,
   secure_access_aws_account_id: null,
   secure_access_aws_native_cli: null,

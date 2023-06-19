@@ -12,6 +12,7 @@
 | **default_versioning** | **String** | If set to true, new item version will be created on each update [true/false] | [optional] |
 | **dp_enable_classic_key_protection** | **String** | Set to update protection with classic keys state [true/false] | [optional] |
 | **item_type** | **String** | VersionSettingsObjectType defines object types for account version settings | [optional] |
+| **items_deletion_protection** | **String** | Set or unset the default behaviour of items deletion protection [true/false] | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **jwt_ttl_default** | **Integer** | Default ttl | [optional] |
 | **jwt_ttl_max** | **Integer** | Maximum ttl | [optional] |
@@ -41,6 +42,7 @@ instance = Akeyless::UpdateAccountSettings.new(
   default_versioning: null,
   dp_enable_classic_key_protection: null,
   item_type: null,
+  items_deletion_protection: null,
   json: null,
   jwt_ttl_default: null,
   jwt_ttl_max: null,

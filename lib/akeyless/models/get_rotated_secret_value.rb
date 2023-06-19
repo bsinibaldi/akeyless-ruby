@@ -15,6 +15,9 @@ require 'time'
 
 module Akeyless
   class GetRotatedSecretValue
+    # Get rotated secret value of specific Host (relevant only for Linked Target)
+    attr_accessor :host
+
     # Retrieve the Secret value without checking the Gateway's cache [true/false]. This flag is only relevant when using the RestAPI
     attr_accessor :ignore_cache
 
@@ -36,6 +39,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'host' => :'host',
         :'ignore_cache' => :'ignore-cache',
         :'json' => :'json',
         :'names' => :'names',
@@ -53,6 +57,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'host' => :'String',
         :'ignore_cache' => :'String',
         :'json' => :'Boolean',
         :'names' => :'String',
@@ -82,6 +87,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'host')
+        self.host = attributes[:'host']
+      end
 
       if attributes.key?(:'ignore_cache')
         self.ignore_cache = attributes[:'ignore_cache']
@@ -135,6 +144,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          host == o.host &&
           ignore_cache == o.ignore_cache &&
           json == o.json &&
           names == o.names &&
@@ -152,7 +162,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ignore_cache, json, names, token, uid_token, version].hash
+      [host, ignore_cache, json, names, token, uid_token, version].hash
     end
 
     # Builds the object from hash

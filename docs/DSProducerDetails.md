@@ -130,6 +130,7 @@
 | **ldap_bind_dn** | **String** |  | [optional] |
 | **ldap_bind_password** | **String** |  | [optional] |
 | **ldap_certificate** | **String** |  | [optional] |
+| **ldap_group_dn** | **String** |  | [optional] |
 | **ldap_token_expiration** | **String** |  | [optional] |
 | **ldap_url** | **String** |  | [optional] |
 | **ldap_user_attr** | **String** |  | [optional] |
@@ -345,6 +346,7 @@ instance = Akeyless::DSProducerDetails.new(
   ldap_bind_dn: null,
   ldap_bind_password: null,
   ldap_certificate: null,
+  ldap_group_dn: null,
   ldap_token_expiration: null,
   ldap_url: null,
   ldap_user_attr: null,

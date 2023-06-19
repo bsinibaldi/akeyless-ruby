@@ -27,6 +27,7 @@
 | **rotation_interval** | **String** | The number of days to wait between every automatic key rotation (7-365) | [optional] |
 | **rotator_creds_type** | **String** | The credentials to connect with use-self-creds/use-target-creds | [optional][default to &#39;use-self-creds&#39;] |
 | **rotator_custom_cmd** | **String** | \&quot;Custom rotation command (relevant only for ssh target) | [optional] |
+| **same_password** | **String** | Rotate same password for each host from the Linked Target (relevant only for Linked Target) | [optional] |
 | **secure_access_allow_external_user** | **Boolean** | Allow providing external user for a domain users (relevant only for rdp) | [optional][default to false] |
 | **secure_access_aws_account_id** | **String** | The AWS account id (relevant only for aws) | [optional] |
 | **secure_access_aws_native_cli** | **Boolean** | The AWS native cli | [optional] |
@@ -75,6 +76,7 @@ instance = Akeyless::UpdateRotatedSecret.new(
   rotation_interval: null,
   rotator_creds_type: null,
   rotator_custom_cmd: null,
+  same_password: null,
   secure_access_allow_external_user: null,
   secure_access_aws_account_id: null,
   secure_access_aws_native_cli: null,

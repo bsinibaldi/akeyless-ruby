@@ -22,6 +22,8 @@ module Akeyless
 
     attr_accessor :password_policy
 
+    attr_accessor :protect_items_by_default
+
     attr_accessor :sharing_policy
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -30,6 +32,7 @@ module Akeyless
         :'data_protection_section' => :'data_protection_section',
         :'enable_request_for_access' => :'enable_request_for_access',
         :'password_policy' => :'password_policy',
+        :'protect_items_by_default' => :'protect_items_by_default',
         :'sharing_policy' => :'sharing_policy'
       }
     end
@@ -45,6 +48,7 @@ module Akeyless
         :'data_protection_section' => :'DataProtectionSection',
         :'enable_request_for_access' => :'Boolean',
         :'password_policy' => :'PasswordPolicyInfo',
+        :'protect_items_by_default' => :'Boolean',
         :'sharing_policy' => :'SharingPolicyInfo'
       }
     end
@@ -82,6 +86,10 @@ module Akeyless
         self.password_policy = attributes[:'password_policy']
       end
 
+      if attributes.key?(:'protect_items_by_default')
+        self.protect_items_by_default = attributes[:'protect_items_by_default']
+      end
+
       if attributes.key?(:'sharing_policy')
         self.sharing_policy = attributes[:'sharing_policy']
       end
@@ -108,6 +116,7 @@ module Akeyless
           data_protection_section == o.data_protection_section &&
           enable_request_for_access == o.enable_request_for_access &&
           password_policy == o.password_policy &&
+          protect_items_by_default == o.protect_items_by_default &&
           sharing_policy == o.sharing_policy
     end
 
@@ -120,7 +129,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data_protection_section, enable_request_for_access, password_policy, sharing_policy].hash
+      [data_protection_section, enable_request_for_access, password_policy, protect_items_by_default, sharing_policy].hash
     end
 
     # Builds the object from hash

@@ -28,6 +28,9 @@ module Akeyless
     # Externally provided username [true/false]
     attr_accessor :external_username
 
+    # Group DN which the temporary user should be added
+    attr_accessor :group_dn
+
     # Set output format to JSON
     attr_accessor :json
 
@@ -77,6 +80,7 @@ module Akeyless
         :'bind_dn_password' => :'bind-dn-password',
         :'delete_protection' => :'delete_protection',
         :'external_username' => :'external-username',
+        :'group_dn' => :'group-dn',
         :'json' => :'json',
         :'ldap_ca_cert' => :'ldap-ca-cert',
         :'ldap_url' => :'ldap-url',
@@ -106,6 +110,7 @@ module Akeyless
         :'bind_dn_password' => :'String',
         :'delete_protection' => :'String',
         :'external_username' => :'String',
+        :'group_dn' => :'String',
         :'json' => :'Boolean',
         :'ldap_ca_cert' => :'String',
         :'ldap_url' => :'String',
@@ -160,6 +165,10 @@ module Akeyless
         self.external_username = attributes[:'external_username']
       else
         self.external_username = 'false'
+      end
+
+      if attributes.key?(:'group_dn')
+        self.group_dn = attributes[:'group_dn']
       end
 
       if attributes.key?(:'json')
@@ -252,6 +261,7 @@ module Akeyless
           bind_dn_password == o.bind_dn_password &&
           delete_protection == o.delete_protection &&
           external_username == o.external_username &&
+          group_dn == o.group_dn &&
           json == o.json &&
           ldap_ca_cert == o.ldap_ca_cert &&
           ldap_url == o.ldap_url &&
@@ -277,7 +287,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [bind_dn, bind_dn_password, delete_protection, external_username, json, ldap_ca_cert, ldap_url, name, new_name, producer_encryption_key_name, tags, target_name, token, token_expiration, uid_token, user_attribute, user_dn, user_ttl].hash
+      [bind_dn, bind_dn_password, delete_protection, external_username, group_dn, json, ldap_ca_cert, ldap_url, name, new_name, producer_encryption_key_name, tags, target_name, token, token_expiration, uid_token, user_attribute, user_dn, user_ttl].hash
     end
 
     # Builds the object from hash

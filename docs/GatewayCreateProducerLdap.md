@@ -8,6 +8,7 @@
 | **bind_dn_password** | **String** | Bind DN Password | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
 | **external_username** | **String** | Externally provided username [true/false] | [optional][default to &#39;false&#39;] |
+| **group_dn** | **String** | Group DN which the temporary user should be added | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **ldap_ca_cert** | **String** | CA Certificate File Content | [optional] |
 | **ldap_url** | **String** | LDAP Server URL | [optional] |
@@ -32,6 +33,7 @@ instance = Akeyless::GatewayCreateProducerLdap.new(
   bind_dn_password: null,
   delete_protection: null,
   external_username: null,
+  group_dn: null,
   json: null,
   ldap_ca_cert: null,
   ldap_url: null,
