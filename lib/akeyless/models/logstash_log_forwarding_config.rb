@@ -17,13 +17,19 @@ module Akeyless
   class LogstashLogForwardingConfig
     attr_accessor :logstash_dns
 
+    attr_accessor :logstash_enable_tls
+
     attr_accessor :logstash_protocol
+
+    attr_accessor :logstash_tls_certificate
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'logstash_dns' => :'logstash_dns',
-        :'logstash_protocol' => :'logstash_protocol'
+        :'logstash_enable_tls' => :'logstash_enable_tls',
+        :'logstash_protocol' => :'logstash_protocol',
+        :'logstash_tls_certificate' => :'logstash_tls_certificate'
       }
     end
 
@@ -36,7 +42,9 @@ module Akeyless
     def self.openapi_types
       {
         :'logstash_dns' => :'String',
-        :'logstash_protocol' => :'String'
+        :'logstash_enable_tls' => :'Boolean',
+        :'logstash_protocol' => :'String',
+        :'logstash_tls_certificate' => :'String'
       }
     end
 
@@ -65,8 +73,16 @@ module Akeyless
         self.logstash_dns = attributes[:'logstash_dns']
       end
 
+      if attributes.key?(:'logstash_enable_tls')
+        self.logstash_enable_tls = attributes[:'logstash_enable_tls']
+      end
+
       if attributes.key?(:'logstash_protocol')
         self.logstash_protocol = attributes[:'logstash_protocol']
+      end
+
+      if attributes.key?(:'logstash_tls_certificate')
+        self.logstash_tls_certificate = attributes[:'logstash_tls_certificate']
       end
     end
 
@@ -89,7 +105,9 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           logstash_dns == o.logstash_dns &&
-          logstash_protocol == o.logstash_protocol
+          logstash_enable_tls == o.logstash_enable_tls &&
+          logstash_protocol == o.logstash_protocol &&
+          logstash_tls_certificate == o.logstash_tls_certificate
     end
 
     # @see the `==` method
@@ -101,7 +119,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [logstash_dns, logstash_protocol].hash
+      [logstash_dns, logstash_enable_tls, logstash_protocol, logstash_tls_certificate].hash
     end
 
     # Builds the object from hash

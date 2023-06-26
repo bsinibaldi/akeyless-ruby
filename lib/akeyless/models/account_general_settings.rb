@@ -16,6 +16,12 @@ require 'time'
 module Akeyless
   # AccountGeneralSettings describes general settings for an account
   class AccountGeneralSettings
+    # AccountDefaultKeyItemID is the item ID of the DFC key item configured as the default protection key
+    attr_accessor :account_default_key_item_id
+
+    # AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will.
+    attr_accessor :account_default_key_name
+
     attr_accessor :data_protection_section
 
     attr_accessor :enable_request_for_access
@@ -29,6 +35,8 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'account_default_key_item_id' => :'account_default_key_item_id',
+        :'account_default_key_name' => :'account_default_key_name',
         :'data_protection_section' => :'data_protection_section',
         :'enable_request_for_access' => :'enable_request_for_access',
         :'password_policy' => :'password_policy',
@@ -45,6 +53,8 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'account_default_key_item_id' => :'Integer',
+        :'account_default_key_name' => :'String',
         :'data_protection_section' => :'DataProtectionSection',
         :'enable_request_for_access' => :'Boolean',
         :'password_policy' => :'PasswordPolicyInfo',
@@ -73,6 +83,14 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'account_default_key_item_id')
+        self.account_default_key_item_id = attributes[:'account_default_key_item_id']
+      end
+
+      if attributes.key?(:'account_default_key_name')
+        self.account_default_key_name = attributes[:'account_default_key_name']
+      end
 
       if attributes.key?(:'data_protection_section')
         self.data_protection_section = attributes[:'data_protection_section']
@@ -113,6 +131,8 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          account_default_key_item_id == o.account_default_key_item_id &&
+          account_default_key_name == o.account_default_key_name &&
           data_protection_section == o.data_protection_section &&
           enable_request_for_access == o.enable_request_for_access &&
           password_policy == o.password_policy &&
@@ -129,7 +149,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data_protection_section, enable_request_for_access, password_policy, protect_items_by_default, sharing_policy].hash
+      [account_default_key_item_id, account_default_key_name, data_protection_section, enable_request_for_access, password_policy, protect_items_by_default, sharing_policy].hash
     end
 
     # Builds the object from hash

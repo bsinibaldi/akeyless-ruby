@@ -8,6 +8,7 @@
 | **city** | **String** | City | [optional] |
 | **company_name** | **String** | Company name | [optional] |
 | **country** | **String** | Country | [optional] |
+| **default_key_name** | **String** | Set the account default key based on the DFC key item name. Use \&quot;set-original-akeyless-default-key\&quot; to revert to using the original default key of the account. Empty string will change nothing. | [optional] |
 | **default_share_link_ttl_minutes** | **String** | Set the default ttl in minutes for sharing item number between 60 and 43200 | [optional] |
 | **default_versioning** | **String** | If set to true, new item version will be created on each update [true/false] | [optional] |
 | **dp_enable_classic_key_protection** | **String** | Set to update protection with classic keys state [true/false] | [optional] |
@@ -38,6 +39,7 @@ instance = Akeyless::UpdateAccountSettings.new(
   city: null,
   company_name: null,
   country: null,
+  default_key_name: null,
   default_share_link_ttl_minutes: null,
   default_versioning: null,
   dp_enable_classic_key_protection: null,

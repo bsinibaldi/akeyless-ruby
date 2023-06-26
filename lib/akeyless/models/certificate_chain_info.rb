@@ -19,6 +19,8 @@ module Akeyless
 
     attr_accessor :certificate_format
 
+    attr_accessor :certificate_issuer_item_id
+
     attr_accessor :certificate_issuer_name
 
     attr_accessor :certificate_pem
@@ -32,6 +34,7 @@ module Akeyless
       {
         :'certificate_chain' => :'certificate_chain',
         :'certificate_format' => :'certificate_format',
+        :'certificate_issuer_item_id' => :'certificate_issuer_item_id',
         :'certificate_issuer_name' => :'certificate_issuer_name',
         :'certificate_pem' => :'certificate_pem',
         :'certificate_status' => :'certificate_status',
@@ -49,6 +52,7 @@ module Akeyless
       {
         :'certificate_chain' => :'Array<CertificateInfo>',
         :'certificate_format' => :'String',
+        :'certificate_issuer_item_id' => :'Integer',
         :'certificate_issuer_name' => :'String',
         :'certificate_pem' => :'String',
         :'certificate_status' => :'String',
@@ -85,6 +89,10 @@ module Akeyless
 
       if attributes.key?(:'certificate_format')
         self.certificate_format = attributes[:'certificate_format']
+      end
+
+      if attributes.key?(:'certificate_issuer_item_id')
+        self.certificate_issuer_item_id = attributes[:'certificate_issuer_item_id']
       end
 
       if attributes.key?(:'certificate_issuer_name')
@@ -126,6 +134,7 @@ module Akeyless
       self.class == o.class &&
           certificate_chain == o.certificate_chain &&
           certificate_format == o.certificate_format &&
+          certificate_issuer_item_id == o.certificate_issuer_item_id &&
           certificate_issuer_name == o.certificate_issuer_name &&
           certificate_pem == o.certificate_pem &&
           certificate_status == o.certificate_status &&
@@ -141,7 +150,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [certificate_chain, certificate_format, certificate_issuer_name, certificate_pem, certificate_status, expiration_events].hash
+      [certificate_chain, certificate_format, certificate_issuer_item_id, certificate_issuer_name, certificate_pem, certificate_status, expiration_events].hash
     end
 
     # Builds the object from hash

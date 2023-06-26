@@ -15,6 +15,8 @@ require 'time'
 
 module Akeyless
   class SyslogLogForwardingConfig
+    attr_accessor :syslog_enable_tls
+
     attr_accessor :syslog_formatter
 
     attr_accessor :syslog_host
@@ -23,13 +25,17 @@ module Akeyless
 
     attr_accessor :syslog_target_tag
 
+    attr_accessor :syslog_tls_certificate
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'syslog_enable_tls' => :'syslog_enable_tls',
         :'syslog_formatter' => :'syslog_formatter',
         :'syslog_host' => :'syslog_host',
         :'syslog_network' => :'syslog_network',
-        :'syslog_target_tag' => :'syslog_target_tag'
+        :'syslog_target_tag' => :'syslog_target_tag',
+        :'syslog_tls_certificate' => :'syslog_tls_certificate'
       }
     end
 
@@ -41,10 +47,12 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'syslog_enable_tls' => :'Boolean',
         :'syslog_formatter' => :'String',
         :'syslog_host' => :'String',
         :'syslog_network' => :'String',
-        :'syslog_target_tag' => :'String'
+        :'syslog_target_tag' => :'String',
+        :'syslog_tls_certificate' => :'String'
       }
     end
 
@@ -69,6 +77,10 @@ module Akeyless
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'syslog_enable_tls')
+        self.syslog_enable_tls = attributes[:'syslog_enable_tls']
+      end
+
       if attributes.key?(:'syslog_formatter')
         self.syslog_formatter = attributes[:'syslog_formatter']
       end
@@ -83,6 +95,10 @@ module Akeyless
 
       if attributes.key?(:'syslog_target_tag')
         self.syslog_target_tag = attributes[:'syslog_target_tag']
+      end
+
+      if attributes.key?(:'syslog_tls_certificate')
+        self.syslog_tls_certificate = attributes[:'syslog_tls_certificate']
       end
     end
 
@@ -104,10 +120,12 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          syslog_enable_tls == o.syslog_enable_tls &&
           syslog_formatter == o.syslog_formatter &&
           syslog_host == o.syslog_host &&
           syslog_network == o.syslog_network &&
-          syslog_target_tag == o.syslog_target_tag
+          syslog_target_tag == o.syslog_target_tag &&
+          syslog_tls_certificate == o.syslog_tls_certificate
     end
 
     # @see the `==` method
@@ -119,7 +137,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [syslog_formatter, syslog_host, syslog_network, syslog_target_tag].hash
+      [syslog_enable_tls, syslog_formatter, syslog_host, syslog_network, syslog_target_tag, syslog_tls_certificate].hash
     end
 
     # Builds the object from hash

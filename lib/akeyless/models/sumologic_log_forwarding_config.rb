@@ -14,52 +14,19 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class LogForwardingConfigPart
-    attr_accessor :aws_s3_config
+  class SumologicLogForwardingConfig
+    attr_accessor :sumo_logic_endpoint
 
-    attr_accessor :azure_analytics_config
+    attr_accessor :sumo_logic_host
 
-    attr_accessor :datadog_config
-
-    attr_accessor :elasticsearch_config
-
-    attr_accessor :json_output
-
-    attr_accessor :logan_enable
-
-    attr_accessor :logan_url
-
-    attr_accessor :logstash_config
-
-    attr_accessor :logz_io_config
-
-    attr_accessor :pull_interval_sec
-
-    attr_accessor :splunk_config
-
-    attr_accessor :sumo_logic_config
-
-    attr_accessor :syslog_config
-
-    attr_accessor :target_log_type
+    attr_accessor :sumo_logic_tags
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'aws_s3_config' => :'aws_s3_config',
-        :'azure_analytics_config' => :'azure_analytics_config',
-        :'datadog_config' => :'datadog_config',
-        :'elasticsearch_config' => :'elasticsearch_config',
-        :'json_output' => :'json_output',
-        :'logan_enable' => :'logan_enable',
-        :'logan_url' => :'logan_url',
-        :'logstash_config' => :'logstash_config',
-        :'logz_io_config' => :'logz_io_config',
-        :'pull_interval_sec' => :'pull_interval_sec',
-        :'splunk_config' => :'splunk_config',
-        :'sumo_logic_config' => :'sumo_logic_config',
-        :'syslog_config' => :'syslog_config',
-        :'target_log_type' => :'target_log_type'
+        :'sumo_logic_endpoint' => :'sumo_logic_endpoint',
+        :'sumo_logic_host' => :'sumo_logic_host',
+        :'sumo_logic_tags' => :'sumo_logic_tags'
       }
     end
 
@@ -71,20 +38,9 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'aws_s3_config' => :'AwsS3LogForwardingConfig',
-        :'azure_analytics_config' => :'AzureLogAnalyticsForwardingConfig',
-        :'datadog_config' => :'DatadogForwardingConfig',
-        :'elasticsearch_config' => :'ElasticsearchLogForwardingConfig',
-        :'json_output' => :'Boolean',
-        :'logan_enable' => :'Boolean',
-        :'logan_url' => :'String',
-        :'logstash_config' => :'LogstashLogForwardingConfig',
-        :'logz_io_config' => :'LogzIoLogForwardingConfig',
-        :'pull_interval_sec' => :'String',
-        :'splunk_config' => :'SplunkLogForwardingConfig',
-        :'sumo_logic_config' => :'SumologicLogForwardingConfig',
-        :'syslog_config' => :'SyslogLogForwardingConfig',
-        :'target_log_type' => :'String'
+        :'sumo_logic_endpoint' => :'String',
+        :'sumo_logic_host' => :'String',
+        :'sumo_logic_tags' => :'String'
       }
     end
 
@@ -98,71 +54,27 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::LogForwardingConfigPart` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::SumologicLogForwardingConfig` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::LogForwardingConfigPart`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::SumologicLogForwardingConfig`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'aws_s3_config')
-        self.aws_s3_config = attributes[:'aws_s3_config']
+      if attributes.key?(:'sumo_logic_endpoint')
+        self.sumo_logic_endpoint = attributes[:'sumo_logic_endpoint']
       end
 
-      if attributes.key?(:'azure_analytics_config')
-        self.azure_analytics_config = attributes[:'azure_analytics_config']
+      if attributes.key?(:'sumo_logic_host')
+        self.sumo_logic_host = attributes[:'sumo_logic_host']
       end
 
-      if attributes.key?(:'datadog_config')
-        self.datadog_config = attributes[:'datadog_config']
-      end
-
-      if attributes.key?(:'elasticsearch_config')
-        self.elasticsearch_config = attributes[:'elasticsearch_config']
-      end
-
-      if attributes.key?(:'json_output')
-        self.json_output = attributes[:'json_output']
-      end
-
-      if attributes.key?(:'logan_enable')
-        self.logan_enable = attributes[:'logan_enable']
-      end
-
-      if attributes.key?(:'logan_url')
-        self.logan_url = attributes[:'logan_url']
-      end
-
-      if attributes.key?(:'logstash_config')
-        self.logstash_config = attributes[:'logstash_config']
-      end
-
-      if attributes.key?(:'logz_io_config')
-        self.logz_io_config = attributes[:'logz_io_config']
-      end
-
-      if attributes.key?(:'pull_interval_sec')
-        self.pull_interval_sec = attributes[:'pull_interval_sec']
-      end
-
-      if attributes.key?(:'splunk_config')
-        self.splunk_config = attributes[:'splunk_config']
-      end
-
-      if attributes.key?(:'sumo_logic_config')
-        self.sumo_logic_config = attributes[:'sumo_logic_config']
-      end
-
-      if attributes.key?(:'syslog_config')
-        self.syslog_config = attributes[:'syslog_config']
-      end
-
-      if attributes.key?(:'target_log_type')
-        self.target_log_type = attributes[:'target_log_type']
+      if attributes.key?(:'sumo_logic_tags')
+        self.sumo_logic_tags = attributes[:'sumo_logic_tags']
       end
     end
 
@@ -184,20 +96,9 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          aws_s3_config == o.aws_s3_config &&
-          azure_analytics_config == o.azure_analytics_config &&
-          datadog_config == o.datadog_config &&
-          elasticsearch_config == o.elasticsearch_config &&
-          json_output == o.json_output &&
-          logan_enable == o.logan_enable &&
-          logan_url == o.logan_url &&
-          logstash_config == o.logstash_config &&
-          logz_io_config == o.logz_io_config &&
-          pull_interval_sec == o.pull_interval_sec &&
-          splunk_config == o.splunk_config &&
-          sumo_logic_config == o.sumo_logic_config &&
-          syslog_config == o.syslog_config &&
-          target_log_type == o.target_log_type
+          sumo_logic_endpoint == o.sumo_logic_endpoint &&
+          sumo_logic_host == o.sumo_logic_host &&
+          sumo_logic_tags == o.sumo_logic_tags
     end
 
     # @see the `==` method
@@ -209,7 +110,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [aws_s3_config, azure_analytics_config, datadog_config, elasticsearch_config, json_output, logan_enable, logan_url, logstash_config, logz_io_config, pull_interval_sec, splunk_config, sumo_logic_config, syslog_config, target_log_type].hash
+      [sumo_logic_endpoint, sumo_logic_host, sumo_logic_tags].hash
     end
 
     # Builds the object from hash

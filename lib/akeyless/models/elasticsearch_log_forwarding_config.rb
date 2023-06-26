@@ -21,6 +21,8 @@ module Akeyless
 
     attr_accessor :elasticsearch_cloud_id
 
+    attr_accessor :elasticsearch_enable_tls
+
     attr_accessor :elasticsearch_index
 
     attr_accessor :elasticsearch_nodes
@@ -28,6 +30,8 @@ module Akeyless
     attr_accessor :elasticsearch_password
 
     attr_accessor :elasticsearch_server_type
+
+    attr_accessor :elasticsearch_tls_certificate
 
     attr_accessor :elasticsearch_user_name
 
@@ -37,10 +41,12 @@ module Akeyless
         :'elasticsearch_api_key' => :'elasticsearch_api_key',
         :'elasticsearch_auth_type' => :'elasticsearch_auth_type',
         :'elasticsearch_cloud_id' => :'elasticsearch_cloud_id',
+        :'elasticsearch_enable_tls' => :'elasticsearch_enable_tls',
         :'elasticsearch_index' => :'elasticsearch_index',
         :'elasticsearch_nodes' => :'elasticsearch_nodes',
         :'elasticsearch_password' => :'elasticsearch_password',
         :'elasticsearch_server_type' => :'elasticsearch_server_type',
+        :'elasticsearch_tls_certificate' => :'elasticsearch_tls_certificate',
         :'elasticsearch_user_name' => :'elasticsearch_user_name'
       }
     end
@@ -56,10 +62,12 @@ module Akeyless
         :'elasticsearch_api_key' => :'String',
         :'elasticsearch_auth_type' => :'String',
         :'elasticsearch_cloud_id' => :'String',
+        :'elasticsearch_enable_tls' => :'Boolean',
         :'elasticsearch_index' => :'String',
         :'elasticsearch_nodes' => :'String',
         :'elasticsearch_password' => :'String',
         :'elasticsearch_server_type' => :'String',
+        :'elasticsearch_tls_certificate' => :'String',
         :'elasticsearch_user_name' => :'String'
       }
     end
@@ -97,6 +105,10 @@ module Akeyless
         self.elasticsearch_cloud_id = attributes[:'elasticsearch_cloud_id']
       end
 
+      if attributes.key?(:'elasticsearch_enable_tls')
+        self.elasticsearch_enable_tls = attributes[:'elasticsearch_enable_tls']
+      end
+
       if attributes.key?(:'elasticsearch_index')
         self.elasticsearch_index = attributes[:'elasticsearch_index']
       end
@@ -111,6 +123,10 @@ module Akeyless
 
       if attributes.key?(:'elasticsearch_server_type')
         self.elasticsearch_server_type = attributes[:'elasticsearch_server_type']
+      end
+
+      if attributes.key?(:'elasticsearch_tls_certificate')
+        self.elasticsearch_tls_certificate = attributes[:'elasticsearch_tls_certificate']
       end
 
       if attributes.key?(:'elasticsearch_user_name')
@@ -139,10 +155,12 @@ module Akeyless
           elasticsearch_api_key == o.elasticsearch_api_key &&
           elasticsearch_auth_type == o.elasticsearch_auth_type &&
           elasticsearch_cloud_id == o.elasticsearch_cloud_id &&
+          elasticsearch_enable_tls == o.elasticsearch_enable_tls &&
           elasticsearch_index == o.elasticsearch_index &&
           elasticsearch_nodes == o.elasticsearch_nodes &&
           elasticsearch_password == o.elasticsearch_password &&
           elasticsearch_server_type == o.elasticsearch_server_type &&
+          elasticsearch_tls_certificate == o.elasticsearch_tls_certificate &&
           elasticsearch_user_name == o.elasticsearch_user_name
     end
 
@@ -155,7 +173,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [elasticsearch_api_key, elasticsearch_auth_type, elasticsearch_cloud_id, elasticsearch_index, elasticsearch_nodes, elasticsearch_password, elasticsearch_server_type, elasticsearch_user_name].hash
+      [elasticsearch_api_key, elasticsearch_auth_type, elasticsearch_cloud_id, elasticsearch_enable_tls, elasticsearch_index, elasticsearch_nodes, elasticsearch_password, elasticsearch_server_type, elasticsearch_tls_certificate, elasticsearch_user_name].hash
     end
 
     # Builds the object from hash

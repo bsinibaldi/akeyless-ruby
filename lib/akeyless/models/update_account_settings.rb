@@ -27,6 +27,9 @@ module Akeyless
     # Country
     attr_accessor :country
 
+    # Set the account default key based on the DFC key item name. Use \"set-original-akeyless-default-key\" to revert to using the original default key of the account. Empty string will change nothing.
+    attr_accessor :default_key_name
+
     # Set the default ttl in minutes for sharing item number between 60 and 43200
     attr_accessor :default_share_link_ttl_minutes
 
@@ -91,6 +94,7 @@ module Akeyless
         :'city' => :'city',
         :'company_name' => :'company-name',
         :'country' => :'country',
+        :'default_key_name' => :'default-key-name',
         :'default_share_link_ttl_minutes' => :'default-share-link-ttl-minutes',
         :'default_versioning' => :'default-versioning',
         :'dp_enable_classic_key_protection' => :'dp-enable-classic-key-protection',
@@ -125,6 +129,7 @@ module Akeyless
         :'city' => :'String',
         :'company_name' => :'String',
         :'country' => :'String',
+        :'default_key_name' => :'String',
         :'default_share_link_ttl_minutes' => :'String',
         :'default_versioning' => :'String',
         :'dp_enable_classic_key_protection' => :'String',
@@ -182,6 +187,10 @@ module Akeyless
 
       if attributes.key?(:'country')
         self.country = attributes[:'country']
+      end
+
+      if attributes.key?(:'default_key_name')
+        self.default_key_name = attributes[:'default_key_name']
       end
 
       if attributes.key?(:'default_share_link_ttl_minutes')
@@ -285,6 +294,7 @@ module Akeyless
           city == o.city &&
           company_name == o.company_name &&
           country == o.country &&
+          default_key_name == o.default_key_name &&
           default_share_link_ttl_minutes == o.default_share_link_ttl_minutes &&
           default_versioning == o.default_versioning &&
           dp_enable_classic_key_protection == o.dp_enable_classic_key_protection &&
@@ -315,7 +325,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address, city, company_name, country, default_share_link_ttl_minutes, default_versioning, dp_enable_classic_key_protection, item_type, items_deletion_protection, json, jwt_ttl_default, jwt_ttl_max, jwt_ttl_min, max_versions, password_length, phone, postal_code, token, uid_token, use_lower_letters, use_numbers, use_special_characters, use_capital_letters].hash
+      [address, city, company_name, country, default_key_name, default_share_link_ttl_minutes, default_versioning, dp_enable_classic_key_protection, item_type, items_deletion_protection, json, jwt_ttl_default, jwt_ttl_max, jwt_ttl_min, max_versions, password_length, phone, postal_code, token, uid_token, use_lower_letters, use_numbers, use_special_characters, use_capital_letters].hash
     end
 
     # Builds the object from hash
