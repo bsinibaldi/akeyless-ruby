@@ -22,6 +22,8 @@ module Akeyless
 
     attr_accessor :auth_method_sub_claims
 
+    attr_accessor :is_sub_claims_case_sensitive
+
     attr_accessor :role_name
 
     attr_accessor :rules
@@ -32,6 +34,7 @@ module Akeyless
         :'allowed_ops' => :'allowed_ops',
         :'assoc_id' => :'assoc_id',
         :'auth_method_sub_claims' => :'auth_method_sub_claims',
+        :'is_sub_claims_case_sensitive' => :'is_sub_claims_case_sensitive',
         :'role_name' => :'role_name',
         :'rules' => :'rules'
       }
@@ -48,6 +51,7 @@ module Akeyless
         :'allowed_ops' => :'Array<String>',
         :'assoc_id' => :'String',
         :'auth_method_sub_claims' => :'Hash<String, Array<String>>',
+        :'is_sub_claims_case_sensitive' => :'Boolean',
         :'role_name' => :'String',
         :'rules' => :'Rules'
       }
@@ -90,6 +94,10 @@ module Akeyless
         end
       end
 
+      if attributes.key?(:'is_sub_claims_case_sensitive')
+        self.is_sub_claims_case_sensitive = attributes[:'is_sub_claims_case_sensitive']
+      end
+
       if attributes.key?(:'role_name')
         self.role_name = attributes[:'role_name']
       end
@@ -120,6 +128,7 @@ module Akeyless
           allowed_ops == o.allowed_ops &&
           assoc_id == o.assoc_id &&
           auth_method_sub_claims == o.auth_method_sub_claims &&
+          is_sub_claims_case_sensitive == o.is_sub_claims_case_sensitive &&
           role_name == o.role_name &&
           rules == o.rules
     end
@@ -133,7 +142,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allowed_ops, assoc_id, auth_method_sub_claims, role_name, rules].hash
+      [allowed_ops, assoc_id, auth_method_sub_claims, is_sub_claims_case_sensitive, role_name, rules].hash
     end
 
     # Builds the object from hash
