@@ -659,6 +659,70 @@ module Akeyless
       return data, status_code, headers
     end
 
+    # @param body [CreateAuthMethodEmail] 
+    # @param [Hash] opts the optional parameters
+    # @return [CreateAuthMethodEmailOutput]
+    def create_auth_method_email(body, opts = {})
+      data, _status_code, _headers = create_auth_method_email_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [CreateAuthMethodEmail] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CreateAuthMethodEmailOutput, Integer, Hash)>] CreateAuthMethodEmailOutput data, response status code and response headers
+    def create_auth_method_email_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.create_auth_method_email ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.create_auth_method_email"
+      end
+      # resource path
+      local_var_path = '/create-auth-method-email'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CreateAuthMethodEmailOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.create_auth_method_email",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#create_auth_method_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # @param body [CreateAuthMethodGCP] 
     # @param [Hash] opts the optional parameters
     # @return [CreateAuthMethodGCPOutput]
@@ -5013,7 +5077,7 @@ module Akeyless
 
     # @param body [EsmDelete] 
     # @param [Hash] opts the optional parameters
-    # @return [Object]
+    # @return [EsmDeleteSecretOutput]
     def esm_delete(body, opts = {})
       data, _status_code, _headers = esm_delete_with_http_info(body, opts)
       data
@@ -5021,7 +5085,7 @@ module Akeyless
 
     # @param body [EsmDelete] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    # @return [Array<(EsmDeleteSecretOutput, Integer, Hash)>] EsmDeleteSecretOutput data, response status code and response headers
     def esm_delete_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: V2Api.esm_delete ...'
@@ -5053,7 +5117,7 @@ module Akeyless
       post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Object'
+      return_type = opts[:debug_return_type] || 'EsmDeleteSecretOutput'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || []
@@ -5380,6 +5444,70 @@ module Akeyless
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: V2Api#export_classic_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param body [AllowedAccessArgs] 
+    # @param [Hash] opts the optional parameters
+    # @return [AllowedAccess]
+    def gateway_create_allowed_access(body, opts = {})
+      data, _status_code, _headers = gateway_create_allowed_access_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [AllowedAccessArgs] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AllowedAccess, Integer, Hash)>] AllowedAccess data, response status code and response headers
+    def gateway_create_allowed_access_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.gateway_create_allowed_access ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.gateway_create_allowed_access"
+      end
+      # resource path
+      local_var_path = '/gateway-create-allowed-access'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AllowedAccess'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.gateway_create_allowed_access",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#gateway_create_allowed_access\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7108,6 +7236,70 @@ module Akeyless
       return data, status_code, headers
     end
 
+    # @param body [AllowedAccessDeleteArgs] 
+    # @param [Hash] opts the optional parameters
+    # @return [GatewayDeleteAllowedAccessOutput]
+    def gateway_delete_allowed_access(body, opts = {})
+      data, _status_code, _headers = gateway_delete_allowed_access_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [AllowedAccessDeleteArgs] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GatewayDeleteAllowedAccessOutput, Integer, Hash)>] GatewayDeleteAllowedAccessOutput data, response status code and response headers
+    def gateway_delete_allowed_access_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.gateway_delete_allowed_access ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.gateway_delete_allowed_access"
+      end
+      # resource path
+      local_var_path = '/gateway-delete-allowed-access'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GatewayDeleteAllowedAccessOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.gateway_delete_allowed_access",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#gateway_delete_allowed_access\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # @param body [GatewayDeleteK8SAuthConfig] 
     # @param [Hash] opts the optional parameters
     # @return [GatewayDeleteK8SAuthConfigOutput]
@@ -7360,6 +7552,70 @@ module Akeyless
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: V2Api#gateway_download_customer_fragments\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param body [AllowedAccessArgs] 
+    # @param [Hash] opts the optional parameters
+    # @return [AllowedAccess]
+    def gateway_get_allowed_access(body, opts = {})
+      data, _status_code, _headers = gateway_get_allowed_access_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [AllowedAccessArgs] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AllowedAccess, Integer, Hash)>] AllowedAccess data, response status code and response headers
+    def gateway_get_allowed_access_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.gateway_get_allowed_access ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.gateway_get_allowed_access"
+      end
+      # resource path
+      local_var_path = '/gateway-get-allowed-access'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AllowedAccess'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.gateway_get_allowed_access",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#gateway_get_allowed_access\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -8316,6 +8572,70 @@ module Akeyless
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: V2Api#gateway_sync_migration\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param body [AllowedAccessUpdateArgs] 
+    # @param [Hash] opts the optional parameters
+    # @return [AllowedAccess]
+    def gateway_update_allowed_access(body, opts = {})
+      data, _status_code, _headers = gateway_update_allowed_access_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [AllowedAccessUpdateArgs] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AllowedAccess, Integer, Hash)>] AllowedAccess data, response status code and response headers
+    def gateway_update_allowed_access_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.gateway_update_allowed_access ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.gateway_update_allowed_access"
+      end
+      # resource path
+      local_var_path = '/gateway-update-allowed-access'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AllowedAccess'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.gateway_update_allowed_access",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#gateway_update_allowed_access\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

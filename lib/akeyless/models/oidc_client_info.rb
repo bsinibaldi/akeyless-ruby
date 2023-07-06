@@ -14,22 +14,37 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class EsmGetSecretOutput
-    attr_accessor :binary_value
+  class OidcClientInfo
+    attr_accessor :access_permission_assignment
 
-    attr_accessor :metadata
+    attr_accessor :audience
 
-    attr_accessor :name
+    attr_accessor :client_id
 
-    attr_accessor :value
+    attr_accessor :grant_types
+
+    attr_accessor :logout_uris
+
+    attr_accessor :public
+
+    attr_accessor :redirect_uris
+
+    attr_accessor :response_types
+
+    attr_accessor :scopes
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'binary_value' => :'binary_value',
-        :'metadata' => :'metadata',
-        :'name' => :'name',
-        :'value' => :'value'
+        :'access_permission_assignment' => :'access_permission_assignment',
+        :'audience' => :'audience',
+        :'client_id' => :'client-id',
+        :'grant_types' => :'grant_types',
+        :'logout_uris' => :'logout_uris',
+        :'public' => :'public',
+        :'redirect_uris' => :'redirect_uris',
+        :'response_types' => :'response_types',
+        :'scopes' => :'scopes'
       }
     end
 
@@ -41,10 +56,15 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'binary_value' => :'Boolean',
-        :'metadata' => :'Object',
-        :'name' => :'String',
-        :'value' => :'String'
+        :'access_permission_assignment' => :'Array<AccessPermissionAssignment>',
+        :'audience' => :'Array<String>',
+        :'client_id' => :'String',
+        :'grant_types' => :'Array<String>',
+        :'logout_uris' => :'Array<String>',
+        :'public' => :'Boolean',
+        :'redirect_uris' => :'Array<String>',
+        :'response_types' => :'Array<String>',
+        :'scopes' => :'Array<String>'
       }
     end
 
@@ -58,31 +78,65 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::EsmGetSecretOutput` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::OidcClientInfo` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::EsmGetSecretOutput`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::OidcClientInfo`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'binary_value')
-        self.binary_value = attributes[:'binary_value']
+      if attributes.key?(:'access_permission_assignment')
+        if (value = attributes[:'access_permission_assignment']).is_a?(Array)
+          self.access_permission_assignment = value
+        end
       end
 
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
+      if attributes.key?(:'audience')
+        if (value = attributes[:'audience']).is_a?(Array)
+          self.audience = value
+        end
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'client_id')
+        self.client_id = attributes[:'client_id']
       end
 
-      if attributes.key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.key?(:'grant_types')
+        if (value = attributes[:'grant_types']).is_a?(Array)
+          self.grant_types = value
+        end
+      end
+
+      if attributes.key?(:'logout_uris')
+        if (value = attributes[:'logout_uris']).is_a?(Array)
+          self.logout_uris = value
+        end
+      end
+
+      if attributes.key?(:'public')
+        self.public = attributes[:'public']
+      end
+
+      if attributes.key?(:'redirect_uris')
+        if (value = attributes[:'redirect_uris']).is_a?(Array)
+          self.redirect_uris = value
+        end
+      end
+
+      if attributes.key?(:'response_types')
+        if (value = attributes[:'response_types']).is_a?(Array)
+          self.response_types = value
+        end
+      end
+
+      if attributes.key?(:'scopes')
+        if (value = attributes[:'scopes']).is_a?(Array)
+          self.scopes = value
+        end
       end
     end
 
@@ -104,10 +158,15 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          binary_value == o.binary_value &&
-          metadata == o.metadata &&
-          name == o.name &&
-          value == o.value
+          access_permission_assignment == o.access_permission_assignment &&
+          audience == o.audience &&
+          client_id == o.client_id &&
+          grant_types == o.grant_types &&
+          logout_uris == o.logout_uris &&
+          public == o.public &&
+          redirect_uris == o.redirect_uris &&
+          response_types == o.response_types &&
+          scopes == o.scopes
     end
 
     # @see the `==` method
@@ -119,7 +178,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [binary_value, metadata, name, value].hash
+      [access_permission_assignment, audience, client_id, grant_types, logout_uris, public, redirect_uris, response_types, scopes].hash
     end
 
     # Builds the object from hash

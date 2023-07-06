@@ -14,22 +14,13 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class EsmGetSecretOutput
-    attr_accessor :binary_value
-
-    attr_accessor :metadata
-
-    attr_accessor :name
-
-    attr_accessor :value
+  class CreateAuthMethodEmailOutput
+    attr_accessor :access_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'binary_value' => :'binary_value',
-        :'metadata' => :'metadata',
-        :'name' => :'name',
-        :'value' => :'value'
+        :'access_id' => :'access_id'
       }
     end
 
@@ -41,10 +32,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'binary_value' => :'Boolean',
-        :'metadata' => :'Object',
-        :'name' => :'String',
-        :'value' => :'String'
+        :'access_id' => :'String'
       }
     end
 
@@ -58,31 +46,19 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::EsmGetSecretOutput` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::CreateAuthMethodEmailOutput` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::EsmGetSecretOutput`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::CreateAuthMethodEmailOutput`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'binary_value')
-        self.binary_value = attributes[:'binary_value']
-      end
-
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.key?(:'access_id')
+        self.access_id = attributes[:'access_id']
       end
     end
 
@@ -104,10 +80,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          binary_value == o.binary_value &&
-          metadata == o.metadata &&
-          name == o.name &&
-          value == o.value
+          access_id == o.access_id
     end
 
     # @see the `==` method
@@ -119,7 +92,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [binary_value, metadata, name, value].hash
+      [access_id].hash
     end
 
     # Builds the object from hash

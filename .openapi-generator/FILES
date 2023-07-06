@@ -11,6 +11,7 @@ docs/APIKeyAccessRules.md
 docs/AWSIAMAccessRules.md
 docs/AWSPayload.md
 docs/AWSSecretsMigration.md
+docs/AccessPermissionAssignment.md
 docs/AccountGeneralSettings.md
 docs/AccountObjectVersionSettingsOutput.md
 docs/ActiveDirectoryMigration.md
@@ -66,6 +67,8 @@ docs/CreateAuthMethodAzureAD.md
 docs/CreateAuthMethodAzureADOutput.md
 docs/CreateAuthMethodCert.md
 docs/CreateAuthMethodCertOutput.md
+docs/CreateAuthMethodEmail.md
+docs/CreateAuthMethodEmailOutput.md
 docs/CreateAuthMethodGCP.md
 docs/CreateAuthMethodGCPOutput.md
 docs/CreateAuthMethodHuawei.md
@@ -207,6 +210,7 @@ docs/EncryptWithClassicKeyOutput.md
 docs/EsmCreate.md
 docs/EsmCreateSecretOutput.md
 docs/EsmDelete.md
+docs/EsmDeleteSecretOutput.md
 docs/EsmGet.md
 docs/EsmGetSecretOutput.md
 docs/EsmList.md
@@ -401,6 +405,7 @@ docs/GetTags.md
 docs/GetTarget.md
 docs/GetTargetDetails.md
 docs/GetTargetDetailsOutput.md
+docs/GoogleChronicleForwardingConfig.md
 docs/GwClusterIdentity.md
 docs/HashiMigration.md
 docs/HashiPayload.md
@@ -484,6 +489,7 @@ docs/OAuth2CustomClaim.md
 docs/OIDCAccessRules.md
 docs/OIDCCustomClaim.md
 docs/ObjectVersionSettingsOutput.md
+docs/OidcClientInfo.md
 docs/OnePasswordMigration.md
 docs/OnePasswordPayload.md
 docs/PKICertificateIssueDetails.md
@@ -669,6 +675,7 @@ lib/akeyless/api/v2_api.rb
 lib/akeyless/api_client.rb
 lib/akeyless/api_error.rb
 lib/akeyless/configuration.rb
+lib/akeyless/models/access_permission_assignment.rb
 lib/akeyless/models/account_general_settings.rb
 lib/akeyless/models/account_object_version_settings_output.rb
 lib/akeyless/models/active_directory_migration.rb
@@ -726,6 +733,8 @@ lib/akeyless/models/create_auth_method_azure_ad.rb
 lib/akeyless/models/create_auth_method_azure_ad_output.rb
 lib/akeyless/models/create_auth_method_cert.rb
 lib/akeyless/models/create_auth_method_cert_output.rb
+lib/akeyless/models/create_auth_method_email.rb
+lib/akeyless/models/create_auth_method_email_output.rb
 lib/akeyless/models/create_auth_method_gcp.rb
 lib/akeyless/models/create_auth_method_gcp_output.rb
 lib/akeyless/models/create_auth_method_huawei.rb
@@ -869,6 +878,7 @@ lib/akeyless/models/encrypt_with_classic_key_output.rb
 lib/akeyless/models/esm_create.rb
 lib/akeyless/models/esm_create_secret_output.rb
 lib/akeyless/models/esm_delete.rb
+lib/akeyless/models/esm_delete_secret_output.rb
 lib/akeyless/models/esm_get.rb
 lib/akeyless/models/esm_get_secret_output.rb
 lib/akeyless/models/esm_list.rb
@@ -1063,6 +1073,7 @@ lib/akeyless/models/get_tags.rb
 lib/akeyless/models/get_target.rb
 lib/akeyless/models/get_target_details.rb
 lib/akeyless/models/get_target_details_output.rb
+lib/akeyless/models/google_chronicle_forwarding_config.rb
 lib/akeyless/models/gw_cluster_identity.rb
 lib/akeyless/models/hashi_migration.rb
 lib/akeyless/models/hashi_payload.rb
@@ -1145,6 +1156,7 @@ lib/akeyless/models/o_auth2_access_rules.rb
 lib/akeyless/models/o_auth2_custom_claim.rb
 lib/akeyless/models/object_version_settings_output.rb
 lib/akeyless/models/oidc_access_rules.rb
+lib/akeyless/models/oidc_client_info.rb
 lib/akeyless/models/oidc_custom_claim.rb
 lib/akeyless/models/one_password_migration.rb
 lib/akeyless/models/one_password_payload.rb
@@ -1327,4 +1339,10 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
+spec/models/access_permission_assignment_spec.rb
+spec/models/create_auth_method_email_output_spec.rb
+spec/models/create_auth_method_email_spec.rb
+spec/models/esm_delete_secret_output_spec.rb
+spec/models/google_chronicle_forwarding_config_spec.rb
+spec/models/oidc_client_info_spec.rb
 spec/spec_helper.rb

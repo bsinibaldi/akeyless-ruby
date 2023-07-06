@@ -23,6 +23,8 @@ module Akeyless
 
     attr_accessor :elasticsearch_config
 
+    attr_accessor :google_chronicle_config
+
     attr_accessor :json_output
 
     attr_accessor :logan_enable
@@ -50,6 +52,7 @@ module Akeyless
         :'azure_analytics_config' => :'azure_analytics_config',
         :'datadog_config' => :'datadog_config',
         :'elasticsearch_config' => :'elasticsearch_config',
+        :'google_chronicle_config' => :'google_chronicle_config',
         :'json_output' => :'json_output',
         :'logan_enable' => :'logan_enable',
         :'logan_url' => :'logan_url',
@@ -75,6 +78,7 @@ module Akeyless
         :'azure_analytics_config' => :'AzureLogAnalyticsForwardingConfig',
         :'datadog_config' => :'DatadogForwardingConfig',
         :'elasticsearch_config' => :'ElasticsearchLogForwardingConfig',
+        :'google_chronicle_config' => :'GoogleChronicleForwardingConfig',
         :'json_output' => :'Boolean',
         :'logan_enable' => :'Boolean',
         :'logan_url' => :'String',
@@ -123,6 +127,10 @@ module Akeyless
 
       if attributes.key?(:'elasticsearch_config')
         self.elasticsearch_config = attributes[:'elasticsearch_config']
+      end
+
+      if attributes.key?(:'google_chronicle_config')
+        self.google_chronicle_config = attributes[:'google_chronicle_config']
       end
 
       if attributes.key?(:'json_output')
@@ -188,6 +196,7 @@ module Akeyless
           azure_analytics_config == o.azure_analytics_config &&
           datadog_config == o.datadog_config &&
           elasticsearch_config == o.elasticsearch_config &&
+          google_chronicle_config == o.google_chronicle_config &&
           json_output == o.json_output &&
           logan_enable == o.logan_enable &&
           logan_url == o.logan_url &&
@@ -209,7 +218,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [aws_s3_config, azure_analytics_config, datadog_config, elasticsearch_config, json_output, logan_enable, logan_url, logstash_config, logz_io_config, pull_interval_sec, splunk_config, sumo_logic_config, syslog_config, target_log_type].hash
+      [aws_s3_config, azure_analytics_config, datadog_config, elasticsearch_config, google_chronicle_config, json_output, logan_enable, logan_url, logstash_config, logz_io_config, pull_interval_sec, splunk_config, sumo_logic_config, syslog_config, target_log_type].hash
     end
 
     # Builds the object from hash

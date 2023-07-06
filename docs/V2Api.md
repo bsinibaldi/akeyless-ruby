@@ -14,6 +14,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_auth_method_awsiam**](V2Api.md#create_auth_method_awsiam) | **POST** /create-auth-method-aws-iam |  |
 | [**create_auth_method_azure_ad**](V2Api.md#create_auth_method_azure_ad) | **POST** /create-auth-method-azure-ad |  |
 | [**create_auth_method_cert**](V2Api.md#create_auth_method_cert) | **POST** /create-auth-method-cert |  |
+| [**create_auth_method_email**](V2Api.md#create_auth_method_email) | **POST** /create-auth-method-email |  |
 | [**create_auth_method_gcp**](V2Api.md#create_auth_method_gcp) | **POST** /create-auth-method-gcp |  |
 | [**create_auth_method_huawei**](V2Api.md#create_auth_method_huawei) | **POST** /create-auth-method-huawei |  |
 | [**create_auth_method_k8_s**](V2Api.md#create_auth_method_k8_s) | **POST** /create-auth-method-k8s |  |
@@ -88,6 +89,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**esm_update**](V2Api.md#esm_update) | **POST** /esm-update |  |
 | [**event_action**](V2Api.md#event_action) | **POST** /event-action |  |
 | [**export_classic_key**](V2Api.md#export_classic_key) | **POST** /export-classic-key |  |
+| [**gateway_create_allowed_access**](V2Api.md#gateway_create_allowed_access) | **POST** /gateway-create-allowed-access |  |
 | [**gateway_create_k8_s_auth_config**](V2Api.md#gateway_create_k8_s_auth_config) | **POST** /gateway-create-k8s-auth-config |  |
 | [**gateway_create_migration**](V2Api.md#gateway_create_migration) | **POST** /gateway-create-migration |  |
 | [**gateway_create_producer_artifactory**](V2Api.md#gateway_create_producer_artifactory) | **POST** /gateway-create-producer-artifactory |  |
@@ -115,10 +117,12 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_create_producer_redis**](V2Api.md#gateway_create_producer_redis) | **POST** /gateway-create-producer-Redis |  |
 | [**gateway_create_producer_redshift**](V2Api.md#gateway_create_producer_redshift) | **POST** /gateway-create-producer-redshift |  |
 | [**gateway_create_producer_snowflake**](V2Api.md#gateway_create_producer_snowflake) | **POST** /gateway-create-producer-snowflake |  |
+| [**gateway_delete_allowed_access**](V2Api.md#gateway_delete_allowed_access) | **DELETE** /gateway-delete-allowed-access |  |
 | [**gateway_delete_k8_s_auth_config**](V2Api.md#gateway_delete_k8_s_auth_config) | **POST** /gateway-delete-k8s-auth-config |  |
 | [**gateway_delete_migration**](V2Api.md#gateway_delete_migration) | **POST** /gateway-delete-migration |  |
 | [**gateway_delete_producer**](V2Api.md#gateway_delete_producer) | **POST** /gateway-delete-producer |  |
 | [**gateway_download_customer_fragments**](V2Api.md#gateway_download_customer_fragments) | **POST** /gateway-download-customer-fragments |  |
+| [**gateway_get_allowed_access**](V2Api.md#gateway_get_allowed_access) | **GET** /gateway-get-allowed-access |  |
 | [**gateway_get_config**](V2Api.md#gateway_get_config) | **POST** /gateway-get-config |  |
 | [**gateway_get_k8_s_auth_config**](V2Api.md#gateway_get_k8_s_auth_config) | **POST** /gateway-get-k8s-auth-config |  |
 | [**gateway_get_ldap_auth_config**](V2Api.md#gateway_get_ldap_auth_config) | **POST** /gateway-get-ldap-auth-config |  |
@@ -134,6 +138,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**gateway_status_migration**](V2Api.md#gateway_status_migration) | **POST** /gateway-migration-status |  |
 | [**gateway_stop_producer**](V2Api.md#gateway_stop_producer) | **POST** /gateway-stop-producer |  |
 | [**gateway_sync_migration**](V2Api.md#gateway_sync_migration) | **POST** /gateway-sync-migration |  |
+| [**gateway_update_allowed_access**](V2Api.md#gateway_update_allowed_access) | **POST** /gateway-update-allowed-access |  |
 | [**gateway_update_item**](V2Api.md#gateway_update_item) | **POST** /gateway-update-item |  |
 | [**gateway_update_k8_s_auth_config**](V2Api.md#gateway_update_k8_s_auth_config) | **POST** /gateway-update-k8s-auth-config |  |
 | [**gateway_update_ldap_auth_config**](V2Api.md#gateway_update_ldap_auth_config) | **POST** /gateway-update-ldap-auth-config |  |
@@ -896,6 +901,68 @@ end
 ### Return type
 
 [**CreateAuthMethodCertOutput**](CreateAuthMethodCertOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_auth_method_email
+
+> <CreateAuthMethodEmailOutput> create_auth_method_email(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateAuthMethodEmail.new({email: 'email_example', name: 'name_example'}) # CreateAuthMethodEmail | 
+
+begin
+  
+  result = api_instance.create_auth_method_email(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_auth_method_email: #{e}"
+end
+```
+
+#### Using the create_auth_method_email_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateAuthMethodEmailOutput>, Integer, Hash)> create_auth_method_email_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_auth_method_email_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateAuthMethodEmailOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_auth_method_email_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateAuthMethodEmail**](CreateAuthMethodEmail.md) |  |  |
+
+### Return type
+
+[**CreateAuthMethodEmailOutput**](CreateAuthMethodEmailOutput.md)
 
 ### Authorization
 
@@ -5125,7 +5192,7 @@ No authorization required
 
 ## esm_delete
 
-> Object esm_delete(body)
+> <EsmDeleteSecretOutput> esm_delete(body)
 
 
 
@@ -5151,7 +5218,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(Object, Integer, Hash)> esm_delete_with_http_info(body)
+> <Array(<EsmDeleteSecretOutput>, Integer, Hash)> esm_delete_with_http_info(body)
 
 ```ruby
 begin
@@ -5159,7 +5226,7 @@ begin
   data, status_code, headers = api_instance.esm_delete_with_http_info(body)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => Object
+  p data # => <EsmDeleteSecretOutput>
 rescue Akeyless::ApiError => e
   puts "Error when calling V2Api->esm_delete_with_http_info: #{e}"
 end
@@ -5173,7 +5240,7 @@ end
 
 ### Return type
 
-**Object**
+[**EsmDeleteSecretOutput**](EsmDeleteSecretOutput.md)
 
 ### Authorization
 
@@ -5481,6 +5548,68 @@ end
 ### Return type
 
 [**ExportClassicKeyOutput**](ExportClassicKeyOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## gateway_create_allowed_access
+
+> <AllowedAccess> gateway_create_allowed_access(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::AllowedAccessArgs.new({access_id: 'access_id_example', name: 'name_example'}) # AllowedAccessArgs | 
+
+begin
+  
+  result = api_instance.gateway_create_allowed_access(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_create_allowed_access: #{e}"
+end
+```
+
+#### Using the gateway_create_allowed_access_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AllowedAccess>, Integer, Hash)> gateway_create_allowed_access_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_create_allowed_access_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AllowedAccess>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_create_allowed_access_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**AllowedAccessArgs**](AllowedAccessArgs.md) |  |  |
+
+### Return type
+
+[**AllowedAccess**](AllowedAccess.md)
 
 ### Authorization
 
@@ -7168,6 +7297,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## gateway_delete_allowed_access
+
+> <GatewayDeleteAllowedAccessOutput> gateway_delete_allowed_access(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::AllowedAccessDeleteArgs.new({name: 'name_example'}) # AllowedAccessDeleteArgs | 
+
+begin
+  
+  result = api_instance.gateway_delete_allowed_access(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_delete_allowed_access: #{e}"
+end
+```
+
+#### Using the gateway_delete_allowed_access_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GatewayDeleteAllowedAccessOutput>, Integer, Hash)> gateway_delete_allowed_access_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_delete_allowed_access_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GatewayDeleteAllowedAccessOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_delete_allowed_access_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**AllowedAccessDeleteArgs**](AllowedAccessDeleteArgs.md) |  |  |
+
+### Return type
+
+[**GatewayDeleteAllowedAccessOutput**](GatewayDeleteAllowedAccessOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## gateway_delete_k8_s_auth_config
 
 > <GatewayDeleteK8SAuthConfigOutput> gateway_delete_k8_s_auth_config(body)
@@ -7405,6 +7596,68 @@ end
 ### Return type
 
 [**GatewayDownloadCustomerFragmentsOutput**](GatewayDownloadCustomerFragmentsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## gateway_get_allowed_access
+
+> <AllowedAccess> gateway_get_allowed_access(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::AllowedAccessArgs.new({access_id: 'access_id_example', name: 'name_example'}) # AllowedAccessArgs | 
+
+begin
+  
+  result = api_instance.gateway_get_allowed_access(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_get_allowed_access: #{e}"
+end
+```
+
+#### Using the gateway_get_allowed_access_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AllowedAccess>, Integer, Hash)> gateway_get_allowed_access_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_get_allowed_access_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AllowedAccess>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_get_allowed_access_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**AllowedAccessArgs**](AllowedAccessArgs.md) |  |  |
+
+### Return type
+
+[**AllowedAccess**](AllowedAccess.md)
 
 ### Authorization
 
@@ -8336,6 +8589,68 @@ end
 ### Return type
 
 [**GatewayMigrationSyncOutput**](GatewayMigrationSyncOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## gateway_update_allowed_access
+
+> <AllowedAccess> gateway_update_allowed_access(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::AllowedAccessUpdateArgs.new({access_id: 'access_id_example', name: 'name_example'}) # AllowedAccessUpdateArgs | 
+
+begin
+  
+  result = api_instance.gateway_update_allowed_access(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_update_allowed_access: #{e}"
+end
+```
+
+#### Using the gateway_update_allowed_access_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AllowedAccess>, Integer, Hash)> gateway_update_allowed_access_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.gateway_update_allowed_access_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AllowedAccess>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->gateway_update_allowed_access_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**AllowedAccessUpdateArgs**](AllowedAccessUpdateArgs.md) |  |  |
+
+### Return type
+
+[**AllowedAccess**](AllowedAccess.md)
 
 ### Authorization
 

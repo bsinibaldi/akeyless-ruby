@@ -31,6 +31,8 @@ module Akeyless
 
     attr_accessor :importer_info
 
+    attr_accessor :oidc_client_info
+
     attr_accessor :password_policy
 
     attr_accessor :rotated_secret_details
@@ -52,6 +54,7 @@ module Akeyless
         :'display_metadata' => :'display_metadata',
         :'dynamic_secret_producer_details' => :'dynamic_secret_producer_details',
         :'importer_info' => :'importer_info',
+        :'oidc_client_info' => :'oidc_client_info',
         :'password_policy' => :'password_policy',
         :'rotated_secret_details' => :'rotated_secret_details',
         :'secure_remote_access_details' => :'secure_remote_access_details',
@@ -76,6 +79,7 @@ module Akeyless
         :'display_metadata' => :'String',
         :'dynamic_secret_producer_details' => :'DynamicSecretProducerInfo',
         :'importer_info' => :'ImporterInfo',
+        :'oidc_client_info' => :'OidcClientInfo',
         :'password_policy' => :'PasswordPolicyInfo',
         :'rotated_secret_details' => :'RotatedSecretDetailsInfo',
         :'secure_remote_access_details' => :'SecureRemoteAccess',
@@ -137,6 +141,10 @@ module Akeyless
         self.importer_info = attributes[:'importer_info']
       end
 
+      if attributes.key?(:'oidc_client_info')
+        self.oidc_client_info = attributes[:'oidc_client_info']
+      end
+
       if attributes.key?(:'password_policy')
         self.password_policy = attributes[:'password_policy']
       end
@@ -184,6 +192,7 @@ module Akeyless
           display_metadata == o.display_metadata &&
           dynamic_secret_producer_details == o.dynamic_secret_producer_details &&
           importer_info == o.importer_info &&
+          oidc_client_info == o.oidc_client_info &&
           password_policy == o.password_policy &&
           rotated_secret_details == o.rotated_secret_details &&
           secure_remote_access_details == o.secure_remote_access_details &&
@@ -200,7 +209,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cert_issue_details, certificate_chain_info, certificates_template_info, classic_key_details, cluster_gw_url, display_metadata, dynamic_secret_producer_details, importer_info, password_policy, rotated_secret_details, secure_remote_access_details, static_secret_info, tokenizer_info].hash
+      [cert_issue_details, certificate_chain_info, certificates_template_info, classic_key_details, cluster_gw_url, display_metadata, dynamic_secret_producer_details, importer_info, oidc_client_info, password_policy, rotated_secret_details, secure_remote_access_details, static_secret_info, tokenizer_info].hash
     end
 
     # Builds the object from hash

@@ -54,6 +54,9 @@ module Akeyless
     # The GW cluster URL to issue the certificate from, required in Public CA mode
     attr_accessor :gw_cluster_url
 
+    # If set, the basic constraints extension will be added to certificate
+    attr_accessor :is_ca
+
     # Set output format to JSON
     attr_accessor :json
 
@@ -130,6 +133,7 @@ module Akeyless
         :'destination_path' => :'destination-path',
         :'expiration_event_in' => :'expiration-event-in',
         :'gw_cluster_url' => :'gw-cluster-url',
+        :'is_ca' => :'is-ca',
         :'json' => :'json',
         :'key_usage' => :'key-usage',
         :'locality' => :'locality',
@@ -174,6 +178,7 @@ module Akeyless
         :'destination_path' => :'String',
         :'expiration_event_in' => :'Array<String>',
         :'gw_cluster_url' => :'String',
+        :'is_ca' => :'Boolean',
         :'json' => :'Boolean',
         :'key_usage' => :'String',
         :'locality' => :'String',
@@ -272,6 +277,10 @@ module Akeyless
 
       if attributes.key?(:'gw_cluster_url')
         self.gw_cluster_url = attributes[:'gw_cluster_url']
+      end
+
+      if attributes.key?(:'is_ca')
+        self.is_ca = attributes[:'is_ca']
       end
 
       if attributes.key?(:'json')
@@ -409,6 +418,7 @@ module Akeyless
           destination_path == o.destination_path &&
           expiration_event_in == o.expiration_event_in &&
           gw_cluster_url == o.gw_cluster_url &&
+          is_ca == o.is_ca &&
           json == o.json &&
           key_usage == o.key_usage &&
           locality == o.locality &&
@@ -440,7 +450,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_tag, allow_any_name, allow_subdomains, allowed_domains, allowed_uri_sans, client_flag, code_signing_flag, country, delete_protection, description, destination_path, expiration_event_in, gw_cluster_url, json, key_usage, locality, metadata, name, new_name, not_enforce_hostnames, not_require_cn, organizational_units, organizations, postal_code, protect_certificates, province, rm_tag, server_flag, signer_key_name, street_address, token, ttl, uid_token].hash
+      [add_tag, allow_any_name, allow_subdomains, allowed_domains, allowed_uri_sans, client_flag, code_signing_flag, country, delete_protection, description, destination_path, expiration_event_in, gw_cluster_url, is_ca, json, key_usage, locality, metadata, name, new_name, not_enforce_hostnames, not_require_cn, organizational_units, organizations, postal_code, protect_certificates, province, rm_tag, server_flag, signer_key_name, street_address, token, ttl, uid_token].hash
     end
 
     # Builds the object from hash

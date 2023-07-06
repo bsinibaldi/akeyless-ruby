@@ -14,22 +14,51 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class EsmGetSecretOutput
-    attr_accessor :binary_value
+  # createAuthMethodEmail is a command that creates a new auth method that will be able to authenticate using email.
+  class CreateAuthMethodEmail
+    # Access expiration date in Unix timestamp (select 0 for access without expiry date)
+    attr_accessor :access_expires
 
-    attr_accessor :metadata
+    # A CIDR whitelist with the IPs that the access is restricted to
+    attr_accessor :bound_ips
 
+    # An email address to be invited to have access
+    attr_accessor :email
+
+    # if true: enforce role-association must include sub claims
+    attr_accessor :force_sub_claims
+
+    # A CIDR whitelist with the GW IPs that the access is restricted to
+    attr_accessor :gw_bound_ips
+
+    # Set output format to JSON
+    attr_accessor :json
+
+    # Jwt TTL
+    attr_accessor :jwt_ttl
+
+    # Auth Method name
     attr_accessor :name
 
-    attr_accessor :value
+    # Authentication token (see `/auth` and `/configure`)
+    attr_accessor :token
+
+    # The universal identity token, Required only for universal_identity authentication
+    attr_accessor :uid_token
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'binary_value' => :'binary_value',
-        :'metadata' => :'metadata',
+        :'access_expires' => :'access-expires',
+        :'bound_ips' => :'bound-ips',
+        :'email' => :'email',
+        :'force_sub_claims' => :'force-sub-claims',
+        :'gw_bound_ips' => :'gw-bound-ips',
+        :'json' => :'json',
+        :'jwt_ttl' => :'jwt-ttl',
         :'name' => :'name',
-        :'value' => :'value'
+        :'token' => :'token',
+        :'uid_token' => :'uid-token'
       }
     end
 
@@ -41,10 +70,16 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'binary_value' => :'Boolean',
-        :'metadata' => :'Object',
+        :'access_expires' => :'Integer',
+        :'bound_ips' => :'Array<String>',
+        :'email' => :'String',
+        :'force_sub_claims' => :'Boolean',
+        :'gw_bound_ips' => :'Array<String>',
+        :'json' => :'Boolean',
+        :'jwt_ttl' => :'Integer',
         :'name' => :'String',
-        :'value' => :'String'
+        :'token' => :'String',
+        :'uid_token' => :'String'
       }
     end
 
@@ -58,31 +93,65 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::EsmGetSecretOutput` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::CreateAuthMethodEmail` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::EsmGetSecretOutput`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::CreateAuthMethodEmail`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'binary_value')
-        self.binary_value = attributes[:'binary_value']
+      if attributes.key?(:'access_expires')
+        self.access_expires = attributes[:'access_expires']
+      else
+        self.access_expires = 0
       end
 
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
+      if attributes.key?(:'bound_ips')
+        if (value = attributes[:'bound_ips']).is_a?(Array)
+          self.bound_ips = value
+        end
+      end
+
+      if attributes.key?(:'email')
+        self.email = attributes[:'email']
+      end
+
+      if attributes.key?(:'force_sub_claims')
+        self.force_sub_claims = attributes[:'force_sub_claims']
+      end
+
+      if attributes.key?(:'gw_bound_ips')
+        if (value = attributes[:'gw_bound_ips']).is_a?(Array)
+          self.gw_bound_ips = value
+        end
+      end
+
+      if attributes.key?(:'json')
+        self.json = attributes[:'json']
+      else
+        self.json = false
+      end
+
+      if attributes.key?(:'jwt_ttl')
+        self.jwt_ttl = attributes[:'jwt_ttl']
+      else
+        self.jwt_ttl = 0
       end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.key?(:'token')
+        self.token = attributes[:'token']
+      end
+
+      if attributes.key?(:'uid_token')
+        self.uid_token = attributes[:'uid_token']
       end
     end
 
@@ -90,12 +159,22 @@ module Akeyless
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @email.nil?
+        invalid_properties.push('invalid value for "email", email cannot be nil.')
+      end
+
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @email.nil?
+      return false if @name.nil?
       true
     end
 
@@ -104,10 +183,16 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          binary_value == o.binary_value &&
-          metadata == o.metadata &&
+          access_expires == o.access_expires &&
+          bound_ips == o.bound_ips &&
+          email == o.email &&
+          force_sub_claims == o.force_sub_claims &&
+          gw_bound_ips == o.gw_bound_ips &&
+          json == o.json &&
+          jwt_ttl == o.jwt_ttl &&
           name == o.name &&
-          value == o.value
+          token == o.token &&
+          uid_token == o.uid_token
     end
 
     # @see the `==` method
@@ -119,7 +204,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [binary_value, metadata, name, value].hash
+      [access_expires, bound_ips, email, force_sub_claims, gw_bound_ips, json, jwt_ttl, name, token, uid_token].hash
     end
 
     # Builds the object from hash

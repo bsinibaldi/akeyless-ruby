@@ -14,22 +14,22 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class EsmGetSecretOutput
-    attr_accessor :binary_value
+  class GoogleChronicleForwardingConfig
+    attr_accessor :customer_id
 
-    attr_accessor :metadata
+    attr_accessor :log_type
 
-    attr_accessor :name
+    attr_accessor :region
 
-    attr_accessor :value
+    attr_accessor :service_account_key
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'binary_value' => :'binary_value',
-        :'metadata' => :'metadata',
-        :'name' => :'name',
-        :'value' => :'value'
+        :'customer_id' => :'customer_id',
+        :'log_type' => :'log_type',
+        :'region' => :'region',
+        :'service_account_key' => :'service_account_key'
       }
     end
 
@@ -41,10 +41,10 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'binary_value' => :'Boolean',
-        :'metadata' => :'Object',
-        :'name' => :'String',
-        :'value' => :'String'
+        :'customer_id' => :'String',
+        :'log_type' => :'String',
+        :'region' => :'String',
+        :'service_account_key' => :'String'
       }
     end
 
@@ -58,31 +58,31 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::EsmGetSecretOutput` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::GoogleChronicleForwardingConfig` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::EsmGetSecretOutput`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::GoogleChronicleForwardingConfig`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'binary_value')
-        self.binary_value = attributes[:'binary_value']
+      if attributes.key?(:'customer_id')
+        self.customer_id = attributes[:'customer_id']
       end
 
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
+      if attributes.key?(:'log_type')
+        self.log_type = attributes[:'log_type']
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'region')
+        self.region = attributes[:'region']
       end
 
-      if attributes.key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.key?(:'service_account_key')
+        self.service_account_key = attributes[:'service_account_key']
       end
     end
 
@@ -104,10 +104,10 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          binary_value == o.binary_value &&
-          metadata == o.metadata &&
-          name == o.name &&
-          value == o.value
+          customer_id == o.customer_id &&
+          log_type == o.log_type &&
+          region == o.region &&
+          service_account_key == o.service_account_key
     end
 
     # @see the `==` method
@@ -119,7 +119,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [binary_value, metadata, name, value].hash
+      [customer_id, log_type, region, service_account_key].hash
     end
 
     # Builds the object from hash

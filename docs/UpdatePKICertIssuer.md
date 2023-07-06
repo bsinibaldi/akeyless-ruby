@@ -17,6 +17,7 @@
 | **destination_path** | **String** | A path in which to save generated certificates | [optional] |
 | **expiration_event_in** | **Array&lt;String&gt;** | How many days before the expiration of the certificate would you like to be notified. | [optional] |
 | **gw_cluster_url** | **String** | The GW cluster URL to issue the certificate from, required in Public CA mode | [optional] |
+| **is_ca** | **Boolean** | If set, the basic constraints extension will be added to certificate | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **key_usage** | **String** | key-usage | [optional][default to &#39;DigitalSignature,KeyAgreement,KeyEncipherment&#39;] |
 | **locality** | **String** | A comma-separated list of localities that will be set in the issued certificate | [optional] |
@@ -57,6 +58,7 @@ instance = Akeyless::UpdatePKICertIssuer.new(
   destination_path: null,
   expiration_event_in: null,
   gw_cluster_url: null,
+  is_ca: null,
   json: null,
   key_usage: null,
   locality: null,

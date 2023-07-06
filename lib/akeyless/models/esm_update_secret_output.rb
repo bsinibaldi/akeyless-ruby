@@ -15,6 +15,8 @@ require 'time'
 
 module Akeyless
   class EsmUpdateSecretOutput
+    attr_accessor :name
+
     attr_accessor :secret_id
 
     attr_accessor :version_id
@@ -22,6 +24,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'name' => :'name',
         :'secret_id' => :'secret_id',
         :'version_id' => :'version_id'
       }
@@ -35,6 +38,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'name' => :'String',
         :'secret_id' => :'String',
         :'version_id' => :'String'
       }
@@ -60,6 +64,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
 
       if attributes.key?(:'secret_id')
         self.secret_id = attributes[:'secret_id']
@@ -88,6 +96,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          name == o.name &&
           secret_id == o.secret_id &&
           version_id == o.version_id
     end
@@ -101,7 +110,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [secret_id, version_id].hash
+      [name, secret_id, version_id].hash
     end
 
     # Builds the object from hash
