@@ -5572,7 +5572,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::AllowedAccessArgs.new({access_id: 'access_id_example', name: 'name_example'}) # AllowedAccessArgs | 
+body = Akeyless::GatewayCreateAllowedAccess.new({access_id: 'access_id_example', name: 'name_example'}) # GatewayCreateAllowedAccess | 
 
 begin
   
@@ -5605,7 +5605,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **body** | [**AllowedAccessArgs**](AllowedAccessArgs.md) |  |  |
+| **body** | [**GatewayCreateAllowedAccess**](GatewayCreateAllowedAccess.md) |  |  |
 
 ### Return type
 
@@ -7310,7 +7310,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::AllowedAccessDeleteArgs.new({name: 'name_example'}) # AllowedAccessDeleteArgs | 
+body = Akeyless::GatewayDeleteAllowedAccess.new({name: 'name_example'}) # GatewayDeleteAllowedAccess | 
 
 begin
   
@@ -7343,7 +7343,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **body** | [**AllowedAccessDeleteArgs**](AllowedAccessDeleteArgs.md) |  |  |
+| **body** | [**GatewayDeleteAllowedAccess**](GatewayDeleteAllowedAccess.md) |  |  |
 
 ### Return type
 
@@ -7620,7 +7620,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::AllowedAccessArgs.new({access_id: 'access_id_example', name: 'name_example'}) # AllowedAccessArgs | 
+body = Akeyless::GatewayGetAllowedAccess.new({name: 'name_example'}) # GatewayGetAllowedAccess | 
 
 begin
   
@@ -7653,7 +7653,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **body** | [**AllowedAccessArgs**](AllowedAccessArgs.md) |  |  |
+| **body** | [**GatewayGetAllowedAccess**](GatewayGetAllowedAccess.md) |  |  |
 
 ### Return type
 
@@ -8613,7 +8613,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::AllowedAccessUpdateArgs.new({access_id: 'access_id_example', name: 'name_example'}) # AllowedAccessUpdateArgs | 
+body = Akeyless::GatewayUpdateAllowedAccess.new({access_id: 'access_id_example', name: 'name_example'}) # GatewayUpdateAllowedAccess | 
 
 begin
   
@@ -8646,7 +8646,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **body** | [**AllowedAccessUpdateArgs**](AllowedAccessUpdateArgs.md) |  |  |
+| **body** | [**GatewayUpdateAllowedAccess**](GatewayUpdateAllowedAccess.md) |  |  |
 
 ### Return type
 

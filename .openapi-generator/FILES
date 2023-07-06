@@ -20,10 +20,7 @@ docs/AddGatewayAllowedAccessId.md
 docs/AdminsConfigPart.md
 docs/AkeylessGatewayConfig.md
 docs/AllowedAccess.md
-docs/AllowedAccessArgs.md
-docs/AllowedAccessDeleteArgs.md
 docs/AllowedAccessOld.md
-docs/AllowedAccessUpdateArgs.md
 docs/AssocRoleAuthMethod.md
 docs/AssocTargetItem.md
 docs/AttributeTypeAndValue.md
@@ -226,6 +223,7 @@ docs/GCPAccessRules.md
 docs/GCPPayload.md
 docs/GCPSecretsMigration.md
 docs/GatewayBasicInfo.md
+docs/GatewayCreateAllowedAccess.md
 docs/GatewayCreateK8SAuthConfig.md
 docs/GatewayCreateK8SAuthConfigOutput.md
 docs/GatewayCreateMigration.md
@@ -281,6 +279,7 @@ docs/GatewayCreateProducerRedshift.md
 docs/GatewayCreateProducerRedshiftOutput.md
 docs/GatewayCreateProducerSnowflake.md
 docs/GatewayCreateProducerSnowflakeOutput.md
+docs/GatewayDeleteAllowedAccess.md
 docs/GatewayDeleteAllowedAccessOutput.md
 docs/GatewayDeleteK8SAuthConfig.md
 docs/GatewayDeleteK8SAuthConfigOutput.md
@@ -289,6 +288,7 @@ docs/GatewayDeleteProducer.md
 docs/GatewayDeleteProducerOutput.md
 docs/GatewayDownloadCustomerFragments.md
 docs/GatewayDownloadCustomerFragmentsOutput.md
+docs/GatewayGetAllowedAccess.md
 docs/GatewayGetConfig.md
 docs/GatewayGetK8SAuthConfig.md
 docs/GatewayGetK8SAuthConfigOutput.md
@@ -316,6 +316,7 @@ docs/GatewayStatusMigration.md
 docs/GatewayStopProducer.md
 docs/GatewayStopProducerOutput.md
 docs/GatewaySyncMigration.md
+docs/GatewayUpdateAllowedAccess.md
 docs/GatewayUpdateItem.md
 docs/GatewayUpdateItemOutput.md
 docs/GatewayUpdateK8SAuthConfig.md
@@ -684,10 +685,7 @@ lib/akeyless/models/add_gateway_allowed_access_id.rb
 lib/akeyless/models/admins_config_part.rb
 lib/akeyless/models/akeyless_gateway_config.rb
 lib/akeyless/models/allowed_access.rb
-lib/akeyless/models/allowed_access_args.rb
-lib/akeyless/models/allowed_access_delete_args.rb
 lib/akeyless/models/allowed_access_old.rb
-lib/akeyless/models/allowed_access_update_args.rb
 lib/akeyless/models/api_key_access_rules.rb
 lib/akeyless/models/assoc_role_auth_method.rb
 lib/akeyless/models/assoc_target_item.rb
@@ -891,6 +889,7 @@ lib/akeyless/models/export_classic_key_output.rb
 lib/akeyless/models/extension.rb
 lib/akeyless/models/external_kms_key_id.rb
 lib/akeyless/models/gateway_basic_info.rb
+lib/akeyless/models/gateway_create_allowed_access.rb
 lib/akeyless/models/gateway_create_k8_s_auth_config.rb
 lib/akeyless/models/gateway_create_k8_s_auth_config_output.rb
 lib/akeyless/models/gateway_create_migration.rb
@@ -946,6 +945,7 @@ lib/akeyless/models/gateway_create_producer_redshift.rb
 lib/akeyless/models/gateway_create_producer_redshift_output.rb
 lib/akeyless/models/gateway_create_producer_snowflake.rb
 lib/akeyless/models/gateway_create_producer_snowflake_output.rb
+lib/akeyless/models/gateway_delete_allowed_access.rb
 lib/akeyless/models/gateway_delete_allowed_access_output.rb
 lib/akeyless/models/gateway_delete_k8_s_auth_config.rb
 lib/akeyless/models/gateway_delete_k8_s_auth_config_output.rb
@@ -954,6 +954,7 @@ lib/akeyless/models/gateway_delete_producer.rb
 lib/akeyless/models/gateway_delete_producer_output.rb
 lib/akeyless/models/gateway_download_customer_fragments.rb
 lib/akeyless/models/gateway_download_customer_fragments_output.rb
+lib/akeyless/models/gateway_get_allowed_access.rb
 lib/akeyless/models/gateway_get_config.rb
 lib/akeyless/models/gateway_get_k8_s_auth_config.rb
 lib/akeyless/models/gateway_get_k8_s_auth_config_output.rb
@@ -981,6 +982,7 @@ lib/akeyless/models/gateway_status_migration.rb
 lib/akeyless/models/gateway_stop_producer.rb
 lib/akeyless/models/gateway_stop_producer_output.rb
 lib/akeyless/models/gateway_sync_migration.rb
+lib/akeyless/models/gateway_update_allowed_access.rb
 lib/akeyless/models/gateway_update_item.rb
 lib/akeyless/models/gateway_update_item_output.rb
 lib/akeyless/models/gateway_update_k8_s_auth_config.rb
@@ -1339,10 +1341,8 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/access_permission_assignment_spec.rb
-spec/models/create_auth_method_email_output_spec.rb
-spec/models/create_auth_method_email_spec.rb
-spec/models/esm_delete_secret_output_spec.rb
-spec/models/google_chronicle_forwarding_config_spec.rb
-spec/models/oidc_client_info_spec.rb
+spec/models/gateway_create_allowed_access_spec.rb
+spec/models/gateway_delete_allowed_access_spec.rb
+spec/models/gateway_get_allowed_access_spec.rb
+spec/models/gateway_update_allowed_access_spec.rb
 spec/spec_helper.rb
