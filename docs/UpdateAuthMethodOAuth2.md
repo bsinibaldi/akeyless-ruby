@@ -13,7 +13,6 @@
 | **issuer** | **String** | Issuer URL | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **jwks_json_data** | **String** | The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string | [optional] |
-| **jwks_json_file** | **String** | JSON Web Key Set (JWKS) JSON file path that will be used to verify any JSON Web Token (JWT) issued by the authorization server. | [optional] |
 | **jwks_uri** | **String** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [default to &#39;default_jwks_url&#39;] |
 | **jwt_ttl** | **Integer** | Jwt TTL | [optional][default to 0] |
 | **name** | **String** | Auth Method name |  |
@@ -37,7 +36,6 @@ instance = Akeyless::UpdateAuthMethodOAuth2.new(
   issuer: null,
   json: null,
   jwks_json_data: null,
-  jwks_json_file: null,
   jwks_uri: null,
   jwt_ttl: null,
   name: null,

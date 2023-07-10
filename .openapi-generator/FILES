@@ -382,6 +382,8 @@ docs/GatewayUpdateTmpUsers.md
 docs/GatewaysListResponse.md
 docs/GenCustomerFragment.md
 docs/GeneralConfigPart.md
+docs/GenerateCsr.md
+docs/GenerateCsrOutput.md
 docs/GetAccountSettings.md
 docs/GetAccountSettingsCommandOutput.md
 docs/GetAuthMethod.md
@@ -1051,6 +1053,8 @@ lib/akeyless/models/gcp_payload.rb
 lib/akeyless/models/gcp_secrets_migration.rb
 lib/akeyless/models/gen_customer_fragment.rb
 lib/akeyless/models/general_config_part.rb
+lib/akeyless/models/generate_csr.rb
+lib/akeyless/models/generate_csr_output.rb
 lib/akeyless/models/get_account_settings.rb
 lib/akeyless/models/get_account_settings_command_output.rb
 lib/akeyless/models/get_auth_method.rb
@@ -1341,8 +1345,6 @@ lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/gateway_create_allowed_access_spec.rb
-spec/models/gateway_delete_allowed_access_spec.rb
-spec/models/gateway_get_allowed_access_spec.rb
-spec/models/gateway_update_allowed_access_spec.rb
+spec/models/generate_csr_output_spec.rb
+spec/models/generate_csr_spec.rb
 spec/spec_helper.rb
