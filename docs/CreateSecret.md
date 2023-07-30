@@ -29,7 +29,7 @@
 | **type** | **String** | The secret sub type [generic/password] | [optional][default to &#39;generic&#39;] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
 | **username** | **String** | For Password Management use | [optional] |
-| **value** | **String** | The secret value |  |
+| **value** | **String** | The secret value (only relevant for type &#39;generic&#39;) |  |
 
 ## Example
 

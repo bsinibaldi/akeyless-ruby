@@ -5,10 +5,10 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **accessibility** | **String** | for personal password manager | [optional][default to &#39;regular&#39;] |
+| **auto_pagination** | **String** | Retrieve all items using pagination, when disabled retrieving only first 1000 items | [optional][default to &#39;enabled&#39;] |
 | **filter** | **String** | Filter by item name or part of it | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **minimal_view** | **Boolean** |  | [optional] |
-| **pagination** | **String** | Retrieve items with pagination | [optional][default to &#39;enabled&#39;] |
 | **pagination_token** | **String** | Next page reference | [optional] |
 | **path** | **String** | Path to folder | [optional] |
 | **sra_only** | **Boolean** | Filter by items with SRA functionality enabled | [optional][default to false] |
@@ -25,10 +25,10 @@ require 'akeyless'
 
 instance = Akeyless::ListItems.new(
   accessibility: null,
+  auto_pagination: null,
   filter: null,
   json: null,
   minimal_view: null,
-  pagination: null,
   pagination_token: null,
   path: null,
   sra_only: null,

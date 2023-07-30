@@ -37,6 +37,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_gcp_target**](V2Api.md#create_gcp_target) | **POST** /create-gcp-target |  |
 | [**create_github_target**](V2Api.md#create_github_target) | **POST** /create-github-target |  |
 | [**create_gke_target**](V2Api.md#create_gke_target) | **POST** /create-gke-target |  |
+| [**create_global_sign_atlas_target**](V2Api.md#create_global_sign_atlas_target) | **POST** /create-globalsign-atlas-target |  |
 | [**create_global_sign_target**](V2Api.md#create_global_sign_target) | **POST** /create-globalsign-target |  |
 | [**create_key**](V2Api.md#create_key) | **POST** /create-key |  |
 | [**create_linked_target**](V2Api.md#create_linked_target) | **POST** /create-linked-target |  |
@@ -259,6 +260,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_gcp_target**](V2Api.md#update_gcp_target) | **POST** /update-gcp-target |  |
 | [**update_github_target**](V2Api.md#update_github_target) | **POST** /update-github-target |  |
 | [**update_gke_target**](V2Api.md#update_gke_target) | **POST** /update-gke-target |  |
+| [**update_global_sign_atlas_target**](V2Api.md#update_global_sign_atlas_target) | **POST** /update-globalsign-atlas-target |  |
 | [**update_global_sign_target**](V2Api.md#update_global_sign_target) | **POST** /update-globalsign-target |  |
 | [**update_item**](V2Api.md#update_item) | **POST** /update-item |  |
 | [**update_ldap_target**](V2Api.md#update_ldap_target) | **POST** /update-ldap-target |  |
@@ -2328,6 +2330,68 @@ end
 ### Return type
 
 [**CreateGKETargetOutput**](CreateGKETargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_global_sign_atlas_target
+
+> <CreateGlobalSignAtlasTargetOutput> create_global_sign_atlas_target(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateGlobalSignAtlasTarget.new({api_key: 'api_key_example', api_secret: 'api_secret_example', name: 'name_example'}) # CreateGlobalSignAtlasTarget | 
+
+begin
+  
+  result = api_instance.create_global_sign_atlas_target(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_global_sign_atlas_target: #{e}"
+end
+```
+
+#### Using the create_global_sign_atlas_target_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateGlobalSignAtlasTargetOutput>, Integer, Hash)> create_global_sign_atlas_target_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_global_sign_atlas_target_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateGlobalSignAtlasTargetOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_global_sign_atlas_target_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateGlobalSignAtlasTarget**](CreateGlobalSignAtlasTarget.md) |  |  |
+
+### Return type
+
+[**CreateGlobalSignAtlasTargetOutput**](CreateGlobalSignAtlasTargetOutput.md)
 
 ### Authorization
 
@@ -16113,6 +16177,68 @@ end
 ### Return type
 
 [**UpdateGKETargetOutput**](UpdateGKETargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_global_sign_atlas_target
+
+> <UpdateGlobalSignAtlasTargetOutput> update_global_sign_atlas_target(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateGlobalSignAtlasTarget.new({api_key: 'api_key_example', api_secret: 'api_secret_example', name: 'name_example'}) # UpdateGlobalSignAtlasTarget | 
+
+begin
+  
+  result = api_instance.update_global_sign_atlas_target(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_global_sign_atlas_target: #{e}"
+end
+```
+
+#### Using the update_global_sign_atlas_target_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpdateGlobalSignAtlasTargetOutput>, Integer, Hash)> update_global_sign_atlas_target_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_global_sign_atlas_target_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpdateGlobalSignAtlasTargetOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_global_sign_atlas_target_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateGlobalSignAtlasTarget**](UpdateGlobalSignAtlasTarget.md) |  |  |
+
+### Return type
+
+[**UpdateGlobalSignAtlasTargetOutput**](UpdateGlobalSignAtlasTargetOutput.md)
 
 ### Authorization
 

@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **admin_name** | **String** | Workstation Admin Name | [optional] |
 | **description** | **String** | Description of the object | [optional][default to &#39;default_comment&#39;] |
-| **email_to** | **String** | A comma seperated list of email addresses to send event to (relevant only for \\\&quot;email\\\&quot; Event Forwarder) | [optional] |
+| **email_to** | **String** | A comma seperated list of email addresses to send event to (relevant only for \&quot;email\&quot; Event Forwarder) | [optional] |
 | **enable** | **String** | Enable/Disable Event Forwarder [true/false] | [optional][default to &#39;true&#39;] |
 | **event_source_locations** | **Array&lt;String&gt;** | Event sources | [optional] |
 | **event_types** | **Array&lt;String&gt;** | Event types | [optional] |

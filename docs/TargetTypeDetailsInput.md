@@ -4,128 +4,31 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **administrative_port** | **String** |  | [optional] |
-| **api_key** | **String** |  | [optional] |
-| **app_private_key** | **Array&lt;Integer&gt;** | params needed for jwt auth AppPrivateKey is the rsa private key in PEM format | [optional] |
-| **artifactory_admin_apikey** | **String** |  | [optional] |
-| **artifactory_admin_username** | **String** |  | [optional] |
-| **artifactory_base_url** | **String** |  | [optional] |
-| **auth_flow** | **String** |  | [optional] |
-| **authorization_port** | **String** |  | [optional] |
-| **aws_access_key_id** | **String** |  | [optional] |
-| **aws_region** | **String** |  | [optional] |
-| **aws_secret_access_key** | **String** |  | [optional] |
-| **aws_session_token** | **String** |  | [optional] |
-| **azure_client_id** | **String** |  | [optional] |
-| **azure_client_secret** | **String** |  | [optional] |
-| **azure_resource_group_name** | **String** |  | [optional] |
-| **azure_resource_name** | **String** |  | [optional] |
-| **azure_subscription_id** | **String** |  | [optional] |
-| **azure_tenant_id** | **String** |  | [optional] |
-| **ca_cert_data** | **Array&lt;Integer&gt;** | CACertData is the rsa 4096 certificate data in PEM format | [optional] |
-| **ca_cert_name** | **String** | CACertName is the name of the certificate in SalesForce tenant | [optional] |
-| **certificate** | **String** |  | [optional] |
-| **chef_server_host_name** | **String** |  | [optional] |
-| **chef_server_key** | **String** |  | [optional] |
-| **chef_server_port** | **String** |  | [optional] |
-| **chef_server_url** | **String** |  | [optional] |
-| **chef_server_username** | **String** |  | [optional] |
-| **chef_skip_ssl** | **Boolean** |  | [optional] |
-| **client_id** | **String** |  | [optional] |
-| **client_secret** | **String** | params needed for password auth | [optional] |
-| **db_host_name** | **String** |  | [optional] |
-| **db_name** | **String** |  | [optional] |
-| **db_port** | **String** |  | [optional] |
-| **db_private_key** | **String** | (Optional) Private Key in PEM format | [optional] |
-| **db_private_key_passphrase** | **String** |  | [optional] |
-| **db_pwd** | **String** |  | [optional] |
-| **db_server_certificates** | **String** | (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set. | [optional] |
-| **db_server_name** | **String** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] |
-| **db_user_name** | **String** |  | [optional] |
-| **domain_name** | **String** |  | [optional] |
-| **eks_access_key_id** | **String** |  | [optional] |
-| **eks_cluster_ca_certificate** | **String** |  | [optional] |
-| **eks_cluster_endpoint** | **String** |  | [optional] |
-| **eks_cluster_name** | **String** |  | [optional] |
-| **eks_region** | **String** |  | [optional] |
-| **eks_secret_access_key** | **String** |  | [optional] |
-| **email** | **String** |  | [optional] |
-| **first_name** | **String** | Contact Info - GlobalSign requires this to be sent with every certificate creation request | [optional] |
-| **gcp_service_account_email** | **String** | deprecated | [optional] |
-| **gcp_service_account_key** | **String** |  | [optional] |
-| **gcp_service_account_key_base64** | **String** |  | [optional] |
-| **github_app_id** | **Integer** |  | [optional] |
-| **github_app_private_key** | **String** |  | [optional] |
-| **github_base_url** | **String** |  | [optional] |
-| **gke_cluster_ca_certificate** | **String** |  | [optional] |
-| **gke_cluster_endpoint** | **String** |  | [optional] |
-| **gke_cluster_name** | **String** |  | [optional] |
-| **gke_service_account_key** | **String** |  | [optional] |
-| **gke_service_account_name** | **String** |  | [optional] |
-| **host** | **String** |  | [optional] |
-| **hostname** | **String** |  | [optional] |
-| **hosts** | **Hash&lt;String, String&gt;** | key hostname, value description | [optional] |
-| **imap_fqdn** | **String** |  | [optional] |
-| **imap_password** | **String** |  | [optional] |
-| **imap_port** | **String** |  | [optional] |
-| **imap_user** | **String** |  | [optional] |
-| **implementation_type** | **String** |  | [optional] |
-| **k8s_bearer_token** | **String** |  | [optional] |
-| **k8s_cluster_ca_certificate** | **String** |  | [optional] |
-| **k8s_cluster_endpoint** | **String** |  | [optional] |
-| **last_name** | **String** |  | [optional] |
-| **ldap_audience** | **String** |  | [optional] |
-| **ldap_bind_dn** | **String** |  | [optional] |
-| **ldap_bind_password** | **String** |  | [optional] |
-| **ldap_certificate** | **String** |  | [optional] |
-| **ldap_token_expiration** | **String** |  | [optional] |
-| **ldap_url** | **String** |  | [optional] |
-| **mongodb_atlas_api_private_key** | **String** |  | [optional] |
-| **mongodb_atlas_api_public_key** | **String** |  | [optional] |
-| **mongodb_atlas_project_id** | **String** | mongodb atlas fields | [optional] |
-| **mongodb_db_name** | **String** | common fields | [optional] |
-| **mongodb_default_auth_db** | **String** |  | [optional] |
-| **mongodb_host_port** | **String** |  | [optional] |
-| **mongodb_is_atlas** | **Boolean** |  | [optional] |
-| **mongodb_password** | **String** |  | [optional] |
-| **mongodb_uri_connection** | **String** | mongodb fields | [optional] |
-| **mongodb_uri_options** | **String** |  | [optional] |
-| **mongodb_username** | **String** |  | [optional] |
-| **password** | **String** |  | [optional] |
-| **payload** | **String** |  | [optional] |
-| **phone** | **String** |  | [optional] |
-| **ping_url** | **String** |  | [optional] |
-| **port** | **String** |  | [optional] |
-| **private_key** | **String** |  | [optional] |
-| **private_key_password** | **String** |  | [optional] |
-| **privileged_user** | **String** |  | [optional] |
-| **profile_id** | **String** |  | [optional] |
-| **rabbitmq_server_password** | **String** |  | [optional] |
-| **rabbitmq_server_uri** | **String** |  | [optional] |
-| **rabbitmq_server_user** | **String** |  | [optional] |
-| **security_token** | **String** |  | [optional] |
-| **sf_account** | **String** |  | [optional] |
-| **ssl_connection_certificate** | **String** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] |
-| **ssl_connection_mode** | **Boolean** | (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB | [optional] |
-| **tenant_url** | **String** |  | [optional] |
-| **timeout** | **Integer** | A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years. | [optional] |
-| **url** | **String** |  | [optional] |
-| **use_gw_cloud_identity** | **Boolean** |  | [optional] |
-| **use_gw_service_account** | **Boolean** |  | [optional] |
-| **use_tls** | **Boolean** |  | [optional] |
-| **user_name** | **String** |  | [optional] |
-| **user_password** | **String** |  | [optional] |
-| **username** | **String** |  | [optional] |
-| **validation_email** | **String** |  | [optional] |
-| **venafi_api_key** | **String** |  | [optional] |
-| **venafi_base_url** | **String** |  | [optional] |
-| **venafi_tpp_access_token** | **String** |  | [optional] |
-| **venafi_tpp_client_id** | **String** |  | [optional] |
-| **venafi_tpp_password** | **String** | Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead | [optional] |
-| **venafi_tpp_refresh_token** | **String** |  | [optional] |
-| **venafi_tpp_username** | **String** | Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead | [optional] |
-| **venafi_use_tpp** | **Boolean** |  | [optional] |
-| **venafi_zone** | **String** |  | [optional] |
+| **artifactory_target_details** | [**ArtifactoryTargetDetails**](ArtifactoryTargetDetails.md) |  | [optional] |
+| **aws_target_details** | [**AWSTargetDetails**](AWSTargetDetails.md) |  | [optional] |
+| **azure_target_details** | [**AzureTargetDetails**](AzureTargetDetails.md) |  | [optional] |
+| **chef_target_details** | [**ChefTargetDetails**](ChefTargetDetails.md) |  | [optional] |
+| **custom_target_details** | [**CustomTargetDetails**](CustomTargetDetails.md) |  | [optional] |
+| **db_target_details** | [**DbTargetDetails**](DbTargetDetails.md) |  | [optional] |
+| **dockerhub_target_details** | [**DockerhubTargetDetails**](DockerhubTargetDetails.md) |  | [optional] |
+| **eks_target_details** | [**EKSTargetDetails**](EKSTargetDetails.md) |  | [optional] |
+| **gcp_target_details** | [**GcpTargetDetails**](GcpTargetDetails.md) |  | [optional] |
+| **github_target_details** | [**GithubTargetDetails**](GithubTargetDetails.md) |  | [optional] |
+| **gke_target_details** | [**GKETargetDetails**](GKETargetDetails.md) |  | [optional] |
+| **globalsign_atlas_target_details** | [**GlobalSignAtlasTargetDetails**](GlobalSignAtlasTargetDetails.md) |  | [optional] |
+| **globalsign_target_details** | [**GlobalSignGCCTargetDetails**](GlobalSignGCCTargetDetails.md) |  | [optional] |
+| **ldap_target_details** | [**LdapTargetDetails**](LdapTargetDetails.md) |  | [optional] |
+| **linked_target_details** | [**LinkedTargetDetails**](LinkedTargetDetails.md) |  | [optional] |
+| **mongo_db_target_details** | [**MongoDBTargetDetails**](MongoDBTargetDetails.md) |  | [optional] |
+| **native_k8s_target_details** | [**NativeK8sTargetDetails**](NativeK8sTargetDetails.md) |  | [optional] |
+| **ping_target_details** | [**PingTargetDetails**](PingTargetDetails.md) |  | [optional] |
+| **rabbit_mq_target_details** | [**RabbitMQTargetDetails**](RabbitMQTargetDetails.md) |  | [optional] |
+| **salesforce_target_details** | [**SalesforceTargetDetails**](SalesforceTargetDetails.md) |  | [optional] |
+| **ssh_target_details** | [**SSHTargetDetails**](SSHTargetDetails.md) |  | [optional] |
+| **venafi_target_details** | [**VenafiTargetDetails**](VenafiTargetDetails.md) |  | [optional] |
+| **web_target_details** | [**WebTargetDetails**](WebTargetDetails.md) |  | [optional] |
+| **windows_target_details** | [**WindowsTargetDetails**](WindowsTargetDetails.md) |  | [optional] |
+| **zerossl_target_details** | [**ZeroSSLTargetDetails**](ZeroSSLTargetDetails.md) |  | [optional] |
 
 ## Example
 
@@ -133,128 +36,31 @@
 require 'akeyless'
 
 instance = Akeyless::TargetTypeDetailsInput.new(
-  administrative_port: null,
-  api_key: null,
-  app_private_key: null,
-  artifactory_admin_apikey: null,
-  artifactory_admin_username: null,
-  artifactory_base_url: null,
-  auth_flow: null,
-  authorization_port: null,
-  aws_access_key_id: null,
-  aws_region: null,
-  aws_secret_access_key: null,
-  aws_session_token: null,
-  azure_client_id: null,
-  azure_client_secret: null,
-  azure_resource_group_name: null,
-  azure_resource_name: null,
-  azure_subscription_id: null,
-  azure_tenant_id: null,
-  ca_cert_data: null,
-  ca_cert_name: null,
-  certificate: null,
-  chef_server_host_name: null,
-  chef_server_key: null,
-  chef_server_port: null,
-  chef_server_url: null,
-  chef_server_username: null,
-  chef_skip_ssl: null,
-  client_id: null,
-  client_secret: null,
-  db_host_name: null,
-  db_name: null,
-  db_port: null,
-  db_private_key: null,
-  db_private_key_passphrase: null,
-  db_pwd: null,
-  db_server_certificates: null,
-  db_server_name: null,
-  db_user_name: null,
-  domain_name: null,
-  eks_access_key_id: null,
-  eks_cluster_ca_certificate: null,
-  eks_cluster_endpoint: null,
-  eks_cluster_name: null,
-  eks_region: null,
-  eks_secret_access_key: null,
-  email: null,
-  first_name: null,
-  gcp_service_account_email: null,
-  gcp_service_account_key: null,
-  gcp_service_account_key_base64: null,
-  github_app_id: null,
-  github_app_private_key: null,
-  github_base_url: null,
-  gke_cluster_ca_certificate: null,
-  gke_cluster_endpoint: null,
-  gke_cluster_name: null,
-  gke_service_account_key: null,
-  gke_service_account_name: null,
-  host: null,
-  hostname: null,
-  hosts: null,
-  imap_fqdn: null,
-  imap_password: null,
-  imap_port: null,
-  imap_user: null,
-  implementation_type: null,
-  k8s_bearer_token: null,
-  k8s_cluster_ca_certificate: null,
-  k8s_cluster_endpoint: null,
-  last_name: null,
-  ldap_audience: null,
-  ldap_bind_dn: null,
-  ldap_bind_password: null,
-  ldap_certificate: null,
-  ldap_token_expiration: null,
-  ldap_url: null,
-  mongodb_atlas_api_private_key: null,
-  mongodb_atlas_api_public_key: null,
-  mongodb_atlas_project_id: null,
-  mongodb_db_name: null,
-  mongodb_default_auth_db: null,
-  mongodb_host_port: null,
-  mongodb_is_atlas: null,
-  mongodb_password: null,
-  mongodb_uri_connection: null,
-  mongodb_uri_options: null,
-  mongodb_username: null,
-  password: null,
-  payload: null,
-  phone: null,
-  ping_url: null,
-  port: null,
-  private_key: null,
-  private_key_password: null,
-  privileged_user: null,
-  profile_id: null,
-  rabbitmq_server_password: null,
-  rabbitmq_server_uri: null,
-  rabbitmq_server_user: null,
-  security_token: null,
-  sf_account: null,
-  ssl_connection_certificate: null,
-  ssl_connection_mode: null,
-  tenant_url: null,
-  timeout: null,
-  url: null,
-  use_gw_cloud_identity: null,
-  use_gw_service_account: null,
-  use_tls: null,
-  user_name: null,
-  user_password: null,
-  username: null,
-  validation_email: null,
-  venafi_api_key: null,
-  venafi_base_url: null,
-  venafi_tpp_access_token: null,
-  venafi_tpp_client_id: null,
-  venafi_tpp_password: null,
-  venafi_tpp_refresh_token: null,
-  venafi_tpp_username: null,
-  venafi_use_tpp: null,
-  venafi_zone: null
+  artifactory_target_details: null,
+  aws_target_details: null,
+  azure_target_details: null,
+  chef_target_details: null,
+  custom_target_details: null,
+  db_target_details: null,
+  dockerhub_target_details: null,
+  eks_target_details: null,
+  gcp_target_details: null,
+  github_target_details: null,
+  gke_target_details: null,
+  globalsign_atlas_target_details: null,
+  globalsign_target_details: null,
+  ldap_target_details: null,
+  linked_target_details: null,
+  mongo_db_target_details: null,
+  native_k8s_target_details: null,
+  ping_target_details: null,
+  rabbit_mq_target_details: null,
+  salesforce_target_details: null,
+  ssh_target_details: null,
+  venafi_target_details: null,
+  web_target_details: null,
+  windows_target_details: null,
+  zerossl_target_details: null
 )
 ```
 

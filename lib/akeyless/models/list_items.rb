@@ -18,6 +18,9 @@ module Akeyless
     # for personal password manager
     attr_accessor :accessibility
 
+    # Retrieve all items using pagination, when disabled retrieving only first 1000 items
+    attr_accessor :auto_pagination
+
     # Filter by item name or part of it
     attr_accessor :filter
 
@@ -25,9 +28,6 @@ module Akeyless
     attr_accessor :json
 
     attr_accessor :minimal_view
-
-    # Retrieve items with pagination
-    attr_accessor :pagination
 
     # Next page reference
     attr_accessor :pagination_token
@@ -56,10 +56,10 @@ module Akeyless
     def self.attribute_map
       {
         :'accessibility' => :'accessibility',
+        :'auto_pagination' => :'auto-pagination',
         :'filter' => :'filter',
         :'json' => :'json',
         :'minimal_view' => :'minimal-view',
-        :'pagination' => :'pagination',
         :'pagination_token' => :'pagination-token',
         :'path' => :'path',
         :'sra_only' => :'sra-only',
@@ -80,10 +80,10 @@ module Akeyless
     def self.openapi_types
       {
         :'accessibility' => :'String',
+        :'auto_pagination' => :'String',
         :'filter' => :'String',
         :'json' => :'Boolean',
         :'minimal_view' => :'Boolean',
-        :'pagination' => :'String',
         :'pagination_token' => :'String',
         :'path' => :'String',
         :'sra_only' => :'Boolean',
@@ -122,6 +122,12 @@ module Akeyless
         self.accessibility = 'regular'
       end
 
+      if attributes.key?(:'auto_pagination')
+        self.auto_pagination = attributes[:'auto_pagination']
+      else
+        self.auto_pagination = 'enabled'
+      end
+
       if attributes.key?(:'filter')
         self.filter = attributes[:'filter']
       end
@@ -134,12 +140,6 @@ module Akeyless
 
       if attributes.key?(:'minimal_view')
         self.minimal_view = attributes[:'minimal_view']
-      end
-
-      if attributes.key?(:'pagination')
-        self.pagination = attributes[:'pagination']
-      else
-        self.pagination = 'enabled'
       end
 
       if attributes.key?(:'pagination_token')
@@ -184,6 +184,7 @@ module Akeyless
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
+      warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
       invalid_properties
     end
@@ -191,6 +192,7 @@ module Akeyless
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      warn '[DEPRECATED] the `valid?` method is obsolete'
       true
     end
 
@@ -200,10 +202,10 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           accessibility == o.accessibility &&
+          auto_pagination == o.auto_pagination &&
           filter == o.filter &&
           json == o.json &&
           minimal_view == o.minimal_view &&
-          pagination == o.pagination &&
           pagination_token == o.pagination_token &&
           path == o.path &&
           sra_only == o.sra_only &&
@@ -223,44 +225,37 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accessibility, filter, json, minimal_view, pagination, pagination_token, path, sra_only, sub_types, tag, token, type, uid_token].hash
+      [accessibility, auto_pagination, filter, json, minimal_view, pagination_token, path, sra_only, sub_types, tag, token, type, uid_token].hash
     end
 
     # Builds the object from hash
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def self.build_from_hash(attributes)
-      new.build_from_hash(attributes)
-    end
-
-    # Builds the object from hash
-    # @param [Hash] attributes Model attributes in the form of hash
-    # @return [Object] Returns the model itself
-    def build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
-      self.class.openapi_types.each_pair do |key, type|
-        if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
-          self.send("#{key}=", nil)
+      transformed_hash = {}
+      openapi_types.each_pair do |key, type|
+        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[self.class.attribute_map[key]].is_a?(Array)
-            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
+          if attributes[attribute_map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[self.class.attribute_map[key]].nil?
-          self.send("#{key}=", _deserialize(type, attributes[self.class.attribute_map[key]]))
+        elsif !attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
         end
       end
-
-      self
+      new(transformed_hash)
     end
 
     # Deserializes the data based on type
     # @param string type Data type
     # @param string value Value to be deserialized
     # @return [Object] Deserialized data
-    def _deserialize(type, value)
+    def self._deserialize(type, value)
       case type.to_sym
       when :Time
         Time.parse(value)

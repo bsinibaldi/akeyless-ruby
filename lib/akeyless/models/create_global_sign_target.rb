@@ -134,18 +134,26 @@ module Akeyless
 
       if attributes.key?(:'contact_email')
         self.contact_email = attributes[:'contact_email']
+      else
+        self.contact_email = nil
       end
 
       if attributes.key?(:'contact_first_name')
         self.contact_first_name = attributes[:'contact_first_name']
+      else
+        self.contact_first_name = nil
       end
 
       if attributes.key?(:'contact_last_name')
         self.contact_last_name = attributes[:'contact_last_name']
+      else
+        self.contact_last_name = nil
       end
 
       if attributes.key?(:'contact_phone')
         self.contact_phone = attributes[:'contact_phone']
+      else
+        self.contact_phone = nil
       end
 
       if attributes.key?(:'description')
@@ -164,14 +172,20 @@ module Akeyless
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      else
+        self.name = nil
       end
 
       if attributes.key?(:'password')
         self.password = attributes[:'password']
+      else
+        self.password = nil
       end
 
       if attributes.key?(:'profile_id')
         self.profile_id = attributes[:'profile_id']
+      else
+        self.profile_id = nil
       end
 
       if attributes.key?(:'timeout')
@@ -190,12 +204,15 @@ module Akeyless
 
       if attributes.key?(:'username')
         self.username = attributes[:'username']
+      else
+        self.username = nil
       end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
+      warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
       if @contact_email.nil?
         invalid_properties.push('invalid value for "contact_email", contact_email cannot be nil.')
@@ -235,6 +252,7 @@ module Akeyless
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @contact_email.nil?
       return false if @contact_first_name.nil?
       return false if @contact_last_name.nil?
@@ -284,37 +302,30 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def self.build_from_hash(attributes)
-      new.build_from_hash(attributes)
-    end
-
-    # Builds the object from hash
-    # @param [Hash] attributes Model attributes in the form of hash
-    # @return [Object] Returns the model itself
-    def build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
-      self.class.openapi_types.each_pair do |key, type|
-        if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
-          self.send("#{key}=", nil)
+      transformed_hash = {}
+      openapi_types.each_pair do |key, type|
+        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[self.class.attribute_map[key]].is_a?(Array)
-            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
+          if attributes[attribute_map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[self.class.attribute_map[key]].nil?
-          self.send("#{key}=", _deserialize(type, attributes[self.class.attribute_map[key]]))
+        elsif !attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
         end
       end
-
-      self
+      new(transformed_hash)
     end
 
     # Deserializes the data based on type
     # @param string type Data type
     # @param string value Value to be deserialized
     # @return [Object] Deserialized data
-    def _deserialize(type, value)
+    def self._deserialize(type, value)
       case type.to_sym
       when :Time
         Time.parse(value)

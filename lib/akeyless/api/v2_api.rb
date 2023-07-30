@@ -2131,6 +2131,70 @@ module Akeyless
       return data, status_code, headers
     end
 
+    # @param body [CreateGlobalSignAtlasTarget] 
+    # @param [Hash] opts the optional parameters
+    # @return [CreateGlobalSignAtlasTargetOutput]
+    def create_global_sign_atlas_target(body, opts = {})
+      data, _status_code, _headers = create_global_sign_atlas_target_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [CreateGlobalSignAtlasTarget] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CreateGlobalSignAtlasTargetOutput, Integer, Hash)>] CreateGlobalSignAtlasTargetOutput data, response status code and response headers
+    def create_global_sign_atlas_target_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.create_global_sign_atlas_target ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.create_global_sign_atlas_target"
+      end
+      # resource path
+      local_var_path = '/create-globalsign-atlas-target'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CreateGlobalSignAtlasTargetOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.create_global_sign_atlas_target",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#create_global_sign_atlas_target\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # @param body [CreateGlobalSignTarget] 
     # @param [Hash] opts the optional parameters
     # @return [CreateGlobalSignTargetOutput]
@@ -16234,6 +16298,70 @@ module Akeyless
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: V2Api#update_gke_target\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param body [UpdateGlobalSignAtlasTarget] 
+    # @param [Hash] opts the optional parameters
+    # @return [UpdateGlobalSignAtlasTargetOutput]
+    def update_global_sign_atlas_target(body, opts = {})
+      data, _status_code, _headers = update_global_sign_atlas_target_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [UpdateGlobalSignAtlasTarget] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(UpdateGlobalSignAtlasTargetOutput, Integer, Hash)>] UpdateGlobalSignAtlasTargetOutput data, response status code and response headers
+    def update_global_sign_atlas_target_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.update_global_sign_atlas_target ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.update_global_sign_atlas_target"
+      end
+      # resource path
+      local_var_path = '/update-globalsign-atlas-target'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'UpdateGlobalSignAtlasTargetOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.update_global_sign_atlas_target",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#update_global_sign_atlas_target\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -15,393 +15,84 @@ require 'time'
 
 module Akeyless
   class TargetTypeDetailsInput
-    attr_accessor :administrative_port
+    attr_accessor :artifactory_target_details
 
-    attr_accessor :api_key
+    attr_accessor :aws_target_details
 
-    # params needed for jwt auth AppPrivateKey is the rsa private key in PEM format
-    attr_accessor :app_private_key
+    attr_accessor :azure_target_details
 
-    attr_accessor :artifactory_admin_apikey
+    attr_accessor :chef_target_details
 
-    attr_accessor :artifactory_admin_username
+    attr_accessor :custom_target_details
 
-    attr_accessor :artifactory_base_url
+    attr_accessor :db_target_details
 
-    attr_accessor :auth_flow
+    attr_accessor :dockerhub_target_details
 
-    attr_accessor :authorization_port
+    attr_accessor :eks_target_details
 
-    attr_accessor :aws_access_key_id
+    attr_accessor :gcp_target_details
 
-    attr_accessor :aws_region
+    attr_accessor :github_target_details
 
-    attr_accessor :aws_secret_access_key
+    attr_accessor :gke_target_details
 
-    attr_accessor :aws_session_token
+    attr_accessor :globalsign_atlas_target_details
 
-    attr_accessor :azure_client_id
+    attr_accessor :globalsign_target_details
 
-    attr_accessor :azure_client_secret
+    attr_accessor :ldap_target_details
 
-    attr_accessor :azure_resource_group_name
+    attr_accessor :linked_target_details
 
-    attr_accessor :azure_resource_name
+    attr_accessor :mongo_db_target_details
 
-    attr_accessor :azure_subscription_id
+    attr_accessor :native_k8s_target_details
 
-    attr_accessor :azure_tenant_id
+    attr_accessor :ping_target_details
 
-    # CACertData is the rsa 4096 certificate data in PEM format
-    attr_accessor :ca_cert_data
+    attr_accessor :rabbit_mq_target_details
 
-    # CACertName is the name of the certificate in SalesForce tenant
-    attr_accessor :ca_cert_name
+    attr_accessor :salesforce_target_details
 
-    attr_accessor :certificate
+    attr_accessor :ssh_target_details
 
-    attr_accessor :chef_server_host_name
+    attr_accessor :venafi_target_details
 
-    attr_accessor :chef_server_key
+    attr_accessor :web_target_details
 
-    attr_accessor :chef_server_port
+    attr_accessor :windows_target_details
 
-    attr_accessor :chef_server_url
-
-    attr_accessor :chef_server_username
-
-    attr_accessor :chef_skip_ssl
-
-    attr_accessor :client_id
-
-    # params needed for password auth
-    attr_accessor :client_secret
-
-    attr_accessor :db_host_name
-
-    attr_accessor :db_name
-
-    attr_accessor :db_port
-
-    # (Optional) Private Key in PEM format
-    attr_accessor :db_private_key
-
-    attr_accessor :db_private_key_passphrase
-
-    attr_accessor :db_pwd
-
-    # (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host's root CA set.
-    attr_accessor :db_server_certificates
-
-    # (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client's handshake to support virtual hosting unless it is an IP address.
-    attr_accessor :db_server_name
-
-    attr_accessor :db_user_name
-
-    attr_accessor :domain_name
-
-    attr_accessor :eks_access_key_id
-
-    attr_accessor :eks_cluster_ca_certificate
-
-    attr_accessor :eks_cluster_endpoint
-
-    attr_accessor :eks_cluster_name
-
-    attr_accessor :eks_region
-
-    attr_accessor :eks_secret_access_key
-
-    attr_accessor :email
-
-    # Contact Info - GlobalSign requires this to be sent with every certificate creation request
-    attr_accessor :first_name
-
-    # deprecated
-    attr_accessor :gcp_service_account_email
-
-    attr_accessor :gcp_service_account_key
-
-    attr_accessor :gcp_service_account_key_base64
-
-    attr_accessor :github_app_id
-
-    attr_accessor :github_app_private_key
-
-    attr_accessor :github_base_url
-
-    attr_accessor :gke_cluster_ca_certificate
-
-    attr_accessor :gke_cluster_endpoint
-
-    attr_accessor :gke_cluster_name
-
-    attr_accessor :gke_service_account_key
-
-    attr_accessor :gke_service_account_name
-
-    attr_accessor :host
-
-    attr_accessor :hostname
-
-    # key hostname, value description
-    attr_accessor :hosts
-
-    attr_accessor :imap_fqdn
-
-    attr_accessor :imap_password
-
-    attr_accessor :imap_port
-
-    attr_accessor :imap_user
-
-    attr_accessor :implementation_type
-
-    attr_accessor :k8s_bearer_token
-
-    attr_accessor :k8s_cluster_ca_certificate
-
-    attr_accessor :k8s_cluster_endpoint
-
-    attr_accessor :last_name
-
-    attr_accessor :ldap_audience
-
-    attr_accessor :ldap_bind_dn
-
-    attr_accessor :ldap_bind_password
-
-    attr_accessor :ldap_certificate
-
-    attr_accessor :ldap_token_expiration
-
-    attr_accessor :ldap_url
-
-    attr_accessor :mongodb_atlas_api_private_key
-
-    attr_accessor :mongodb_atlas_api_public_key
-
-    # mongodb atlas fields
-    attr_accessor :mongodb_atlas_project_id
-
-    # common fields
-    attr_accessor :mongodb_db_name
-
-    attr_accessor :mongodb_default_auth_db
-
-    attr_accessor :mongodb_host_port
-
-    attr_accessor :mongodb_is_atlas
-
-    attr_accessor :mongodb_password
-
-    # mongodb fields
-    attr_accessor :mongodb_uri_connection
-
-    attr_accessor :mongodb_uri_options
-
-    attr_accessor :mongodb_username
-
-    attr_accessor :password
-
-    attr_accessor :payload
-
-    attr_accessor :phone
-
-    attr_accessor :ping_url
-
-    attr_accessor :port
-
-    attr_accessor :private_key
-
-    attr_accessor :private_key_password
-
-    attr_accessor :privileged_user
-
-    attr_accessor :profile_id
-
-    attr_accessor :rabbitmq_server_password
-
-    attr_accessor :rabbitmq_server_uri
-
-    attr_accessor :rabbitmq_server_user
-
-    attr_accessor :security_token
-
-    attr_accessor :sf_account
-
-    # (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field
-    attr_accessor :ssl_connection_certificate
-
-    # (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB
-    attr_accessor :ssl_connection_mode
-
-    attr_accessor :tenant_url
-
-    # A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.
-    attr_accessor :timeout
-
-    attr_accessor :url
-
-    attr_accessor :use_gw_cloud_identity
-
-    attr_accessor :use_gw_service_account
-
-    attr_accessor :use_tls
-
-    attr_accessor :user_name
-
-    attr_accessor :user_password
-
-    attr_accessor :username
-
-    attr_accessor :validation_email
-
-    attr_accessor :venafi_api_key
-
-    attr_accessor :venafi_base_url
-
-    attr_accessor :venafi_tpp_access_token
-
-    attr_accessor :venafi_tpp_client_id
-
-    # Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead
-    attr_accessor :venafi_tpp_password
-
-    attr_accessor :venafi_tpp_refresh_token
-
-    # Deprecated: VenafiAccessToken and VenafiRefreshToken should be used instead
-    attr_accessor :venafi_tpp_username
-
-    attr_accessor :venafi_use_tpp
-
-    attr_accessor :venafi_zone
+    attr_accessor :zerossl_target_details
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'administrative_port' => :'administrative_port',
-        :'api_key' => :'api_key',
-        :'app_private_key' => :'app_private_key',
-        :'artifactory_admin_apikey' => :'artifactory_admin_apikey',
-        :'artifactory_admin_username' => :'artifactory_admin_username',
-        :'artifactory_base_url' => :'artifactory_base_url',
-        :'auth_flow' => :'auth_flow',
-        :'authorization_port' => :'authorization_port',
-        :'aws_access_key_id' => :'aws_access_key_id',
-        :'aws_region' => :'aws_region',
-        :'aws_secret_access_key' => :'aws_secret_access_key',
-        :'aws_session_token' => :'aws_session_token',
-        :'azure_client_id' => :'azure_client_id',
-        :'azure_client_secret' => :'azure_client_secret',
-        :'azure_resource_group_name' => :'azure_resource_group_name',
-        :'azure_resource_name' => :'azure_resource_name',
-        :'azure_subscription_id' => :'azure_subscription_id',
-        :'azure_tenant_id' => :'azure_tenant_id',
-        :'ca_cert_data' => :'ca_cert_data',
-        :'ca_cert_name' => :'ca_cert_name',
-        :'certificate' => :'certificate',
-        :'chef_server_host_name' => :'chef_server_host_name',
-        :'chef_server_key' => :'chef_server_key',
-        :'chef_server_port' => :'chef_server_port',
-        :'chef_server_url' => :'chef_server_url',
-        :'chef_server_username' => :'chef_server_username',
-        :'chef_skip_ssl' => :'chef_skip_ssl',
-        :'client_id' => :'client_id',
-        :'client_secret' => :'client_secret',
-        :'db_host_name' => :'db_host_name',
-        :'db_name' => :'db_name',
-        :'db_port' => :'db_port',
-        :'db_private_key' => :'db_private_key',
-        :'db_private_key_passphrase' => :'db_private_key_passphrase',
-        :'db_pwd' => :'db_pwd',
-        :'db_server_certificates' => :'db_server_certificates',
-        :'db_server_name' => :'db_server_name',
-        :'db_user_name' => :'db_user_name',
-        :'domain_name' => :'domain_name',
-        :'eks_access_key_id' => :'eks_access_key_id',
-        :'eks_cluster_ca_certificate' => :'eks_cluster_ca_certificate',
-        :'eks_cluster_endpoint' => :'eks_cluster_endpoint',
-        :'eks_cluster_name' => :'eks_cluster_name',
-        :'eks_region' => :'eks_region',
-        :'eks_secret_access_key' => :'eks_secret_access_key',
-        :'email' => :'email',
-        :'first_name' => :'first_name',
-        :'gcp_service_account_email' => :'gcp_service_account_email',
-        :'gcp_service_account_key' => :'gcp_service_account_key',
-        :'gcp_service_account_key_base64' => :'gcp_service_account_key_base64',
-        :'github_app_id' => :'github_app_id',
-        :'github_app_private_key' => :'github_app_private_key',
-        :'github_base_url' => :'github_base_url',
-        :'gke_cluster_ca_certificate' => :'gke_cluster_ca_certificate',
-        :'gke_cluster_endpoint' => :'gke_cluster_endpoint',
-        :'gke_cluster_name' => :'gke_cluster_name',
-        :'gke_service_account_key' => :'gke_service_account_key',
-        :'gke_service_account_name' => :'gke_service_account_name',
-        :'host' => :'host',
-        :'hostname' => :'hostname',
-        :'hosts' => :'hosts',
-        :'imap_fqdn' => :'imap_fqdn',
-        :'imap_password' => :'imap_password',
-        :'imap_port' => :'imap_port',
-        :'imap_user' => :'imap_user',
-        :'implementation_type' => :'implementation_type',
-        :'k8s_bearer_token' => :'k8s_bearer_token',
-        :'k8s_cluster_ca_certificate' => :'k8s_cluster_ca_certificate',
-        :'k8s_cluster_endpoint' => :'k8s_cluster_endpoint',
-        :'last_name' => :'last_name',
-        :'ldap_audience' => :'ldap_audience',
-        :'ldap_bind_dn' => :'ldap_bind_dn',
-        :'ldap_bind_password' => :'ldap_bind_password',
-        :'ldap_certificate' => :'ldap_certificate',
-        :'ldap_token_expiration' => :'ldap_token_expiration',
-        :'ldap_url' => :'ldap_url',
-        :'mongodb_atlas_api_private_key' => :'mongodb_atlas_api_private_key',
-        :'mongodb_atlas_api_public_key' => :'mongodb_atlas_api_public_key',
-        :'mongodb_atlas_project_id' => :'mongodb_atlas_project_id',
-        :'mongodb_db_name' => :'mongodb_db_name',
-        :'mongodb_default_auth_db' => :'mongodb_default_auth_db',
-        :'mongodb_host_port' => :'mongodb_host_port',
-        :'mongodb_is_atlas' => :'mongodb_is_atlas',
-        :'mongodb_password' => :'mongodb_password',
-        :'mongodb_uri_connection' => :'mongodb_uri_connection',
-        :'mongodb_uri_options' => :'mongodb_uri_options',
-        :'mongodb_username' => :'mongodb_username',
-        :'password' => :'password',
-        :'payload' => :'payload',
-        :'phone' => :'phone',
-        :'ping_url' => :'ping_url',
-        :'port' => :'port',
-        :'private_key' => :'private_key',
-        :'private_key_password' => :'private_key_password',
-        :'privileged_user' => :'privileged_user',
-        :'profile_id' => :'profile_id',
-        :'rabbitmq_server_password' => :'rabbitmq_server_password',
-        :'rabbitmq_server_uri' => :'rabbitmq_server_uri',
-        :'rabbitmq_server_user' => :'rabbitmq_server_user',
-        :'security_token' => :'security_token',
-        :'sf_account' => :'sf_account',
-        :'ssl_connection_certificate' => :'ssl_connection_certificate',
-        :'ssl_connection_mode' => :'ssl_connection_mode',
-        :'tenant_url' => :'tenant_url',
-        :'timeout' => :'timeout',
-        :'url' => :'url',
-        :'use_gw_cloud_identity' => :'use_gw_cloud_identity',
-        :'use_gw_service_account' => :'use_gw_service_account',
-        :'use_tls' => :'use_tls',
-        :'user_name' => :'user_name',
-        :'user_password' => :'user_password',
-        :'username' => :'username',
-        :'validation_email' => :'validation_email',
-        :'venafi_api_key' => :'venafi_api_key',
-        :'venafi_base_url' => :'venafi_base_url',
-        :'venafi_tpp_access_token' => :'venafi_tpp_access_token',
-        :'venafi_tpp_client_id' => :'venafi_tpp_client_id',
-        :'venafi_tpp_password' => :'venafi_tpp_password',
-        :'venafi_tpp_refresh_token' => :'venafi_tpp_refresh_token',
-        :'venafi_tpp_username' => :'venafi_tpp_username',
-        :'venafi_use_tpp' => :'venafi_use_tpp',
-        :'venafi_zone' => :'venafi_zone'
+        :'artifactory_target_details' => :'artifactory_target_details',
+        :'aws_target_details' => :'aws_target_details',
+        :'azure_target_details' => :'azure_target_details',
+        :'chef_target_details' => :'chef_target_details',
+        :'custom_target_details' => :'custom_target_details',
+        :'db_target_details' => :'db_target_details',
+        :'dockerhub_target_details' => :'dockerhub_target_details',
+        :'eks_target_details' => :'eks_target_details',
+        :'gcp_target_details' => :'gcp_target_details',
+        :'github_target_details' => :'github_target_details',
+        :'gke_target_details' => :'gke_target_details',
+        :'globalsign_atlas_target_details' => :'globalsign_atlas_target_details',
+        :'globalsign_target_details' => :'globalsign_target_details',
+        :'ldap_target_details' => :'ldap_target_details',
+        :'linked_target_details' => :'linked_target_details',
+        :'mongo_db_target_details' => :'mongo_db_target_details',
+        :'native_k8s_target_details' => :'native_k8s_target_details',
+        :'ping_target_details' => :'ping_target_details',
+        :'rabbit_mq_target_details' => :'rabbit_mq_target_details',
+        :'salesforce_target_details' => :'salesforce_target_details',
+        :'ssh_target_details' => :'ssh_target_details',
+        :'venafi_target_details' => :'venafi_target_details',
+        :'web_target_details' => :'web_target_details',
+        :'windows_target_details' => :'windows_target_details',
+        :'zerossl_target_details' => :'zerossl_target_details'
       }
     end
 
@@ -413,128 +104,31 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'administrative_port' => :'String',
-        :'api_key' => :'String',
-        :'app_private_key' => :'Array<Integer>',
-        :'artifactory_admin_apikey' => :'String',
-        :'artifactory_admin_username' => :'String',
-        :'artifactory_base_url' => :'String',
-        :'auth_flow' => :'String',
-        :'authorization_port' => :'String',
-        :'aws_access_key_id' => :'String',
-        :'aws_region' => :'String',
-        :'aws_secret_access_key' => :'String',
-        :'aws_session_token' => :'String',
-        :'azure_client_id' => :'String',
-        :'azure_client_secret' => :'String',
-        :'azure_resource_group_name' => :'String',
-        :'azure_resource_name' => :'String',
-        :'azure_subscription_id' => :'String',
-        :'azure_tenant_id' => :'String',
-        :'ca_cert_data' => :'Array<Integer>',
-        :'ca_cert_name' => :'String',
-        :'certificate' => :'String',
-        :'chef_server_host_name' => :'String',
-        :'chef_server_key' => :'String',
-        :'chef_server_port' => :'String',
-        :'chef_server_url' => :'String',
-        :'chef_server_username' => :'String',
-        :'chef_skip_ssl' => :'Boolean',
-        :'client_id' => :'String',
-        :'client_secret' => :'String',
-        :'db_host_name' => :'String',
-        :'db_name' => :'String',
-        :'db_port' => :'String',
-        :'db_private_key' => :'String',
-        :'db_private_key_passphrase' => :'String',
-        :'db_pwd' => :'String',
-        :'db_server_certificates' => :'String',
-        :'db_server_name' => :'String',
-        :'db_user_name' => :'String',
-        :'domain_name' => :'String',
-        :'eks_access_key_id' => :'String',
-        :'eks_cluster_ca_certificate' => :'String',
-        :'eks_cluster_endpoint' => :'String',
-        :'eks_cluster_name' => :'String',
-        :'eks_region' => :'String',
-        :'eks_secret_access_key' => :'String',
-        :'email' => :'String',
-        :'first_name' => :'String',
-        :'gcp_service_account_email' => :'String',
-        :'gcp_service_account_key' => :'String',
-        :'gcp_service_account_key_base64' => :'String',
-        :'github_app_id' => :'Integer',
-        :'github_app_private_key' => :'String',
-        :'github_base_url' => :'String',
-        :'gke_cluster_ca_certificate' => :'String',
-        :'gke_cluster_endpoint' => :'String',
-        :'gke_cluster_name' => :'String',
-        :'gke_service_account_key' => :'String',
-        :'gke_service_account_name' => :'String',
-        :'host' => :'String',
-        :'hostname' => :'String',
-        :'hosts' => :'Hash<String, String>',
-        :'imap_fqdn' => :'String',
-        :'imap_password' => :'String',
-        :'imap_port' => :'String',
-        :'imap_user' => :'String',
-        :'implementation_type' => :'String',
-        :'k8s_bearer_token' => :'String',
-        :'k8s_cluster_ca_certificate' => :'String',
-        :'k8s_cluster_endpoint' => :'String',
-        :'last_name' => :'String',
-        :'ldap_audience' => :'String',
-        :'ldap_bind_dn' => :'String',
-        :'ldap_bind_password' => :'String',
-        :'ldap_certificate' => :'String',
-        :'ldap_token_expiration' => :'String',
-        :'ldap_url' => :'String',
-        :'mongodb_atlas_api_private_key' => :'String',
-        :'mongodb_atlas_api_public_key' => :'String',
-        :'mongodb_atlas_project_id' => :'String',
-        :'mongodb_db_name' => :'String',
-        :'mongodb_default_auth_db' => :'String',
-        :'mongodb_host_port' => :'String',
-        :'mongodb_is_atlas' => :'Boolean',
-        :'mongodb_password' => :'String',
-        :'mongodb_uri_connection' => :'String',
-        :'mongodb_uri_options' => :'String',
-        :'mongodb_username' => :'String',
-        :'password' => :'String',
-        :'payload' => :'String',
-        :'phone' => :'String',
-        :'ping_url' => :'String',
-        :'port' => :'String',
-        :'private_key' => :'String',
-        :'private_key_password' => :'String',
-        :'privileged_user' => :'String',
-        :'profile_id' => :'String',
-        :'rabbitmq_server_password' => :'String',
-        :'rabbitmq_server_uri' => :'String',
-        :'rabbitmq_server_user' => :'String',
-        :'security_token' => :'String',
-        :'sf_account' => :'String',
-        :'ssl_connection_certificate' => :'String',
-        :'ssl_connection_mode' => :'Boolean',
-        :'tenant_url' => :'String',
-        :'timeout' => :'Integer',
-        :'url' => :'String',
-        :'use_gw_cloud_identity' => :'Boolean',
-        :'use_gw_service_account' => :'Boolean',
-        :'use_tls' => :'Boolean',
-        :'user_name' => :'String',
-        :'user_password' => :'String',
-        :'username' => :'String',
-        :'validation_email' => :'String',
-        :'venafi_api_key' => :'String',
-        :'venafi_base_url' => :'String',
-        :'venafi_tpp_access_token' => :'String',
-        :'venafi_tpp_client_id' => :'String',
-        :'venafi_tpp_password' => :'String',
-        :'venafi_tpp_refresh_token' => :'String',
-        :'venafi_tpp_username' => :'String',
-        :'venafi_use_tpp' => :'Boolean',
-        :'venafi_zone' => :'String'
+        :'artifactory_target_details' => :'ArtifactoryTargetDetails',
+        :'aws_target_details' => :'AWSTargetDetails',
+        :'azure_target_details' => :'AzureTargetDetails',
+        :'chef_target_details' => :'ChefTargetDetails',
+        :'custom_target_details' => :'CustomTargetDetails',
+        :'db_target_details' => :'DbTargetDetails',
+        :'dockerhub_target_details' => :'DockerhubTargetDetails',
+        :'eks_target_details' => :'EKSTargetDetails',
+        :'gcp_target_details' => :'GcpTargetDetails',
+        :'github_target_details' => :'GithubTargetDetails',
+        :'gke_target_details' => :'GKETargetDetails',
+        :'globalsign_atlas_target_details' => :'GlobalSignAtlasTargetDetails',
+        :'globalsign_target_details' => :'GlobalSignGCCTargetDetails',
+        :'ldap_target_details' => :'LdapTargetDetails',
+        :'linked_target_details' => :'LinkedTargetDetails',
+        :'mongo_db_target_details' => :'MongoDBTargetDetails',
+        :'native_k8s_target_details' => :'NativeK8sTargetDetails',
+        :'ping_target_details' => :'PingTargetDetails',
+        :'rabbit_mq_target_details' => :'RabbitMQTargetDetails',
+        :'salesforce_target_details' => :'SalesforceTargetDetails',
+        :'ssh_target_details' => :'SSHTargetDetails',
+        :'venafi_target_details' => :'VenafiTargetDetails',
+        :'web_target_details' => :'WebTargetDetails',
+        :'windows_target_details' => :'WindowsTargetDetails',
+        :'zerossl_target_details' => :'ZeroSSLTargetDetails'
       }
     end
 
@@ -559,504 +153,111 @@ module Akeyless
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'administrative_port')
-        self.administrative_port = attributes[:'administrative_port']
+      if attributes.key?(:'artifactory_target_details')
+        self.artifactory_target_details = attributes[:'artifactory_target_details']
       end
 
-      if attributes.key?(:'api_key')
-        self.api_key = attributes[:'api_key']
+      if attributes.key?(:'aws_target_details')
+        self.aws_target_details = attributes[:'aws_target_details']
       end
 
-      if attributes.key?(:'app_private_key')
-        if (value = attributes[:'app_private_key']).is_a?(Array)
-          self.app_private_key = value
-        end
+      if attributes.key?(:'azure_target_details')
+        self.azure_target_details = attributes[:'azure_target_details']
       end
 
-      if attributes.key?(:'artifactory_admin_apikey')
-        self.artifactory_admin_apikey = attributes[:'artifactory_admin_apikey']
+      if attributes.key?(:'chef_target_details')
+        self.chef_target_details = attributes[:'chef_target_details']
       end
 
-      if attributes.key?(:'artifactory_admin_username')
-        self.artifactory_admin_username = attributes[:'artifactory_admin_username']
+      if attributes.key?(:'custom_target_details')
+        self.custom_target_details = attributes[:'custom_target_details']
       end
 
-      if attributes.key?(:'artifactory_base_url')
-        self.artifactory_base_url = attributes[:'artifactory_base_url']
+      if attributes.key?(:'db_target_details')
+        self.db_target_details = attributes[:'db_target_details']
       end
 
-      if attributes.key?(:'auth_flow')
-        self.auth_flow = attributes[:'auth_flow']
+      if attributes.key?(:'dockerhub_target_details')
+        self.dockerhub_target_details = attributes[:'dockerhub_target_details']
       end
 
-      if attributes.key?(:'authorization_port')
-        self.authorization_port = attributes[:'authorization_port']
+      if attributes.key?(:'eks_target_details')
+        self.eks_target_details = attributes[:'eks_target_details']
       end
 
-      if attributes.key?(:'aws_access_key_id')
-        self.aws_access_key_id = attributes[:'aws_access_key_id']
+      if attributes.key?(:'gcp_target_details')
+        self.gcp_target_details = attributes[:'gcp_target_details']
       end
 
-      if attributes.key?(:'aws_region')
-        self.aws_region = attributes[:'aws_region']
+      if attributes.key?(:'github_target_details')
+        self.github_target_details = attributes[:'github_target_details']
       end
 
-      if attributes.key?(:'aws_secret_access_key')
-        self.aws_secret_access_key = attributes[:'aws_secret_access_key']
+      if attributes.key?(:'gke_target_details')
+        self.gke_target_details = attributes[:'gke_target_details']
       end
 
-      if attributes.key?(:'aws_session_token')
-        self.aws_session_token = attributes[:'aws_session_token']
+      if attributes.key?(:'globalsign_atlas_target_details')
+        self.globalsign_atlas_target_details = attributes[:'globalsign_atlas_target_details']
       end
 
-      if attributes.key?(:'azure_client_id')
-        self.azure_client_id = attributes[:'azure_client_id']
+      if attributes.key?(:'globalsign_target_details')
+        self.globalsign_target_details = attributes[:'globalsign_target_details']
       end
 
-      if attributes.key?(:'azure_client_secret')
-        self.azure_client_secret = attributes[:'azure_client_secret']
+      if attributes.key?(:'ldap_target_details')
+        self.ldap_target_details = attributes[:'ldap_target_details']
       end
 
-      if attributes.key?(:'azure_resource_group_name')
-        self.azure_resource_group_name = attributes[:'azure_resource_group_name']
+      if attributes.key?(:'linked_target_details')
+        self.linked_target_details = attributes[:'linked_target_details']
       end
 
-      if attributes.key?(:'azure_resource_name')
-        self.azure_resource_name = attributes[:'azure_resource_name']
+      if attributes.key?(:'mongo_db_target_details')
+        self.mongo_db_target_details = attributes[:'mongo_db_target_details']
       end
 
-      if attributes.key?(:'azure_subscription_id')
-        self.azure_subscription_id = attributes[:'azure_subscription_id']
+      if attributes.key?(:'native_k8s_target_details')
+        self.native_k8s_target_details = attributes[:'native_k8s_target_details']
       end
 
-      if attributes.key?(:'azure_tenant_id')
-        self.azure_tenant_id = attributes[:'azure_tenant_id']
+      if attributes.key?(:'ping_target_details')
+        self.ping_target_details = attributes[:'ping_target_details']
       end
 
-      if attributes.key?(:'ca_cert_data')
-        if (value = attributes[:'ca_cert_data']).is_a?(Array)
-          self.ca_cert_data = value
-        end
+      if attributes.key?(:'rabbit_mq_target_details')
+        self.rabbit_mq_target_details = attributes[:'rabbit_mq_target_details']
       end
 
-      if attributes.key?(:'ca_cert_name')
-        self.ca_cert_name = attributes[:'ca_cert_name']
+      if attributes.key?(:'salesforce_target_details')
+        self.salesforce_target_details = attributes[:'salesforce_target_details']
       end
 
-      if attributes.key?(:'certificate')
-        self.certificate = attributes[:'certificate']
+      if attributes.key?(:'ssh_target_details')
+        self.ssh_target_details = attributes[:'ssh_target_details']
       end
 
-      if attributes.key?(:'chef_server_host_name')
-        self.chef_server_host_name = attributes[:'chef_server_host_name']
+      if attributes.key?(:'venafi_target_details')
+        self.venafi_target_details = attributes[:'venafi_target_details']
       end
 
-      if attributes.key?(:'chef_server_key')
-        self.chef_server_key = attributes[:'chef_server_key']
+      if attributes.key?(:'web_target_details')
+        self.web_target_details = attributes[:'web_target_details']
       end
 
-      if attributes.key?(:'chef_server_port')
-        self.chef_server_port = attributes[:'chef_server_port']
+      if attributes.key?(:'windows_target_details')
+        self.windows_target_details = attributes[:'windows_target_details']
       end
 
-      if attributes.key?(:'chef_server_url')
-        self.chef_server_url = attributes[:'chef_server_url']
-      end
-
-      if attributes.key?(:'chef_server_username')
-        self.chef_server_username = attributes[:'chef_server_username']
-      end
-
-      if attributes.key?(:'chef_skip_ssl')
-        self.chef_skip_ssl = attributes[:'chef_skip_ssl']
-      end
-
-      if attributes.key?(:'client_id')
-        self.client_id = attributes[:'client_id']
-      end
-
-      if attributes.key?(:'client_secret')
-        self.client_secret = attributes[:'client_secret']
-      end
-
-      if attributes.key?(:'db_host_name')
-        self.db_host_name = attributes[:'db_host_name']
-      end
-
-      if attributes.key?(:'db_name')
-        self.db_name = attributes[:'db_name']
-      end
-
-      if attributes.key?(:'db_port')
-        self.db_port = attributes[:'db_port']
-      end
-
-      if attributes.key?(:'db_private_key')
-        self.db_private_key = attributes[:'db_private_key']
-      end
-
-      if attributes.key?(:'db_private_key_passphrase')
-        self.db_private_key_passphrase = attributes[:'db_private_key_passphrase']
-      end
-
-      if attributes.key?(:'db_pwd')
-        self.db_pwd = attributes[:'db_pwd']
-      end
-
-      if attributes.key?(:'db_server_certificates')
-        self.db_server_certificates = attributes[:'db_server_certificates']
-      end
-
-      if attributes.key?(:'db_server_name')
-        self.db_server_name = attributes[:'db_server_name']
-      end
-
-      if attributes.key?(:'db_user_name')
-        self.db_user_name = attributes[:'db_user_name']
-      end
-
-      if attributes.key?(:'domain_name')
-        self.domain_name = attributes[:'domain_name']
-      end
-
-      if attributes.key?(:'eks_access_key_id')
-        self.eks_access_key_id = attributes[:'eks_access_key_id']
-      end
-
-      if attributes.key?(:'eks_cluster_ca_certificate')
-        self.eks_cluster_ca_certificate = attributes[:'eks_cluster_ca_certificate']
-      end
-
-      if attributes.key?(:'eks_cluster_endpoint')
-        self.eks_cluster_endpoint = attributes[:'eks_cluster_endpoint']
-      end
-
-      if attributes.key?(:'eks_cluster_name')
-        self.eks_cluster_name = attributes[:'eks_cluster_name']
-      end
-
-      if attributes.key?(:'eks_region')
-        self.eks_region = attributes[:'eks_region']
-      end
-
-      if attributes.key?(:'eks_secret_access_key')
-        self.eks_secret_access_key = attributes[:'eks_secret_access_key']
-      end
-
-      if attributes.key?(:'email')
-        self.email = attributes[:'email']
-      end
-
-      if attributes.key?(:'first_name')
-        self.first_name = attributes[:'first_name']
-      end
-
-      if attributes.key?(:'gcp_service_account_email')
-        self.gcp_service_account_email = attributes[:'gcp_service_account_email']
-      end
-
-      if attributes.key?(:'gcp_service_account_key')
-        self.gcp_service_account_key = attributes[:'gcp_service_account_key']
-      end
-
-      if attributes.key?(:'gcp_service_account_key_base64')
-        self.gcp_service_account_key_base64 = attributes[:'gcp_service_account_key_base64']
-      end
-
-      if attributes.key?(:'github_app_id')
-        self.github_app_id = attributes[:'github_app_id']
-      end
-
-      if attributes.key?(:'github_app_private_key')
-        self.github_app_private_key = attributes[:'github_app_private_key']
-      end
-
-      if attributes.key?(:'github_base_url')
-        self.github_base_url = attributes[:'github_base_url']
-      end
-
-      if attributes.key?(:'gke_cluster_ca_certificate')
-        self.gke_cluster_ca_certificate = attributes[:'gke_cluster_ca_certificate']
-      end
-
-      if attributes.key?(:'gke_cluster_endpoint')
-        self.gke_cluster_endpoint = attributes[:'gke_cluster_endpoint']
-      end
-
-      if attributes.key?(:'gke_cluster_name')
-        self.gke_cluster_name = attributes[:'gke_cluster_name']
-      end
-
-      if attributes.key?(:'gke_service_account_key')
-        self.gke_service_account_key = attributes[:'gke_service_account_key']
-      end
-
-      if attributes.key?(:'gke_service_account_name')
-        self.gke_service_account_name = attributes[:'gke_service_account_name']
-      end
-
-      if attributes.key?(:'host')
-        self.host = attributes[:'host']
-      end
-
-      if attributes.key?(:'hostname')
-        self.hostname = attributes[:'hostname']
-      end
-
-      if attributes.key?(:'hosts')
-        if (value = attributes[:'hosts']).is_a?(Hash)
-          self.hosts = value
-        end
-      end
-
-      if attributes.key?(:'imap_fqdn')
-        self.imap_fqdn = attributes[:'imap_fqdn']
-      end
-
-      if attributes.key?(:'imap_password')
-        self.imap_password = attributes[:'imap_password']
-      end
-
-      if attributes.key?(:'imap_port')
-        self.imap_port = attributes[:'imap_port']
-      end
-
-      if attributes.key?(:'imap_user')
-        self.imap_user = attributes[:'imap_user']
-      end
-
-      if attributes.key?(:'implementation_type')
-        self.implementation_type = attributes[:'implementation_type']
-      end
-
-      if attributes.key?(:'k8s_bearer_token')
-        self.k8s_bearer_token = attributes[:'k8s_bearer_token']
-      end
-
-      if attributes.key?(:'k8s_cluster_ca_certificate')
-        self.k8s_cluster_ca_certificate = attributes[:'k8s_cluster_ca_certificate']
-      end
-
-      if attributes.key?(:'k8s_cluster_endpoint')
-        self.k8s_cluster_endpoint = attributes[:'k8s_cluster_endpoint']
-      end
-
-      if attributes.key?(:'last_name')
-        self.last_name = attributes[:'last_name']
-      end
-
-      if attributes.key?(:'ldap_audience')
-        self.ldap_audience = attributes[:'ldap_audience']
-      end
-
-      if attributes.key?(:'ldap_bind_dn')
-        self.ldap_bind_dn = attributes[:'ldap_bind_dn']
-      end
-
-      if attributes.key?(:'ldap_bind_password')
-        self.ldap_bind_password = attributes[:'ldap_bind_password']
-      end
-
-      if attributes.key?(:'ldap_certificate')
-        self.ldap_certificate = attributes[:'ldap_certificate']
-      end
-
-      if attributes.key?(:'ldap_token_expiration')
-        self.ldap_token_expiration = attributes[:'ldap_token_expiration']
-      end
-
-      if attributes.key?(:'ldap_url')
-        self.ldap_url = attributes[:'ldap_url']
-      end
-
-      if attributes.key?(:'mongodb_atlas_api_private_key')
-        self.mongodb_atlas_api_private_key = attributes[:'mongodb_atlas_api_private_key']
-      end
-
-      if attributes.key?(:'mongodb_atlas_api_public_key')
-        self.mongodb_atlas_api_public_key = attributes[:'mongodb_atlas_api_public_key']
-      end
-
-      if attributes.key?(:'mongodb_atlas_project_id')
-        self.mongodb_atlas_project_id = attributes[:'mongodb_atlas_project_id']
-      end
-
-      if attributes.key?(:'mongodb_db_name')
-        self.mongodb_db_name = attributes[:'mongodb_db_name']
-      end
-
-      if attributes.key?(:'mongodb_default_auth_db')
-        self.mongodb_default_auth_db = attributes[:'mongodb_default_auth_db']
-      end
-
-      if attributes.key?(:'mongodb_host_port')
-        self.mongodb_host_port = attributes[:'mongodb_host_port']
-      end
-
-      if attributes.key?(:'mongodb_is_atlas')
-        self.mongodb_is_atlas = attributes[:'mongodb_is_atlas']
-      end
-
-      if attributes.key?(:'mongodb_password')
-        self.mongodb_password = attributes[:'mongodb_password']
-      end
-
-      if attributes.key?(:'mongodb_uri_connection')
-        self.mongodb_uri_connection = attributes[:'mongodb_uri_connection']
-      end
-
-      if attributes.key?(:'mongodb_uri_options')
-        self.mongodb_uri_options = attributes[:'mongodb_uri_options']
-      end
-
-      if attributes.key?(:'mongodb_username')
-        self.mongodb_username = attributes[:'mongodb_username']
-      end
-
-      if attributes.key?(:'password')
-        self.password = attributes[:'password']
-      end
-
-      if attributes.key?(:'payload')
-        self.payload = attributes[:'payload']
-      end
-
-      if attributes.key?(:'phone')
-        self.phone = attributes[:'phone']
-      end
-
-      if attributes.key?(:'ping_url')
-        self.ping_url = attributes[:'ping_url']
-      end
-
-      if attributes.key?(:'port')
-        self.port = attributes[:'port']
-      end
-
-      if attributes.key?(:'private_key')
-        self.private_key = attributes[:'private_key']
-      end
-
-      if attributes.key?(:'private_key_password')
-        self.private_key_password = attributes[:'private_key_password']
-      end
-
-      if attributes.key?(:'privileged_user')
-        self.privileged_user = attributes[:'privileged_user']
-      end
-
-      if attributes.key?(:'profile_id')
-        self.profile_id = attributes[:'profile_id']
-      end
-
-      if attributes.key?(:'rabbitmq_server_password')
-        self.rabbitmq_server_password = attributes[:'rabbitmq_server_password']
-      end
-
-      if attributes.key?(:'rabbitmq_server_uri')
-        self.rabbitmq_server_uri = attributes[:'rabbitmq_server_uri']
-      end
-
-      if attributes.key?(:'rabbitmq_server_user')
-        self.rabbitmq_server_user = attributes[:'rabbitmq_server_user']
-      end
-
-      if attributes.key?(:'security_token')
-        self.security_token = attributes[:'security_token']
-      end
-
-      if attributes.key?(:'sf_account')
-        self.sf_account = attributes[:'sf_account']
-      end
-
-      if attributes.key?(:'ssl_connection_certificate')
-        self.ssl_connection_certificate = attributes[:'ssl_connection_certificate']
-      end
-
-      if attributes.key?(:'ssl_connection_mode')
-        self.ssl_connection_mode = attributes[:'ssl_connection_mode']
-      end
-
-      if attributes.key?(:'tenant_url')
-        self.tenant_url = attributes[:'tenant_url']
-      end
-
-      if attributes.key?(:'timeout')
-        self.timeout = attributes[:'timeout']
-      end
-
-      if attributes.key?(:'url')
-        self.url = attributes[:'url']
-      end
-
-      if attributes.key?(:'use_gw_cloud_identity')
-        self.use_gw_cloud_identity = attributes[:'use_gw_cloud_identity']
-      end
-
-      if attributes.key?(:'use_gw_service_account')
-        self.use_gw_service_account = attributes[:'use_gw_service_account']
-      end
-
-      if attributes.key?(:'use_tls')
-        self.use_tls = attributes[:'use_tls']
-      end
-
-      if attributes.key?(:'user_name')
-        self.user_name = attributes[:'user_name']
-      end
-
-      if attributes.key?(:'user_password')
-        self.user_password = attributes[:'user_password']
-      end
-
-      if attributes.key?(:'username')
-        self.username = attributes[:'username']
-      end
-
-      if attributes.key?(:'validation_email')
-        self.validation_email = attributes[:'validation_email']
-      end
-
-      if attributes.key?(:'venafi_api_key')
-        self.venafi_api_key = attributes[:'venafi_api_key']
-      end
-
-      if attributes.key?(:'venafi_base_url')
-        self.venafi_base_url = attributes[:'venafi_base_url']
-      end
-
-      if attributes.key?(:'venafi_tpp_access_token')
-        self.venafi_tpp_access_token = attributes[:'venafi_tpp_access_token']
-      end
-
-      if attributes.key?(:'venafi_tpp_client_id')
-        self.venafi_tpp_client_id = attributes[:'venafi_tpp_client_id']
-      end
-
-      if attributes.key?(:'venafi_tpp_password')
-        self.venafi_tpp_password = attributes[:'venafi_tpp_password']
-      end
-
-      if attributes.key?(:'venafi_tpp_refresh_token')
-        self.venafi_tpp_refresh_token = attributes[:'venafi_tpp_refresh_token']
-      end
-
-      if attributes.key?(:'venafi_tpp_username')
-        self.venafi_tpp_username = attributes[:'venafi_tpp_username']
-      end
-
-      if attributes.key?(:'venafi_use_tpp')
-        self.venafi_use_tpp = attributes[:'venafi_use_tpp']
-      end
-
-      if attributes.key?(:'venafi_zone')
-        self.venafi_zone = attributes[:'venafi_zone']
+      if attributes.key?(:'zerossl_target_details')
+        self.zerossl_target_details = attributes[:'zerossl_target_details']
       end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
+      warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
       invalid_properties
     end
@@ -1064,6 +265,7 @@ module Akeyless
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      warn '[DEPRECATED] the `valid?` method is obsolete'
       true
     end
 
@@ -1072,128 +274,31 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          administrative_port == o.administrative_port &&
-          api_key == o.api_key &&
-          app_private_key == o.app_private_key &&
-          artifactory_admin_apikey == o.artifactory_admin_apikey &&
-          artifactory_admin_username == o.artifactory_admin_username &&
-          artifactory_base_url == o.artifactory_base_url &&
-          auth_flow == o.auth_flow &&
-          authorization_port == o.authorization_port &&
-          aws_access_key_id == o.aws_access_key_id &&
-          aws_region == o.aws_region &&
-          aws_secret_access_key == o.aws_secret_access_key &&
-          aws_session_token == o.aws_session_token &&
-          azure_client_id == o.azure_client_id &&
-          azure_client_secret == o.azure_client_secret &&
-          azure_resource_group_name == o.azure_resource_group_name &&
-          azure_resource_name == o.azure_resource_name &&
-          azure_subscription_id == o.azure_subscription_id &&
-          azure_tenant_id == o.azure_tenant_id &&
-          ca_cert_data == o.ca_cert_data &&
-          ca_cert_name == o.ca_cert_name &&
-          certificate == o.certificate &&
-          chef_server_host_name == o.chef_server_host_name &&
-          chef_server_key == o.chef_server_key &&
-          chef_server_port == o.chef_server_port &&
-          chef_server_url == o.chef_server_url &&
-          chef_server_username == o.chef_server_username &&
-          chef_skip_ssl == o.chef_skip_ssl &&
-          client_id == o.client_id &&
-          client_secret == o.client_secret &&
-          db_host_name == o.db_host_name &&
-          db_name == o.db_name &&
-          db_port == o.db_port &&
-          db_private_key == o.db_private_key &&
-          db_private_key_passphrase == o.db_private_key_passphrase &&
-          db_pwd == o.db_pwd &&
-          db_server_certificates == o.db_server_certificates &&
-          db_server_name == o.db_server_name &&
-          db_user_name == o.db_user_name &&
-          domain_name == o.domain_name &&
-          eks_access_key_id == o.eks_access_key_id &&
-          eks_cluster_ca_certificate == o.eks_cluster_ca_certificate &&
-          eks_cluster_endpoint == o.eks_cluster_endpoint &&
-          eks_cluster_name == o.eks_cluster_name &&
-          eks_region == o.eks_region &&
-          eks_secret_access_key == o.eks_secret_access_key &&
-          email == o.email &&
-          first_name == o.first_name &&
-          gcp_service_account_email == o.gcp_service_account_email &&
-          gcp_service_account_key == o.gcp_service_account_key &&
-          gcp_service_account_key_base64 == o.gcp_service_account_key_base64 &&
-          github_app_id == o.github_app_id &&
-          github_app_private_key == o.github_app_private_key &&
-          github_base_url == o.github_base_url &&
-          gke_cluster_ca_certificate == o.gke_cluster_ca_certificate &&
-          gke_cluster_endpoint == o.gke_cluster_endpoint &&
-          gke_cluster_name == o.gke_cluster_name &&
-          gke_service_account_key == o.gke_service_account_key &&
-          gke_service_account_name == o.gke_service_account_name &&
-          host == o.host &&
-          hostname == o.hostname &&
-          hosts == o.hosts &&
-          imap_fqdn == o.imap_fqdn &&
-          imap_password == o.imap_password &&
-          imap_port == o.imap_port &&
-          imap_user == o.imap_user &&
-          implementation_type == o.implementation_type &&
-          k8s_bearer_token == o.k8s_bearer_token &&
-          k8s_cluster_ca_certificate == o.k8s_cluster_ca_certificate &&
-          k8s_cluster_endpoint == o.k8s_cluster_endpoint &&
-          last_name == o.last_name &&
-          ldap_audience == o.ldap_audience &&
-          ldap_bind_dn == o.ldap_bind_dn &&
-          ldap_bind_password == o.ldap_bind_password &&
-          ldap_certificate == o.ldap_certificate &&
-          ldap_token_expiration == o.ldap_token_expiration &&
-          ldap_url == o.ldap_url &&
-          mongodb_atlas_api_private_key == o.mongodb_atlas_api_private_key &&
-          mongodb_atlas_api_public_key == o.mongodb_atlas_api_public_key &&
-          mongodb_atlas_project_id == o.mongodb_atlas_project_id &&
-          mongodb_db_name == o.mongodb_db_name &&
-          mongodb_default_auth_db == o.mongodb_default_auth_db &&
-          mongodb_host_port == o.mongodb_host_port &&
-          mongodb_is_atlas == o.mongodb_is_atlas &&
-          mongodb_password == o.mongodb_password &&
-          mongodb_uri_connection == o.mongodb_uri_connection &&
-          mongodb_uri_options == o.mongodb_uri_options &&
-          mongodb_username == o.mongodb_username &&
-          password == o.password &&
-          payload == o.payload &&
-          phone == o.phone &&
-          ping_url == o.ping_url &&
-          port == o.port &&
-          private_key == o.private_key &&
-          private_key_password == o.private_key_password &&
-          privileged_user == o.privileged_user &&
-          profile_id == o.profile_id &&
-          rabbitmq_server_password == o.rabbitmq_server_password &&
-          rabbitmq_server_uri == o.rabbitmq_server_uri &&
-          rabbitmq_server_user == o.rabbitmq_server_user &&
-          security_token == o.security_token &&
-          sf_account == o.sf_account &&
-          ssl_connection_certificate == o.ssl_connection_certificate &&
-          ssl_connection_mode == o.ssl_connection_mode &&
-          tenant_url == o.tenant_url &&
-          timeout == o.timeout &&
-          url == o.url &&
-          use_gw_cloud_identity == o.use_gw_cloud_identity &&
-          use_gw_service_account == o.use_gw_service_account &&
-          use_tls == o.use_tls &&
-          user_name == o.user_name &&
-          user_password == o.user_password &&
-          username == o.username &&
-          validation_email == o.validation_email &&
-          venafi_api_key == o.venafi_api_key &&
-          venafi_base_url == o.venafi_base_url &&
-          venafi_tpp_access_token == o.venafi_tpp_access_token &&
-          venafi_tpp_client_id == o.venafi_tpp_client_id &&
-          venafi_tpp_password == o.venafi_tpp_password &&
-          venafi_tpp_refresh_token == o.venafi_tpp_refresh_token &&
-          venafi_tpp_username == o.venafi_tpp_username &&
-          venafi_use_tpp == o.venafi_use_tpp &&
-          venafi_zone == o.venafi_zone
+          artifactory_target_details == o.artifactory_target_details &&
+          aws_target_details == o.aws_target_details &&
+          azure_target_details == o.azure_target_details &&
+          chef_target_details == o.chef_target_details &&
+          custom_target_details == o.custom_target_details &&
+          db_target_details == o.db_target_details &&
+          dockerhub_target_details == o.dockerhub_target_details &&
+          eks_target_details == o.eks_target_details &&
+          gcp_target_details == o.gcp_target_details &&
+          github_target_details == o.github_target_details &&
+          gke_target_details == o.gke_target_details &&
+          globalsign_atlas_target_details == o.globalsign_atlas_target_details &&
+          globalsign_target_details == o.globalsign_target_details &&
+          ldap_target_details == o.ldap_target_details &&
+          linked_target_details == o.linked_target_details &&
+          mongo_db_target_details == o.mongo_db_target_details &&
+          native_k8s_target_details == o.native_k8s_target_details &&
+          ping_target_details == o.ping_target_details &&
+          rabbit_mq_target_details == o.rabbit_mq_target_details &&
+          salesforce_target_details == o.salesforce_target_details &&
+          ssh_target_details == o.ssh_target_details &&
+          venafi_target_details == o.venafi_target_details &&
+          web_target_details == o.web_target_details &&
+          windows_target_details == o.windows_target_details &&
+          zerossl_target_details == o.zerossl_target_details
     end
 
     # @see the `==` method
@@ -1205,44 +310,37 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [administrative_port, api_key, app_private_key, artifactory_admin_apikey, artifactory_admin_username, artifactory_base_url, auth_flow, authorization_port, aws_access_key_id, aws_region, aws_secret_access_key, aws_session_token, azure_client_id, azure_client_secret, azure_resource_group_name, azure_resource_name, azure_subscription_id, azure_tenant_id, ca_cert_data, ca_cert_name, certificate, chef_server_host_name, chef_server_key, chef_server_port, chef_server_url, chef_server_username, chef_skip_ssl, client_id, client_secret, db_host_name, db_name, db_port, db_private_key, db_private_key_passphrase, db_pwd, db_server_certificates, db_server_name, db_user_name, domain_name, eks_access_key_id, eks_cluster_ca_certificate, eks_cluster_endpoint, eks_cluster_name, eks_region, eks_secret_access_key, email, first_name, gcp_service_account_email, gcp_service_account_key, gcp_service_account_key_base64, github_app_id, github_app_private_key, github_base_url, gke_cluster_ca_certificate, gke_cluster_endpoint, gke_cluster_name, gke_service_account_key, gke_service_account_name, host, hostname, hosts, imap_fqdn, imap_password, imap_port, imap_user, implementation_type, k8s_bearer_token, k8s_cluster_ca_certificate, k8s_cluster_endpoint, last_name, ldap_audience, ldap_bind_dn, ldap_bind_password, ldap_certificate, ldap_token_expiration, ldap_url, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_db_name, mongodb_default_auth_db, mongodb_host_port, mongodb_is_atlas, mongodb_password, mongodb_uri_connection, mongodb_uri_options, mongodb_username, password, payload, phone, ping_url, port, private_key, private_key_password, privileged_user, profile_id, rabbitmq_server_password, rabbitmq_server_uri, rabbitmq_server_user, security_token, sf_account, ssl_connection_certificate, ssl_connection_mode, tenant_url, timeout, url, use_gw_cloud_identity, use_gw_service_account, use_tls, user_name, user_password, username, validation_email, venafi_api_key, venafi_base_url, venafi_tpp_access_token, venafi_tpp_client_id, venafi_tpp_password, venafi_tpp_refresh_token, venafi_tpp_username, venafi_use_tpp, venafi_zone].hash
+      [artifactory_target_details, aws_target_details, azure_target_details, chef_target_details, custom_target_details, db_target_details, dockerhub_target_details, eks_target_details, gcp_target_details, github_target_details, gke_target_details, globalsign_atlas_target_details, globalsign_target_details, ldap_target_details, linked_target_details, mongo_db_target_details, native_k8s_target_details, ping_target_details, rabbit_mq_target_details, salesforce_target_details, ssh_target_details, venafi_target_details, web_target_details, windows_target_details, zerossl_target_details].hash
     end
 
     # Builds the object from hash
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def self.build_from_hash(attributes)
-      new.build_from_hash(attributes)
-    end
-
-    # Builds the object from hash
-    # @param [Hash] attributes Model attributes in the form of hash
-    # @return [Object] Returns the model itself
-    def build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
-      self.class.openapi_types.each_pair do |key, type|
-        if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
-          self.send("#{key}=", nil)
+      transformed_hash = {}
+      openapi_types.each_pair do |key, type|
+        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[self.class.attribute_map[key]].is_a?(Array)
-            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
+          if attributes[attribute_map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[self.class.attribute_map[key]].nil?
-          self.send("#{key}=", _deserialize(type, attributes[self.class.attribute_map[key]]))
+        elsif !attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
         end
       end
-
-      self
+      new(transformed_hash)
     end
 
     # Deserializes the data based on type
     # @param string type Data type
     # @param string value Value to be deserialized
     # @return [Object] Deserialized data
-    def _deserialize(type, value)
+    def self._deserialize(type, value)
       case type.to_sym
       when :Time
         Time.parse(value)

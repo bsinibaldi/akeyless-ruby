@@ -17,16 +17,16 @@ module Akeyless
   class GenerateCsr
     attr_accessor :alg
 
-    # The DNS Alternative Names to be included in the CSR certificate (in a comma-separated list)
+    # A comma-separated list of dns alternative names
     attr_accessor :alt_names
 
-    # The certificateType to be included in the CSR certificate (ssl-client/ssl-server/certificate-signing)
+    # The certificate type to be included in the CSR certificate (ssl-client/ssl-server/certificate-signing)
     attr_accessor :certificate_type
 
     # The city to be included in the CSR certificate
     attr_accessor :city
 
-    # The commonName to be included in the CSR certificate
+    # The common name to be included in the CSR certificate
     attr_accessor :common_name
 
     # The country to be included in the CSR certificate
@@ -38,25 +38,19 @@ module Akeyless
     # The department to be included in the CSR certificate
     attr_accessor :dep
 
-    # Description of the object
-    attr_accessor :description
-
-    # The email addresses Alternative Names to be included in the CSR certificate (in a comma-separated list)
+    # A comma-separated list of email addresses alternative names
     attr_accessor :email_addresses
 
-    # Generate a new csr key
+    # Generate a new classic key for the csr
     attr_accessor :generate_key
 
-    # The ip addresses Alternative Names to be included in the CSR certificate (in a comma-separated list)
+    # A comma-separated list of ip addresses alternative names
     attr_accessor :ip_addresses
 
     # Set output format to JSON
     attr_accessor :json
 
-    # Deprecated - use description
-    attr_accessor :metadata
-
-    # Key name in akeyless
+    # The classic key name
     attr_accessor :name
 
     # The organization to be included in the CSR certificate
@@ -71,7 +65,7 @@ module Akeyless
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
 
-    # The URI Subject Alternative Names to be included in the CSR certificate (in a comma-separated list)
+    # A comma-separated list of uri alternative names
     attr_accessor :uri_sans
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -85,12 +79,10 @@ module Akeyless
         :'country' => :'country',
         :'critical' => :'critical',
         :'dep' => :'dep',
-        :'description' => :'description',
         :'email_addresses' => :'email-addresses',
         :'generate_key' => :'generate-key',
         :'ip_addresses' => :'ip-addresses',
         :'json' => :'json',
-        :'metadata' => :'metadata',
         :'name' => :'name',
         :'org' => :'org',
         :'state' => :'state',
@@ -116,12 +108,10 @@ module Akeyless
         :'country' => :'String',
         :'critical' => :'Boolean',
         :'dep' => :'String',
-        :'description' => :'String',
         :'email_addresses' => :'String',
         :'generate_key' => :'Boolean',
         :'ip_addresses' => :'String',
         :'json' => :'Boolean',
-        :'metadata' => :'String',
         :'name' => :'String',
         :'org' => :'String',
         :'state' => :'String',
@@ -170,6 +160,8 @@ module Akeyless
 
       if attributes.key?(:'common_name')
         self.common_name = attributes[:'common_name']
+      else
+        self.common_name = nil
       end
 
       if attributes.key?(:'country')
@@ -182,10 +174,6 @@ module Akeyless
 
       if attributes.key?(:'dep')
         self.dep = attributes[:'dep']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'email_addresses')
@@ -206,12 +194,10 @@ module Akeyless
         self.json = false
       end
 
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      else
+        self.name = nil
       end
 
       if attributes.key?(:'org')
@@ -238,6 +224,7 @@ module Akeyless
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
+      warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
       if @common_name.nil?
         invalid_properties.push('invalid value for "common_name", common_name cannot be nil.')
@@ -253,6 +240,7 @@ module Akeyless
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @common_name.nil?
       return false if @name.nil?
       true
@@ -271,12 +259,10 @@ module Akeyless
           country == o.country &&
           critical == o.critical &&
           dep == o.dep &&
-          description == o.description &&
           email_addresses == o.email_addresses &&
           generate_key == o.generate_key &&
           ip_addresses == o.ip_addresses &&
           json == o.json &&
-          metadata == o.metadata &&
           name == o.name &&
           org == o.org &&
           state == o.state &&
@@ -294,44 +280,37 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alg, alt_names, certificate_type, city, common_name, country, critical, dep, description, email_addresses, generate_key, ip_addresses, json, metadata, name, org, state, token, uid_token, uri_sans].hash
+      [alg, alt_names, certificate_type, city, common_name, country, critical, dep, email_addresses, generate_key, ip_addresses, json, name, org, state, token, uid_token, uri_sans].hash
     end
 
     # Builds the object from hash
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def self.build_from_hash(attributes)
-      new.build_from_hash(attributes)
-    end
-
-    # Builds the object from hash
-    # @param [Hash] attributes Model attributes in the form of hash
-    # @return [Object] Returns the model itself
-    def build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
-      self.class.openapi_types.each_pair do |key, type|
-        if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
-          self.send("#{key}=", nil)
+      transformed_hash = {}
+      openapi_types.each_pair do |key, type|
+        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[self.class.attribute_map[key]].is_a?(Array)
-            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
+          if attributes[attribute_map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[self.class.attribute_map[key]].nil?
-          self.send("#{key}=", _deserialize(type, attributes[self.class.attribute_map[key]]))
+        elsif !attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
         end
       end
-
-      self
+      new(transformed_hash)
     end
 
     # Deserializes the data based on type
     # @param string type Data type
     # @param string value Value to be deserialized
     # @return [Object] Deserialized data
-    def _deserialize(type, value)
+    def self._deserialize(type, value)
       case type.to_sym
       when :Time
         Time.parse(value)

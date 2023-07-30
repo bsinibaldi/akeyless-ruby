@@ -27,16 +27,16 @@ module Akeyless
     # Description of the object
     attr_accessor :description
 
-    # A comma seperated list of email addresses to send event to (relevant only for \\\"email\\\" Event Forwarder)
+    # A comma seperated list of email addresses to send event to (relevant only for \"email\" Event Forwarder)
     attr_accessor :email_to
 
     # Event sources
     attr_accessor :event_source_locations
 
-    # Event Source type [item, target]
+    # Event Source type [item, target, auth_method]
     attr_accessor :event_source_type
 
-    # Event types
+    # List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, auth-method-pending-expiration, auth-method-expired, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure]
     attr_accessor :event_types
 
     # Rate of periodic runner repetition in hours
@@ -160,6 +160,8 @@ module Akeyless
         if (value = attributes[:'event_source_locations']).is_a?(Array)
           self.event_source_locations = value
         end
+      else
+        self.event_source_locations = nil
       end
 
       if attributes.key?(:'event_source_type')
@@ -180,6 +182,8 @@ module Akeyless
 
       if attributes.key?(:'forwarder_type')
         self.forwarder_type = attributes[:'forwarder_type']
+      else
+        self.forwarder_type = nil
       end
 
       if attributes.key?(:'host')
@@ -198,10 +202,14 @@ module Akeyless
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      else
+        self.name = nil
       end
 
       if attributes.key?(:'runner_type')
         self.runner_type = attributes[:'runner_type']
+      else
+        self.runner_type = nil
       end
 
       if attributes.key?(:'token')
@@ -216,6 +224,7 @@ module Akeyless
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
+      warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
       if @event_source_locations.nil?
         invalid_properties.push('invalid value for "event_source_locations", event_source_locations cannot be nil.')
@@ -239,6 +248,7 @@ module Akeyless
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @event_source_locations.nil?
       return false if @forwarder_type.nil?
       return false if @name.nil?
@@ -286,37 +296,30 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def self.build_from_hash(attributes)
-      new.build_from_hash(attributes)
-    end
-
-    # Builds the object from hash
-    # @param [Hash] attributes Model attributes in the form of hash
-    # @return [Object] Returns the model itself
-    def build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
-      self.class.openapi_types.each_pair do |key, type|
-        if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
-          self.send("#{key}=", nil)
+      transformed_hash = {}
+      openapi_types.each_pair do |key, type|
+        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[self.class.attribute_map[key]].is_a?(Array)
-            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
+          if attributes[attribute_map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[self.class.attribute_map[key]].nil?
-          self.send("#{key}=", _deserialize(type, attributes[self.class.attribute_map[key]]))
+        elsif !attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
         end
       end
-
-      self
+      new(transformed_hash)
     end
 
     # Deserializes the data based on type
     # @param string type Data type
     # @param string value Value to be deserialized
     # @return [Object] Deserialized data
-    def _deserialize(type, value)
+    def self._deserialize(type, value)
       case type.to_sym
       when :Time
         Time.parse(value)
