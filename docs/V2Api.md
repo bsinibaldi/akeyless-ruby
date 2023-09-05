@@ -184,6 +184,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**get_event_forwarder**](V2Api.md#get_event_forwarder) | **POST** /get-event-forwarder |  |
 | [**get_group**](V2Api.md#get_group) | **POST** /get-group |  |
 | [**get_kube_exec_creds**](V2Api.md#get_kube_exec_creds) | **POST** /get-kube-exec-creds |  |
+| [**get_last_user_event_status**](V2Api.md#get_last_user_event_status) | **POST** /user-event-last-status |  |
 | [**get_pki_certificate**](V2Api.md#get_pki_certificate) | **POST** /get-pki-certificate |  |
 | [**get_role**](V2Api.md#get_role) | **POST** /get-role |  |
 | [**get_rotated_secret_value**](V2Api.md#get_rotated_secret_value) | **POST** /get-rotated-secret-value |  |
@@ -193,7 +194,6 @@ All URIs are relative to *https://api.akeyless.io*
 | [**get_tags**](V2Api.md#get_tags) | **POST** /get-tags |  |
 | [**get_target**](V2Api.md#get_target) | **POST** /get-target |  |
 | [**get_target_details**](V2Api.md#get_target_details) | **POST** /get-target-details |  |
-| [**get_user_last_event_status**](V2Api.md#get_user_last_event_status) | **POST** /user-event-last-status |  |
 | [**hmac**](V2Api.md#hmac) | **POST** /hmac |  |
 | [**import_passwords**](V2Api.md#import_passwords) | **POST** /import-passwords |  |
 | [**kmip_client_delete_rule**](V2Api.md#kmip_client_delete_rule) | **POST** /kmip-client-delete-rule |  |
@@ -11463,6 +11463,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## get_last_user_event_status
+
+> <GetUserEventStatusOutput> get_last_user_event_status(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GetLastUserEventStatus.new({event_type: 'event_type_example', item_name: 'item_name_example', item_type: 'item_type_example'}) # GetLastUserEventStatus | 
+
+begin
+  
+  result = api_instance.get_last_user_event_status(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->get_last_user_event_status: #{e}"
+end
+```
+
+#### Using the get_last_user_event_status_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetUserEventStatusOutput>, Integer, Hash)> get_last_user_event_status_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_last_user_event_status_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetUserEventStatusOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->get_last_user_event_status_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GetLastUserEventStatus**](GetLastUserEventStatus.md) |  |  |
+
+### Return type
+
+[**GetUserEventStatusOutput**](GetUserEventStatusOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## get_pki_certificate
 
 > <GetPKICertificateOutput> get_pki_certificate(body)
@@ -12018,65 +12080,6 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## get_user_last_event_status
-
-> <GetUserEventStatusOutput> get_user_last_event_status
-
-
-
-### Examples
-
-```ruby
-require 'time'
-require 'akeyless'
-
-api_instance = Akeyless::V2Api.new
-
-begin
-  
-  result = api_instance.get_user_last_event_status
-  p result
-rescue Akeyless::ApiError => e
-  puts "Error when calling V2Api->get_user_last_event_status: #{e}"
-end
-```
-
-#### Using the get_user_last_event_status_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GetUserEventStatusOutput>, Integer, Hash)> get_user_last_event_status_with_http_info
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_user_last_event_status_with_http_info
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GetUserEventStatusOutput>
-rescue Akeyless::ApiError => e
-  puts "Error when calling V2Api->get_user_last_event_status_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**GetUserEventStatusOutput**](GetUserEventStatusOutput.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
