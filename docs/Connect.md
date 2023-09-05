@@ -20,6 +20,7 @@
 | **target** | **String** | The target | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
+| **use_ssh_agent** | **Boolean** | Enable ssh-agent | [optional] |
 | **via_bastion** | **String** | The jump box server | [optional] |
 
 ## Example
@@ -44,6 +45,7 @@ instance = Akeyless::Connect.new(
   target: null,
   token: null,
   uid_token: null,
+  use_ssh_agent: null,
   via_bastion: null
 )
 ```

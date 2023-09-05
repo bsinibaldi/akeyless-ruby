@@ -7,6 +7,9 @@
 | **comment** | **String** | Deprecated - use description | [optional] |
 | **description** | **String** | Description of the object | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
+| **k8s_auth_type** | **String** | K8S auth type [token/certificate] | [optional][default to &#39;token&#39;] |
+| **k8s_client_certificate** | **String** | Content of the k8 client certificate (PEM format) in a Base64 format | [optional] |
+| **k8s_client_key** | **String** | Content of the k8 client private key (PEM format) in a Base64 format | [optional] |
 | **k8s_cluster_ca_cert** | **String** | K8S cluster CA certificate | [default to &#39;dummy_val&#39;] |
 | **k8s_cluster_endpoint** | **String** | K8S cluster URL endpoint | [default to &#39;dummy_val&#39;] |
 | **k8s_cluster_token** | **String** | K8S cluster Bearer token | [default to &#39;dummy_val&#39;] |
@@ -28,6 +31,9 @@ instance = Akeyless::UpdateNativeK8STarget.new(
   comment: null,
   description: null,
   json: null,
+  k8s_auth_type: null,
+  k8s_client_certificate: null,
+  k8s_client_key: null,
   k8s_cluster_ca_cert: null,
   k8s_cluster_endpoint: null,
   k8s_cluster_token: null,

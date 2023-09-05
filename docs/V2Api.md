@@ -39,9 +39,11 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_gke_target**](V2Api.md#create_gke_target) | **POST** /create-gke-target |  |
 | [**create_global_sign_atlas_target**](V2Api.md#create_global_sign_atlas_target) | **POST** /create-globalsign-atlas-target |  |
 | [**create_global_sign_target**](V2Api.md#create_global_sign_target) | **POST** /create-globalsign-target |  |
+| [**create_group**](V2Api.md#create_group) | **POST** /create-group |  |
 | [**create_key**](V2Api.md#create_key) | **POST** /create-key |  |
 | [**create_linked_target**](V2Api.md#create_linked_target) | **POST** /create-linked-target |  |
 | [**create_native_k8_s_target**](V2Api.md#create_native_k8_s_target) | **POST** /create-k8s-target |  |
+| [**create_oidc_app**](V2Api.md#create_oidc_app) | **POST** /create-oidc-app |  |
 | [**create_ping_target**](V2Api.md#create_ping_target) | **POST** /create-ping-target |  |
 | [**create_pki_cert_issuer**](V2Api.md#create_pki_cert_issuer) | **POST** /create-pki-cert-issuer |  |
 | [**create_rabbit_mq_target**](V2Api.md#create_rabbit_mq_target) | **POST** /create-rabbitmq-target |  |
@@ -52,6 +54,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_ssh_cert_issuer**](V2Api.md#create_ssh_cert_issuer) | **POST** /create-ssh-cert-issuer |  |
 | [**create_ssh_target**](V2Api.md#create_ssh_target) | **POST** /create-ssh-target |  |
 | [**create_tokenizer**](V2Api.md#create_tokenizer) | **POST** /create-tokenizer |  |
+| [**create_user_event**](V2Api.md#create_user_event) | **POST** /create-user-event |  |
 | [**create_web_target**](V2Api.md#create_web_target) | **POST** /create-web-target |  |
 | [**create_windows_target**](V2Api.md#create_windows_target) | **POST** /create-windows-target |  |
 | [**create_zero_ssl_target**](V2Api.md#create_zero_ssl_target) | **POST** /create-zerossl-target |  |
@@ -64,6 +67,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**delete_auth_methods**](V2Api.md#delete_auth_methods) | **POST** /delete-auth-methods |  |
 | [**delete_event_forwarder**](V2Api.md#delete_event_forwarder) | **POST** /delete-event-forwarder |  |
 | [**delete_gateway_allowed_access_id**](V2Api.md#delete_gateway_allowed_access_id) | **POST** /gateway-delete-allowed-management-access |  |
+| [**delete_group**](V2Api.md#delete_group) | **POST** /delete-group |  |
 | [**delete_gw_cluster**](V2Api.md#delete_gw_cluster) | **POST** /delete-gateway-cluster |  |
 | [**delete_item**](V2Api.md#delete_item) | **POST** /delete-item |  |
 | [**delete_items**](V2Api.md#delete_items) | **POST** /delete-items |  |
@@ -178,6 +182,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**get_certificate_value**](V2Api.md#get_certificate_value) | **POST** /get-certificate-value |  |
 | [**get_dynamic_secret_value**](V2Api.md#get_dynamic_secret_value) | **POST** /get-dynamic-secret-value |  |
 | [**get_event_forwarder**](V2Api.md#get_event_forwarder) | **POST** /get-event-forwarder |  |
+| [**get_group**](V2Api.md#get_group) | **POST** /get-group |  |
 | [**get_kube_exec_creds**](V2Api.md#get_kube_exec_creds) | **POST** /get-kube-exec-creds |  |
 | [**get_pki_certificate**](V2Api.md#get_pki_certificate) | **POST** /get-pki-certificate |  |
 | [**get_role**](V2Api.md#get_role) | **POST** /get-role |  |
@@ -188,6 +193,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**get_tags**](V2Api.md#get_tags) | **POST** /get-tags |  |
 | [**get_target**](V2Api.md#get_target) | **POST** /get-target |  |
 | [**get_target_details**](V2Api.md#get_target_details) | **POST** /get-target-details |  |
+| [**get_user_last_event_status**](V2Api.md#get_user_last_event_status) | **POST** /user-event-last-status |  |
 | [**hmac**](V2Api.md#hmac) | **POST** /hmac |  |
 | [**import_passwords**](V2Api.md#import_passwords) | **POST** /import-passwords |  |
 | [**kmip_client_delete_rule**](V2Api.md#kmip_client_delete_rule) | **POST** /kmip-client-delete-rule |  |
@@ -205,6 +211,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**kmip_set_server_state**](V2Api.md#kmip_set_server_state) | **POST** /kmip-set-environment-state |  |
 | [**list_auth_methods**](V2Api.md#list_auth_methods) | **POST** /list-auth-methods |  |
 | [**list_gateways**](V2Api.md#list_gateways) | **POST** /list-gateways |  |
+| [**list_groups**](V2Api.md#list_groups) | **POST** /list-group |  |
 | [**list_items**](V2Api.md#list_items) | **POST** /list-items |  |
 | [**list_roles**](V2Api.md#list_roles) | **POST** /list-roles |  |
 | [**list_shared_items**](V2Api.md#list_shared_items) | **POST** /list-shared-items |  |
@@ -218,6 +225,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**revoke_creds**](V2Api.md#revoke_creds) | **POST** /revoke-creds |  |
 | [**rollback_secret**](V2Api.md#rollback_secret) | **POST** /rollback-secret |  |
 | [**rotate_key**](V2Api.md#rotate_key) | **POST** /rotate-key |  |
+| [**rotate_oidc_client_secret**](V2Api.md#rotate_oidc_client_secret) | **POST** /rotate-oidc-client-secret |  |
 | [**rotate_secret**](V2Api.md#rotate_secret) | **POST** /gateway-rotate-secret |  |
 | [**set_item_state**](V2Api.md#set_item_state) | **POST** /set-item-state |  |
 | [**set_role_rule**](V2Api.md#set_role_rule) | **POST** /set-role-rule |  |
@@ -262,11 +270,13 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_gke_target**](V2Api.md#update_gke_target) | **POST** /update-gke-target |  |
 | [**update_global_sign_atlas_target**](V2Api.md#update_global_sign_atlas_target) | **POST** /update-globalsign-atlas-target |  |
 | [**update_global_sign_target**](V2Api.md#update_global_sign_target) | **POST** /update-globalsign-target |  |
+| [**update_group**](V2Api.md#update_group) | **POST** /update-group |  |
 | [**update_item**](V2Api.md#update_item) | **POST** /update-item |  |
 | [**update_ldap_target**](V2Api.md#update_ldap_target) | **POST** /update-ldap-target |  |
 | [**update_ldap_target_details**](V2Api.md#update_ldap_target_details) | **POST** /update-ldap-target-details |  |
 | [**update_linked_target**](V2Api.md#update_linked_target) | **POST** /update-linked-target |  |
 | [**update_native_k8_s_target**](V2Api.md#update_native_k8_s_target) | **POST** /update-k8s-target |  |
+| [**update_oidc_app**](V2Api.md#update_oidc_app) | **POST** /update-oidc-app |  |
 | [**update_ping_target**](V2Api.md#update_ping_target) | **POST** /update-ping-target |  |
 | [**update_pki_cert_issuer**](V2Api.md#update_pki_cert_issuer) | **POST** /update-pki-cert-issuer |  |
 | [**update_rabbit_mq_target**](V2Api.md#update_rabbit_mq_target) | **POST** /update-rabbitmq-target |  |
@@ -2465,6 +2475,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## create_group
+
+> <CreateGroupOutput> create_group(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateGroup.new({group_alias: 'group_alias_example', name: 'name_example'}) # CreateGroup | 
+
+begin
+  
+  result = api_instance.create_group(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_group: #{e}"
+end
+```
+
+#### Using the create_group_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateGroupOutput>, Integer, Hash)> create_group_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_group_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateGroupOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_group_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateGroup**](CreateGroup.md) |  |  |
+
+### Return type
+
+[**CreateGroupOutput**](CreateGroupOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_key
 
 > <CreateKeyOutput> create_key(body)
@@ -2640,6 +2712,68 @@ end
 ### Return type
 
 [**CreateNativeK8STargetOutput**](CreateNativeK8STargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_oidc_app
+
+> <CreateOidcAppOutput> create_oidc_app(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateOidcApp.new({name: 'name_example'}) # CreateOidcApp | 
+
+begin
+  
+  result = api_instance.create_oidc_app(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_oidc_app: #{e}"
+end
+```
+
+#### Using the create_oidc_app_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateOidcAppOutput>, Integer, Hash)> create_oidc_app_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_oidc_app_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateOidcAppOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_oidc_app_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateOidcApp**](CreateOidcApp.md) |  |  |
+
+### Return type
+
+[**CreateOidcAppOutput**](CreateOidcAppOutput.md)
 
 ### Authorization
 
@@ -3260,6 +3394,68 @@ end
 ### Return type
 
 [**CreateTokenizerOutput**](CreateTokenizerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_user_event
+
+> <CreateUserEventOutput> create_user_event(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateUserEvent.new({event_type: 'event_type_example', item_name: 'item_name_example', item_type: 'item_type_example'}) # CreateUserEvent | 
+
+begin
+  
+  result = api_instance.create_user_event(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_user_event: #{e}"
+end
+```
+
+#### Using the create_user_event_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateUserEventOutput>, Integer, Hash)> create_user_event_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_user_event_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateUserEventOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_user_event_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateUserEvent**](CreateUserEvent.md) |  |  |
+
+### Return type
+
+[**CreateUserEventOutput**](CreateUserEventOutput.md)
 
 ### Authorization
 
@@ -4004,6 +4200,68 @@ end
 ### Return type
 
 **Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## delete_group
+
+> <DeleteGroupOutput> delete_group(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::DeleteGroup.new({name: 'name_example'}) # DeleteGroup | 
+
+begin
+  
+  result = api_instance.delete_group(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->delete_group: #{e}"
+end
+```
+
+#### Using the delete_group_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteGroupOutput>, Integer, Hash)> delete_group_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.delete_group_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteGroupOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->delete_group_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**DeleteGroup**](DeleteGroup.md) |  |  |
+
+### Return type
+
+[**DeleteGroupOutput**](DeleteGroupOutput.md)
 
 ### Authorization
 
@@ -11081,6 +11339,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## get_group
+
+> <GetGroupOutput> get_group(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::GetGroup.new({name: 'name_example'}) # GetGroup | 
+
+begin
+  
+  result = api_instance.get_group(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->get_group: #{e}"
+end
+```
+
+#### Using the get_group_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetGroupOutput>, Integer, Hash)> get_group_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_group_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetGroupOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->get_group_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**GetGroup**](GetGroup.md) |  |  |
+
+### Return type
+
+[**GetGroupOutput**](GetGroupOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## get_kube_exec_creds
 
 > <GetKubeExecCredsOutput> get_kube_exec_creds(body)
@@ -11698,6 +12018,65 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_user_last_event_status
+
+> <GetUserEventStatusOutput> get_user_last_event_status
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+
+begin
+  
+  result = api_instance.get_user_last_event_status
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->get_user_last_event_status: #{e}"
+end
+```
+
+#### Using the get_user_last_event_status_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetUserEventStatusOutput>, Integer, Hash)> get_user_last_event_status_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_user_last_event_status_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetUserEventStatusOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->get_user_last_event_status_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetUserEventStatusOutput**](GetUserEventStatusOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -12781,6 +13160,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## list_groups
+
+> <ListGroupsOutput> list_groups(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::ListGroups.new # ListGroups | 
+
+begin
+  
+  result = api_instance.list_groups(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->list_groups: #{e}"
+end
+```
+
+#### Using the list_groups_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListGroupsOutput>, Integer, Hash)> list_groups_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.list_groups_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListGroupsOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->list_groups_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**ListGroups**](ListGroups.md) |  |  |
+
+### Return type
+
+[**ListGroupsOutput**](ListGroupsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## list_items
 
 > <ListItemsInPathOutput> list_items(body)
@@ -13574,6 +14015,68 @@ end
 ### Return type
 
 [**RotateKeyOutput**](RotateKeyOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## rotate_oidc_client_secret
+
+> <RotateOidcClientOutput> rotate_oidc_client_secret(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::RotateOidcClientSecret.new({name: 'name_example'}) # RotateOidcClientSecret | 
+
+begin
+  
+  result = api_instance.rotate_oidc_client_secret(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->rotate_oidc_client_secret: #{e}"
+end
+```
+
+#### Using the rotate_oidc_client_secret_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RotateOidcClientOutput>, Integer, Hash)> rotate_oidc_client_secret_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.rotate_oidc_client_secret_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RotateOidcClientOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->rotate_oidc_client_secret_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**RotateOidcClientSecret**](RotateOidcClientSecret.md) |  |  |
+
+### Return type
+
+[**RotateOidcClientOutput**](RotateOidcClientOutput.md)
 
 ### Authorization
 
@@ -16312,6 +16815,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## update_group
+
+> <UpdateGroupOutput> update_group(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateGroup.new({group_alias: 'group_alias_example', name: 'name_example'}) # UpdateGroup | 
+
+begin
+  
+  result = api_instance.update_group(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_group: #{e}"
+end
+```
+
+#### Using the update_group_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpdateGroupOutput>, Integer, Hash)> update_group_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_group_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpdateGroupOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_group_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateGroup**](UpdateGroup.md) |  |  |
+
+### Return type
+
+[**UpdateGroupOutput**](UpdateGroupOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_item
 
 > <UpdateItemOutput> update_item(body)
@@ -16611,6 +17176,68 @@ end
 ### Return type
 
 [**UpdateNativeK8STargetOutput**](UpdateNativeK8STargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_oidc_app
+
+> Object update_oidc_app(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateOidcApp.new({name: 'name_example'}) # UpdateOidcApp | 
+
+begin
+  
+  result = api_instance.update_oidc_app(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_oidc_app: #{e}"
+end
+```
+
+#### Using the update_oidc_app_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> update_oidc_app_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_oidc_app_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_oidc_app_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateOidcApp**](UpdateOidcApp.md) |  |  |
+
+### Return type
+
+**Object**
 
 ### Authorization
 

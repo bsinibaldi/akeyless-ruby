@@ -12,6 +12,7 @@
 | **default_share_link_ttl_minutes** | **String** | Set the default ttl in minutes for sharing item number between 60 and 43200 | [optional] |
 | **default_versioning** | **String** | If set to true, new item version will be created on each update [true/false] | [optional] |
 | **dp_enable_classic_key_protection** | **String** | Set to update protection with classic keys state [true/false] | [optional] |
+| **invalid_characters** | **String** | Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing. | [optional][default to &#39;notReceivedInvalidCharacter&#39;] |
 | **item_type** | **String** | VersionSettingsObjectType defines object types for account version settings | [optional] |
 | **items_deletion_protection** | **String** | Set or unset the default behaviour of items deletion protection [true/false] | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
@@ -43,6 +44,7 @@ instance = Akeyless::UpdateAccountSettings.new(
   default_share_link_ttl_minutes: null,
   default_versioning: null,
   dp_enable_classic_key_protection: null,
+  invalid_characters: null,
   item_type: null,
   items_deletion_protection: null,
   json: null,

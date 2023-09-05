@@ -9,7 +9,10 @@
 | **config_encryption_key_name** | **String** | Config encryption key | [optional] |
 | **disable_issuer_validation** | **String** | Disable issuer validation [true/false] | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
+| **k8s_auth_type** | **String** | K8S auth type [token/certificate]. (relevant for \&quot;native_k8s\&quot; only) | [optional][default to &#39;token&#39;] |
 | **k8s_ca_cert** | **String** | The CA Certificate (base64 encoded) to use to call into the kubernetes API server | [optional] |
+| **k8s_client_certificate** | **String** | Content of the k8 client certificate (PEM format) in a Base64 format (relevant for \&quot;native_k8s\&quot; only) | [optional] |
+| **k8s_client_key** | **String** | Content of the k8 client private key (PEM format) in a Base64 format (relevant for \&quot;native_k8s\&quot; only) | [optional] |
 | **k8s_host** | **String** | The URL of the kubernetes API server |  |
 | **k8s_issuer** | **String** | The Kubernetes JWT issuer name. K8SIssuer is the claim that specifies who issued the Kubernetes token | [optional][default to &#39;kubernetes/serviceaccount&#39;] |
 | **name** | **String** | K8S Auth config name |  |
@@ -34,7 +37,10 @@ instance = Akeyless::GatewayUpdateK8SAuthConfig.new(
   config_encryption_key_name: null,
   disable_issuer_validation: null,
   json: null,
+  k8s_auth_type: null,
   k8s_ca_cert: null,
+  k8s_client_certificate: null,
+  k8s_client_key: null,
   k8s_host: null,
   k8s_issuer: null,
   name: null,

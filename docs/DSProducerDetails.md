@@ -116,7 +116,10 @@
 | **jwks** | **String** |  | [optional] |
 | **jwks_url** | **String** |  | [optional] |
 | **k8s_allowed_namespaces** | **String** | comma-separated list of allowed namespaces. Can hold just * which signifies that any namespace is allowed | [optional] |
+| **k8s_auth_type** | **String** |  | [optional] |
 | **k8s_bearer_token** | **String** |  | [optional] |
+| **k8s_client_cert_data** | **String** | For K8s Client certificates authentication | [optional] |
+| **k8s_client_key_data** | **String** |  | [optional] |
 | **k8s_cluster_ca_certificate** | **String** |  | [optional] |
 | **k8s_cluster_endpoint** | **String** |  | [optional] |
 | **k8s_dynamic_mode** | **Boolean** | when native k8s is in dynamic mode, user can define allowed namespaces, K8sServiceAccount doesn&#39;t exist from the start and will only be created at time of getting dynamic secret value By default dynamic mode is false and producer behaves like it did before | [optional] |
@@ -332,7 +335,10 @@ instance = Akeyless::DSProducerDetails.new(
   jwks: null,
   jwks_url: null,
   k8s_allowed_namespaces: null,
+  k8s_auth_type: null,
   k8s_bearer_token: null,
+  k8s_client_cert_data: null,
+  k8s_client_key_data: null,
   k8s_cluster_ca_certificate: null,
   k8s_cluster_endpoint: null,
   k8s_dynamic_mode: null,

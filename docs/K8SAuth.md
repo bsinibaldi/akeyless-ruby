@@ -10,7 +10,10 @@
 | **cluster_api_type** | **String** | ClusterApiType defines types of API access to cluster | [optional] |
 | **disable_iss_validation** | **Boolean** | DisableISSValidation is optional parameter to disable ISS validation | [optional] |
 | **id** | **String** |  | [optional] |
+| **k8s_auth_type** | **String** |  | [optional] |
 | **k8s_ca_cert** | **String** | K8SCACert is the CA Cert to use to call into the kubernetes API | [optional] |
+| **k8s_client_cert_data** | **String** | K8sClientCertData is the client certificate for k8s client certificate authentication | [optional] |
+| **k8s_client_key_data** | **String** | K8sClientKeyData is the client key for k8s client certificate authentication | [optional] |
 | **k8s_host** | **String** | K8SHost is the url string for the kubernetes API | [optional] |
 | **k8s_issuer** | **String** | K8SIssuer is the claim that specifies who issued the Kubernetes token | [optional] |
 | **k8s_pub_keys_pem** | **Array&lt;String&gt;** | K8SPublicKeysPEM is the list of public key in PEM format | [optional] |
@@ -33,7 +36,10 @@ instance = Akeyless::K8SAuth.new(
   cluster_api_type: null,
   disable_iss_validation: null,
   id: null,
+  k8s_auth_type: null,
   k8s_ca_cert: null,
+  k8s_client_cert_data: null,
+  k8s_client_key_data: null,
   k8s_host: null,
   k8s_issuer: null,
   k8s_pub_keys_pem: null,

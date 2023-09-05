@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **accessibility** | **String** | for personal password manager | [optional][default to &#39;regular&#39;] |
+| **advanced_filter** | **String** | Filter by item name/username/website or part of it | [optional] |
 | **auto_pagination** | **String** | Retrieve all items using pagination, when disabled retrieving only first 1000 items | [optional][default to &#39;enabled&#39;] |
 | **filter** | **String** | Filter by item name or part of it | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
@@ -25,6 +26,7 @@ require 'akeyless'
 
 instance = Akeyless::ListItems.new(
   accessibility: null,
+  advanced_filter: null,
   auto_pagination: null,
   filter: null,
   json: null,

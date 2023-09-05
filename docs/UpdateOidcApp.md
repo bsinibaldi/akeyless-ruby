@@ -1,0 +1,36 @@
+# Akeyless::UpdateOidcApp
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **audience** | **String** | A comma separated list of allowed audiences | [optional] |
+| **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
+| **key** | **String** | The name of a key that used to encrypt the OIDC application (if empty, the account default protectionKey key will be used) | [optional] |
+| **name** | **String** | OIDC application name |  |
+| **permission_assignment** | **String** | A json string defining the access permission assignment for this app | [optional] |
+| **public** | **Boolean** | Set to true if the app is public (cannot keep secrets) | [optional] |
+| **redirect_uris** | **String** | A comma separated list of allowed redirect uris | [optional] |
+| **scopes** | **String** | A comma separated list of allowed scopes | [optional][default to &#39;openid&#39;] |
+| **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
+| **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
+
+## Example
+
+```ruby
+require 'akeyless'
+
+instance = Akeyless::UpdateOidcApp.new(
+  audience: null,
+  json: null,
+  key: null,
+  name: null,
+  permission_assignment: null,
+  public: null,
+  redirect_uris: null,
+  scopes: null,
+  token: null,
+  uid_token: null
+)
+```
+
