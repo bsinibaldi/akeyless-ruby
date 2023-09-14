@@ -1744,7 +1744,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::CreateDBTarget.new({db_type: 'db_type_example', name: 'name_example'}) # CreateDBTarget | 
+body = Akeyless::CreateDBTarget.new({connection_type: 'connection_type_example', db_type: 'db_type_example', name: 'name_example'}) # CreateDBTarget | 
 
 begin
   
@@ -16211,7 +16211,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::UpdateDBTarget.new({db_type: 'db_type_example', name: 'name_example'}) # UpdateDBTarget | 
+body = Akeyless::UpdateDBTarget.new({connection_type: 'connection_type_example', db_type: 'db_type_example', name: 'name_example'}) # UpdateDBTarget | 
 
 begin
   

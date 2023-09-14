@@ -28,7 +28,7 @@ module Akeyless
     # Set output format to JSON
     attr_accessor :json
 
-    # The time back to search the event, can be passed as string representation. For example if the value is \"5m\" we will return the last user event issued in the last 5 minutes By default we will search without any time boundary
+    # The time back to search the event, for example if the value is \"5m\" we will return the last user event issued in the last 5 minutes. By default, we will search without any time boundary.
     attr_accessor :time_back
 
     # Authentication token (see `/auth` and `/configure`)

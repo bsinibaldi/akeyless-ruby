@@ -51,6 +51,8 @@ module Akeyless
 
     attr_accessor :native
 
+    attr_accessor :rd_gateway_server
+
     attr_accessor :rdp_user
 
     attr_accessor :region
@@ -92,6 +94,7 @@ module Akeyless
         :'is_web' => :'is_web',
         :'isolated' => :'isolated',
         :'native' => :'native',
+        :'rd_gateway_server' => :'rd_gateway_server',
         :'rdp_user' => :'rdp_user',
         :'region' => :'region',
         :'rotate_after_disconnect' => :'rotate_after_disconnect',
@@ -131,6 +134,7 @@ module Akeyless
         :'is_web' => :'Boolean',
         :'isolated' => :'Boolean',
         :'native' => :'Boolean',
+        :'rd_gateway_server' => :'String',
         :'rdp_user' => :'String',
         :'region' => :'String',
         :'rotate_after_disconnect' => :'Boolean',
@@ -239,6 +243,10 @@ module Akeyless
         self.native = attributes[:'native']
       end
 
+      if attributes.key?(:'rd_gateway_server')
+        self.rd_gateway_server = attributes[:'rd_gateway_server']
+      end
+
       if attributes.key?(:'rdp_user')
         self.rdp_user = attributes[:'rdp_user']
       end
@@ -318,6 +326,7 @@ module Akeyless
           is_web == o.is_web &&
           isolated == o.isolated &&
           native == o.native &&
+          rd_gateway_server == o.rd_gateway_server &&
           rdp_user == o.rdp_user &&
           region == o.region &&
           rotate_after_disconnect == o.rotate_after_disconnect &&
@@ -339,7 +348,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_id, allow_port_forwarding, allow_providing_external_username, bastion_api, bastion_issuer, bastion_issuer_id, bastion_ssh, category, dashboard_url, db_name, domain, enable, endpoint, host, is_cli, is_web, isolated, native, rdp_user, region, rotate_after_disconnect, schema, ssh_password, ssh_private_key, ssh_user, url, use_internal_bastion, web_proxy].hash
+      [account_id, allow_port_forwarding, allow_providing_external_username, bastion_api, bastion_issuer, bastion_issuer_id, bastion_ssh, category, dashboard_url, db_name, domain, enable, endpoint, host, is_cli, is_web, isolated, native, rd_gateway_server, rdp_user, region, rotate_after_disconnect, schema, ssh_password, ssh_private_key, ssh_user, url, use_internal_bastion, web_proxy].hash
     end
 
     # Builds the object from hash

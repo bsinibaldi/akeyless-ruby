@@ -22,6 +22,7 @@
 | **is_web** | **Boolean** |  | [optional] |
 | **isolated** | **Boolean** |  | [optional] |
 | **native** | **Boolean** |  | [optional] |
+| **rd_gateway_server** | **String** |  | [optional] |
 | **rdp_user** | **String** |  | [optional] |
 | **region** | **String** |  | [optional] |
 | **rotate_after_disconnect** | **Boolean** |  | [optional] |
@@ -57,6 +58,7 @@ instance = Akeyless::SecureRemoteAccess.new(
   is_web: null,
   isolated: null,
   native: null,
+  rd_gateway_server: null,
   rdp_user: null,
   region: null,
   rotate_after_disconnect: null,

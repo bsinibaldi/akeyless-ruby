@@ -50,7 +50,11 @@
 | **chef_server_username** | **String** |  | [optional] |
 | **chef_skip_ssl** | **Boolean** |  | [optional] |
 | **client_authentication_type** | **String** |  | [optional] |
+| **cloud_service_provider** | **String** |  | [optional] |
+| **connection_type** | **String** |  | [optional] |
 | **create_sync_url** | **String** |  | [optional] |
+| **db_client_id** | **String** |  | [optional] |
+| **db_client_secret** | **String** |  | [optional] |
 | **db_host_name** | **String** |  | [optional] |
 | **db_isolation_level** | **String** |  | [optional] |
 | **db_max_idle_conns** | **String** |  | [optional] |
@@ -62,6 +66,7 @@
 | **db_pwd** | **String** |  | [optional] |
 | **db_server_certificates** | **String** | (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host&#39;s root CA set. | [optional] |
 | **db_server_name** | **String** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] |
+| **db_tenant_id** | **String** |  | [optional] |
 | **db_user_name** | **String** |  | [optional] |
 | **delete_protection** | **Boolean** |  | [optional] |
 | **dynamic_secret_id** | **Integer** |  | [optional] |
@@ -269,7 +274,11 @@ instance = Akeyless::DSProducerDetails.new(
   chef_server_username: null,
   chef_skip_ssl: null,
   client_authentication_type: null,
+  cloud_service_provider: null,
+  connection_type: null,
   create_sync_url: null,
+  db_client_id: null,
+  db_client_secret: null,
   db_host_name: null,
   db_isolation_level: null,
   db_max_idle_conns: null,
@@ -281,6 +290,7 @@ instance = Akeyless::DSProducerDetails.new(
   db_pwd: null,
   db_server_certificates: null,
   db_server_name: null,
+  db_tenant_id: null,
   db_user_name: null,
   delete_protection: null,
   dynamic_secret_id: null,

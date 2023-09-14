@@ -61,6 +61,9 @@ module Akeyless
     # Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
     attr_accessor :secure_access_host
 
+    # RD Gateway server
+    attr_accessor :secure_access_rd_gateway_server
+
     # Required when the Dynamic Secret is used for a domain user
     attr_accessor :secure_access_rdp_domain
 
@@ -103,6 +106,7 @@ module Akeyless
         :'secure_access_allow_external_user' => :'secure-access-allow-external-user',
         :'secure_access_enable' => :'secure-access-enable',
         :'secure_access_host' => :'secure-access-host',
+        :'secure_access_rd_gateway_server' => :'secure-access-rd-gateway-server',
         :'secure_access_rdp_domain' => :'secure-access-rdp-domain',
         :'secure_access_rdp_user' => :'secure-access-rdp-user',
         :'tags' => :'tags',
@@ -137,6 +141,7 @@ module Akeyless
         :'secure_access_allow_external_user' => :'Boolean',
         :'secure_access_enable' => :'String',
         :'secure_access_host' => :'Array<String>',
+        :'secure_access_rd_gateway_server' => :'String',
         :'secure_access_rdp_domain' => :'String',
         :'secure_access_rdp_user' => :'String',
         :'tags' => :'Array<String>',
@@ -241,6 +246,10 @@ module Akeyless
         end
       end
 
+      if attributes.key?(:'secure_access_rd_gateway_server')
+        self.secure_access_rd_gateway_server = attributes[:'secure_access_rd_gateway_server']
+      end
+
       if attributes.key?(:'secure_access_rdp_domain')
         self.secure_access_rdp_domain = attributes[:'secure_access_rdp_domain']
       end
@@ -318,6 +327,7 @@ module Akeyless
           secure_access_allow_external_user == o.secure_access_allow_external_user &&
           secure_access_enable == o.secure_access_enable &&
           secure_access_host == o.secure_access_host &&
+          secure_access_rd_gateway_server == o.secure_access_rd_gateway_server &&
           secure_access_rdp_domain == o.secure_access_rdp_domain &&
           secure_access_rdp_user == o.secure_access_rdp_user &&
           tags == o.tags &&
@@ -337,7 +347,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allow_user_extend_session, delete_protection, fixed_user_only, json, name, new_name, producer_encryption_key_name, rdp_admin_name, rdp_admin_pwd, rdp_host_name, rdp_host_port, rdp_user_groups, secure_access_allow_external_user, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, tags, target_name, token, uid_token, user_ttl, warn_user_before_expiration].hash
+      [allow_user_extend_session, delete_protection, fixed_user_only, json, name, new_name, producer_encryption_key_name, rdp_admin_name, rdp_admin_pwd, rdp_host_name, rdp_host_port, rdp_user_groups, secure_access_allow_external_user, secure_access_enable, secure_access_host, secure_access_rd_gateway_server, secure_access_rdp_domain, secure_access_rdp_user, tags, target_name, token, uid_token, user_ttl, warn_user_before_expiration].hash
     end
 
     # Builds the object from hash

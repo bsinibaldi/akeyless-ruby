@@ -15,8 +15,25 @@ require 'time'
 
 module Akeyless
   class UpdateDBTarget
+    attr_accessor :db_defined_connection_type
+
+    # (Optional) Client id (relevant for \"cloud-service-provider\" only)
+    attr_accessor :azure_client_id
+
+    # (Optional) Client secret (relevant for \"cloud-service-provider\" only)
+    attr_accessor :azure_client_secret
+
+    # (Optional) Tenant id (relevant for \"cloud-service-provider\" only)
+    attr_accessor :azure_tenant_id
+
+    # (Optional) Cloud service provider (currently only supports Azure)
+    attr_accessor :cloud_service_provider
+
     # Deprecated - use description
     attr_accessor :comment
+
+    # (Optional) Type of connection to mssql database [credentials/cloud-identity]
+    attr_accessor :connection_type
 
     attr_accessor :db_name
 
@@ -99,7 +116,13 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'db_defined_connection_type' => :'DBDefinedConnectionType',
+        :'azure_client_id' => :'azure-client-id',
+        :'azure_client_secret' => :'azure-client-secret',
+        :'azure_tenant_id' => :'azure-tenant-id',
+        :'cloud_service_provider' => :'cloud-service-provider',
         :'comment' => :'comment',
+        :'connection_type' => :'connection-type',
         :'db_name' => :'db-name',
         :'db_server_certificates' => :'db-server-certificates',
         :'db_server_name' => :'db-server-name',
@@ -140,7 +163,13 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'db_defined_connection_type' => :'String',
+        :'azure_client_id' => :'String',
+        :'azure_client_secret' => :'String',
+        :'azure_tenant_id' => :'String',
+        :'cloud_service_provider' => :'String',
         :'comment' => :'String',
+        :'connection_type' => :'String',
         :'db_name' => :'String',
         :'db_server_certificates' => :'String',
         :'db_server_name' => :'String',
@@ -194,8 +223,34 @@ module Akeyless
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'db_defined_connection_type')
+        self.db_defined_connection_type = attributes[:'db_defined_connection_type']
+      end
+
+      if attributes.key?(:'azure_client_id')
+        self.azure_client_id = attributes[:'azure_client_id']
+      end
+
+      if attributes.key?(:'azure_client_secret')
+        self.azure_client_secret = attributes[:'azure_client_secret']
+      end
+
+      if attributes.key?(:'azure_tenant_id')
+        self.azure_tenant_id = attributes[:'azure_tenant_id']
+      end
+
+      if attributes.key?(:'cloud_service_provider')
+        self.cloud_service_provider = attributes[:'cloud_service_provider']
+      end
+
       if attributes.key?(:'comment')
         self.comment = attributes[:'comment']
+      end
+
+      if attributes.key?(:'connection_type')
+        self.connection_type = attributes[:'connection_type']
+      else
+        self.connection_type = 'credentials'
       end
 
       if attributes.key?(:'db_name')
@@ -328,6 +383,10 @@ module Akeyless
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @connection_type.nil?
+        invalid_properties.push('invalid value for "connection_type", connection_type cannot be nil.')
+      end
+
       if @db_type.nil?
         invalid_properties.push('invalid value for "db_type", db_type cannot be nil.')
       end
@@ -343,6 +402,7 @@ module Akeyless
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @connection_type.nil?
       return false if @db_type.nil?
       return false if @name.nil?
       true
@@ -353,7 +413,13 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          db_defined_connection_type == o.db_defined_connection_type &&
+          azure_client_id == o.azure_client_id &&
+          azure_client_secret == o.azure_client_secret &&
+          azure_tenant_id == o.azure_tenant_id &&
+          cloud_service_provider == o.cloud_service_provider &&
           comment == o.comment &&
+          connection_type == o.connection_type &&
           db_name == o.db_name &&
           db_server_certificates == o.db_server_certificates &&
           db_server_name == o.db_server_name &&
@@ -394,7 +460,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [comment, db_name, db_server_certificates, db_server_name, db_type, description, host, json, keep_prev_version, key, mongodb_atlas, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_default_auth_db, mongodb_uri_options, name, new_name, oracle_service_name, port, pwd, snowflake_account, snowflake_api_private_key, snowflake_api_private_key_password, ssl, ssl_certificate, token, uid_token, update_version, user_name].hash
+      [db_defined_connection_type, azure_client_id, azure_client_secret, azure_tenant_id, cloud_service_provider, comment, connection_type, db_name, db_server_certificates, db_server_name, db_type, description, host, json, keep_prev_version, key, mongodb_atlas, mongodb_atlas_api_private_key, mongodb_atlas_api_public_key, mongodb_atlas_project_id, mongodb_default_auth_db, mongodb_uri_options, name, new_name, oracle_service_name, port, pwd, snowflake_account, snowflake_api_private_key, snowflake_api_private_key_password, ssl, ssl_certificate, token, uid_token, update_version, user_name].hash
     end
 
     # Builds the object from hash

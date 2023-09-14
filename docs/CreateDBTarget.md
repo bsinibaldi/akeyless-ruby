@@ -4,7 +4,13 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **db_defined_connection_type** | **String** |  | [optional] |
+| **azure_client_id** | **String** | (Optional) Client id (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] |
+| **azure_client_secret** | **String** | (Optional) Client secret (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] |
+| **azure_tenant_id** | **String** | (Optional) Tenant id (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] |
+| **cloud_service_provider** | **String** | (Optional) Cloud service provider (currently only supports Azure) | [optional] |
 | **comment** | **String** | Deprecated - use description | [optional] |
+| **connection_type** | **String** | (Optional) Type of connection to mssql database [credentials/cloud-identity] | [default to &#39;credentials&#39;] |
 | **db_name** | **String** |  | [optional] |
 | **db_server_certificates** | **String** | (Optional) DB server certificates | [optional] |
 | **db_server_name** | **String** | (Optional) Server name for certificate verification | [optional] |
@@ -38,7 +44,13 @@
 require 'akeyless'
 
 instance = Akeyless::CreateDBTarget.new(
+  db_defined_connection_type: null,
+  azure_client_id: null,
+  azure_client_secret: null,
+  azure_tenant_id: null,
+  cloud_service_provider: null,
   comment: null,
+  connection_type: null,
   db_name: null,
   db_server_certificates: null,
   db_server_name: null,

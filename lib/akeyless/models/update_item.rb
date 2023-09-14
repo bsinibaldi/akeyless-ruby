@@ -93,6 +93,9 @@ module Akeyless
     # Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
     attr_accessor :secure_access_host
 
+    # RD Gateway server (relevant only for rdp)
+    attr_accessor :secure_access_rd_gateway_server
+
     # Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret)
     attr_accessor :secure_access_rdp_domain
 
@@ -155,6 +158,7 @@ module Akeyless
         :'secure_access_db_schema' => :'secure-access-db-schema',
         :'secure_access_enable' => :'secure-access-enable',
         :'secure_access_host' => :'secure-access-host',
+        :'secure_access_rd_gateway_server' => :'secure-access-rd-gateway-server',
         :'secure_access_rdp_domain' => :'secure-access-rdp-domain',
         :'secure_access_rdp_user' => :'secure-access-rdp-user',
         :'secure_access_rm_host' => :'secure-access-rm-host',
@@ -203,6 +207,7 @@ module Akeyless
         :'secure_access_db_schema' => :'String',
         :'secure_access_enable' => :'String',
         :'secure_access_host' => :'Array<String>',
+        :'secure_access_rd_gateway_server' => :'String',
         :'secure_access_rdp_domain' => :'String',
         :'secure_access_rdp_user' => :'String',
         :'secure_access_rm_host' => :'Array<String>',
@@ -362,6 +367,10 @@ module Akeyless
         end
       end
 
+      if attributes.key?(:'secure_access_rd_gateway_server')
+        self.secure_access_rd_gateway_server = attributes[:'secure_access_rd_gateway_server']
+      end
+
       if attributes.key?(:'secure_access_rdp_domain')
         self.secure_access_rdp_domain = attributes[:'secure_access_rdp_domain']
       end
@@ -464,6 +473,7 @@ module Akeyless
           secure_access_db_schema == o.secure_access_db_schema &&
           secure_access_enable == o.secure_access_enable &&
           secure_access_host == o.secure_access_host &&
+          secure_access_rd_gateway_server == o.secure_access_rd_gateway_server &&
           secure_access_rdp_domain == o.secure_access_rdp_domain &&
           secure_access_rdp_user == o.secure_access_rdp_user &&
           secure_access_rm_host == o.secure_access_rm_host &&
@@ -486,7 +496,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accessibility, add_tag, cert_file_data, delete_protection, description, json, name, new_metadata, new_name, rm_tag, rotate_after_disconnect, secure_access_add_host, secure_access_allow_external_user, secure_access_allow_port_forwading, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_aws_region, secure_access_bastion_api, secure_access_bastion_issuer, secure_access_bastion_ssh, secure_access_cluster_endpoint, secure_access_dashboard_url, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_rm_host, secure_access_ssh_creds, secure_access_ssh_creds_user, secure_access_url, secure_access_use_internal_bastion, secure_access_web_browsing, secure_access_web_proxy, token, uid_token].hash
+      [accessibility, add_tag, cert_file_data, delete_protection, description, json, name, new_metadata, new_name, rm_tag, rotate_after_disconnect, secure_access_add_host, secure_access_allow_external_user, secure_access_allow_port_forwading, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_aws_region, secure_access_bastion_api, secure_access_bastion_issuer, secure_access_bastion_ssh, secure_access_cluster_endpoint, secure_access_dashboard_url, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rd_gateway_server, secure_access_rdp_domain, secure_access_rdp_user, secure_access_rm_host, secure_access_ssh_creds, secure_access_ssh_creds_user, secure_access_url, secure_access_use_internal_bastion, secure_access_web_browsing, secure_access_web_proxy, token, uid_token].hash
     end
 
     # Builds the object from hash

@@ -9,10 +9,10 @@
 | **description** | **String** | Description of the object | [optional] |
 | **event_source** | **String** |  | [optional] |
 | **event_type** | **String** |  |  |
-| **item_name** | **String** | Event item name |  |
-| **item_type** | **String** | Event item type can be either \&quot;target\&quot; or type of item eg \&quot;static_secret\&quot;/\&quot;dynamic_secret\&quot; To get type of some item run &#x60;akeyless describe-item -n {ITEM_NAME} --jq-expression .item_type&#x60; |  |
+| **item_name** | **String** | EventItemName Event item name |  |
+| **item_type** | **String** | EventItemType Event item type |  |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
-| **request_access_ttl** | **Integer** | TTL in minutes for how long to grant the requested access | [optional] |
+| **request_access_ttl** | **Integer** | For how long to grant the requested access, in minutes | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
 

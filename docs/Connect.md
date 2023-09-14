@@ -13,6 +13,7 @@
 | **cert_issuer_name** | **String** | The Akeyless certificate issuer name | [optional] |
 | **identity_file** | **String** | The file from which the identity (private key) for public key authentication is read | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
+| **justification** | **String** |  | [optional] |
 | **name** | **String** | The Secret name (for database and AWS producers - producer name) | [optional] |
 | **ssh_command** | **String** | Path to SSH executable. e.g. /usr/bin/ssh | [optional] |
 | **ssh_extra_args** | **String** | The Use to add offical SSH arguments (except -i) | [optional] |
@@ -38,6 +39,7 @@ instance = Akeyless::Connect.new(
   cert_issuer_name: null,
   identity_file: null,
   json: null,
+  justification: null,
   name: null,
   ssh_command: null,
   ssh_extra_args: null,

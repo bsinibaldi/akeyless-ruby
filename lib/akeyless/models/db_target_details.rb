@@ -16,6 +16,14 @@ require 'time'
 module Akeyless
   # DbTargetDetails
   class DbTargetDetails
+    attr_accessor :cloud_service_provider
+
+    attr_accessor :connection_type
+
+    attr_accessor :db_client_id
+
+    attr_accessor :db_client_secret
+
     attr_accessor :db_host_name
 
     attr_accessor :db_name
@@ -35,6 +43,8 @@ module Akeyless
     # (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client's handshake to support virtual hosting unless it is an IP address.
     attr_accessor :db_server_name
 
+    attr_accessor :db_tenant_id
+
     attr_accessor :db_user_name
 
     attr_accessor :sf_account
@@ -48,6 +58,10 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'cloud_service_provider' => :'cloud_service_provider',
+        :'connection_type' => :'connection_type',
+        :'db_client_id' => :'db_client_id',
+        :'db_client_secret' => :'db_client_secret',
         :'db_host_name' => :'db_host_name',
         :'db_name' => :'db_name',
         :'db_port' => :'db_port',
@@ -56,6 +70,7 @@ module Akeyless
         :'db_pwd' => :'db_pwd',
         :'db_server_certificates' => :'db_server_certificates',
         :'db_server_name' => :'db_server_name',
+        :'db_tenant_id' => :'db_tenant_id',
         :'db_user_name' => :'db_user_name',
         :'sf_account' => :'sf_account',
         :'ssl_connection_certificate' => :'ssl_connection_certificate',
@@ -71,6 +86,10 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'cloud_service_provider' => :'String',
+        :'connection_type' => :'String',
+        :'db_client_id' => :'String',
+        :'db_client_secret' => :'String',
         :'db_host_name' => :'String',
         :'db_name' => :'String',
         :'db_port' => :'String',
@@ -79,6 +98,7 @@ module Akeyless
         :'db_pwd' => :'String',
         :'db_server_certificates' => :'String',
         :'db_server_name' => :'String',
+        :'db_tenant_id' => :'String',
         :'db_user_name' => :'String',
         :'sf_account' => :'String',
         :'ssl_connection_certificate' => :'String',
@@ -106,6 +126,22 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'cloud_service_provider')
+        self.cloud_service_provider = attributes[:'cloud_service_provider']
+      end
+
+      if attributes.key?(:'connection_type')
+        self.connection_type = attributes[:'connection_type']
+      end
+
+      if attributes.key?(:'db_client_id')
+        self.db_client_id = attributes[:'db_client_id']
+      end
+
+      if attributes.key?(:'db_client_secret')
+        self.db_client_secret = attributes[:'db_client_secret']
+      end
 
       if attributes.key?(:'db_host_name')
         self.db_host_name = attributes[:'db_host_name']
@@ -137,6 +173,10 @@ module Akeyless
 
       if attributes.key?(:'db_server_name')
         self.db_server_name = attributes[:'db_server_name']
+      end
+
+      if attributes.key?(:'db_tenant_id')
+        self.db_tenant_id = attributes[:'db_tenant_id']
       end
 
       if attributes.key?(:'db_user_name')
@@ -176,6 +216,10 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          cloud_service_provider == o.cloud_service_provider &&
+          connection_type == o.connection_type &&
+          db_client_id == o.db_client_id &&
+          db_client_secret == o.db_client_secret &&
           db_host_name == o.db_host_name &&
           db_name == o.db_name &&
           db_port == o.db_port &&
@@ -184,6 +228,7 @@ module Akeyless
           db_pwd == o.db_pwd &&
           db_server_certificates == o.db_server_certificates &&
           db_server_name == o.db_server_name &&
+          db_tenant_id == o.db_tenant_id &&
           db_user_name == o.db_user_name &&
           sf_account == o.sf_account &&
           ssl_connection_certificate == o.ssl_connection_certificate &&
@@ -199,7 +244,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [db_host_name, db_name, db_port, db_private_key, db_private_key_passphrase, db_pwd, db_server_certificates, db_server_name, db_user_name, sf_account, ssl_connection_certificate, ssl_connection_mode].hash
+      [cloud_service_provider, connection_type, db_client_id, db_client_secret, db_host_name, db_name, db_port, db_private_key, db_private_key_passphrase, db_pwd, db_server_certificates, db_server_name, db_tenant_id, db_user_name, sf_account, ssl_connection_certificate, ssl_connection_mode].hash
     end
 
     # Builds the object from hash

@@ -28,16 +28,16 @@ module Akeyless
 
     attr_accessor :event_type
 
-    # Event item name
+    # EventItemName Event item name
     attr_accessor :item_name
 
-    # Event item type can be either \"target\" or type of item eg \"static_secret\"/\"dynamic_secret\" To get type of some item run `akeyless describe-item -n {ITEM_NAME} --jq-expression .item_type`
+    # EventItemType Event item type
     attr_accessor :item_type
 
     # Set output format to JSON
     attr_accessor :json
 
-    # TTL in minutes for how long to grant the requested access
+    # For how long to grant the requested access, in minutes
     attr_accessor :request_access_ttl
 
     # Authentication token (see `/auth` and `/configure`)
