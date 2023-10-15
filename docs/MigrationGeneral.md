@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
+| **last_migration** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **new_name** | **String** |  | [optional] |
 | **prefix** | **String** |  | [optional] |
@@ -19,6 +20,7 @@ require 'akeyless'
 
 instance = Akeyless::MigrationGeneral.new(
   id: null,
+  last_migration: null,
   name: null,
   new_name: null,
   prefix: null,

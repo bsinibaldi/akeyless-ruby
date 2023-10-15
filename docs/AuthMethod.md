@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **access_date** | **Time** |  | [optional] |
+| **access_date_display** | **String** |  | [optional] |
 | **access_info** | [**AuthMethodAccessInfo**](AuthMethodAccessInfo.md) |  | [optional] |
 | **account_id** | **String** |  | [optional] |
 | **associated_gw_ids** | **Array&lt;Integer&gt;** |  | [optional] |
@@ -23,6 +24,7 @@ require 'akeyless'
 
 instance = Akeyless::AuthMethod.new(
   access_date: null,
+  access_date_display: null,
   access_info: null,
   account_id: null,
   associated_gw_ids: null,

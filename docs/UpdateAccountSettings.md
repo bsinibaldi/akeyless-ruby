@@ -8,7 +8,7 @@
 | **city** | **String** | City | [optional] |
 | **company_name** | **String** | Company name | [optional] |
 | **country** | **String** | Country | [optional] |
-| **default_key_name** | **String** | Set the account default key based on the DFC key item name. Use \&quot;set-original-akeyless-default-key\&quot; to revert to using the original default key of the account. Empty string will change nothing. | [optional] |
+| **default_key_name** | **String** | Set the account default key based on the DFC key name. Use \&quot;set-original-akeyless-default-key\&quot; to revert to using the original default key of the account. | [optional] |
 | **default_share_link_ttl_minutes** | **String** | Set the default ttl in minutes for sharing item number between 60 and 43200 | [optional] |
 | **default_versioning** | **String** | If set to true, new item version will be created on each update [true/false] | [optional] |
 | **dp_enable_classic_key_protection** | **String** | Set to update protection with classic keys state [true/false] | [optional] |
@@ -19,6 +19,7 @@
 | **jwt_ttl_default** | **Integer** | Default ttl | [optional] |
 | **jwt_ttl_max** | **Integer** | Maximum ttl | [optional] |
 | **jwt_ttl_min** | **Integer** | Minimum ttl | [optional] |
+| **lock_default_key** | **String** | Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false] | [optional] |
 | **max_versions** | **String** | Max versions | [optional] |
 | **password_length** | **Integer** | Password length between 5 - to 50 characters | [optional] |
 | **phone** | **String** | Phone number | [optional] |
@@ -51,6 +52,7 @@ instance = Akeyless::UpdateAccountSettings.new(
   jwt_ttl_default: null,
   jwt_ttl_max: null,
   jwt_ttl_min: null,
+  lock_default_key: null,
   max_versions: null,
   password_length: null,
   phone: null,

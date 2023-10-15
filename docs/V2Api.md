@@ -231,10 +231,12 @@ All URIs are relative to *https://api.akeyless.io*
 | [**set_role_rule**](V2Api.md#set_role_rule) | **POST** /set-role-rule |  |
 | [**share_item**](V2Api.md#share_item) | **POST** /share-item |  |
 | [**sign_data_with_classic_key**](V2Api.md#sign_data_with_classic_key) | **POST** /sign-data-with-classic-key |  |
+| [**sign_ec_dsa**](V2Api.md#sign_ec_dsa) | **POST** /sign-ecdsa |  |
 | [**sign_gpg**](V2Api.md#sign_gpg) | **POST** /sign-gpg |  |
 | [**sign_jwt_with_classic_key**](V2Api.md#sign_jwt_with_classic_key) | **POST** /sign-jwt-with-classic-key |  |
 | [**sign_pkcs1**](V2Api.md#sign_pkcs1) | **POST** /sign-pkcs1 |  |
 | [**sign_pki_cert_with_classic_key**](V2Api.md#sign_pki_cert_with_classic_key) | **POST** /sign-pki-cert-with-classic-key |  |
+| [**sign_rsa_ssa_pss**](V2Api.md#sign_rsa_ssa_pss) | **POST** /sign-rsassa-pss |  |
 | [**static_creds_auth**](V2Api.md#static_creds_auth) | **POST** /static-creds-auth |  |
 | [**tokenize**](V2Api.md#tokenize) | **POST** /tokenize |  |
 | [**uid_create_child_token**](V2Api.md#uid_create_child_token) | **POST** /uid-create-child-token |  |
@@ -299,10 +301,12 @@ All URIs are relative to *https://api.akeyless.io*
 | [**upload_rsa**](V2Api.md#upload_rsa) | **POST** /upload-rsa |  |
 | [**validate_token**](V2Api.md#validate_token) | **POST** /validate-token |  |
 | [**verify_data_with_classic_key**](V2Api.md#verify_data_with_classic_key) | **POST** /verify-data-with-classic-key |  |
+| [**verify_ec_dsa**](V2Api.md#verify_ec_dsa) | **POST** /verify-ecdsa |  |
 | [**verify_gpg**](V2Api.md#verify_gpg) | **POST** /verify-gpg |  |
 | [**verify_jwt_with_classic_key**](V2Api.md#verify_jwt_with_classic_key) | **POST** /verify-jwt-with-classic-key |  |
 | [**verify_pkcs1**](V2Api.md#verify_pkcs1) | **POST** /verify-pkcs1 |  |
 | [**verify_pki_cert_with_classic_key**](V2Api.md#verify_pki_cert_with_classic_key) | **POST** /verify-pki-cert-with-classic-key |  |
+| [**verify_rsa_ssa_pss**](V2Api.md#verify_rsa_ssa_pss) | **POST** /verify-rsassa-pss |  |
 
 
 ## assoc_role_auth_method
@@ -14400,6 +14404,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## sign_ec_dsa
+
+> <SignEcDsaOutput> sign_ec_dsa(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::SignEcDsa.new({message: 'message_example'}) # SignEcDsa | 
+
+begin
+  
+  result = api_instance.sign_ec_dsa(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->sign_ec_dsa: #{e}"
+end
+```
+
+#### Using the sign_ec_dsa_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SignEcDsaOutput>, Integer, Hash)> sign_ec_dsa_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.sign_ec_dsa_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SignEcDsaOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->sign_ec_dsa_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**SignEcDsa**](SignEcDsa.md) |  |  |
+
+### Return type
+
+[**SignEcDsaOutput**](SignEcDsaOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## sign_gpg
 
 > <SignGPGOutput> sign_gpg(body)
@@ -14637,6 +14703,68 @@ end
 ### Return type
 
 [**SignPKICertOutput**](SignPKICertOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## sign_rsa_ssa_pss
+
+> <SignRsaSsaPssOutput> sign_rsa_ssa_pss(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::SignRsaSsaPss.new({message: 'message_example'}) # SignRsaSsaPss | 
+
+begin
+  
+  result = api_instance.sign_rsa_ssa_pss(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->sign_rsa_ssa_pss: #{e}"
+end
+```
+
+#### Using the sign_rsa_ssa_pss_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SignRsaSsaPssOutput>, Integer, Hash)> sign_rsa_ssa_pss_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.sign_rsa_ssa_pss_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SignRsaSsaPssOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->sign_rsa_ssa_pss_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**SignRsaSsaPss**](SignRsaSsaPss.md) |  |  |
+
+### Return type
+
+[**SignRsaSsaPssOutput**](SignRsaSsaPssOutput.md)
 
 ### Authorization
 
@@ -18613,6 +18741,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## verify_ec_dsa
+
+> Object verify_ec_dsa(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::VerifyEcDsa.new({message: 'message_example', signature: 'signature_example'}) # VerifyEcDsa | 
+
+begin
+  
+  result = api_instance.verify_ec_dsa(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->verify_ec_dsa: #{e}"
+end
+```
+
+#### Using the verify_ec_dsa_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> verify_ec_dsa_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.verify_ec_dsa_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->verify_ec_dsa_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**VerifyEcDsa**](VerifyEcDsa.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## verify_gpg
 
 > Object verify_gpg(body)
@@ -18850,6 +19040,68 @@ end
 ### Return type
 
 [**VerifyPKICertOutput**](VerifyPKICertOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## verify_rsa_ssa_pss
+
+> Object verify_rsa_ssa_pss(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::VerifyRsaSsaPss.new({message: 'message_example', signature: 'signature_example'}) # VerifyRsaSsaPss | 
+
+begin
+  
+  result = api_instance.verify_rsa_ssa_pss(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->verify_rsa_ssa_pss: #{e}"
+end
+```
+
+#### Using the verify_rsa_ssa_pss_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> verify_rsa_ssa_pss_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.verify_rsa_ssa_pss_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->verify_rsa_ssa_pss_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**VerifyRsaSsaPss**](VerifyRsaSsaPss.md) |  |  |
+
+### Return type
+
+**Object**
 
 ### Authorization
 

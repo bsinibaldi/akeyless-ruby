@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **access_date** | **Time** |  | [optional] |
+| **access_date_display** | **String** |  | [optional] |
 | **access_request_status** | **String** |  | [optional] |
 | **auto_rotate** | **Boolean** |  | [optional] |
 | **bastion_details** | [**BastionsList**](BastionsList.md) |  | [optional] |
@@ -51,6 +52,7 @@ require 'akeyless'
 
 instance = Akeyless::Item.new(
   access_date: null,
+  access_date_display: null,
   access_request_status: null,
   auto_rotate: null,
   bastion_details: null,

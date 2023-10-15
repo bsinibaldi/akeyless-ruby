@@ -9,7 +9,8 @@
 | **cluster_name** | **String** |  | [optional] |
 | **cluster_url** | **String** |  | [optional] |
 | **current_gw** | **Boolean** |  | [optional] |
-| **customer_fragment_ids** | **Array&lt;String&gt;** |  | [optional] |
+| **customer_fragment_ids** | **Array&lt;String&gt;** | Deprecated - use CustomerFragments instead | [optional] |
+| **customer_fragments** | [**Array&lt;CfInfo&gt;**](CfInfo.md) |  | [optional] |
 | **default_protection_key_id** | **Integer** |  | [optional] |
 | **default_secret_location** | **String** |  | [optional] |
 | **display_name** | **String** |  | [optional] |
@@ -29,6 +30,7 @@ instance = Akeyless::GwClusterIdentity.new(
   cluster_url: null,
   current_gw: null,
   customer_fragment_ids: null,
+  customer_fragments: null,
   default_protection_key_id: null,
   default_secret_location: null,
   display_name: null,

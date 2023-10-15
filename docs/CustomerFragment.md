@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **description** | **String** |  | [optional] |
 | **id** | **String** |  | [optional] |
+| **name** | **String** |  | [optional] |
 | **value** | **String** |  | [optional] |
 
 ## Example
@@ -16,6 +17,7 @@ require 'akeyless'
 instance = Akeyless::CustomerFragment.new(
   description: null,
   id: null,
+  name: null,
   value: null
 )
 ```

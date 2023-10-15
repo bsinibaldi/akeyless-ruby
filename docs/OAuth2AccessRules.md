@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **audience** | **String** | The audience in the JWT. | [optional] |
+| **authorized_gw_cluster_name** | **String** | The gateway cluster name that is authorized to access JWKeySetURL | [optional] |
 | **bound_claims** | [**Array&lt;OAuth2CustomClaim&gt;**](OAuth2CustomClaim.md) | The claims that login is restricted to. | [optional] |
 | **bound_clients_id** | **Array&lt;String&gt;** | The clients ids that login is restricted to. | [optional] |
 | **issuer** | **String** | Issuer URL | [optional] |
@@ -19,6 +20,7 @@ require 'akeyless'
 
 instance = Akeyless::OAuth2AccessRules.new(
   audience: null,
+  authorized_gw_cluster_name: null,
   bound_claims: null,
   bound_clients_id: null,
   issuer: null,

@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **access_date** | **Time** |  | [optional] |
+| **access_date_display** | **String** |  | [optional] |
 | **client_permissions** | **Array&lt;String&gt;** |  | [optional] |
 | **comment** | **String** |  | [optional] |
 | **creation_date** | **Time** |  | [optional] |
@@ -20,6 +21,7 @@ require 'akeyless'
 
 instance = Akeyless::Role.new(
   access_date: null,
+  access_date_display: null,
   client_permissions: null,
   comment: null,
   creation_date: null,

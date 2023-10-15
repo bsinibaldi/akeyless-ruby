@@ -23,6 +23,7 @@
 | **oidc_access_rules** | [**OIDCAccessRules**](OIDCAccessRules.md) |  | [optional] |
 | **rules_type** | **String** |  | [optional] |
 | **saml_access_rules** | [**SAMLAccessRules**](SAMLAccessRules.md) |  | [optional] |
+| **sub_claims_delimiters** | **Array&lt;String&gt;** |  | [optional] |
 | **universal_identity_access_rules** | [**UniversalIdentityAccessRules**](UniversalIdentityAccessRules.md) |  | [optional] |
 
 ## Example
@@ -50,6 +51,7 @@ instance = Akeyless::AuthMethodAccessInfo.new(
   oidc_access_rules: null,
   rules_type: null,
   saml_access_rules: null,
+  sub_claims_delimiters: null,
   universal_identity_access_rules: null
 )
 ```

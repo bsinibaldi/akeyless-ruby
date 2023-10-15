@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **access_date** | **Time** |  | [optional] |
+| **access_date_display** | **String** |  | [optional] |
 | **creation_date** | **Time** |  | [optional] |
 | **customer_fragment_id** | **String** |  | [optional] |
 | **deletion_date** | **Time** |  | [optional] |
@@ -21,6 +22,7 @@ require 'akeyless'
 
 instance = Akeyless::ItemVersion.new(
   access_date: null,
+  access_date_display: null,
   creation_date: null,
   customer_fragment_id: null,
   deletion_date: null,
