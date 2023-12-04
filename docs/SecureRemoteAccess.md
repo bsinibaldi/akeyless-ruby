@@ -18,6 +18,7 @@
 | **enable** | **Boolean** |  | [optional] |
 | **endpoint** | **String** |  | [optional] |
 | **host** | **Array&lt;String&gt;** |  | [optional] |
+| **host_provider_type** | **String** |  | [optional] |
 | **is_cli** | **Boolean** |  | [optional] |
 | **is_web** | **Boolean** |  | [optional] |
 | **isolated** | **Boolean** |  | [optional] |
@@ -30,6 +31,7 @@
 | **ssh_password** | **Boolean** |  | [optional] |
 | **ssh_private_key** | **Boolean** |  | [optional] |
 | **ssh_user** | **String** |  | [optional] |
+| **target_hosts** | [**Array&lt;TargetNameWithHosts&gt;**](TargetNameWithHosts.md) |  | [optional] |
 | **url** | **String** |  | [optional] |
 | **use_internal_bastion** | **Boolean** |  | [optional] |
 | **web_proxy** | **Boolean** |  | [optional] |
@@ -54,6 +56,7 @@ instance = Akeyless::SecureRemoteAccess.new(
   enable: null,
   endpoint: null,
   host: null,
+  host_provider_type: null,
   is_cli: null,
   is_web: null,
   isolated: null,
@@ -66,6 +69,7 @@ instance = Akeyless::SecureRemoteAccess.new(
   ssh_password: null,
   ssh_private_key: null,
   ssh_user: null,
+  target_hosts: null,
   url: null,
   use_internal_bastion: null,
   web_proxy: null

@@ -9,6 +9,7 @@
 | **_1password_secret_key** | **String** | 1Password user secret key to connect to the API | [optional] |
 | **_1password_url** | **String** | 1Password api container url | [optional] |
 | **_1password_vaults** | **Array&lt;String&gt;** | 1Password list of vault to get the items from | [optional] |
+| **ad_discover_services** | **String** | Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) | [optional][default to &#39;false&#39;] |
 | **ad_ssh_port** | **String** | Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) | [optional][default to &#39;22&#39;] |
 | **ad_targets_type** | **String** | Set the target type of the domain servers [ssh/windows](Relevant only for Active Directory migration) | [optional][default to &#39;windows&#39;] |
 | **ad_winrm_over_http** | **String** | Use WinRM over HTTP, by default runs over HTTPS | [optional][default to &#39;false&#39;] |
@@ -75,6 +76,7 @@ instance = Akeyless::GatewayUpdateMigration.new(
   _1password_secret_key: null,
   _1password_url: null,
   _1password_vaults: null,
+  ad_discover_services: null,
   ad_ssh_port: null,
   ad_targets_type: null,
   ad_winrm_over_http: null,

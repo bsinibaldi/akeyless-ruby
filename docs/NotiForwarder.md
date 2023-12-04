@@ -4,6 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **auth_type** | **String** |  | [optional] |
+| **client_id** | **String** | Auth - JWT | [optional] |
 | **client_permissions** | **Array&lt;String&gt;** |  | [optional] |
 | **comment** | **String** |  | [optional] |
 | **creation_date** | **Time** |  | [optional] |
@@ -22,7 +24,8 @@
 | **runner_type** | **String** |  | [optional] |
 | **timespan_in_seconds** | **Integer** |  | [optional] |
 | **to_emails** | [**Array&lt;EmailEntry&gt;**](EmailEntry.md) |  | [optional] |
-| **username** | **String** |  | [optional] |
+| **user_email** | **String** |  | [optional] |
+| **username** | **String** | Auth - User Password | [optional] |
 | **with_customer_fragment** | **Boolean** |  | [optional] |
 
 ## Example
@@ -31,6 +34,8 @@
 require 'akeyless'
 
 instance = Akeyless::NotiForwarder.new(
+  auth_type: null,
+  client_id: null,
   client_permissions: null,
   comment: null,
   creation_date: null,
@@ -49,6 +54,7 @@ instance = Akeyless::NotiForwarder.new(
   runner_type: null,
   timespan_in_seconds: null,
   to_emails: null,
+  user_email: null,
   username: null,
   with_customer_fragment: null
 )

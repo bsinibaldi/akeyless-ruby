@@ -10,6 +10,7 @@
 | **auto_rotate_rotation_hour** | **Integer** |  | [optional] |
 | **computer_base_dn** | **String** |  | [optional] |
 | **discover_local_users** | **Boolean** |  | [optional] |
+| **discover_services** | **Boolean** |  | [optional] |
 | **domain_name** | **String** |  | [optional] |
 | **domain_server_targets_path_template** | **String** |  | [optional] |
 | **domain_users_rotated_secrets_path_template** | **String** |  | [optional] |
@@ -35,6 +36,7 @@ instance = Akeyless::ActiveDirectoryPayload.new(
   auto_rotate_rotation_hour: null,
   computer_base_dn: null,
   discover_local_users: null,
+  discover_services: null,
   domain_name: null,
   domain_server_targets_path_template: null,
   domain_users_rotated_secrets_path_template: null,

@@ -5468,7 +5468,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::EsmUpdate.new({esm_name: 'esm_name_example', secret_id: 'secret_id_example', value: 'value_example'}) # EsmUpdate | 
+body = Akeyless::EsmCreate.new({esm_name: 'esm_name_example', secret_name: 'secret_name_example', value: 'value_example'}) # EsmCreate | 
 
 begin
   
@@ -5501,7 +5501,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **body** | [**EsmUpdate**](EsmUpdate.md) |  |  |
+| **body** | [**EsmCreate**](EsmCreate.md) |  |  |
 
 ### Return type
 
@@ -5705,7 +5705,7 @@ No authorization required
 
 ## esm_update
 
-> <EsmUpdateSecretOutput> esm_update
+> <EsmUpdateSecretOutput> esm_update(body)
 
 
 
@@ -5716,10 +5716,11 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
+body = Akeyless::EsmUpdate.new({esm_name: 'esm_name_example', secret_id: 'secret_id_example', value: 'value_example'}) # EsmUpdate | 
 
 begin
   
-  result = api_instance.esm_update
+  result = api_instance.esm_update(body)
   p result
 rescue Akeyless::ApiError => e
   puts "Error when calling V2Api->esm_update: #{e}"
@@ -5730,12 +5731,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<EsmUpdateSecretOutput>, Integer, Hash)> esm_update_with_http_info
+> <Array(<EsmUpdateSecretOutput>, Integer, Hash)> esm_update_with_http_info(body)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.esm_update_with_http_info
+  data, status_code, headers = api_instance.esm_update_with_http_info(body)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <EsmUpdateSecretOutput>
@@ -5746,7 +5747,9 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**EsmUpdate**](EsmUpdate.md) |  |  |
 
 ### Return type
 
@@ -5758,7 +5761,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

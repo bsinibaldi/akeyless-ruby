@@ -605,6 +605,7 @@ docs/SystemAccessCredsSettings.md
 docs/Target.md
 docs/TargetItemAssociation.md
 docs/TargetItemVersion.md
+docs/TargetNameWithHosts.md
 docs/TargetTypeDetailsInput.md
 docs/TmpUserData.md
 docs/Tokenize.md
@@ -712,6 +713,7 @@ docs/UpdateZeroSSLTarget.md
 docs/UpdateZeroSSLTargetOutput.md
 docs/UploadPKCS12.md
 docs/UploadRSA.md
+docs/UsageEventSetting.md
 docs/V2Api.md
 docs/ValidateToken.md
 docs/ValidateTokenOutput.md
@@ -727,6 +729,8 @@ docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 docs/VerifyRsaSsaPss.md
 docs/WebTargetDetails.md
+docs/WindowsService.md
+docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
 docs/ZeroSSLTargetDetails.md
 git_push.sh
@@ -1333,6 +1337,7 @@ lib/akeyless/models/system_access_creds_settings.rb
 lib/akeyless/models/target.rb
 lib/akeyless/models/target_item_association.rb
 lib/akeyless/models/target_item_version.rb
+lib/akeyless/models/target_name_with_hosts.rb
 lib/akeyless/models/target_type_details_input.rb
 lib/akeyless/models/tmp_user_data.rb
 lib/akeyless/models/tokenize.rb
@@ -1440,6 +1445,7 @@ lib/akeyless/models/update_zero_ssl_target.rb
 lib/akeyless/models/update_zero_ssl_target_output.rb
 lib/akeyless/models/upload_pkcs12.rb
 lib/akeyless/models/upload_rsa.rb
+lib/akeyless/models/usage_event_setting.rb
 lib/akeyless/models/validate_token.rb
 lib/akeyless/models/validate_token_output.rb
 lib/akeyless/models/vaultless_tokenizer_info.rb
@@ -1454,16 +1460,15 @@ lib/akeyless/models/verify_pki_cert_output.rb
 lib/akeyless/models/verify_pki_cert_with_classic_key.rb
 lib/akeyless/models/verify_rsa_ssa_pss.rb
 lib/akeyless/models/web_target_details.rb
+lib/akeyless/models/windows_service.rb
+lib/akeyless/models/windows_service_attributes.rb
 lib/akeyless/models/windows_target_details.rb
 lib/akeyless/models/zero_ssl_target_details.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/cf_info_spec.rb
-spec/models/sign_ec_dsa_output_spec.rb
-spec/models/sign_ec_dsa_spec.rb
-spec/models/sign_rsa_ssa_pss_output_spec.rb
-spec/models/sign_rsa_ssa_pss_spec.rb
-spec/models/verify_ec_dsa_spec.rb
-spec/models/verify_rsa_ssa_pss_spec.rb
+spec/models/target_name_with_hosts_spec.rb
+spec/models/usage_event_setting_spec.rb
+spec/models/windows_service_attributes_spec.rb
+spec/models/windows_service_spec.rb
 spec/spec_helper.rb

@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **action_allowed** | **Boolean** |  | [optional] |
 | **allowed** | **Boolean** |  | [optional] |
 | **allowed_access_ids** | **Array&lt;String&gt;** |  | [optional] |
 | **cluster_name** | **String** |  | [optional] |
@@ -24,6 +25,7 @@
 require 'akeyless'
 
 instance = Akeyless::GwClusterIdentity.new(
+  action_allowed: null,
   allowed: null,
   allowed_access_ids: null,
   cluster_name: null,

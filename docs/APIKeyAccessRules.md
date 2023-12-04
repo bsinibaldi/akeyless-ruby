@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **alg** | **String** |  | [optional] |
 | **key** | **String** | The public key value of the API-key. | [optional] |
+| **modification_date** | **Time** |  | [optional] |
 
 ## Example
 
@@ -14,7 +15,8 @@ require 'akeyless'
 
 instance = Akeyless::APIKeyAccessRules.new(
   alg: null,
-  key: null
+  key: null,
+  modification_date: null
 )
 ```
 

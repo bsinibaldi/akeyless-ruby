@@ -6,6 +6,10 @@
 | ---- | ---- | ----------- | ----- |
 | **admin_name** | **String** | Workstation Admin Name | [optional] |
 | **admin_pwd** | **String** | Workstation Admin password | [optional] |
+| **app_private_key_base64** | **String** | The RSA Private Key PEM formatted in base64 to use when connecting to ServiceNow with jwt authentication | [optional] |
+| **auth_type** | **String** | The authentication type to use when connecting to ServiceNow (user-pass / jwt) | [optional][default to &#39;user-pass&#39;] |
+| **client_id** | **String** | The client ID to use when connecting to ServiceNow with jwt authentication | [optional] |
+| **client_secret** | **String** | The client secret to use when connecting to ServiceNow with jwt authentication | [optional] |
 | **comment** | **String** | Deprecated - use description | [optional] |
 | **description** | **String** | Description of the object | [optional] |
 | **email_to** | **String** | A comma seperated list of email addresses to send event to (relevant only for \&quot;email\&quot; Event Forwarder) | [optional] |
@@ -21,6 +25,7 @@
 | **runner_type** | **String** |  |  |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
+| **user_email** | **String** | The user email to use when connecting to ServiceNow with jwt authentication | [optional] |
 
 ## Example
 
@@ -30,6 +35,10 @@ require 'akeyless'
 instance = Akeyless::CreateEventForwarder.new(
   admin_name: null,
   admin_pwd: null,
+  app_private_key_base64: null,
+  auth_type: null,
+  client_id: null,
+  client_secret: null,
   comment: null,
   description: null,
   email_to: null,
@@ -44,7 +53,8 @@ instance = Akeyless::CreateEventForwarder.new(
   name: null,
   runner_type: null,
   token: null,
-  uid_token: null
+  uid_token: null,
+  user_email: null
 )
 ```
 

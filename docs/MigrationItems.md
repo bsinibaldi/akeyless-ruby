@@ -8,6 +8,7 @@
 | **migrated** | **Integer** |  | [optional] |
 | **skipped** | **Integer** |  | [optional] |
 | **total** | **Integer** |  | [optional] |
+| **updated** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = Akeyless::MigrationItems.new(
   failed: null,
   migrated: null,
   skipped: null,
-  total: null
+  total: null,
+  updated: null
 )
 ```
 

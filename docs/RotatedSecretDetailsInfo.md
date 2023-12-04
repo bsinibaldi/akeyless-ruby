@@ -15,6 +15,7 @@
 | **rotator_status** | **String** | RotationStatus defines types of rotation Status | [optional] |
 | **rotator_type** | **String** |  | [optional] |
 | **same_password** | **Boolean** |  | [optional] |
+| **services_details** | [**Array&lt;WindowsService&gt;**](WindowsService.md) |  | [optional] |
 
 ## Example
 
@@ -32,7 +33,8 @@ instance = Akeyless::RotatedSecretDetailsInfo.new(
   rotator_creds_type: null,
   rotator_status: null,
   rotator_type: null,
-  same_password: null
+  same_password: null,
+  services_details: null
 )
 ```
 
