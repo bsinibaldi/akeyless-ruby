@@ -13,6 +13,7 @@
 | **enable_tls_curl** | **Boolean** |  | [optional] |
 | **enable_tls_hvp** | **Boolean** |  | [optional] |
 | **gw_cluster_url** | **String** |  | [optional] |
+| **notify_on_status_change** | **Boolean** |  | [optional] |
 | **tcp_port** | **String** |  | [optional] |
 | **tls_cert** | **String** |  | [optional] |
 | **tls_key** | **String** |  | [optional] |
@@ -32,6 +33,7 @@ instance = Akeyless::GeneralConfigPart.new(
   enable_tls_curl: null,
   enable_tls_hvp: null,
   gw_cluster_url: null,
+  notify_on_status_change: null,
   tcp_port: null,
   tls_cert: null,
   tls_key: null

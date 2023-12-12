@@ -1469,5 +1469,4 @@ lib/akeyless/models/zero_ssl_target_details.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/update_classic_key_certificate_spec.rb
 spec/spec_helper.rb
