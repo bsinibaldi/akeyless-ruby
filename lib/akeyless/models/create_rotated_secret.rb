@@ -45,6 +45,12 @@ module Akeyless
     # Base64-encoded service account private key text
     attr_accessor :gcp_key
 
+    # The email of the gcp service account to rotate
+    attr_accessor :gcp_service_account_email
+
+    # The key id of the gcp service account to rotate
+    attr_accessor :gcp_service_account_key_id
+
     # Set output format to JSON
     attr_accessor :json
 
@@ -162,6 +168,8 @@ module Akeyless
         :'delete_protection' => :'delete_protection',
         :'description' => :'description',
         :'gcp_key' => :'gcp-key',
+        :'gcp_service_account_email' => :'gcp-service-account-email',
+        :'gcp_service_account_key_id' => :'gcp-service-account-key-id',
         :'json' => :'json',
         :'key' => :'key',
         :'metadata' => :'metadata',
@@ -218,6 +226,8 @@ module Akeyless
         :'delete_protection' => :'String',
         :'description' => :'String',
         :'gcp_key' => :'String',
+        :'gcp_service_account_email' => :'String',
+        :'gcp_service_account_key_id' => :'String',
         :'json' => :'Boolean',
         :'key' => :'String',
         :'metadata' => :'String',
@@ -319,6 +329,14 @@ module Akeyless
 
       if attributes.key?(:'gcp_key')
         self.gcp_key = attributes[:'gcp_key']
+      end
+
+      if attributes.key?(:'gcp_service_account_email')
+        self.gcp_service_account_email = attributes[:'gcp_service_account_email']
+      end
+
+      if attributes.key?(:'gcp_service_account_key_id')
+        self.gcp_service_account_key_id = attributes[:'gcp_service_account_key_id']
       end
 
       if attributes.key?(:'json')
@@ -529,6 +547,8 @@ module Akeyless
           delete_protection == o.delete_protection &&
           description == o.description &&
           gcp_key == o.gcp_key &&
+          gcp_service_account_email == o.gcp_service_account_email &&
+          gcp_service_account_key_id == o.gcp_service_account_key_id &&
           json == o.json &&
           key == o.key &&
           metadata == o.metadata &&
@@ -575,7 +595,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [api_id, api_key, application_id, authentication_credentials, auto_rotate, aws_region, custom_payload, delete_protection, description, gcp_key, json, key, metadata, name, rotate_after_disconnect, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, rotator_custom_cmd, rotator_type, same_password, secure_access_allow_external_user, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, ssh_password, ssh_username, storage_account_key_name, tags, target_name, token, uid_token, user_attribute, user_dn].hash
+      [api_id, api_key, application_id, authentication_credentials, auto_rotate, aws_region, custom_payload, delete_protection, description, gcp_key, gcp_service_account_email, gcp_service_account_key_id, json, key, metadata, name, rotate_after_disconnect, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, rotator_custom_cmd, rotator_type, same_password, secure_access_allow_external_user, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, ssh_password, ssh_username, storage_account_key_name, tags, target_name, token, uid_token, user_attribute, user_dn].hash
     end
 
     # Builds the object from hash

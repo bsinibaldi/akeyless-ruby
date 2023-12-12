@@ -43,6 +43,9 @@ module Akeyless
     # TTL in days for the generated certificate. Required only for generate-self-signed-certificate.
     attr_accessor :certificate_ttl
 
+    # The csr config data in base64 encoding
+    attr_accessor :conf_file_data
+
     # Protection from accidental deletion of this item [true/false]
     attr_accessor :delete_protection
 
@@ -91,6 +94,7 @@ module Akeyless
         :'certificate_organization' => :'certificate-organization',
         :'certificate_province' => :'certificate-province',
         :'certificate_ttl' => :'certificate-ttl',
+        :'conf_file_data' => :'conf-file-data',
         :'delete_protection' => :'delete_protection',
         :'description' => :'description',
         :'generate_self_signed_certificate' => :'generate-self-signed-certificate',
@@ -123,6 +127,7 @@ module Akeyless
         :'certificate_organization' => :'String',
         :'certificate_province' => :'String',
         :'certificate_ttl' => :'Integer',
+        :'conf_file_data' => :'String',
         :'delete_protection' => :'String',
         :'description' => :'String',
         :'generate_self_signed_certificate' => :'Boolean',
@@ -195,6 +200,10 @@ module Akeyless
 
       if attributes.key?(:'certificate_ttl')
         self.certificate_ttl = attributes[:'certificate_ttl']
+      end
+
+      if attributes.key?(:'conf_file_data')
+        self.conf_file_data = attributes[:'conf_file_data']
       end
 
       if attributes.key?(:'delete_protection')
@@ -291,6 +300,7 @@ module Akeyless
           certificate_organization == o.certificate_organization &&
           certificate_province == o.certificate_province &&
           certificate_ttl == o.certificate_ttl &&
+          conf_file_data == o.conf_file_data &&
           delete_protection == o.delete_protection &&
           description == o.description &&
           generate_self_signed_certificate == o.generate_self_signed_certificate &&
@@ -314,7 +324,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alg, cert_file_data, certificate_common_name, certificate_country, certificate_digest_algo, certificate_locality, certificate_organization, certificate_province, certificate_ttl, delete_protection, description, generate_self_signed_certificate, gpg_alg, json, key_data, metadata, name, protection_key_name, tags, token, uid_token].hash
+      [alg, cert_file_data, certificate_common_name, certificate_country, certificate_digest_algo, certificate_locality, certificate_organization, certificate_province, certificate_ttl, conf_file_data, delete_protection, description, generate_self_signed_certificate, gpg_alg, json, key_data, metadata, name, protection_key_name, tags, token, uid_token].hash
     end
 
     # Builds the object from hash

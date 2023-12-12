@@ -34,6 +34,12 @@ module Akeyless
     # Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration)
     attr_accessor :ad_discover_services
 
+    # Set migration discovery types (domain-users, computers, local-users). (Relevant only for Active Directory migration)
+    attr_accessor :ad_discovery_types
+
+    # Filter by Operating System to run the migration, can be used with wildcards, e.g. SRV20* (Relevant only for Active Directory migration)
+    attr_accessor :ad_os_filter
+
     # Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration)
     attr_accessor :ad_ssh_port
 
@@ -52,7 +58,7 @@ module Akeyless
     # Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN=Computers,DC=example,DC=com (Relevant only for Active Directory migration)
     attr_accessor :ad_computer_base_dn
 
-    # Enable/Disable discovery of local users from each domain server and migrate them as SSH/Windows Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration)
+    # Enable/Disable discovery of local users from each domain server and migrate them as SSH/Windows Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) Deprecated: use AdDiscoverTypes
     attr_accessor :ad_discover_local_users
 
     # Active Directory Domain Name (Relevant only for Active Directory migration)
@@ -205,6 +211,8 @@ module Akeyless
         :'_1password_url' => :'1password-url',
         :'_1password_vaults' => :'1password-vaults',
         :'ad_discover_services' => :'ad-discover-services',
+        :'ad_discovery_types' => :'ad-discovery-types',
+        :'ad_os_filter' => :'ad-os-filter',
         :'ad_ssh_port' => :'ad-ssh-port',
         :'ad_targets_type' => :'ad-targets-type',
         :'ad_winrm_over_http' => :'ad-winrm-over-http',
@@ -276,6 +284,8 @@ module Akeyless
         :'_1password_url' => :'String',
         :'_1password_vaults' => :'Array<String>',
         :'ad_discover_services' => :'String',
+        :'ad_discovery_types' => :'Array<String>',
+        :'ad_os_filter' => :'String',
         :'ad_ssh_port' => :'String',
         :'ad_targets_type' => :'String',
         :'ad_winrm_over_http' => :'String',
@@ -380,6 +390,16 @@ module Akeyless
         self.ad_discover_services = attributes[:'ad_discover_services']
       else
         self.ad_discover_services = 'false'
+      end
+
+      if attributes.key?(:'ad_discovery_types')
+        if (value = attributes[:'ad_discovery_types']).is_a?(Array)
+          self.ad_discovery_types = value
+        end
+      end
+
+      if attributes.key?(:'ad_os_filter')
+        self.ad_os_filter = attributes[:'ad_os_filter']
       end
 
       if attributes.key?(:'ad_ssh_port')
@@ -670,6 +690,8 @@ module Akeyless
           _1password_url == o._1password_url &&
           _1password_vaults == o._1password_vaults &&
           ad_discover_services == o.ad_discover_services &&
+          ad_discovery_types == o.ad_discovery_types &&
+          ad_os_filter == o.ad_os_filter &&
           ad_ssh_port == o.ad_ssh_port &&
           ad_targets_type == o.ad_targets_type &&
           ad_winrm_over_http == o.ad_winrm_over_http &&
@@ -735,7 +757,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_1password_email, _1password_password, _1password_secret_key, _1password_url, _1password_vaults, ad_discover_services, ad_ssh_port, ad_targets_type, ad_winrm_over_http, ad_winrm_port, ad_auto_rotate, ad_computer_base_dn, ad_discover_local_users, ad_domain_name, ad_domain_users_path_template, ad_local_users_ignore, ad_local_users_path_template, ad_rotation_hour, ad_rotation_interval, ad_sra_enable_rdp, ad_target_name, ad_targets_path_template, ad_user_base_dn, ad_user_groups, aws_key, aws_key_id, aws_region, azure_client_id, azure_kv_name, azure_secret, azure_tenant_id, gcp_key, hashi_json, hashi_ns, hashi_token, hashi_url, id, json, k8s_ca_certificate, k8s_client_certificate, k8s_client_key, k8s_namespace, k8s_password, k8s_skip_system, k8s_token, k8s_url, k8s_username, name, new_name, protection_key, si_auto_rotate, si_rotation_hour, si_rotation_interval, si_sra_enable_rdp, si_target_name, si_users_ignore, si_users_path_template, target_location, token, uid_token].hash
+      [_1password_email, _1password_password, _1password_secret_key, _1password_url, _1password_vaults, ad_discover_services, ad_discovery_types, ad_os_filter, ad_ssh_port, ad_targets_type, ad_winrm_over_http, ad_winrm_port, ad_auto_rotate, ad_computer_base_dn, ad_discover_local_users, ad_domain_name, ad_domain_users_path_template, ad_local_users_ignore, ad_local_users_path_template, ad_rotation_hour, ad_rotation_interval, ad_sra_enable_rdp, ad_target_name, ad_targets_path_template, ad_user_base_dn, ad_user_groups, aws_key, aws_key_id, aws_region, azure_client_id, azure_kv_name, azure_secret, azure_tenant_id, gcp_key, hashi_json, hashi_ns, hashi_token, hashi_url, id, json, k8s_ca_certificate, k8s_client_certificate, k8s_client_key, k8s_namespace, k8s_password, k8s_skip_system, k8s_token, k8s_url, k8s_username, name, new_name, protection_key, si_auto_rotate, si_rotation_hour, si_rotation_interval, si_sra_enable_rdp, si_target_name, si_users_ignore, si_users_path_template, target_location, token, uid_token].hash
     end
 
     # Builds the object from hash

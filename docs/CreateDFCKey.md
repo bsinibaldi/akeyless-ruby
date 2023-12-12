@@ -12,6 +12,7 @@
 | **certificate_organization** | **String** | Organization name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] |
 | **certificate_province** | **String** | Province name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] |
 | **certificate_ttl** | **Integer** | TTL in days for the generated certificate. Required only for generate-self-signed-certificate. | [optional] |
+| **conf_file_data** | **String** | The csr config data in base64 encoding | [optional] |
 | **customer_frg_id** | **String** | The customer fragment ID that will be used to create the DFC key (if empty, the key will be created independently of a customer fragment) | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
 | **description** | **String** | Description of the object | [optional] |
@@ -38,6 +39,7 @@ instance = Akeyless::CreateDFCKey.new(
   certificate_organization: null,
   certificate_province: null,
   certificate_ttl: null,
+  conf_file_data: null,
   customer_frg_id: null,
   delete_protection: null,
   description: null,

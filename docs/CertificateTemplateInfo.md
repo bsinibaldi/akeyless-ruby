@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **common_name** | **String** |  | [optional] |
 | **country** | **String** |  | [optional] |
+| **csr_cnf_base_64** | **String** |  | [optional] |
 | **digest_algo** | **String** |  | [optional] |
 | **locality** | **String** |  | [optional] |
 | **organization** | **String** |  | [optional] |
@@ -21,6 +22,7 @@ require 'akeyless'
 instance = Akeyless::CertificateTemplateInfo.new(
   common_name: null,
   country: null,
+  csr_cnf_base_64: null,
   digest_algo: null,
   locality: null,
   organization: null,

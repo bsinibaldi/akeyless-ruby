@@ -9,14 +9,16 @@
 | **auto_rotate_interval_in_days** | **Integer** |  | [optional] |
 | **auto_rotate_rotation_hour** | **Integer** |  | [optional] |
 | **computer_base_dn** | **String** |  | [optional] |
-| **discover_local_users** | **Boolean** |  | [optional] |
+| **discover_local_users** | **Boolean** | Deprecated | [optional] |
 | **discover_services** | **Boolean** |  | [optional] |
+| **discovery_types** | **Array&lt;String&gt;** |  | [optional] |
 | **domain_name** | **String** |  | [optional] |
 | **domain_server_targets_path_template** | **String** |  | [optional] |
 | **domain_users_rotated_secrets_path_template** | **String** |  | [optional] |
 | **enable_rdp_sra** | **Boolean** |  | [optional] |
 | **local_users_ignore_list** | **Hash&lt;String, Boolean&gt;** |  | [optional] |
 | **local_users_rotated_secrets_path_template** | **String** |  | [optional] |
+| **os_filter** | **String** |  | [optional] |
 | **ssh_port** | **String** |  | [optional] |
 | **targets_type** | **String** |  | [optional] |
 | **user_base_dn** | **String** |  | [optional] |
@@ -37,12 +39,14 @@ instance = Akeyless::ActiveDirectoryPayload.new(
   computer_base_dn: null,
   discover_local_users: null,
   discover_services: null,
+  discovery_types: null,
   domain_name: null,
   domain_server_targets_path_template: null,
   domain_users_rotated_secrets_path_template: null,
   enable_rdp_sra: null,
   local_users_ignore_list: null,
   local_users_rotated_secrets_path_template: null,
+  os_filter: null,
   ssh_port: null,
   targets_type: null,
   user_base_dn: null,

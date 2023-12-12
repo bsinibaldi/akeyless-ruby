@@ -40,6 +40,12 @@ module Akeyless
     # Base64-encoded service account private key text
     attr_accessor :gcp_key
 
+    # The email of the gcp service account to rotate
+    attr_accessor :gcp_service_account_email
+
+    # The key id of the gcp service account to rotate
+    attr_accessor :gcp_service_account_key_id
+
     # Set output format to JSON
     attr_accessor :json
 
@@ -99,6 +105,8 @@ module Akeyless
         :'delete_protection' => :'delete_protection',
         :'description' => :'description',
         :'gcp_key' => :'gcp-key',
+        :'gcp_service_account_email' => :'gcp-service-account-email',
+        :'gcp_service_account_key_id' => :'gcp-service-account-key-id',
         :'json' => :'json',
         :'keep_prev_version' => :'keep-prev-version',
         :'key' => :'key',
@@ -134,6 +142,8 @@ module Akeyless
         :'delete_protection' => :'String',
         :'description' => :'String',
         :'gcp_key' => :'String',
+        :'gcp_service_account_email' => :'String',
+        :'gcp_service_account_key_id' => :'String',
         :'json' => :'Boolean',
         :'keep_prev_version' => :'String',
         :'key' => :'String',
@@ -208,6 +218,14 @@ module Akeyless
 
       if attributes.key?(:'gcp_key')
         self.gcp_key = attributes[:'gcp_key']
+      end
+
+      if attributes.key?(:'gcp_service_account_email')
+        self.gcp_service_account_email = attributes[:'gcp_service_account_email']
+      end
+
+      if attributes.key?(:'gcp_service_account_key_id')
+        self.gcp_service_account_key_id = attributes[:'gcp_service_account_key_id']
       end
 
       if attributes.key?(:'json')
@@ -327,6 +345,8 @@ module Akeyless
           delete_protection == o.delete_protection &&
           description == o.description &&
           gcp_key == o.gcp_key &&
+          gcp_service_account_email == o.gcp_service_account_email &&
+          gcp_service_account_key_id == o.gcp_service_account_key_id &&
           json == o.json &&
           keep_prev_version == o.keep_prev_version &&
           key == o.key &&
@@ -354,7 +374,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_tag, api_id, api_key, auto_rotate, custom_payload, delete_protection, description, gcp_key, json, keep_prev_version, key, name, new_metadata, new_name, new_version, rm_tag, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, token, type, uid_token].hash
+      [add_tag, api_id, api_key, auto_rotate, custom_payload, delete_protection, description, gcp_key, gcp_service_account_email, gcp_service_account_key_id, json, keep_prev_version, key, name, new_metadata, new_name, new_version, rm_tag, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, token, type, uid_token].hash
     end
 
     # Builds the object from hash

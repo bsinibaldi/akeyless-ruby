@@ -39,6 +39,9 @@ module Akeyless
     # TTL in days for the generated certificate. Required only for generate-self-signed-certificate.
     attr_accessor :certificate_ttl
 
+    # The csr config data in base64 encoding
+    attr_accessor :conf_file_data
+
     # The customer fragment ID that will be used to create the DFC key (if empty, the key will be created independently of a customer fragment)
     attr_accessor :customer_frg_id
 
@@ -83,6 +86,7 @@ module Akeyless
         :'certificate_organization' => :'certificate-organization',
         :'certificate_province' => :'certificate-province',
         :'certificate_ttl' => :'certificate-ttl',
+        :'conf_file_data' => :'conf-file-data',
         :'customer_frg_id' => :'customer-frg-id',
         :'delete_protection' => :'delete_protection',
         :'description' => :'description',
@@ -113,6 +117,7 @@ module Akeyless
         :'certificate_organization' => :'String',
         :'certificate_province' => :'String',
         :'certificate_ttl' => :'Integer',
+        :'conf_file_data' => :'String',
         :'customer_frg_id' => :'String',
         :'delete_protection' => :'String',
         :'description' => :'String',
@@ -180,6 +185,10 @@ module Akeyless
 
       if attributes.key?(:'certificate_ttl')
         self.certificate_ttl = attributes[:'certificate_ttl']
+      end
+
+      if attributes.key?(:'conf_file_data')
+        self.conf_file_data = attributes[:'conf_file_data']
       end
 
       if attributes.key?(:'customer_frg_id')
@@ -273,6 +282,7 @@ module Akeyless
           certificate_organization == o.certificate_organization &&
           certificate_province == o.certificate_province &&
           certificate_ttl == o.certificate_ttl &&
+          conf_file_data == o.conf_file_data &&
           customer_frg_id == o.customer_frg_id &&
           delete_protection == o.delete_protection &&
           description == o.description &&
@@ -295,7 +305,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alg, certificate_common_name, certificate_country, certificate_digest_algo, certificate_locality, certificate_organization, certificate_province, certificate_ttl, customer_frg_id, delete_protection, description, generate_self_signed_certificate, json, metadata, name, split_level, tag, token, uid_token].hash
+      [alg, certificate_common_name, certificate_country, certificate_digest_algo, certificate_locality, certificate_organization, certificate_province, certificate_ttl, conf_file_data, customer_frg_id, delete_protection, description, generate_self_signed_certificate, json, metadata, name, split_level, tag, token, uid_token].hash
     end
 
     # Builds the object from hash

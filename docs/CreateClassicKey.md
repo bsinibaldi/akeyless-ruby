@@ -13,6 +13,7 @@
 | **certificate_organization** | **String** | Organization name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] |
 | **certificate_province** | **String** | Province name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] |
 | **certificate_ttl** | **Integer** | TTL in days for the generated certificate. Required only for generate-self-signed-certificate. | [optional] |
+| **conf_file_data** | **String** | The csr config data in base64 encoding | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
 | **description** | **String** | Description of the object | [optional] |
 | **generate_self_signed_certificate** | **Boolean** | Whether to generate a self signed certificate with the key. If set, --certificate-ttl must be provided. | [optional] |
@@ -41,6 +42,7 @@ instance = Akeyless::CreateClassicKey.new(
   certificate_organization: null,
   certificate_province: null,
   certificate_ttl: null,
+  conf_file_data: null,
   delete_protection: null,
   description: null,
   generate_self_signed_certificate: null,

@@ -25,9 +25,12 @@ module Akeyless
 
     attr_accessor :computer_base_dn
 
+    # Deprecated
     attr_accessor :discover_local_users
 
     attr_accessor :discover_services
+
+    attr_accessor :discovery_types
 
     attr_accessor :domain_name
 
@@ -40,6 +43,8 @@ module Akeyless
     attr_accessor :local_users_ignore_list
 
     attr_accessor :local_users_rotated_secrets_path_template
+
+    attr_accessor :os_filter
 
     attr_accessor :ssh_port
 
@@ -63,12 +68,14 @@ module Akeyless
         :'computer_base_dn' => :'computer_base_dn',
         :'discover_local_users' => :'discover_local_users',
         :'discover_services' => :'discover_services',
+        :'discovery_types' => :'discovery_types',
         :'domain_name' => :'domain_name',
         :'domain_server_targets_path_template' => :'domain_server_targets_path_template',
         :'domain_users_rotated_secrets_path_template' => :'domain_users_rotated_secrets_path_template',
         :'enable_rdp_sra' => :'enable_rdp_sra',
         :'local_users_ignore_list' => :'local_users_ignore_list',
         :'local_users_rotated_secrets_path_template' => :'local_users_rotated_secrets_path_template',
+        :'os_filter' => :'os_filter',
         :'ssh_port' => :'ssh_port',
         :'targets_type' => :'targets_type',
         :'user_base_dn' => :'user_base_dn',
@@ -93,12 +100,14 @@ module Akeyless
         :'computer_base_dn' => :'String',
         :'discover_local_users' => :'Boolean',
         :'discover_services' => :'Boolean',
+        :'discovery_types' => :'Array<String>',
         :'domain_name' => :'String',
         :'domain_server_targets_path_template' => :'String',
         :'domain_users_rotated_secrets_path_template' => :'String',
         :'enable_rdp_sra' => :'Boolean',
         :'local_users_ignore_list' => :'Hash<String, Boolean>',
         :'local_users_rotated_secrets_path_template' => :'String',
+        :'os_filter' => :'String',
         :'ssh_port' => :'String',
         :'targets_type' => :'String',
         :'user_base_dn' => :'String',
@@ -157,6 +166,12 @@ module Akeyless
         self.discover_services = attributes[:'discover_services']
       end
 
+      if attributes.key?(:'discovery_types')
+        if (value = attributes[:'discovery_types']).is_a?(Array)
+          self.discovery_types = value
+        end
+      end
+
       if attributes.key?(:'domain_name')
         self.domain_name = attributes[:'domain_name']
       end
@@ -181,6 +196,10 @@ module Akeyless
 
       if attributes.key?(:'local_users_rotated_secrets_path_template')
         self.local_users_rotated_secrets_path_template = attributes[:'local_users_rotated_secrets_path_template']
+      end
+
+      if attributes.key?(:'os_filter')
+        self.os_filter = attributes[:'os_filter']
       end
 
       if attributes.key?(:'ssh_port')
@@ -237,12 +256,14 @@ module Akeyless
           computer_base_dn == o.computer_base_dn &&
           discover_local_users == o.discover_local_users &&
           discover_services == o.discover_services &&
+          discovery_types == o.discovery_types &&
           domain_name == o.domain_name &&
           domain_server_targets_path_template == o.domain_server_targets_path_template &&
           domain_users_rotated_secrets_path_template == o.domain_users_rotated_secrets_path_template &&
           enable_rdp_sra == o.enable_rdp_sra &&
           local_users_ignore_list == o.local_users_ignore_list &&
           local_users_rotated_secrets_path_template == o.local_users_rotated_secrets_path_template &&
+          os_filter == o.os_filter &&
           ssh_port == o.ssh_port &&
           targets_type == o.targets_type &&
           user_base_dn == o.user_base_dn &&
@@ -260,7 +281,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [active_directory_target_id, auto_rotate, auto_rotate_interval_in_days, auto_rotate_rotation_hour, computer_base_dn, discover_local_users, discover_services, domain_name, domain_server_targets_path_template, domain_users_rotated_secrets_path_template, enable_rdp_sra, local_users_ignore_list, local_users_rotated_secrets_path_template, ssh_port, targets_type, user_base_dn, user_groups, winrm_over_http, winrm_port].hash
+      [active_directory_target_id, auto_rotate, auto_rotate_interval_in_days, auto_rotate_rotation_hour, computer_base_dn, discover_local_users, discover_services, discovery_types, domain_name, domain_server_targets_path_template, domain_users_rotated_secrets_path_template, enable_rdp_sra, local_users_ignore_list, local_users_rotated_secrets_path_template, os_filter, ssh_port, targets_type, user_base_dn, user_groups, winrm_over_http, winrm_port].hash
     end
 
     # Builds the object from hash

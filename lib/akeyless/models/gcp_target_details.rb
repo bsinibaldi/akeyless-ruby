@@ -15,12 +15,13 @@ require 'time'
 
 module Akeyless
   class GcpTargetDetails
-    # deprecated
     attr_accessor :gcp_service_account_email
 
     attr_accessor :gcp_service_account_key
 
     attr_accessor :gcp_service_account_key_base64
+
+    attr_accessor :gcp_service_account_key_id
 
     attr_accessor :use_gw_cloud_identity
 
@@ -30,6 +31,7 @@ module Akeyless
         :'gcp_service_account_email' => :'gcp_service_account_email',
         :'gcp_service_account_key' => :'gcp_service_account_key',
         :'gcp_service_account_key_base64' => :'gcp_service_account_key_base64',
+        :'gcp_service_account_key_id' => :'gcp_service_account_key_id',
         :'use_gw_cloud_identity' => :'use_gw_cloud_identity'
       }
     end
@@ -45,6 +47,7 @@ module Akeyless
         :'gcp_service_account_email' => :'String',
         :'gcp_service_account_key' => :'String',
         :'gcp_service_account_key_base64' => :'String',
+        :'gcp_service_account_key_id' => :'String',
         :'use_gw_cloud_identity' => :'Boolean'
       }
     end
@@ -82,6 +85,10 @@ module Akeyless
         self.gcp_service_account_key_base64 = attributes[:'gcp_service_account_key_base64']
       end
 
+      if attributes.key?(:'gcp_service_account_key_id')
+        self.gcp_service_account_key_id = attributes[:'gcp_service_account_key_id']
+      end
+
       if attributes.key?(:'use_gw_cloud_identity')
         self.use_gw_cloud_identity = attributes[:'use_gw_cloud_identity']
       end
@@ -110,6 +117,7 @@ module Akeyless
           gcp_service_account_email == o.gcp_service_account_email &&
           gcp_service_account_key == o.gcp_service_account_key &&
           gcp_service_account_key_base64 == o.gcp_service_account_key_base64 &&
+          gcp_service_account_key_id == o.gcp_service_account_key_id &&
           use_gw_cloud_identity == o.use_gw_cloud_identity
     end
 
@@ -122,7 +130,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [gcp_service_account_email, gcp_service_account_key, gcp_service_account_key_base64, use_gw_cloud_identity].hash
+      [gcp_service_account_email, gcp_service_account_key, gcp_service_account_key_base64, gcp_service_account_key_id, use_gw_cloud_identity].hash
     end
 
     # Builds the object from hash

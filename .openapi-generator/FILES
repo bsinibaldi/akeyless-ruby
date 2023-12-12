@@ -650,6 +650,7 @@ docs/UpdateAzureTarget.md
 docs/UpdateAzureTargetOutput.md
 docs/UpdateCertificateOutput.md
 docs/UpdateCertificateValue.md
+docs/UpdateClassicKeyCertificate.md
 docs/UpdateDBTarget.md
 docs/UpdateDBTargetDetails.md
 docs/UpdateDBTargetOutput.md
@@ -1382,6 +1383,7 @@ lib/akeyless/models/update_azure_target.rb
 lib/akeyless/models/update_azure_target_output.rb
 lib/akeyless/models/update_certificate_output.rb
 lib/akeyless/models/update_certificate_value.rb
+lib/akeyless/models/update_classic_key_certificate.rb
 lib/akeyless/models/update_db_target.rb
 lib/akeyless/models/update_db_target_details.rb
 lib/akeyless/models/update_db_target_output.rb
@@ -1467,8 +1469,5 @@ lib/akeyless/models/zero_ssl_target_details.rb
 lib/akeyless/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/target_name_with_hosts_spec.rb
-spec/models/usage_event_setting_spec.rb
-spec/models/windows_service_attributes_spec.rb
-spec/models/windows_service_spec.rb
+spec/models/update_classic_key_certificate_spec.rb
 spec/spec_helper.rb

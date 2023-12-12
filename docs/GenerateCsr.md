@@ -16,8 +16,10 @@
 | **generate_key** | **Boolean** | Generate a new classic key for the csr | [optional] |
 | **ip_addresses** | **String** | A comma-separated list of ip addresses alternative names | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
+| **key_type** | **String** | The type of the key to generate (classic-key/dfc) | [default to &#39;classic-key&#39;] |
 | **name** | **String** | The classic key name |  |
 | **org** | **String** | The organization to be included in the CSR certificate | [optional] |
+| **split_level** | **Integer** | The number of fragments that the item will be split into (not includes customer fragment) | [optional][default to 3] |
 | **state** | **String** | The state to be included in the CSR certificate | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
@@ -41,8 +43,10 @@ instance = Akeyless::GenerateCsr.new(
   generate_key: null,
   ip_addresses: null,
   json: null,
+  key_type: null,
   name: null,
   org: null,
+  split_level: null,
   state: null,
   token: null,
   uid_token: null,

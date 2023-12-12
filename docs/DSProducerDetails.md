@@ -90,6 +90,7 @@
 | **gcp_service_account_email** | **String** | GCPServiceAccountEmail overrides the deprecated field from the target | [optional] |
 | **gcp_service_account_key** | **String** |  | [optional] |
 | **gcp_service_account_key_base64** | **String** |  | [optional] |
+| **gcp_service_account_key_id** | **String** |  | [optional] |
 | **gcp_service_account_type** | **String** |  | [optional] |
 | **gcp_tmp_service_account_name** | **String** |  | [optional] |
 | **gcp_token_lifetime** | **String** |  | [optional] |
@@ -314,6 +315,7 @@ instance = Akeyless::DSProducerDetails.new(
   gcp_service_account_email: null,
   gcp_service_account_key: null,
   gcp_service_account_key_base64: null,
+  gcp_service_account_key_id: null,
   gcp_service_account_type: null,
   gcp_tmp_service_account_name: null,
   gcp_token_lifetime: null,

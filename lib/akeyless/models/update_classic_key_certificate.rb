@@ -14,37 +14,31 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class CertificateTemplateInfo
-    attr_accessor :common_name
+  # UpdateClassicKeyCertificate is a command that updates the certificate for a classic key
+  class UpdateClassicKeyCertificate
+    # PEM Certificate in a Base64 format. Used for updating RSA keys' certificates.
+    attr_accessor :cert_file_data
 
-    attr_accessor :country
+    # Set output format to JSON
+    attr_accessor :json
 
-    attr_accessor :csr_cnf_base_64
+    # ClassicKey name
+    attr_accessor :name
 
-    attr_accessor :digest_algo
+    # Authentication token (see `/auth` and `/configure`)
+    attr_accessor :token
 
-    attr_accessor :locality
-
-    attr_accessor :organization
-
-    attr_accessor :province
-
-    attr_accessor :self_signed_enabled
-
-    attr_accessor :ttl
+    # The universal identity token, Required only for universal_identity authentication
+    attr_accessor :uid_token
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'common_name' => :'common_name',
-        :'country' => :'country',
-        :'csr_cnf_base_64' => :'csr_cnf_base_64',
-        :'digest_algo' => :'digest_algo',
-        :'locality' => :'locality',
-        :'organization' => :'organization',
-        :'province' => :'province',
-        :'self_signed_enabled' => :'self_signed_enabled',
-        :'ttl' => :'ttl'
+        :'cert_file_data' => :'cert-file-data',
+        :'json' => :'json',
+        :'name' => :'name',
+        :'token' => :'token',
+        :'uid_token' => :'uid-token'
       }
     end
 
@@ -56,15 +50,11 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'common_name' => :'String',
-        :'country' => :'String',
-        :'csr_cnf_base_64' => :'String',
-        :'digest_algo' => :'String',
-        :'locality' => :'String',
-        :'organization' => :'String',
-        :'province' => :'String',
-        :'self_signed_enabled' => :'Boolean',
-        :'ttl' => :'Integer'
+        :'cert_file_data' => :'String',
+        :'json' => :'Boolean',
+        :'name' => :'String',
+        :'token' => :'String',
+        :'uid_token' => :'String'
       }
     end
 
@@ -78,51 +68,39 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::CertificateTemplateInfo` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::UpdateClassicKeyCertificate` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::CertificateTemplateInfo`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::UpdateClassicKeyCertificate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'common_name')
-        self.common_name = attributes[:'common_name']
+      if attributes.key?(:'cert_file_data')
+        self.cert_file_data = attributes[:'cert_file_data']
       end
 
-      if attributes.key?(:'country')
-        self.country = attributes[:'country']
+      if attributes.key?(:'json')
+        self.json = attributes[:'json']
+      else
+        self.json = false
       end
 
-      if attributes.key?(:'csr_cnf_base_64')
-        self.csr_cnf_base_64 = attributes[:'csr_cnf_base_64']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      else
+        self.name = nil
       end
 
-      if attributes.key?(:'digest_algo')
-        self.digest_algo = attributes[:'digest_algo']
+      if attributes.key?(:'token')
+        self.token = attributes[:'token']
       end
 
-      if attributes.key?(:'locality')
-        self.locality = attributes[:'locality']
-      end
-
-      if attributes.key?(:'organization')
-        self.organization = attributes[:'organization']
-      end
-
-      if attributes.key?(:'province')
-        self.province = attributes[:'province']
-      end
-
-      if attributes.key?(:'self_signed_enabled')
-        self.self_signed_enabled = attributes[:'self_signed_enabled']
-      end
-
-      if attributes.key?(:'ttl')
-        self.ttl = attributes[:'ttl']
+      if attributes.key?(:'uid_token')
+        self.uid_token = attributes[:'uid_token']
       end
     end
 
@@ -131,6 +109,10 @@ module Akeyless
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -138,6 +120,7 @@ module Akeyless
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @name.nil?
       true
     end
 
@@ -146,15 +129,11 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          common_name == o.common_name &&
-          country == o.country &&
-          csr_cnf_base_64 == o.csr_cnf_base_64 &&
-          digest_algo == o.digest_algo &&
-          locality == o.locality &&
-          organization == o.organization &&
-          province == o.province &&
-          self_signed_enabled == o.self_signed_enabled &&
-          ttl == o.ttl
+          cert_file_data == o.cert_file_data &&
+          json == o.json &&
+          name == o.name &&
+          token == o.token &&
+          uid_token == o.uid_token
     end
 
     # @see the `==` method
@@ -166,7 +145,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [common_name, country, csr_cnf_base_64, digest_algo, locality, organization, province, self_signed_enabled, ttl].hash
+      [cert_file_data, json, name, token, uid_token].hash
     end
 
     # Builds the object from hash

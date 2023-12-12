@@ -50,11 +50,17 @@ module Akeyless
     # Set output format to JSON
     attr_accessor :json
 
+    # The type of the key to generate (classic-key/dfc)
+    attr_accessor :key_type
+
     # The classic key name
     attr_accessor :name
 
     # The organization to be included in the CSR certificate
     attr_accessor :org
+
+    # The number of fragments that the item will be split into (not includes customer fragment)
+    attr_accessor :split_level
 
     # The state to be included in the CSR certificate
     attr_accessor :state
@@ -83,8 +89,10 @@ module Akeyless
         :'generate_key' => :'generate-key',
         :'ip_addresses' => :'ip-addresses',
         :'json' => :'json',
+        :'key_type' => :'key-type',
         :'name' => :'name',
         :'org' => :'org',
+        :'split_level' => :'split-level',
         :'state' => :'state',
         :'token' => :'token',
         :'uid_token' => :'uid-token',
@@ -112,8 +120,10 @@ module Akeyless
         :'generate_key' => :'Boolean',
         :'ip_addresses' => :'String',
         :'json' => :'Boolean',
+        :'key_type' => :'String',
         :'name' => :'String',
         :'org' => :'String',
+        :'split_level' => :'Integer',
         :'state' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String',
@@ -194,6 +204,12 @@ module Akeyless
         self.json = false
       end
 
+      if attributes.key?(:'key_type')
+        self.key_type = attributes[:'key_type']
+      else
+        self.key_type = 'classic-key'
+      end
+
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       else
@@ -202,6 +218,12 @@ module Akeyless
 
       if attributes.key?(:'org')
         self.org = attributes[:'org']
+      end
+
+      if attributes.key?(:'split_level')
+        self.split_level = attributes[:'split_level']
+      else
+        self.split_level = 3
       end
 
       if attributes.key?(:'state')
@@ -230,6 +252,10 @@ module Akeyless
         invalid_properties.push('invalid value for "common_name", common_name cannot be nil.')
       end
 
+      if @key_type.nil?
+        invalid_properties.push('invalid value for "key_type", key_type cannot be nil.')
+      end
+
       if @name.nil?
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
@@ -242,6 +268,7 @@ module Akeyless
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @common_name.nil?
+      return false if @key_type.nil?
       return false if @name.nil?
       true
     end
@@ -263,8 +290,10 @@ module Akeyless
           generate_key == o.generate_key &&
           ip_addresses == o.ip_addresses &&
           json == o.json &&
+          key_type == o.key_type &&
           name == o.name &&
           org == o.org &&
+          split_level == o.split_level &&
           state == o.state &&
           token == o.token &&
           uid_token == o.uid_token &&
@@ -280,7 +309,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [alg, alt_names, certificate_type, city, common_name, country, critical, dep, email_addresses, generate_key, ip_addresses, json, name, org, state, token, uid_token, uri_sans].hash
+      [alg, alt_names, certificate_type, city, common_name, country, critical, dep, email_addresses, generate_key, ip_addresses, json, key_type, name, org, split_level, state, token, uid_token, uri_sans].hash
     end
 
     # Builds the object from hash

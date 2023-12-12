@@ -262,6 +262,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_aws_target_details**](V2Api.md#update_aws_target_details) | **POST** /update-aws-target-details |  |
 | [**update_azure_target**](V2Api.md#update_azure_target) | **POST** /update-azure-target |  |
 | [**update_certificate_value**](V2Api.md#update_certificate_value) | **POST** /update-certificate-value |  |
+| [**update_classic_key_certificate**](V2Api.md#update_classic_key_certificate) | **POST** /update-classic-key-certificate |  |
 | [**update_db_target**](V2Api.md#update_db_target) | **POST** /update-db-target |  |
 | [**update_db_target_details**](V2Api.md#update_db_target_details) | **POST** /update-db-target-details |  |
 | [**update_dockerhub_target**](V2Api.md#update_dockerhub_target) | **POST** /update-dockerhub-target |  |
@@ -10928,7 +10929,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::GenerateCsr.new({common_name: 'common_name_example', name: 'name_example'}) # GenerateCsr | 
+body = Akeyless::GenerateCsr.new({common_name: 'common_name_example', key_type: 'key_type_example', name: 'name_example'}) # GenerateCsr | 
 
 begin
   
@@ -16318,6 +16319,68 @@ end
 ### Return type
 
 [**UpdateCertificateOutput**](UpdateCertificateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_classic_key_certificate
+
+> Object update_classic_key_certificate(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateClassicKeyCertificate.new({name: 'name_example'}) # UpdateClassicKeyCertificate | 
+
+begin
+  
+  result = api_instance.update_classic_key_certificate(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_classic_key_certificate: #{e}"
+end
+```
+
+#### Using the update_classic_key_certificate_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> update_classic_key_certificate_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_classic_key_certificate_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_classic_key_certificate_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateClassicKeyCertificate**](UpdateClassicKeyCertificate.md) |  |  |
+
+### Return type
+
+**Object**
 
 ### Authorization
 
