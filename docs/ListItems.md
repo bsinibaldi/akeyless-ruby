@@ -9,7 +9,8 @@
 | **auto_pagination** | **String** | Retrieve all items using pagination, when disabled retrieving only first 1000 items | [optional][default to &#39;enabled&#39;] |
 | **filter** | **String** | Filter by item name or part of it | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
-| **minimal_view** | **Boolean** |  | [optional] |
+| **minimal_view** | **Boolean** | Show only basic information of the items | [optional] |
+| **modified_after** | **Integer** | List only secrets modified after specified date (in unix time) | [optional] |
 | **pagination_token** | **String** | Next page reference | [optional] |
 | **path** | **String** | Path to folder | [optional] |
 | **sra_only** | **Boolean** | Filter by items with SRA functionality enabled | [optional][default to false] |
@@ -31,6 +32,7 @@ instance = Akeyless::ListItems.new(
   filter: null,
   json: null,
   minimal_view: null,
+  modified_after: null,
   pagination_token: null,
   path: null,
   sra_only: null,

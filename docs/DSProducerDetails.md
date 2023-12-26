@@ -163,6 +163,7 @@
 | **mysql_creation_statements** | **String** |  | [optional] |
 | **mysql_revocation_statements** | **String** |  | [optional] |
 | **oracle_creation_statements** | **String** |  | [optional] |
+| **oracle_revocation_statements** | **String** |  | [optional] |
 | **password** | **String** |  | [optional] |
 | **password_length** | **Integer** |  | [optional] |
 | **password_policy** | **String** |  | [optional] |
@@ -388,6 +389,7 @@ instance = Akeyless::DSProducerDetails.new(
   mysql_creation_statements: null,
   mysql_revocation_statements: null,
   oracle_creation_statements: null,
+  oracle_revocation_statements: null,
   password: null,
   password_length: null,
   password_policy: null,

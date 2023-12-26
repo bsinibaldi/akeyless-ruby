@@ -16,6 +16,7 @@
 | **name** | **String** |  | [optional] |
 | **permissions** | **Array&lt;String&gt;** |  | [optional] |
 | **sub_claims** | **Hash&lt;String, Array&lt;String&gt;&gt;** |  | [optional] |
+| **sub_claims_case_insensitive** | **Boolean** |  | [optional] |
 | **updated_at** | **Time** |  | [optional] |
 
 ## Example
@@ -36,6 +37,7 @@ instance = Akeyless::AllowedAccess.new(
   name: null,
   permissions: null,
   sub_claims: null,
+  sub_claims_case_insensitive: null,
   updated_at: null
 )
 ```

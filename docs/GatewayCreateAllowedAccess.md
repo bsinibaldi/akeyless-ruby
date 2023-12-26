@@ -4,7 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **sub_claims_case_insensitive** | **Boolean** |  | [optional] |
 | **access_id** | **String** | Access ID The access id to be attached to this allowed access. Auth method with this access id should already exist. |  |
+| **case_sensitive** | **String** | Treat sub claims as case-sensitive [true/false] | [optional][default to &#39;true&#39;] |
 | **description** | **String** | Allowed access description | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **name** | **String** | Allowed access name |  |
@@ -19,7 +21,9 @@
 require 'akeyless'
 
 instance = Akeyless::GatewayCreateAllowedAccess.new(
+  sub_claims_case_insensitive: null,
   access_id: null,
+  case_sensitive: null,
   description: null,
   json: null,
   name: null,

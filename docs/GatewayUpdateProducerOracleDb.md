@@ -13,6 +13,7 @@
 | **oracle_host** | **String** | Oracle Host | [optional][default to &#39;127.0.0.1&#39;] |
 | **oracle_password** | **String** | Oracle Password | [optional] |
 | **oracle_port** | **String** | Oracle Port | [optional][default to &#39;1521&#39;] |
+| **oracle_revocation_statements** | **String** | Oracle Revocation statements | [optional] |
 | **oracle_screation_statements** | **String** | Oracle Creation statements | [optional] |
 | **oracle_service_name** | **String** | Oracle DB Name | [optional] |
 | **oracle_username** | **String** | Oracle Username | [optional] |
@@ -42,6 +43,7 @@ instance = Akeyless::GatewayUpdateProducerOracleDb.new(
   oracle_host: null,
   oracle_password: null,
   oracle_port: null,
+  oracle_revocation_statements: null,
   oracle_screation_statements: null,
   oracle_service_name: null,
   oracle_username: null,

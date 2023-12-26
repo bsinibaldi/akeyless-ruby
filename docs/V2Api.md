@@ -54,6 +54,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_ssh_cert_issuer**](V2Api.md#create_ssh_cert_issuer) | **POST** /create-ssh-cert-issuer |  |
 | [**create_ssh_target**](V2Api.md#create_ssh_target) | **POST** /create-ssh-target |  |
 | [**create_tokenizer**](V2Api.md#create_tokenizer) | **POST** /create-tokenizer |  |
+| [**create_usc**](V2Api.md#create_usc) | **POST** /create-usc |  |
 | [**create_user_event**](V2Api.md#create_user_event) | **POST** /create-user-event |  |
 | [**create_web_target**](V2Api.md#create_web_target) | **POST** /create-web-target |  |
 | [**create_windows_target**](V2Api.md#create_windows_target) | **POST** /create-windows-target |  |
@@ -300,6 +301,11 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_windows_target**](V2Api.md#update_windows_target) | **POST** /update-windows-target |  |
 | [**update_zero_ssl_target**](V2Api.md#update_zero_ssl_target) | **POST** /update-zerossl-target |  |
 | [**upload_rsa**](V2Api.md#upload_rsa) | **POST** /upload-rsa |  |
+| [**usc_create**](V2Api.md#usc_create) | **POST** /usc-create |  |
+| [**usc_delete**](V2Api.md#usc_delete) | **POST** /usc-delete |  |
+| [**usc_get**](V2Api.md#usc_get) | **POST** /usc-get |  |
+| [**usc_list**](V2Api.md#usc_list) | **POST** /usc-list |  |
+| [**usc_update**](V2Api.md#usc_update) | **POST** /usc-update |  |
 | [**validate_token**](V2Api.md#validate_token) | **POST** /validate-token |  |
 | [**verify_data_with_classic_key**](V2Api.md#verify_data_with_classic_key) | **POST** /verify-data-with-classic-key |  |
 | [**verify_ec_dsa**](V2Api.md#verify_ec_dsa) | **POST** /verify-ecdsa |  |
@@ -3399,6 +3405,68 @@ end
 ### Return type
 
 [**CreateTokenizerOutput**](CreateTokenizerOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_usc
+
+> <CreateUSCOutput> create_usc(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateUSC.new({name: 'name_example', target_to_associate: 'target_to_associate_example'}) # CreateUSC | 
+
+begin
+  
+  result = api_instance.create_usc(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_usc: #{e}"
+end
+```
+
+#### Using the create_usc_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateUSCOutput>, Integer, Hash)> create_usc_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_usc_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateUSCOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_usc_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateUSC**](CreateUSC.md) |  |  |
+
+### Return type
+
+[**CreateUSCOutput**](CreateUSCOutput.md)
 
 ### Authorization
 
@@ -18680,6 +18748,313 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## usc_create
+
+> <UscCreateSecretOutput> usc_create(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UscUpdate.new({secret_id: 'secret_id_example', usc_name: 'usc_name_example', value: 'value_example'}) # UscUpdate | 
+
+begin
+  
+  result = api_instance.usc_create(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->usc_create: #{e}"
+end
+```
+
+#### Using the usc_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UscCreateSecretOutput>, Integer, Hash)> usc_create_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.usc_create_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UscCreateSecretOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->usc_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UscUpdate**](UscUpdate.md) |  |  |
+
+### Return type
+
+[**UscCreateSecretOutput**](UscCreateSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## usc_delete
+
+> <UscDeleteSecretOutput> usc_delete(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UscDelete.new({secret_id: 'secret_id_example', usc_name: 'usc_name_example'}) # UscDelete | 
+
+begin
+  
+  result = api_instance.usc_delete(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->usc_delete: #{e}"
+end
+```
+
+#### Using the usc_delete_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UscDeleteSecretOutput>, Integer, Hash)> usc_delete_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.usc_delete_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UscDeleteSecretOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->usc_delete_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UscDelete**](UscDelete.md) |  |  |
+
+### Return type
+
+[**UscDeleteSecretOutput**](UscDeleteSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## usc_get
+
+> <UscGetSecretOutput> usc_get(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UscGet.new({secret_id: 'secret_id_example', usc_name: 'usc_name_example'}) # UscGet | 
+
+begin
+  
+  result = api_instance.usc_get(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->usc_get: #{e}"
+end
+```
+
+#### Using the usc_get_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UscGetSecretOutput>, Integer, Hash)> usc_get_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.usc_get_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UscGetSecretOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->usc_get_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UscGet**](UscGet.md) |  |  |
+
+### Return type
+
+[**UscGetSecretOutput**](UscGetSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## usc_list
+
+> <UscListSecretsOutput> usc_list(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UscList.new({usc_name: 'usc_name_example'}) # UscList | 
+
+begin
+  
+  result = api_instance.usc_list(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->usc_list: #{e}"
+end
+```
+
+#### Using the usc_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UscListSecretsOutput>, Integer, Hash)> usc_list_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.usc_list_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UscListSecretsOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->usc_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UscList**](UscList.md) |  |  |
+
+### Return type
+
+[**UscListSecretsOutput**](UscListSecretsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## usc_update
+
+> <UscUpdateSecretOutput> usc_update
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+
+begin
+  
+  result = api_instance.usc_update
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->usc_update: #{e}"
+end
+```
+
+#### Using the usc_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UscUpdateSecretOutput>, Integer, Hash)> usc_update_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.usc_update_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UscUpdateSecretOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->usc_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**UscUpdateSecretOutput**](UscUpdateSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
