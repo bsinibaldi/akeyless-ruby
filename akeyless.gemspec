@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.summary     = "Akeyless API Ruby Gem"
   s.description = "The purpose of this application is to provide access to Akeyless API."
   s.license     = "Unlicense"
-  s.required_ruby_version = ">=3.0"
+  s.required_ruby_version = ">=2.5"
   s.metadata    = {}
 
   s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'
