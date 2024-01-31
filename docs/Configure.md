@@ -16,6 +16,8 @@
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **k8s_auth_config_name** | **String** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] |
 | **key_data** | **String** | Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context) | [optional] |
+| **oci_auth_type** | **String** | The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci) | [optional][default to &#39;apikey&#39;] |
+| **oci_group_ocid** | **Array&lt;String&gt;** | A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci) | [optional] |
 
 ## Example
 
@@ -34,7 +36,9 @@ instance = Akeyless::Configure.new(
   gcp_audience: null,
   json: null,
   k8s_auth_config_name: null,
-  key_data: null
+  key_data: null,
+  oci_auth_type: null,
+  oci_group_ocid: null
 )
 ```
 

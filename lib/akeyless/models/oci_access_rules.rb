@@ -14,66 +14,17 @@ require 'date'
 require 'time'
 
 module Akeyless
-  class Configure
-    # Access ID
-    attr_accessor :access_id
+  # OCIAccessRules contains access rules specific to Oracle cloud instance / user authentication
+  class OCIAccessRules
+    attr_accessor :group_ocids
 
-    # Access Key
-    attr_accessor :access_key
-
-    # Access Type (access_key/password/azure_ad/saml/oidc/aws_iam/gcp/k8s/cert)
-    attr_accessor :access_type
-
-    # Account id (relevant only for access-type=password where the email address is associated with more than one account)
-    attr_accessor :account_id
-
-    # Email (relevant only for access-type=password)
-    attr_accessor :admin_email
-
-    # Password (relevant only for access-type=password)
-    attr_accessor :admin_password
-
-    # Azure Active Directory ObjectId (relevant only for access-type=azure_ad)
-    attr_accessor :azure_ad_object_id
-
-    # Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type=cert in Curl Context)
-    attr_accessor :cert_data
-
-    # GCP JWT audience
-    attr_accessor :gcp_audience
-
-    # Set output format to JSON
-    attr_accessor :json
-
-    # The K8S Auth config name (relevant only for access-type=k8s)
-    attr_accessor :k8s_auth_config_name
-
-    # Private key data encoded in base64. Used if file was not provided.(relevant only for access-type=cert in Curl Context)
-    attr_accessor :key_data
-
-    # The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type=oci)
-    attr_accessor :oci_auth_type
-
-    # A list of Oracle Cloud IDs groups (relevant only for access-type=oci)
-    attr_accessor :oci_group_ocid
+    attr_accessor :tenant_ocid
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'access_id' => :'access-id',
-        :'access_key' => :'access-key',
-        :'access_type' => :'access-type',
-        :'account_id' => :'account-id',
-        :'admin_email' => :'admin-email',
-        :'admin_password' => :'admin-password',
-        :'azure_ad_object_id' => :'azure_ad_object_id',
-        :'cert_data' => :'cert-data',
-        :'gcp_audience' => :'gcp-audience',
-        :'json' => :'json',
-        :'k8s_auth_config_name' => :'k8s-auth-config-name',
-        :'key_data' => :'key-data',
-        :'oci_auth_type' => :'oci-auth-type',
-        :'oci_group_ocid' => :'oci-group-ocid'
+        :'group_ocids' => :'group_ocids',
+        :'tenant_ocid' => :'tenant_ocid'
       }
     end
 
@@ -85,20 +36,8 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'access_id' => :'String',
-        :'access_key' => :'String',
-        :'access_type' => :'String',
-        :'account_id' => :'String',
-        :'admin_email' => :'String',
-        :'admin_password' => :'String',
-        :'azure_ad_object_id' => :'String',
-        :'cert_data' => :'String',
-        :'gcp_audience' => :'String',
-        :'json' => :'Boolean',
-        :'k8s_auth_config_name' => :'String',
-        :'key_data' => :'String',
-        :'oci_auth_type' => :'String',
-        :'oci_group_ocid' => :'Array<String>'
+        :'group_ocids' => :'Array<String>',
+        :'tenant_ocid' => :'String'
       }
     end
 
@@ -112,81 +51,25 @@ module Akeyless
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::Configure` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Akeyless::OCIAccessRules` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::Configure`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Akeyless::OCIAccessRules`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'access_id')
-        self.access_id = attributes[:'access_id']
-      end
-
-      if attributes.key?(:'access_key')
-        self.access_key = attributes[:'access_key']
-      end
-
-      if attributes.key?(:'access_type')
-        self.access_type = attributes[:'access_type']
-      else
-        self.access_type = 'access_key'
-      end
-
-      if attributes.key?(:'account_id')
-        self.account_id = attributes[:'account_id']
-      end
-
-      if attributes.key?(:'admin_email')
-        self.admin_email = attributes[:'admin_email']
-      end
-
-      if attributes.key?(:'admin_password')
-        self.admin_password = attributes[:'admin_password']
-      end
-
-      if attributes.key?(:'azure_ad_object_id')
-        self.azure_ad_object_id = attributes[:'azure_ad_object_id']
-      end
-
-      if attributes.key?(:'cert_data')
-        self.cert_data = attributes[:'cert_data']
-      end
-
-      if attributes.key?(:'gcp_audience')
-        self.gcp_audience = attributes[:'gcp_audience']
-      else
-        self.gcp_audience = 'akeyless.io'
-      end
-
-      if attributes.key?(:'json')
-        self.json = attributes[:'json']
-      else
-        self.json = false
-      end
-
-      if attributes.key?(:'k8s_auth_config_name')
-        self.k8s_auth_config_name = attributes[:'k8s_auth_config_name']
-      end
-
-      if attributes.key?(:'key_data')
-        self.key_data = attributes[:'key_data']
-      end
-
-      if attributes.key?(:'oci_auth_type')
-        self.oci_auth_type = attributes[:'oci_auth_type']
-      else
-        self.oci_auth_type = 'apikey'
-      end
-
-      if attributes.key?(:'oci_group_ocid')
-        if (value = attributes[:'oci_group_ocid']).is_a?(Array)
-          self.oci_group_ocid = value
+      if attributes.key?(:'group_ocids')
+        if (value = attributes[:'group_ocids']).is_a?(Array)
+          self.group_ocids = value
         end
+      end
+
+      if attributes.key?(:'tenant_ocid')
+        self.tenant_ocid = attributes[:'tenant_ocid']
       end
     end
 
@@ -210,20 +93,8 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          access_id == o.access_id &&
-          access_key == o.access_key &&
-          access_type == o.access_type &&
-          account_id == o.account_id &&
-          admin_email == o.admin_email &&
-          admin_password == o.admin_password &&
-          azure_ad_object_id == o.azure_ad_object_id &&
-          cert_data == o.cert_data &&
-          gcp_audience == o.gcp_audience &&
-          json == o.json &&
-          k8s_auth_config_name == o.k8s_auth_config_name &&
-          key_data == o.key_data &&
-          oci_auth_type == o.oci_auth_type &&
-          oci_group_ocid == o.oci_group_ocid
+          group_ocids == o.group_ocids &&
+          tenant_ocid == o.tenant_ocid
     end
 
     # @see the `==` method
@@ -235,7 +106,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_id, access_key, access_type, account_id, admin_email, admin_password, azure_ad_object_id, cert_data, gcp_audience, json, k8s_auth_config_name, key_data, oci_auth_type, oci_group_ocid].hash
+      [group_ocids, tenant_ocid].hash
     end
 
     # Builds the object from hash

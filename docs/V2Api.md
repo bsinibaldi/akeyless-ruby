@@ -20,6 +20,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**create_auth_method_k8_s**](V2Api.md#create_auth_method_k8_s) | **POST** /create-auth-method-k8s |  |
 | [**create_auth_method_ldap**](V2Api.md#create_auth_method_ldap) | **POST** /create-auth-method-ldap |  |
 | [**create_auth_method_o_auth2**](V2Api.md#create_auth_method_o_auth2) | **POST** /create-auth-method-oauth2 |  |
+| [**create_auth_method_oci**](V2Api.md#create_auth_method_oci) | **POST** /create-auth-method-oci |  |
 | [**create_auth_method_oidc**](V2Api.md#create_auth_method_oidc) | **POST** /create-auth-method-oidc |  |
 | [**create_auth_method_saml**](V2Api.md#create_auth_method_saml) | **POST** /create-auth-method-saml |  |
 | [**create_auth_method_universal_identity**](V2Api.md#create_auth_method_universal_identity) | **POST** /create-auth-method-universal-identity |  |
@@ -258,6 +259,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_auth_method_k8_s**](V2Api.md#update_auth_method_k8_s) | **POST** /update-auth-method-k8s |  |
 | [**update_auth_method_ldap**](V2Api.md#update_auth_method_ldap) | **POST** /update-auth-method-ldap |  |
 | [**update_auth_method_o_auth2**](V2Api.md#update_auth_method_o_auth2) | **POST** /update-auth-method-oauth2 |  |
+| [**update_auth_method_oci**](V2Api.md#update_auth_method_oci) | **POST** /update-auth-method-oci |  |
 | [**update_auth_method_oidc**](V2Api.md#update_auth_method_oidc) | **POST** /update-auth-method-oidc |  |
 | [**update_auth_method_saml**](V2Api.md#update_auth_method_saml) | **POST** /update-auth-method-saml |  |
 | [**update_auth_method_universal_identity**](V2Api.md#update_auth_method_universal_identity) | **POST** /update-auth-method-universal-identity |  |
@@ -1299,6 +1301,68 @@ end
 ### Return type
 
 [**CreateAuthMethodOAuth2Output**](CreateAuthMethodOAuth2Output.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_auth_method_oci
+
+> <CreateAuthMethodOCIOutput> create_auth_method_oci(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::CreateAuthMethodOCI.new({group_ocid: ['group_ocid_example'], name: 'name_example', tenant_ocid: 'tenant_ocid_example'}) # CreateAuthMethodOCI | 
+
+begin
+  
+  result = api_instance.create_auth_method_oci(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_auth_method_oci: #{e}"
+end
+```
+
+#### Using the create_auth_method_oci_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateAuthMethodOCIOutput>, Integer, Hash)> create_auth_method_oci_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_auth_method_oci_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateAuthMethodOCIOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->create_auth_method_oci_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**CreateAuthMethodOCI**](CreateAuthMethodOCI.md) |  |  |
+
+### Return type
+
+[**CreateAuthMethodOCIOutput**](CreateAuthMethodOCIOutput.md)
 
 ### Authorization
 
@@ -16079,6 +16143,68 @@ end
 ### Return type
 
 **Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_auth_method_oci
+
+> <UpdateAuthMethodOCIOutput> update_auth_method_oci(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateAuthMethodOCI.new({group_ocid: ['group_ocid_example'], name: 'name_example', tenant_ocid: 'tenant_ocid_example'}) # UpdateAuthMethodOCI | 
+
+begin
+  
+  result = api_instance.update_auth_method_oci(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_auth_method_oci: #{e}"
+end
+```
+
+#### Using the update_auth_method_oci_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpdateAuthMethodOCIOutput>, Integer, Hash)> update_auth_method_oci_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.update_auth_method_oci_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpdateAuthMethodOCIOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->update_auth_method_oci_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateAuthMethodOCI**](UpdateAuthMethodOCI.md) |  |  |
+
+### Return type
+
+[**UpdateAuthMethodOCIOutput**](UpdateAuthMethodOCIOutput.md)
 
 ### Authorization
 

@@ -22,6 +22,8 @@
 | **key_data** | **String** | Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert) | [optional] |
 | **ldap_password** | **String** | LDAP password (relevant only for access-type&#x3D;ldap) | [optional] |
 | **ldap_username** | **String** | LDAP username (relevant only for access-type&#x3D;ldap) | [optional] |
+| **oci_auth_type** | **String** | The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci) | [optional][default to &#39;apikey&#39;] |
+| **oci_group_ocid** | **Array&lt;String&gt;** | A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci) | [optional] |
 | **uid_token** | **String** | The universal_identity token (relevant only for access-type&#x3D;universal_identity) | [optional] |
 
 ## Example
@@ -48,6 +50,8 @@ instance = Akeyless::Auth.new(
   key_data: null,
   ldap_password: null,
   ldap_username: null,
+  oci_auth_type: null,
+  oci_group_ocid: null,
   uid_token: null
 )
 ```

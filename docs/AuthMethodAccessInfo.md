@@ -20,6 +20,7 @@
 | **k8s_access_rules** | [**KubernetesAccessRules**](KubernetesAccessRules.md) |  | [optional] |
 | **ldap_access_rules** | [**LDAPAccessRules**](LDAPAccessRules.md) |  | [optional] |
 | **oauth2_access_rules** | [**OAuth2AccessRules**](OAuth2AccessRules.md) |  | [optional] |
+| **oci_access_rules** | [**OCIAccessRules**](OCIAccessRules.md) |  | [optional] |
 | **oidc_access_rules** | [**OIDCAccessRules**](OIDCAccessRules.md) |  | [optional] |
 | **rules_type** | **String** |  | [optional] |
 | **saml_access_rules** | [**SAMLAccessRules**](SAMLAccessRules.md) |  | [optional] |
@@ -48,6 +49,7 @@ instance = Akeyless::AuthMethodAccessInfo.new(
   k8s_access_rules: null,
   ldap_access_rules: null,
   oauth2_access_rules: null,
+  oci_access_rules: null,
   oidc_access_rules: null,
   rules_type: null,
   saml_access_rules: null,

@@ -68,6 +68,12 @@ module Akeyless
     # LDAP username (relevant only for access-type=ldap)
     attr_accessor :ldap_username
 
+    # The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type=oci)
+    attr_accessor :oci_auth_type
+
+    # A list of Oracle Cloud IDs groups (relevant only for access-type=oci)
+    attr_accessor :oci_group_ocid
+
     # The universal_identity token (relevant only for access-type=universal_identity)
     attr_accessor :uid_token
 
@@ -92,6 +98,8 @@ module Akeyless
         :'key_data' => :'key-data',
         :'ldap_password' => :'ldap_password',
         :'ldap_username' => :'ldap_username',
+        :'oci_auth_type' => :'oci-auth-type',
+        :'oci_group_ocid' => :'oci-group-ocid',
         :'uid_token' => :'uid_token'
       }
     end
@@ -122,6 +130,8 @@ module Akeyless
         :'key_data' => :'String',
         :'ldap_password' => :'String',
         :'ldap_username' => :'String',
+        :'oci_auth_type' => :'String',
+        :'oci_group_ocid' => :'Array<String>',
         :'uid_token' => :'String'
       }
     end
@@ -225,6 +235,18 @@ module Akeyless
         self.ldap_username = attributes[:'ldap_username']
       end
 
+      if attributes.key?(:'oci_auth_type')
+        self.oci_auth_type = attributes[:'oci_auth_type']
+      else
+        self.oci_auth_type = 'apikey'
+      end
+
+      if attributes.key?(:'oci_group_ocid')
+        if (value = attributes[:'oci_group_ocid']).is_a?(Array)
+          self.oci_group_ocid = value
+        end
+      end
+
       if attributes.key?(:'uid_token')
         self.uid_token = attributes[:'uid_token']
       end
@@ -268,6 +290,8 @@ module Akeyless
           key_data == o.key_data &&
           ldap_password == o.ldap_password &&
           ldap_username == o.ldap_username &&
+          oci_auth_type == o.oci_auth_type &&
+          oci_group_ocid == o.oci_group_ocid &&
           uid_token == o.uid_token
     end
 
@@ -280,7 +304,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_id, access_key, access_type, account_id, admin_email, admin_password, cert_data, cloud_id, debug, gateway_url, gcp_audience, json, jwt, k8s_auth_config_name, k8s_service_account_token, key_data, ldap_password, ldap_username, uid_token].hash
+      [access_id, access_key, access_type, account_id, admin_email, admin_password, cert_data, cloud_id, debug, gateway_url, gcp_audience, json, jwt, k8s_auth_config_name, k8s_service_account_token, key_data, ldap_password, ldap_username, oci_auth_type, oci_group_ocid, uid_token].hash
     end
 
     # Builds the object from hash

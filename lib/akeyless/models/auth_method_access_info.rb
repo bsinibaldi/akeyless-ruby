@@ -49,6 +49,8 @@ module Akeyless
 
     attr_accessor :oauth2_access_rules
 
+    attr_accessor :oci_access_rules
+
     attr_accessor :oidc_access_rules
 
     attr_accessor :rules_type
@@ -78,6 +80,7 @@ module Akeyless
         :'k8s_access_rules' => :'k8s_access_rules',
         :'ldap_access_rules' => :'ldap_access_rules',
         :'oauth2_access_rules' => :'oauth2_access_rules',
+        :'oci_access_rules' => :'oci_access_rules',
         :'oidc_access_rules' => :'oidc_access_rules',
         :'rules_type' => :'rules_type',
         :'saml_access_rules' => :'saml_access_rules',
@@ -110,6 +113,7 @@ module Akeyless
         :'k8s_access_rules' => :'KubernetesAccessRules',
         :'ldap_access_rules' => :'LDAPAccessRules',
         :'oauth2_access_rules' => :'OAuth2AccessRules',
+        :'oci_access_rules' => :'OCIAccessRules',
         :'oidc_access_rules' => :'OIDCAccessRules',
         :'rules_type' => :'String',
         :'saml_access_rules' => :'SAMLAccessRules',
@@ -203,6 +207,10 @@ module Akeyless
         self.oauth2_access_rules = attributes[:'oauth2_access_rules']
       end
 
+      if attributes.key?(:'oci_access_rules')
+        self.oci_access_rules = attributes[:'oci_access_rules']
+      end
+
       if attributes.key?(:'oidc_access_rules')
         self.oidc_access_rules = attributes[:'oidc_access_rules']
       end
@@ -262,6 +270,7 @@ module Akeyless
           k8s_access_rules == o.k8s_access_rules &&
           ldap_access_rules == o.ldap_access_rules &&
           oauth2_access_rules == o.oauth2_access_rules &&
+          oci_access_rules == o.oci_access_rules &&
           oidc_access_rules == o.oidc_access_rules &&
           rules_type == o.rules_type &&
           saml_access_rules == o.saml_access_rules &&
@@ -278,7 +287,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_expires, access_id_alias, api_key_access_rules, aws_iam_access_rules, azure_ad_access_rules, cert_access_rules, cidr_whitelist, email_pass_access_rules, force_sub_claims, gcp_access_rules, gw_cidr_whitelist, huawei_access_rules, jwt_ttl, k8s_access_rules, ldap_access_rules, oauth2_access_rules, oidc_access_rules, rules_type, saml_access_rules, sub_claims_delimiters, universal_identity_access_rules].hash
+      [access_expires, access_id_alias, api_key_access_rules, aws_iam_access_rules, azure_ad_access_rules, cert_access_rules, cidr_whitelist, email_pass_access_rules, force_sub_claims, gcp_access_rules, gw_cidr_whitelist, huawei_access_rules, jwt_ttl, k8s_access_rules, ldap_access_rules, oauth2_access_rules, oci_access_rules, oidc_access_rules, rules_type, saml_access_rules, sub_claims_delimiters, universal_identity_access_rules].hash
     end
 
     # Builds the object from hash
