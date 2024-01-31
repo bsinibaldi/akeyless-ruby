@@ -10,6 +10,7 @@
 | **bound_namespaces** | **Array&lt;String&gt;** | A list of namespaces that the access is restricted to | [optional] |
 | **bound_pod_names** | **Array&lt;String&gt;** | A list of pod names that the access is restricted to | [optional] |
 | **bound_sa_names** | **Array&lt;String&gt;** | A list of service account names that the access is restricted to | [optional] |
+| **description** | **String** | Auth Method description | [optional] |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
 | **gen_key** | **String** | Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided [true/false] | [optional][default to &#39;true&#39;] |
 | **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
@@ -32,6 +33,7 @@ instance = Akeyless::CreateAuthMethodK8S.new(
   bound_namespaces: null,
   bound_pod_names: null,
   bound_sa_names: null,
+  description: null,
   force_sub_claims: null,
   gen_key: null,
   gw_bound_ips: null,

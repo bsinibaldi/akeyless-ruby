@@ -27,6 +27,12 @@ module Akeyless
     # Description of the object
     attr_accessor :description
 
+    # Allow this role to view Event Center. Currently only 'none', 'own' and 'all' values are supported
+    attr_accessor :event_center_access
+
+    # Allow this role to manage Event Forwarders. Currently only 'none' and 'all' values are supported.
+    attr_accessor :event_forwarders_access
+
     # Allow this role to view gw analytics. Currently only 'none', 'own', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
     attr_accessor :gw_analytics_access
 
@@ -55,6 +61,8 @@ module Akeyless
         :'audit_access' => :'audit-access',
         :'comment' => :'comment',
         :'description' => :'description',
+        :'event_center_access' => :'event-center-access',
+        :'event_forwarders_access' => :'event-forwarders-access',
         :'gw_analytics_access' => :'gw-analytics-access',
         :'json' => :'json',
         :'name' => :'name',
@@ -77,6 +85,8 @@ module Akeyless
         :'audit_access' => :'String',
         :'comment' => :'String',
         :'description' => :'String',
+        :'event_center_access' => :'String',
+        :'event_forwarders_access' => :'String',
         :'gw_analytics_access' => :'String',
         :'json' => :'Boolean',
         :'name' => :'String',
@@ -122,6 +132,14 @@ module Akeyless
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'event_center_access')
+        self.event_center_access = attributes[:'event_center_access']
+      end
+
+      if attributes.key?(:'event_forwarders_access')
+        self.event_forwarders_access = attributes[:'event_forwarders_access']
       end
 
       if attributes.key?(:'gw_analytics_access')
@@ -186,6 +204,8 @@ module Akeyless
           audit_access == o.audit_access &&
           comment == o.comment &&
           description == o.description &&
+          event_center_access == o.event_center_access &&
+          event_forwarders_access == o.event_forwarders_access &&
           gw_analytics_access == o.gw_analytics_access &&
           json == o.json &&
           name == o.name &&
@@ -204,7 +224,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [analytics_access, audit_access, comment, description, gw_analytics_access, json, name, sra_reports_access, token, uid_token, usage_reports_access].hash
+      [analytics_access, audit_access, comment, description, event_center_access, event_forwarders_access, gw_analytics_access, json, name, sra_reports_access, token, uid_token, usage_reports_access].hash
     end
 
     # Builds the object from hash

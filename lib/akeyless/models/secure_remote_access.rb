@@ -71,6 +71,8 @@ module Akeyless
 
     attr_accessor :target_hosts
 
+    attr_accessor :targets
+
     attr_accessor :url
 
     attr_accessor :use_internal_bastion
@@ -108,6 +110,7 @@ module Akeyless
         :'ssh_private_key' => :'ssh_private_key',
         :'ssh_user' => :'ssh_user',
         :'target_hosts' => :'target_hosts',
+        :'targets' => :'targets',
         :'url' => :'url',
         :'use_internal_bastion' => :'use_internal_bastion',
         :'web_proxy' => :'web_proxy'
@@ -150,6 +153,7 @@ module Akeyless
         :'ssh_private_key' => :'Boolean',
         :'ssh_user' => :'String',
         :'target_hosts' => :'Array<TargetNameWithHosts>',
+        :'targets' => :'Array<String>',
         :'url' => :'String',
         :'use_internal_bastion' => :'Boolean',
         :'web_proxy' => :'Boolean'
@@ -293,6 +297,12 @@ module Akeyless
         end
       end
 
+      if attributes.key?(:'targets')
+        if (value = attributes[:'targets']).is_a?(Array)
+          self.targets = value
+        end
+      end
+
       if attributes.key?(:'url')
         self.url = attributes[:'url']
       end
@@ -354,6 +364,7 @@ module Akeyless
           ssh_private_key == o.ssh_private_key &&
           ssh_user == o.ssh_user &&
           target_hosts == o.target_hosts &&
+          targets == o.targets &&
           url == o.url &&
           use_internal_bastion == o.use_internal_bastion &&
           web_proxy == o.web_proxy
@@ -368,7 +379,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_id, allow_port_forwarding, allow_providing_external_username, bastion_api, bastion_issuer, bastion_issuer_id, bastion_ssh, category, dashboard_url, db_name, domain, enable, endpoint, host, host_provider_type, is_cli, is_web, isolated, native, rd_gateway_server, rdp_user, region, rotate_after_disconnect, schema, ssh_password, ssh_private_key, ssh_user, target_hosts, url, use_internal_bastion, web_proxy].hash
+      [account_id, allow_port_forwarding, allow_providing_external_username, bastion_api, bastion_issuer, bastion_issuer_id, bastion_ssh, category, dashboard_url, db_name, domain, enable, endpoint, host, host_provider_type, is_cli, is_web, isolated, native, rd_gateway_server, rdp_user, region, rotate_after_disconnect, schema, ssh_password, ssh_private_key, ssh_user, target_hosts, targets, url, use_internal_bastion, web_proxy].hash
     end
 
     # Builds the object from hash

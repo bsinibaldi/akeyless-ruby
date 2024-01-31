@@ -14,6 +14,7 @@
 | **parent_target_name** | **String** | The parent Target name | [optional] |
 | **rm_hosts** | **String** | Comma separated list of existing hosts that will be removed from Linked Target hosts. | [optional] |
 | **token** | **String** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] |
+| **type** | **String** | Specifies the hosts type, relevant only when working without parent target | [optional] |
 | **uid_token** | **String** | The universal identity token, Required only for universal_identity authentication | [optional] |
 
 ## Example
@@ -32,6 +33,7 @@ instance = Akeyless::UpdateLinkedTarget.new(
   parent_target_name: null,
   rm_hosts: null,
   token: null,
+  type: null,
   uid_token: null
 )
 ```

@@ -33,6 +33,9 @@ module Akeyless
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
+    # Specifies the hosts type, relevant only when working without parent target
+    attr_accessor :type
+
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
 
@@ -45,6 +48,7 @@ module Akeyless
         :'name' => :'name',
         :'parent_target_name' => :'parent-target-name',
         :'token' => :'token',
+        :'type' => :'type',
         :'uid_token' => :'uid-token'
       }
     end
@@ -63,6 +67,7 @@ module Akeyless
         :'name' => :'String',
         :'parent_target_name' => :'String',
         :'token' => :'String',
+        :'type' => :'String',
         :'uid_token' => :'String'
       }
     end
@@ -116,6 +121,10 @@ module Akeyless
         self.token = attributes[:'token']
       end
 
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      end
+
       if attributes.key?(:'uid_token')
         self.uid_token = attributes[:'uid_token']
       end
@@ -152,6 +161,7 @@ module Akeyless
           name == o.name &&
           parent_target_name == o.parent_target_name &&
           token == o.token &&
+          type == o.type &&
           uid_token == o.uid_token
     end
 
@@ -164,7 +174,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [description, hosts, json, name, parent_target_name, token, uid_token].hash
+      [description, hosts, json, name, parent_target_name, token, type, uid_token].hash
     end
 
     # Builds the object from hash

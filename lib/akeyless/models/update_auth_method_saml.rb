@@ -25,6 +25,9 @@ module Akeyless
     # A CIDR whitelist with the IPs that the access is restricted to
     attr_accessor :bound_ips
 
+    # Auth Method description
+    attr_accessor :description
+
     # if true: enforce role-association must include sub claims
     attr_accessor :force_sub_claims
 
@@ -67,6 +70,7 @@ module Akeyless
         :'access_expires' => :'access-expires',
         :'allowed_redirect_uri' => :'allowed-redirect-uri',
         :'bound_ips' => :'bound-ips',
+        :'description' => :'description',
         :'force_sub_claims' => :'force-sub-claims',
         :'gw_bound_ips' => :'gw-bound-ips',
         :'idp_metadata_url' => :'idp-metadata-url',
@@ -93,6 +97,7 @@ module Akeyless
         :'access_expires' => :'Integer',
         :'allowed_redirect_uri' => :'Array<String>',
         :'bound_ips' => :'Array<String>',
+        :'description' => :'String',
         :'force_sub_claims' => :'Boolean',
         :'gw_bound_ips' => :'Array<String>',
         :'idp_metadata_url' => :'String',
@@ -145,6 +150,10 @@ module Akeyless
         if (value = attributes[:'bound_ips']).is_a?(Array)
           self.bound_ips = value
         end
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'force_sub_claims')
@@ -241,6 +250,7 @@ module Akeyless
           access_expires == o.access_expires &&
           allowed_redirect_uri == o.allowed_redirect_uri &&
           bound_ips == o.bound_ips &&
+          description == o.description &&
           force_sub_claims == o.force_sub_claims &&
           gw_bound_ips == o.gw_bound_ips &&
           idp_metadata_url == o.idp_metadata_url &&
@@ -264,7 +274,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_expires, allowed_redirect_uri, bound_ips, force_sub_claims, gw_bound_ips, idp_metadata_url, idp_metadata_xml_data, json, jwt_ttl, name, new_name, subclaims_delimiters, token, uid_token, unique_identifier].hash
+      [access_expires, allowed_redirect_uri, bound_ips, description, force_sub_claims, gw_bound_ips, idp_metadata_url, idp_metadata_xml_data, json, jwt_ttl, name, new_name, subclaims_delimiters, token, uid_token, unique_identifier].hash
     end
 
     # Builds the object from hash

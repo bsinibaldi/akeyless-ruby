@@ -4,13 +4,13 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ssh_cert_issuer_host_provider** | **String** |  | [optional] |
+| **provider_type** | **String** |  | [optional] |
 | **add_tag** | **Array&lt;String&gt;** | List of the new tags that will be attached to this item | [optional] |
 | **allowed_users** | **String** | Users allowed to fetch the certificate, e.g root,ubuntu |  |
 | **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
 | **description** | **String** | Description of the object | [optional] |
 | **extensions** | **Hash&lt;String, String&gt;** | Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot; | [optional] |
-| **host_provider** | **String** | Host provider type [explicit/target] | [optional][default to &#39;explicit&#39;] |
+| **host_provider** | **String** | Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret | [optional][default to &#39;explicit&#39;] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **metadata** | **String** | Deprecated - use description | [optional] |
 | **name** | **String** | SSH certificate issuer name |  |
@@ -34,7 +34,7 @@
 require 'akeyless'
 
 instance = Akeyless::UpdateSSHCertIssuer.new(
-  ssh_cert_issuer_host_provider: null,
+  provider_type: null,
   add_tag: null,
   allowed_users: null,
   delete_protection: null,

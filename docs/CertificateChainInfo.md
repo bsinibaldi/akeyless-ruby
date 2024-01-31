@@ -6,6 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **certificate_chain** | [**Array&lt;CertificateInfo&gt;**](CertificateInfo.md) |  | [optional] |
 | **certificate_format** | **String** |  | [optional] |
+| **certificate_has_private_key** | **Boolean** |  | [optional] |
+| **certificate_issuer_gw_cluster_url** | **String** |  | [optional] |
 | **certificate_issuer_item_id** | **Integer** |  | [optional] |
 | **certificate_issuer_name** | **String** |  | [optional] |
 | **certificate_pem** | **String** |  | [optional] |
@@ -20,6 +22,8 @@ require 'akeyless'
 instance = Akeyless::CertificateChainInfo.new(
   certificate_chain: null,
   certificate_format: null,
+  certificate_has_private_key: null,
+  certificate_issuer_gw_cluster_url: null,
   certificate_issuer_item_id: null,
   certificate_issuer_name: null,
   certificate_pem: null,

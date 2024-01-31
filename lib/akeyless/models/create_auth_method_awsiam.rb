@@ -43,6 +43,9 @@ module Akeyless
     # A list of full user-name that the access is restricted to
     attr_accessor :bound_user_name
 
+    # Auth Method description
+    attr_accessor :description
+
     # if true: enforce role-association must include sub claims
     attr_accessor :force_sub_claims
 
@@ -79,6 +82,7 @@ module Akeyless
         :'bound_role_name' => :'bound-role-name',
         :'bound_user_id' => :'bound-user-id',
         :'bound_user_name' => :'bound-user-name',
+        :'description' => :'description',
         :'force_sub_claims' => :'force-sub-claims',
         :'gw_bound_ips' => :'gw-bound-ips',
         :'json' => :'json',
@@ -107,6 +111,7 @@ module Akeyless
         :'bound_role_name' => :'Array<String>',
         :'bound_user_id' => :'Array<String>',
         :'bound_user_name' => :'Array<String>',
+        :'description' => :'String',
         :'force_sub_claims' => :'Boolean',
         :'gw_bound_ips' => :'Array<String>',
         :'json' => :'Boolean',
@@ -195,6 +200,10 @@ module Akeyless
         end
       end
 
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
       if attributes.key?(:'force_sub_claims')
         self.force_sub_claims = attributes[:'force_sub_claims']
       end
@@ -277,6 +286,7 @@ module Akeyless
           bound_role_name == o.bound_role_name &&
           bound_user_id == o.bound_user_id &&
           bound_user_name == o.bound_user_name &&
+          description == o.description &&
           force_sub_claims == o.force_sub_claims &&
           gw_bound_ips == o.gw_bound_ips &&
           json == o.json &&
@@ -296,7 +306,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_expires, bound_arn, bound_aws_account_id, bound_ips, bound_resource_id, bound_role_id, bound_role_name, bound_user_id, bound_user_name, force_sub_claims, gw_bound_ips, json, jwt_ttl, name, sts_url, token, uid_token].hash
+      [access_expires, bound_arn, bound_aws_account_id, bound_ips, bound_resource_id, bound_role_id, bound_role_name, bound_user_id, bound_user_name, description, force_sub_claims, gw_bound_ips, json, jwt_ttl, name, sts_url, token, uid_token].hash
     end
 
     # Builds the object from hash

@@ -19,7 +19,7 @@ module Akeyless
     # Access expiration date in Unix timestamp (select 0 for access without expiry date)
     attr_accessor :access_expires
 
-    # The audience in the JWT
+    # Deprecated (Deprecated) The audience in the JWT
     attr_accessor :audience
 
     # A list of group ids that the access is restricted to
@@ -51,6 +51,9 @@ module Akeyless
 
     # The Azure tenant id that the access is restricted to
     attr_accessor :bound_tenant_id
+
+    # Auth Method description
+    attr_accessor :description
 
     # if true: enforce role-association must include sub claims
     attr_accessor :force_sub_claims
@@ -94,6 +97,7 @@ module Akeyless
         :'bound_spid' => :'bound-spid',
         :'bound_sub_id' => :'bound-sub-id',
         :'bound_tenant_id' => :'bound-tenant-id',
+        :'description' => :'description',
         :'force_sub_claims' => :'force-sub-claims',
         :'gw_bound_ips' => :'gw-bound-ips',
         :'issuer' => :'issuer',
@@ -126,6 +130,7 @@ module Akeyless
         :'bound_spid' => :'Array<String>',
         :'bound_sub_id' => :'Array<String>',
         :'bound_tenant_id' => :'String',
+        :'description' => :'String',
         :'force_sub_claims' => :'Boolean',
         :'gw_bound_ips' => :'Array<String>',
         :'issuer' => :'String',
@@ -231,6 +236,10 @@ module Akeyless
         self.bound_tenant_id = nil
       end
 
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
       if attributes.key?(:'force_sub_claims')
         self.force_sub_claims = attributes[:'force_sub_claims']
       end
@@ -322,6 +331,7 @@ module Akeyless
           bound_spid == o.bound_spid &&
           bound_sub_id == o.bound_sub_id &&
           bound_tenant_id == o.bound_tenant_id &&
+          description == o.description &&
           force_sub_claims == o.force_sub_claims &&
           gw_bound_ips == o.gw_bound_ips &&
           issuer == o.issuer &&
@@ -342,7 +352,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_expires, audience, bound_group_id, bound_ips, bound_providers, bound_resource_id, bound_resource_names, bound_resource_types, bound_rg_id, bound_spid, bound_sub_id, bound_tenant_id, force_sub_claims, gw_bound_ips, issuer, json, jwks_uri, jwt_ttl, name, token, uid_token].hash
+      [access_expires, audience, bound_group_id, bound_ips, bound_providers, bound_resource_id, bound_resource_names, bound_resource_types, bound_rg_id, bound_spid, bound_sub_id, bound_tenant_id, description, force_sub_claims, gw_bound_ips, issuer, json, jwks_uri, jwt_ttl, name, token, uid_token].hash
     end
 
     # Builds the object from hash

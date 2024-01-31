@@ -25,6 +25,9 @@ module Akeyless
     # API key to rotate (relevant only for rotator-type=api-key)
     attr_accessor :api_key
 
+    # ApplicationId (used in azure)
+    attr_accessor :app_id
+
     # Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false]
     attr_accessor :auto_rotate
 
@@ -100,6 +103,7 @@ module Akeyless
         :'add_tag' => :'add-tag',
         :'api_id' => :'api-id',
         :'api_key' => :'api-key',
+        :'app_id' => :'app-id',
         :'auto_rotate' => :'auto-rotate',
         :'custom_payload' => :'custom-payload',
         :'delete_protection' => :'delete_protection',
@@ -137,6 +141,7 @@ module Akeyless
         :'add_tag' => :'Array<String>',
         :'api_id' => :'String',
         :'api_key' => :'String',
+        :'app_id' => :'String',
         :'auto_rotate' => :'String',
         :'custom_payload' => :'String',
         :'delete_protection' => :'String',
@@ -196,6 +201,10 @@ module Akeyless
 
       if attributes.key?(:'api_key')
         self.api_key = attributes[:'api_key']
+      end
+
+      if attributes.key?(:'app_id')
+        self.app_id = attributes[:'app_id']
       end
 
       if attributes.key?(:'auto_rotate')
@@ -340,6 +349,7 @@ module Akeyless
           add_tag == o.add_tag &&
           api_id == o.api_id &&
           api_key == o.api_key &&
+          app_id == o.app_id &&
           auto_rotate == o.auto_rotate &&
           custom_payload == o.custom_payload &&
           delete_protection == o.delete_protection &&
@@ -374,7 +384,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_tag, api_id, api_key, auto_rotate, custom_payload, delete_protection, description, gcp_key, gcp_service_account_email, gcp_service_account_key_id, json, keep_prev_version, key, name, new_metadata, new_name, new_version, rm_tag, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, token, type, uid_token].hash
+      [add_tag, api_id, api_key, app_id, auto_rotate, custom_payload, delete_protection, description, gcp_key, gcp_service_account_email, gcp_service_account_key_id, json, keep_prev_version, key, name, new_metadata, new_name, new_version, rm_tag, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, token, type, uid_token].hash
     end
 
     # Builds the object from hash

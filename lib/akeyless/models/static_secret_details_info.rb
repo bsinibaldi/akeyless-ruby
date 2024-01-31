@@ -15,6 +15,8 @@ require 'time'
 
 module Akeyless
   class StaticSecretDetailsInfo
+    attr_accessor :notify_on_change_event
+
     attr_accessor :username
 
     # deprecated
@@ -25,6 +27,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'notify_on_change_event' => :'notify_on_change_event',
         :'username' => :'username',
         :'website' => :'website',
         :'websites' => :'websites'
@@ -39,6 +42,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'notify_on_change_event' => :'Boolean',
         :'username' => :'String',
         :'website' => :'String',
         :'websites' => :'Array<String>'
@@ -65,6 +69,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'notify_on_change_event')
+        self.notify_on_change_event = attributes[:'notify_on_change_event']
+      end
 
       if attributes.key?(:'username')
         self.username = attributes[:'username']
@@ -101,6 +109,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          notify_on_change_event == o.notify_on_change_event &&
           username == o.username &&
           website == o.website &&
           websites == o.websites
@@ -115,7 +124,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [username, website, websites].hash
+      [notify_on_change_event, username, website, websites].hash
     end
 
     # Builds the object from hash

@@ -16,6 +16,12 @@ require 'time'
 module Akeyless
   # assocTargetItem is a command that creates an association between target and item.
   class AssocTargetItem
+    # A path on the target to store the certificate pem file (relevant only for certificate provisioning)
+    attr_accessor :certificate_path
+
+    # A path on the target to store the full chain pem file (relevant only for certificate provisioning)
+    attr_accessor :chain_path
+
     # Automatically disable previous key version (required for azure targets)
     attr_accessor :disable_previous_key_version
 
@@ -40,6 +46,9 @@ module Akeyless
     # The item to associate
     attr_accessor :name
 
+    # A path on the target to store the private key (relevant only for certificate provisioning)
+    attr_accessor :private_key_path
+
     # Project id of the GCP KMS (required for gcp targets)
     attr_accessor :project_id
 
@@ -48,6 +57,9 @@ module Akeyless
 
     # The list of regions to create a copy of the key in (relevant for aws targets)
     attr_accessor :regions
+
+    # Is the target to associate is for sra, relevant only for linked target association for ldap rotated secret
+    attr_accessor :sra_association
 
     # The target to associate
     attr_accessor :target_name
@@ -67,6 +79,8 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'certificate_path' => :'certificate-path',
+        :'chain_path' => :'chain-path',
         :'disable_previous_key_version' => :'disable-previous-key-version',
         :'json' => :'json',
         :'key_operations' => :'key-operations',
@@ -75,9 +89,11 @@ module Akeyless
         :'location_id' => :'location-id',
         :'multi_region' => :'multi-region',
         :'name' => :'name',
+        :'private_key_path' => :'private-key-path',
         :'project_id' => :'project-id',
         :'purpose' => :'purpose',
         :'regions' => :'regions',
+        :'sra_association' => :'sra-association',
         :'target_name' => :'target-name',
         :'tenant_secret_type' => :'tenant-secret-type',
         :'token' => :'token',
@@ -94,6 +110,8 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'certificate_path' => :'String',
+        :'chain_path' => :'String',
         :'disable_previous_key_version' => :'Boolean',
         :'json' => :'Boolean',
         :'key_operations' => :'Array<String>',
@@ -102,9 +120,11 @@ module Akeyless
         :'location_id' => :'String',
         :'multi_region' => :'String',
         :'name' => :'String',
+        :'private_key_path' => :'String',
         :'project_id' => :'String',
         :'purpose' => :'String',
         :'regions' => :'Array<String>',
+        :'sra_association' => :'Boolean',
         :'target_name' => :'String',
         :'tenant_secret_type' => :'String',
         :'token' => :'String',
@@ -133,6 +153,14 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'certificate_path')
+        self.certificate_path = attributes[:'certificate_path']
+      end
+
+      if attributes.key?(:'chain_path')
+        self.chain_path = attributes[:'chain_path']
+      end
 
       if attributes.key?(:'disable_previous_key_version')
         self.disable_previous_key_version = attributes[:'disable_previous_key_version']
@@ -176,6 +204,10 @@ module Akeyless
         self.name = nil
       end
 
+      if attributes.key?(:'private_key_path')
+        self.private_key_path = attributes[:'private_key_path']
+      end
+
       if attributes.key?(:'project_id')
         self.project_id = attributes[:'project_id']
       end
@@ -188,6 +220,12 @@ module Akeyless
         if (value = attributes[:'regions']).is_a?(Array)
           self.regions = value
         end
+      end
+
+      if attributes.key?(:'sra_association')
+        self.sra_association = attributes[:'sra_association']
+      else
+        self.sra_association = false
       end
 
       if attributes.key?(:'target_name')
@@ -243,6 +281,8 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          certificate_path == o.certificate_path &&
+          chain_path == o.chain_path &&
           disable_previous_key_version == o.disable_previous_key_version &&
           json == o.json &&
           key_operations == o.key_operations &&
@@ -251,9 +291,11 @@ module Akeyless
           location_id == o.location_id &&
           multi_region == o.multi_region &&
           name == o.name &&
+          private_key_path == o.private_key_path &&
           project_id == o.project_id &&
           purpose == o.purpose &&
           regions == o.regions &&
+          sra_association == o.sra_association &&
           target_name == o.target_name &&
           tenant_secret_type == o.tenant_secret_type &&
           token == o.token &&
@@ -270,7 +312,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [disable_previous_key_version, json, key_operations, keyring_name, kms_algorithm, location_id, multi_region, name, project_id, purpose, regions, target_name, tenant_secret_type, token, uid_token, vault_name].hash
+      [certificate_path, chain_path, disable_previous_key_version, json, key_operations, keyring_name, kms_algorithm, location_id, multi_region, name, private_key_path, project_id, purpose, regions, sra_association, target_name, tenant_secret_type, token, uid_token, vault_name].hash
     end
 
     # Builds the object from hash

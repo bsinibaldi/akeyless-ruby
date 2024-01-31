@@ -13704,6 +13704,70 @@ module Akeyless
       return data, status_code, headers
     end
 
+    # @param body [ProvisionCertificate] 
+    # @param [Hash] opts the optional parameters
+    # @return [ProvisionCertificateOutput]
+    def provision_certificate(body, opts = {})
+      data, _status_code, _headers = provision_certificate_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [ProvisionCertificate] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ProvisionCertificateOutput, Integer, Hash)>] ProvisionCertificateOutput data, response status code and response headers
+    def provision_certificate_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.provision_certificate ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.provision_certificate"
+      end
+      # resource path
+      local_var_path = '/provision-certificate'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ProvisionCertificateOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.provision_certificate",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#provision_certificate\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # @param [Hash] opts the optional parameters
     # @option opts [RawCreds] :body 
     # @return [SystemAccessCredentialsReplyObj]
@@ -13824,6 +13888,70 @@ module Akeyless
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: V2Api#refresh_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param body [RenewCertificate] 
+    # @param [Hash] opts the optional parameters
+    # @return [RenewCertificateOutput]
+    def renew_certificate(body, opts = {})
+      data, _status_code, _headers = renew_certificate_with_http_info(body, opts)
+      data
+    end
+
+    # @param body [RenewCertificate] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(RenewCertificateOutput, Integer, Hash)>] RenewCertificateOutput data, response status code and response headers
+    def renew_certificate_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: V2Api.renew_certificate ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.renew_certificate"
+      end
+      # resource path
+      local_var_path = '/renew-certificate'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'RenewCertificateOutput'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"V2Api.renew_certificate",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: V2Api#renew_certificate\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -14073,7 +14201,7 @@ module Akeyless
       return data, status_code, headers
     end
 
-    # @param body [UpdateRotationSettings] 
+    # @param body [RotateKey] 
     # @param [Hash] opts the optional parameters
     # @return [RotateKeyOutput]
     def rotate_key(body, opts = {})
@@ -14081,7 +14209,7 @@ module Akeyless
       data
     end
 
-    # @param body [UpdateRotationSettings] 
+    # @param body [RotateKey] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(RotateKeyOutput, Integer, Hash)>] RotateKeyOutput data, response status code and response headers
     def rotate_key_with_http_info(body, opts = {})
@@ -18105,21 +18233,27 @@ module Akeyless
       return data, status_code, headers
     end
 
+    # @param body [UpdateRotationSettings] 
     # @param [Hash] opts the optional parameters
     # @return [RotateKeyOutput]
-    def update_rotation_settings(opts = {})
-      data, _status_code, _headers = update_rotation_settings_with_http_info(opts)
+    def update_rotation_settings(body, opts = {})
+      data, _status_code, _headers = update_rotation_settings_with_http_info(body, opts)
       data
     end
 
+    # @param body [UpdateRotationSettings] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(RotateKeyOutput, Integer, Hash)>] RotateKeyOutput data, response status code and response headers
-    def update_rotation_settings_with_http_info(opts = {})
+    def update_rotation_settings_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: V2Api.update_rotation_settings ...'
       end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling V2Api.update_rotation_settings"
+      end
       # resource path
-      local_var_path = '/update-rotation-settingsrotate-key'
+      local_var_path = '/update-rotation-settings'
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -18128,12 +18262,17 @@ module Akeyless
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body]
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(body)
 
       # return_type
       return_type = opts[:debug_return_type] || 'RotateKeyOutput'

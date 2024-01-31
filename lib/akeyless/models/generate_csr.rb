@@ -53,7 +53,7 @@ module Akeyless
     # The type of the key to generate (classic-key/dfc)
     attr_accessor :key_type
 
-    # The classic key name
+    # The key name
     attr_accessor :name
 
     # The organization to be included in the CSR certificate

@@ -15,7 +15,7 @@ require 'time'
 
 module Akeyless
   class CreateSSHCertIssuer
-    attr_accessor :ssh_cert_issuer_host_provider
+    attr_accessor :provider_type
 
     # Users allowed to fetch the certificate, e.g root,ubuntu
     attr_accessor :allowed_users
@@ -29,7 +29,7 @@ module Akeyless
     # Signed certificates with extensions, e.g permit-port-forwarding=\\\"\\\"
     attr_accessor :extensions
 
-    # Host provider type [explicit/target]
+    # Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
     attr_accessor :host_provider
 
     # Set output format to JSON
@@ -68,7 +68,7 @@ module Akeyless
     # List of the tags attached to this key
     attr_accessor :tag
 
-    # A list of existing targets to be associated, Relevant only for Secure Remote Access, To specify multiple targets use argument multiple times
+    # A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times
     attr_accessor :target
 
     # Authentication token (see `/auth` and `/configure`)
@@ -83,7 +83,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'ssh_cert_issuer_host_provider' => :'SshCertIssuerHostProvider',
+        :'provider_type' => :'ProviderType',
         :'allowed_users' => :'allowed-users',
         :'delete_protection' => :'delete_protection',
         :'description' => :'description',
@@ -116,7 +116,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'ssh_cert_issuer_host_provider' => :'String',
+        :'provider_type' => :'String',
         :'allowed_users' => :'String',
         :'delete_protection' => :'String',
         :'description' => :'String',
@@ -162,8 +162,8 @@ module Akeyless
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'ssh_cert_issuer_host_provider')
-        self.ssh_cert_issuer_host_provider = attributes[:'ssh_cert_issuer_host_provider']
+      if attributes.key?(:'provider_type')
+        self.provider_type = attributes[:'provider_type']
       end
 
       if attributes.key?(:'allowed_users')
@@ -311,7 +311,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          ssh_cert_issuer_host_provider == o.ssh_cert_issuer_host_provider &&
+          provider_type == o.provider_type &&
           allowed_users == o.allowed_users &&
           delete_protection == o.delete_protection &&
           description == o.description &&
@@ -344,7 +344,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ssh_cert_issuer_host_provider, allowed_users, delete_protection, description, extensions, host_provider, json, metadata, name, principals, secure_access_bastion_api, secure_access_bastion_ssh, secure_access_enable, secure_access_host, secure_access_ssh_creds_user, secure_access_use_internal_bastion, signer_key_name, tag, target, token, ttl, uid_token].hash
+      [provider_type, allowed_users, delete_protection, description, extensions, host_provider, json, metadata, name, principals, secure_access_bastion_api, secure_access_bastion_ssh, secure_access_enable, secure_access_host, secure_access_ssh_creds_user, secure_access_use_internal_bastion, signer_key_name, tag, target, token, ttl, uid_token].hash
     end
 
     # Builds the object from hash

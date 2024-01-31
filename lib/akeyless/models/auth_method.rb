@@ -35,6 +35,8 @@ module Akeyless
 
     attr_accessor :creation_date
 
+    attr_accessor :description
+
     attr_accessor :is_approved
 
     attr_accessor :modification_date
@@ -52,6 +54,7 @@ module Akeyless
         :'auth_method_roles_assoc' => :'auth_method_roles_assoc',
         :'client_permissions' => :'client_permissions',
         :'creation_date' => :'creation_date',
+        :'description' => :'description',
         :'is_approved' => :'is_approved',
         :'modification_date' => :'modification_date'
       }
@@ -75,6 +78,7 @@ module Akeyless
         :'auth_method_roles_assoc' => :'Array<AuthMethodRoleAssociation>',
         :'client_permissions' => :'Array<String>',
         :'creation_date' => :'Time',
+        :'description' => :'String',
         :'is_approved' => :'Boolean',
         :'modification_date' => :'Time'
       }
@@ -147,6 +151,10 @@ module Akeyless
         self.creation_date = attributes[:'creation_date']
       end
 
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
       if attributes.key?(:'is_approved')
         self.is_approved = attributes[:'is_approved']
       end
@@ -186,6 +194,7 @@ module Akeyless
           auth_method_roles_assoc == o.auth_method_roles_assoc &&
           client_permissions == o.client_permissions &&
           creation_date == o.creation_date &&
+          description == o.description &&
           is_approved == o.is_approved &&
           modification_date == o.modification_date
     end
@@ -199,7 +208,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_date, access_date_display, access_info, account_id, associated_gw_ids, auth_method_access_id, auth_method_name, auth_method_roles_assoc, client_permissions, creation_date, is_approved, modification_date].hash
+      [access_date, access_date_display, access_info, account_id, associated_gw_ids, auth_method_access_id, auth_method_name, auth_method_roles_assoc, client_permissions, creation_date, description, is_approved, modification_date].hash
     end
 
     # Builds the object from hash

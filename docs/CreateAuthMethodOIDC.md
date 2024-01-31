@@ -10,6 +10,7 @@
 | **bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the IPs that the access is restricted to | [optional] |
 | **client_id** | **String** | Client ID | [optional] |
 | **client_secret** | **String** | Client Secret | [optional] |
+| **description** | **String** | Auth Method description | [optional] |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
 | **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
 | **issuer** | **String** | Issuer URL | [optional] |
@@ -35,6 +36,7 @@ instance = Akeyless::CreateAuthMethodOIDC.new(
   bound_ips: null,
   client_id: null,
   client_secret: null,
+  description: null,
   force_sub_claims: null,
   gw_bound_ips: null,
   issuer: null,

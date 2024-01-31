@@ -34,6 +34,9 @@ module Akeyless
     # Client Secret
     attr_accessor :client_secret
 
+    # Auth Method description
+    attr_accessor :description
+
     # if true: enforce role-association must include sub claims
     attr_accessor :force_sub_claims
 
@@ -79,6 +82,7 @@ module Akeyless
         :'bound_ips' => :'bound-ips',
         :'client_id' => :'client-id',
         :'client_secret' => :'client-secret',
+        :'description' => :'description',
         :'force_sub_claims' => :'force-sub-claims',
         :'gw_bound_ips' => :'gw-bound-ips',
         :'issuer' => :'issuer',
@@ -108,6 +112,7 @@ module Akeyless
         :'bound_ips' => :'Array<String>',
         :'client_id' => :'String',
         :'client_secret' => :'String',
+        :'description' => :'String',
         :'force_sub_claims' => :'Boolean',
         :'gw_bound_ips' => :'Array<String>',
         :'issuer' => :'String',
@@ -172,6 +177,10 @@ module Akeyless
 
       if attributes.key?(:'client_secret')
         self.client_secret = attributes[:'client_secret']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'force_sub_claims')
@@ -273,6 +282,7 @@ module Akeyless
           bound_ips == o.bound_ips &&
           client_id == o.client_id &&
           client_secret == o.client_secret &&
+          description == o.description &&
           force_sub_claims == o.force_sub_claims &&
           gw_bound_ips == o.gw_bound_ips &&
           issuer == o.issuer &&
@@ -296,7 +306,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_expires, allowed_redirect_uri, audience, bound_ips, client_id, client_secret, force_sub_claims, gw_bound_ips, issuer, json, jwt_ttl, name, required_scopes, required_scopes_prefix, subclaims_delimiters, token, uid_token, unique_identifier].hash
+      [access_expires, allowed_redirect_uri, audience, bound_ips, client_id, client_secret, description, force_sub_claims, gw_bound_ips, issuer, json, jwt_ttl, name, required_scopes, required_scopes_prefix, subclaims_delimiters, token, uid_token, unique_identifier].hash
     end
 
     # Builds the object from hash

@@ -34,11 +34,17 @@ module Akeyless
     # The input message to sign in a base64 format
     attr_accessor :message
 
+    # Markes that the message is already hashed
+    attr_accessor :prehashed
+
     # Authentication token (see `/auth` and `/configure`)
     attr_accessor :token
 
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
+
+    # The version of the key to use for signing
+    attr_accessor :version
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -49,8 +55,10 @@ module Akeyless
         :'json' => :'json',
         :'key_name' => :'key-name',
         :'message' => :'message',
+        :'prehashed' => :'prehashed',
         :'token' => :'token',
-        :'uid_token' => :'uid-token'
+        :'uid_token' => :'uid-token',
+        :'version' => :'version'
       }
     end
 
@@ -68,8 +76,10 @@ module Akeyless
         :'json' => :'Boolean',
         :'key_name' => :'String',
         :'message' => :'String',
+        :'prehashed' => :'Boolean',
         :'token' => :'String',
-        :'uid_token' => :'String'
+        :'uid_token' => :'String',
+        :'version' => :'Integer'
       }
     end
 
@@ -122,12 +132,20 @@ module Akeyless
         self.message = nil
       end
 
+      if attributes.key?(:'prehashed')
+        self.prehashed = attributes[:'prehashed']
+      end
+
       if attributes.key?(:'token')
         self.token = attributes[:'token']
       end
 
       if attributes.key?(:'uid_token')
         self.uid_token = attributes[:'uid_token']
+      end
+
+      if attributes.key?(:'version')
+        self.version = attributes[:'version']
       end
     end
 
@@ -162,8 +180,10 @@ module Akeyless
           json == o.json &&
           key_name == o.key_name &&
           message == o.message &&
+          prehashed == o.prehashed &&
           token == o.token &&
-          uid_token == o.uid_token
+          uid_token == o.uid_token &&
+          version == o.version
     end
 
     # @see the `==` method
@@ -175,7 +195,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [display_id, hash_function, item_id, json, key_name, message, token, uid_token].hash
+      [display_id, hash_function, item_id, json, key_name, message, prehashed, token, uid_token, version].hash
     end
 
     # Builds the object from hash

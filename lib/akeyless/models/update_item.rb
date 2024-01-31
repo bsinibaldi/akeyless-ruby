@@ -15,6 +15,8 @@ require 'time'
 
 module Akeyless
   class UpdateItem
+    attr_accessor :provider_type
+
     # for personal password manager
     attr_accessor :accessibility
 
@@ -24,11 +26,17 @@ module Akeyless
     # PEM Certificate in a Base64 format. Used for updating RSA keys' certificates.
     attr_accessor :cert_file_data
 
+    # Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret)
+    attr_accessor :change_event
+
     # Protection from accidental deletion of this item [true/false]
     attr_accessor :delete_protection
 
     # Description of the object
     attr_accessor :description
+
+    # Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+    attr_accessor :host_provider
 
     # Set output format to JSON
     attr_accessor :json
@@ -132,11 +140,14 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'provider_type' => :'ProviderType',
         :'accessibility' => :'accessibility',
         :'add_tag' => :'add-tag',
         :'cert_file_data' => :'cert-file-data',
+        :'change_event' => :'change-event',
         :'delete_protection' => :'delete_protection',
         :'description' => :'description',
+        :'host_provider' => :'host-provider',
         :'json' => :'json',
         :'name' => :'name',
         :'new_metadata' => :'new-metadata',
@@ -181,11 +192,14 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'provider_type' => :'String',
         :'accessibility' => :'String',
         :'add_tag' => :'Array<String>',
         :'cert_file_data' => :'String',
+        :'change_event' => :'String',
         :'delete_protection' => :'String',
         :'description' => :'String',
+        :'host_provider' => :'String',
         :'json' => :'Boolean',
         :'name' => :'String',
         :'new_metadata' => :'String',
@@ -243,6 +257,10 @@ module Akeyless
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'provider_type')
+        self.provider_type = attributes[:'provider_type']
+      end
+
       if attributes.key?(:'accessibility')
         self.accessibility = attributes[:'accessibility']
       else
@@ -259,6 +277,10 @@ module Akeyless
         self.cert_file_data = attributes[:'cert_file_data']
       end
 
+      if attributes.key?(:'change_event')
+        self.change_event = attributes[:'change_event']
+      end
+
       if attributes.key?(:'delete_protection')
         self.delete_protection = attributes[:'delete_protection']
       end
@@ -267,6 +289,12 @@ module Akeyless
         self.description = attributes[:'description']
       else
         self.description = 'default_metadata'
+      end
+
+      if attributes.key?(:'host_provider')
+        self.host_provider = attributes[:'host_provider']
+      else
+        self.host_provider = 'explicit'
       end
 
       if attributes.key?(:'json')
@@ -447,11 +475,14 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          provider_type == o.provider_type &&
           accessibility == o.accessibility &&
           add_tag == o.add_tag &&
           cert_file_data == o.cert_file_data &&
+          change_event == o.change_event &&
           delete_protection == o.delete_protection &&
           description == o.description &&
+          host_provider == o.host_provider &&
           json == o.json &&
           name == o.name &&
           new_metadata == o.new_metadata &&
@@ -496,7 +527,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accessibility, add_tag, cert_file_data, delete_protection, description, json, name, new_metadata, new_name, rm_tag, rotate_after_disconnect, secure_access_add_host, secure_access_allow_external_user, secure_access_allow_port_forwading, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_aws_region, secure_access_bastion_api, secure_access_bastion_issuer, secure_access_bastion_ssh, secure_access_cluster_endpoint, secure_access_dashboard_url, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rd_gateway_server, secure_access_rdp_domain, secure_access_rdp_user, secure_access_rm_host, secure_access_ssh_creds, secure_access_ssh_creds_user, secure_access_url, secure_access_use_internal_bastion, secure_access_web_browsing, secure_access_web_proxy, token, uid_token].hash
+      [provider_type, accessibility, add_tag, cert_file_data, change_event, delete_protection, description, host_provider, json, name, new_metadata, new_name, rm_tag, rotate_after_disconnect, secure_access_add_host, secure_access_allow_external_user, secure_access_allow_port_forwading, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_aws_region, secure_access_bastion_api, secure_access_bastion_issuer, secure_access_bastion_ssh, secure_access_cluster_endpoint, secure_access_dashboard_url, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rd_gateway_server, secure_access_rdp_domain, secure_access_rdp_user, secure_access_rm_host, secure_access_ssh_creds, secure_access_ssh_creds_user, secure_access_url, secure_access_use_internal_bastion, secure_access_web_browsing, secure_access_web_proxy, token, uid_token].hash
     end
 
     # Builds the object from hash

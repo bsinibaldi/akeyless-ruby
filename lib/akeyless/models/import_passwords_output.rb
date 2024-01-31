@@ -21,12 +21,15 @@ module Akeyless
 
     attr_accessor :successfully_parsed
 
+    attr_accessor :updated
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'imported' => :'imported',
         :'passwords_in_file' => :'passwords_in_file',
-        :'successfully_parsed' => :'successfully_parsed'
+        :'successfully_parsed' => :'successfully_parsed',
+        :'updated' => :'updated'
       }
     end
 
@@ -40,7 +43,8 @@ module Akeyless
       {
         :'imported' => :'Integer',
         :'passwords_in_file' => :'Integer',
-        :'successfully_parsed' => :'Integer'
+        :'successfully_parsed' => :'Integer',
+        :'updated' => :'Integer'
       }
     end
 
@@ -76,6 +80,10 @@ module Akeyless
       if attributes.key?(:'successfully_parsed')
         self.successfully_parsed = attributes[:'successfully_parsed']
       end
+
+      if attributes.key?(:'updated')
+        self.updated = attributes[:'updated']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -100,7 +108,8 @@ module Akeyless
       self.class == o.class &&
           imported == o.imported &&
           passwords_in_file == o.passwords_in_file &&
-          successfully_parsed == o.successfully_parsed
+          successfully_parsed == o.successfully_parsed &&
+          updated == o.updated
     end
 
     # @see the `==` method
@@ -112,7 +121,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [imported, passwords_in_file, successfully_parsed].hash
+      [imported, passwords_in_file, successfully_parsed, updated].hash
     end
 
     # Builds the object from hash

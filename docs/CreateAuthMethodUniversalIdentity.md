@@ -8,6 +8,7 @@
 | **bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the IPs that the access is restricted to | [optional] |
 | **deny_inheritance** | **Boolean** | Deny from root to create children | [optional] |
 | **deny_rotate** | **Boolean** | Deny from the token to rotate | [optional] |
+| **description** | **String** | Auth Method description | [optional] |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
 | **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
@@ -27,6 +28,7 @@ instance = Akeyless::CreateAuthMethodUniversalIdentity.new(
   bound_ips: null,
   deny_inheritance: null,
   deny_rotate: null,
+  description: null,
   force_sub_claims: null,
   gw_bound_ips: null,
   json: null,

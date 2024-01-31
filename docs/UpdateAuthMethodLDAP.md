@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **access_expires** | **Integer** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional][default to 0] |
 | **bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the IPs that the access is restricted to | [optional] |
+| **description** | **String** | Auth Method description | [optional] |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
 | **gen_key** | **String** | Automatically generate key-pair for LDAP configuration. If set to false, a public key needs to be provided [true/false] | [optional] |
 | **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
@@ -26,6 +27,7 @@ require 'akeyless'
 instance = Akeyless::UpdateAuthMethodLDAP.new(
   access_expires: null,
   bound_ips: null,
+  description: null,
   force_sub_claims: null,
   gen_key: null,
   gw_bound_ips: null,

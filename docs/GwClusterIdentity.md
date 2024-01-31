@@ -16,6 +16,7 @@
 | **default_secret_location** | **String** |  | [optional] |
 | **display_name** | **String** |  | [optional] |
 | **id** | **Integer** |  | [optional] |
+| **serverless_type** | **String** |  | [optional] |
 | **status** | **String** |  | [optional] |
 | **status_description** | **String** |  | [optional] |
 
@@ -37,6 +38,7 @@ instance = Akeyless::GwClusterIdentity.new(
   default_secret_location: null,
   display_name: null,
   id: null,
+  serverless_type: null,
   status: null,
   status_description: null
 )

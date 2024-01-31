@@ -61,6 +61,7 @@
 | **si_rotation_interval** | **Integer** | The number of days to wait between every automatic rotation [1-365] (Relevant only for Server Inventory migration) | [optional] |
 | **si_sra_enable_rdp** | **String** | Enable/Disable RDP Secure Remote Access for the migrated local users rotated secrets. Default is false: rotated secrets will not be created with SRA (Relevant only for Server Inventory migration) | [optional][default to &#39;false&#39;] |
 | **si_target_name** | **String** | SSH, Windows or Linked Target Name. (Relevant only for Server Inventory migration) |  |
+| **si_user_groups** | **String** | Comma-separated list of groups to migrate users from. If empty, all users from all groups will be migrated (Relevant only for Server Inventory migration) | [optional] |
 | **si_users_ignore** | **String** | Comma-separated list of Local Users which should not be migrated (Relevant only for Server Inventory migration) | [optional] |
 | **si_users_path_template** | **String** | Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration) |  |
 | **target_location** | **String** | Target location in Akeyless for imported secrets |  |
@@ -130,6 +131,7 @@ instance = Akeyless::GatewayUpdateMigration.new(
   si_rotation_interval: null,
   si_sra_enable_rdp: null,
   si_target_name: null,
+  si_user_groups: null,
   si_users_ignore: null,
   si_users_path_template: null,
   target_location: null,

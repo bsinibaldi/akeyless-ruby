@@ -32,7 +32,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'result' => :'Array<Integer>'
+        :'result' => :'String'
       }
     end
 
@@ -58,9 +58,7 @@ module Akeyless
       }
 
       if attributes.key?(:'result')
-        if (value = attributes[:'result']).is_a?(Array)
-          self.result = value
-        end
+        self.result = attributes[:'result']
       end
     end
 

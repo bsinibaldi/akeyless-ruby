@@ -10,6 +10,7 @@
 | **json** | **Boolean** | Set output format to JSON | [optional][default to false] |
 | **keep_prev_version** | **String** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] |
 | **key** | **String** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] |
+| **last_version** | **Integer** | The last version number before the update | [optional] |
 | **multiline** | **Boolean** | The provided value is a multiline value (separated by &#39;\\n&#39;) | [optional] |
 | **name** | **String** | Secret name |  |
 | **new_version** | **Boolean** | Deprecated | [optional] |
@@ -31,6 +32,7 @@ instance = Akeyless::UpdateSecretVal.new(
   json: null,
   keep_prev_version: null,
   key: null,
+  last_version: null,
   multiline: null,
   name: null,
   new_version: null,

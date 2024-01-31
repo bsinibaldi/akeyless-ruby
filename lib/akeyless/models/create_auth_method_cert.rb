@@ -46,6 +46,9 @@ module Akeyless
     # The certificate data in base64, if no file was provided
     attr_accessor :certificate_data
 
+    # Auth Method description
+    attr_accessor :description
+
     # if true: enforce role-association must include sub claims
     attr_accessor :force_sub_claims
 
@@ -86,6 +89,7 @@ module Akeyless
         :'bound_organizational_units' => :'bound-organizational-units',
         :'bound_uri_sans' => :'bound-uri-sans',
         :'certificate_data' => :'certificate-data',
+        :'description' => :'description',
         :'force_sub_claims' => :'force-sub-claims',
         :'gw_bound_ips' => :'gw-bound-ips',
         :'json' => :'json',
@@ -116,6 +120,7 @@ module Akeyless
         :'bound_organizational_units' => :'Array<String>',
         :'bound_uri_sans' => :'Array<String>',
         :'certificate_data' => :'String',
+        :'description' => :'String',
         :'force_sub_claims' => :'Boolean',
         :'gw_bound_ips' => :'Array<String>',
         :'json' => :'Boolean',
@@ -203,6 +208,10 @@ module Akeyless
 
       if attributes.key?(:'certificate_data')
         self.certificate_data = attributes[:'certificate_data']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'force_sub_claims')
@@ -294,6 +303,7 @@ module Akeyless
           bound_organizational_units == o.bound_organizational_units &&
           bound_uri_sans == o.bound_uri_sans &&
           certificate_data == o.certificate_data &&
+          description == o.description &&
           force_sub_claims == o.force_sub_claims &&
           gw_bound_ips == o.gw_bound_ips &&
           json == o.json &&
@@ -314,7 +324,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_expires, allowed_cors, bound_common_names, bound_dns_sans, bound_email_sans, bound_extensions, bound_ips, bound_organizational_units, bound_uri_sans, certificate_data, force_sub_claims, gw_bound_ips, json, jwt_ttl, name, revoked_cert_ids, token, uid_token, unique_identifier].hash
+      [access_expires, allowed_cors, bound_common_names, bound_dns_sans, bound_email_sans, bound_extensions, bound_ips, bound_organizational_units, bound_uri_sans, certificate_data, description, force_sub_claims, gw_bound_ips, json, jwt_ttl, name, revoked_cert_ids, token, uid_token, unique_identifier].hash
     end
 
     # Builds the object from hash

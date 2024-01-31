@@ -15,6 +15,8 @@ require 'time'
 
 module Akeyless
   class CreateRotatedSecret
+    attr_accessor :provider_type
+
     # API ID to rotate (relevant only for rotator-type=api-key)
     attr_accessor :api_id
 
@@ -51,6 +53,9 @@ module Akeyless
     # The key id of the gcp service account to rotate
     attr_accessor :gcp_service_account_key_id
 
+    # Host provider type [explicit/target], Relevant only for Secure Remote Access of ssh cert issuer and ldap rotated secret
+    attr_accessor :host_provider
+
     # Set output format to JSON
     attr_accessor :json
 
@@ -72,7 +77,7 @@ module Akeyless
     # username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it's own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type=password)
     attr_accessor :rotated_username
 
-    # The Hour of the rotation in UTC
+    # The Hour of the rotation in UTC. Default rotation-hour is 14:00
     attr_accessor :rotation_hour
 
     # The number of days to wait between every automatic key rotation (1-365)
@@ -140,6 +145,9 @@ module Akeyless
     # Add tags attached to this object
     attr_accessor :tags
 
+    # A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer and ldap rotated secret, To specify multiple targets use argument multiple times
+    attr_accessor :target
+
     # Target name
     attr_accessor :target_name
 
@@ -158,6 +166,7 @@ module Akeyless
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'provider_type' => :'ProviderType',
         :'api_id' => :'api-id',
         :'api_key' => :'api-key',
         :'application_id' => :'application-id',
@@ -170,6 +179,7 @@ module Akeyless
         :'gcp_key' => :'gcp-key',
         :'gcp_service_account_email' => :'gcp-service-account-email',
         :'gcp_service_account_key_id' => :'gcp-service-account-key-id',
+        :'host_provider' => :'host-provider',
         :'json' => :'json',
         :'key' => :'key',
         :'metadata' => :'metadata',
@@ -200,6 +210,7 @@ module Akeyless
         :'ssh_username' => :'ssh-username',
         :'storage_account_key_name' => :'storage-account-key-name',
         :'tags' => :'tags',
+        :'target' => :'target',
         :'target_name' => :'target-name',
         :'token' => :'token',
         :'uid_token' => :'uid-token',
@@ -216,6 +227,7 @@ module Akeyless
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'provider_type' => :'String',
         :'api_id' => :'String',
         :'api_key' => :'String',
         :'application_id' => :'String',
@@ -228,6 +240,7 @@ module Akeyless
         :'gcp_key' => :'String',
         :'gcp_service_account_email' => :'String',
         :'gcp_service_account_key_id' => :'String',
+        :'host_provider' => :'String',
         :'json' => :'Boolean',
         :'key' => :'String',
         :'metadata' => :'String',
@@ -258,6 +271,7 @@ module Akeyless
         :'ssh_username' => :'String',
         :'storage_account_key_name' => :'String',
         :'tags' => :'Array<String>',
+        :'target' => :'Array<String>',
         :'target_name' => :'String',
         :'token' => :'String',
         :'uid_token' => :'String',
@@ -286,6 +300,10 @@ module Akeyless
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'provider_type')
+        self.provider_type = attributes[:'provider_type']
+      end
 
       if attributes.key?(:'api_id')
         self.api_id = attributes[:'api_id']
@@ -337,6 +355,12 @@ module Akeyless
 
       if attributes.key?(:'gcp_service_account_key_id')
         self.gcp_service_account_key_id = attributes[:'gcp_service_account_key_id']
+      end
+
+      if attributes.key?(:'host_provider')
+        self.host_provider = attributes[:'host_provider']
+      else
+        self.host_provider = 'explicit'
       end
 
       if attributes.key?(:'json')
@@ -479,6 +503,12 @@ module Akeyless
         end
       end
 
+      if attributes.key?(:'target')
+        if (value = attributes[:'target']).is_a?(Array)
+          self.target = value
+        end
+      end
+
       if attributes.key?(:'target_name')
         self.target_name = attributes[:'target_name']
       else
@@ -537,6 +567,7 @@ module Akeyless
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          provider_type == o.provider_type &&
           api_id == o.api_id &&
           api_key == o.api_key &&
           application_id == o.application_id &&
@@ -549,6 +580,7 @@ module Akeyless
           gcp_key == o.gcp_key &&
           gcp_service_account_email == o.gcp_service_account_email &&
           gcp_service_account_key_id == o.gcp_service_account_key_id &&
+          host_provider == o.host_provider &&
           json == o.json &&
           key == o.key &&
           metadata == o.metadata &&
@@ -579,6 +611,7 @@ module Akeyless
           ssh_username == o.ssh_username &&
           storage_account_key_name == o.storage_account_key_name &&
           tags == o.tags &&
+          target == o.target &&
           target_name == o.target_name &&
           token == o.token &&
           uid_token == o.uid_token &&
@@ -595,7 +628,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [api_id, api_key, application_id, authentication_credentials, auto_rotate, aws_region, custom_payload, delete_protection, description, gcp_key, gcp_service_account_email, gcp_service_account_key_id, json, key, metadata, name, rotate_after_disconnect, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, rotator_custom_cmd, rotator_type, same_password, secure_access_allow_external_user, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, ssh_password, ssh_username, storage_account_key_name, tags, target_name, token, uid_token, user_attribute, user_dn].hash
+      [provider_type, api_id, api_key, application_id, authentication_credentials, auto_rotate, aws_region, custom_payload, delete_protection, description, gcp_key, gcp_service_account_email, gcp_service_account_key_id, host_provider, json, key, metadata, name, rotate_after_disconnect, rotated_password, rotated_username, rotation_hour, rotation_interval, rotator_creds_type, rotator_custom_cmd, rotator_type, same_password, secure_access_allow_external_user, secure_access_aws_account_id, secure_access_aws_native_cli, secure_access_bastion_issuer, secure_access_db_name, secure_access_db_schema, secure_access_enable, secure_access_host, secure_access_rdp_domain, secure_access_rdp_user, secure_access_web, secure_access_web_browsing, secure_access_web_proxy, ssh_password, ssh_username, storage_account_key_name, tags, target, target_name, token, uid_token, user_attribute, user_dn].hash
     end
 
     # Builds the object from hash

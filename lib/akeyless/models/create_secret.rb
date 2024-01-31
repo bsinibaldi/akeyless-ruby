@@ -18,6 +18,9 @@ module Akeyless
     # for personal password manager
     attr_accessor :accessibility
 
+    # Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret)
+    attr_accessor :change_event
+
     # For Password Management use, additional fields
     attr_accessor :custom_field
 
@@ -97,6 +100,7 @@ module Akeyless
     def self.attribute_map
       {
         :'accessibility' => :'accessibility',
+        :'change_event' => :'change-event',
         :'custom_field' => :'custom-field',
         :'delete_protection' => :'delete_protection',
         :'description' => :'description',
@@ -134,6 +138,7 @@ module Akeyless
     def self.openapi_types
       {
         :'accessibility' => :'String',
+        :'change_event' => :'String',
         :'custom_field' => :'Hash<String, String>',
         :'delete_protection' => :'String',
         :'description' => :'String',
@@ -187,6 +192,10 @@ module Akeyless
         self.accessibility = attributes[:'accessibility']
       else
         self.accessibility = 'regular'
+      end
+
+      if attributes.key?(:'change_event')
+        self.change_event = attributes[:'change_event']
       end
 
       if attributes.key?(:'custom_field')
@@ -341,6 +350,7 @@ module Akeyless
       return true if self.equal?(o)
       self.class == o.class &&
           accessibility == o.accessibility &&
+          change_event == o.change_event &&
           custom_field == o.custom_field &&
           delete_protection == o.delete_protection &&
           description == o.description &&
@@ -377,7 +387,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accessibility, custom_field, delete_protection, description, inject_url, json, metadata, multiline_value, name, password, protection_key, secure_access_bastion_issuer, secure_access_enable, secure_access_host, secure_access_rdp_user, secure_access_ssh_creds, secure_access_ssh_user, secure_access_url, secure_access_web_browsing, secure_access_web_proxy, tags, token, type, uid_token, username, value].hash
+      [accessibility, change_event, custom_field, delete_protection, description, inject_url, json, metadata, multiline_value, name, password, protection_key, secure_access_bastion_issuer, secure_access_enable, secure_access_host, secure_access_rdp_user, secure_access_ssh_creds, secure_access_ssh_user, secure_access_url, secure_access_web_browsing, secure_access_web_proxy, tags, token, type, uid_token, username, value].hash
     end
 
     # Builds the object from hash

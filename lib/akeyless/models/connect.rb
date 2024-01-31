@@ -50,7 +50,7 @@ module Akeyless
     # Path to SSH executable. e.g. /usr/bin/ssh
     attr_accessor :ssh_command
 
-    # The Use to add offical SSH arguments (except -i)
+    # Additional SSH arguments (except -i)
     attr_accessor :ssh_extra_args
 
     # Set this option to output legacy ('ssh-rsa-cert-v01@openssh.com') signing algorithm name in the ssh certificate.

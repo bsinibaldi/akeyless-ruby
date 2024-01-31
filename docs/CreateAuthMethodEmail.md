@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **access_expires** | **Integer** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional][default to 0] |
 | **bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the IPs that the access is restricted to | [optional] |
+| **description** | **String** | Auth Method description | [optional] |
 | **email** | **String** | An email address to be invited to have access |  |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
 | **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
@@ -23,6 +24,7 @@ require 'akeyless'
 instance = Akeyless::CreateAuthMethodEmail.new(
   access_expires: null,
   bound_ips: null,
+  description: null,
   email: null,
   force_sub_claims: null,
   gw_bound_ips: null,

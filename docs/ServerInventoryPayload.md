@@ -10,6 +10,7 @@
 | **enable_rdp_sra** | **Boolean** |  | [optional] |
 | **migration_target_id** | **Integer** |  | [optional] |
 | **server_targets_path_template** | **String** |  | [optional] |
+| **user_groups** | **Array&lt;String&gt;** |  | [optional] |
 | **users_ignore_list** | **Hash&lt;String, Boolean&gt;** |  | [optional] |
 | **users_rotated_secrets_path_template** | **String** |  | [optional] |
 
@@ -25,6 +26,7 @@ instance = Akeyless::ServerInventoryPayload.new(
   enable_rdp_sra: null,
   migration_target_id: null,
   server_targets_path_template: null,
+  user_groups: null,
   users_ignore_list: null,
   users_rotated_secrets_path_template: null
 )

@@ -33,6 +33,9 @@ module Akeyless
     # The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
     attr_accessor :key
 
+    # The last version number before the update
+    attr_accessor :last_version
+
     # The provided value is a multiline value (separated by '\\n')
     attr_accessor :multiline
 
@@ -66,6 +69,7 @@ module Akeyless
         :'json' => :'json',
         :'keep_prev_version' => :'keep-prev-version',
         :'key' => :'key',
+        :'last_version' => :'last-version',
         :'multiline' => :'multiline',
         :'name' => :'name',
         :'new_version' => :'new-version',
@@ -91,6 +95,7 @@ module Akeyless
         :'json' => :'Boolean',
         :'keep_prev_version' => :'String',
         :'key' => :'String',
+        :'last_version' => :'Integer',
         :'multiline' => :'Boolean',
         :'name' => :'String',
         :'new_version' => :'Boolean',
@@ -153,6 +158,10 @@ module Akeyless
 
       if attributes.key?(:'key')
         self.key = attributes[:'key']
+      end
+
+      if attributes.key?(:'last_version')
+        self.last_version = attributes[:'last_version']
       end
 
       if attributes.key?(:'multiline')
@@ -228,6 +237,7 @@ module Akeyless
           json == o.json &&
           keep_prev_version == o.keep_prev_version &&
           key == o.key &&
+          last_version == o.last_version &&
           multiline == o.multiline &&
           name == o.name &&
           new_version == o.new_version &&
@@ -247,7 +257,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accessibility, custom_field, inject_url, json, keep_prev_version, key, multiline, name, new_version, password, token, uid_token, username, value].hash
+      [accessibility, custom_field, inject_url, json, keep_prev_version, key, last_version, multiline, name, new_version, password, token, uid_token, username, value].hash
     end
 
     # Builds the object from hash

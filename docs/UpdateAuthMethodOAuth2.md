@@ -8,6 +8,7 @@
 | **audience** | **String** | The audience in the JWT | [optional] |
 | **bound_client_ids** | **Array&lt;String&gt;** | The clients ids that the access is restricted to | [optional] |
 | **bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the IPs that the access is restricted to | [optional] |
+| **description** | **String** | Auth Method description | [optional] |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
 | **gateway_url** | **String** | Akeyless Gateway URL (Configuration Management port). Relevant only when the jwks-uri is accessible only from the gateway. | [optional] |
 | **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
@@ -33,6 +34,7 @@ instance = Akeyless::UpdateAuthMethodOAuth2.new(
   audience: null,
   bound_client_ids: null,
   bound_ips: null,
+  description: null,
   force_sub_claims: null,
   gateway_url: null,
   gw_bound_ips: null,

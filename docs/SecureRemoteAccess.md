@@ -32,6 +32,7 @@
 | **ssh_private_key** | **Boolean** |  | [optional] |
 | **ssh_user** | **String** |  | [optional] |
 | **target_hosts** | [**Array&lt;TargetNameWithHosts&gt;**](TargetNameWithHosts.md) |  | [optional] |
+| **targets** | **Array&lt;String&gt;** |  | [optional] |
 | **url** | **String** |  | [optional] |
 | **use_internal_bastion** | **Boolean** |  | [optional] |
 | **web_proxy** | **Boolean** |  | [optional] |
@@ -70,6 +71,7 @@ instance = Akeyless::SecureRemoteAccess.new(
   ssh_private_key: null,
   ssh_user: null,
   target_hosts: null,
+  targets: null,
   url: null,
   use_internal_bastion: null,
   web_proxy: null

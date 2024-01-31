@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **access_expires** | **Integer** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional][default to 0] |
-| **audience** | **String** | The audience in the JWT | [optional][default to &#39;https://management.azure.com/&#39;] |
+| **audience** | **String** | Deprecated (Deprecated) The audience in the JWT | [optional][default to &#39;https://management.azure.com/&#39;] |
 | **bound_group_id** | **Array&lt;String&gt;** | A list of group ids that the access is restricted to | [optional] |
 | **bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the IPs that the access is restricted to | [optional] |
 | **bound_providers** | **Array&lt;String&gt;** | A list of resource providers that the access is restricted to (e.g, Microsoft.Compute, Microsoft.ManagedIdentity, etc) | [optional] |
@@ -16,6 +16,7 @@
 | **bound_spid** | **Array&lt;String&gt;** | A list of service principal IDs that the access is restricted to | [optional] |
 | **bound_sub_id** | **Array&lt;String&gt;** | A list of subscription ids that the access is restricted to | [optional] |
 | **bound_tenant_id** | **String** | The Azure tenant id that the access is restricted to |  |
+| **description** | **String** | Auth Method description | [optional] |
 | **force_sub_claims** | **Boolean** | if true: enforce role-association must include sub claims | [optional] |
 | **gw_bound_ips** | **Array&lt;String&gt;** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] |
 | **issuer** | **String** | Issuer URL | [optional][default to &#39;https://sts.windows.net/---bound_tenant_id---&#39;] |
@@ -45,6 +46,7 @@ instance = Akeyless::UpdateAuthMethodAzureAD.new(
   bound_spid: null,
   bound_sub_id: null,
   bound_tenant_id: null,
+  description: null,
   force_sub_claims: null,
   gw_bound_ips: null,
   issuer: null,

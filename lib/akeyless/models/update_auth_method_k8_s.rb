@@ -34,6 +34,9 @@ module Akeyless
     # A list of service account names that the access is restricted to
     attr_accessor :bound_sa_names
 
+    # Auth Method description
+    attr_accessor :description
+
     # if true: enforce role-association must include sub claims
     attr_accessor :force_sub_claims
 
@@ -73,6 +76,7 @@ module Akeyless
         :'bound_namespaces' => :'bound-namespaces',
         :'bound_pod_names' => :'bound-pod-names',
         :'bound_sa_names' => :'bound-sa-names',
+        :'description' => :'description',
         :'force_sub_claims' => :'force-sub-claims',
         :'gen_key' => :'gen-key',
         :'gw_bound_ips' => :'gw-bound-ips',
@@ -100,6 +104,7 @@ module Akeyless
         :'bound_namespaces' => :'Array<String>',
         :'bound_pod_names' => :'Array<String>',
         :'bound_sa_names' => :'Array<String>',
+        :'description' => :'String',
         :'force_sub_claims' => :'Boolean',
         :'gen_key' => :'String',
         :'gw_bound_ips' => :'Array<String>',
@@ -166,6 +171,10 @@ module Akeyless
         if (value = attributes[:'bound_sa_names']).is_a?(Array)
           self.bound_sa_names = value
         end
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'force_sub_claims')
@@ -248,6 +257,7 @@ module Akeyless
           bound_namespaces == o.bound_namespaces &&
           bound_pod_names == o.bound_pod_names &&
           bound_sa_names == o.bound_sa_names &&
+          description == o.description &&
           force_sub_claims == o.force_sub_claims &&
           gen_key == o.gen_key &&
           gw_bound_ips == o.gw_bound_ips &&
@@ -269,7 +279,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_expires, audience, bound_ips, bound_namespaces, bound_pod_names, bound_sa_names, force_sub_claims, gen_key, gw_bound_ips, json, jwt_ttl, name, new_name, public_key, token, uid_token].hash
+      [access_expires, audience, bound_ips, bound_namespaces, bound_pod_names, bound_sa_names, description, force_sub_claims, gen_key, gw_bound_ips, json, jwt_ttl, name, new_name, public_key, token, uid_token].hash
     end
 
     # Builds the object from hash

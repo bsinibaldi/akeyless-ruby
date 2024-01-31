@@ -187,6 +187,9 @@ module Akeyless
     # SSH, Windows or Linked Target Name. (Relevant only for Server Inventory migration)
     attr_accessor :si_target_name
 
+    # Comma-separated list of groups to migrate users from. If empty, all users from all groups will be migrated (Relevant only for Server Inventory migration)
+    attr_accessor :si_user_groups
+
     # Comma-separated list of Local Users which should not be migrated (Relevant only for Server Inventory migration)
     attr_accessor :si_users_ignore
 
@@ -262,6 +265,7 @@ module Akeyless
         :'si_rotation_interval' => :'si-rotation-interval',
         :'si_sra_enable_rdp' => :'si-sra-enable-rdp',
         :'si_target_name' => :'si-target-name',
+        :'si_user_groups' => :'si-user-groups',
         :'si_users_ignore' => :'si-users-ignore',
         :'si_users_path_template' => :'si-users-path-template',
         :'target_location' => :'target-location',
@@ -335,6 +339,7 @@ module Akeyless
         :'si_rotation_interval' => :'Integer',
         :'si_sra_enable_rdp' => :'String',
         :'si_target_name' => :'String',
+        :'si_user_groups' => :'String',
         :'si_users_ignore' => :'String',
         :'si_users_path_template' => :'String',
         :'target_location' => :'String',
@@ -624,6 +629,10 @@ module Akeyless
         self.si_target_name = nil
       end
 
+      if attributes.key?(:'si_user_groups')
+        self.si_user_groups = attributes[:'si_user_groups']
+      end
+
       if attributes.key?(:'si_users_ignore')
         self.si_users_ignore = attributes[:'si_users_ignore']
       end
@@ -741,6 +750,7 @@ module Akeyless
           si_rotation_interval == o.si_rotation_interval &&
           si_sra_enable_rdp == o.si_sra_enable_rdp &&
           si_target_name == o.si_target_name &&
+          si_user_groups == o.si_user_groups &&
           si_users_ignore == o.si_users_ignore &&
           si_users_path_template == o.si_users_path_template &&
           target_location == o.target_location &&
@@ -757,7 +767,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_1password_email, _1password_password, _1password_secret_key, _1password_url, _1password_vaults, ad_discover_services, ad_discovery_types, ad_os_filter, ad_ssh_port, ad_targets_type, ad_winrm_over_http, ad_winrm_port, ad_auto_rotate, ad_computer_base_dn, ad_discover_local_users, ad_domain_name, ad_domain_users_path_template, ad_local_users_ignore, ad_local_users_path_template, ad_rotation_hour, ad_rotation_interval, ad_sra_enable_rdp, ad_target_name, ad_targets_path_template, ad_user_base_dn, ad_user_groups, aws_key, aws_key_id, aws_region, azure_client_id, azure_kv_name, azure_secret, azure_tenant_id, gcp_key, hashi_json, hashi_ns, hashi_token, hashi_url, id, json, k8s_ca_certificate, k8s_client_certificate, k8s_client_key, k8s_namespace, k8s_password, k8s_skip_system, k8s_token, k8s_url, k8s_username, name, new_name, protection_key, si_auto_rotate, si_rotation_hour, si_rotation_interval, si_sra_enable_rdp, si_target_name, si_users_ignore, si_users_path_template, target_location, token, uid_token].hash
+      [_1password_email, _1password_password, _1password_secret_key, _1password_url, _1password_vaults, ad_discover_services, ad_discovery_types, ad_os_filter, ad_ssh_port, ad_targets_type, ad_winrm_over_http, ad_winrm_port, ad_auto_rotate, ad_computer_base_dn, ad_discover_local_users, ad_domain_name, ad_domain_users_path_template, ad_local_users_ignore, ad_local_users_path_template, ad_rotation_hour, ad_rotation_interval, ad_sra_enable_rdp, ad_target_name, ad_targets_path_template, ad_user_base_dn, ad_user_groups, aws_key, aws_key_id, aws_region, azure_client_id, azure_kv_name, azure_secret, azure_tenant_id, gcp_key, hashi_json, hashi_ns, hashi_token, hashi_url, id, json, k8s_ca_certificate, k8s_client_certificate, k8s_client_key, k8s_namespace, k8s_password, k8s_skip_system, k8s_token, k8s_url, k8s_username, name, new_name, protection_key, si_auto_rotate, si_rotation_hour, si_rotation_interval, si_sra_enable_rdp, si_target_name, si_user_groups, si_users_ignore, si_users_path_template, target_location, token, uid_token].hash
     end
 
     # Builds the object from hash

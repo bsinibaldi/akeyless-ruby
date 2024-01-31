@@ -19,6 +19,8 @@ module Akeyless
 
     attr_accessor :access_date_display
 
+    attr_accessor :certificate_version_info
+
     attr_accessor :creation_date
 
     attr_accessor :customer_fragment_id
@@ -41,6 +43,7 @@ module Akeyless
       {
         :'access_date' => :'access_date',
         :'access_date_display' => :'access_date_display',
+        :'certificate_version_info' => :'certificate_version_info',
         :'creation_date' => :'creation_date',
         :'customer_fragment_id' => :'customer_fragment_id',
         :'deletion_date' => :'deletion_date',
@@ -62,6 +65,7 @@ module Akeyless
       {
         :'access_date' => :'Time',
         :'access_date_display' => :'String',
+        :'certificate_version_info' => :'CertificateVersionInfo',
         :'creation_date' => :'Time',
         :'customer_fragment_id' => :'String',
         :'deletion_date' => :'Time',
@@ -100,6 +104,10 @@ module Akeyless
 
       if attributes.key?(:'access_date_display')
         self.access_date_display = attributes[:'access_date_display']
+      end
+
+      if attributes.key?(:'certificate_version_info')
+        self.certificate_version_info = attributes[:'certificate_version_info']
       end
 
       if attributes.key?(:'creation_date')
@@ -157,6 +165,7 @@ module Akeyless
       self.class == o.class &&
           access_date == o.access_date &&
           access_date_display == o.access_date_display &&
+          certificate_version_info == o.certificate_version_info &&
           creation_date == o.creation_date &&
           customer_fragment_id == o.customer_fragment_id &&
           deletion_date == o.deletion_date &&
@@ -176,7 +185,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_date, access_date_display, creation_date, customer_fragment_id, deletion_date, item_version_state, modification_date, protection_key_name, version, with_customer_fragment].hash
+      [access_date, access_date_display, certificate_version_info, creation_date, customer_fragment_id, deletion_date, item_version_state, modification_date, protection_key_name, version, with_customer_fragment].hash
     end
 
     # Builds the object from hash

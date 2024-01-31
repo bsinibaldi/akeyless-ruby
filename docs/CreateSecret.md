@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **accessibility** | **String** | for personal password manager | [optional][default to &#39;regular&#39;] |
+| **change_event** | **String** | Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret) | [optional] |
 | **custom_field** | **Hash&lt;String, String&gt;** | For Password Management use, additional fields | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
 | **description** | **String** | Description of the object | [optional] |
@@ -38,6 +39,7 @@ require 'akeyless'
 
 instance = Akeyless::CreateSecret.new(
   accessibility: null,
+  change_event: null,
   custom_field: null,
   delete_protection: null,
   description: null,

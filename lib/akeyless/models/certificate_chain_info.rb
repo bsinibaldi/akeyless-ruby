@@ -19,6 +19,10 @@ module Akeyless
 
     attr_accessor :certificate_format
 
+    attr_accessor :certificate_has_private_key
+
+    attr_accessor :certificate_issuer_gw_cluster_url
+
     attr_accessor :certificate_issuer_item_id
 
     attr_accessor :certificate_issuer_name
@@ -34,6 +38,8 @@ module Akeyless
       {
         :'certificate_chain' => :'certificate_chain',
         :'certificate_format' => :'certificate_format',
+        :'certificate_has_private_key' => :'certificate_has_private_key',
+        :'certificate_issuer_gw_cluster_url' => :'certificate_issuer_gw_cluster_url',
         :'certificate_issuer_item_id' => :'certificate_issuer_item_id',
         :'certificate_issuer_name' => :'certificate_issuer_name',
         :'certificate_pem' => :'certificate_pem',
@@ -52,6 +58,8 @@ module Akeyless
       {
         :'certificate_chain' => :'Array<CertificateInfo>',
         :'certificate_format' => :'String',
+        :'certificate_has_private_key' => :'Boolean',
+        :'certificate_issuer_gw_cluster_url' => :'String',
         :'certificate_issuer_item_id' => :'Integer',
         :'certificate_issuer_name' => :'String',
         :'certificate_pem' => :'String',
@@ -89,6 +97,14 @@ module Akeyless
 
       if attributes.key?(:'certificate_format')
         self.certificate_format = attributes[:'certificate_format']
+      end
+
+      if attributes.key?(:'certificate_has_private_key')
+        self.certificate_has_private_key = attributes[:'certificate_has_private_key']
+      end
+
+      if attributes.key?(:'certificate_issuer_gw_cluster_url')
+        self.certificate_issuer_gw_cluster_url = attributes[:'certificate_issuer_gw_cluster_url']
       end
 
       if attributes.key?(:'certificate_issuer_item_id')
@@ -136,6 +152,8 @@ module Akeyless
       self.class == o.class &&
           certificate_chain == o.certificate_chain &&
           certificate_format == o.certificate_format &&
+          certificate_has_private_key == o.certificate_has_private_key &&
+          certificate_issuer_gw_cluster_url == o.certificate_issuer_gw_cluster_url &&
           certificate_issuer_item_id == o.certificate_issuer_item_id &&
           certificate_issuer_name == o.certificate_issuer_name &&
           certificate_pem == o.certificate_pem &&
@@ -152,7 +170,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [certificate_chain, certificate_format, certificate_issuer_item_id, certificate_issuer_name, certificate_pem, certificate_status, expiration_events].hash
+      [certificate_chain, certificate_format, certificate_has_private_key, certificate_issuer_gw_cluster_url, certificate_issuer_item_id, certificate_issuer_name, certificate_pem, certificate_status, expiration_events].hash
     end
 
     # Builds the object from hash

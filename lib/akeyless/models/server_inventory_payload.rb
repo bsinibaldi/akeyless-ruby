@@ -27,6 +27,8 @@ module Akeyless
 
     attr_accessor :server_targets_path_template
 
+    attr_accessor :user_groups
+
     attr_accessor :users_ignore_list
 
     attr_accessor :users_rotated_secrets_path_template
@@ -40,6 +42,7 @@ module Akeyless
         :'enable_rdp_sra' => :'enable_rdp_sra',
         :'migration_target_id' => :'migration_target_id',
         :'server_targets_path_template' => :'server_targets_path_template',
+        :'user_groups' => :'user_groups',
         :'users_ignore_list' => :'users_ignore_list',
         :'users_rotated_secrets_path_template' => :'users_rotated_secrets_path_template'
       }
@@ -59,6 +62,7 @@ module Akeyless
         :'enable_rdp_sra' => :'Boolean',
         :'migration_target_id' => :'Integer',
         :'server_targets_path_template' => :'String',
+        :'user_groups' => :'Array<String>',
         :'users_ignore_list' => :'Hash<String, Boolean>',
         :'users_rotated_secrets_path_template' => :'String'
       }
@@ -109,6 +113,12 @@ module Akeyless
         self.server_targets_path_template = attributes[:'server_targets_path_template']
       end
 
+      if attributes.key?(:'user_groups')
+        if (value = attributes[:'user_groups']).is_a?(Array)
+          self.user_groups = value
+        end
+      end
+
       if attributes.key?(:'users_ignore_list')
         if (value = attributes[:'users_ignore_list']).is_a?(Hash)
           self.users_ignore_list = value
@@ -146,6 +156,7 @@ module Akeyless
           enable_rdp_sra == o.enable_rdp_sra &&
           migration_target_id == o.migration_target_id &&
           server_targets_path_template == o.server_targets_path_template &&
+          user_groups == o.user_groups &&
           users_ignore_list == o.users_ignore_list &&
           users_rotated_secrets_path_template == o.users_rotated_secrets_path_template
     end
@@ -159,7 +170,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_rotate, auto_rotate_interval_in_days, auto_rotate_rotation_hour, enable_rdp_sra, migration_target_id, server_targets_path_template, users_ignore_list, users_rotated_secrets_path_template].hash
+      [auto_rotate, auto_rotate_interval_in_days, auto_rotate_rotation_hour, enable_rdp_sra, migration_target_id, server_targets_path_template, user_groups, users_ignore_list, users_rotated_secrets_path_template].hash
     end
 
     # Builds the object from hash

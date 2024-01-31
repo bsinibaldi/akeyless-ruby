@@ -43,6 +43,12 @@ module Akeyless
     # Dynamic producer encryption key
     attr_accessor :producer_encryption_key_name
 
+    # Enable/Disable SSL [true/false]
+    attr_accessor :ssl
+
+    # SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA)
+    attr_accessor :ssl_certificate
+
     # Add tags attached to this object
     attr_accessor :tags
 
@@ -70,6 +76,8 @@ module Akeyless
         :'json' => :'json',
         :'name' => :'name',
         :'producer_encryption_key_name' => :'producer-encryption-key-name',
+        :'ssl' => :'ssl',
+        :'ssl_certificate' => :'ssl-certificate',
         :'tags' => :'tags',
         :'target_name' => :'target-name',
         :'token' => :'token',
@@ -95,6 +103,8 @@ module Akeyless
         :'json' => :'Boolean',
         :'name' => :'String',
         :'producer_encryption_key_name' => :'String',
+        :'ssl' => :'Boolean',
+        :'ssl_certificate' => :'String',
         :'tags' => :'Array<String>',
         :'target_name' => :'String',
         :'token' => :'String',
@@ -166,6 +176,16 @@ module Akeyless
         self.producer_encryption_key_name = attributes[:'producer_encryption_key_name']
       end
 
+      if attributes.key?(:'ssl')
+        self.ssl = attributes[:'ssl']
+      else
+        self.ssl = false
+      end
+
+      if attributes.key?(:'ssl_certificate')
+        self.ssl_certificate = attributes[:'ssl_certificate']
+      end
+
       if attributes.key?(:'tags')
         if (value = attributes[:'tags']).is_a?(Array)
           self.tags = value
@@ -225,6 +245,8 @@ module Akeyless
           json == o.json &&
           name == o.name &&
           producer_encryption_key_name == o.producer_encryption_key_name &&
+          ssl == o.ssl &&
+          ssl_certificate == o.ssl_certificate &&
           tags == o.tags &&
           target_name == o.target_name &&
           token == o.token &&
@@ -241,7 +263,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cassandra_creation_statements, cassandra_hosts, cassandra_password, cassandra_port, cassandra_username, delete_protection, json, name, producer_encryption_key_name, tags, target_name, token, uid_token, user_ttl].hash
+      [cassandra_creation_statements, cassandra_hosts, cassandra_password, cassandra_port, cassandra_username, delete_protection, json, name, producer_encryption_key_name, ssl, ssl_certificate, tags, target_name, token, uid_token, user_ttl].hash
     end
 
     # Builds the object from hash

@@ -40,6 +40,9 @@ module Akeyless
     # === Machine authentication section === List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone.
     attr_accessor :bound_zones
 
+    # Auth Method description
+    attr_accessor :description
+
     # if true: enforce role-association must include sub claims
     attr_accessor :force_sub_claims
 
@@ -81,6 +84,7 @@ module Akeyless
         :'bound_regions' => :'bound-regions',
         :'bound_service_accounts' => :'bound-service-accounts',
         :'bound_zones' => :'bound-zones',
+        :'description' => :'description',
         :'force_sub_claims' => :'force-sub-claims',
         :'gw_bound_ips' => :'gw-bound-ips',
         :'json' => :'json',
@@ -110,6 +114,7 @@ module Akeyless
         :'bound_regions' => :'Array<String>',
         :'bound_service_accounts' => :'Array<String>',
         :'bound_zones' => :'Array<String>',
+        :'description' => :'String',
         :'force_sub_claims' => :'Boolean',
         :'gw_bound_ips' => :'Array<String>',
         :'json' => :'Boolean',
@@ -190,6 +195,10 @@ module Akeyless
         if (value = attributes[:'bound_zones']).is_a?(Array)
           self.bound_zones = value
         end
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'force_sub_claims')
@@ -286,6 +295,7 @@ module Akeyless
           bound_regions == o.bound_regions &&
           bound_service_accounts == o.bound_service_accounts &&
           bound_zones == o.bound_zones &&
+          description == o.description &&
           force_sub_claims == o.force_sub_claims &&
           gw_bound_ips == o.gw_bound_ips &&
           json == o.json &&
@@ -307,7 +317,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_expires, audience, bound_ips, bound_labels, bound_projects, bound_regions, bound_service_accounts, bound_zones, force_sub_claims, gw_bound_ips, json, jwt_ttl, name, new_name, service_account_creds_data, token, type, uid_token].hash
+      [access_expires, audience, bound_ips, bound_labels, bound_projects, bound_regions, bound_service_accounts, bound_zones, description, force_sub_claims, gw_bound_ips, json, jwt_ttl, name, new_name, service_account_creds_data, token, type, uid_token].hash
     end
 
     # Builds the object from hash

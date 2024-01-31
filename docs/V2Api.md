@@ -219,8 +219,10 @@ All URIs are relative to *https://api.akeyless.io*
 | [**list_sra_bastions**](V2Api.md#list_sra_bastions) | **POST** /list-sra-bastions |  |
 | [**list_targets**](V2Api.md#list_targets) | **POST** /list-targets |  |
 | [**move_objects**](V2Api.md#move_objects) | **POST** /move-objects |  |
+| [**provision_certificate**](V2Api.md#provision_certificate) | **POST** /provision-certificate |  |
 | [**raw_creds**](V2Api.md#raw_creds) | **POST** /raw-creds |  |
 | [**refresh_key**](V2Api.md#refresh_key) | **POST** /refresh-key |  |
+| [**renew_certificate**](V2Api.md#renew_certificate) | **POST** /renew-certificate |  |
 | [**request_access**](V2Api.md#request_access) | **POST** /request-access |  |
 | [**reverse_rbac**](V2Api.md#reverse_rbac) | **POST** /reverse-rbac |  |
 | [**revoke_creds**](V2Api.md#revoke_creds) | **POST** /revoke-creds |  |
@@ -288,7 +290,7 @@ All URIs are relative to *https://api.akeyless.io*
 | [**update_rdp_target_details**](V2Api.md#update_rdp_target_details) | **POST** /update-rdp-target-details |  |
 | [**update_role**](V2Api.md#update_role) | **POST** /update-role |  |
 | [**update_rotated_secret**](V2Api.md#update_rotated_secret) | **POST** /update-rotated-secret |  |
-| [**update_rotation_settings**](V2Api.md#update_rotation_settings) | **POST** /update-rotation-settingsrotate-key |  |
+| [**update_rotation_settings**](V2Api.md#update_rotation_settings) | **POST** /update-rotation-settings |  |
 | [**update_salesforce_target**](V2Api.md#update_salesforce_target) | **POST** /update-salesforce-target |  |
 | [**update_secret_val**](V2Api.md#update_secret_val) | **POST** /update-secret-val |  |
 | [**update_ssh_cert_issuer**](V2Api.md#update_ssh_cert_issuer) | **POST** /update-ssh-cert-issuer |  |
@@ -13672,6 +13674,68 @@ No authorization required
 - **Accept**: application/json
 
 
+## provision_certificate
+
+> <ProvisionCertificateOutput> provision_certificate(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::ProvisionCertificate.new({name: 'name_example'}) # ProvisionCertificate | 
+
+begin
+  
+  result = api_instance.provision_certificate(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->provision_certificate: #{e}"
+end
+```
+
+#### Using the provision_certificate_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ProvisionCertificateOutput>, Integer, Hash)> provision_certificate_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.provision_certificate_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ProvisionCertificateOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->provision_certificate_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**ProvisionCertificate**](ProvisionCertificate.md) |  |  |
+
+### Return type
+
+[**ProvisionCertificateOutput**](ProvisionCertificateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## raw_creds
 
 > <SystemAccessCredentialsReplyObj> raw_creds(opts)
@@ -13787,6 +13851,68 @@ end
 ### Return type
 
 [**RefreshKeyOutput**](RefreshKeyOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## renew_certificate
+
+> <RenewCertificateOutput> renew_certificate(body)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'akeyless'
+
+api_instance = Akeyless::V2Api.new
+body = Akeyless::RenewCertificate.new # RenewCertificate | 
+
+begin
+  
+  result = api_instance.renew_certificate(body)
+  p result
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->renew_certificate: #{e}"
+end
+```
+
+#### Using the renew_certificate_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RenewCertificateOutput>, Integer, Hash)> renew_certificate_with_http_info(body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.renew_certificate_with_http_info(body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RenewCertificateOutput>
+rescue Akeyless::ApiError => e
+  puts "Error when calling V2Api->renew_certificate_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**RenewCertificate**](RenewCertificate.md) |  |  |
+
+### Return type
+
+[**RenewCertificateOutput**](RenewCertificateOutput.md)
 
 ### Authorization
 
@@ -14056,7 +14182,7 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
-body = Akeyless::UpdateRotationSettings.new({auto_rotate: false, name: 'name_example'}) # UpdateRotationSettings | 
+body = Akeyless::RotateKey.new({name: 'name_example'}) # RotateKey | 
 
 begin
   
@@ -14089,7 +14215,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **body** | [**UpdateRotationSettings**](UpdateRotationSettings.md) |  |  |
+| **body** | [**RotateKey**](RotateKey.md) |  |  |
 
 ### Return type
 
@@ -17950,7 +18076,7 @@ No authorization required
 
 ## update_rotation_settings
 
-> <RotateKeyOutput> update_rotation_settings
+> <RotateKeyOutput> update_rotation_settings(body)
 
 
 
@@ -17961,10 +18087,11 @@ require 'time'
 require 'akeyless'
 
 api_instance = Akeyless::V2Api.new
+body = Akeyless::UpdateRotationSettings.new({auto_rotate: false, name: 'name_example'}) # UpdateRotationSettings | 
 
 begin
   
-  result = api_instance.update_rotation_settings
+  result = api_instance.update_rotation_settings(body)
   p result
 rescue Akeyless::ApiError => e
   puts "Error when calling V2Api->update_rotation_settings: #{e}"
@@ -17975,12 +18102,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<RotateKeyOutput>, Integer, Hash)> update_rotation_settings_with_http_info
+> <Array(<RotateKeyOutput>, Integer, Hash)> update_rotation_settings_with_http_info(body)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.update_rotation_settings_with_http_info
+  data, status_code, headers = api_instance.update_rotation_settings_with_http_info(body)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RotateKeyOutput>
@@ -17991,7 +18118,9 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **body** | [**UpdateRotationSettings**](UpdateRotationSettings.md) |  |  |
 
 ### Return type
 
@@ -18003,7 +18132,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

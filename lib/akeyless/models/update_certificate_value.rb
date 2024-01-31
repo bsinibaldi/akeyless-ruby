@@ -36,6 +36,9 @@ module Akeyless
     # Set output format to JSON
     attr_accessor :json
 
+    # Whether to keep previous version [true/false]. If not set, use default according to account settings
+    attr_accessor :keep_prev_version
+
     # The name of a key to use to encrypt the certificate's key (if empty, the account default protectionKey key will be used)
     attr_accessor :key
 
@@ -67,6 +70,7 @@ module Akeyless
         :'expiration_event_in' => :'expiration-event-in',
         :'format' => :'format',
         :'json' => :'json',
+        :'keep_prev_version' => :'keep-prev-version',
         :'key' => :'key',
         :'key_data' => :'key-data',
         :'metadata' => :'metadata',
@@ -92,6 +96,7 @@ module Akeyless
         :'expiration_event_in' => :'Array<String>',
         :'format' => :'String',
         :'json' => :'Boolean',
+        :'keep_prev_version' => :'String',
         :'key' => :'String',
         :'key_data' => :'String',
         :'metadata' => :'String',
@@ -155,6 +160,10 @@ module Akeyless
         self.json = attributes[:'json']
       else
         self.json = false
+      end
+
+      if attributes.key?(:'keep_prev_version')
+        self.keep_prev_version = attributes[:'keep_prev_version']
       end
 
       if attributes.key?(:'key')
@@ -222,6 +231,7 @@ module Akeyless
           expiration_event_in == o.expiration_event_in &&
           format == o.format &&
           json == o.json &&
+          keep_prev_version == o.keep_prev_version &&
           key == o.key &&
           key_data == o.key_data &&
           metadata == o.metadata &&
@@ -240,7 +250,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_tag, certificate_data, delete_protection, description, expiration_event_in, format, json, key, key_data, metadata, name, rm_tag, token, uid_token].hash
+      [add_tag, certificate_data, delete_protection, description, expiration_event_in, format, json, keep_prev_version, key, key_data, metadata, name, rm_tag, token, uid_token].hash
     end
 
     # Builds the object from hash

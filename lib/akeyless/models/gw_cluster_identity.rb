@@ -40,6 +40,8 @@ module Akeyless
 
     attr_accessor :id
 
+    attr_accessor :serverless_type
+
     attr_accessor :status
 
     attr_accessor :status_description
@@ -59,6 +61,7 @@ module Akeyless
         :'default_secret_location' => :'default_secret_location',
         :'display_name' => :'display_name',
         :'id' => :'id',
+        :'serverless_type' => :'serverless_type',
         :'status' => :'status',
         :'status_description' => :'status_description'
       }
@@ -84,6 +87,7 @@ module Akeyless
         :'default_secret_location' => :'String',
         :'display_name' => :'String',
         :'id' => :'Integer',
+        :'serverless_type' => :'String',
         :'status' => :'String',
         :'status_description' => :'String'
       }
@@ -164,6 +168,10 @@ module Akeyless
         self.id = attributes[:'id']
       end
 
+      if attributes.key?(:'serverless_type')
+        self.serverless_type = attributes[:'serverless_type']
+      end
+
       if attributes.key?(:'status')
         self.status = attributes[:'status']
       end
@@ -205,6 +213,7 @@ module Akeyless
           default_secret_location == o.default_secret_location &&
           display_name == o.display_name &&
           id == o.id &&
+          serverless_type == o.serverless_type &&
           status == o.status &&
           status_description == o.status_description
     end
@@ -218,7 +227,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action_allowed, allowed, allowed_access_ids, cluster_name, cluster_url, current_gw, customer_fragment_ids, customer_fragments, default_protection_key_id, default_secret_location, display_name, id, status, status_description].hash
+      [action_allowed, allowed, allowed_access_ids, cluster_name, cluster_url, current_gw, customer_fragment_ids, customer_fragments, default_protection_key_id, default_secret_location, display_name, id, serverless_type, status, status_description].hash
     end
 
     # Builds the object from hash

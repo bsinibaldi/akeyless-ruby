@@ -28,6 +28,9 @@ module Akeyless
     # Deny from the token to rotate
     attr_accessor :deny_rotate
 
+    # Auth Method description
+    attr_accessor :description
+
     # if true: enforce role-association must include sub claims
     attr_accessor :force_sub_claims
 
@@ -59,6 +62,7 @@ module Akeyless
         :'bound_ips' => :'bound-ips',
         :'deny_inheritance' => :'deny-inheritance',
         :'deny_rotate' => :'deny-rotate',
+        :'description' => :'description',
         :'force_sub_claims' => :'force-sub-claims',
         :'gw_bound_ips' => :'gw-bound-ips',
         :'json' => :'json',
@@ -82,6 +86,7 @@ module Akeyless
         :'bound_ips' => :'Array<String>',
         :'deny_inheritance' => :'Boolean',
         :'deny_rotate' => :'Boolean',
+        :'description' => :'String',
         :'force_sub_claims' => :'Boolean',
         :'gw_bound_ips' => :'Array<String>',
         :'json' => :'Boolean',
@@ -132,6 +137,10 @@ module Akeyless
 
       if attributes.key?(:'deny_rotate')
         self.deny_rotate = attributes[:'deny_rotate']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'force_sub_claims')
@@ -206,6 +215,7 @@ module Akeyless
           bound_ips == o.bound_ips &&
           deny_inheritance == o.deny_inheritance &&
           deny_rotate == o.deny_rotate &&
+          description == o.description &&
           force_sub_claims == o.force_sub_claims &&
           gw_bound_ips == o.gw_bound_ips &&
           json == o.json &&
@@ -225,7 +235,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_expires, bound_ips, deny_inheritance, deny_rotate, force_sub_claims, gw_bound_ips, json, jwt_ttl, name, token, ttl, uid_token].hash
+      [access_expires, bound_ips, deny_inheritance, deny_rotate, description, force_sub_claims, gw_bound_ips, json, jwt_ttl, name, token, ttl, uid_token].hash
     end
 
     # Builds the object from hash

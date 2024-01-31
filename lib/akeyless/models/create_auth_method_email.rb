@@ -22,6 +22,9 @@ module Akeyless
     # A CIDR whitelist with the IPs that the access is restricted to
     attr_accessor :bound_ips
 
+    # Auth Method description
+    attr_accessor :description
+
     # An email address to be invited to have access
     attr_accessor :email
 
@@ -51,6 +54,7 @@ module Akeyless
       {
         :'access_expires' => :'access-expires',
         :'bound_ips' => :'bound-ips',
+        :'description' => :'description',
         :'email' => :'email',
         :'force_sub_claims' => :'force-sub-claims',
         :'gw_bound_ips' => :'gw-bound-ips',
@@ -72,6 +76,7 @@ module Akeyless
       {
         :'access_expires' => :'Integer',
         :'bound_ips' => :'Array<String>',
+        :'description' => :'String',
         :'email' => :'String',
         :'force_sub_claims' => :'Boolean',
         :'gw_bound_ips' => :'Array<String>',
@@ -114,6 +119,10 @@ module Akeyless
         if (value = attributes[:'bound_ips']).is_a?(Array)
           self.bound_ips = value
         end
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'email')
@@ -191,6 +200,7 @@ module Akeyless
       self.class == o.class &&
           access_expires == o.access_expires &&
           bound_ips == o.bound_ips &&
+          description == o.description &&
           email == o.email &&
           force_sub_claims == o.force_sub_claims &&
           gw_bound_ips == o.gw_bound_ips &&
@@ -210,7 +220,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_expires, bound_ips, email, force_sub_claims, gw_bound_ips, json, jwt_ttl, name, token, uid_token].hash
+      [access_expires, bound_ips, description, email, force_sub_claims, gw_bound_ips, json, jwt_ttl, name, token, uid_token].hash
     end
 
     # Builds the object from hash

@@ -40,6 +40,8 @@ module Akeyless
     # The universal identity token, Required only for universal_identity authentication
     attr_accessor :uid_token
 
+    attr_accessor :update_mode
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -50,7 +52,8 @@ module Akeyless
         :'protection_key' => :'protection_key',
         :'target_folder' => :'target-folder',
         :'token' => :'token',
-        :'uid_token' => :'uid-token'
+        :'uid_token' => :'uid-token',
+        :'update_mode' => :'update-mode'
       }
     end
 
@@ -69,7 +72,8 @@ module Akeyless
         :'protection_key' => :'String',
         :'target_folder' => :'String',
         :'token' => :'String',
-        :'uid_token' => :'String'
+        :'uid_token' => :'String',
+        :'update_mode' => :'String'
       }
     end
 
@@ -135,6 +139,10 @@ module Akeyless
       if attributes.key?(:'uid_token')
         self.uid_token = attributes[:'uid_token']
       end
+
+      if attributes.key?(:'update_mode')
+        self.update_mode = attributes[:'update_mode']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -169,7 +177,8 @@ module Akeyless
           protection_key == o.protection_key &&
           target_folder == o.target_folder &&
           token == o.token &&
-          uid_token == o.uid_token
+          uid_token == o.uid_token &&
+          update_mode == o.update_mode
     end
 
     # @see the `==` method
@@ -181,7 +190,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accessibility, format, import_path, json, protection_key, target_folder, token, uid_token].hash
+      [accessibility, format, import_path, json, protection_key, target_folder, token, uid_token, update_mode].hash
     end
 
     # Builds the object from hash

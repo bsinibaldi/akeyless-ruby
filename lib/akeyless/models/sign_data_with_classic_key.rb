@@ -27,6 +27,9 @@ module Akeyless
     # HashingMethod
     attr_accessor :hashing_method
 
+    # Retrieve the Secret value without checking the Gateway's cache [true/false]. This flag is only relevant when using the RestAPI
+    attr_accessor :ignore_cache
+
     # Set output format to JSON
     attr_accessor :json
 
@@ -49,6 +52,7 @@ module Akeyless
         :'display_id' => :'display-id',
         :'hashed' => :'hashed',
         :'hashing_method' => :'hashing-method',
+        :'ignore_cache' => :'ignore-cache',
         :'json' => :'json',
         :'name' => :'name',
         :'token' => :'token',
@@ -69,6 +73,7 @@ module Akeyless
         :'display_id' => :'String',
         :'hashed' => :'Boolean',
         :'hashing_method' => :'String',
+        :'ignore_cache' => :'String',
         :'json' => :'Boolean',
         :'name' => :'String',
         :'token' => :'String',
@@ -120,6 +125,12 @@ module Akeyless
         self.hashing_method = attributes[:'hashing_method']
       else
         self.hashing_method = 'SHA256'
+      end
+
+      if attributes.key?(:'ignore_cache')
+        self.ignore_cache = attributes[:'ignore_cache']
+      else
+        self.ignore_cache = 'false'
       end
 
       if attributes.key?(:'json')
@@ -193,6 +204,7 @@ module Akeyless
           display_id == o.display_id &&
           hashed == o.hashed &&
           hashing_method == o.hashing_method &&
+          ignore_cache == o.ignore_cache &&
           json == o.json &&
           name == o.name &&
           token == o.token &&
@@ -209,7 +221,7 @@ module Akeyless
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, display_id, hashed, hashing_method, json, name, token, uid_token, version].hash
+      [data, display_id, hashed, hashing_method, ignore_cache, json, name, token, uid_token, version].hash
     end
 
     # Builds the object from hash

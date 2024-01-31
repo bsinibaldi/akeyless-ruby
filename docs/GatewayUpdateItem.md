@@ -7,6 +7,7 @@
 | **add_tag** | **Array&lt;String&gt;** | List of the new tags that will be attached to this item | [optional] |
 | **api_id** | **String** | API ID to rotate (relevant only for rotator-type&#x3D;api-key) | [optional] |
 | **api_key** | **String** | API key to rotate (relevant only for rotator-type&#x3D;api-key) | [optional] |
+| **app_id** | **String** | ApplicationId (used in azure) | [optional] |
 | **auto_rotate** | **String** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false] | [optional] |
 | **custom_payload** | **String** | Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom) | [optional] |
 | **delete_protection** | **String** | Protection from accidental deletion of this item [true/false] | [optional] |
@@ -40,6 +41,7 @@ instance = Akeyless::GatewayUpdateItem.new(
   add_tag: null,
   api_id: null,
   api_key: null,
+  app_id: null,
   auto_rotate: null,
   custom_payload: null,
   delete_protection: null,

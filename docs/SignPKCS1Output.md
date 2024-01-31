@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **result** | **Array&lt;Integer&gt;** |  | [optional] |
+| **result** | **String** |  | [optional] |
 
 ## Example
 
